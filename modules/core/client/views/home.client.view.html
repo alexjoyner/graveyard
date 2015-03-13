@@ -1,0 +1,65 @@
+<section data-ng-controller="HomeController" class="body-bg">
+    <br>
+    <div ng-controller="CarouselDemoCtrl">
+      <div style="height: auto">
+        <carousel interval="myInterval">
+          <slide ng-repeat="slide in slides" active="slide.active">
+            <img src="{{slide.image}}" style="margin:auto;">
+            <div class="carousel-caption">
+                <div class="darkBlock">
+                    <h5>{{slide.text}}</h5>
+                </div>
+            </div>
+          </slide>
+        </carousel>
+      </div>
+    </div>
+    <div ng-controller="AccordionDemoCtrl">
+      <!-- <p>
+        <button class="btn btn-default btn-sm" ng-click="status.open = !status.open">Toggle last panel</button>
+        <button class="btn btn-default btn-sm" ng-click="status.isFirstDisabled = ! status.isFirstDisabled">Enable / Disable first panel</button>
+      </p> -->
+      <!-- <label class="checkbox">
+        <input type="checkbox" ng-model="oneAtATime">
+        Open only one at a time
+      </label> -->
+      <accordion close-others="oneAtATime">
+        <accordion-group>
+            <accordion-heading>
+                <h3 class="center">Step 1: Sign In / Sign Up</h3>
+            </accordion-heading>
+        </accordion-group>
+        <accordion-group>
+            <accordion-heading>
+                <h3 class="center">Step 2: Post a bounty</h3>
+            </accordion-heading>
+        </accordion-group>
+        <accordion-group>
+            <accordion-heading>
+                <h3 class="center">Step 3: Get notified</h3>
+            </accordion-heading>
+        </accordion-group>
+      </accordion>
+    </div>
+    <!-- <div class = "row">
+        <div class = "col-sm-6" ng-repeat="alert in alerts">
+            <div class="row">
+                <div class="col-xs-4">
+                    <h1 class="pull-right">
+                        <button type="button" class="btn" ng-class="alert.colour">
+                            <i class="glyphicon" ng-class="alert.icon"></i>
+                        </button>
+                    </h1>
+                </div>
+                <div class="col-xs-8">
+                    <h1>{{alert.total}}</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-8 col-xs-offset-4">
+                    <span class="text-muted">{{alert.description}}</span>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</section>

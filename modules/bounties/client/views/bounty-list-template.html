@@ -1,0 +1,24 @@
+<div class="list-group">
+    <div class="col-xs-6 col-sm-4 extra-space" data-ng-repeat="bounty in bounties | filter:searchText | isClient">
+        <a data-ui-sref="bounties.edit({bountyId: bounty._id})" class="list-group-item">
+            <div class="row">
+                <h4 class="bounty-list text-center " ng-class="{'text-primary': bounty.referred, 'text-danger': !bounty.referred}">
+                    
+                </h4>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h4>{{bounty.user.displayName}} {{bounty.surname}}</h4>
+                    <small class="list-group-item-text">
+                        <span data-ng-bind="bounty.created | date:'medium'"></span>
+                        <span class="pull-right">
+                            <button class="btn btn-default btn-sm" ng-click="remove(bounty)">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </button>
+                        </span>
+                    </small>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
