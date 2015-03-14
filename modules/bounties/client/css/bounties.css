@@ -12,3 +12,10 @@
 input[type="radio"], input[type="checkbox"]{
  margin: 0 0 0 !important;   
 }
+.halfPage{
+	width: 50%;
+}
+.userBountyPhoto{
+	min-height: 200px;
+	max-height: 200px;
+}

@@ -8,11 +8,39 @@ bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$locati
 		$scope.authentication = Authentication;
 		// Create new Bounty object
 		$scope.bounties = [];
+		console.log($scope.authentication.user.profileImageURL);
+		$scope.userImage = $scope.authentication.user.profileImageURL;
+		$scope.competitiveTotal = 130;
 
+		$scope.workerType = [
+		    { label: 'Jack', value: 1 },
+		    { label: 'Master Jack', value: 2 }
+		  ];
+		    
+		// Here we are referencing the same object, so Angular inits the select box correctly
+  		$scope.bountyWorkerType = $scope.workerType;
+
+  		$scope.numWorkers = [
+		    { value: 2 },
+		    { value: 3 },
+		    { value: 4 },
+		    { value: 5 },
+		    { value: 6 },
+		    { value: 7 },
+		    { value: 8 },
+		    { value: 9 },
+		    { value: 10 }
+		  ];
+		    
+		// Here we are referencing the same object, so Angular inits the select box correctly
+  		$scope.bountyWorkerNumber = $scope.numWorkers;
+		
 		$scope.goToCreate = function(){
 			$location.path('bounties/create');
 		};
-
+		$scope.setClientTotal = function(){
+			$scope.bountyTotal = $scope.competitiveTotal;
+		};
 		// Create new Bounty
 		$scope.create = function() {
 			// Create new Bounty object
@@ -92,6 +120,15 @@ bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$locati
 	}
 ]);
 
+bountiesApp.controller('ButtonsCtrl', function ($scope) {
+  // $scope.radioModel = 'Middle';
+
+  // $scope.checkModel = {
+  //   left: false,
+  //   middle: true,
+  //   right: false
+  // };
+});
 bountiesApp.filter('isClient', function(Authentication){
   var authentication = Authentication;
   console.log(authentication);

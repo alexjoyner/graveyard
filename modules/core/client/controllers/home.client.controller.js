@@ -49,7 +49,6 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
   $scope.myInterval = 5000;
   var slides = $scope.slides = [
     
-    {image: '/modules/core/img/elderlyCare.jpg', text: 'Elderly Care'},
     {image: '/modules/core/img/yardWork.jpg', text: 'Yard Work'},
     {image: '/modules/core/img/Lawn-Safety.jpg', text: 'Lawn Care'},
     {image: '/modules/core/img/specialtyServices.jpg', text: 'Specialty Services'},
