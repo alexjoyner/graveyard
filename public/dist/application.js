@@ -46,10 +46,6 @@ angular.element(document).ready(function() {
 
 'use strict';
 
-// Use Applicaion configuration module to register a new module
-ApplicationConfiguration.registerModule('articles');
-'use strict';
-
 // Use applicaion configuration module to register a new module
 ApplicationConfiguration.registerModule('bounties');
 'use strict';
@@ -68,149 +64,12 @@ ApplicationConfiguration.registerModule('users');
 
 'use strict';
 
-// Configuring the Articles module
-angular.module('articles').run(['Menus',
-	function(Menus) {
-		// Add the articles dropdown item
-		Menus.addMenuItem('topbar', {
-			title: 'Articles',
-			state: 'articles',
-			type: 'dropdown'
-		});
-
-		// Add the dropdown list item
-		Menus.addSubMenuItem('topbar', 'articles', {
-			title: 'List Articles',
-			state: 'articles.list'
-		});
-
-		// Add the dropdown create item
-		Menus.addSubMenuItem('topbar', 'articles', {
-			title: 'Create Articles',
-			state: 'articles.create'
-		});
-	}
-]);
-
-'use strict';
-
-// Setting up route
-angular.module('articles').config(['$stateProvider',
-	function($stateProvider) {
-		// Articles state routing
-		$stateProvider.
-		state('articles', {
-			abstract: true,
-			url: '/articles',
-			template: '<ui-view/>'
-		}).
-		state('articles.list', {
-			url: '',
-			templateUrl: 'modules/articles/views/list-articles.client.view.html'
-		}).
-		state('articles.create', {
-			url: '/create',
-			templateUrl: 'modules/articles/views/create-article.client.view.html'
-		}).
-		state('articles.view', {
-			url: '/:articleId',
-			templateUrl: 'modules/articles/views/view-article.client.view.html'
-		}).
-		state('articles.edit', {
-			url: '/:articleId/edit',
-			templateUrl: 'modules/articles/views/edit-article.client.view.html'
-		});
-	}
-]);
-
-'use strict';
-
-angular.module('articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Articles',
-	function($scope, $stateParams, $location, Authentication, Articles) {
-		$scope.authentication = Authentication;
-
-		$scope.create = function() {
-			var article = new Articles({
-				title: this.title,
-				content: this.content
-			});
-			article.$save(function(response) {
-				$location.path('articles/' + response._id);
-
-				$scope.title = '';
-				$scope.content = '';
-			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
-			});
-		};
-
-		$scope.remove = function(article) {
-			if (article) {
-				article.$remove();
-
-				for (var i in $scope.articles) {
-					if ($scope.articles[i] === article) {
-						$scope.articles.splice(i, 1);
-					}
-				}
-			} else {
-				$scope.article.$remove(function() {
-					$location.path('articles');
-				});
-			}
-		};
-
-		$scope.update = function() {
-			var article = $scope.article;
-
-			article.$update(function() {
-				$location.path('articles/' + article._id);
-			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
-			});
-		};
-
-		$scope.find = function() {
-			$scope.articles = Articles.query();
-		};
-
-		$scope.findOne = function() {
-			$scope.article = Articles.get({
-				articleId: $stateParams.articleId
-			});
-		};
-	}
-]);
-'use strict';
-
-//Articles service used for communicating with the articles REST endpoints
-angular.module('articles').factory('Articles', ['$resource',
-	function($resource) {
-		return $resource('api/articles/:articleId', {
-			articleId: '@_id'
-		}, {
-			update: {
-				method: 'PUT'
-			}
-		});
-	}
-]);
-
-'use strict';
-
 // Configuring the Bounties module
 angular.module('bounties').run(['Menus',
 	function(Menus) {
 		// Add the Bounties dropdown item
 		Menus.addMenuItem('topbar', {
-			title: 'Bounties',
-			state: 'bounties',
-			type: 'dropdown'
-		});
-
-		// Add the dropdown list item
-		Menus.addSubMenuItem('topbar', 'bounties', {
-			title: 'List Bounties',
+			title: 'My Bounties',
 			state: 'bounties.list'
 		});
 	}
@@ -256,24 +115,53 @@ bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$locati
 		// Create new Bounty object
 		$scope.bounties = [];
 
+		// console.log($scope.authentication.user.profileImageURL);
+		$scope.userImage = $scope.authentication.user.profileImageURL;
+		$scope.competitiveTotal = 130;
+
+		$scope.typeOfWorker = [
+		    { label: 'Jack', value: 1 },
+		    { label: 'Master Jack', value: 2 }
+		  ];
+		    
+		// Here we are referencing the same object, so Angular inits the select box correctly
+  		$scope.bountyWorkerType = $scope.workerType;
+
+  		$scope.numWorkers = [
+		    { value: 2 },
+		    { value: 3 },
+		    { value: 4 },
+		    { value: 5 },
+		    { value: 6 },
+		    { value: 7 },
+		    { value: 8 },
+		    { value: 9 },
+		    { value: 10 }
+		  ];
+		    
+		// Here we are referencing the same object, so Angular inits the select box correctly
+  		$scope.bountyWorkerNumber = $scope.numWorkers;
+		
 		$scope.goToCreate = function(){
 			$location.path('bounties/create');
 		};
-
+		// $scope.setClientTotal = function(){
+		// 	this.bounty.total = $scope.competitiveTotal;
+		// };
 		// Create new Bounty
 		$scope.create = function() {
 			// Create new Bounty object
 			var bounty = new Bounties({
-				firstName: this.firstName,
-                surname: this.surname,
-                suburb: this.suburb,
-                country: this.country,
-                industry: this.industry,
-                email: this.email,
-                phone: this.phone,
-                referred: this.referred,
-                channel: this.channel
+				title: this.title,
+                hours: this.hours,
+                type: this.type,
+                workerType: this.workerType.label,
+                workerNumber: this.workerNumber.value,
+                description: this.description,
+                total: this.total
 			});
+			console.log(bounty.hours);
+			console.log(bounty.workerType);
 
 			// // Redirect after save
 			// bounty.$save(function(response) {
@@ -324,7 +212,7 @@ bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$locati
 		// Find a list of Bounties
 		$scope.find = function() {
 			var client = $scope.authentication;
-			console.log(client);
+			// console.log(client);
 			// if(client.user._id === '54efe6ad3e3ea705e46fd69d'){
 	          	$scope.bounties = Bounties.query();
 	        // }
@@ -335,10 +223,24 @@ bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$locati
 			$scope.bounty = Bounties.get({ 
 				bountyId: $stateParams.bountyId
 			});
+			for(var i=0; i < $scope.typeOfWorker.length; i++){
+				if($scope.bounty.workerType === $scope.typeOfWorker[i].label){
+					$scope.bountyWorkerType = $scope.workerType[i];
+				}
+			}
 		};
 	}
 ]);
 
+bountiesApp.controller('ButtonsCtrl', ["$scope", function ($scope) {
+  // $scope.radioModel = 'Middle';
+
+  // $scope.checkModel = {
+  //   left: false,
+  //   middle: true,
+  //   right: false
+  // };
+}]);
 bountiesApp.filter('isClient', ["Authentication", function(Authentication){
   var authentication = Authentication;
   console.log(authentication);
@@ -567,7 +469,6 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
   $scope.myInterval = 5000;
   var slides = $scope.slides = [
     
-    {image: '/modules/core/img/elderlyCare.jpg', text: 'Elderly Care'},
     {image: '/modules/core/img/yardWork.jpg', text: 'Yard Work'},
     {image: '/modules/core/img/Lawn-Safety.jpg', text: 'Lawn Care'},
     {image: '/modules/core/img/specialtyServices.jpg', text: 'Specialty Services'},
