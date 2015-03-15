@@ -10,52 +10,42 @@ var mongoose = require('mongoose'),
  * Bounty Schema
  */
 var BountySchema = new Schema({
-	firstName: {
+	title: {
 		type: String,
 		default: '',
 		trim: true
 	},
-    surname: {
+    hours: {
+		type: Number,
+		default: '',
+		trim: true
+	},
+    type: {
 		type: String,
 		default: '',
 		trim: true
 	},
-    suburb: {
+    workerType: {
+		type: String,
+		select: true,
+		default: '',
+		trim: true
+	},
+   	workerNumber: {
+		type: Number,
+		select: true,
+		default: '',
+		trim: true
+	},
+    description: {
 		type: String,
 		default: '',
 		trim: true
 	},
-    country: {
-		type: String,
+	total: {
+		type: Number,
 		default: '',
 		trim: true
-	},
-   industry: {
-		type: String,
-		default: '',
-		trim: true
-	},
-    email: {
-		type: String,
-		default: '',
-		trim: true
-	},
-    phone: {
-		type: String,
-		default: '',
-		trim: true
-	},
-    referred: {
-		type: Boolean,
-	},
-    channel: {
-		type: String,
-		default: '',
-		trim: true
-	},
-	created: {
-		type: Date,
-		default: Date.now
 	},
 	user: {
 		type: Schema.ObjectId,

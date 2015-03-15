@@ -63,6 +63,7 @@ var UserSchema = new Schema({
 		type: String
 	},
 	profileImageURL: {
+		data: Buffer,
 		type: String,
 		default: 'modules/users/img/profile/default.png'
 	},

@@ -8,11 +8,12 @@ bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$locati
 		$scope.authentication = Authentication;
 		// Create new Bounty object
 		$scope.bounties = [];
-		console.log($scope.authentication.user.profileImageURL);
+
+		// console.log($scope.authentication.user.profileImageURL);
 		$scope.userImage = $scope.authentication.user.profileImageURL;
 		$scope.competitiveTotal = 130;
 
-		$scope.workerType = [
+		$scope.typeOfWorker = [
 		    { label: 'Jack', value: 1 },
 		    { label: 'Master Jack', value: 2 }
 		  ];
@@ -38,23 +39,23 @@ bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$locati
 		$scope.goToCreate = function(){
 			$location.path('bounties/create');
 		};
-		$scope.setClientTotal = function(){
-			$scope.bountyTotal = $scope.competitiveTotal;
-		};
+		// $scope.setClientTotal = function(){
+		// 	this.bounty.total = $scope.competitiveTotal;
+		// };
 		// Create new Bounty
 		$scope.create = function() {
 			// Create new Bounty object
 			var bounty = new Bounties({
-				firstName: this.firstName,
-                surname: this.surname,
-                suburb: this.suburb,
-                country: this.country,
-                industry: this.industry,
-                email: this.email,
-                phone: this.phone,
-                referred: this.referred,
-                channel: this.channel
+				title: this.title,
+                hours: this.hours,
+                type: this.type,
+                workerType: this.workerType.label,
+                workerNumber: this.workerNumber.value,
+                description: this.description,
+                total: this.total
 			});
+			console.log(bounty.hours);
+			console.log(bounty.workerType);
 
 			// // Redirect after save
 			// bounty.$save(function(response) {
@@ -105,7 +106,7 @@ bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$locati
 		// Find a list of Bounties
 		$scope.find = function() {
 			var client = $scope.authentication;
-			console.log(client);
+			// console.log(client);
 			// if(client.user._id === '54efe6ad3e3ea705e46fd69d'){
 	          	$scope.bounties = Bounties.query();
 	        // }
@@ -116,6 +117,11 @@ bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$locati
 			$scope.bounty = Bounties.get({ 
 				bountyId: $stateParams.bountyId
 			});
+			for(var i=0; i < $scope.typeOfWorker.length; i++){
+				if($scope.bounty.workerType === $scope.typeOfWorker[i].label){
+					$scope.bountyWorkerType = $scope.workerType[i];
+				}
+			}
 		};
 	}
 ]);

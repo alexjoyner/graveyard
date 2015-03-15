@@ -11,13 +11,13 @@
                             <strong data-ng-bind="error"></strong>
                         </div>
                     </div>
-                    <div class="col-sm-6 text-center">
-                        <img data-ng-src="{{userImage}}" class="userBountyPhoto">
+                    <div class="col-sm-6 text-center .hidden-xs .hidden-sm">
+                        <img data-ng-src="{{userImage}}" class="userBountyPhoto .hidden-xs .hidden-sm">
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <div class="controls">
-                                <input type="text" data-ng-model="bountyTitle" placeholder="Job Title" id="bountyTitle" class="form-control">
+                                <input type="text" data-ng-model="title" placeholder="Job Title" id="bountyTitle" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
@@ -46,32 +46,27 @@
                 <hr/>
                 <div class="row">
                     <div class="col-sm-6 col-sm-6">
-                        <h2>I need a </h2>
+                        <h2>I need a... </h2>
                         <div class="form-group">
                             <div class="controls">
-                                <select class="form-control" ng-model="bountyWorkerType"
-                                    ng-options="worker.label for worker in workerType">
+                                <select class="form-control" ng-model="workerType"
+                                    ng-options="worker.label for worker in typeOfWorker">
                                     <option value=""> --- Type Of Worker --- </option>
                                 </select>
                             </div>
                         </div> 
                     </div>
                     <div class="col-sm-6 col-sm-6">
-                        <h2>AND I need this many!</h2>
+                        <h2>I need this many: </h2>
                         <div class="form-group">
                             <div class="controls">
-                                <select class="form-control" ng-model="bountyWorkerNumber"
+                                <select class="form-control" ng-model="workerNumber"
                                     ng-options="num.value for num in numWorkers">
                                     <option value=""> --- Number Of Worker --- </option>
                                 </select>
                             </div>
                         </div> 
                     </div>
-                </div>
-                <div>
-                </div>
-                <div class="row">
-                 
                 </div>
                 <div class="row">
                     <div class="col-12">
@@ -85,7 +80,7 @@
                           <div class="form-group">
                             <div class="input-group">
                               <div class="input-group-addon">$</div>
-                              <input type="text" class="form-control" data-ng-model="bountyTotal" id="bountyTotal" placeholder="Set your total (in dollars)">
+                              <input type="text" class="form-control" data-ng-model="total" id="bountyTotal" placeholder="Set your total (in dollars)">
                               <div class="input-group-addon">.00</div>
                             </div>
                           </div>
