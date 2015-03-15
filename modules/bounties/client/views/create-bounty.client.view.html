@@ -27,7 +27,10 @@
                         </div>
                         <div class="form-group">
                             <div class="controls">
-                                <input type="text" data-ng-model="type" placeholder="Type of Job" id="type" class="form-control">
+                                <select class="form-control" ng-model="typeOfJob" id="type"
+                                    ng-options="workerJob.label for workerJob in typeJob">
+                                    <option value=""> --- Type Of Job --- </option>
+                                </select>
                             </div>
                         </div> 
                         <!-- <div class="form-group">

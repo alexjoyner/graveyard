@@ -27,7 +27,13 @@
                         </div>
                         <div class="form-group">
                             <div class="controls">
-                                <input type="text" data-ng-model="bounty.type" placeholder="Type of Job" id="type" class="form-control">
+                                <input type="text" data-ng-model="bounty.typeOfJob" placeholder="Aprox. Hours" id="hours" class="form-control">
+                            </div
+                            <div class="controls">
+                                <select class="form-control" ng-model="bounty.typeOfJob" id="type"
+                                    ng-options="workerJob.label for workerJob in typeJob">
+                                    <option value=""> --- Type Of Job --- </option>
+                                </select>
                             </div>
                         </div> 
                         <!-- <div class="form-group">

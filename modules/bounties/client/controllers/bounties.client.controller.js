@@ -13,14 +13,28 @@ bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$locati
 		$scope.userImage = $scope.authentication.user.profileImageURL;
 		$scope.competitiveTotal = 130;
 
+		// SELECTOR Bars Structure
+  		$scope.typeJob = [
+		    { label: 'General Job (No Professional Required)', value: 1 },
+		    { label: '3D Design and Printing', value: 2 },
+		    { label: 'PC Repair', value: 3 },
+		    { label: 'Basic Web Design', value: 4 },
+		    { label: 'Math Tutoring', value: 5 }
+		  ];
+		    
+		// Here we are referencing the same object, so Angular inits the select box correctly
+  		$scope.typeOfJob = $scope.typeJob;
+
+		// 2nd Selector Bar structure
 		$scope.typeOfWorker = [
 		    { label: 'Jack', value: 1 },
 		    { label: 'Master Jack', value: 2 }
 		  ];
 		    
 		// Here we are referencing the same object, so Angular inits the select box correctly
-  		$scope.bountyWorkerType = $scope.workerType;
+  		$scope.workerType = $scope.typeOfWorker;
 
+  		// 2nd Selector Bar structure
   		$scope.numWorkers = [
 		    { value: 2 },
 		    { value: 3 },
@@ -34,28 +48,26 @@ bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$locati
 		  ];
 		    
 		// Here we are referencing the same object, so Angular inits the select box correctly
-  		$scope.bountyWorkerNumber = $scope.numWorkers;
+  		$scope.workerNumber = $scope.numWorkers;
 		
 		$scope.goToCreate = function(){
 			$location.path('bounties/create');
 		};
-		// $scope.setClientTotal = function(){
-		// 	this.bounty.total = $scope.competitiveTotal;
-		// };
+		$scope.setClientTotal = function(){
+			$scope.total = $scope.competitiveTotal;
+		};
 		// Create new Bounty
 		$scope.create = function() {
 			// Create new Bounty object
 			var bounty = new Bounties({
 				title: this.title,
                 hours: this.hours,
-                type: this.type,
+                typeOfJob: this.typeOfJob.label,
                 workerType: this.workerType.label,
                 workerNumber: this.workerNumber.value,
                 description: this.description,
                 total: this.total
 			});
-			console.log(bounty.hours);
-			console.log(bounty.workerType);
 
 			// // Redirect after save
 			// bounty.$save(function(response) {
@@ -117,11 +129,6 @@ bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$locati
 			$scope.bounty = Bounties.get({ 
 				bountyId: $stateParams.bountyId
 			});
-			for(var i=0; i < $scope.typeOfWorker.length; i++){
-				if($scope.bounty.workerType === $scope.typeOfWorker[i].label){
-					$scope.bountyWorkerType = $scope.workerType[i];
-				}
-			}
 		};
 	}
 ]);

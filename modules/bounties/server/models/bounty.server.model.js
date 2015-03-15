@@ -20,7 +20,7 @@ var BountySchema = new Schema({
 		default: '',
 		trim: true
 	},
-    type: {
+    typeOfJob: {
 		type: String,
 		default: '',
 		trim: true
