@@ -49,6 +49,18 @@ bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$locati
 		    
 		// Here we are referencing the same object, so Angular inits the select box correctly
   		$scope.workerNumber = $scope.numWorkers;
+
+  		// 2nd Selector Bar structure
+  		$scope.numHours = [
+		    { value: 1 },
+		    { value: 2 },
+		    { value: 3 },
+		    { value: 4 },
+		    { value: 5 }
+		  ];
+		    
+		// Here we are referencing the same object, so Angular inits the select box correctly
+  		$scope.hours = $scope.numHours;
 		
 		$scope.goToCreate = function(){
 			$location.path('bounties/create');
@@ -107,7 +119,7 @@ bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$locati
 		// Update existing Bounty
 		$scope.update = function() {
 			var bounty = $scope.bounty ;
-
+			console.log(bounty);
 			bounty.$update(function() {
 				$location.path('bounties/' + bounty._id);
 			}, function(errorResponse) {
@@ -130,6 +142,8 @@ bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$locati
 				bountyId: $stateParams.bountyId
 			});
 		};
+
+
 	}
 ]);
 

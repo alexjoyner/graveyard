@@ -28,3 +28,8 @@ input[type="radio"], input[type="checkbox"]{
     text-align: center;
     font-size: 140px;   
 }
+.currentlySelected{
+	border-radius: .4em;
+	background-color: #272822;
+	color: #F8F8F2;
+}

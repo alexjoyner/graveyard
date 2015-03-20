@@ -3,7 +3,7 @@
 module.exports = {
 	db: 'mongodb://rosco:1_Password@ds063160.mongolab.com:63160/30daychallenge',
 	app: {
-		title: 'MEAN - Development Environment'
+		title: 'Jacks Of All'
 	},
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || 'APP_ID',

@@ -28,18 +28,34 @@
             <accordion-heading>
                 <h3 class="center">Step 1: Sign In / Sign Up</h3>
             </accordion-heading>
-            <button type="button" class="btn btn-primary btn-lg btn-block">Sign In</button>
-            <button type="button" class="btn btn-default btn-lg btn-block">Sign Up</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block" data-ui-sref="authentication.signin">Sign In</button>
+            <button type="button" class="btn btn-default btn-lg btn-block" data-ui-sref="authentication.signup">Sign Up</button>
         </accordion-group>
         <accordion-group>
             <accordion-heading>
                 <h3 class="center">Step 2: Post a bounty</h3>
             </accordion-heading>
+            <div class="row">
+                <div class="col-sm-8">
+                    <img src="/modules/core/img/createBounty.png" class="createBountyPic img-rounded img-responsive">
+                </div>
+                <div class="col-sm-4">
+                    <h1>Just fill out the short form to post a bounty!</h1>
+                </div>
+            </div>
         </accordion-group>
         <accordion-group>
             <accordion-heading>
-                <h3 class="center">Step 3: Get notified</h3>
+                <h3 class="center">Step 3: Wait to be notified</h3>
             </accordion-heading>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h1>Your bounty will then be posted to our server.  <b>If</b> accepted, you will be soon contacted!</h1>
+                    </div>
+                    <div class="col-sm-8">
+                        <img src="/modules/core/img/postedBounty.png" class="postBountyPic img-rounded img-responsive">
+                    </div>
+                </div>
         </accordion-group>
       </accordion>
     </div>

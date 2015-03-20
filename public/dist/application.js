@@ -3,7 +3,7 @@
 // Init the application configuration module for AngularJS application
 var ApplicationConfiguration = (function() {
 	// Init module configuration options
-	var applicationModuleName = 'MEAN';
+	var applicationModuleName = 'Jacks Of All';
 
 	var applicationModuleVendorDependencies = ['ngResource', 'ui.router', 'ui.bootstrap', 'ui.utils', 'angularFileUpload'];
 
@@ -155,6 +155,18 @@ bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$locati
 		    
 		// Here we are referencing the same object, so Angular inits the select box correctly
   		$scope.workerNumber = $scope.numWorkers;
+
+  		// 2nd Selector Bar structure
+  		$scope.numHours = [
+		    { value: 1 },
+		    { value: 2 },
+		    { value: 3 },
+		    { value: 4 },
+		    { value: 5 }
+		  ];
+		    
+		// Here we are referencing the same object, so Angular inits the select box correctly
+  		$scope.hours = $scope.numHours;
 		
 		$scope.goToCreate = function(){
 			$location.path('bounties/create');
@@ -213,7 +225,7 @@ bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$locati
 		// Update existing Bounty
 		$scope.update = function() {
 			var bounty = $scope.bounty ;
-
+			console.log(bounty);
 			bounty.$update(function() {
 				$location.path('bounties/' + bounty._id);
 			}, function(errorResponse) {
@@ -236,6 +248,8 @@ bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$locati
 				bountyId: $stateParams.bountyId
 			});
 		};
+
+
 	}
 ]);
 
@@ -872,7 +886,22 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 			});
 		};
 	}
-]);
+])
+.controller('TypeaheadCtrl', ["$scope", "$http", function($scope, $http) {
+	// Any function returning a promise object can be used to load values asynchronously
+  $scope.getLocation = function(val) {
+    return $http.get('http://maps.googleapis.com/maps/api/geocode/json', {
+      params: {
+        address: val,
+        sensor: false
+      }
+    }).then(function(response){
+      return response.data.results.map(function(item){
+        return item.formatted_address;
+      });
+    });
+  };
+}]);
 'use strict';
 
 angular.module('users').controller('PasswordController', ['$scope', '$stateParams', '$http', '$location', 'Authentication',
