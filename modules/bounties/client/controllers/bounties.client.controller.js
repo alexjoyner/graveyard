@@ -162,7 +162,7 @@ bountiesApp.filter('isClient', function(Authentication){
     return function(listOfBounties){
       var listOfAll = [];
       for(var i=0; i < listOfBounties.length; i++){
-        if(authentication.user._id === '54efe6ad3e3ea705e46fd69d'){
+        if(authentication.user._id === '550cd59f8ecf849c3357d189'){
           listOfAll.push(listOfBounties[i]);
         }else
         if(listOfBounties[i].user._id === authentication.user._id){

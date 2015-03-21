@@ -51,11 +51,6 @@ ApplicationConfiguration.registerModule('bounties');
 'use strict';
 
 // Use Applicaion configuration module to register a new module
-ApplicationConfiguration.registerModule('chat');
-
-'use strict';
-
-// Use Applicaion configuration module to register a new module
 ApplicationConfiguration.registerModule('core');
 'use strict';
 
@@ -268,7 +263,7 @@ bountiesApp.filter('isClient', ["Authentication", function(Authentication){
     return function(listOfBounties){
       var listOfAll = [];
       for(var i=0; i < listOfBounties.length; i++){
-        if(authentication.user._id === '54efe6ad3e3ea705e46fd69d'){
+        if(authentication.user._id === '550cd59f8ecf849c3357d189'){
           listOfAll.push(listOfBounties[i]);
         }else
         if(listOfBounties[i].user._id === authentication.user._id){
@@ -339,66 +334,6 @@ angular.module('bounties')
 	        return notify;
 	    }
 	]);
-'use strict';
-
-// Configuring the Chat module
-angular.module('chat').run(['Menus',
-	function(Menus) {
-		// Set top bar menu items
-		Menus.addMenuItem('topbar', {
-			title: 'Chat',
-			state: 'chat'
-		});
-	}
-]);
-
-'use strict';
-
-// Configure the 'chat' module routes
-angular.module('chat').config(['$stateProvider',
-	function($stateProvider) {
-		$stateProvider.
-		state('chat', {
-			url: '/chat',
-			templateUrl: 'modules/chat/views/chat.client.view.html'
-		});
-	}
-]);
-'use strict';
-
-// Create the 'chat' controller
-angular.module('chat').controller('ChatController', ['$scope', 'Socket',
-    function($scope, Socket) {
-    	// Create a messages array
-        $scope.messages = [];
-        
-        // Add an event listener to the 'chatMessage' event
-        Socket.on('chatMessage', function(message) {
-            $scope.messages.unshift(message);
-        });
-        
-        // Create a controller method for sending messages
-        $scope.sendMessage = function() {
-        	// Create a new message object
-            var message = {
-                text: this.messageText
-            };
-            
-            // Emit a 'chatMessage' message event
-            Socket.emit('chatMessage', message);
-            
-            // Clear the message text
-            this.messageText = '';
-        };
-
-        // Remove the event listener when the controller instance is destroyed
-        $scope.$on('$destroy', function() {
-            Socket.removeListener('chatMessage');
-        });
-
-    }
-]); 
-
 'use strict';
 
 // Setting up route

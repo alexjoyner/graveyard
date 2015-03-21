@@ -1,7 +1,7 @@
 <section data-ng-controller="HomeController" class="body-bg">
     <br>
     <div ng-controller="CarouselDemoCtrl">
-      <div style="height: auto">
+      <div class="myCarousel">
         <carousel interval="myInterval">
           <slide ng-repeat="slide in slides" active="slide.active">
             <img src="{{slide.image}}" style="margin:auto;">
