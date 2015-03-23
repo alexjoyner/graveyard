@@ -8,10 +8,9 @@ bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$locati
 		$scope.authentication = Authentication;
 		// Create new Bounty object
 		$scope.bounties = [];
-
+		$scope.competitiveTotal = 0;
 		// console.log($scope.authentication.user.profileImageURL);
 		$scope.userImage = $scope.authentication.user.profileImageURL;
-		$scope.competitiveTotal = 130;
 
 		// SELECTOR Bars Structure
   		$scope.typeJob = [
@@ -27,8 +26,8 @@ bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$locati
 
 		// 2nd Selector Bar structure
 		$scope.typeOfWorker = [
-		    { label: 'Jack', value: 1 },
-		    { label: 'Master Jack', value: 2 }
+		    { label: 'Jack', specialtyFactor: 1 },
+		    { label: 'Master Jack', specialtyFactor: 2 }
 		  ];
 		    
 		// Here we are referencing the same object, so Angular inits the select box correctly
@@ -74,9 +73,8 @@ bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$locati
 			var bounty = new Bounties({
 				title: this.title,
                 hours: this.hours,
-                typeOfJob: this.typeOfJob.label,
-                workerType: this.workerType.label,
-                workerNumber: this.workerNumber.value,
+                typeOfJob: this.typeOfJob,
+                workerNumber: this.workerNumber,
                 description: this.description,
                 total: this.total
 			});
@@ -143,7 +141,17 @@ bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$locati
 			});
 		};
 
+		// Pricing Algorithm for competitive price
+		$scope.calculateStuff = function(){
+			$scope.competitiveTotal = ($scope.hours.value * 13 * $scope.workerNumber.value * $scope.workerType.specialtyFactor);
 
+			if($scope.typeOfJob.label === 'General Job (No Professional Required)'){
+				$scope.workerType = $scope.typeOfWorker[0];
+			}
+			else if($scope.typeOfJob.label !== 'General Job (No Professional Required)' && $scope.typeOfJob.label !== ''){
+				$scope.workerType = $scope.typeOfWorker[1];
+			}
+		};
 	}
 ]);
 
@@ -162,7 +170,7 @@ bountiesApp.filter('isClient', function(Authentication){
     return function(listOfBounties){
       var listOfAll = [];
       for(var i=0; i < listOfBounties.length; i++){
-        if(authentication.user._id === '550cd59f8ecf849c3357d189'){
+        if(authentication.user._id === '550f464b207ad7821e5f3915'){
           listOfAll.push(listOfBounties[i]);
         }else
         if(listOfBounties[i].user._id === authentication.user._id){

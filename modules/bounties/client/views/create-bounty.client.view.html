@@ -17,14 +17,14 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <div class="controls">
-                                <input type="text" data-ng-model="title" placeholder="Job Title" id="bountyTitle" class="form-control">
+                                <input type="text" data-ng-model="title" placeholder="Job Title" id="bountyTitle" class="form-control" ng-click="calculateStuff()">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="controls">
                                 <div class="controls">
                                     <select class="form-control" ng-model="hours"
-                                        ng-options="numHours.value for numHours in numHours">
+                                        ng-options="numHours.value for numHours in numHours" ng-click="calculateStuff()">
                                         <option value=""> --- Number Of Hours (Max 5) --- </option>
                                     </select>
                                 </div>
@@ -33,7 +33,7 @@
                         <div class="form-group">
                             <div class="controls">
                                 <select class="form-control" ng-model="typeOfJob" id="type"
-                                    ng-options="workerJob.label for workerJob in typeJob">
+                                    ng-options="workerJob.label for workerJob in typeJob" ng-click="calculateStuff()">
                                     <option value=""> --- Type Of Job --- </option>
                                 </select>
                             </div>
@@ -54,11 +54,11 @@
                 <hr/>
                 <div class="row">
                     <div class="col-sm-6 col-sm-6">
-                        <h2>I need a... </h2>
+                        <h2>I need a... Skip this</h2>
                         <div class="form-group">
                             <div class="controls">
                                 <select class="form-control" ng-model="workerType"
-                                    ng-options="worker.label for worker in typeOfWorker">
+                                    ng-options="worker.label for worker in typeOfWorker" ng-click="calculateStuff()">
                                     <option value=""> --- Type Of Worker --- </option>
                                 </select>
                             </div>
@@ -69,7 +69,7 @@
                         <div class="form-group">
                             <div class="controls">
                                 <select class="form-control" ng-model="workerNumber"
-                                    ng-options="num.value for num in numWorkers">
+                                    ng-options="num.value for num in numWorkers" ng-click="calculateStuff()">
                                     <option value=""> --- Number Of Worker --- </option>
                                 </select>
                             </div>
@@ -78,7 +78,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <textarea class="form-control" rows="3" placeholder="Brief Description" data-ng-model="description" id="description"></textarea>
+                        <textarea class="form-control" rows="3" placeholder="Brief Description" data-ng-model="description" id="description" ng-click="calculateStuff()"></textarea>
                     </div>
                 </div>
                 <hr/>
@@ -88,14 +88,14 @@
                           <div class="form-group">
                             <div class="input-group">
                               <div class="input-group-addon">$</div>
-                              <input type="text" class="form-control" data-ng-model="total" id="bountyTotal" placeholder="Set your total (in dollars)">
+                              <input type="text" class="form-control" data-ng-model="total" id="bountyTotal" placeholder="Set your total (in dollars)" ng-click="calculateStuff()">
                               <div class="input-group-addon">.00</div>
                             </div>
                           </div>
                         </form> 
                     </div>
                     <div class="col-sm-6">
-                        <button type="button" ng-click="setClientTotal()" class="btn btn-primary btn-md btn-block" ng-click="sendTotal()">Currently Competitive Total <br> ${{competitiveTotal}}.00</button>
+                        <button type="button" ng-click="setClientTotal()" class="btn btn-primary btn-md btn-block">Currently Competitive Total <br> ${{competitiveTotal}}.00</button>
                     </div>
                 </div>
                 <div class="form-group">

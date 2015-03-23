@@ -24,7 +24,7 @@
                             <div class="controls">
                                 <select class="form-control" ng-model="bounty.hours"
                                         ng-options="numHours.value for numHours in hours">
-                                        <option value="">Current: {{bounty.hours}}</option>
+                                        <option value="">Current: {{bounty.hours.value}}</option>
                                     </select>
                             </div>
                         </div>
@@ -32,7 +32,7 @@
                             <div class="controls">
                                 <select class="form-control" ng-model="bounty.typeOfJob" id="type"
                                     ng-options="workerJob.label for workerJob in typeJob">
-                                    <option value=""> Current: {{bounty.typeOfJob}}</option>
+                                    <option value=""> Current: {{bounty.typeOfJob.label}}</option>
                                 </select>
                             </div>
                         </div> 
@@ -57,7 +57,7 @@
                             <div class="controls">
                                 <select class="form-control" ng-model="bounty.workerType"
                                     ng-options="worker.label for worker in workerType">
-                                    <option value=""> Current: {{bounty.workerType}} </option>
+                                    <option value=""> Current: {{bounty.workerType.label}} </option>
                                 </select>
                             </div>
                         </div> 
@@ -68,7 +68,7 @@
                             <div class="controls">
                                 <select class="form-control" ng-model="bounty.workerNumber"
                                     ng-options="num.value for num in numWorkers">
-                                    <option value=""> Current: {{bounty.workerNumber}} </option>
+                                    <option value=""> Current: {{bounty.workerNumber.value}} </option>
                                 </select>
                             </div>
                         </div> 
@@ -93,7 +93,7 @@
                         </form> 
                     </div>
                     <div class="col-sm-6">
-                        <button type="button" ng-click="setClientTotal()" class="btn btn-primary btn-md btn-block" ng-click="sendTotal()">Currently Competitive Total <br> ${{competitiveTotal}}.00</button>
+                        <button type="button" ng-click="setClientTotal()" class="btn btn-primary btn-md btn-block" ng-click="calculateCompetitiveTotal()">Currently Competitive Total <br> ${{competitiveTotal}}.00</button>
                     </div>
                 </div>
                 <div class="row">

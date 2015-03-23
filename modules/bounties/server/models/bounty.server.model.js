@@ -16,23 +16,17 @@ var BountySchema = new Schema({
 		trim: true
 	},
     hours: {
-		type: Number,
+		type: Object,
 		default: '',
 		trim: true
 	},
     typeOfJob: {
-		type: String,
-		default: '',
-		trim: true
-	},
-    workerType: {
-		type: String,
-		select: true,
+		type: Object,
 		default: '',
 		trim: true
 	},
    	workerNumber: {
-		type: Number,
+		type: Object,
 		select: true,
 		default: '',
 		trim: true
