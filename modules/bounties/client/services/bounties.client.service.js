@@ -5,7 +5,8 @@ angular.module('bounties')
 
 	.factory('Bounties', ['$resource',
 		function($resource) {
-			return $resource('api/bounties/:bountyId', { bountyId: '@_id'
+			return $resource('api/bounties/:bountyId', { 
+				bountyId: '@_id'
 			}, {
 				update: {
 					method: 'PUT'
@@ -13,9 +14,10 @@ angular.module('bounties')
 			});
 		}
 	])
-	.factory('UserId', ['$resource',
+	.factory('BountyByUserIdService', ['$resource',
 		function($resource) {
-			return $resource('api/bounties/', { id: '@_id'
+			return $resource('api/bounties/:userID', { 
+				userID: '@_id'
 			}, {
 				update: {
 					method: 'PUT'

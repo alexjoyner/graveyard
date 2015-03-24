@@ -14,6 +14,11 @@ module.exports = function(app) {
 		.put(bounties.update)
 		.delete(bounties.delete);
 
+	app.route('/api/bounties/:userID').all()
+		.get(bounties.list).all(bountiesPolicy.isAllowed);
+
 	// Finish by binding the Bounty middleware
 	app.param('bountyId', bounties.bountyByID);
+	app.param('userID', bounties.findBountyByUserId);
+
 };

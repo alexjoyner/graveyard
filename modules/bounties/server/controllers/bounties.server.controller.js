@@ -85,6 +85,17 @@ exports.list = function(req, res) { Bounty.find().sort('-created').populate('use
 };
 
 /**
+ * List of Bounties By Specific User
+ */
+exports.listByUser = function(req, res) { 
+	var thisUser = mongoose.Types.ObjectID(req.user._id);
+	Bounty.find({ '_id': { '$oid': thisUser } });
+};
+exports.findBountyByUserId = function(req, res) {
+	console.log(req.body);
+};
+
+/**
  * Bounty middleware
  */
 exports.bountyByID = function(req, res, next, id){ Bounty.findById(id).populate('user', 'displayName').exec(function(err, bounty) {

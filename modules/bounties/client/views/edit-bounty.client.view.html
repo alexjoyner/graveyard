@@ -13,6 +13,7 @@
                     </div>
                     <div class="col-sm-6 text-center">
                         <img data-ng-src="{{userImage}}" class="userBountyPhoto">
+                        <p>{{userID}}</p>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
@@ -50,7 +51,7 @@
                     </div>
                 </div>
                 <hr/>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-sm-6 col-sm-6">
                         <h2>I need a... </h2>
                         <div class="form-group">
@@ -73,7 +74,7 @@
                             </div>
                         </div> 
                     </div>
-                </div>
+                </div> -->
                 <div class="row">
                     <div class="col-12">
                         <textarea class="form-control" rows="3" placeholder="Brief Description" data-ng-model="bounty.description" id="description"></textarea>
@@ -93,7 +94,7 @@
                         </form> 
                     </div>
                     <div class="col-sm-6">
-                        <button type="button" ng-click="setClientTotal()" class="btn btn-primary btn-md btn-block" ng-click="calculateCompetitiveTotal()">Currently Competitive Total <br> ${{competitiveTotal}}.00</button>
+                        <button type="button" ng-click="setClientTotal()" class="btn btn-primary btn-md btn-block" ng-click="calculateCompetitiveTotal()">Estimated Total <br> ${{competitiveTotal}}.00</button>
                     </div>
                 </div>
                 <div class="row">

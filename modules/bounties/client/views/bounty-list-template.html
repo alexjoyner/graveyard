@@ -1,5 +1,5 @@
 <div class="list-group">
-    <div class="col-xs-12 col-sm-4 extra-space" data-ng-repeat="bounty in bounties | filter:searchText | isClient">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 extra-space" data-ng-repeat="bounty in bounties | filter:searchText | isClient">
         <a data-ui-sref="bounties.edit({bountyId: bounty._id})" class="list-group-item">
             <div class="row">
                 <div class="col-sm-8 col-xs-8 cust-list">
@@ -10,7 +10,7 @@
                         <h4>Wanted:</h4>
                     </div>
                     <div class="row">
-                        <h5>{{bounty.workerNumber.value}} {{bounty.workerType.label}}s</h5>
+                        <h5>1 {{bounty.workerType}}</h5>
                         <hr>
                         <h5>{{bounty.typeOfJob.label}}</h5>
                     </div>

@@ -3,14 +3,17 @@
 var bountiesApp = angular.module('bounties');
 
 // Bounties controller
-bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Bounties', 'UserId',
-	function($scope, $stateParams, $location, Authentication, Bounties, UserId) {
+bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Bounties', 'BountyByUserIdService',
+	function($scope, $stateParams, $location, Authentication, Bounties, BountyByUserIdService) {
 		$scope.authentication = Authentication;
 		// Create new Bounty object
 		$scope.bounties = [];
 		$scope.competitiveTotal = 0;
 		// console.log($scope.authentication.user.profileImageURL);
 		$scope.userImage = $scope.authentication.user.profileImageURL;
+
+		// console.log($scope.authentication.user.profileImageURL);
+		$scope.userID = $scope.authentication.user._id;
 
 		// SELECTOR Bars Structure
   		$scope.typeJob = [
@@ -65,6 +68,7 @@ bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$locati
 			$location.path('bounties/create');
 		};
 		$scope.setClientTotal = function(){
+			$scope.calculateStuff();
 			$scope.total = $scope.competitiveTotal;
 		};
 		// Create new Bounty
@@ -127,11 +131,12 @@ bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$locati
 
 		// Find a list of Bounties
 		$scope.find = function() {
-			var client = $scope.authentication;
-			// console.log(client);
-			// if(client.user._id === '54efe6ad3e3ea705e46fd69d'){
-	          	$scope.bounties = Bounties.query();
-	        // }
+			$scope.bounties = Bounties.query();
+			// var client = $scope.authentication;
+			// console.log(client.user._id);
+			// $scope.bounties = BountyByUserIdService.query({
+			// 	userID: $stateParams.userID
+			// });
 		};
 
 		// Find existing Bounty
@@ -143,14 +148,14 @@ bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$locati
 
 		// Pricing Algorithm for competitive price
 		$scope.calculateStuff = function(){
-			$scope.competitiveTotal = ($scope.hours.value * 13 * $scope.workerNumber.value * $scope.workerType.specialtyFactor);
-
 			if($scope.typeOfJob.label === 'General Job (No Professional Required)'){
 				$scope.workerType = $scope.typeOfWorker[0];
 			}
 			else if($scope.typeOfJob.label !== 'General Job (No Professional Required)' && $scope.typeOfJob.label !== ''){
 				$scope.workerType = $scope.typeOfWorker[1];
 			}
+
+			$scope.competitiveTotal = ($scope.hours.value * 13 * 1 * $scope.workerType.specialtyFactor);
 		};
 	}
 ]);
@@ -168,15 +173,22 @@ bountiesApp.filter('isClient', function(Authentication){
   var authentication = Authentication;
   console.log(authentication);
     return function(listOfBounties){
-      var listOfAll = [];
-      for(var i=0; i < listOfBounties.length; i++){
-        if(authentication.user._id === '550f464b207ad7821e5f3915'){
-          listOfAll.push(listOfBounties[i]);
-        }else
-        if(listOfBounties[i].user._id === authentication.user._id){
-          listOfAll.push(listOfBounties[i]);
-        }
-      }
+        var listOfAll = [];
+        for(var i=0; i < listOfBounties.length; i++){
+	        if(authentication.user._id === '550f464b207ad7821e5f3915'){
+	          	listOfAll.push(listOfBounties[i]);
+	        }else
+	        if(listOfBounties[i].user._id === authentication.user._id){
+	          listOfAll.push(listOfBounties[i]);
+	        }
+
+	        if(listOfBounties[i].typeOfJob.label === 'General Job (No Professional Required)'){
+				listOfAll[i].workerType = 'Jack';
+			}
+			else if(listOfBounties[i].typeOfJob.label !== 'General Job (No Professional Required)' && listOfBounties[i].typeOfJob.label !== ''){
+				listOfAll[i].workerType = 'Master Jack';
+			}
+	      }
       return listOfAll;
     };
 });
