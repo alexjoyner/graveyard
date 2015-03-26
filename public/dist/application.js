@@ -108,6 +108,13 @@ var bountiesApp = angular.module('bounties');
 bountiesApp.controller('BountiesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Bounties', 'BountyByUserIdService',
 	function($scope, $stateParams, $location, Authentication, Bounties, BountyByUserIdService) {
 		$scope.authentication = Authentication;
+
+		// If user is signed in then redirect back home
+		if (!$scope.authentication.user) {
+			console.log('redirect');
+			$location.path('/authentication/signin');
+		}
+
 		// Create new Bounty object
 		$scope.bounties = [];
 		$scope.competitiveTotal = 0;
