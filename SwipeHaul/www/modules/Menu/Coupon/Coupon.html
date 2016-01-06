@@ -1,0 +1,24 @@
+<ion-view>
+    <ion-header-bar align-title="center" class="bar-positive">
+        <div class="buttons">
+            <button class="button button-icon icon ion-ios-arrow-thin-left" ng-click="goBack()"></button>
+        </div>
+        <h1 class="title">Coupon</h1>
+    </ion-header-bar>
+    <ion-content id="Coupon" scroll="false" class="padding">
+        <div class="list">
+            <label class="item item-input">
+                <input type="text" placeholder="Enter coupon code">
+            </label>
+        </div>
+        <button type="submit" class="button button-block button-light" ng-click="enterCoupon()">
+            Apply
+        </button>
+    </ion-content>
+    <ion-footer-bar align-title="center" class="bar-positive">
+        <h1 class="title"></h1>
+        <div class="buttons">
+            <!-- <button class="button button-clear">Continue <i class="icon ion-ios-arrow-thin-right" ui-sref="nowhere"></i></button> -->
+        </div>
+    </ion-footer-bar>
+</ion-view>

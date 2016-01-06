@@ -1,0 +1,13 @@
+<div>
+    <h1 class="text-center" ng-if="api.bids.length === 0">There are currently no offers availible</h1>
+    <div class="list" >
+        <a class="item item-thumbnail-left item-icon-right padding-right" href="#"  ng-repeat="bid in api.bids" ng-click="api.acceptOffer($index)">
+            <img src="img/demo/profile-image-6.jpg" style="width: auto; height: auto; min-width:50px;" alt="">
+            <h2><span style="font-size: 25px">{{bid.partnerFirst}}</span> - ETA:{{bid.eta}}</h2>
+            <h1>{{bid.amount | currency}}</h1>
+        </a>
+    </div>
+    <button class="button button-block button-outline button-assertive" ng-click="api.cancel()">
+        Cancel Post
+    </button>
+</div>

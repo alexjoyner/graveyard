@@ -1,0 +1,13 @@
+<form>
+    <div class="list list-inset">
+        <label class="item item-input">
+            <input type="email" placeholder="Email" ng-model="creds.username">
+        </label>
+        <label class="item item-input">
+            <input type="password" placeholder="Password" ng-model="creds.password">
+        </label>
+    </div>
+    <button type="submit" class="button button-block button-primary" ng-click="attemptLogin()">
+        Submit
+    </button>
+</form>

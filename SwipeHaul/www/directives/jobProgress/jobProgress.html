@@ -1,0 +1,19 @@
+<div>
+    <style>
+    .job-status {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        font-size: 2em;
+        -ms-transform: translate(-50%, -50%);
+        /* IE 9 */
+        -webkit-transform: translate(-50%, -50%);
+        /* Safari */
+        transform: translate(-50%, -50%);
+    }
+    </style>
+    <h5 class="job-status">{{jobInfo.status.tag}}</h5>
+    <button type="submit" class="button button-block button-primary" ng-click="attemptLogin()">
+        Call Hauler
+    </button>
+</div>

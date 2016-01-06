@@ -1,0 +1,14 @@
+<ion-view class="rubyonic-pane feed-screen">
+    <ion-header-bar align-title="center" class="bar-ruby-header bar-transparent">
+        <div class="buttons">
+            <button class="button button-icon icon ion-ios-arrow-thin-left font-subtleGrey" ng-click="goBack()"></button>
+        </div>
+        <h1 class="title font-subtleGrey">JobDetails</h1>
+    </ion-header-bar>
+    <ion-content id="JobDetails" scroll="true" class="padding">
+        <job-details api="JobDetailControl"></job-details>
+    </ion-content>
+    <ion-footer-bar align-title="center" class="appOrange button-large"  ng-click="JobDetailControl.openModal()">
+        <h1 class="title font-appBlue" style="font-size: 2em"><b>BID</b></h1>
+    </ion-footer-bar>
+</ion-view>

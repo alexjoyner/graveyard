@@ -1,0 +1,44 @@
+<ion-modal-view class="appBlue">
+    <style>
+    .keypadBtn {
+        font-size: 2em;
+        border-bottom: 1px solid #b2b2b2 !important;
+        margin: 10px;
+    }
+    </style>
+    <ion-header-bar align-title="center" class="bar-clear">
+        <div class="buttons">
+            <button class="button dark button-icon icon ion-ios-arrow-thin-left" ng-click="closeModal()"></button>
+        </div>
+        <h1 class="title"></h1>
+    </ion-header-bar>
+    <ion-content id="Give" scroll="false">
+        <h1 id="giveAmount" class="text-center" style="margin-top: 15%; position: relative; font-size: 8em; color: #ffffff;">${{total | currency:"":0}}<span style="font-size: 50px;" ng-if="showCents">.{{cents}}</span></h1>
+        <div style="position: absolute; width: 100%; left: 0; bottom: 0;">
+            <div class="button-bar">
+                <a class="button button-clear button-light keypadBtn" ng-click="addChar('1')">1</a>
+                <a class="button button-clear button-light keypadBtn" ng-click="addChar('2')">2</a>
+                <a class="button button-clear button-light keypadBtn" ng-click="addChar('3')">3</a>
+            </div>
+            <div class="button-bar">
+                <a class="button button-clear button-light keypadBtn" ng-click="addChar('4')">4</a>
+                <a class="button button-clear button-light keypadBtn" ng-click="addChar('5')">5</a>
+                <a class="button button-clear button-light keypadBtn" ng-click="addChar('6')">6</a>
+            </div>
+            <div class="button-bar">
+                <a class="button button-clear button-light keypadBtn" ng-click="addChar('7')">7</a>
+                <a class="button button-clear button-light keypadBtn" ng-click="addChar('8')">8</a>
+                <a class="button button-clear button-light keypadBtn" ng-click="addChar('9')">9</a>
+            </div>
+            <div class="button-bar">
+                <a class="button button-clear button-light keypadBtn" ng-click="change2cents()">.</a>
+                <a class="button button-clear button-light keypadBtn" ng-click="addChar('0')">0</a>
+                <a class="button button-clear button-light keypadBtn" ng-click="addChar('b')"><i class="icon ion-backspace"></i></a>
+            </div>
+            <br><br>
+            <div class="button-bar">
+                <a class="button button-light" style="font-size: 2em; color: #22a301" ng-click="bid(giveAmount)">Bid {{giveAmount | currency}}</a>
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>

@@ -1,0 +1,54 @@
+<form>
+    <br>
+    <!-- Social Login -->
+    <div class="social-login">
+        <div class="row">
+            <div class="col">
+                <a href="" class="button google button-borderless button-block no-margin"><i class="ion-social-google"></i></a>
+            </div>
+            <div class="col">
+                <a href="" class="button facebook button-borderless button-block no-margin"><i class="ion-social-facebook"></i></a>
+            </div>
+        </div>
+        <h6 class="divider dark">OR</h6>
+    </div>
+    <!-- End Social Login -->
+    <!-- Login Form - note the modifier 'is-transparent' is for the form to be see through -->
+    <div class="list list-inset login-form is-transparent">
+        <label class="item item-input">
+            <i class="icon ion-person placeholder-icon"></i>
+            <input type="email" placeholder="johnDoe@example.com" ng-model="creds.username">
+        </label>
+        <label class="item item-input">
+            <i class="icon ion-locked placeholder-icon"></i>
+            <input type="password" placeholder="" ng-model="creds.password">
+        </label>
+        <button id="SignInFormSubmitButton" class="button button-block lightBlueButton" ng-click="attemptLogin()">
+            SIGN IN
+        </button>
+        <br>
+        <center>
+            <a id="forgotPassLink" href="">Forgot Password?</a>
+        </center>
+    </div>
+    <!-- <br>
+    <br>
+    <div id="SignInForm" class="list">
+        <label class="item item-input item-stacked-label ">
+            <span class="input-label" class="comormInput">Email</span>
+            <input type="email" placeholder="johnDoe@example.com" ng-model="creds.uername">
+        </label>
+        <br>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Password</span>
+            <input type="password" placeholder="" ng-model="creds.password">
+        </label>
+    </div>
+    <button id="SignInFormSubmitButton" class="button button-block lightBlueButton">
+        SIGN IN
+    </button>
+    <br>
+    <center>
+        <a id="forgotPassLink" href="">Forgot Password?</a>
+    </center> -->
+</form>
