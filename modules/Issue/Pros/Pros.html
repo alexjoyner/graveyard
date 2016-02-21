@@ -1,0 +1,88 @@
+<!-- Tab Bar: Tab to Pros/Cons -->
+<ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a ng-href="#/Issue/{{issueData._id}}/Pros">Pros</a></li>
+    <li role="presentation"><a ng-href="#/Issue/{{issueData._id}}/Cons">Cons</a></li>
+</ul>
+<!-- Create and Search Buttons -->
+<br>
+<div class="row">
+    <div class="col-xs-2">
+        <button class="btn btn-md btn-success" ng-click="addPoint = !addPoint">
+            Add a new pro
+        </button>
+    </div>
+    <div class="col-xs-8">
+        <div class="input-group">
+            <div class="input-group-addon">Search</div>
+            <input type="text" class="form-control" id="exampleInputAmount" ng-model="searchText">
+        </div>
+    </div>
+</div>
+<!-- Add new main point -->
+<new-data-form 
+    ng-show="addPoint" 
+    api="newDataApi" 
+    info="issueTemplate" 
+    form-type="main"
+    point-type="pro">
+</new-data-form>
+<!-- Display Issues -->
+
+<br>
+<div ng-repeat="issue in issueData.pros | filter: searchText">
+    <div ng-attr-id="{{ 'issue' + $index }}" class="row" style="padding-right: 4em;">
+        <!-- Main Problem Block -->
+        <div class="col-xs-6 main-point-block">
+            <div class="row supporting-evidence">
+                <div class="row">
+                    <div class="col-xs-1">
+                        <div class="row  text-center" ng-click="issue.ups = issue.ups+1">
+                            <i class="glyphicon glyphicon-chevron-up"></i>
+                        </div>
+                        <div class="row text-center">
+                            {{issue.ups - issue.downs}}
+                        </div>
+                        <div class="row  text-center" ng-click="issue.downs = issue.downs+1">
+                            <i class="glyphicon glyphicon-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="col-xs-11">
+                        <u>PRO Point</u>: {{issue.problem}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main Supporting Evidence of Block -->
+        <div class="col-xs-6" style="padding-left: 4em;">
+            <!-- Top Answer -->
+            <support-point 
+                ng-repeat="support in issue.subSupport | orderBy:'-(ups-downs)'" 
+                ng-show="$index === 0" 
+                api="supportApi"
+                info="support" 
+                issue="issue"
+                index="{{$index}}" 
+                parent-index="{{$parent.$index}}">
+            </support-point>
+            <!-- Add Support form -->
+            <new-data-form
+                ng-show="issue.addSupport"
+                api="newDataApi" 
+                info="issueTemplate" 
+                form-type="support"
+                point-type="pro"
+                index="{{$index}}">
+            </new-data-form>
+            <!-- Show More Support -->
+            <support-point 
+                ng-repeat="support in issue.subSupport | orderBy:'-(ups-downs)'" info="support" 
+                issue="issue" 
+                api="supportApi"
+                ng-show="issue.showMore && $index > 0" 
+                index="{{$index}}"
+                parent-index="{{$parent.$index}}">
+            </support-point>
+        </div>
+    </div>
+    <hr>
+</div>

@@ -1,0 +1,35 @@
+<div id="HomeIssue" class="row supporting-evidence" ui.sref="Issues.Pros" style="border: 1px solid #dddddd; padding: 10px;">
+    <div class="col-xs-1">
+        <h3 class="row  text-center" ng-click="issue.ups = issue.ups+1">
+            <i class="glyphicon glyphicon-chevron-up"></i>
+        </h3>
+        <h3 class="row text-center">
+            {{issue.ups - issue.downs}}
+        </h3>
+        <h3 class="row  text-center" ng-click="issue.downs = issue.downs+1">
+            <i class="glyphicon glyphicon-chevron-down"></i>
+        </h3>
+    </div>
+    <div class="col-xs-11">
+        <div class="row">
+            <h3 class="text-center"><u>{{issue.mainQuestion}}</u></h3>
+        </div>
+        <div class="row">
+            <div class="col-xs-5">
+                <h3><span class="label label-default">Support:</span> <span class="label label-success">YES: {{issue.results.yes}}%</span> <span class="label label-danger">NO: {{issue.results.no}}%</span> </h3>
+            </div>
+            <div class="col-xs-7" style="font-size: 2em;">
+        		<style>
+					#HomeIssue .label{
+						display: inline-block;
+					}
+        		</style>
+            	<span class="label label-success">Meta Data <span class="badge">{{issue.tags.meta}}</span></span>
+            	<span class="label label-success">Credible <span class="badge">{{issue.tags.credible}}</span></span>
+            	<br>
+            	<span class="label label-warning">Media <span class="badge">{{issue.tags.media}}</span></span>
+            	<span class="label label-danger">Opinion <span class="badge">{{issue.tags.opinion}}</span></span>
+            </div>
+        </div>
+    </div>
+</div>

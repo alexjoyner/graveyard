@@ -1,0 +1,43 @@
+<div id="MoreSupport" class="row supporting-evidence">
+    <hr ng-if="index>0">
+    <div class="row">
+        <div class="col-xs-1">
+            <div class="row  text-center" ng-click="info.ups = info.ups+1">
+                <i class="glyphicon glyphicon-chevron-up"></i>
+            </div>
+            <div class="row text-center">
+                {{info.ups - info.downs}}
+            </div>
+            <div class="row  text-center" ng-click="info.downs = info.downs+1">
+                <i class="glyphicon glyphicon-chevron-down"></i>
+            </div>
+        </div>
+        <div class="col-xs-11">
+            <u>Support</u>: {{info.evidence}}
+            <div class="row">
+                <div class="col-xs-8" style="text-overflow: ellipsis; overflow: hidden;">
+                    <u>Sources</u>
+                    <ul>
+                        <li ng-repeat="source in info.sources">
+                            <a ng-href="{{source}}">{{source}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xs-4">
+                    <span ng-if="info.tags.metaData" class="label label-success">metaData</span>
+                    <span ng-if="info.tags.credible" class="label label-success">credible</span>
+                    <span ng-if="info.tags.media" class="label label-warning">media</span>
+                    <span ng-if="info.tags.opinion" class="label label-danger">opinion</span>
+                </div>
+            </div>
+            <div class="row" style="display:inline-block; vertical-align: middle;">
+                <button type="button" class="btn btn-xs btn-info" ng-click="issue.showMore = !issue.showMore; issue.showPreview = !issue.showPreview; api.goToTop(parentIndex);">
+                    Show <span ng-if="issue.showMore">Less</span> <span ng-if="!issue.showMore">More</span>
+                </button>
+                <button type="button" class="btn btn-xs btn-info" ng-click="issue.addSupport = !issue.addSupport" ng-show="index == 0">
+                    Add Evidence
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

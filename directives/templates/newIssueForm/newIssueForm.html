@@ -1,0 +1,32 @@
+<div class="row">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="form-group">
+				<label for="description">What is your question: *** YES or NO Questions only ***</label>
+				<textarea 
+					id="question"
+					class="form-control" 
+					rows="2" 
+					style="resize: none;" maxlength="100" 
+					placeholder="In as few of words as possible, what would you like to know? Max 100 characters" 
+					ng-model="info.mainQuestion">
+				</textarea>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-10">
+			<div class="form-group">
+			  <label for="description">What are the pros and cons of:</label>
+			  <textarea class="form-control" rows="5" id="description" style="resize: none;" maxlength="200" placeholder="Briefly describe your question. Max 200 Characters" ng-model="info.questionDetail"></textarea>
+			</div>
+		</div>
+		<div class="col-xs-2">
+			<br>
+			<br>
+			<br>
+			<button class="btn btn-md btn-info" ng-click="api.postQuestion()">Post Question</button>
+		</div>
+	</div>
+	<br>
+</div>
