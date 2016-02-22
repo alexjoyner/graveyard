@@ -11,6 +11,13 @@ angular.module('angular.directive.jobFeed', [])
             },
             templateUrl: './directives/jobFeed/jobFeed.html',
             controller: function($scope, $state, PostService, QuickAlert, SocketIo) {
+                SocketIo.on('NewHaul', function(jobData) {
+                    $scope.api.jobs = $scope.jobs || [];
+                    $scope.api.jobs.push(jobData);
+                });
+                SocketIo.on('JobDeleted', function(jobData) {
+                    main.getJobs();
+                });
                 // Setup bid modal
                 // Main Directive constructor
                 // --------------------------

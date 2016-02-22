@@ -24,6 +24,7 @@ angular.module('SwipeHaul', [
     'angular.directive.bidView',
     'angular.directive.jobProgress',
     'angular.directive.payInfo',
+    'angular.directive.finalizePayment',
     // Modal Controllers
     //---------------
     // Factories
@@ -58,4 +59,5 @@ angular.module('SwipeHaul', [
     'angular.controller.AboutCtrl',
     'angular.controller.HaulersCtrl',
     'angular.controller.PayInfoCtrl',
+    'angular.controller.FinalizePaymentCtrl',
 ]);

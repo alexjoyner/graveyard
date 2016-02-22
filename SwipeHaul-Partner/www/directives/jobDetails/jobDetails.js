@@ -8,8 +8,24 @@ angular.module('angular.directive.jobDetails', [])
                 api: '='
             },
             templateUrl: './directives/jobDetails/jobDetails.html',
-            controller: function($scope, $state, PostService, $rootScope, QuickAlert, $ionicModal, BidService) {
+            controller: function($scope, $state, PostService, $rootScope, QuickAlert, $ionicModal, BidService , SocketIo) {
                 console.log($rootScope.currentUser);
+                SocketIo.on('JobDeleted', function(jobData) {
+                    QuickAlert.alert('Sorry', 'This post has been removed by the customer', 'Inbox');
+                });
+                SocketIo.on('OfferAccepted', function(data) {
+                    console.log('Data: ', data);
+                    PostService.getCurrentJob().then(
+                        function(resHaul) {
+                            $rootScope.currentJob = resHaul;
+                            QuickAlert.alert('Offer Accepted', 'Your bid of $' + $rootScope.currentJob.bidAccepted.bid + ' was accepted.  We have let your customer know that you are on the way.').then(function() {
+                                $state.go('CurrentJob');
+                            });
+                        },
+                        function(errHaul) {
+                            console.log('Err getCurrentHaul: ', errHaul);
+                        });
+                });
                 // Main Directive constructor
                 // --------------------------
                 function JobDetails() {
@@ -48,6 +64,7 @@ angular.module('angular.directive.jobDetails', [])
                         function(res) {
                             BidService.newBid({
                                 bid: bid,
+                                jobId: $scope.job._id,
                                 partner: $rootScope.currentUser,
                                 partnerId: $rootScope.currentUser._id,
                                 eta: '15-45 mins'

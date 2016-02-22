@@ -8,7 +8,7 @@ angular.module('angular.directive.loginForm', [])
                 api: '='
             },
             templateUrl: './directives/loginForm/loginForm.html',
-            controller: function($scope, $state, AuthService, $rootScope, QuickAlert) {
+            controller: function($scope, $state, AuthService, $rootScope, QuickAlert, PostService) {
                 // Main Directive constructor
                 // --------------------------
                 function LoginForm() {
@@ -24,7 +24,15 @@ angular.module('angular.directive.loginForm', [])
                             } else
                             if (res.role === 'partner') {
                                 $rootScope.currentUser = res;
-                                $state.go('Dash');
+                                PostService.getCurrentJob(res._id).then(
+                                    function(resHaul) {
+                                        $rootScope.currentJob = resHaul;
+                                        $state.go('CurrentJob');
+                                    },
+                                    function(errHaul) {
+                                        console.log('Err getCurrentHaul: ', errHaul);
+                                        $state.go('Dash');
+                                    });
                             } else {
                                 QuickAlert.alert('Alert!', 'Internal error: No account role, please try again or contact support. Thank you');
                             }

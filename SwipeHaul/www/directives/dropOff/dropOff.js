@@ -32,13 +32,7 @@ angular.module('angular.directive.dropOff', [])
 
                 function init() {
                     $scope.postData = PostDataFac.getAllData();
-                    $scope.dropOff = {};
-                    if($scope.postData.dropoff !== undefined){
-                        $scope.dropOff = $scope.postData.dropoff;
-                    }
-                    $scope.setDropOff = function() {
-                        main.setDropOff($scope.dropOff);
-                    }
+                    
                 }
                 init();
             }

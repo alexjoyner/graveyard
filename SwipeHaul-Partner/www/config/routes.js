@@ -32,6 +32,11 @@ angular.module('routes', [])
                 templateUrl: './modules/JobDetails/JobDetails.html',
                 controller: 'JobDetailsCtrl'
             })
+            .state('CurrentJob', {
+                url: '/CurrentJob',
+                templateUrl: './modules/CurrentJob/CurrentJob.html',
+                controller: 'CurrentJobCtrl'
+            })
             ;
         $urlRouterProvider.otherwise('/Login');
         return;

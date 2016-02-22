@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src &apos;self&apos; &apos;unsafe-inline&apos;; script-src &apos;self&apos; &apos;unsafe-inline&apos; &apos;unsafe-eval&apos; http://maps.googleapis.com/ http://192.168.0.8:* http://localhost:*  https://swipehaul-server-init.herokuapp.com" <title="">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src &apos;self&apos; &apos;unsafe-inline&apos;; script-src &apos;self&apos; &apos;unsafe-inline&apos; &apos;unsafe-eval&apos; http://maps.googleapis.com/ http://192.168.0.9:* http://localhost:*  https://swipehaul-server-init.herokuapp.com" <title="">
     <link rel="stylesheet" href="css/firstBuild.css">
     <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css">
     <!-- <link rel="stylesheet" href="lib/ion-google-place/ion-google-place.css"> -->
@@ -20,7 +20,8 @@
     <ion-nav-view></ion-nav-view>
     <!-- Package Files -->
     <!-- <script src="lib/ion-google-place/ion-google-place.js"></script> -->
-    <script src="https://swipehaul-server-init.herokuapp.com/socket.io/socket.io.js"></script>
+    <!-- <script src="https://swipehaul-server-init.herokuapp.com/socket.io/socket.io.js"></script> -->
+    <script src="http://192.168.0.9:9000/socket.io/socket.io.js"></script>
     <!-- Google Api -->
     <!-- <script src="http://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script> -->
     <!-- Include start/config js here -->
@@ -40,6 +41,7 @@
     <script src="directives/signUpForm/signUpForm.js"></script>
     <script src="directives/jobFeed/jobFeed.js"></script>
     <script src="directives/jobDetails/jobDetails.js"></script>
+    <script src="directives/currentJob/currentJob.js"></script>
     <!-- Include module controllers here -->
     <script src="modules/Start/StartCtrl.js"></script>
     <script src="modules/Login/LoginCtrl.js"></script>
@@ -48,6 +50,7 @@
     <script src="modules/JobFeed/JobFeedCtrl.js"></script>
     <script src="modules/JobDetails/JobDetailsCtrl.js"></script>
     <script src="modules/BidConsole/BidConsoleCtrl.js"></script>
+    <script src="modules/CurrentJob/CurrentJobCtrl.js"></script>
 </body>
 
 </html>

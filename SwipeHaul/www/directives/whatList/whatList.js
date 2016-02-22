@@ -91,11 +91,12 @@ angular.module('angular.directive.whatList', [])
                     $state.go('Obstacles');
                 };
                 WhatList.prototype.continue = function(items) {
-                    if (this.photos.length > 0) {
-                        $state.go('Review');
-                    } else {
-                        QuickAlert.alert('Alert!', 'At least 1 items needed');
-                    }
+                    // if (this.photos.length > 0) {
+                    //     $state.go('Review');
+                    // } else {
+                    //     QuickAlert.alert('Alert!', 'At least 1 items needed');
+                    // }
+                    $state.go('Review');
                 };
                 var main = new WhatList(PostDataFac.getAllData());
                 // API Scope variables

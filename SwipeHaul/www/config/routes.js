@@ -92,6 +92,11 @@ angular.module('routes', [])
         templateUrl: './modules/PayInfo/PayInfo.html',
         controller: 'PayInfoCtrl'
     })
+    .state('FinalizePayment', {
+        url: '/FinalizePayment',
+        templateUrl: './modules/FinalizePayment/FinalizePayment.html',
+        controller: 'FinalizePaymentCtrl'
+    })
     ;
     $urlRouterProvider.otherwise('/Login');
     return;

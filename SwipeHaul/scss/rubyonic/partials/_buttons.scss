@@ -8,14 +8,21 @@
 }
 
 .facebook {
-	background-color: $facebookColor !important;
-	i{
-		color: $subtleGrey;
-	}
+    background-color: $facebookColor !important;
+    i {
+        color: $subtleGrey;
+    }
 }
+
 .google {
-	background-color: $googleColor !important;
-	i{
-		color: $subtleGrey;
-	}
+    background-color: $googleColor !important;
+    i {
+        color: $subtleGrey;
+    }
+}
+
+#BidAccept {
+    width: 8em;
+    background-color: #FBC02D;
+    color: #495EBB;
 }

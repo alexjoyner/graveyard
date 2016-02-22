@@ -29,6 +29,9 @@ angular.module('angular.directive.loginForm', [])
                                         if(res.status.stage > 0 && res.status.stage < 5){
                                             $state.go('JobProgress');
                                         }
+                                        if(res.status.stage === 5){
+                                            $state.go('FinalizePayment');
+                                        }
                                     },
                                     function(err) {
                                         $state.go('PickUp');

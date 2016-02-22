@@ -1,7 +1,7 @@
 'use strict';
 angular.module('configurations', [])
     .run(['$ionicPlatform', '$rootScope', '$ionicLoading', function($ionicPlatform, $rootScope, $ionicLoading) {
-        $rootScope.endpoint = 'http://192.168.0.8:9000'; /*'https://swipehaul-server-init.herokuapp.com';*/
+        $rootScope.endpoint = 'http://localhost:9000'; /*'https://swipehaul-server-init.herokuapp.com';*/
         //Loading functions
         $rootScope.$on('loading:show', function() {
             $ionicLoading.show({

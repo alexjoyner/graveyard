@@ -9296,6 +9296,11 @@ ion-footer-bar.chat-footer-bar .button,
   .google i {
     color: #EFF1F5; }
 
+#BidAccept {
+  width: 8em;
+  background-color: #FBC02D;
+  color: #495EBB; }
+
 .no-margin {
   margin: 0; }
 

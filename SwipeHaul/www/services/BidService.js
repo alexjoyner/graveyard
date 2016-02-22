@@ -4,7 +4,7 @@ angular.module('angular.service.BidService', [])
         this.acceptBid = function(info) {
             var defer = $q.defer();
             console.log('Hey from accept bid in BidService');
-            $http.post($rootScope.endpoint + '/bids/hauls/acceptBid', {
+            $http.post($rootScope.endpoint + '/bids/hauls/acceptOffer', {
                     haulId: info.haulId,
                     bidAccepted: info.bid
                 })

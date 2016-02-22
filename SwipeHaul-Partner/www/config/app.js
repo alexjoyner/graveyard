@@ -17,6 +17,7 @@ angular.module('SwipeHaulPartner', [
     'angular.directive.signUpForm',
     'angular.directive.jobFeed',
     'angular.directive.jobDetails',
+    'angular.directive.currentJob',
     // Modal Controllers
     //---------------
     // Factories
@@ -37,4 +38,5 @@ angular.module('SwipeHaulPartner', [
     'angular.controller.JobFeedCtrl',
     'angular.controller.JobDetailsCtrl',
     'angular.controller.BidConsoleCtrl',
+    'angular.controller.CurrentJobCtrl',
 ]);
