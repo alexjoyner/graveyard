@@ -49,8 +49,10 @@ angular.module('angular.controller.IssueCtrl', [])
             $scope.newDataApi = {
                 addMainProPoint: function() {
                     $scope.issueTemplate.subSupport[0].sources = $scope.issueTemplate.subSupport[0].sources.split(',');
-                    issuesService.addPro($scope.issueData._id, $scope.issueTemplate);
-                    init();
+                    issuesService.addPro($scope.issueData._id, $scope.issueTemplate).then(
+                        function() {
+                            init();
+                        });
                 },
                 addMainConPoint: function() {
                     $scope.issueTemplate.subSupport[0].sources = $scope.issueTemplate.subSupport[0].sources.split(',');
@@ -59,10 +61,10 @@ angular.module('angular.controller.IssueCtrl', [])
                             init();
                         });
                 },
-                addSupport: function(indx, type) {
+                addSupport: function(pointIndx, type) {
                     $scope.issueTemplate.subSupport[0].sources = $scope.issueTemplate.subSupport[0].sources.split(',');
                     console.log('Type: ', type);
-                    issuesService.addSupport($scope.issueData._id, indx, type, $scope.issueTemplate.subSupport[0]);
+                    issuesService.addSupport($scope.issueData._id, pointIndx, type, $scope.issueTemplate.subSupport[0]);
                     init();
                 }
             };

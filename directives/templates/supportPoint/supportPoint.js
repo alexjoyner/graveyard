@@ -9,7 +9,8 @@ angular.module('angular.directive.supportPoint', [])
                 issue: '=',
                 info: '=',
                 parentIndex: '@',
-                index: '@'
+                index: '@',
+                pointType: '@'
             },
             templateUrl: './directives/templates/supportPoint/supportPoint.html'
         };

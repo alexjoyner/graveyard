@@ -12,34 +12,45 @@ angular.module('angular.controller.HomeCtrl', [])
             $scope.startQuestion = false;
 
             var issues = [];
-            issuesService.getIssues().then(
-                function(res) {
-                    issues = res;
-                    init();
-                },
-                function(err) {
-                    console.log('Err');
-                });
 
 
             function init() {
-                $scope.issues = issues;
-                console.log($scope.issues);
+                issuesService.getIssues().then(
+                    function(res) {
+                        issues = res;
+                        $scope.issues = issues;
+                    },
+                    function(err) {
+                        console.log('Err');
+                    });
             }
+            init();
             $scope.questionTemplate = {
-                _id: null,
                 mainQuestion: '',
                 questionDetail: '',
                 pros: [],
                 cons: []
             };
+            $scope.issueApi = {
+                deleteIssue: function(id, $event) {
+                    $event.stopPropagation();
+                    issuesService.deleteIssue(id).then(
+                        function(res) {
+                            console.log('Success deleting');
+                            init();
+                        },
+                        function(err) {
+                            console.log(err);
+                        });
+
+                }
+            };
             $scope.newQuestionApi = {
                 postQuestion: function() {
-                    $scope.questionTemplate._id = $scope.issues.length;
                     issuesService.newIssue($scope.questionTemplate).then(
                         function(res) {
                             $state.go('Issue.Pros', {
-                                id: $scope.questionTemplate._id
+                                id: res._id
                             });
                         },
                         function(err) {

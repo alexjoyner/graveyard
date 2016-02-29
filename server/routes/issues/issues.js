@@ -2,48 +2,100 @@
 var express = require('express'),
     router = express.Router();
 
-var issuesData = require('./issueData');
+// Mongoose models
+var issues = require('../../models/issueModel.js');
 
 router.get('/all', function(req, res) {
-    res.status(200).send(issuesData);
-    res.end();
+    issues.find({},
+        function(err, allIssues) {
+            if (err) throw err;
+            if (!allIssues) {
+                res.status(500).send('no issues found').end();
+            } else {
+                res.status(200).send(allIssues).end();
+            }
+        });
 });
 router.get('/:id', function(req, res) {
-    var indx = null;
-    for (var i = 0; i < issuesData.length; i++) {
-        if (issuesData[i]._id == req.params.id) {
-            indx = i;
-        }
-    }
-    res.status(200).send(issuesData[indx]);
-    res.end();
+    console.log('Searching for issue: ', req.params.id);
+    issues.findOne({
+            '_id': req.params.id
+        },
+        function(err, anIssue) {
+            if (err) throw err;
+            if (!anIssue) {
+                res.status(500).send('no issues found').end();
+            } else {
+                res.status(200).send(anIssue).end();
+            }
+        });
 });
 router.post('/newIssue', function(req, res) {
-    issuesData.unshift(req.body);
-    res.status(200).send('Success Post');
-    res.end();
+    issues.findOne({
+            'mainQuestion': req.body.mainQuestion
+        },
+        function(err, anIssue) {
+            if (err) throw err;
+            if (!anIssue) {
+                console.log('New issue');
+                console.log('Issue info: ', req.body);
+                var newIssue = new issues(req.body);
+                console.log(newIssue);
+                newIssue.save(function(err, roomReturned) {
+                    if (err) throw err;
+                    res.status(200).send(newIssue).end();
+                });
+            } else {
+                res.status(500).send('Issue already taken').end();
+            }
+        });
 });
 router.post('/:id/addPro', function(req, res) {
-    var indx = null;
-    for (var i = 0; i < issuesData.length; i++) {
-        if (issuesData[i]._id == req.params.id) {
-            indx = i;
-        }
-    }
-    issuesData[indx].pros.unshift(req.body);
-    res.status(200).send('Successful');
-    res.end();
-});
-router.post('/:id/addCon', function(req, res) {
-    var indx = null;
-    for (var i = 0; i < issuesData.length; i++) {
-        if (issuesData[i]._id == req.params.id) {
-            indx = i;
-        }
-    }
-    issuesData[indx].cons.unshift(req.body);
-    res.status(200).send('Successful');
-    res.end();
+    issues.findOne({
+            '_id': req.params.id
+        },
+        function(err, anIssue) {
+            if (err) throw err;
+            if (!anIssue) {
+                res.status(500).send('no issues found').end();
+            } else {
+                anIssue.pros.unshift(req.body);
+                anIssue.save(function(err) {
+                    if (err) throw err;
+                    res.status(200).send(anIssue).end();
+                });
+            }
+        });
 });
 
+router.post('/:id/addCon', function(req, res) {
+    issues.findOne({
+            '_id': req.params.id
+        },
+        function(err, anIssue) {
+            if (err) throw err;
+            if (!anIssue) {
+                res.status(500).send('no issues found').end();
+            } else {
+                anIssue.cons.unshift(req.body);
+                anIssue.save(function(err) {
+                    if (err) throw err;
+                    res.status(200).send(anIssue).end();
+                });
+            }
+        });
+});
+
+router.delete('/deleteIssue/:issueId', function(req, res) {
+    issues.findOneAndRemove({
+        '_id': req.params.issueId
+    }, function(err) {
+        if (err) {
+            res.status(500).send('Internal error');
+        } else {
+            res.status(200).send('Deleted event');
+        }
+        res.end();
+    });
+});
 module.exports = router;

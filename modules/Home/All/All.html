@@ -20,8 +20,9 @@
     info="questionTemplate">
 </new-issue-form>
 <home-issue
-	ng-repeat="issue in issues | orderBy:'-(ups-downs)'"
+	ng-repeat="issue in issues | filter:searchText | orderBy:'-(ups-downs)'"
 	issue="issue"
 	index="{{$index}}"
 	ui-sref="Issue.Pros({id: issue._id})"
+    api="issueApi"
 ></home-issue>

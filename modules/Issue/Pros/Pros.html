@@ -34,22 +34,10 @@
         <!-- Main Problem Block -->
         <div class="col-xs-6 main-point-block">
             <div class="row supporting-evidence">
-                <div class="row">
-                    <div class="col-xs-1">
-                        <div class="row  text-center" ng-click="issue.ups = issue.ups+1">
-                            <i class="glyphicon glyphicon-chevron-up"></i>
-                        </div>
-                        <div class="row text-center">
-                            {{issue.ups - issue.downs}}
-                        </div>
-                        <div class="row  text-center" ng-click="issue.downs = issue.downs+1">
-                            <i class="glyphicon glyphicon-chevron-down"></i>
-                        </div>
-                    </div>
-                    <div class="col-xs-11">
-                        <u>PRO Point</u>: {{issue.problem}}
-                    </div>
-                </div>
+                <main-point
+                    issue="issue"
+                    index="{{$index}}">
+                </main-point>
             </div>
         </div>
         <!-- Main Supporting Evidence of Block -->
@@ -62,7 +50,8 @@
                 info="support" 
                 issue="issue"
                 index="{{$index}}" 
-                parent-index="{{$parent.$index}}">
+                parent-index="{{$parent.$index}}"
+                point-type="pro">
             </support-point>
             <!-- Add Support form -->
             <new-data-form
@@ -80,7 +69,8 @@
                 api="supportApi"
                 ng-show="issue.showMore && $index > 0" 
                 index="{{$index}}"
-                parent-index="{{$parent.$index}}">
+                parent-index="{{$parent.$index}}"
+                point-type="pro">
             </support-point>
         </div>
     </div>

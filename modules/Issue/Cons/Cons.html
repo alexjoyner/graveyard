@@ -47,7 +47,8 @@
                 info="support" 
                 issue="issue"
                 index="{{$index}}" 
-                parent-index="{{$parent.$index}}">
+                parent-index="{{$parent.$index}}"
+                point-type="con">
             </support-point>
             <!-- Add Support form -->
             <new-data-form
@@ -65,7 +66,8 @@
                 api="supportApi"
                 ng-show="issue.showMore && $index > 0" 
                 index="{{$index}}"
-                parent-index="{{$parent.$index}}">
+                parent-index="{{$parent.$index}}"
+                point-type="con">
             </support-point>
         </div>
     </div>

@@ -1,5 +1,6 @@
-<div id="HomeIssue" class="row supporting-evidence" ui.sref="Issues.Pros" style="border: 1px solid #dddddd; padding: 10px;">
-    <div class="col-xs-1">
+<div id="HomeIssue" class="row supporting-evidence" style="position: relative; border: 1px solid #dddddd; padding: 10px; margin-bottom: 10px;">
+    <button class="btn btn-md btn-danger" style="position: absolute; top: 0; right: 0; margin: 10px; z-index: 2"><i class="fa fa-close fa-2x" ng-click="api.deleteIssue(issue._id, $event)"></i></button>
+    <!-- <div class="col-xs-1">
         <h3 class="row  text-center" ng-click="issue.ups = issue.ups+1">
             <i class="glyphicon glyphicon-chevron-up"></i>
         </h3>
@@ -9,12 +10,12 @@
         <h3 class="row  text-center" ng-click="issue.downs = issue.downs+1">
             <i class="glyphicon glyphicon-chevron-down"></i>
         </h3>
-    </div>
-    <div class="col-xs-11">
+    </div> -->
+    <div class="col-xs-12">
         <div class="row">
             <h3 class="text-center"><u>{{issue.mainQuestion}}</u></h3>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-xs-5">
                 <h3><span class="label label-default">Support:</span> <span class="label label-success">YES: {{issue.results.yes}}%</span> <span class="label label-danger">NO: {{issue.results.no}}%</span> </h3>
             </div>
@@ -30,6 +31,6 @@
             	<span class="label label-warning">Media <span class="badge">{{issue.tags.media}}</span></span>
             	<span class="label label-danger">Opinion <span class="badge">{{issue.tags.opinion}}</span></span>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>

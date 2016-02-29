@@ -5,6 +5,7 @@ angular.module('angular.directive.homeIssue', [])
             restrict: 'E',
             replace: true,
             scope: {
+                api: '=',
                 issue: '=',
 				index: '@'
             },

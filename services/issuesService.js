@@ -44,9 +44,23 @@ angular.module('angular.service.issuesService', [])
                     });
                 return defer.promise;
             };
-            this.addPro = function(pointInfo) {
+            this.deleteIssue = function(id) {
                 var defer = $q.defer();
-                $http.post($rootScope.endpoint + '/issues/addPro', pointInfo)
+                $http.delete($rootScope.endpoint + '/issues/deleteIssue/' + id)
+                    .success(function(res) {
+                        console.log('deleteIssue Success: ', res);
+                        defer.resolve(res);
+                    })
+                    .error(function(err) {
+                        console.log('deleteIssue Error: ', err);
+                        defer.reject(err);
+                    });
+                return defer.promise;
+            };
+            
+            this.addPro = function(id, pointInfo) {
+                var defer = $q.defer();
+                $http.post($rootScope.endpoint + '/issues/'+id+'/addPro', pointInfo)
                     .success(function(res) {
                         console.log('addPro Success: ', res);
                         defer.resolve(res);
@@ -70,6 +84,32 @@ angular.module('angular.service.issuesService', [])
                     });
                 return defer.promise;
             };
+            this.addSupport = function(supportInfo) {
+                var defer = $q.defer();
+                $http.post($rootScope.endpoint + '/issues/addSupport', supportInfo)
+                    .success(function(res) {
+                        console.log('addSupport Success: ', res);
+                        defer.resolve(res);
+                    })
+                    .error(function(err) {
+                        console.log('addSupport Error: ', err);
+                        defer.reject(err);
+                    });
+                return defer.promise;
+            };
+            // this.postVote = function(voteInfo) {
+            //     var defer = $q.defer();
+            //     $http.post($rootScope.endpoint + '/postVote', voteInfo)
+            //         .success(function(res) {
+            //             console.log('postVote Success: ', res);
+            //             defer.resolve(res);
+            //         })
+            //         .error(function(err) {
+            //             console.log('postVote Error: ', err);
+            //             defer.reject(err);
+            //         });
+            //     return defer.promise;
+            // };
             
 
         }
