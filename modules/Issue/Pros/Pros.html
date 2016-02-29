@@ -19,59 +19,37 @@
     </div>
 </div>
 <!-- Add new main point -->
-<new-data-form 
-    ng-show="addPoint" 
-    api="newDataApi" 
-    info="issueTemplate" 
-    form-type="main"
-    point-type="pro">
+<new-data-form ng-show="addPoint" api="newDataApi" info="issueTemplate" form-type="main" point-type="pro">
 </new-data-form>
 <!-- Display Issues -->
-
 <br>
 <div ng-repeat="issue in issueData.pros | filter: searchText" style="position: relative;">
-    <button class="btn btn-sm btn-danger" ng-click="deleteMainPoint(issue._id, 'pro')" style="position: absolute; bottom: 0; left: 0; margin: 10px; z-index: 2">
-        <i class="fa fa-close"></i>
-    </button>
-    <div ng-attr-id="{{ 'issue' + $index }}" class="row" style="padding-right: 4em;">
+    <div ng-attr-id="{{ 'issue' + $index }}" class="row" style="position: relative; padding-right: 4em;">
+        <button class="btn btn-sm btn-danger" ng-click="deleteMainPoint(issue._id, 'pro')" style="position: absolute; bottom: 0; left: 0; margin: 10px; z-index: 2">
+            <i class="fa fa-close"></i>
+        </button>
         <!-- Main Problem Block -->
         <div class="col-xs-6 main-point-block">
-            <main-point
-                issue="issue"
-                index="{{$index}}">
+            <main-point issue="issue" index="{{$index}}">
             </main-point>
+        </div>
+        <div class="col-xs-6" style="padding-left: 4em;">
+            <!-- Top Answer -->
+            <support-point ng-repeat="support in issue.subSupport | orderBy:'-(ups-downs)'" ng-show="$index === 0" api="supportApi" info="support" issue="issue" index="{{$index}}" parent-index="{{$parent.$index}}" point-type="pro">
+            </support-point>
+        </div>
+    </div>
+    <div ng-attr-id="{{ 'issue' + $index }}" class="row" style="padding-right: 4em;">
+        <!-- Spacer -->
+        <div class="col-xs-6">
         </div>
         <!-- Main Supporting Evidence of Block -->
         <div class="col-xs-6" style="padding-left: 4em;">
-            <!-- Top Answer -->
-            <support-point 
-                ng-repeat="support in issue.subSupport | orderBy:'-(ups-downs)'" 
-                ng-show="$index === 0" 
-                api="supportApi"
-                info="support" 
-                issue="issue"
-                index="{{$index}}" 
-                parent-index="{{$parent.$index}}"
-                point-type="pro">
-            </support-point>
             <!-- Add Support form -->
-            <new-data-form
-                ng-show="issue.addSupport"
-                api="newDataApi" 
-                info="issueTemplate" 
-                form-type="support"
-                point-type="pro"
-                index="{{$index}}">
+            <new-data-form ng-show="issue.addSupport" api="newDataApi" info="issueTemplate" form-type="support" point-type="pro" index="{{$index}}">
             </new-data-form>
             <!-- Show More Support -->
-            <support-point 
-                ng-repeat="support in issue.subSupport | orderBy:'-(ups-downs)'" info="support" 
-                issue="issue" 
-                api="supportApi"
-                ng-show="issue.showMore && $index > 0" 
-                index="{{$index}}"
-                parent-index="{{$parent.$index}}"
-                point-type="pro">
+            <support-point ng-repeat="support in issue.subSupport | orderBy:'-(ups-downs)'" info="support" issue="issue" api="supportApi" ng-show="issue.showMore && $index > 0" index="{{$index}}" parent-index="{{$parent.$index}}" point-type="pro">
             </support-point>
         </div>
     </div>

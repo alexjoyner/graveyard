@@ -25,7 +25,6 @@ angular.module('MetaTruthDemo', [
     'angular.service.issuesService',
     // Factories
     //---------------
-    'angular.factory.IssueFactory',
     // Module Controllers
     //---------------
     'angular.controller.HomeCtrl',
