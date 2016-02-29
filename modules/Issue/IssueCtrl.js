@@ -5,9 +5,8 @@ angular.module('angular.controller.IssueCtrl', [])
         '$state',
         '$location',
         '$anchorScroll',
-        'IssueFactory',
         'issuesService',
-        function($scope, $state, $location, $anchorScroll, IssueFactory, issuesService) {
+        function($scope, $state, $location, $anchorScroll, issuesService) {
 
             // New Point Data Format
             function init() {

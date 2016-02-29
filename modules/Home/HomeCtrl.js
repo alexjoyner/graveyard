@@ -4,9 +4,8 @@ angular.module('angular.controller.HomeCtrl', [])
     .controller('HomeCtrl', [
         '$scope',
         '$state',
-        'IssueFactory',
         'issuesService',
-        function($scope, $state, IssueFactory, issuesService) {
+        function($scope, $state, issuesService) {
             $scope.MainHeading = 'ipsum Lorem ipsum dolor sit amet, consectetuer adipiscing elit.';
             $scope.quickInstructions = 'ipsum Lorem ipsum dolor sit amet, consectetuer adipiscing elit.';
             $scope.startQuestion = false;
