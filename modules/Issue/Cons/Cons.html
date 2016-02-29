@@ -28,7 +28,10 @@
 </new-data-form>
 <!-- Display Issues -->
 <br>
-<div ng-repeat="issue in issueData.cons | filter: searchText">
+<div ng-repeat="issue in issueData.cons | filter: searchText" style="position: relative;">
+    <button class="btn btn-sm btn-danger" ng-click="deleteMainPoint(issue._id, 'con')" style="position: absolute; bottom: 0; left: 0; margin: 10px; z-index: 2">
+        <i class="fa fa-close"></i>
+    </button>
     <div ng-attr-id="{{ 'issue' + $index }}" class="row" style="padding-right: 4em;">
         <!-- Main Problem Block -->
         <div class="col-xs-6 main-point-block">

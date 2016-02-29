@@ -81,5 +81,13 @@ angular.module('angular.controller.IssueCtrl', [])
                     $anchorScroll();
                 }
             };
+
+            // Remove a support point
+            $scope.deleteMainPoint = function(id, type){
+                issuesService.deleteMainPoint($scope.issueData._id, id, type).then(
+                    function(res){
+                        init();
+                    });
+            };
         }
     ]);

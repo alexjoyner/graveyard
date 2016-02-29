@@ -97,6 +97,20 @@ angular.module('angular.service.issuesService', [])
                     });
                 return defer.promise;
             };
+            this.deleteMainPoint = function(id, pointId, type) {
+                var defer = $q.defer();
+                $http.delete($rootScope.endpoint + '/issues/deleteMainPoint/'+ type + '/' + id + '/' + pointId)
+                    .success(function(res) {
+                        console.log('deleteMainPoint Success: ', res);
+                        defer.resolve(res);
+                    })
+                    .error(function(err) {
+                        console.log('deleteMainPoint Error: ', err);
+                        defer.reject(err);
+                    });
+                return defer.promise;
+            };
+            
             // this.postVote = function(voteInfo) {
             //     var defer = $q.defer();
             //     $http.post($rootScope.endpoint + '/postVote', voteInfo)
