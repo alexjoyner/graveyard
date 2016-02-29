@@ -85,7 +85,9 @@ router.post('/:id/addCon', function(req, res) {
             }
         });
 });
-
+router.post('/addSupport', function(req, res){
+    res.status(200).send('Got data: ', req.body).end();
+});
 router.delete('/deleteIssue/:issueId', function(req, res) {
     issues.findOneAndRemove({
         '_id': req.params.issueId

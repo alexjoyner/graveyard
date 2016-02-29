@@ -62,8 +62,13 @@ angular.module('angular.controller.IssueCtrl', [])
                 },
                 addSupport: function(pointIndx, type) {
                     $scope.issueTemplate.subSupport[0].sources = $scope.issueTemplate.subSupport[0].sources.split(',');
-                    console.log('Type: ', type);
-                    issuesService.addSupport($scope.issueData._id, pointIndx, type, $scope.issueTemplate.subSupport[0]);
+                    var supportInfo = {
+                        issueId: $scope.issueData._id,
+                        pointIndx: pointIndx,
+                        type: type,
+                        newSupportInfo: $scope.issueTemplate.subSupport[0]
+                    };
+                    issuesService.addSupport(supportInfo);
                     init();
                 }
             };
@@ -82,9 +87,9 @@ angular.module('angular.controller.IssueCtrl', [])
             };
 
             // Remove a support point
-            $scope.deleteMainPoint = function(id, type){
+            $scope.deleteMainPoint = function(id, type) {
                 issuesService.deleteMainPoint($scope.issueData._id, id, type).then(
-                    function(res){
+                    function(res) {
                         init();
                     });
             };
