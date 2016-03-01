@@ -18,6 +18,19 @@ angular.module('angular.service.prosService', [])
                     });
                 return defer.promise;
             };
-
+            this.createPro = function(info) {
+                var defer = $q.defer();
+                $http.post($rootScope.endpoint + '/pros/createPro', info)
+                    .success(function(res) {
+                        console.log('createPro Success: ', res);
+                        defer.resolve(res);
+                    })
+                    .error(function(err) {
+                        console.log('createPro Error: ', err);
+                        defer.reject(err);
+                    });
+                return defer.promise;
+            };
+            
         }
     ]);

@@ -5,42 +5,15 @@ angular.module('angular.controller.IssueCtrl', [])
         '$state',
         'issuesService',
         function($scope, $state, issuesService) {
-
-            // New Point Data Format
-            function init() {
-                // Get issues data
-                issuesService.getIssue($state.params.id).then(
-                    function(res) {
-                        // Declare issue data in scope
-                        $scope.issueData = res;
-                    },
-                    function(err) {
-                        console.log(err);
-                    });
-                // Variables
-                $scope.addPoint = false;
-                $scope.addSupport = true;
-                $scope.issueTemplate = {
-                    problem: '',
-                    ups: 0,
-                    downs: 0,
-                    showMore: false,
-                    addSupport: false,
-                    subSupport: [{
-                        evidence: '',
-                        sources: '', //Arrayfi this
-                        tags: {
-                            metaData: false,
-                            credible: false,
-                            media: false,
-                            opinion: false
-                        },
-                        ups: 0,
-                        downs: 0
-                    }]
-                };
-            }
-            init();
+            // Get issues data
+            issuesService.getIssue($state.params.id).then(
+                function(res) {
+                    // Declare issue data in scope
+                    $scope.issueData = res;
+                },
+                function(err) {
+                    console.log(err);
+                });
 
             // New Data Api
             $scope.newDataApi = {

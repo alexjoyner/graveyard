@@ -5,8 +5,7 @@ angular.module('angular.directive.mainPoint', [])
             restrict: 'E',
             replace: true,
             scope: {
-                issue: '=',
-                index: '@'
+                info: '='
             },
             templateUrl: './directives/templates/mainPoint/mainPoint.html'
         };

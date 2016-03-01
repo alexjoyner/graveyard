@@ -26,10 +26,7 @@ var proSchema = new Schema({
         media: Number,
         opinion: Number
     },
-    support: {
-        type: Schema.Types.ObjectId, // Id of support data
-        default: new mongoose.Types.ObjectId()
-    }
+    support: [supportSchema]
 });
 
 var conSchema = new Schema({
@@ -42,10 +39,7 @@ var conSchema = new Schema({
         media: Number,
         opinion: Number
     },
-    support: [{
-        type: Schema.Types.ObjectId, // Id of support data
-        ref: 'supports'
-    }]
+    support: [supportSchema]
 });
 
 // Issue Main Schema
