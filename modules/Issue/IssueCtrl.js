@@ -3,10 +3,8 @@ angular.module('angular.controller.IssueCtrl', [])
     .controller('IssueCtrl', [
         '$scope',
         '$state',
-        '$location',
-        '$anchorScroll',
         'issuesService',
-        function($scope, $state, $location, $anchorScroll, issuesService) {
+        function($scope, $state, issuesService) {
 
             // New Point Data Format
             function init() {

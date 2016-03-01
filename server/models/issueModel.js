@@ -3,8 +3,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-
-var subSupport = new Schema({
+var supportSchema = new Schema({
     evidence: String,
     sources: [String],
     tags: {
@@ -17,7 +16,7 @@ var subSupport = new Schema({
     downs: Number
 });
 
-var mainPoints = new Schema({
+var proSchema = new Schema({
     problem: String,
     ups: Number,
     downs: Number,
@@ -27,14 +26,26 @@ var mainPoints = new Schema({
         media: Number,
         opinion: Number
     },
-    results: {
-        yes: Number,
-        no: Number
+    support: {
+        type: Schema.Types.ObjectId, // Id of support data
+        default: new mongoose.Types.ObjectId()
+    }
+});
+
+var conSchema = new Schema({
+    problem: String,
+    ups: Number,
+    downs: Number,
+    tags: {
+        meta: Number,
+        credible: Number,
+        media: Number,
+        opinion: Number
     },
-    showMore: Boolean,
-    addSupport: Boolean,
-    showPreview: Boolean,
-    subSupport: [subSupport]
+    support: [{
+        type: Schema.Types.ObjectId, // Id of support data
+        ref: 'supports'
+    }]
 });
 
 // Issue Main Schema
@@ -42,8 +53,8 @@ var mainPoints = new Schema({
 var issuesSchema = new Schema({
     mainQuestion: String,
     questionDetail: String,
-    pros: [mainPoints],
-    cons: [mainPoints]
+    pros: [conSchema],
+    cons: [proSchema]
 });
 
 module.exports = mongoose.model('issues', issuesSchema);

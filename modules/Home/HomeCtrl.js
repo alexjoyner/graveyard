@@ -26,9 +26,7 @@ angular.module('angular.controller.HomeCtrl', [])
             init();
             $scope.questionTemplate = {
                 mainQuestion: '',
-                questionDetail: '',
-                pros: [],
-                cons: []
+                questionDetail: ''
             };
             $scope.issueApi = {
                 deleteIssue: function(id, $event) {
@@ -48,9 +46,10 @@ angular.module('angular.controller.HomeCtrl', [])
                 postQuestion: function() {
                     issuesService.newIssue($scope.questionTemplate).then(
                         function(res) {
-                            $state.go('Issue.Pros', {
-                                id: res._id
-                            });
+                            // $state.go('Issue.Pros', {
+                            //     id: res._id
+                            // });
+                            init();
                         },
                         function(err) {
                             console.log(err);

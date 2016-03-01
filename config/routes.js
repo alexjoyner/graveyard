@@ -22,12 +22,12 @@ angular.module('routes', ['ui.router'])
     .state('Issue.Pros', {
         url: '/Pros',
         templateUrl: './modules/Issue/Pros/Pros.html',
-        controller: 'IssueCtrl'
+        controller: 'ProsCtrl'
     })
     .state('Issue.Cons', {
         url: '/Cons',
         templateUrl: './modules/Issue/Cons/Cons.html',
-        controller: 'IssueCtrl'
+        controller: 'ConsCtrl'
     })
     ;
     $urlRouterProvider.otherwise('/Home/All');

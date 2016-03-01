@@ -11,6 +11,25 @@ angular.module('angular.directive.newDataForm', [])
                 formType: '@',
                 pointType: '@'
             },
-            templateUrl: './directives/templates/newDataForm/newDataForm.html'
+            templateUrl: './directives/templates/newDataForm/newDataForm.html',
+            controller: function($scope, $state) {
+                // Main Directive constructor
+                // --------------------------
+                function NewDataForm() {
+
+                }
+                NewDataForm.prototype.createPoint = function() {
+
+                };
+
+                // Declare directive main
+                // --------------------------
+                var main = new NewDataForm();
+
+                function init() {
+
+                }
+                init();
+            }
         };
     });

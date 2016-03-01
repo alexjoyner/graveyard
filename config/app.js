@@ -23,10 +23,14 @@ angular.module('MetaTruthDemo', [
     // Services
     //---------------
     'angular.service.issuesService',
+    'angular.service.prosService',
+    'angular.service.consService',
     // Factories
     //---------------
     // Module Controllers
     //---------------
     'angular.controller.HomeCtrl',
-    'angular.controller.IssueCtrl'
+    'angular.controller.IssueCtrl',
+    'angular.controller.ProsCtrl',
+    'angular.controller.ConsCtrl'
 ]);
