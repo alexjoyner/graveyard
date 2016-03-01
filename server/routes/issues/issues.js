@@ -125,26 +125,4 @@ router.post('/:id/addCon', function(req, res) {
 router.post('/addSupport', function(req, res) {
     res.status(200).send('Got data: ', req.body).end();
 });
-
-router.delete('/deleteMainPoint/:type/:issueId/:pointId', function(req, res) {
-    issues.findOne({
-            '_id': req.params.issueId
-        },
-        function(err, anIssue) {
-            if (err) throw err;
-            if (!anIssue) {
-                res.status(500).send('no issues found').end();
-            } else {
-                if (req.params.type === 'pro') {
-                    anIssue.pros.pull({ '_id': req.params.pointId });
-                } else {
-                    anIssue.cons.pull({ '_id': req.params.pointId });
-                }
-                anIssue.save(function(err) {
-                    if (err) throw err;
-                    res.status(200).send(anIssue).end();
-                });
-            }
-        });
-});
 module.exports = router;

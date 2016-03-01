@@ -1,56 +1,92 @@
 <div class="row">
-    <hr>
+    <hr/>
     <div class="row" ng-if="formType === 'main'">
         <div class="col-xs-4">
-            <h3 class="text-center">Step 1: State your point</h3>
+            <h3 class="text-center">
+                Step 1: State your point
+            </h3>
         </div>
         <div class="col-xs-4">
-            <h3 class="text-center">Step 2: Support your point</h3>
+            <h3 class="text-center">
+                Step 2: Support your point
+            </h3>
         </div>
         <div class="col-xs-4">
-            <h3 class="text-center">Step 3: Tag your post</h3>
+            <h3 class="text-center">
+                Step 3: Tag your post
+            </h3>
         </div>
     </div>
     <div id="NewPoint" class="row">
         <div class="col-xs-4"  ng-if="formType === 'main'">
-            <textarea class="form-control" rows="6" style="resize: none;" maxlength="400" placeholder="Please enter your main point here. Max 400 Characters" ng-model="newDataInfo.problem"></textarea>
+            <textarea
+                class="form-control"
+                rows="6"
+                style="resize: none;"
+                maxlength="400"
+                placeholder="Please enter your main point here. Max 400 Characters"
+                ng-model="newDataInfo.problem">
+            </textarea>
         </div>
         <div ng-class="{'col-xs-4': formType === 'main', 'col-xs-8': formType === 'support'}">
-            <textarea class="form-control" rows="2" style="resize: none;" maxlength="400" placeholder="Support Your Point Here. Max 400 Characters" ng-model="newDataInfo.support.evidence"></textarea>
-            <br>
-            <textarea class="form-control" rows="2" style="resize: none;" placeholder="Please cite your information here. Only provide sources relevant to your support info." ng-model="newDataInfo.support.sources"></textarea>
+            <textarea
+                class="form-control"
+                rows="2"
+                style="resize: none;"
+                maxlength="400"
+                placeholder="Support Your Point Here. Max 400 Characters"
+                ng-model="newDataInfo.support.evidence">
+            </textarea>
+            <br/>
+            <textarea
+                class="form-control"
+                rows="2"
+                style="resize: none;"
+                ng-model="newDataInfo.support.sources"
+                placeholder="Please cite your information here. Only provide sources relevant to your support info." >
+            </textarea>
         </div>
         <div class="col-xs-4">
             <div class="row">
                 <div class="col-xs-6">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" ng-model="newDataInfo.support.tags.metaData"> Meta Data
+                            <input type="checkbox" ng-model="newDataInfo.support.tags.metaData"/>
+                            Meta Data
                         </label>
                     </div>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" ng-model="newDataInfo.support.tags.credible"> Credible Sources
+                            <input type="checkbox" ng-model="newDataInfo.support.tags.credible"/>
+                            Credible Sources
                         </label>
                     </div>
                 </div>
                 <div class="col-xs-6">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" ng-model="newDataInfo.support.tags.media"> Media Sources
+                            <input type="checkbox" ng-model="newDataInfo.support.tags.media"/>
+                            Media Sources
                         </label>
                     </div>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" ng-model="newDataInfo.support.tags.opinion"> Personal Opinion
+                            <input type="checkbox" ng-model="newDataInfo.support.tags.opinion"/>
+                            Personal Opinion
                         </label>
                     </div>
                 </div>
             </div>
-            <button class="btn btn-lg btn-success" ng-click="createPoint()" ng-if="formType === 'main' && pointType === 'pro'" >
+            <button
+                class="btn btn-lg btn-success"
+                ng-click="createPoint()"
+                ng-if="formType === 'main' && pointType === 'pro'" >
                 Add Pro
             </button>
-            <button class="btn btn-lg btn-danger" ng-click="createPoint()" ng-if="formType === 'main' && pointType === 'con'">
+            <button
+                class="btn btn-lg btn-danger"
+                ng-click="createPoint()"
+                ng-if="formType === 'main' && pointType === 'con'">
                 Add Con
             </button>
             <button class="btn btn-sm btn-success" ng-click="api.addSupport(index, pointType)" ng-if="formType === 'support'">
@@ -58,5 +94,5 @@
             </button>
         </div>
     </div>
-    <hr ng-if="formType === 'main'">
+    <hr ng-if="formType === 'main'"/>
 </div>

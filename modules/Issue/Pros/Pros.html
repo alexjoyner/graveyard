@@ -1,10 +1,32 @@
-<!-- Tab Bar: Tab to Pros/Cons -->
+<style>
+    .no-show {
+        display: none;
+    }
+    .show {
+        display: initial;
+    }
+</style>
+
+
+<!--
+    Tab Bar: Tab to Pros/Cons
+-->
 <ul class="nav nav-tabs">
-    <li role="presentation" class="active"><a ng-href="#/Issue/{{issueData._id}}/Pros">Pros</a></li>
-    <li role="presentation"><a ng-href="#/Issue/{{issueData._id}}/Cons">Cons</a></li>
+    <li role="presentation" class="active">
+        <a ng-href="#/Issue/{{issueData._id}}/Pros">
+            Pros
+        </a>
+    </li>
+    <li role="presentation">
+        <a ng-href="#/Issue/{{issueData._id}}/Cons">
+            Cons
+        </a>
+    </li>
 </ul>
-<!-- Create and Search Buttons -->
-<br>
+<!--
+    Create and Search Buttons
+-->
+<br/>
 <div class="row">
     <div class="col-xs-2">
         <button class="btn btn-md btn-success" ng-click="addPoint = !addPoint">
@@ -13,24 +35,34 @@
     </div>
     <div class="col-xs-8">
         <div class="input-group">
-            <div class="input-group-addon">Search</div>
-            <input type="text" class="form-control" id="exampleInputAmount" ng-model="searchText">
+            <div class="input-group-addon">
+                Search
+            </div>
+            <input type="text" class="form-control" id="exampleInputAmount" ng-model="searchText"/>
         </div>
     </div>
 </div>
-<!-- Add new main point -->
-<new-data-form 
-    ng-show="addPoint" 
-    api="prosApi" 
-    form-type="main" 
+<!--
+    Add new main point
+-->
+<new-data-form
+    ng-show="addPoint"
+    api="prosApi"
+    form-type="main"
     point-type="pro">
 </new-data-form>
-<!-- Display Issues -->
-<br>
+<!--
+    Display Issues
+-->
+<br/>
 <div ng-repeat="pro in pros | filter: searchText" style="position: relative;">
     <div ng-attr-id="{{ 'pro' + $index }}" class="row" style="position: relative; padding-right: 4em;">
-        <button class="btn btn-sm btn-danger" ng-click="deleteMainPoint(pro._id, 'pro')" style="position: absolute; bottom: 0; left: 0; margin: 10px; z-index: 2">
-            <i class="fa fa-close"></i>
+        <button
+            class="btn btn-sm btn-danger"
+            ng-click="deletePoint(pro._id)"
+            style="position: absolute; bottom: 0; left: 0; margin: 10px; z-index: 2">
+            <i class="fa fa-close">
+            </i>
         </button>
         <!-- Main Problem Block -->
         <div class="col-xs-6 main-point-block">
@@ -39,14 +71,14 @@
         </div>
         <div class="col-xs-6" style="padding-left: 4em;">
             <!-- Top Answer -->
-            <support-point 
-                ng-repeat="support in pro.support | orderBy:'-(ups-downs)'" 
-                ng-show="$index === 0" 
-                api="supportApi" 
-                info="support" 
-                pro="pro" 
-                index="{{$index}}" 
-                parent-index="{{$parent.$index}}" 
+            <support-point
+                ng-repeat="support in pro.support | orderBy:'-(ups-downs)'"
+                ng-show="$index === 0"
+                api="supportApi"
+                info="support"
+                pro="pro"
+                index="{{$index}}"
+                parent-index="{{$parent.$index}}"
                 point-type="pro">
             </support-point>
         </div>
@@ -56,14 +88,29 @@
         <div class="col-xs-6">
         </div>
         <!-- Main Supporting Evidence of Block -->
-    <div class="col-xs-6" style="padding-left: 4em;">
+        <div class="col-xs-6" style="padding-left: 4em;">
             <!-- Add Support form -->
-            <new-data-form ng-show="pro.addSupport" api="newDataApi" info="proTemplate" form-type="support" point-type="pro" index="{{$index}}">
+            <new-data-form
+                ng-attr-id="{{'supportForm'+$index}}"
+                class=""
+                api="newDataApi"
+                info="proTemplate"
+                form-type="support"
+                point-type="pro"
+                index="{{$index}}">
             </new-data-form>
             <!-- Show More Support -->
-            <support-point ng-repeat="support in pro.support | orderBy:'-(ups-downs)'" info="support" pro="pro" api="supportApi" ng-show="pro.showMore && $index > 0" index="{{$index}}" parent-index="{{$parent.$index}}" point-type="pro">
-            </support-point>
+            <!--
+                <support-point
+                    ng-repeat="support in pro.support | orderBy:'-(ups-downs)'"
+                    info="support"
+                    pro="pro"
+                    api="supportApi"
+                    ng-show="pro.showMore && $index >0" index="{{$index}}"
+                    parent-index="{{$parent.$index}}" point-type="pro">
+                </support-point>
+            -->
         </div>
     </div>
-    <hr>
+    <hr/>
 </div>

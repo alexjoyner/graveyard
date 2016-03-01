@@ -20,10 +20,10 @@
                 </div>
             </div>
             <div class="row" style="display:inline-block; vertical-align: middle;">
-                <button type="button" class="btn btn-xs btn-info" ng-click="issue.showMore = !issue.showMore; issue.showPreview = !issue.showPreview; api.goToTop(parentIndex);">
-                    Show <span ng-if="issue.showMore">Less</span> <span ng-if="!issue.showMore">More</span>
+                <button type="button" class="btn btn-xs btn-info" ng-click="api.toggleMoreSupport(parentIndex)">
+                    View All
                 </button>
-                <button type="button" class="btn btn-xs btn-info" ng-click="issue.addSupport = !issue.addSupport" ng-show="index == 0">
+                <button type="button" class="btn btn-xs btn-info" ng-show="index == 0" ng-click="api.toggleSupportForm(parentIndex)">
                     Add Evidence
                 </button>
             </div>
