@@ -6,11 +6,18 @@ angular.module('angular.controller.ProsCtrl', []).controller('ProsCtrl', ['$scop
             this.pros = [];
             this.issueId = id;
         }
-        ProsCtrl.prototype.getPros = function() {
+        ProsCtrl.prototype.getPros = function(showAllAfterIndx) {
             prosService.getPros(this.issueId).then(function(res) {
                 console.log('PROS: ', res.pros);
                 main.pros = res.pros;
                 init();
+                console.log('showAllAfterIndx: ', showAllAfterIndx);
+                // Wait for pros ng-repeat to reinit
+                setTimeout(function() {
+                    if (showAllAfterIndx) {
+                        $scope.prosCtrlApi.toggleMoreSupport(showAllAfterIndx);
+                    }
+                }, 100);
             });
         };
         ProsCtrl.prototype.deletePoint = function(id) {
@@ -32,6 +39,7 @@ angular.module('angular.controller.ProsCtrl', []).controller('ProsCtrl', ['$scop
         main.getPros();
 
         function init() {
+            console.log('Reinit pros');
             $scope.pros = main.pros;
         }
         $scope.deletePoint = function(id) {
@@ -52,8 +60,11 @@ angular.module('angular.controller.ProsCtrl', []).controller('ProsCtrl', ['$scop
                 other.addClass('no-show');
                 el.toggleClass('no-show');
             },
-            getPros: function() {
-                main.getPros();
+            getPros: function(showAllAfterIndx) {
+                /*
+					showAllAfterIndx : created to make sure new data is shown after new support is submitted, because the data cant be pushed because the id does not come back.
+            	*/
+                main.getPros(showAllAfterIndx);
             },
             closeNewDataForm: function() {
                 $scope.addPoint = false;
