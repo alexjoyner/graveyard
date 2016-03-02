@@ -6,11 +6,17 @@ angular.module('angular.controller.ConsCtrl', []).controller('ConsCtrl', ['$scop
             this.cons = [];
             this.issueId = id;
         }
-        ConsCtrl.prototype.getCons = function() {
+        ConsCtrl.prototype.getCons = function(showAllAfterIndx) {
             consService.getCons(this.issueId).then(function(res) {
                 console.log('Cons: ', res.cons);
                 main.cons = res.cons;
                 init();
+                // Wait for pros ng-repeat to reinit
+                setTimeout(function() {
+                    if (showAllAfterIndx) {
+                        $scope.consCtrlApi.toggleMoreSupport(showAllAfterIndx);
+                    }
+                }, 100);
             });
         };
         ConsCtrl.prototype.deletePoint = function(id) {
@@ -65,10 +71,6 @@ angular.module('angular.controller.ConsCtrl', []).controller('ConsCtrl', ['$scop
                 // call $anchorScroll()
                 $anchorScroll.yOffset = 20;
                 $anchorScroll();
-            },
-            pushNewSupportPoint: function(pointIndx, supportInfo) {
-                main.cons[pointIndx].support.push(supportInfo);
-                $scope.consCtrlApi.toggleMoreSupport(pointIndx);
             },
             removeSupport: function(pointId, supportId, conIndx, supportIndx) {
                 main.removeSupport(pointId, supportId, conIndx, supportIndx);

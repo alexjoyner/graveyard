@@ -47,7 +47,7 @@ angular.module('angular.directive.newDataForm', []).directive('newDataForm', fun
                 }
                 if (pointType === 'con') {
                     supportsService.createConSupport(supportInfo).then(function(res) {
-                        $scope.api.getCons();
+                        $scope.api.getCons($scope.index);
                     });
                 }
             };

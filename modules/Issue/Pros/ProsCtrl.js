@@ -77,10 +77,6 @@ angular.module('angular.controller.ProsCtrl', []).controller('ProsCtrl', ['$scop
                 $anchorScroll.yOffset = 20;
                 $anchorScroll();
             },
-            pushNewSupportPoint: function(pointIndx, supportInfo) {
-                main.pros[pointIndx].support.push(supportInfo);
-                $scope.prosCtrlApi.toggleMoreSupport(pointIndx);
-            },
             removeSupport: function(pointId, supportId, proIndx, supportIndx) {
                 main.removeSupport(pointId, supportId, proIndx, supportIndx);
             }

@@ -78,7 +78,7 @@
             </div>
             <!-- Top Answer -->
             <support-point
-                ng-repeat="support in pro.support | orderBy:'-(ups-downs)'"
+                ng-repeat="support in pro.support"
                 ng-show="$index === 0"
                 api="prosCtrlApi"
                 info="support"
@@ -109,7 +109,7 @@
             <!-- Show More Support -->
             <div ng-attr-id="{{'moreSupport'+ $index}}" class="no-show">
                 <support-point
-                    ng-repeat="support in pro.support | orderBy:'-(ups-downs)'"
+                    ng-repeat="support in pro.support"
                     info="support"
                     api="prosCtrlApi"
                     ng-show="$index >0"
