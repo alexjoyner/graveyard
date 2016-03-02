@@ -42,12 +42,12 @@ angular.module('angular.directive.newDataForm', []).directive('newDataForm', fun
                 };
                 if (pointType === 'pro') {
                     supportsService.createProSupport(supportInfo).then(function(res) {
-                        $scope.api.pushNewSupportPoint($scope.index, supportInfo.newSupportData);
+                        $scope.api.getPros();
                     });
                 }
                 if (pointType === 'con') {
                     supportsService.createConSupport(supportInfo).then(function(res) {
-                        $scope.api.pushNewSupportPoint($scope.index, supportInfo.newSupportData);
+                        $scope.api.getCons();
                     });
                 }
             };
