@@ -35,9 +35,32 @@ router.post('/createProSupport', function(req, res) {
         });
 });
 // post create con support point
+router.post('/createConSupport', function(req, res) {
+    var issueId = req.body.issueId,
+        pointId = req.body.pointId,
+        newSupportData = req.body.newSupportData;
+    issues
+        .findOne({
+            '_id': issueId
+        })
+        .select('cons')
+        .exec(function(err, conSet) {
+            if (err) throw err;
+            if (!conSet) {
+                res.status(500).send('no issues found').end();
+            } else {
+                var con = conSet.cons.id(pointId);
+                con.support.push(req.body.newSupportData);
+                conSet.save(function(err) {
+                    if (err) throw err;
+                    res.status(200).send(conSet).end();
+                });
+            }
+        });
+});
 
 // ###########  DELETES  ###############
-// delete support point
+// delete PRO support point
 router.delete('/removeProSupport/:issueId/:pointId/:supportId', function(req, res) {
     var issueId = req.params.issueId,
         pointId = req.params.pointId,
@@ -57,6 +80,30 @@ router.delete('/removeProSupport/:issueId/:pointId/:supportId', function(req, re
                 proSet.save(function(err) {
                     if (err) throw err;
                     res.status(200).send(proSet).end();
+                });
+            }
+        });
+});
+// delete CON support point
+router.delete('/removeConSupport/:issueId/:pointId/:supportId', function(req, res) {
+    var issueId = req.params.issueId,
+        pointId = req.params.pointId,
+        supportId = req.params.supportId;
+    issues
+        .findOne({
+            '_id': issueId
+        })
+        .select('cons')
+        .exec(function(err, conSet) {
+            if (err) throw err;
+            if (!conSet) {
+                res.status(500).send('no issues found').end();
+            } else {
+                console.log('conSet: ', conSet);
+                conSet.cons.id(pointId).support.id(supportId).remove();
+                conSet.save(function(err) {
+                    if (err) throw err;
+                    res.status(200).send(conSet).end();
                 });
             }
         });
