@@ -68,6 +68,11 @@
             </main-point>
         </div>
         <div class="col-xs-6" style="padding-left: 4em;">
+            <div ng-if="pro.support.length === 0">
+                <br>
+                <h3 class="text-center">No Support</h3>
+                <br>
+            </div>
             <!-- Top Answer -->
             <support-point
                 ng-repeat="support in pro.support | orderBy:'-(ups-downs)'"
