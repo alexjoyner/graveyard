@@ -42,10 +42,7 @@ angular.module('angular.controller.ProsCtrl', []).controller('ProsCtrl', ['$scop
             console.log('Reinit pros');
             $scope.pros = main.pros;
         }
-        $scope.deletePoint = function(id) {
-            main.deletePoint(id, $state.params.id);
-        };
-        // Support Template api
+        // Controller api
         $scope.prosCtrlApi = {
             toggleSupportForm: function(issueIndx) {
                 var el = angular.element(document.querySelector('#supportForm' + issueIndx));
@@ -62,8 +59,8 @@ angular.module('angular.controller.ProsCtrl', []).controller('ProsCtrl', ['$scop
             },
             getPros: function(showAllAfterIndx) {
                 /*
-					showAllAfterIndx : created to make sure new data is shown after new support is submitted, because the data cant be pushed because the id does not come back.
-            	*/
+					showAllAfterIndx : created to make sure new data is shown after new support is submitted, because the data cant be pushed because the id does not come back
+				*/
                 main.getPros(showAllAfterIndx);
             },
             closeNewDataForm: function() {
@@ -79,6 +76,9 @@ angular.module('angular.controller.ProsCtrl', []).controller('ProsCtrl', ['$scop
             },
             removeSupport: function(pointId, supportId, proIndx, supportIndx) {
                 main.removeSupport(pointId, supportId, proIndx, supportIndx);
+            },
+            deletePoint: function(id) {
+                main.deletePoint(id, $state.params.id);
             }
         };
     }

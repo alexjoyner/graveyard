@@ -3,16 +3,18 @@ angular.module('angular.directive.supportPoint', [])
     .directive('supportPoint', function() {
         return {
             restrict: 'E',
-            replace: true,
+            replace: false,
             scope: {
                 api: '=',
                 issue: '=',
                 info: '=',
-                parentIndex: '@',
                 pointId: '@',
+                parentIndex: '@',
                 index: '@',
                 pointType: '@'
             },
-            templateUrl: './directives/templates/supportPoint/supportPoint.html'
+            templateUrl: './directives/templates/supportPoint/supportPoint.html',
+            controller: function($scope) {
+            }
         };
     });

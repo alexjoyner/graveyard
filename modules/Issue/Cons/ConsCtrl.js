@@ -40,9 +40,6 @@ angular.module('angular.controller.ConsCtrl', []).controller('ConsCtrl', ['$scop
         function init() {
             $scope.cons = main.cons;
         }
-        $scope.deletePoint = function(id) {
-            main.deletePoint(id, $state.params.id);
-        };
         // Support Template api
         $scope.consCtrlApi = {
             toggleSupportForm: function(issueIndx) {
@@ -58,8 +55,8 @@ angular.module('angular.controller.ConsCtrl', []).controller('ConsCtrl', ['$scop
                 other.addClass('no-show');
                 el.toggleClass('no-show');
             },
-            getCons: function() {
-                main.getCons();
+            getCons: function(showAllAfterIndx) {
+                main.getCons(showAllAfterIndx);
             },
             closeNewDataForm: function() {
                 $scope.addPoint = false;
@@ -74,6 +71,9 @@ angular.module('angular.controller.ConsCtrl', []).controller('ConsCtrl', ['$scop
             },
             removeSupport: function(pointId, supportId, conIndx, supportIndx) {
                 main.removeSupport(pointId, supportId, conIndx, supportIndx);
+            },
+            deletePoint: function(id) {
+                main.deletePoint(id, $state.params.id);
             }
         };
     }

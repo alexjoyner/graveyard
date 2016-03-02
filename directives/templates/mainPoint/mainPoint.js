@@ -5,6 +5,7 @@ angular.module('angular.directive.mainPoint', [])
             restrict: 'E',
             replace: true,
             scope: {
+                api: '=',
                 info: '='
             },
             templateUrl: './directives/templates/mainPoint/mainPoint.html'

@@ -55,16 +55,9 @@
 <br/>
 <div ng-repeat="pro in pros | filter: searchText" style="position: relative;">
     <div ng-attr-id="{{ 'pro' + $index }}" class="row" style="position: relative; padding-right: 4em;">
-        <button
-            class="btn btn-sm btn-danger"
-            ng-click="deletePoint(pro._id)"
-            style="position: absolute; bottom: 0; left: 0; margin: 10px; z-index: 2">
-            <i class="fa fa-close">
-            </i>
-        </button>
         <!-- Main Problem Block -->
         <div class="col-xs-6 main-point-block">
-            <main-point info="pro">
+            <main-point api="prosCtrlApi" info="pro">
             </main-point>
         </div>
         <div class="col-xs-6" style="padding-left: 4em;">
@@ -78,13 +71,11 @@
             </div>
             <!-- Top Answer -->
             <support-point
-                ng-repeat="support in pro.support"
-                ng-show="$index === 0"
                 api="prosCtrlApi"
-                info="support"
-                pro="pro"
-                index="{{$index}}"
-                parent-index="{{$parent.$index}}"
+                info="pro.support[0]"
+                ng-if="pro.support.length > 0"
+                index="0"
+                parent-index="{{$index}}"
                 point-type="pro"
                 point-id="{{pro._id}}">
             </support-point>
@@ -112,9 +103,8 @@
                     ng-repeat="support in pro.support"
                     info="support"
                     api="prosCtrlApi"
-                    ng-show="$index >0"
-                    index="{{$index}}"
-                    parent-index="{{$parent.$index}}"
+                    ng-show="!$first"
+                    index = "{{$index}}"
                     point-type="pro"
                     point-id="{{pro._id}}">
                 </support-point>

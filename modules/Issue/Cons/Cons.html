@@ -78,13 +78,11 @@
             </div>
             <!-- Top Answer -->
             <support-point
-                ng-repeat="support in con.support | orderBy:'-(ups-downs)'"
-                ng-show="$index === 0"
                 api="consCtrlApi"
-                info="support"
-                con="con"
-                index="{{$index}}"
-                parent-index="{{$parent.$index}}"
+                info="con.support[0]"
+                ng-if="con.support.length > 0"
+                index="0"
+                parent-index="{{$index}}"
                 point-type="con"
                 point-id="{{con._id}}">
             </support-point>
