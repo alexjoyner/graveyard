@@ -1,13 +1,11 @@
 <style>
     .no-show {
-        display: none;
+    display: none;
     }
     .show {
-        display: initial;
+    display: initial;
     }
 </style>
-
-
 <!--
     Tab Bar: Tab to Pros/Cons
 -->
@@ -47,7 +45,7 @@
 -->
 <new-data-form
     ng-show="addPoint"
-    api="prosApi"
+    api="prosCtrlApi"
     form-type="main"
     point-type="pro">
 </new-data-form>
@@ -74,12 +72,13 @@
             <support-point
                 ng-repeat="support in pro.support | orderBy:'-(ups-downs)'"
                 ng-show="$index === 0"
-                api="supportApi"
+                api="prosCtrlApi"
                 info="support"
                 pro="pro"
                 index="{{$index}}"
                 parent-index="{{$parent.$index}}"
-                point-type="pro">
+                point-type="pro"
+                point-id="{{pro._id}}">
             </support-point>
         </div>
     </div>
@@ -92,24 +91,26 @@
             <!-- Add Support form -->
             <new-data-form
                 ng-attr-id="{{'supportForm'+$index}}"
-                class=""
-                api="newDataApi"
-                info="proTemplate"
+                class="no-show"
+                api="prosCtrlApi"
+                index="{{$index}}"
                 form-type="support"
                 point-type="pro"
-                index="{{$index}}">
+                point-id="{{pro._id}}">
             </new-data-form>
             <!-- Show More Support -->
-            <!--
+            <div ng-attr-id="{{'moreSupport'+ $index}}" class="no-show">
                 <support-point
                     ng-repeat="support in pro.support | orderBy:'-(ups-downs)'"
                     info="support"
-                    pro="pro"
-                    api="supportApi"
-                    ng-show="pro.showMore && $index >0" index="{{$index}}"
-                    parent-index="{{$parent.$index}}" point-type="pro">
+                    api="prosCtrlApi"
+                    ng-show="$index >0"
+                    index="{{$index}}"
+                    parent-index="{{$parent.$index}}"
+                    point-type="pro"
+                    point-id="{{pro._id}}">
                 </support-point>
-            -->
+            </div>
         </div>
     </div>
     <hr/>

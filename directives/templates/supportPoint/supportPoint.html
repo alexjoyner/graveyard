@@ -20,11 +20,14 @@
                 </div>
             </div>
             <div class="row" style="display:inline-block; vertical-align: middle;">
-                <button type="button" class="btn btn-xs btn-info" ng-click="api.toggleMoreSupport(parentIndex)">
+                <button type="button" class="btn btn-xs btn-info" ng-click="api.toggleMoreSupport(parentIndex)" ng-if="index == 0">
                     View All
                 </button>
-                <button type="button" class="btn btn-xs btn-info" ng-show="index == 0" ng-click="api.toggleSupportForm(parentIndex)">
+                <button type="button" class="btn btn-xs btn-info" ng-if="index == 0" ng-click="api.toggleSupportForm(parentIndex)">
                     Add Evidence
+                </button>
+                <button type="button" class="btn btn-xs btn-danger" ng-click="api.removeSupport(pointId, info._id, parentIndex, index)">
+                    <i class="fa fa-close"></i>
                 </button>
             </div>
         </div>

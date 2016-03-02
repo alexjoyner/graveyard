@@ -25,6 +25,7 @@ angular.module('MetaTruthDemo', [
     'angular.service.issuesService',
     'angular.service.prosService',
     'angular.service.consService',
+    'angular.service.supportsService',
     // Factories
     //---------------
     // Module Controllers

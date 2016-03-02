@@ -1,6 +1,6 @@
 'use strict';
-angular.module('angular.controller.ProsCtrl', []).controller('ProsCtrl', ['$scope', '$state', '$location', '$anchorScroll', 'prosService',
-    function($scope, $state, $location, $anchorScroll, prosService) {
+angular.module('angular.controller.ProsCtrl', []).controller('ProsCtrl', ['$scope', '$state', '$location', '$anchorScroll', 'prosService', 'supportsService',
+    function($scope, $state, $location, $anchorScroll, prosService, supportsService) {
         // ********* !!PROS!! ***********
         function ProsCtrl(id) {
             this.pros = [];
@@ -18,6 +18,14 @@ angular.module('angular.controller.ProsCtrl', []).controller('ProsCtrl', ['$scop
                 main.getPros();
             });
         };
+        ProsCtrl.prototype.removeSupport = function(pointId, supportId, proIndx, supportIndx) {
+            supportsService.removeProSupport($state.params.id, pointId, supportId).then(
+                function(res) {
+                    // Pop out the support data from the array...  We don't want to immediatly get the data because all the data will collapse & rearange which will look awkward.
+                    main.pros[proIndx].support.splice(supportIndx, 1);
+                    init();
+                });
+        };
         // Declare directive main
         // --------------------------
         var main = new ProsCtrl($state.params.id);
@@ -25,27 +33,30 @@ angular.module('angular.controller.ProsCtrl', []).controller('ProsCtrl', ['$scop
 
         function init() {
             $scope.pros = main.pros;
-            $scope.prosApi = {
-                getPros: function() {
-                    main.getPros();
-                },
-                closeNewDataForm: function() {
-                    $scope.addPoint = false;
-                }
-            };
         }
         $scope.deletePoint = function(id) {
             main.deletePoint(id, $state.params.id);
         };
         // Support Template api
-        $scope.supportApi = {
+        $scope.prosCtrlApi = {
             toggleSupportForm: function(issueIndx) {
                 var el = angular.element(document.querySelector('#supportForm' + issueIndx));
+                var other = angular.element(document.querySelector('#moreSupport' + issueIndx));
+                other.addClass('no-show');
                 el.toggleClass('no-show');
             },
             toggleMoreSupport: function(issueIndx) {
+                console.log('toggleClass: ', issueIndx);
                 var el = angular.element(document.querySelector('#moreSupport' + issueIndx));
+                var other = angular.element(document.querySelector('#supportForm' + issueIndx));
+                other.addClass('no-show');
                 el.toggleClass('no-show');
+            },
+            getPros: function() {
+                main.getPros();
+            },
+            closeNewDataForm: function() {
+                $scope.addPoint = false;
             },
             goToTop: function(indx) {
                 // set the location.hash to the id of
@@ -54,6 +65,13 @@ angular.module('angular.controller.ProsCtrl', []).controller('ProsCtrl', ['$scop
                 // call $anchorScroll()
                 $anchorScroll.yOffset = 20;
                 $anchorScroll();
+            },
+            pushNewSupportPoint: function(pointIndx, supportInfo) {
+                main.pros[pointIndx].support.push(supportInfo);
+                $scope.prosCtrlApi.toggleMoreSupport(pointIndx);
+            },
+            removeSupport: function(pointId, supportId, proIndx, supportIndx) {
+                main.removeSupport(pointId, supportId, proIndx, supportIndx);
             }
         };
     }

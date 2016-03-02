@@ -9,6 +9,7 @@ angular.module('angular.directive.supportPoint', [])
                 issue: '=',
                 info: '=',
                 parentIndex: '@',
+                pointId: '@',
                 index: '@',
                 pointType: '@'
             },

@@ -8,10 +8,11 @@ angular.module('angular.directive.newDataForm', []).directive('newDataForm', fun
             info: '=',
             index: '@',
             formType: '@',
-            pointType: '@'
+            pointType: '@',
+            pointId: '@'
         },
         templateUrl: './directives/templates/newDataForm/newDataForm.html',
-        controller: function($scope, $state, prosService, consService) {
+        controller: function($scope, $state, prosService, consService, supportsService) {
             // Main Directive constructor
             // --------------------------
             function NewDataForm() {}
@@ -28,6 +29,23 @@ angular.module('angular.directive.newDataForm', []).directive('newDataForm', fun
                 }
                 if (pointType === 'con') {
                     consService.createCon(postInfo).then(function(res) {
+                        $scope.api.getCons();
+                    });
+                }
+            };
+            NewDataForm.prototype.createSupport = function(pointId, pointType, newSupportData) {
+                var supportInfo = {
+                    issueId: $state.params.id,
+                    pointId: pointId,
+                    newSupportData: newSupportData
+                };
+                if (pointType === 'pro') {
+                    supportsService.createProSupport(supportInfo).then(function(res) {
+                        $scope.api.pushNewSupportPoint($scope.index, supportInfo.newSupportData);
+                    });
+                }
+                if (pointType === 'con') {
+                    supportsService.createConSupport(supportInfo).then(function(res) {
                         $scope.api.getCons();
                     });
                 }
@@ -55,6 +73,10 @@ angular.module('angular.directive.newDataForm', []).directive('newDataForm', fun
                 $scope.newDataInfo.support.sources = $scope.newDataInfo.support.sources.split(',');
                 main.createPoint($scope.newDataInfo, $scope.pointType);
                 init();
+            };
+            $scope.createSupport = function(pointId) {
+                $scope.newDataInfo.support.sources = $scope.newDataInfo.support.sources.split(',');
+                main.createSupport($scope.pointId, $scope.pointType, $scope.newDataInfo.support);
             };
             init();
         }

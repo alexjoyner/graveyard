@@ -27,6 +27,7 @@ angular.module('angular.service.prosService', []).service('prosService', ['$http
             });
             return defer.promise;
         };
+        
         this.deletePro = function(issueId, id) {
             var defer = $q.defer();
             $http.delete(
