@@ -7,8 +7,24 @@ angular.module('angular.directive.homeIssue', [])
             scope: {
                 api: '=',
                 issue: '=',
-				index: '@'
+                index: '@'
             },
-            templateUrl: './directives/templates/homeIssue/homeIssue.html'
+            templateUrl: './directives/templates/homeIssue/homeIssue.html',
+            controller: function($scope, votesService) {
+                $scope.voteIssue = function($event, voteType) {
+                    $event.stopPropagation();
+                    votesService.voteIssue({
+                        voteType: voteType,
+                        issueId: $scope.issue._id
+                    }).then(function(res) {
+                        if (voteType === 'upvote') {
+                            $scope.issue.ups++;
+                        }
+                        if (voteType === 'downvote') {
+                            $scope.issue.downs++;
+                        }
+                    });
+                };
+            }
         };
     });

@@ -7,14 +7,31 @@ angular.module('angular.directive.supportPoint', [])
             scope: {
                 api: '=',
                 issue: '=',
-                info: '=',
+                support: '=',
                 pointId: '@',
+                supportId: '@',
                 parentIndex: '@',
                 index: '@',
                 pointType: '@'
             },
             templateUrl: './directives/templates/supportPoint/supportPoint.html',
-            controller: function($scope) {
+            controller: function($state, $scope, votesService) {
+                $scope.voteSupport = function(voteType) {
+                    votesService.voteSupport({
+                        voteType: voteType,
+                        issueId: $state.params.id,
+                        pointType: $scope.pointType,
+                        pointId: $scope.pointId,
+                        supportId: $scope.support._id
+                    }).then(function(res) {
+                        if (voteType === 'ups') {
+                            $scope.info.ups++;
+                        }
+                        if (voteType === 'downs') {
+                            $scope.info.downs++;
+                        }
+                    });
+                };
             }
         };
     });

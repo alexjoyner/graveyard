@@ -12,27 +12,26 @@ var supportSchema = new Schema({
         media: Boolean,
         opinion: Boolean
     },
-    ups: Number,
-    downs: Number
-});
-
-var proSchema = new Schema({
-    problem: String,
-    ups: Number,
-    downs: Number,
-    tags: {
-        meta: Number,
-        credible: Number,
-        media: Number,
-        opinion: Number
+    ups: {
+        type: Number,
+        default: 0
     },
-    support: [supportSchema]
+    downs: {
+        type: Number,
+        default: 0
+    }
 });
 
-var conSchema = new Schema({
+var pointSchema = new Schema({
     problem: String,
-    ups: Number,
-    downs: Number,
+    ups: {
+        type: Number,
+        default: 0
+    },
+    downs: {
+        type: Number,
+        default: 0
+    },
     tags: {
         meta: Number,
         credible: Number,
@@ -47,8 +46,16 @@ var conSchema = new Schema({
 var issuesSchema = new Schema({
     mainQuestion: String,
     questionDetail: String,
-    pros: [conSchema],
-    cons: [proSchema]
+    ups: {
+        type: Number,
+        default: 0
+    },
+    downs: {
+        type: Number,
+        default: 0
+    },
+    pros: [pointSchema],
+    cons: [pointSchema]
 });
 
 module.exports = mongoose.model('issues', issuesSchema);

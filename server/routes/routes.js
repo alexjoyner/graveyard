@@ -3,12 +3,13 @@ module.exports = function(app) {
     //File Dependencies
     var issues = require('./issues/issues.js'),
         points = require('./points/points.js'),
-        support = require('./support/support.js');
+        support = require('./support/support.js'),
+        votes = require('./votes/votes.js');
     // Routes
     // -------------------------
     app
         .use('/issues', issues)
         .use('/points', points)
-        .use('/support', support);
+        .use('/votes', votes);
 
 };

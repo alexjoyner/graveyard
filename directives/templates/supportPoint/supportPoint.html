@@ -2,14 +2,14 @@
     <hr ng-if="index >0">
     <div class="row">
         <div class="col-xs-2">
-            <h3 class="row  text-center" ng-click="">
+            <h3 class="row  text-center" ng-click="voteSupport('ups')">
                 <i class="glyphicon glyphicon-chevron-up">
                 </i>
             </h3>
             <h3 class="row text-center">
-                {{issue.ups - issue.downs}}
+                {{support.ups - support.downs}}
             </h3>
-            <h3 class="row  text-center" ng-click="">
+            <h3 class="row  text-center" ng-click="voteSupport('downs')">
                 <i class="glyphicon glyphicon-chevron-down">
                 </i>
             </h3>
@@ -18,14 +18,14 @@
             <u>
                 Support
             </u>
-            : {{info.evidence}}
+            : {{support.evidence}}
             <div class="row">
                 <div class="col-xs-8" style="text-overflow: ellipsis; overflow: hidden;">
                     <u>
                         Sources
                     </u>
                     <ul>
-                        <li ng-repeat="source in info.sources">
+                        <li ng-repeat="source in support.sources">
                             <a ng-href="{{source}}">
                                 {{source}}
                             </a>
@@ -33,22 +33,22 @@
                     </ul>
                 </div>
                 <div class="col-xs-4">
-                    <span ng-if="info.tags.metaData" class="label label-success">
+                    <span ng-if="support.tags.metaData" class="label label-success">
                         metaData
                     </span>
-                    <span ng-if="info.tags.credible" class="label label-success">
+                    <span ng-if="support.tags.credible" class="label label-success">
                         credible
                     </span>
-                    <span ng-if="info.tags.media" class="label label-warning">
+                    <span ng-if="support.tags.media" class="label label-warning">
                         media
                     </span>
-                    <span ng-if="info.tags.opinion" class="label label-danger">
+                    <span ng-if="support.tags.opinion" class="label label-danger">
                         opinion
                     </span>
                 </div>
             </div>
             <div class="row" style="display:inline-block; vertical-align: middle;">
-                <button type="button" class="btn btn-xs btn-danger" ng-click="api.removeSupport(pointId, info._id, parentIndex, index)">
+                <button type="button" class="btn btn-xs btn-danger" ng-click="api.removeSupport(supportId, support._id, parentIndex, index)">
                     <i class="fa fa-close">
                     </i>
                 </button>

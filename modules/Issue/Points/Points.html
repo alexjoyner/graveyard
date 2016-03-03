@@ -57,7 +57,7 @@
     <div ng-attr-id="{{'point'+$index}}" class="row" style="position: relative; padding-right: 4em;">
         <!-- Main Problem Block -->
         <div class="col-xs-6 main-point-block">
-            <main-point api="pointsCtrlApi" info="point">
+            <main-point api="pointsCtrlApi" info="point" point-type="{{pointsType}}">
             </main-point>
         </div>
         <div class="col-xs-6" style="padding-left: 4em;">
@@ -72,7 +72,7 @@
             <!-- Top Answer -->
             <support-point
                 api="pointsCtrlApi"
-                info="point.support[0]"
+                support="point.support[0]"
                 ng-if="point.support.length > 0"
                 index="0"
                 parent-index="{{$index}}"
@@ -101,7 +101,7 @@
             <div ng-attr-id="{{'moreSupport'+ $index}}" class="no-show">
                 <support-point
                     ng-repeat="support in point.support"
-                    info="support"
+                    support="support"
                     api="pointsCtrlApi"
                     ng-show="!$first"
                     index = "{{$index}}"

@@ -12,7 +12,7 @@ var issues = require('../../models/issueModel.js');
 router.get('/all', function(req, res) {
     issues
         .find()
-        .select('mainQuestion')
+        .select('mainQuestion ups downs')
         .exec(function(err, allIssues) {
             if (err) throw err;
             if (!allIssues) {
@@ -78,51 +78,4 @@ router.delete('/deleteIssue/:issueId', function(req, res) {
     });
 });
 
-
-router.post('/addPro', function(req, res) {
-    var info = req.body;
-    /*
-    Info needed - {
-        issueId //  / To make sure pros correspon to issue
-        prosId  //  / Search for pros associated with issue &
-                    / create new set of pros if none exist
-    }
-    */
-    issues.findOne({
-            '_id': req.params.id
-        },
-        function(err, anIssue) {
-            if (err) throw err;
-            if (!anIssue) {
-                res.status(500).send('no issues found').end();
-            } else {
-                anIssue.pros.unshift(req.body);
-                anIssue.save(function(err) {
-                    if (err) throw err;
-                    res.status(200).send(anIssue).end();
-                });
-            }
-        });
-});
-
-router.post('/:id/addCon', function(req, res) {
-    issues.findOne({
-            '_id': req.params.id
-        },
-        function(err, anIssue) {
-            if (err) throw err;
-            if (!anIssue) {
-                res.status(500).send('no issues found').end();
-            } else {
-                anIssue.cons.unshift(req.body);
-                anIssue.save(function(err) {
-                    if (err) throw err;
-                    res.status(200).send(anIssue).end();
-                });
-            }
-        });
-});
-router.post('/addSupport', function(req, res) {
-    res.status(200).send('Got data: ', req.body).end();
-});
 module.exports = router;
