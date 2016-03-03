@@ -10,12 +10,12 @@
     Tab Bar: Tab to Pros/Cons
 -->
 <ul class="nav nav-tabs">
-    <li role="presentation" class="active">
+    <li role="presentation" ng-class="{'active': pointsType === 'pros'}">
         <a ng-href="#/Issue/{{issueData._id}}/Pros">
             Pros
         </a>
     </li>
-    <li role="presentation">
+    <li role="presentation" ng-class="{'active': pointsType === 'cons'}">
         <a ng-href="#/Issue/{{issueData._id}}/Cons">
             Cons
         </a>
@@ -27,8 +27,8 @@
 <br/>
 <div class="row">
     <div class="col-xs-2">
-        <button class="btn btn-md btn-success" ng-click="addPoint = !addPoint">
-            Add a new pro
+        <button class="btn btn-md" ng-class="{'btn-success': pointsType === 'pros', 'btn-danger': pointsType === 'cons'}" ng-click="addPoint = !addPoint">
+            Add a new <span ng-if="pointsType === 'pros'">pro</span><span ng-if="pointsType === 'cons'">con</span>
         </button>
     </div>
     <div class="col-xs-8">
@@ -43,70 +43,70 @@
 <!--
     Add new main point
 -->
-<new-data-form
+<new-point-form
     ng-show="addPoint"
-    api="prosCtrlApi"
+    api="pointsCtrlApi"
     form-type="main"
-    point-type="pro">
-</new-data-form>
+    point-type="{{pointsType}}">
+</new-point-form>
 <!--
     Display Issues
 -->
 <br/>
-<div ng-repeat="pro in pros | filter: searchText" style="position: relative;">
-    <div ng-attr-id="{{ 'pro' + $index }}" class="row" style="position: relative; padding-right: 4em;">
+<div ng-repeat="point in points | filter: searchText" style="position: relative;">
+    <div ng-attr-id="{{'point'+$index}}" class="row" style="position: relative; padding-right: 4em;">
         <!-- Main Problem Block -->
         <div class="col-xs-6 main-point-block">
-            <main-point api="prosCtrlApi" info="pro">
+            <main-point api="pointsCtrlApi" info="point">
             </main-point>
         </div>
         <div class="col-xs-6" style="padding-left: 4em;">
-            <div ng-if="pro.support.length === 0">
+            <div ng-if="point.support.length === 0">
                 <br>
                 <h3 class="text-center">No Support</h3>
                 <br>
-                <button type="button" class="btn btn-xs btn-info" ng-click="prosCtrlApi.toggleSupportForm($index)">
+                <button type="button" class="btn btn-xs btn-info" ng-click="pointsCtrlApi.toggleSupportForm($index)">
                     Add Evidence
                 </button>
             </div>
             <!-- Top Answer -->
             <support-point
-                api="prosCtrlApi"
-                info="pro.support[0]"
-                ng-if="pro.support.length > 0"
+                api="pointsCtrlApi"
+                info="point.support[0]"
+                ng-if="point.support.length > 0"
                 index="0"
                 parent-index="{{$index}}"
-                point-type="pro"
-                point-id="{{pro._id}}">
+                point-type="{{pointsType}}"
+                point-id="{{point._id}}">
             </support-point>
         </div>
     </div>
-    <div ng-attr-id="{{ 'pro' + $index }}" class="row" style="padding-right: 4em;">
+    <div ng-attr-id="{{'point'+$index}}" class="row" style="padding-right: 4em;">
         <!-- Spacer -->
         <div class="col-xs-6">
         </div>
         <!-- Main Supporting Evidence of Block -->
         <div class="col-xs-6" style="padding-left: 4em;">
             <!-- Add Support form -->
-            <new-data-form
+            <new-point-form
                 ng-attr-id="{{'supportForm'+$index}}"
                 class="no-show"
-                api="prosCtrlApi"
+                api="pointsCtrlApi"
                 index="{{$index}}"
                 form-type="support"
-                point-type="pro"
-                point-id="{{pro._id}}">
-            </new-data-form>
+                point-type="{{pointsType}}"
+                point-id="{{point._id}}">
+            </new-point-form>
             <!-- Show More Support -->
             <div ng-attr-id="{{'moreSupport'+ $index}}" class="no-show">
                 <support-point
-                    ng-repeat="support in pro.support"
+                    ng-repeat="support in point.support"
                     info="support"
-                    api="prosCtrlApi"
+                    api="pointsCtrlApi"
                     ng-show="!$first"
                     index = "{{$index}}"
-                    point-type="pro"
-                    point-id="{{pro._id}}">
+                    point-type="{{pointsType}}"
+                    point-id="{{point._id}}">
                 </support-point>
             </div>
         </div>

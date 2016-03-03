@@ -5,68 +5,37 @@ angular.module('angular.service.supportsService', [])
         '$q',
         '$rootScope',
         function($http, $q, $rootScope) {
-            this.createProSupport = function(info) {
+            this.createSupportPoint = function(info) {
                 var defer = $q.defer();
-                $http.post($rootScope.endpoint + '/support/createProSupport', info)
+                $http.post($rootScope.endpoint + '/support/createSupportPoint', info)
                     .success(function(res) {
-                        console.log('createProSupport Success: ', res);
+                        console.log('createSupportPoint Success: ', res);
                         defer.resolve(res);
                     })
                     .error(function(err) {
-                        console.log('createProSupport Error: ', err);
+                        console.log('createSupportPoint Error: ', err);
                         defer.reject(err);
                     });
                 return defer.promise;
             };
-            this.createConSupport = function(info) {
-                var defer = $q.defer();
-                $http.post($rootScope.endpoint + '/support/createConSupport', info)
-                    .success(function(res) {
-                        console.log('createConSupport Success: ', res);
-                        defer.resolve(res);
-                    })
-                    .error(function(err) {
-                        console.log('createConSupport Error: ', err);
-                        defer.reject(err);
-                    });
-                return defer.promise;
-            };
-            this.removeProSupport = function(issueId, pointId, supportId) {
+            this.removeSupportPoint = function(type, issueId, pointId, supportId) {
                 var defer = $q.defer();
                 $http.delete(
                         $rootScope.endpoint +
-                        '/support/removeProSupport/' +
+                        '/support/removeSupportPoint/' +
+                        type + '/' +
                         issueId + '/' +
                         pointId + '/' +
                         supportId)
                     .success(function(res) {
-                        console.log('removeProSupport Success: ', res);
+                        console.log('removeSupportPoint Success: ', res);
                         defer.resolve(res);
                     })
                     .error(function(err) {
-                        console.log('removeProSupport Error: ', err);
+                        console.log('removeSupportPoint Error: ', err);
                         defer.reject(err);
                     });
                 return defer.promise;
             };
-            this.removeConSupport = function(issueId, pointId, supportId) {
-                var defer = $q.defer();
-                $http.delete(
-                        $rootScope.endpoint +
-                        '/support/removeConSupport/' +
-                        issueId + '/' +
-                        pointId + '/' +
-                        supportId)
-                    .success(function(res) {
-                        console.log('removeConSupport Success: ', res);
-                        defer.resolve(res);
-                    })
-                    .error(function(err) {
-                        console.log('removeConSupport Error: ', err);
-                        defer.reject(err);
-                    });
-                return defer.promise;
-            };
-
         }
     ]);

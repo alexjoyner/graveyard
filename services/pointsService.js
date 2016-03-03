@@ -1,46 +1,52 @@
 'use strict';
-angular.module('angular.service.consService', []).service('consService', ['$http', '$q', '$rootScope',
+angular.module('angular.service.pointsService', []).service('pointsService', ['$http', '$q', '$rootScope',
     function($http, $q, $rootScope) {
-        this.getCons = function(issueId) {
+        this.getPoints = function(issueId, type) {
             var defer = $q.defer();
-            $http.get($rootScope.endpoint + '/cons/getCons/' + issueId).success(function(res) {
-                console.log('getCons Success: ', res);
+            $http.get($rootScope.endpoint + '/points/getPoints/' +
+                type +
+                '/' +
+                issueId
+            ).success(function(res) {
+                console.log('getPoints Success: ', res);
                 defer.resolve(res);
             }).error(function(err) {
-                console.log('getCons Error: ', err);
+                console.log('getPoints Error: ', err);
                 defer.reject(err);
             });
             return defer.promise;
         };
-        this.createCon = function(info) {
+        this.createPoint = function(info) {
             var defer = $q.defer();
             $http.post(
                 $rootScope.endpoint +
-                '/cons/createCon',
+                '/points/createPoint',
                 info
             ).success(function(res) {
-                console.log('createCon Success: ', res);
+                console.log('createPoint Success: ', res);
                 defer.resolve(res);
             }).error(function(err) {
-                console.log('createCon Error: ', err);
+                console.log('createPoint Error: ', err);
                 defer.reject(err);
             });
             return defer.promise;
         };
-        
-        this.deleteCon = function(issueId, id) {
+
+        this.deletePoint = function(type, issueId, id) {
             var defer = $q.defer();
             $http.delete(
                 $rootScope.endpoint +
-                '/cons/deleteCon/' +
+                '/points/deletePoint/' +
+                type +
+                '/' +
                 issueId +
                 '/' +
                 id
             ).success(function(res) {
-                console.log('deleteCon Success: ', res);
+                console.log('deletePoint Success: ', res);
                 defer.resolve(res);
             }).error(function(err) {
-                console.log('deleteCon Error: ', err);
+                console.log('deletePoint Error: ', err);
                 defer.reject(err);
             });
             return defer.promise;

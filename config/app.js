@@ -12,7 +12,7 @@ angular.module('MetaTruthDemo', [
     //---------------
     // Directives
     //---------------
-    'angular.directive.newDataForm',
+    'angular.directive.newPointForm',
     'angular.directive.supportPoint',
     'angular.directive.mainPoint',
     'angular.directive.homeIssue',
@@ -23,8 +23,7 @@ angular.module('MetaTruthDemo', [
     // Services
     //---------------
     'angular.service.issuesService',
-    'angular.service.prosService',
-    'angular.service.consService',
+    'angular.service.pointsService',
     'angular.service.supportsService',
     // Factories
     //---------------
@@ -32,6 +31,5 @@ angular.module('MetaTruthDemo', [
     //---------------
     'angular.controller.HomeCtrl',
     'angular.controller.IssueCtrl',
-    'angular.controller.ProsCtrl',
-    'angular.controller.ConsCtrl'
+    'angular.controller.PointsCtrl'
 ]);

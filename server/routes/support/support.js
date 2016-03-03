@@ -10,59 +10,52 @@ var issues = require('../../models/issueModel.js');
 // ###########  GETS  ###############
 
 // ###########  POSTS  ###############
-// post create pro support point
-router.post('/createProSupport', function(req, res) {
-    var issueId = req.body.issueId,
+// post create support point
+router.post('/createSupportPoint', function(req, res) {
+    var type = req.body.type,
+        issueId = req.body.issueId,
         pointId = req.body.pointId,
         newSupportData = req.body.newSupportData;
+    console.log('req.body: ', req.body);
     issues
         .findOne({
             '_id': issueId
         })
-        .select('pros')
-        .exec(function(err, proSet) {
+        .select(type)
+        .exec(function(err, pointSet) {
             if (err) throw err;
-            if (!proSet) {
+            if (!pointSet) {
                 res.status(500).send('no issues found').end();
             } else {
-                var pro = proSet.pros.id(pointId);
-                pro.support.push(req.body.newSupportData);
-                proSet.save(function(err) {
-                    if (err) throw err;
-                    res.status(200).send(proSet).end();
-                });
-            }
-        });
-});
-// post create con support point
-router.post('/createConSupport', function(req, res) {
-    var issueId = req.body.issueId,
-        pointId = req.body.pointId,
-        newSupportData = req.body.newSupportData;
-    issues
-        .findOne({
-            '_id': issueId
-        })
-        .select('cons')
-        .exec(function(err, conSet) {
-            if (err) throw err;
-            if (!conSet) {
-                res.status(500).send('no issues found').end();
-            } else {
-                var con = conSet.cons.id(pointId);
-                con.support.push(req.body.newSupportData);
-                conSet.save(function(err) {
-                    if (err) throw err;
-                    res.status(200).send(conSet).end();
-                });
+                var support,
+                    setFlag; // set true if you push a point
+                if (type === 'pros') {
+                    support = pointSet.pros.id(pointId);
+                    support.support.push(req.body.newSupportData);
+                    setFlag = true;
+                } else
+                if (type === 'cons') {
+                    support = pointSet.cons.id(pointId);
+                    support.support.push(req.body.newSupportData);
+                    setFlag = true;
+                } else {
+                    res.status(500).send('No type sent').end();
+                }
+                if (setFlag) {
+                    pointSet.save(function(err) {
+                        if (err) throw err;
+                        res.status(200).send(pointSet).end();
+                    });
+                }
             }
         });
 });
 
 // ###########  DELETES  ###############
 // delete PRO support point
-router.delete('/removeProSupport/:issueId/:pointId/:supportId', function(req, res) {
-    var issueId = req.params.issueId,
+router.delete('/removeSupportPoint/:type/:issueId/:pointId/:supportId', function(req, res) {
+    var type = req.params.type,
+        issueId = req.params.issueId,
         pointId = req.params.pointId,
         supportId = req.params.supportId;
     issues
@@ -80,30 +73,6 @@ router.delete('/removeProSupport/:issueId/:pointId/:supportId', function(req, re
                 proSet.save(function(err) {
                     if (err) throw err;
                     res.status(200).send(proSet).end();
-                });
-            }
-        });
-});
-// delete CON support point
-router.delete('/removeConSupport/:issueId/:pointId/:supportId', function(req, res) {
-    var issueId = req.params.issueId,
-        pointId = req.params.pointId,
-        supportId = req.params.supportId;
-    issues
-        .findOne({
-            '_id': issueId
-        })
-        .select('cons')
-        .exec(function(err, conSet) {
-            if (err) throw err;
-            if (!conSet) {
-                res.status(500).send('no issues found').end();
-            } else {
-                console.log('conSet: ', conSet);
-                conSet.cons.id(pointId).support.id(supportId).remove();
-                conSet.save(function(err) {
-                    if (err) throw err;
-                    res.status(200).send(conSet).end();
                 });
             }
         });
