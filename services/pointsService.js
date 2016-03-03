@@ -32,16 +32,16 @@ angular.module('angular.service.pointsService', []).service('pointsService', ['$
             return defer.promise;
         };
 
-        this.deletePoint = function(type, issueId, id) {
+        this.deletePoint = function(info) {
             var defer = $q.defer();
             $http.delete(
                 $rootScope.endpoint +
                 '/points/deletePoint/' +
-                type +
+                info.type +
                 '/' +
-                issueId +
+                info.issueId +
                 '/' +
-                id
+                info.pointId
             ).success(function(res) {
                 console.log('deletePoint Success: ', res);
                 defer.resolve(res);

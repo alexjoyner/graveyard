@@ -18,15 +18,15 @@ angular.module('angular.service.supportsService', [])
                     });
                 return defer.promise;
             };
-            this.removeSupportPoint = function(type, issueId, pointId, supportId) {
+            this.removeSupportPoint = function(info) {
                 var defer = $q.defer();
                 $http.delete(
                         $rootScope.endpoint +
                         '/support/removeSupportPoint/' +
-                        type + '/' +
-                        issueId + '/' +
-                        pointId + '/' +
-                        supportId)
+                        info.type + '/' +
+                        info.issueId + '/' +
+                        info.pointId + '/' +
+                        info.supportId)
                     .success(function(res) {
                         console.log('removeSupportPoint Success: ', res);
                         defer.resolve(res);

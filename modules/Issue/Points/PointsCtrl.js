@@ -21,12 +21,23 @@ angular.module('angular.controller.PointsCtrl', []).controller('PointsCtrl', ['$
             });
         };
         PointsCtrl.prototype.deletePoint = function(id) {
-            pointsService.deletePoint(this.pointsType, $state.params.id, id).then(function(res) {
+            var info = {
+                type: $scope.pointsType,
+                issueId: $state.params.id,
+                pointId: id
+            };
+            pointsService.deletePoint(info).then(function(res) {
                 main.getPoints();
             });
         };
         PointsCtrl.prototype.removeSupport = function(pointId, supportId, pointIndx, supportIndx) {
-            supportsService.removeSupportPoint($state.params.id, pointId, supportId).then(
+            var info = {
+                type: $scope.pointsType,
+                issueId: $state.params.id,
+                pointId: pointId,
+                supportId: supportId
+            };
+            supportsService.removeSupportPoint(info).then(
                 function(res) {
                     // Pop out the support data from the array...  We don't want to immediatly get the data because all the data will collapse & rearange which will look awkward.
                     main.points[pointIndx].support.splice(supportIndx, 1);

@@ -63,17 +63,28 @@ router.delete('/removeSupportPoint/:type/:issueId/:pointId/:supportId', function
             '_id': issueId
         })
         .select('pros')
-        .exec(function(err, proSet) {
+        .exec(function(err, pointSet) {
             if (err) throw err;
-            if (!proSet) {
+            if (!pointSet) {
                 res.status(500).send('no issues found').end();
             } else {
-                console.log('proSet: ', proSet);
-                proSet.pros.id(pointId).support.id(supportId).remove();
-                proSet.save(function(err) {
-                    if (err) throw err;
-                    res.status(200).send(proSet).end();
-                });
+                var setFlag; // set true if you push a point
+                if (type === 'pros') {
+                    pointSet.pros.id(pointId).support.id(supportId).remove();
+                    setFlag = true;
+                } else
+                if (type === 'cons') {
+                    pointSet.pros.id(pointId).support.id(supportId).remove();
+                    setFlag = true;
+                } else {
+                    res.status(500).send('No type sent').end();
+                }
+                if (setFlag) {
+                    pointSet.save(function(err) {
+                        if (err) throw err;
+                        res.status(200).send(pointSet).end();
+                    });
+                }
             }
         });
 });

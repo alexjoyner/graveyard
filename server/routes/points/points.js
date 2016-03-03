@@ -61,21 +61,38 @@ router.post('/createPoint', function(req, res) {
 // ###########  DELETES  ###############
 // delete point by id
 router.delete('/deletePoint/:type/:issueId/:pointId', function(req, res) {
+    var type = req.params.type,
+        issueId = req.params.issueId,
+        pointId = req.params.pointId;
     issues.findOne({
-            '_id': req.params.issueId
+            '_id': issueId
         },
         function(err, anIssue) {
             if (err) throw err;
             if (!anIssue) {
                 res.status(500).send('no issues found').end();
             } else {
-                anIssue.points.pull({
-                    '_id': req.params.pointId
-                });
-                anIssue.save(function(err) {
-                    if (err) throw err;
-                    res.status(200).send(anIssue).end();
-                });
+                var setFlag; // set true if you push a point
+                if (type === 'pros') {
+                    anIssue.pros.pull({
+                        '_id': pointId
+                    });
+                    setFlag = true;
+                } else
+                if (type === 'cons') {
+                    anIssue.cons.pull({
+                        '_id': pointId
+                    });
+                    setFlag = true;
+                } else {
+                    res.status(500).send('No type sent').end();
+                }
+                if (setFlag) {
+                    anIssue.save(function(err) {
+                        if (err) throw err;
+                        res.status(200).send('Deleted Point').end();
+                    });
+                }
             }
         });
 });
