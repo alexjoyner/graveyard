@@ -4,6 +4,8 @@ var express = require('express'),
 
 // Mongoose models
 var issues = require('../../models/issueModel.js');
+var points = require('../../models/pointModel.js');
+var supports = require('../../models/supportModel.js');
 
 // !! route = '/votes'
 
@@ -45,27 +47,30 @@ router.post('/issue', function(req, res) {
 // Post vote for point
 router.post('/point', function(req, res) {
     var voteType = req.body.voteType, // 'upvote' or 'downvote'
-        issueId = req.body.issueId,
-        pointType = req.body.pointType, // 'pros' or 'cons'
         pointId = req.body.pointId;
     // Build order
     var query = {
-        '_id': issueId
+        '_id': pointId
     };
-    query[pointType + '._id'] = pointId;
-
-    var incOrder = {
-        '$inc': {
-        }
-    };
-    incOrder.$inc[pointType+'.$.'+voteType] = 1;
-    console.log(incOrder);
-    issues
+    var incOrder;
+    if (voteType === 'upvote') {
+        incOrder = {
+            '$inc': {
+                'ups': 1
+            }
+        };
+    } else {
+        incOrder = {
+            '$inc': {
+                'downs': 1
+            }
+        };
+    }
+    points
         .findOneAndUpdate(query, incOrder)
         .select('ups downs')
         .exec(function(err, issue) {
             if (err) throw err;
-            console.log('Hello');
             if (!issue) {
                 res.status(500).send('No Issue Found');
             } else {
@@ -76,31 +81,27 @@ router.post('/point', function(req, res) {
 // Post vote for support
 router.post('/support', function(req, res) {
     var voteType = req.body.voteType, // 'upvote' or 'downvote'
-        issueId = req.body.issueId,
-        pointType = req.body.pointType, // 'pros' or 'cons'
-        pointId = req.body.pointId,
         supportId = req.body.supportId;
     // Build order
-    /*var query = {
-        '_id': issueId
+    var query = {
+        '_id': supportId
     };
-    query[pointType + '._id'] = pointId;
-
-    var incOrder = {
-        '$inc': {
-        }
-    };*/
-    console.log(req.body);
-    issues
-        .findOneAndUpdate({
-            '_id': issueId,
-            'pros._id': pointId,
-            'support._id': supportId
-        }, {
+    var incOrder;
+    if (voteType === 'ups') {
+        incOrder = {
             '$inc': {
-                'pros.$.support.$.ups': 1
+                'ups': 1
             }
-        })
+        };
+    } else {
+        incOrder = {
+            '$inc': {
+                'downs': 1
+            }
+        };
+    }
+    supports
+        .findOneAndUpdate(query, incOrder)
         .select('ups downs')
         .exec(function(err, issue) {
             if (err) throw err;

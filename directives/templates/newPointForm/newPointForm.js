@@ -36,7 +36,8 @@ angular.module('angular.directive.newPointForm', []).directive('newPointForm', f
                     newSupportData: newSupportData
                 };
                 supportsService.createSupportPoint(supportInfo).then(function(res) {
-                    $scope.api.getPoints($scope.index);
+                    $scope.api.getSupport(pointId, $scope.index);
+                    $scope.api.toggleMoreSupport($scope.index);
                 });
             };
             // Declare directive main
@@ -59,7 +60,6 @@ angular.module('angular.directive.newPointForm', []).directive('newPointForm', f
                 };
             }
             $scope.createPoint = function() {
-                $scope.newPoint.support.sources = $scope.newPoint.support.sources.split(',');
                 main.createPoint($scope.pointType, $scope.newPoint);
                 init();
             };
