@@ -3,11 +3,23 @@ var express = require('express'),
     router = express.Router();
 
 // Mongoose models
-var issues = require('../../models/issueModel.js');
+var supports = require('../../models/supportModel.js');
 
 // !! route = '/support'
 
 // ###########  GETS  ###############
+router.get('/getSupport/:pointId', function(req, res){
+	var pointId = req.params.pointId;
+
+	supports
+		.find({
+			'point_id': pointId
+		}, function(err, support){
+			if(err) throw err;
+			res.status(200).send(support);
+		});
+});
+
 
 // ###########  POSTS  ###############
 // post create support point
@@ -16,77 +28,28 @@ router.post('/createSupportPoint', function(req, res) {
         issueId = req.body.issueId,
         pointId = req.body.pointId,
         newSupportData = req.body.newSupportData;
+
     console.log('req.body: ', req.body);
-    issues
-        .findOne({
-            '_id': issueId
-        })
-        .select(type)
-        .exec(function(err, pointSet) {
-            if (err) throw err;
-            if (!pointSet) {
-                res.status(500).send('no issues found').end();
-            } else {
-                var support,
-                    setFlag; // set true if you push a point
-                if (type === 'pros') {
-                    support = pointSet.pros.id(pointId);
-                    support.support.push(req.body.newSupportData);
-                    setFlag = true;
-                } else
-                if (type === 'cons') {
-                    support = pointSet.cons.id(pointId);
-                    support.support.push(req.body.newSupportData);
-                    setFlag = true;
-                } else {
-                    res.status(500).send('No type sent').end();
-                }
-                if (setFlag) {
-                    pointSet.save(function(err) {
-                        if (err) throw err;
-                        res.status(200).send(pointSet).end();
-                    });
-                }
-            }
-        });
+
+    var support = new supports(newSupportData);
+    support.point_id = pointId;
+    support.type = type;
+    support.save(function(err){
+        if(err) throw err;
+        res.status(200).send('AYE OK').end();
+    });
 });
 
 // ###########  DELETES  ###############
 // delete PRO support point
-router.delete('/removeSupportPoint/:type/:issueId/:pointId/:supportId', function(req, res) {
-    var type = req.params.type,
-        issueId = req.params.issueId,
-        pointId = req.params.pointId,
-        supportId = req.params.supportId;
-    issues
-        .findOne({
-            '_id': issueId
-        })
-        .select('pros')
-        .exec(function(err, pointSet) {
-            if (err) throw err;
-            if (!pointSet) {
-                res.status(500).send('no issues found').end();
-            } else {
-                var setFlag; // set true if you push a point
-                if (type === 'pros') {
-                    pointSet.pros.id(pointId).support.id(supportId).remove();
-                    setFlag = true;
-                } else
-                if (type === 'cons') {
-                    pointSet.pros.id(pointId).support.id(supportId).remove();
-                    setFlag = true;
-                } else {
-                    res.status(500).send('No type sent').end();
-                }
-                if (setFlag) {
-                    pointSet.save(function(err) {
-                        if (err) throw err;
-                        res.status(200).send(pointSet).end();
-                    });
-                }
-            }
-        });
+router.delete('/removeSupportPoint/:supportId', function(req, res) {
+    var supportId = req.params.supportId;
+    supports.findOneAndRemove({
+        '_id': supportId
+    }, function(err){
+        if(err) throw err;
+        res.status(200).send('Deleted');
+    });
 });
 
 module.exports = router;

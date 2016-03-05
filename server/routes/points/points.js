@@ -3,18 +3,18 @@ var express = require('express'),
     router = express.Router();
 
 // Mongoose models
-var issues = require('../../models/issueModel.js');
+var points = require('../../models/pointModel.js');
 
 // !! route = '/points'
 
 // ###########  GETS  ###############
 // get points set by id
-router.get('/getPoints/:type/:id', function(req, res) {
-    issues
-        .findOne({
-            '_id': req.params.id
+router.get('/getPoints/:type/:issueId', function(req, res) {
+    points
+        .find({
+            'issue_id': req.params.issueId,
+            'type': req.params.type
         })
-        .select(req.params.type)
         .exec(function(err, points) {
             if (err) throw err;
             if (!points)
@@ -26,75 +26,34 @@ router.get('/getPoints/:type/:id', function(req, res) {
 // ###########  POSTS  ###############
 // post new point set
 router.post('/createPoint', function(req, res) {
-    var type = req.body.type;
-    console.log(req.body);
-    issues.findOne({
-            '_id': req.body.issueId
-        },
-        function(err, anIssue) {
-            if (err) throw err;
-            if (!anIssue) {
-                res.status(500).send('no issues found').end();
-            } else {
-                var setFlag; // set true if you push a point
-                if (type === 'pros') {
-                    anIssue.pros.push(req.body.newPoint);
-                    setFlag = true;
-                } else
-                if (type === 'cons') {
-                    anIssue.cons.push(req.body.newPoint);
-                    setFlag = true;
-                } else {
-                    res.status(500).send('No type sent').end();
-                }
-                if (setFlag) {
-                    anIssue.save(function(err) {
-                        if (err) throw err;
-                        res.status(200).send(anIssue).end();
-                    });
-                }
-            }
-        });
+    var type = req.body.type,
+        issueId = req.body.issueId,
+        newPointData = req.body.newPoint;
+
+    console.log('Create Point: ', req.body);
+
+    var point = new points(newPointData);
+    point.issue_id = issueId;
+    point.type = type;
+    point.save(function(err){
+        if(err) throw err;
+        res.status(200).send('AYE OK').end();
+    });
 });
 // post update to point
 
 // ###########  DELETES  ###############
 // delete point by id
-router.delete('/deletePoint/:type/:issueId/:pointId', function(req, res) {
+router.delete('/deletePoint/:pointId', function(req, res) {
     var type = req.params.type,
         issueId = req.params.issueId,
         pointId = req.params.pointId;
-    issues.findOne({
-            '_id': issueId
-        },
-        function(err, anIssue) {
-            if (err) throw err;
-            if (!anIssue) {
-                res.status(500).send('no issues found').end();
-            } else {
-                var setFlag; // set true if you push a point
-                if (type === 'pros') {
-                    anIssue.pros.pull({
-                        '_id': pointId
-                    });
-                    setFlag = true;
-                } else
-                if (type === 'cons') {
-                    anIssue.cons.pull({
-                        '_id': pointId
-                    });
-                    setFlag = true;
-                } else {
-                    res.status(500).send('No type sent').end();
-                }
-                if (setFlag) {
-                    anIssue.save(function(err) {
-                        if (err) throw err;
-                        res.status(200).send('Deleted Point').end();
-                    });
-                }
-            }
-        });
+    points.findOneAndRemove({
+        '_id': pointId
+    }, function(err){
+        if(err) throw err;
+        res.status(200).send('Deleted');
+    });
 });
 
 

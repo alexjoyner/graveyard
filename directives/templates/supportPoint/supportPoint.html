@@ -25,9 +25,9 @@
                         Sources
                     </u>
                     <ul>
-                        <li ng-repeat="source in support.sources">
-                            <a ng-href="{{source}}">
-                                {{source}}
+                        <li>
+                            <a ng-href="{{support.source}}">
+                                {{support.source}}
                             </a>
                         </li>
                     </ul>
@@ -48,7 +48,7 @@
                 </div>
             </div>
             <div class="row" style="display:inline-block; vertical-align: middle;">
-                <button type="button" class="btn btn-xs btn-danger" ng-click="api.removeSupport(supportId, support._id, parentIndex, index)">
+                <button type="button" class="btn btn-xs btn-danger" ng-click="api.removeSupport(support._id, parentIndex, index)">
                     <i class="fa fa-close">
                     </i>
                 </button>

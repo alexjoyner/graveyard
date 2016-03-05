@@ -48,7 +48,7 @@ angular.module('angular.directive.newPointForm', []).directive('newPointForm', f
                     problem: '',
                     support: {
                         evidence: '',
-                        sources: '', //Arrayfi this
+                        source: '', //Arrayfi this
                         tags: {
                             metaData: false,
                             credible: false,
@@ -64,7 +64,6 @@ angular.module('angular.directive.newPointForm', []).directive('newPointForm', f
                 init();
             };
             $scope.createSupport = function(pointId) {
-                $scope.newPoint.support.sources = $scope.newPoint.support.sources.split(',');
                 main.createSupport($scope.pointId, $scope.pointType, $scope.newPoint.support);
             };
             init();

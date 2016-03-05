@@ -3,14 +3,16 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-// Issue Main Schema
-// ----------------------
-var issuesSchema = new Schema({
-    mainQuestion: {
+var pointsSchema = new Schema({
+    issue_id: {
+        type: Schema.Types.ObjectId,
+        required: true
+    },
+    problem: {
         type: String,
         required: true
     },
-    questionDetail: {
+    type: {
         type: String,
         required: true
     },
@@ -21,7 +23,13 @@ var issuesSchema = new Schema({
     downs: {
         type: Number,
         default: 0
+    },
+    tags: {
+        meta: Number,
+        credible: Number,
+        media: Number,
+        opinion: Number
     }
 });
 
-module.exports = mongoose.model('issues', issuesSchema);
+module.exports = mongoose.model('points', pointsSchema);

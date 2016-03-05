@@ -10,6 +10,7 @@ module.exports = function(app) {
     app
         .use('/issues', issues)
         .use('/points', points)
-        .use('/votes', votes);
+        .use('/votes', votes)
+        .use('/support', support);
 
 };

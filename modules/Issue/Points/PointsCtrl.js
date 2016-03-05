@@ -6,18 +6,23 @@ angular.module('angular.controller.PointsCtrl', []).controller('PointsCtrl', ['$
             this.points = [];
             this.issueId = id;
             this.pointsType = pointsType;
+            this.firstRun = true;
         }
         PointsCtrl.prototype.getPoints = function(showAllAfterIndx) {
             pointsService.getPoints(this.issueId, this.pointsType).then(function(res) {
-                main.points = res.pros || res.cons;
+                main.points = res;
                 init();
-                console.log('showAllAfterIndx: ', showAllAfterIndx);
                 // Wait for points ng-repeat to reinit
                 setTimeout(function() {
                     if (showAllAfterIndx) {
                         $scope.pointsCtrlApi.toggleMoreSupport(showAllAfterIndx);
                     }
                 }, 100);
+            });
+        };
+        PointsCtrl.prototype.getSupport = function(pointId, pointIndx) {
+            supportsService.getSupports(pointId).then(function(res) {
+                main.points[pointIndx]['support'] = res;
             });
         };
         PointsCtrl.prototype.deletePoint = function(id) {
@@ -30,14 +35,8 @@ angular.module('angular.controller.PointsCtrl', []).controller('PointsCtrl', ['$
                 main.getPoints();
             });
         };
-        PointsCtrl.prototype.removeSupport = function(pointId, supportId, pointIndx, supportIndx) {
-            var info = {
-                type: $scope.pointsType,
-                issueId: $state.params.id,
-                pointId: pointId,
-                supportId: supportId
-            };
-            supportsService.removeSupportPoint(info).then(
+        PointsCtrl.prototype.removeSupport = function(supportId, pointIndx, supportIndx) {
+            supportsService.removeSupportPoint(supportId).then(
                 function(res) {
                     // Pop out the support data from the array...  We don't want to immediatly get the data because all the data will collapse & rearange which will look awkward.
                     main.points[pointIndx].support.splice(supportIndx, 1);
@@ -73,8 +72,12 @@ angular.module('angular.controller.PointsCtrl', []).controller('PointsCtrl', ['$
                 $anchorScroll.yOffset = 20;
                 $anchorScroll();
             },
-            removeSupport: function(pointId, supportId, pointIndx, supportIndx) {
-                main.removeSupport(pointId, supportId, pointIndx, supportIndx);
+            getSupport: function(pointId, pointIndx){
+                main.getSupport(pointId, pointIndx);
+            },
+            removeSupport: function( supportId, pointIndx, supportIndx) {
+                console.log('Removing: ', supportId);
+                main.removeSupport(supportId, pointIndx, supportIndx);
             },
             deletePoint: function(id) {
                 main.deletePoint(id, $state.params.id);
