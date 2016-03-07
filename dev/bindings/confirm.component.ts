@@ -19,6 +19,7 @@ import {Component, EventEmitter} from 'angular2/core';
     	<br>
     	<button [disabled]="!isValid" (click)="onConfirm()">Submit</button>
     `,
+    inputs: ['myself'],
     outputs: ['confirmed']
 })
 export class ConfirmComponent {
@@ -43,6 +44,7 @@ export class ConfirmComponent {
 	}
 
 	onConfirm() {
+		console.log(this.myself);
 		this.confirmed.emit(this.myself);
 	}
 }
