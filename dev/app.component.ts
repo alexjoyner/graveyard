@@ -11,8 +11,9 @@ import {PropertBindingComponent} from './property-binding.component';
     		<br>
     		<br>
     		<section class="child">
-    			<my-property-binding [myName]="name" [myAge]="'20'"></my-property-binding>
+    			<my-property-binding [myName]="name" [myAge]="'20'" (hobbiesChanged)="hobbies = $event"></my-property-binding>
     		</section>
+    		<p>My hobbies are: {{hobbies}}</p>
     	</section>
     `,
     directives: [PropertBindingComponent]
