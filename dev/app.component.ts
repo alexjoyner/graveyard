@@ -1,29 +1,14 @@
 import {Component} from 'angular2/core';
-import {InputComponent} from './bindings/input.component';
-import {ConfirmComponent} from './bindings/confirm.component';
+import {AttributeDirectives} from './attribute-directive.component';
+
 
 @Component({
     selector: 'my-app',
     template: `
-    	<div class="container" >
-    		<my-input (submitted)="onSubmit($event)" [myself]="confirmedMyself"></my-input>
-    	</div>
-    	<div class="container">
-    		<my-confirm [myself]="myself" (confirmed)="onConfirm($event)"></my-confirm>
-    	</div>
+    	Parent
+    	<my-attribute-directives></my-attribute-directives>
     `,
-    directives: [InputComponent, ConfirmComponent]
+    directives: [AttributeDirectives]
 })
 export class AppComponent {
-	myself = {name: '', age: ''};
-	confirmedMyself = {name: '', age: ''};
-
-	onSubmit(myself: {name: string, age: string}){
-		console.log(myself);
-		this.myself = {name: myself.name, age: myself.age};
-	}
-
-	onConfirm(myself: {name: string, age: string}){
-		this.confirmedMyself = {name: myself.name, age: myself.age};
-	}
 }

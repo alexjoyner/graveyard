@@ -1,4 +1,4 @@
-System.register(['angular2/core', './bindings/input.component', './bindings/confirm.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './attribute-directive.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,37 +10,25 @@ System.register(['angular2/core', './bindings/input.component', './bindings/conf
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, input_component_1, confirm_component_1;
+    var core_1, attribute_directive_component_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (input_component_1_1) {
-                input_component_1 = input_component_1_1;
-            },
-            function (confirm_component_1_1) {
-                confirm_component_1 = confirm_component_1_1;
+            function (attribute_directive_component_1_1) {
+                attribute_directive_component_1 = attribute_directive_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
-                    this.myself = { name: '', age: '' };
-                    this.confirmedMyself = { name: '', age: '' };
                 }
-                AppComponent.prototype.onSubmit = function (myself) {
-                    console.log(myself);
-                    this.myself = { name: myself.name, age: myself.age };
-                };
-                AppComponent.prototype.onConfirm = function (myself) {
-                    this.confirmedMyself = { name: myself.name, age: myself.age };
-                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n    \t<div class=\"container\" >\n    \t\t<my-input (submitted)=\"onSubmit($event)\" [myself]=\"confirmedMyself\"></my-input>\n    \t</div>\n    \t<div class=\"container\">\n    \t\t<my-confirm [myself]=\"myself\" (confirmed)=\"onConfirm($event)\"></my-confirm>\n    \t</div>\n    ",
-                        directives: [input_component_1.InputComponent, confirm_component_1.ConfirmComponent]
+                        template: "\n    \tParent\n    \t<my-attribute-directives></my-attribute-directives>\n    ",
+                        directives: [attribute_directive_component_1.AttributeDirectives]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
@@ -51,4 +39,4 @@ System.register(['angular2/core', './bindings/input.component', './bindings/conf
     }
 });
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7WUFnQkE7Z0JBQUE7b0JBQ0MsV0FBTSxHQUFHLEVBQUMsSUFBSSxFQUFFLEVBQUUsRUFBRSxHQUFHLEVBQUUsRUFBRSxFQUFDLENBQUM7b0JBQzdCLG9CQUFlLEdBQUcsRUFBQyxJQUFJLEVBQUUsRUFBRSxFQUFFLEdBQUcsRUFBRSxFQUFFLEVBQUMsQ0FBQztnQkFVdkMsQ0FBQztnQkFSQSwrQkFBUSxHQUFSLFVBQVMsTUFBbUM7b0JBQzNDLE9BQU8sQ0FBQyxHQUFHLENBQUMsTUFBTSxDQUFDLENBQUM7b0JBQ3BCLElBQUksQ0FBQyxNQUFNLEdBQUcsRUFBQyxJQUFJLEVBQUUsTUFBTSxDQUFDLElBQUksRUFBRSxHQUFHLEVBQUUsTUFBTSxDQUFDLEdBQUcsRUFBQyxDQUFDO2dCQUNwRCxDQUFDO2dCQUVELGdDQUFTLEdBQVQsVUFBVSxNQUFtQztvQkFDNUMsSUFBSSxDQUFDLGVBQWUsR0FBRyxFQUFDLElBQUksRUFBRSxNQUFNLENBQUMsSUFBSSxFQUFFLEdBQUcsRUFBRSxNQUFNLENBQUMsR0FBRyxFQUFDLENBQUM7Z0JBQzdELENBQUM7Z0JBdkJGO29CQUFDLGdCQUFTLENBQUM7d0JBQ1AsUUFBUSxFQUFFLFFBQVE7d0JBQ2xCLFFBQVEsRUFBRSw2UkFPVDt3QkFDRCxVQUFVLEVBQUUsQ0FBQyxnQ0FBYyxFQUFFLG9DQUFnQixDQUFDO3FCQUNqRCxDQUFDOztnQ0FBQTtnQkFhRixtQkFBQztZQUFELENBWkEsQUFZQyxJQUFBO1lBWkQsdUNBWUMsQ0FBQSIsImZpbGUiOiJhcHAuY29tcG9uZW50LmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtDb21wb25lbnR9IGZyb20gJ2FuZ3VsYXIyL2NvcmUnO1xuaW1wb3J0IHtJbnB1dENvbXBvbmVudH0gZnJvbSAnLi9iaW5kaW5ncy9pbnB1dC5jb21wb25lbnQnO1xuaW1wb3J0IHtDb25maXJtQ29tcG9uZW50fSBmcm9tICcuL2JpbmRpbmdzL2NvbmZpcm0uY29tcG9uZW50JztcblxuQENvbXBvbmVudCh7XG4gICAgc2VsZWN0b3I6ICdteS1hcHAnLFxuICAgIHRlbXBsYXRlOiBgXG4gICAgXHQ8ZGl2IGNsYXNzPVwiY29udGFpbmVyXCIgPlxuICAgIFx0XHQ8bXktaW5wdXQgKHN1Ym1pdHRlZCk9XCJvblN1Ym1pdCgkZXZlbnQpXCIgW215c2VsZl09XCJjb25maXJtZWRNeXNlbGZcIj48L215LWlucHV0PlxuICAgIFx0PC9kaXY+XG4gICAgXHQ8ZGl2IGNsYXNzPVwiY29udGFpbmVyXCI+XG4gICAgXHRcdDxteS1jb25maXJtIFtteXNlbGZdPVwibXlzZWxmXCIgKGNvbmZpcm1lZCk9XCJvbkNvbmZpcm0oJGV2ZW50KVwiPjwvbXktY29uZmlybT5cbiAgICBcdDwvZGl2PlxuICAgIGAsXG4gICAgZGlyZWN0aXZlczogW0lucHV0Q29tcG9uZW50LCBDb25maXJtQ29tcG9uZW50XVxufSlcbmV4cG9ydCBjbGFzcyBBcHBDb21wb25lbnQge1xuXHRteXNlbGYgPSB7bmFtZTogJycsIGFnZTogJyd9O1xuXHRjb25maXJtZWRNeXNlbGYgPSB7bmFtZTogJycsIGFnZTogJyd9O1xuXG5cdG9uU3VibWl0KG15c2VsZjoge25hbWU6IHN0cmluZywgYWdlOiBzdHJpbmd9KXtcblx0XHRjb25zb2xlLmxvZyhteXNlbGYpO1xuXHRcdHRoaXMubXlzZWxmID0ge25hbWU6IG15c2VsZi5uYW1lLCBhZ2U6IG15c2VsZi5hZ2V9O1xuXHR9XG5cblx0b25Db25maXJtKG15c2VsZjoge25hbWU6IHN0cmluZywgYWdlOiBzdHJpbmd9KXtcblx0XHR0aGlzLmNvbmZpcm1lZE15c2VsZiA9IHtuYW1lOiBteXNlbGYubmFtZSwgYWdlOiBteXNlbGYuYWdlfTtcblx0fVxufVxuIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7WUFZQTtnQkFBQTtnQkFDQSxDQUFDO2dCQVREO29CQUFDLGdCQUFTLENBQUM7d0JBQ1AsUUFBUSxFQUFFLFFBQVE7d0JBQ2xCLFFBQVEsRUFBRSxpRkFHVDt3QkFDRCxVQUFVLEVBQUUsQ0FBQyxtREFBbUIsQ0FBQztxQkFDcEMsQ0FBQzs7Z0NBQUE7Z0JBRUYsbUJBQUM7WUFBRCxDQURBLEFBQ0MsSUFBQTtZQURELHVDQUNDLENBQUEiLCJmaWxlIjoiYXBwLmNvbXBvbmVudC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7Q29tcG9uZW50fSBmcm9tICdhbmd1bGFyMi9jb3JlJztcbmltcG9ydCB7QXR0cmlidXRlRGlyZWN0aXZlc30gZnJvbSAnLi9hdHRyaWJ1dGUtZGlyZWN0aXZlLmNvbXBvbmVudCc7XG5cblxuQENvbXBvbmVudCh7XG4gICAgc2VsZWN0b3I6ICdteS1hcHAnLFxuICAgIHRlbXBsYXRlOiBgXG4gICAgXHRQYXJlbnRcbiAgICBcdDxteS1hdHRyaWJ1dGUtZGlyZWN0aXZlcz48L215LWF0dHJpYnV0ZS1kaXJlY3RpdmVzPlxuICAgIGAsXG4gICAgZGlyZWN0aXZlczogW0F0dHJpYnV0ZURpcmVjdGl2ZXNdXG59KVxuZXhwb3J0IGNsYXNzIEFwcENvbXBvbmVudCB7XG59XG4iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0=
