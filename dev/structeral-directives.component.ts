@@ -25,6 +25,29 @@ import {Component} from 'angular2/core';
                 </ul>
             </div>
         </section>
+        <br/>
+        <section class="directive">
+            <h2>[ngSwitch]</h2>
+            <div>
+                Enter red, blue or green
+                <br/>
+                <input type="text" #color (keyup)="0"/>
+            </div>
+            <div [ngSwitch]="color.value">
+                <template [ngSwitchWhen]="'red'">
+                    <span style="color: red"> Color is Red </span>
+                </template>
+                <template [ngSwitchWhen]="'blue'">
+                    <span style="color: blue"> Color is Blue </span>
+                </template>
+                <template [ngSwitchWhen]="'green'">
+                    <span style="color: green"> Color is Green </span>
+                </template>
+                <template ngSwitchDefault>
+                    Do not know that color
+                </template>
+            </div>
+        </section>
     `
 })
 export class  StructeralDirective{
