@@ -1,14 +1,17 @@
 import {Component} from 'angular2/core';
-import {AttributeDirectives} from './attribute-directives.component';
-
+import {ShoppingListComponent} from './shopping-list/shopping-list.component';
 
 @Component({
     selector: 'my-app',
     template: `
-    	Parent
-    	<my-attribute-directives></my-attribute-directives>
+    	<header>
+    		<div class="brand">Shopping List</div>
+    	</header>
+    	<div class="main">
+    		<shopping-list></shopping-list>
+    	</div>
     `,
-    directives: [AttributeDirectives]
+    directives: [ShoppingListComponent]
 })
 export class AppComponent {
 }
