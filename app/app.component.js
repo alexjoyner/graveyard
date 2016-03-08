@@ -1,4 +1,4 @@
-System.register(['angular2/core', './attribute-directive.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './attribute-directives.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,15 +10,15 @@ System.register(['angular2/core', './attribute-directive.component'], function(e
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, attribute_directive_component_1;
+    var core_1, attribute_directives_component_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (attribute_directive_component_1_1) {
-                attribute_directive_component_1 = attribute_directive_component_1_1;
+            function (attribute_directives_component_1_1) {
+                attribute_directives_component_1 = attribute_directives_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -28,7 +28,7 @@ System.register(['angular2/core', './attribute-directive.component'], function(e
                     core_1.Component({
                         selector: 'my-app',
                         template: "\n    \tParent\n    \t<my-attribute-directives></my-attribute-directives>\n    ",
-                        directives: [attribute_directive_component_1.AttributeDirectives]
+                        directives: [attribute_directives_component_1.AttributeDirectives]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
@@ -39,4 +39,4 @@ System.register(['angular2/core', './attribute-directive.component'], function(e
     }
 });
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7WUFZQTtnQkFBQTtnQkFDQSxDQUFDO2dCQVREO29CQUFDLGdCQUFTLENBQUM7d0JBQ1AsUUFBUSxFQUFFLFFBQVE7d0JBQ2xCLFFBQVEsRUFBRSxpRkFHVDt3QkFDRCxVQUFVLEVBQUUsQ0FBQyxtREFBbUIsQ0FBQztxQkFDcEMsQ0FBQzs7Z0NBQUE7Z0JBRUYsbUJBQUM7WUFBRCxDQURBLEFBQ0MsSUFBQTtZQURELHVDQUNDLENBQUEiLCJmaWxlIjoiYXBwLmNvbXBvbmVudC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7Q29tcG9uZW50fSBmcm9tICdhbmd1bGFyMi9jb3JlJztcbmltcG9ydCB7QXR0cmlidXRlRGlyZWN0aXZlc30gZnJvbSAnLi9hdHRyaWJ1dGUtZGlyZWN0aXZlLmNvbXBvbmVudCc7XG5cblxuQENvbXBvbmVudCh7XG4gICAgc2VsZWN0b3I6ICdteS1hcHAnLFxuICAgIHRlbXBsYXRlOiBgXG4gICAgXHRQYXJlbnRcbiAgICBcdDxteS1hdHRyaWJ1dGUtZGlyZWN0aXZlcz48L215LWF0dHJpYnV0ZS1kaXJlY3RpdmVzPlxuICAgIGAsXG4gICAgZGlyZWN0aXZlczogW0F0dHJpYnV0ZURpcmVjdGl2ZXNdXG59KVxuZXhwb3J0IGNsYXNzIEFwcENvbXBvbmVudCB7XG59XG4iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7WUFZQTtnQkFBQTtnQkFDQSxDQUFDO2dCQVREO29CQUFDLGdCQUFTLENBQUM7d0JBQ1AsUUFBUSxFQUFFLFFBQVE7d0JBQ2xCLFFBQVEsRUFBRSxpRkFHVDt3QkFDRCxVQUFVLEVBQUUsQ0FBQyxvREFBbUIsQ0FBQztxQkFDcEMsQ0FBQzs7Z0NBQUE7Z0JBRUYsbUJBQUM7WUFBRCxDQURBLEFBQ0MsSUFBQTtZQURELHVDQUNDLENBQUEiLCJmaWxlIjoiYXBwLmNvbXBvbmVudC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7Q29tcG9uZW50fSBmcm9tICdhbmd1bGFyMi9jb3JlJztcbmltcG9ydCB7QXR0cmlidXRlRGlyZWN0aXZlc30gZnJvbSAnLi9hdHRyaWJ1dGUtZGlyZWN0aXZlcy5jb21wb25lbnQnO1xuXG5cbkBDb21wb25lbnQoe1xuICAgIHNlbGVjdG9yOiAnbXktYXBwJyxcbiAgICB0ZW1wbGF0ZTogYFxuICAgIFx0UGFyZW50XG4gICAgXHQ8bXktYXR0cmlidXRlLWRpcmVjdGl2ZXM+PC9teS1hdHRyaWJ1dGUtZGlyZWN0aXZlcz5cbiAgICBgLFxuICAgIGRpcmVjdGl2ZXM6IFtBdHRyaWJ1dGVEaXJlY3RpdmVzXVxufSlcbmV4cG9ydCBjbGFzcyBBcHBDb21wb25lbnQge1xufVxuIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9

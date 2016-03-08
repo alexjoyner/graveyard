@@ -1,5 +1,6 @@
 import {Component} from 'angular2/core';
-import {HighlightDirective} from './highlight.directive'
+import {HighlightDirective} from './highlight.directive';
+import {StructeralDirective} from './structeral-directives.component';
 
 @Component({
     selector: 'my-attribute-directives',
@@ -10,8 +11,9 @@ import {HighlightDirective} from './highlight.directive'
     	<div [myHighlight]="'orange'">
     		Another highlight
     	</div>
+    	<my-structeral-directive></my-structeral-directive>
     `,
-    directives: [HighlightDirective]
+    directives: [HighlightDirective, StructeralDirective]
 })
 export class AttributeDirectives {
 	
