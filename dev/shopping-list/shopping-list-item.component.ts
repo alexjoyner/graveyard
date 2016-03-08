@@ -2,7 +2,7 @@ import {Component, EventEmitter} from 'angular2/core';
 import {ListItem} from './list-item';
 
 @Component({
-    selector: 'shopping-list-new-item',
+    selector: 'shopping-list-item',
     template: `
     	<div>
     		<label for="item-name">Name: </label>
@@ -12,16 +12,15 @@ import {ListItem} from './list-item';
     		<label for="item-amount">Amount: </label>
     		<input type="text" id="item-amount" [(ngModel)]="item.amount">
     	</div>
-    	<button (click)="onClick()">Add Item</button>
+    	<button (click)="onDelete()">Delete Item</button>
     `,
-    outputs: ['itemAdded']
+    inputs: ['item'],
+    outputs: ['removed']
 })
-export class ShoppingListNewItemComponent {
+export class  ShoppingListItemComponent{
 	item = {name: '', amount: 0};
-	itemAdded = new EventEmitter<ListItem>();
-
-	onClick() {
-		console.log('Adding: ', this.item);
-		this.itemAdded.emit(this.item);
+	removed = new EventEmitter<ListItem>();
+	onDelete(){
+		this.removed.emit(this.item);
 	}
 }
