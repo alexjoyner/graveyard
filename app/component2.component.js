@@ -1,4 +1,4 @@
-System.register(['angular2/core', './services/logging.service'], function(exports_1, context_1) {
+System.register(['angular2/core', './services/logging.service', './services/data.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './services/logging.service'], function(export
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, logging_service_1;
+    var core_1, logging_service_1, data_service_1;
     var Component2Component;
     return {
         setters:[
@@ -19,22 +19,32 @@ System.register(['angular2/core', './services/logging.service'], function(export
             },
             function (logging_service_1_1) {
                 logging_service_1 = logging_service_1_1;
+            },
+            function (data_service_1_1) {
+                data_service_1 = data_service_1_1;
             }],
         execute: function() {
             Component2Component = (function () {
-                function Component2Component(_loggingService) {
+                function Component2Component(_loggingService, _dataService) {
                     this._loggingService = _loggingService;
+                    this._dataService = _dataService;
                 }
                 Component2Component.prototype.onLog = function (message) {
                     this._loggingService.log(message);
                 };
+                Component2Component.prototype.onInsert = function (data) {
+                    this.data = this._dataService.insert(data);
+                };
+                Component2Component.prototype.onGetData = function (data) {
+                    this.data = this._dataService.getRandomString();
+                };
                 Component2Component = __decorate([
                     core_1.Component({
                         selector: 'component-2',
-                        template: "\n    \t<input type=\"text\" #message>\n    \t<button (click)=\"onLog(message.value)\">Send</button>\n    ",
-                        providers: [logging_service_1.LoggingService]
+                        template: "\n    \t<input type=\"text\" #message>\n    \t<button (click)=\"onLog(message.value)\">Send</button>\n    \t<div>\n    \t\t<h1>Data Service</h1>\n    \t\t<input type=\"text\" #newData>\n    \t\t<button (click)=\"onInsert(newData.value)\">Insert Some Data</button>\n    \t\t<button (click)=\"onGetData()\">Get Some Data</button>\n    \t\t<p>Data: {{data}}</p>\n    \t</div>\n    ",
+                        providers: [logging_service_1.LoggingService, data_service_1.DataService]
                     }), 
-                    __metadata('design:paramtypes', [logging_service_1.LoggingService])
+                    __metadata('design:paramtypes', [logging_service_1.LoggingService, data_service_1.DataService])
                 ], Component2Component);
                 return Component2Component;
             }());
@@ -43,4 +53,4 @@ System.register(['angular2/core', './services/logging.service'], function(export
     }
 });
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudDIuY29tcG9uZW50LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O1lBVUE7Z0JBQ0MsNkJBQW9CLGVBQStCO29CQUEvQixvQkFBZSxHQUFmLGVBQWUsQ0FBZ0I7Z0JBQUcsQ0FBQztnQkFDdkQsbUNBQUssR0FBTCxVQUFNLE9BQWU7b0JBQ3BCLElBQUksQ0FBQyxlQUFlLENBQUMsR0FBRyxDQUFDLE9BQU8sQ0FBQyxDQUFDO2dCQUNuQyxDQUFDO2dCQVpGO29CQUFDLGdCQUFTLENBQUM7d0JBQ1AsUUFBUSxFQUFFLGFBQWE7d0JBQ3ZCLFFBQVEsRUFBRSw0R0FHVDt3QkFDRCxTQUFTLEVBQUUsQ0FBQyxnQ0FBYyxDQUFDO3FCQUM5QixDQUFDOzt1Q0FBQTtnQkFNRiwwQkFBQztZQUFELENBTEEsQUFLQyxJQUFBO1lBTEQscURBS0MsQ0FBQSIsImZpbGUiOiJjb21wb25lbnQyLmNvbXBvbmVudC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7Q29tcG9uZW50fSBmcm9tICdhbmd1bGFyMi9jb3JlJztcbmltcG9ydCB7TG9nZ2luZ1NlcnZpY2V9IGZyb20gJy4vc2VydmljZXMvbG9nZ2luZy5zZXJ2aWNlJztcbkBDb21wb25lbnQoe1xuICAgIHNlbGVjdG9yOiAnY29tcG9uZW50LTInLFxuICAgIHRlbXBsYXRlOiBgXG4gICAgXHQ8aW5wdXQgdHlwZT1cInRleHRcIiAjbWVzc2FnZT5cbiAgICBcdDxidXR0b24gKGNsaWNrKT1cIm9uTG9nKG1lc3NhZ2UudmFsdWUpXCI+U2VuZDwvYnV0dG9uPlxuICAgIGAsXG4gICAgcHJvdmlkZXJzOiBbTG9nZ2luZ1NlcnZpY2VdXG59KVxuZXhwb3J0IGNsYXNzIENvbXBvbmVudDJDb21wb25lbnQge1xuXHRjb25zdHJ1Y3Rvcihwcml2YXRlIF9sb2dnaW5nU2VydmljZTogTG9nZ2luZ1NlcnZpY2UpIHt9XG5cdG9uTG9nKG1lc3NhZ2U6IHN0cmluZyl7XG5cdFx0dGhpcy5fbG9nZ2luZ1NlcnZpY2UubG9nKG1lc3NhZ2UpO1xuXHR9XG59Il0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudDIuY29tcG9uZW50LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O1lBa0JBO2dCQUVDLDZCQUNTLGVBQStCLEVBQy9CLFlBQXlCO29CQUR6QixvQkFBZSxHQUFmLGVBQWUsQ0FBZ0I7b0JBQy9CLGlCQUFZLEdBQVosWUFBWSxDQUFhO2dCQUMvQixDQUFDO2dCQUNKLG1DQUFLLEdBQUwsVUFBTSxPQUFlO29CQUNwQixJQUFJLENBQUMsZUFBZSxDQUFDLEdBQUcsQ0FBQyxPQUFPLENBQUMsQ0FBQztnQkFDbkMsQ0FBQztnQkFDRCxzQ0FBUSxHQUFSLFVBQVMsSUFBWTtvQkFDcEIsSUFBSSxDQUFDLElBQUksR0FBRyxJQUFJLENBQUMsWUFBWSxDQUFDLE1BQU0sQ0FBQyxJQUFJLENBQUMsQ0FBQztnQkFDNUMsQ0FBQztnQkFDRCx1Q0FBUyxHQUFULFVBQVUsSUFBWTtvQkFDckIsSUFBSSxDQUFDLElBQUksR0FBRyxJQUFJLENBQUMsWUFBWSxDQUFDLGVBQWUsRUFBRSxDQUFDO2dCQUNqRCxDQUFDO2dCQTdCRjtvQkFBQyxnQkFBUyxDQUFDO3dCQUNQLFFBQVEsRUFBRSxhQUFhO3dCQUN2QixRQUFRLEVBQUUsNFhBVVQ7d0JBQ0QsU0FBUyxFQUFFLENBQUMsZ0NBQWMsRUFBRSwwQkFBVyxDQUFDO3FCQUMzQyxDQUFDOzt1Q0FBQTtnQkFnQkYsMEJBQUM7WUFBRCxDQWZBLEFBZUMsSUFBQTtZQWZELHFEQWVDLENBQUEiLCJmaWxlIjoiY29tcG9uZW50Mi5jb21wb25lbnQuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge0NvbXBvbmVudH0gZnJvbSAnYW5ndWxhcjIvY29yZSc7XG5pbXBvcnQge0xvZ2dpbmdTZXJ2aWNlfSBmcm9tICcuL3NlcnZpY2VzL2xvZ2dpbmcuc2VydmljZSc7XG5pbXBvcnQge0RhdGFTZXJ2aWNlfSBmcm9tICcuL3NlcnZpY2VzL2RhdGEuc2VydmljZSc7XG5AQ29tcG9uZW50KHtcbiAgICBzZWxlY3RvcjogJ2NvbXBvbmVudC0yJyxcbiAgICB0ZW1wbGF0ZTogYFxuICAgIFx0PGlucHV0IHR5cGU9XCJ0ZXh0XCIgI21lc3NhZ2U+XG4gICAgXHQ8YnV0dG9uIChjbGljayk9XCJvbkxvZyhtZXNzYWdlLnZhbHVlKVwiPlNlbmQ8L2J1dHRvbj5cbiAgICBcdDxkaXY+XG4gICAgXHRcdDxoMT5EYXRhIFNlcnZpY2U8L2gxPlxuICAgIFx0XHQ8aW5wdXQgdHlwZT1cInRleHRcIiAjbmV3RGF0YT5cbiAgICBcdFx0PGJ1dHRvbiAoY2xpY2spPVwib25JbnNlcnQobmV3RGF0YS52YWx1ZSlcIj5JbnNlcnQgU29tZSBEYXRhPC9idXR0b24+XG4gICAgXHRcdDxidXR0b24gKGNsaWNrKT1cIm9uR2V0RGF0YSgpXCI+R2V0IFNvbWUgRGF0YTwvYnV0dG9uPlxuICAgIFx0XHQ8cD5EYXRhOiB7e2RhdGF9fTwvcD5cbiAgICBcdDwvZGl2PlxuICAgIGAsXG4gICAgcHJvdmlkZXJzOiBbTG9nZ2luZ1NlcnZpY2UsIERhdGFTZXJ2aWNlXVxufSlcbmV4cG9ydCBjbGFzcyBDb21wb25lbnQyQ29tcG9uZW50IHtcblx0ZGF0YTogc3RyaW5nO1xuXHRjb25zdHJ1Y3Rvcihcblx0XHRwcml2YXRlIF9sb2dnaW5nU2VydmljZTogTG9nZ2luZ1NlcnZpY2UsXG5cdFx0cHJpdmF0ZSBfZGF0YVNlcnZpY2U6IERhdGFTZXJ2aWNlXG5cdCkge31cblx0b25Mb2cobWVzc2FnZTogc3RyaW5nKXtcblx0XHR0aGlzLl9sb2dnaW5nU2VydmljZS5sb2cobWVzc2FnZSk7XG5cdH1cblx0b25JbnNlcnQoZGF0YTogc3RyaW5nKXtcblx0XHR0aGlzLmRhdGEgPSB0aGlzLl9kYXRhU2VydmljZS5pbnNlcnQoZGF0YSk7XG5cdH1cblx0b25HZXREYXRhKGRhdGE6IHN0cmluZyl7XG5cdFx0dGhpcy5kYXRhID0gdGhpcy5fZGF0YVNlcnZpY2UuZ2V0UmFuZG9tU3RyaW5nKCk7XG5cdH1cbn0iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0=
