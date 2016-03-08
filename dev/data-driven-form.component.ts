@@ -2,6 +2,7 @@ import {Component, OnInit} from 'angular2/core';
 import {FormBuilder} from 'angular2/common';
 import {Validators} from 'angular2/common';
 import {ControlGroup} from 'angular2/common';
+import {Control} from 'angular2/common';
 
 @Component({
     selector: 'my-data-driven',
@@ -10,18 +11,18 @@ import {ControlGroup} from 'angular2/common';
     	<form [ngFormModel]="myForm" (ngSubmit)="onSubmit()">
     		<div>
     			<label for="mail">Mail</label>
-    			<input [ngFormControl]="myForm.controls['email']" type="text" id="mail">
-    			<span class="validation-error">Not Valid</span>
+    			<input [ngFormControl]="myForm.controls['mail']" type="text" id="mail" #mail="ngForm">
+    			<span class="validation-error" *ngIf="!mail.valid">Not Valid</span>
     		</div>
     		<div>
     			<label for="password">Password</label>
-    			<input [ngFormControl]="myForm.controls['password']" type="text" id="password">
-    			<span class="validation-error">Not Valid</span>
+    			<input [ngFormControl]="myForm.controls['password']" type="text" id="password"#password="ngForm">
+    			<span class="validation-error" *ngIf="!password.valid">Not Valid</span>
     		</div>
     		<div>
     			<label for="confirm-password">Confirm Password</label>
-    			<input [ngFormControl]="myForm.controls['confirmPassword']" type="text" id="confirm-password">
-    			<span class="validation-error">Not Valid</span>
+    			<input [ngFormControl]="myForm.controls['confirmPassword']" type="text" id="confirm-password" #confirmPassword="ngForm">
+    			<span class="validation-error" *ngIf="!confirmPassword.valid">Not Valid</span>
     		</div>
     		<button type="submit">Submit</button>
     	</form>
@@ -35,13 +36,23 @@ export class  DataDrivenFormComponent implements OnInit{
 	user = {mail: '', password: ''};
 	constructor(private _formBuilder: FormBuilder){};
 	onSubmit(form){
-		console.log(this.myForm);
+		this.user = this.myForm.value;
 	}
 	ngOnInit():any {
 		this.myForm = this._formBuilder.group({
-			'email': ['', Validators.required],
-			'password': ['', Validators.required],
+			'mail': ['', Validators.required],
+			'password': ['', Validators.compose([
+				Validators.required,
+				hasNumbers
+			])],
 			'confirmPassword': ['', Validators.required]
 		});
+	}
+}
+
+
+function hasNumbers(control: Control): {[s: string]: boolean} {
+	if (!control.value.match('\\d+')) {
+		return {noNumbers: true};
 	}
 }
