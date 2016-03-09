@@ -1,25 +1,81 @@
 import {Component} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
-import {Component1Component} from './component1.component';
-import {Component2Component} from './component2.component';
+import {HttpService} from './http.service';
 
 @Component({
     selector: 'my-app',
     template: `
-    	<header>
-			<ul>
-				<li><a [routerLink]="['Component1', {source: 'AppComponent'}]">Component 1</a></li>
-				<li><a [routerLink]="['Component2']">Component 2</a></li>
-			</ul>
-    	</header>
-    	<router-outlet></router-outlet>
+    	<div>
+		    <div class="input">
+		        <label for="title">Title</label>
+		        <input type="text" id="title" #title>
+		        <p></p>
+		    </div>
+		    <div class="input">
+		        <label for="body">Body</label>
+		        <input type="text" id="body" #body>
+		        <p></p>
+		    </div>
+		    <div class="input">
+		        <label for="user-id">User ID</label>
+		        <input type="text" id="user-id" #userId>
+		        <p></p>
+		    </div>
+		    <button (click)="onPost(title.value, body.value, userId.value)">Post Data</button>
+		    <button (click)="onGetPosts()">Get All Posts</button>
+		    <p>Response: {{response | json}}</p>
+		</div>
     `,
-    directives: [ROUTER_DIRECTIVES]
+    providers: [HttpService]
 })
-@RouteConfig([
-	{path: '/component-1/:source', name: 'Component1', component: Component1Component},
-	{path: '/component-2', name: 'Component2', component: Component2Component},
-])
 export class AppComponent {
-
+	response: string;
+	constructor(private _httpService: HttpService) {};
+	onGetPosts() {
+		this._httpService.getPosts()
+			.subscribe(
+				response => this.response = response,
+				error => console.log(error)
+			)
+	}
+	onPost(title: string, body: string, userId: string){
+		console.log('testing')
+		this._httpService.createPost({title: title, body: body, userId: userId})
+			.subscribe(
+				response => this.response = response,
+				error => console.log(error)
+			)		
+	} 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
