@@ -43,6 +43,7 @@ router.get('/:id', function(req, res) {
 // ###########  POSTS   ###############
 // post new issue
 router.post('/newIssue', function(req, res) {
+    console.log(req.body);
     var newIssue = new issues(req.body);
     newIssue.save(function(err) {
         if (err) throw err;
@@ -58,16 +59,15 @@ router.delete('/deleteIssue/:issueId', function(req, res) {
         '_id': req.params.issueId
     }, function(err) {
         if (err) {
-            res.status(500).send('Internal error');
+            res.status(500).send('Internal error').end();;
         } else {
             points.remove({
                 'issue.id': req.params.issueId
             }, function(err) {
                 if (err) throw err;
-                res.status(200).send('Deleted Issue');
+                res.status(200).send('Deleted Issue').end();;
             });
         }
-        res.end();
     });
 });
 

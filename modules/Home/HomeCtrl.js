@@ -25,8 +25,7 @@ angular.module('angular.controller.HomeCtrl', [])
             }
             init();
             $scope.questionTemplate = {
-                mainQuestion: '',
-                questionDetail: ''
+                mainQuestion: ''
             };
             $scope.issueApi = {
                 deleteIssue: function(id, $event) {

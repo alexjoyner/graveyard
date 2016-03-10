@@ -11,8 +11,7 @@ var issuesSchema = new Schema({
         required: true
     },
     questionDetail: {
-        type: String,
-        required: true
+        type: String
     },
     ups: {
         type: Number,
