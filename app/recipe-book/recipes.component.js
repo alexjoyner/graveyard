@@ -24,7 +24,15 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 RecipesComponent = __decorate([
                     core_1.Component({
                         selector: 'my-recipes',
-                        template: "\n\t\t<div class=\"master list\">\n\t\t\tRecipe Master\n\t\t</div>\n\t\t<div class=\"detail\">\n\t\t\tRecipe Detail\n\t\t</div>\n\t"
+                        // template: `
+                        // 	<div class="master list">
+                        // 		Recipe Master
+                        // 	</div>
+                        // 	<div class="detail">
+                        // 		Recipe Detail
+                        // 	</div>
+                        // `
+                        templateUrl: 'dev/recipe-book/recipe.template.html'
                     }), 
                     __metadata('design:paramtypes', [])
                 ], RecipesComponent);
@@ -35,4 +43,4 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     }
 });
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlY2lwZS1ib29rL3JlY2lwZXMuY29tcG9uZW50LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O1lBWUE7Z0JBQUE7Z0JBRUEsQ0FBQztnQkFiRDtvQkFBQyxnQkFBUyxDQUFDO3dCQUNWLFFBQVEsRUFBRSxZQUFZO3dCQUN0QixRQUFRLEVBQUUscUlBT1Q7cUJBQ0QsQ0FBQzs7b0NBQUE7Z0JBR0YsdUJBQUM7WUFBRCxDQUZBLEFBRUMsSUFBQTtZQUZELCtDQUVDLENBQUEiLCJmaWxlIjoicmVjaXBlLWJvb2svcmVjaXBlcy5jb21wb25lbnQuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge0NvbXBvbmVudH0gZnJvbSAnYW5ndWxhcjIvY29yZSc7XG5AQ29tcG9uZW50KHtcblx0c2VsZWN0b3I6ICdteS1yZWNpcGVzJyxcblx0dGVtcGxhdGU6IGBcblx0XHQ8ZGl2IGNsYXNzPVwibWFzdGVyIGxpc3RcIj5cblx0XHRcdFJlY2lwZSBNYXN0ZXJcblx0XHQ8L2Rpdj5cblx0XHQ8ZGl2IGNsYXNzPVwiZGV0YWlsXCI+XG5cdFx0XHRSZWNpcGUgRGV0YWlsXG5cdFx0PC9kaXY+XG5cdGBcbn0pXG5leHBvcnQgY2xhc3MgUmVjaXBlc0NvbXBvbmVudCB7XG5cbn0iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlY2lwZS1ib29rL3JlY2lwZXMuY29tcG9uZW50LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O1lBYUE7Z0JBQUE7Z0JBRUEsQ0FBQztnQkFkRDtvQkFBQyxnQkFBUyxDQUFDO3dCQUNWLFFBQVEsRUFBRSxZQUFZO3dCQUN0QixjQUFjO3dCQUNkLDZCQUE2Qjt3QkFDN0Isa0JBQWtCO3dCQUNsQixVQUFVO3dCQUNWLHdCQUF3Qjt3QkFDeEIsa0JBQWtCO3dCQUNsQixVQUFVO3dCQUNWLElBQUk7d0JBQ0osV0FBVyxFQUFFLHNDQUFzQztxQkFDbkQsQ0FBQzs7b0NBQUE7Z0JBR0YsdUJBQUM7WUFBRCxDQUZBLEFBRUMsSUFBQTtZQUZELCtDQUVDLENBQUEiLCJmaWxlIjoicmVjaXBlLWJvb2svcmVjaXBlcy5jb21wb25lbnQuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge0NvbXBvbmVudH0gZnJvbSAnYW5ndWxhcjIvY29yZSc7XG5AQ29tcG9uZW50KHtcblx0c2VsZWN0b3I6ICdteS1yZWNpcGVzJyxcblx0Ly8gdGVtcGxhdGU6IGBcblx0Ly8gXHQ8ZGl2IGNsYXNzPVwibWFzdGVyIGxpc3RcIj5cblx0Ly8gXHRcdFJlY2lwZSBNYXN0ZXJcblx0Ly8gXHQ8L2Rpdj5cblx0Ly8gXHQ8ZGl2IGNsYXNzPVwiZGV0YWlsXCI+XG5cdC8vIFx0XHRSZWNpcGUgRGV0YWlsXG5cdC8vIFx0PC9kaXY+XG5cdC8vIGBcblx0dGVtcGxhdGVVcmw6ICdkZXYvcmVjaXBlLWJvb2svcmVjaXBlLnRlbXBsYXRlLmh0bWwnXG59KVxuZXhwb3J0IGNsYXNzIFJlY2lwZXNDb21wb25lbnQge1xuXG59Il0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9
