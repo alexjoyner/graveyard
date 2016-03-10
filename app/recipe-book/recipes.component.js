@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', './recipe.service', './recipe-list.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,12 +10,18 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, recipe_service_1, recipe_list_component_1;
     var RecipesComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (recipe_service_1_1) {
+                recipe_service_1 = recipe_service_1_1;
+            },
+            function (recipe_list_component_1_1) {
+                recipe_list_component_1 = recipe_list_component_1_1;
             }],
         execute: function() {
             RecipesComponent = (function () {
@@ -32,7 +38,9 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         // 		Recipe Detail
                         // 	</div>
                         // `
-                        templateUrl: 'dev/recipe-book/recipe.template.html'
+                        templateUrl: 'dev/recipe-book/recipe.template.html',
+                        providers: [recipe_service_1.RecipeService],
+                        directives: [recipe_list_component_1.RecipeListComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], RecipesComponent);
@@ -43,4 +51,4 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     }
 });
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlY2lwZS1ib29rL3JlY2lwZXMuY29tcG9uZW50LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O1lBYUE7Z0JBQUE7Z0JBRUEsQ0FBQztnQkFkRDtvQkFBQyxnQkFBUyxDQUFDO3dCQUNWLFFBQVEsRUFBRSxZQUFZO3dCQUN0QixjQUFjO3dCQUNkLDZCQUE2Qjt3QkFDN0Isa0JBQWtCO3dCQUNsQixVQUFVO3dCQUNWLHdCQUF3Qjt3QkFDeEIsa0JBQWtCO3dCQUNsQixVQUFVO3dCQUNWLElBQUk7d0JBQ0osV0FBVyxFQUFFLHNDQUFzQztxQkFDbkQsQ0FBQzs7b0NBQUE7Z0JBR0YsdUJBQUM7WUFBRCxDQUZBLEFBRUMsSUFBQTtZQUZELCtDQUVDLENBQUEiLCJmaWxlIjoicmVjaXBlLWJvb2svcmVjaXBlcy5jb21wb25lbnQuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge0NvbXBvbmVudH0gZnJvbSAnYW5ndWxhcjIvY29yZSc7XG5AQ29tcG9uZW50KHtcblx0c2VsZWN0b3I6ICdteS1yZWNpcGVzJyxcblx0Ly8gdGVtcGxhdGU6IGBcblx0Ly8gXHQ8ZGl2IGNsYXNzPVwibWFzdGVyIGxpc3RcIj5cblx0Ly8gXHRcdFJlY2lwZSBNYXN0ZXJcblx0Ly8gXHQ8L2Rpdj5cblx0Ly8gXHQ8ZGl2IGNsYXNzPVwiZGV0YWlsXCI+XG5cdC8vIFx0XHRSZWNpcGUgRGV0YWlsXG5cdC8vIFx0PC9kaXY+XG5cdC8vIGBcblx0dGVtcGxhdGVVcmw6ICdkZXYvcmVjaXBlLWJvb2svcmVjaXBlLnRlbXBsYXRlLmh0bWwnXG59KVxuZXhwb3J0IGNsYXNzIFJlY2lwZXNDb21wb25lbnQge1xuXG59Il0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlY2lwZS1ib29rL3JlY2lwZXMuY29tcG9uZW50LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O1lBaUJBO2dCQUFBO2dCQUVBLENBQUM7Z0JBaEJEO29CQUFDLGdCQUFTLENBQUM7d0JBQ1YsUUFBUSxFQUFFLFlBQVk7d0JBQ3RCLGNBQWM7d0JBQ2QsNkJBQTZCO3dCQUM3QixrQkFBa0I7d0JBQ2xCLFVBQVU7d0JBQ1Ysd0JBQXdCO3dCQUN4QixrQkFBa0I7d0JBQ2xCLFVBQVU7d0JBQ1YsSUFBSTt3QkFDSixXQUFXLEVBQUUsc0NBQXNDO3dCQUNuRCxTQUFTLEVBQUUsQ0FBQyw4QkFBYSxDQUFDO3dCQUMxQixVQUFVLEVBQUUsQ0FBQywyQ0FBbUIsQ0FBQztxQkFDakMsQ0FBQzs7b0NBQUE7Z0JBR0YsdUJBQUM7WUFBRCxDQUZBLEFBRUMsSUFBQTtZQUZELCtDQUVDLENBQUEiLCJmaWxlIjoicmVjaXBlLWJvb2svcmVjaXBlcy5jb21wb25lbnQuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge0NvbXBvbmVudH0gZnJvbSAnYW5ndWxhcjIvY29yZSc7XG5pbXBvcnQge1JlY2lwZVNlcnZpY2V9IGZyb20gJy4vcmVjaXBlLnNlcnZpY2UnO1xuaW1wb3J0IHtSZWNpcGVMaXN0Q29tcG9uZW50fSBmcm9tICcuL3JlY2lwZS1saXN0LmNvbXBvbmVudCc7XG5AQ29tcG9uZW50KHtcblx0c2VsZWN0b3I6ICdteS1yZWNpcGVzJyxcblx0Ly8gdGVtcGxhdGU6IGBcblx0Ly8gXHQ8ZGl2IGNsYXNzPVwibWFzdGVyIGxpc3RcIj5cblx0Ly8gXHRcdFJlY2lwZSBNYXN0ZXJcblx0Ly8gXHQ8L2Rpdj5cblx0Ly8gXHQ8ZGl2IGNsYXNzPVwiZGV0YWlsXCI+XG5cdC8vIFx0XHRSZWNpcGUgRGV0YWlsXG5cdC8vIFx0PC9kaXY+XG5cdC8vIGBcblx0dGVtcGxhdGVVcmw6ICdkZXYvcmVjaXBlLWJvb2svcmVjaXBlLnRlbXBsYXRlLmh0bWwnLFxuXHRwcm92aWRlcnM6IFtSZWNpcGVTZXJ2aWNlXSxcblx0ZGlyZWN0aXZlczogW1JlY2lwZUxpc3RDb21wb25lbnRdXG59KVxuZXhwb3J0IGNsYXNzIFJlY2lwZXNDb21wb25lbnQge1xuXG59Il0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9
