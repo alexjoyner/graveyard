@@ -1,10 +1,10 @@
 <div>
     <!-- Main Header -->
     <h2 class="text-center">
-        {{siteHeader}}
+        SITE HEADER
     </h2>
     <h5 class="text-center">
-        {{quickInstructions}}
+        QUICK INSTRUCTION
     </h5>
     <!-- Tab Bar: Tab to issue list type -->
     <ul class="nav nav-tabs">
@@ -33,5 +33,5 @@
     <new-issue-form ng-show="startQuestion" api="newQuestionApi" info="questionTemplate">
     </new-issue-form>
     <!-- List out the isses of selected type -->
-    <ro-home-issue></ro-home-issue>
+    <ro-home-issue-list></ro-home-issue-list>
 </div>

@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
-import {HomeContainerComponent} from './home/home-container.component';
-import {NavbarComponent} from './navbar/navbar.component';
+import {HomeContainerComponent} from './components/home/home-container.component';
+import {NavbarComponent} from './components/navbar/navbar.component';
 
 @Component({
     selector: 'my-app',

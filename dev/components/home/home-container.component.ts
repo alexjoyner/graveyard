@@ -1,10 +1,10 @@
 import {Component} from 'angular2/core';
-import {HomeIssueComponent} from './home-issue.component';
+import {HomeIssueListComponent} from './home-issue-list.component';
 
 @Component({
     selector: 'ro-home-container',
     templateUrl: 'templates/home/home-container.tpl.html',
-    directives: [HomeIssueComponent]
+    directives: [HomeIssueListComponent]
 })
 export class HomeContainerComponent{
 	siteHeader: string
