@@ -16,4 +16,10 @@ export class  HomeIssueListComponent implements OnInit{
 	ngOnInit():any {
 		this.issues = this._issuesService.getAllIssues();
 	}
+	deleteIssue(issue: Issue){
+		this._issuesService.deleteIssue(issue);
+	}
+	voteIssue(issue: Issue, type: string){
+		this._issuesService.voteIssue(issue, type);
+	}
 }
