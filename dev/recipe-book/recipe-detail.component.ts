@@ -1,15 +1,22 @@
 import {Component, OnInit} from 'angular2/core';
 import {Recipe} from '../shared/recipe';
+import {RouteParams} from 'angular2/router';
+import {RecipeService} from './recipe.service';
 @Component({
     templateUrl: 'dev/recipe-book/recipe-detail.template.html'
 })
-export class RecipeDetailCopmonent implements OnInit{
+export class RecipeDetailComponent implements OnInit{
 	recipe: Recipe;
+	private _recipeIndex: string;
 
-	onAddToShoppingList(){
+	constructor(
+		private _routeParams: RouteParams,
+		private _recipeService: RecipeService) {}
 
-	}
 	ngOnInit():any {
-		return null;
+		let itemIndex = this._routeParams.get('recipeIndex');
+		this._recipeIndex = itemIndex;
+		this.recipe = this._recipeService.getRecipe(
+			itemIndex !== null ? +itemIndex : null) || null;
 	}
 }

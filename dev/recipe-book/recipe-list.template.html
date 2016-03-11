@@ -1,6 +1,6 @@
 <button class="btn" (click)="onAddRecipe()">Add Recipe</button>
 <ul>
-	<li *ngFor="#item of recipes">
+	<li *ngFor="#item of recipes" (click)="onSelect(item)">
 		<div class="img">
 			<img [src]="item.imageUrl" alt="Recipe">
 		</div>
