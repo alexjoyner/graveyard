@@ -1,0 +1,37 @@
+<div>
+    <!-- Main Header -->
+    <h2 class="text-center">
+        {{siteHeader}}
+    </h2>
+    <h5 class="text-center">
+        {{quickInstructions}}
+    </h5>
+    <!-- Tab Bar: Tab to issue list type -->
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active">
+            <a href="#/Home/All">
+                All
+            </a>
+        </li>
+    </ul>
+    <!-- Create and Search Buttons -->
+    <br>
+    <div class="row">
+        <div class="col-md-2 text-center">
+            <button class="btn btn-md btn-success" ng-click="startQuestion = !startQuestion">
+                Start New Question
+            </button>
+        </div>
+        <div class="col-md-10">
+            <div class="input-group">
+                <div class="input-group-addon">Search</div>
+                <input type="text" class="form-control" id="exampleInputAmount" ng-model="searchText">
+            </div>
+        </div>
+    </div>
+    <br>
+    <new-issue-form ng-show="startQuestion" api="newQuestionApi" info="questionTemplate">
+    </new-issue-form>
+    <!-- List out the isses of selected type -->
+    <ro-home-issue></ro-home-issue>
+</div>

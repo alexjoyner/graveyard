@@ -1,0 +1,19 @@
+<div id="HomeIssue" class="row supporting-evidence">
+    <button class="btn btn-md btn-danger deleteButton" ng-click="api.deleteIssue(issue._id, $event)"><i class="fa fa-close fa-2x"></i></button>
+    <div class="col-xs-2">
+        <h3 class="row  text-center" ng-click="voteIssue($event,'upvote')">
+            <i class="glyphicon glyphicon-chevron-up"></i>
+        </h3>
+        <h3 class="row text-center">
+            {{issue.ups - issue.downs}}
+        </h3>
+        <h3 class="row  text-center" ng-click="voteIssue($event,'downvote')">
+            <i class="glyphicon glyphicon-chevron-down"></i>
+        </h3>
+    </div>
+    <div class="col-xs-10">
+        <div class="row">
+            <h3 class="text-center">{{issue.mainQuestion}}</h3>
+        </div>
+    </div>
+</div>
