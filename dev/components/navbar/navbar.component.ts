@@ -4,6 +4,4 @@ import {Component} from 'angular2/core';
     selector: 'ro-navbar',
     templateUrl: 'templates/navbar/navbar.tpl.html'
 })
-export class NavbarComponent{
-	
-}
+export class NavbarComponent{}

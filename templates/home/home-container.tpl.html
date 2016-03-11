@@ -18,20 +18,21 @@
     <br>
     <div class="row">
         <div class="col-md-2 text-center">
-            <button class="btn btn-md btn-success" ng-click="startQuestion = !startQuestion">
+            <button class="btn btn-md btn-success" (click)="startQuestion = !startQuestion">
                 Start New Question
             </button>
         </div>
         <div class="col-md-10">
             <div class="input-group">
                 <div class="input-group-addon">Search</div>
-                <input type="text" class="form-control" id="exampleInputAmount" ng-model="searchText">
+                <input type="text" class="form-control" id="exampleInputAmount" [(ngModel)]="searchText">
             </div>
         </div>
     </div>
     <br>
-    <new-issue-form ng-show="startQuestion" api="newQuestionApi" info="questionTemplate">
-    </new-issue-form>
+    <ro-new-issue-form *ngIf="startQuestion" api="newQuestionApi" info="questionTemplate">
+    </ro-new-issue-form>
     <!-- List out the isses of selected type -->
-    <ro-home-issue-list></ro-home-issue-list>
+    <h1>{{searchText}}</h1>
+    <ro-home-issue-list [searchText]="searchText"></ro-home-issue-list>
 </div>
