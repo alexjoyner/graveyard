@@ -4,7 +4,7 @@ import {ShoppingListService} from '../shared/shopping-list.service';
 import {Ingredient} from '../shared/ingredient';
 
 @Component({ // NO SELECTOR BECAUSE IT IS A ROUTE
-    templateUrl: 'dev/shopping-list/shopping-list.template.html',
+    templateUrl: 'templates/shopping-list/shopping-list.tpl.html',
     directives: [ShoppingListEditComponent],
     providers: [ShoppingListService]
 })

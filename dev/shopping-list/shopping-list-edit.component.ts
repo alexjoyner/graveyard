@@ -3,7 +3,7 @@ import {Ingredient} from '../shared/ingredient';
 import {ShoppingListService} from '../shared/shopping-list.service';
 @Component({
     selector: 'my-shopping-list-edit',
-    templateUrl: 'dev/shopping-list/shopping-list-edit.template.html',
+    templateUrl: 'templates/shopping-list/shopping-list-edit.tpl.html',
     inputs: ['ingredient'],
     styleUrls: ['src/css/shopping-list.css']
 })
