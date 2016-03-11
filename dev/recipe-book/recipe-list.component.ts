@@ -5,7 +5,7 @@ import {Router} from 'angular2/router';
 
 @Component({
     selector: 'my-recipe-list',
-    templateUrl: 'dev/recipe-book/recipe-list.template.html'
+    templateUrl: 'templates/recipe-book/recipe-list.tpl.html'
 })
 export class RecipeListComponent implements OnInit {
 	recipes: Recipe[];

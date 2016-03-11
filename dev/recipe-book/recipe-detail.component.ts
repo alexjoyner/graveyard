@@ -3,7 +3,7 @@ import {Recipe} from '../shared/recipe';
 import {RouteParams} from 'angular2/router';
 import {RecipeService} from './recipe.service';
 @Component({
-    templateUrl: 'dev/recipe-book/recipe-detail.template.html'
+    templateUrl: 'templates/recipe-book/recipe-detail.tpl.html'
 })
 export class RecipeDetailComponent implements OnInit{
 	recipe: Recipe;
