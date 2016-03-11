@@ -1,4 +1,4 @@
-System.register(['angular2/core', './recipe.service', './recipe-list.component', 'angular2/router', './recipe-detail.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './recipe.service', './recipe-list.component', 'angular2/router', './recipe-detail.component', './recipe-edit.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './recipe.service', './recipe-list.component',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, recipe_service_1, recipe_list_component_1, router_1, recipe_detail_component_1;
+    var core_1, recipe_service_1, recipe_list_component_1, router_1, recipe_detail_component_1, recipe_edit_component_1;
     var RecipesComponent;
     return {
         setters:[
@@ -28,6 +28,9 @@ System.register(['angular2/core', './recipe.service', './recipe-list.component',
             },
             function (recipe_detail_component_1_1) {
                 recipe_detail_component_1 = recipe_detail_component_1_1;
+            },
+            function (recipe_edit_component_1_1) {
+                recipe_edit_component_1 = recipe_edit_component_1_1;
             }],
         execute: function() {
             RecipesComponent = (function () {
@@ -43,7 +46,7 @@ System.register(['angular2/core', './recipe.service', './recipe-list.component',
                     router_1.RouteConfig([
                         { path: '/', name: 'RecipeDetail', component: recipe_detail_component_1.RecipeDetailComponent,
                             useAsDefault: true },
-                        { path: '/:editMode', name: 'RecipeEdit', component: recipe_detail_component_1.RecipeDetailComponent }
+                        { path: '/:editMode', name: 'RecipeEdit', component: recipe_edit_component_1.RecipeEditComponent }
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], RecipesComponent);
@@ -54,4 +57,4 @@ System.register(['angular2/core', './recipe.service', './recipe-list.component',
     }
 });
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlY2lwZS1ib29rL3JlY2lwZXMuY29tcG9uZW50LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O1lBZ0JBO2dCQUFBO2dCQUVBLENBQUM7Z0JBYkQ7b0JBQUMsZ0JBQVMsQ0FBQzt3QkFDVixRQUFRLEVBQUUsWUFBWTt3QkFDdEIsV0FBVyxFQUFFLHVDQUF1Qzt3QkFDcEQsU0FBUyxFQUFFLENBQUMsOEJBQWEsQ0FBQzt3QkFDMUIsVUFBVSxFQUFFLENBQUMsMkNBQW1CLEVBQUUsMEJBQWlCLENBQUM7cUJBQ3BELENBQUM7b0JBQ0Qsb0JBQVcsQ0FBQzt3QkFDWixFQUFDLElBQUksRUFBRSxHQUFHLEVBQUUsSUFBSSxFQUFFLGNBQWMsRUFBRSxTQUFTLEVBQUUsK0NBQXFCOzRCQUNsRSxZQUFZLEVBQUUsSUFBSSxFQUFDO3dCQUNuQixFQUFDLElBQUksRUFBRSxZQUFZLEVBQUUsSUFBSSxFQUFFLFlBQVksRUFBRSxTQUFTLEVBQUUsK0NBQXFCLEVBQUM7cUJBQzFFLENBQUM7O29DQUFBO2dCQUdGLHVCQUFDO1lBQUQsQ0FGQSxBQUVDLElBQUE7WUFGRCwrQ0FFQyxDQUFBIiwiZmlsZSI6InJlY2lwZS1ib29rL3JlY2lwZXMuY29tcG9uZW50LmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtDb21wb25lbnR9IGZyb20gJ2FuZ3VsYXIyL2NvcmUnO1xuaW1wb3J0IHtSZWNpcGVTZXJ2aWNlfSBmcm9tICcuL3JlY2lwZS5zZXJ2aWNlJztcbmltcG9ydCB7UmVjaXBlTGlzdENvbXBvbmVudH0gZnJvbSAnLi9yZWNpcGUtbGlzdC5jb21wb25lbnQnO1xuaW1wb3J0IHtSb3V0ZUNvbmZpZywgUk9VVEVSX0RJUkVDVElWRVN9IGZyb20gJ2FuZ3VsYXIyL3JvdXRlcic7XG5pbXBvcnQge1JlY2lwZURldGFpbENvbXBvbmVudH0gZnJvbSAnLi9yZWNpcGUtZGV0YWlsLmNvbXBvbmVudCc7XG5AQ29tcG9uZW50KHtcblx0c2VsZWN0b3I6ICdteS1yZWNpcGVzJyxcblx0dGVtcGxhdGVVcmw6ICd0ZW1wbGF0ZXMvcmVjaXBlLWJvb2svcmVjaXBlLnRwbC5odG1sJyxcblx0cHJvdmlkZXJzOiBbUmVjaXBlU2VydmljZV0sXG5cdGRpcmVjdGl2ZXM6IFtSZWNpcGVMaXN0Q29tcG9uZW50LCBST1VURVJfRElSRUNUSVZFU11cbn0pXG5AUm91dGVDb25maWcoW1xuXHR7cGF0aDogJy8nLCBuYW1lOiAnUmVjaXBlRGV0YWlsJywgY29tcG9uZW50OiBSZWNpcGVEZXRhaWxDb21wb25lbnQsIFxuXHR1c2VBc0RlZmF1bHQ6IHRydWV9LFxuXHR7cGF0aDogJy86ZWRpdE1vZGUnLCBuYW1lOiAnUmVjaXBlRWRpdCcsIGNvbXBvbmVudDogUmVjaXBlRGV0YWlsQ29tcG9uZW50fVxuXSlcbmV4cG9ydCBjbGFzcyBSZWNpcGVzQ29tcG9uZW50IHtcblxufSJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlY2lwZS1ib29rL3JlY2lwZXMuY29tcG9uZW50LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O1lBaUJBO2dCQUFBO2dCQUVBLENBQUM7Z0JBYkQ7b0JBQUMsZ0JBQVMsQ0FBQzt3QkFDVixRQUFRLEVBQUUsWUFBWTt3QkFDdEIsV0FBVyxFQUFFLHVDQUF1Qzt3QkFDcEQsU0FBUyxFQUFFLENBQUMsOEJBQWEsQ0FBQzt3QkFDMUIsVUFBVSxFQUFFLENBQUMsMkNBQW1CLEVBQUUsMEJBQWlCLENBQUM7cUJBQ3BELENBQUM7b0JBQ0Qsb0JBQVcsQ0FBQzt3QkFDWixFQUFDLElBQUksRUFBRSxHQUFHLEVBQUUsSUFBSSxFQUFFLGNBQWMsRUFBRSxTQUFTLEVBQUUsK0NBQXFCOzRCQUNsRSxZQUFZLEVBQUUsSUFBSSxFQUFDO3dCQUNuQixFQUFDLElBQUksRUFBRSxZQUFZLEVBQUUsSUFBSSxFQUFFLFlBQVksRUFBRSxTQUFTLEVBQUUsMkNBQW1CLEVBQUM7cUJBQ3hFLENBQUM7O29DQUFBO2dCQUdGLHVCQUFDO1lBQUQsQ0FGQSxBQUVDLElBQUE7WUFGRCwrQ0FFQyxDQUFBIiwiZmlsZSI6InJlY2lwZS1ib29rL3JlY2lwZXMuY29tcG9uZW50LmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtDb21wb25lbnR9IGZyb20gJ2FuZ3VsYXIyL2NvcmUnO1xuaW1wb3J0IHtSZWNpcGVTZXJ2aWNlfSBmcm9tICcuL3JlY2lwZS5zZXJ2aWNlJztcbmltcG9ydCB7UmVjaXBlTGlzdENvbXBvbmVudH0gZnJvbSAnLi9yZWNpcGUtbGlzdC5jb21wb25lbnQnO1xuaW1wb3J0IHtSb3V0ZUNvbmZpZywgUk9VVEVSX0RJUkVDVElWRVN9IGZyb20gJ2FuZ3VsYXIyL3JvdXRlcic7XG5pbXBvcnQge1JlY2lwZURldGFpbENvbXBvbmVudH0gZnJvbSAnLi9yZWNpcGUtZGV0YWlsLmNvbXBvbmVudCc7XG5pbXBvcnQge1JlY2lwZUVkaXRDb21wb25lbnR9IGZyb20gJy4vcmVjaXBlLWVkaXQuY29tcG9uZW50JztcbkBDb21wb25lbnQoe1xuXHRzZWxlY3RvcjogJ215LXJlY2lwZXMnLFxuXHR0ZW1wbGF0ZVVybDogJ3RlbXBsYXRlcy9yZWNpcGUtYm9vay9yZWNpcGUudHBsLmh0bWwnLFxuXHRwcm92aWRlcnM6IFtSZWNpcGVTZXJ2aWNlXSxcblx0ZGlyZWN0aXZlczogW1JlY2lwZUxpc3RDb21wb25lbnQsIFJPVVRFUl9ESVJFQ1RJVkVTXVxufSlcbkBSb3V0ZUNvbmZpZyhbXG5cdHtwYXRoOiAnLycsIG5hbWU6ICdSZWNpcGVEZXRhaWwnLCBjb21wb25lbnQ6IFJlY2lwZURldGFpbENvbXBvbmVudCwgXG5cdHVzZUFzRGVmYXVsdDogdHJ1ZX0sXG5cdHtwYXRoOiAnLzplZGl0TW9kZScsIG5hbWU6ICdSZWNpcGVFZGl0JywgY29tcG9uZW50OiBSZWNpcGVFZGl0Q29tcG9uZW50fVxuXSlcbmV4cG9ydCBjbGFzcyBSZWNpcGVzQ29tcG9uZW50IHtcblxufSJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==

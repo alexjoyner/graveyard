@@ -60,12 +60,12 @@ export class RecipeEditComponent implements OnInit{
 }
 
 function hasNumbers(control: Control):{[s: string]:boolean}{
-	if (!(control.value).match('\\d+')){
+	if (!(''+control.value).match('\\d+')){
 		return { noNumbers: true };
 	}
 }
 function greaterZero(control: Control):{[s: string]: boolean} {
-	if (!control.value > 0) {
+	if (!(+control.value) > 0) {
 		return { tooSmall: true };
 	}
 }
