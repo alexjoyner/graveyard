@@ -1,0 +1,39 @@
+<div>
+    <h2 class="text-center">
+        {{issue.mainQuestion}}
+    </h2>
+    <h5 class="text-center">
+        {{issue.questionDetail}}
+    </h5>
+    <!-- Tab Bar: Tab to issue list type -->
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active">
+            <a href="#/Home/All">
+                Pros
+            </a>
+        </li>
+        <li role="presentation">
+            <a href="#/Home/All">
+                Cons
+            </a>
+        </li>
+    </ul>
+    <!-- Create and Search Buttons -->
+    <br/>
+    <div class="row">
+        <div class="col-xs-2">
+            <button class="btn btn-md" class="btn btn-success">
+                Add a new pro
+            </button>
+        </div>
+        <div class="col-xs-8">
+            <div class="input-group">
+                <div class="input-group-addon">
+                    Search
+                </div>
+                <input type="text" class="form-control" id="exampleInputAmount" [(ngModel)]="searchText"/>
+            </div>
+        </div>
+    </div>
+    <ro-points-list></ro-points-list>
+</div>

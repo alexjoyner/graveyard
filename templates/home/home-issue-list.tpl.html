@@ -1,15 +1,6 @@
-<div id="HomeIssue" class="row supporting-evidence" *ngFor="#issue of issues | roFilter:searchText">
-    <button class="btn btn-md btn-danger deleteButton" (click)="deleteIssue(issue)"><i class="fa fa-close fa-2x"></i></button>
+<div id="HomeIssue" class="row supporting-evidence" *ngFor="#issue of issues | roFilter:searchText" [routerLink]="['Issue', {id: issue._id}]">
     <div class="col-xs-2">
-        <h3 class="row  text-center" (click)="voteIssue(issue,'upvote')">
-            <i class="glyphicon glyphicon-chevron-up"></i>
-        </h3>
-        <h3 class="row text-center">
-            {{issue.ups - issue.downs}}
-        </h3>
-        <h3 class="row  text-center" (click)="voteIssue(issue,'downvote')">
-            <i class="glyphicon glyphicon-chevron-down"></i>
-        </h3>
+        <ro-vote-cell></ro-vote-cell>
     </div>
     <div class="col-xs-10">
         <div class="row">
@@ -18,4 +9,5 @@
             </h3>
         </div>
     </div>
+    <button class="btn btn-md btn-danger deleteButton" (click)="deleteIssue(issue)"><i class="fa fa-close fa-2x"></i></button>
 </div>

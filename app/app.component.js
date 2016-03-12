@@ -1,4 +1,4 @@
-System.register(['angular2/core', './components/home/home-container.component', './components/navbar/navbar.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './components/home/home-container.component', './components/issue/issue-container.component', './components/navbar/navbar.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,15 +10,21 @@ System.register(['angular2/core', './components/home/home-container.component', 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, home_container_component_1, navbar_component_1;
+    var core_1, router_1, home_container_component_1, issue_container_component_1, navbar_component_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
+            function (router_1_1) {
+                router_1 = router_1_1;
+            },
             function (home_container_component_1_1) {
                 home_container_component_1 = home_container_component_1_1;
+            },
+            function (issue_container_component_1_1) {
+                issue_container_component_1 = issue_container_component_1_1;
             },
             function (navbar_component_1_1) {
                 navbar_component_1 = navbar_component_1_1;
@@ -30,9 +36,13 @@ System.register(['angular2/core', './components/home/home-container.component', 
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n    \t<ro-navbar></ro-navbar>\n    \t<div class=\"container\">\n    \t\t<ro-home-container></ro-home-container>\n    \t</div>\n    ",
-                        directives: [home_container_component_1.HomeContainerComponent, navbar_component_1.NavbarComponent]
-                    }), 
+                        template: "\n    \t<ro-navbar></ro-navbar>\n    \t<div class=\"container\">\n    \t\t<router-outlet></router-outlet>\n    \t</div>\n    ",
+                        directives: [navbar_component_1.NavbarComponent, router_1.ROUTER_DIRECTIVES]
+                    }),
+                    router_1.RouteConfig([
+                        { path: '/Home', name: 'Home', component: home_container_component_1.HomeContainerComponent, useAsDefault: true },
+                        { path: '/Issue/:id', name: 'Issue', component: issue_container_component_1.IssueContainerComponent }
+                    ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
                 return AppComponent;
@@ -42,4 +52,4 @@ System.register(['angular2/core', './components/home/home-container.component', 
     }
 });
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7WUFjQTtnQkFBQTtnQkFFQSxDQUFDO2dCQVpEO29CQUFDLGdCQUFTLENBQUM7d0JBQ1AsUUFBUSxFQUFFLFFBQVE7d0JBQ2xCLFFBQVEsRUFBRSx1SUFLVDt3QkFDRCxVQUFVLEVBQUUsQ0FBQyxpREFBc0IsRUFBRSxrQ0FBZSxDQUFDO3FCQUN4RCxDQUFDOztnQ0FBQTtnQkFHRixtQkFBQztZQUFELENBRkEsQUFFQyxJQUFBO1lBRkQsdUNBRUMsQ0FBQSIsImZpbGUiOiJhcHAuY29tcG9uZW50LmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtDb21wb25lbnR9IGZyb20gJ2FuZ3VsYXIyL2NvcmUnO1xuaW1wb3J0IHtIb21lQ29udGFpbmVyQ29tcG9uZW50fSBmcm9tICcuL2NvbXBvbmVudHMvaG9tZS9ob21lLWNvbnRhaW5lci5jb21wb25lbnQnO1xuaW1wb3J0IHtOYXZiYXJDb21wb25lbnR9IGZyb20gJy4vY29tcG9uZW50cy9uYXZiYXIvbmF2YmFyLmNvbXBvbmVudCc7XG5cbkBDb21wb25lbnQoe1xuICAgIHNlbGVjdG9yOiAnbXktYXBwJyxcbiAgICB0ZW1wbGF0ZTogYFxuICAgIFx0PHJvLW5hdmJhcj48L3JvLW5hdmJhcj5cbiAgICBcdDxkaXYgY2xhc3M9XCJjb250YWluZXJcIj5cbiAgICBcdFx0PHJvLWhvbWUtY29udGFpbmVyPjwvcm8taG9tZS1jb250YWluZXI+XG4gICAgXHQ8L2Rpdj5cbiAgICBgLFxuICAgIGRpcmVjdGl2ZXM6IFtIb21lQ29udGFpbmVyQ29tcG9uZW50LCBOYXZiYXJDb21wb25lbnRdXG59KVxuZXhwb3J0IGNsYXNzIEFwcENvbXBvbmVudCB7XG5cbn1cbiJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7WUFvQkE7Z0JBQUE7Z0JBRUEsQ0FBQztnQkFoQkQ7b0JBQUMsZ0JBQVMsQ0FBQzt3QkFDUCxRQUFRLEVBQUUsUUFBUTt3QkFDbEIsUUFBUSxFQUFFLCtIQUtUO3dCQUNELFVBQVUsRUFBRSxDQUFDLGtDQUFlLEVBQUUsMEJBQWlCLENBQUM7cUJBQ25ELENBQUM7b0JBQ0Qsb0JBQVcsQ0FBQzt3QkFDWixFQUFFLElBQUksRUFBRSxPQUFPLEVBQUUsSUFBSSxFQUFFLE1BQU0sRUFBRSxTQUFTLEVBQUUsaURBQXNCLEVBQUUsWUFBWSxFQUFFLElBQUksRUFBRTt3QkFDdEYsRUFBRSxJQUFJLEVBQUUsWUFBWSxFQUFFLElBQUksRUFBRSxPQUFPLEVBQUUsU0FBUyxFQUFFLG1EQUF1QixFQUFDO3FCQUN4RSxDQUFDOztnQ0FBQTtnQkFHRixtQkFBQztZQUFELENBRkEsQUFFQyxJQUFBO1lBRkQsdUNBRUMsQ0FBQSIsImZpbGUiOiJhcHAuY29tcG9uZW50LmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtDb21wb25lbnR9IGZyb20gJ2FuZ3VsYXIyL2NvcmUnO1xuaW1wb3J0IHtSb3V0ZUNvbmZpZywgUk9VVEVSX0RJUkVDVElWRVN9IGZyb20gJ2FuZ3VsYXIyL3JvdXRlcic7XG5pbXBvcnQge0hvbWVDb250YWluZXJDb21wb25lbnR9IGZyb20gJy4vY29tcG9uZW50cy9ob21lL2hvbWUtY29udGFpbmVyLmNvbXBvbmVudCc7XG5pbXBvcnQge0lzc3VlQ29udGFpbmVyQ29tcG9uZW50fSBmcm9tICcuL2NvbXBvbmVudHMvaXNzdWUvaXNzdWUtY29udGFpbmVyLmNvbXBvbmVudCc7XG5pbXBvcnQge05hdmJhckNvbXBvbmVudH0gZnJvbSAnLi9jb21wb25lbnRzL25hdmJhci9uYXZiYXIuY29tcG9uZW50JztcblxuQENvbXBvbmVudCh7XG4gICAgc2VsZWN0b3I6ICdteS1hcHAnLFxuICAgIHRlbXBsYXRlOiBgXG4gICAgXHQ8cm8tbmF2YmFyPjwvcm8tbmF2YmFyPlxuICAgIFx0PGRpdiBjbGFzcz1cImNvbnRhaW5lclwiPlxuICAgIFx0XHQ8cm91dGVyLW91dGxldD48L3JvdXRlci1vdXRsZXQ+XG4gICAgXHQ8L2Rpdj5cbiAgICBgLFxuICAgIGRpcmVjdGl2ZXM6IFtOYXZiYXJDb21wb25lbnQsIFJPVVRFUl9ESVJFQ1RJVkVTXVxufSlcbkBSb3V0ZUNvbmZpZyhbXG5cdHsgcGF0aDogJy9Ib21lJywgbmFtZTogJ0hvbWUnLCBjb21wb25lbnQ6IEhvbWVDb250YWluZXJDb21wb25lbnQsIHVzZUFzRGVmYXVsdDogdHJ1ZSB9LFxuXHR7IHBhdGg6ICcvSXNzdWUvOmlkJywgbmFtZTogJ0lzc3VlJywgY29tcG9uZW50OiBJc3N1ZUNvbnRhaW5lckNvbXBvbmVudH1cbl0pXG5leHBvcnQgY2xhc3MgQXBwQ29tcG9uZW50IHtcblxufVxuIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9

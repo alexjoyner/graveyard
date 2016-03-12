@@ -8,12 +8,17 @@ export class IssuesService {
 	getAllIssues() {
 		return ISSUES;
 	}
-	getIssue(issue: Issue){
-		//real examle will use id
+	getIssue(issueId: string){
+		for (var i = ISSUES.length - 1; i >= 0; i--) {
+			if(ISSUES[i]._id === issueId){
+				return ISSUES[i];
+			}
+		}
+		console.log('No issue found');
 	}
 	/* POST */
 	insertIssue(issue: Issue){
-		ISSUES.push(issue);
+		ISSUES.unshift(issue);
 	}
 	/* DELETE */
 	deleteIssue(issue: Issue){

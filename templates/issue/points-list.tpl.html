@@ -1,0 +1,19 @@
+<div *ngFor="#point of points" class="point">
+    <div class="row">
+        <div class="col-xs-6 main-point-block text-center">
+            <ro-main-point></ro-main-point>
+        </div>
+        <div class="col-xs-6 top-support">
+            <ro-top-support *ngIf="point.support"></ro-top-support>
+            <div *ngIf="!point.support">
+                <h3 class="text-center">
+                    No Support
+                </h3>
+                <button type="button" class="btn btn-xs btn-info">
+                    Add Evidence
+                </button>
+            </div>
+        </div>
+    </div>
+    <ro-more-support *ngIf="point.support"></ro-more-support>
+</div>
