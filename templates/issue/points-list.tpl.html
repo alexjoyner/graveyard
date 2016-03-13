@@ -1,7 +1,8 @@
 <div *ngFor="#point of points" class="point">
     <div class="row">
         <div class="col-xs-6 main-point-block text-center">
-            <ro-main-point></ro-main-point>
+            <ro-main-point
+            	[point]="point"></ro-main-point>
         </div>
         <div class="col-xs-6 top-support">
             <ro-top-support *ngIf="point.support"></ro-top-support>

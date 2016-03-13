@@ -1,6 +1,9 @@
 <div id="HomeIssue" class="row supporting-evidence" *ngFor="#issue of issues | roFilter:searchText" [routerLink]="['Issue', {id: issue._id}]">
     <div class="col-xs-2">
-        <ro-vote-cell></ro-vote-cell>
+        <ro-vote-cell
+            [sourceType]="'issue'"
+            [sourceId]="issue._id"
+            [score]="issue.ups - issue.downs"></ro-vote-cell>
     </div>
     <div class="col-xs-10">
         <div class="row">

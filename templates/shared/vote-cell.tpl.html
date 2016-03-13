@@ -1,9 +1,9 @@
-<h3 class="row  text-center" (click)="voteIssue(issue,'upvote')">
+<h3 class="row  text-center" (click)="voteIssue('upvote', $event)">
     <i class="glyphicon glyphicon-chevron-up"></i>
 </h3>
 <h3 class="row text-center">
-    score
+    {{score}}
 </h3>
-<h3 class="row  text-center" (click)="voteIssue(issue,'downvote')">
+<h3 class="row  text-center" (click)="voteIssue('downvote', $event)">
     <i class="glyphicon glyphicon-chevron-down"></i>
 </h3>
