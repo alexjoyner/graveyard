@@ -9,7 +9,6 @@ import {PointsService} from '../../shared/points.service';
 })
 export class MainPointComponent {
 	@Input('point') point: Point;
-
 	constructor(
 		private _pointsService: PointsService){};
 

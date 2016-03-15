@@ -2,18 +2,19 @@ import {Component, OnInit} from 'angular2/core';
 import {RouteParams, Router} from 'angular2/router';
 import {Issue} from '../../shared/issue';
 import {IssuesService} from '../../shared/issues.service';
+import {PointsService} from '../../shared/points.service';
 import {PointsListComponent} from './points-list.component';
 import {CreatePointFormComponent} from './create-point-form.component';
-import {IssueContainerService} from './issue-container.service';
 
 @Component({// Route no selector
     templateUrl: 'templates/issue/issue-container.tpl.html',
-    providers: [IssuesService, IssueContainerService],
+    providers: [IssuesService, PointsService],
     directives: [PointsListComponent, CreatePointFormComponent]
 })
 export class IssueContainerComponent implements OnInit{
 	issue: Issue;
 	private _issueId: string;
+	searchText: string;
 	constructor(
 		private _routeParams: RouteParams,
 		private _issuesService: IssuesService){}

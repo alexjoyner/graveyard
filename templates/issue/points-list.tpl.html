@@ -1,4 +1,4 @@
-<div *ngFor="#point of points" class="point">
+<div *ngFor="#point of points | roFilter: searchText" class="point">
     <div class="row">
         <div class="col-xs-6 main-point-block text-center">
             <ro-main-point

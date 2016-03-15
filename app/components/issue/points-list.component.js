@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../../shared/points.service', './main-point.component', './top-support.component', './more-support.component', './issue-container.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../../shared/points.service', './main-point.component', './top-support.component', './more-support.component', '../../pipes/searchFilter.pipe'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', '../../shared/points.servic
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, points_service_1, main_point_component_1, top_support_component_1, more_support_component_1, issue_container_service_1;
+    var core_1, router_1, points_service_1, main_point_component_1, top_support_component_1, more_support_component_1, searchFilter_pipe_1;
     var PointsListComponent;
     return {
         setters:[
@@ -32,20 +32,18 @@ System.register(['angular2/core', 'angular2/router', '../../shared/points.servic
             function (more_support_component_1_1) {
                 more_support_component_1 = more_support_component_1_1;
             },
-            function (issue_container_service_1_1) {
-                issue_container_service_1 = issue_container_service_1_1;
+            function (searchFilter_pipe_1_1) {
+                searchFilter_pipe_1 = searchFilter_pipe_1_1;
             }],
         execute: function() {
             PointsListComponent = (function () {
-                function PointsListComponent(_pointsService, _routeParams, _IssueContainerService) {
+                function PointsListComponent(_pointsService, _routeParams) {
                     this._pointsService = _pointsService;
                     this._routeParams = _routeParams;
-                    this._IssueContainerService = _IssueContainerService;
                 }
                 PointsListComponent.prototype.ngOnInit = function () {
                     var issueId = this._routeParams.get('id');
-                    this._IssueContainerService.points = this._pointsService.getPoints(issueId);
-                    this.points = this._IssueContainerService.points;
+                    this.points = this._pointsService.getPoints(issueId);
                 };
                 PointsListComponent.prototype.onRemoved = function () {
                     this.ngOnInit();
@@ -55,10 +53,11 @@ System.register(['angular2/core', 'angular2/router', '../../shared/points.servic
                         selector: 'ro-points-list',
                         templateUrl: 'templates/issue/points-list.tpl.html',
                         styleUrls: ['src/css/points-list.css'],
-                        providers: [points_service_1.PointsService],
-                        directives: [main_point_component_1.MainPointComponent, top_support_component_1.TopSupportComponent, more_support_component_1.MoreSupportComponent]
+                        directives: [main_point_component_1.MainPointComponent, top_support_component_1.TopSupportComponent, more_support_component_1.MoreSupportComponent],
+                        pipes: [searchFilter_pipe_1.SearchFilterPipe],
+                        inputs: ['searchText']
                     }), 
-                    __metadata('design:paramtypes', [points_service_1.PointsService, router_1.RouteParams, issue_container_service_1.IssueContainerService])
+                    __metadata('design:paramtypes', [points_service_1.PointsService, router_1.RouteParams])
                 ], PointsListComponent);
                 return PointsListComponent;
             }());
@@ -67,4 +66,4 @@ System.register(['angular2/core', 'angular2/router', '../../shared/points.servic
     }
 });
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvaXNzdWUvcG9pbnRzLWxpc3QuY29tcG9uZW50LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O1lBZUE7Z0JBR0MsNkJBQ1MsY0FBNkIsRUFDN0IsWUFBeUIsRUFDekIsc0JBQTZDO29CQUY3QyxtQkFBYyxHQUFkLGNBQWMsQ0FBZTtvQkFDN0IsaUJBQVksR0FBWixZQUFZLENBQWE7b0JBQ3pCLDJCQUFzQixHQUF0QixzQkFBc0IsQ0FBdUI7Z0JBQUksQ0FBQztnQkFFM0Qsc0NBQVEsR0FBUjtvQkFDQyxJQUFJLE9BQU8sR0FBRyxJQUFJLENBQUMsWUFBWSxDQUFDLEdBQUcsQ0FBQyxJQUFJLENBQUMsQ0FBQztvQkFDMUMsSUFBSSxDQUFDLHNCQUFzQixDQUFDLE1BQU0sR0FBRyxJQUFJLENBQUMsY0FBYyxDQUFDLFNBQVMsQ0FBQyxPQUFPLENBQUMsQ0FBQztvQkFDNUUsSUFBSSxDQUFDLE1BQU0sR0FBRyxJQUFJLENBQUMsc0JBQXNCLENBQUMsTUFBTSxDQUFDO2dCQUNsRCxDQUFDO2dCQUVELHVDQUFTLEdBQVQ7b0JBQ0MsSUFBSSxDQUFDLFFBQVEsRUFBRSxDQUFDO2dCQUNqQixDQUFDO2dCQXZCRjtvQkFBQyxnQkFBUyxDQUFDO3dCQUNQLFFBQVEsRUFBRSxnQkFBZ0I7d0JBQzFCLFdBQVcsRUFBRSxzQ0FBc0M7d0JBQ25ELFNBQVMsRUFBRSxDQUFDLHlCQUF5QixDQUFDO3dCQUN0QyxTQUFTLEVBQUUsQ0FBQyw4QkFBYSxDQUFDO3dCQUMxQixVQUFVLEVBQUUsQ0FBQyx5Q0FBa0IsRUFBRSwyQ0FBbUIsRUFBRSw2Q0FBb0IsQ0FBQztxQkFDOUUsQ0FBQzs7dUNBQUE7Z0JBa0JGLDBCQUFDO1lBQUQsQ0FqQkEsQUFpQkMsSUFBQTtZQWpCRCxxREFpQkMsQ0FBQSIsImZpbGUiOiJjb21wb25lbnRzL2lzc3VlL3BvaW50cy1saXN0LmNvbXBvbmVudC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7Q29tcG9uZW50LCBPbkluaXQsIE9uQ2hhbmdlcywgRXZlbnRFbWl0dGVyLCBJbnB1dH0gZnJvbSAnYW5ndWxhcjIvY29yZSc7XG5pbXBvcnQge1JvdXRlUGFyYW1zfSBmcm9tICdhbmd1bGFyMi9yb3V0ZXInO1xuaW1wb3J0IHtQb2ludHNTZXJ2aWNlfSBmcm9tICcuLi8uLi9zaGFyZWQvcG9pbnRzLnNlcnZpY2UnO1xuaW1wb3J0IHtQb2ludH0gZnJvbSAnLi4vLi4vc2hhcmVkL3BvaW50LnRzJztcbmltcG9ydCB7TWFpblBvaW50Q29tcG9uZW50fSBmcm9tICcuL21haW4tcG9pbnQuY29tcG9uZW50JztcbmltcG9ydCB7VG9wU3VwcG9ydENvbXBvbmVudH0gZnJvbSAnLi90b3Atc3VwcG9ydC5jb21wb25lbnQnO1xuaW1wb3J0IHtNb3JlU3VwcG9ydENvbXBvbmVudH0gZnJvbSAnLi9tb3JlLXN1cHBvcnQuY29tcG9uZW50JztcbmltcG9ydCB7SXNzdWVDb250YWluZXJTZXJ2aWNlfSBmcm9tICcuL2lzc3VlLWNvbnRhaW5lci5zZXJ2aWNlJztcbkBDb21wb25lbnQoe1xuICAgIHNlbGVjdG9yOiAncm8tcG9pbnRzLWxpc3QnLFxuICAgIHRlbXBsYXRlVXJsOiAndGVtcGxhdGVzL2lzc3VlL3BvaW50cy1saXN0LnRwbC5odG1sJyxcbiAgICBzdHlsZVVybHM6IFsnc3JjL2Nzcy9wb2ludHMtbGlzdC5jc3MnXSxcbiAgICBwcm92aWRlcnM6IFtQb2ludHNTZXJ2aWNlXSxcbiAgICBkaXJlY3RpdmVzOiBbTWFpblBvaW50Q29tcG9uZW50LCBUb3BTdXBwb3J0Q29tcG9uZW50LCBNb3JlU3VwcG9ydENvbXBvbmVudF1cbn0pXG5leHBvcnQgY2xhc3MgUG9pbnRzTGlzdENvbXBvbmVudCBpbXBsZW1lbnRzIE9uSW5pdHtcblx0cG9pbnRzOiBQb2ludFtdO1xuXG5cdGNvbnN0cnVjdG9yKFxuXHRcdHByaXZhdGUgX3BvaW50c1NlcnZpY2U6IFBvaW50c1NlcnZpY2UsXG5cdFx0cHJpdmF0ZSBfcm91dGVQYXJhbXM6IFJvdXRlUGFyYW1zLFxuXHRcdHByaXZhdGUgX0lzc3VlQ29udGFpbmVyU2VydmljZTogSXNzdWVDb250YWluZXJTZXJ2aWNlKSB7IH1cblxuXHRuZ09uSW5pdCgpOmFueSB7XG5cdFx0bGV0IGlzc3VlSWQgPSB0aGlzLl9yb3V0ZVBhcmFtcy5nZXQoJ2lkJyk7XG5cdFx0dGhpcy5fSXNzdWVDb250YWluZXJTZXJ2aWNlLnBvaW50cyA9IHRoaXMuX3BvaW50c1NlcnZpY2UuZ2V0UG9pbnRzKGlzc3VlSWQpO1xuXHRcdHRoaXMucG9pbnRzID0gdGhpcy5fSXNzdWVDb250YWluZXJTZXJ2aWNlLnBvaW50cztcblx0fVxuXG5cdG9uUmVtb3ZlZCgpe1xuXHRcdHRoaXMubmdPbkluaXQoKTtcblx0fVxufSJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvaXNzdWUvcG9pbnRzLWxpc3QuY29tcG9uZW50LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O1lBZ0JBO2dCQUdDLDZCQUNTLGNBQTZCLEVBQzdCLFlBQXlCO29CQUR6QixtQkFBYyxHQUFkLGNBQWMsQ0FBZTtvQkFDN0IsaUJBQVksR0FBWixZQUFZLENBQWE7Z0JBQUksQ0FBQztnQkFFdkMsc0NBQVEsR0FBUjtvQkFDQyxJQUFJLE9BQU8sR0FBRyxJQUFJLENBQUMsWUFBWSxDQUFDLEdBQUcsQ0FBQyxJQUFJLENBQUMsQ0FBQztvQkFDMUMsSUFBSSxDQUFDLE1BQU0sR0FBRyxJQUFJLENBQUMsY0FBYyxDQUFDLFNBQVMsQ0FBQyxPQUFPLENBQUMsQ0FBQztnQkFDdEQsQ0FBQztnQkFFRCx1Q0FBUyxHQUFUO29CQUNDLElBQUksQ0FBQyxRQUFRLEVBQUUsQ0FBQztnQkFDakIsQ0FBQztnQkF0QkY7b0JBQUMsZ0JBQVMsQ0FBQzt3QkFDUCxRQUFRLEVBQUUsZ0JBQWdCO3dCQUMxQixXQUFXLEVBQUUsc0NBQXNDO3dCQUNuRCxTQUFTLEVBQUUsQ0FBQyx5QkFBeUIsQ0FBQzt3QkFDdEMsVUFBVSxFQUFFLENBQUMseUNBQWtCLEVBQUUsMkNBQW1CLEVBQUUsNkNBQW9CLENBQUM7d0JBQzNFLEtBQUssRUFBRSxDQUFDLG9DQUFnQixDQUFDO3dCQUN6QixNQUFNLEVBQUUsQ0FBQyxZQUFZLENBQUM7cUJBQ3pCLENBQUM7O3VDQUFBO2dCQWdCRiwwQkFBQztZQUFELENBZkEsQUFlQyxJQUFBO1lBZkQscURBZUMsQ0FBQSIsImZpbGUiOiJjb21wb25lbnRzL2lzc3VlL3BvaW50cy1saXN0LmNvbXBvbmVudC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7Q29tcG9uZW50LCBPbkluaXQsIE9uQ2hhbmdlcywgRXZlbnRFbWl0dGVyfSBmcm9tICdhbmd1bGFyMi9jb3JlJztcbmltcG9ydCB7Um91dGVQYXJhbXN9IGZyb20gJ2FuZ3VsYXIyL3JvdXRlcic7XG5pbXBvcnQge1BvaW50c1NlcnZpY2V9IGZyb20gJy4uLy4uL3NoYXJlZC9wb2ludHMuc2VydmljZSc7XG5pbXBvcnQge1BvaW50fSBmcm9tICcuLi8uLi9zaGFyZWQvcG9pbnQudHMnO1xuaW1wb3J0IHtNYWluUG9pbnRDb21wb25lbnR9IGZyb20gJy4vbWFpbi1wb2ludC5jb21wb25lbnQnO1xuaW1wb3J0IHtUb3BTdXBwb3J0Q29tcG9uZW50fSBmcm9tICcuL3RvcC1zdXBwb3J0LmNvbXBvbmVudCc7XG5pbXBvcnQge01vcmVTdXBwb3J0Q29tcG9uZW50fSBmcm9tICcuL21vcmUtc3VwcG9ydC5jb21wb25lbnQnO1xuaW1wb3J0IHtTZWFyY2hGaWx0ZXJQaXBlfSBmcm9tICcuLi8uLi9waXBlcy9zZWFyY2hGaWx0ZXIucGlwZSc7XG5AQ29tcG9uZW50KHtcbiAgICBzZWxlY3RvcjogJ3JvLXBvaW50cy1saXN0JyxcbiAgICB0ZW1wbGF0ZVVybDogJ3RlbXBsYXRlcy9pc3N1ZS9wb2ludHMtbGlzdC50cGwuaHRtbCcsXG4gICAgc3R5bGVVcmxzOiBbJ3NyYy9jc3MvcG9pbnRzLWxpc3QuY3NzJ10sXG4gICAgZGlyZWN0aXZlczogW01haW5Qb2ludENvbXBvbmVudCwgVG9wU3VwcG9ydENvbXBvbmVudCwgTW9yZVN1cHBvcnRDb21wb25lbnRdLFxuICAgIHBpcGVzOiBbU2VhcmNoRmlsdGVyUGlwZV0sXG4gICAgaW5wdXRzOiBbJ3NlYXJjaFRleHQnXVxufSlcbmV4cG9ydCBjbGFzcyBQb2ludHNMaXN0Q29tcG9uZW50IGltcGxlbWVudHMgT25Jbml0e1xuXHRwb2ludHM6IFBvaW50W107XG5cblx0Y29uc3RydWN0b3IoXG5cdFx0cHJpdmF0ZSBfcG9pbnRzU2VydmljZTogUG9pbnRzU2VydmljZSxcblx0XHRwcml2YXRlIF9yb3V0ZVBhcmFtczogUm91dGVQYXJhbXMpIHsgfVxuXG5cdG5nT25Jbml0KCk6YW55IHtcblx0XHRsZXQgaXNzdWVJZCA9IHRoaXMuX3JvdXRlUGFyYW1zLmdldCgnaWQnKTtcblx0XHR0aGlzLnBvaW50cyA9IHRoaXMuX3BvaW50c1NlcnZpY2UuZ2V0UG9pbnRzKGlzc3VlSWQpO1xuXHR9XG5cblx0b25SZW1vdmVkKCl7XG5cdFx0dGhpcy5uZ09uSW5pdCgpO1xuXHR9XG59Il0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9

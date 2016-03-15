@@ -35,6 +35,6 @@
             </div>
         </div>
     </div>
-    <ro-create-point-form *ngIf="!showForm" (added)="ngOnInit()"></ro-create-point-form>
-    <ro-points-list></ro-points-list>
+    <ro-create-point-form *ngIf="showForm" (added)="ngOnInit()"></ro-create-point-form>
+    <ro-points-list [searchText]="searchText"></ro-points-list>
 </div>

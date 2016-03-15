@@ -2,12 +2,10 @@ import {Component, OnInit, EventEmitter, Output} from 'angular2/core';
 import {Point} from '../../shared/point';
 import {PointsService} from '../../shared/points.service';
 import {RouteParams} from 'angular2/router';
-import {IssueContainerService} from './issue-container.service';
 
 @Component({
     selector: 'ro-create-point-form',
-    templateUrl: 'templates/issue/create-point-form.tpl.html',
-    providers: [PointsService]
+    templateUrl: 'templates/issue/create-point-form.tpl.html'
 })
 export class CreatePointFormComponent implements OnInit{
 	newPoint: Point;
@@ -16,13 +14,11 @@ export class CreatePointFormComponent implements OnInit{
 
 	constructor(
 		private _pointsService: PointsService,
-		private _routeParams: RouteParams,
-		private _IssueContainerService: IssueContainerService) { }
+		private _routeParams: RouteParams) { }
 
 	createPoint(){
 		console.log(this.newPoint);
-		let createdPoint = this._pointsService.insertPoint(this.newPoint);
-		this._IssueContainerService.insertPoint(createdPoint);
+		this._pointsService.insertPoint(this.newPoint);
 	}
 
 	ngOnInit():any {
