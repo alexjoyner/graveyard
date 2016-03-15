@@ -24,16 +24,4 @@ export class IssuesService {
 	deleteIssue(issue: Issue){
 		ISSUES.splice(ISSUES.indexOf(issue), 1);
 	}
-
-	/*VOTING ISSUES SUPPORT*/
-	voteIssue(issue: Issue, voteType: string){
-		if (voteType === 'upvote') {
-			ISSUES[ISSUES.indexOf(issue)].ups++;
-		} else
-		if (voteType === 'downvote') {
-			ISSUES[ISSUES.indexOf(issue)].downs++;
-		} else {
-			console.log('No type recognized')
-		}
-	}
 }

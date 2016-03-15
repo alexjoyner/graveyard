@@ -7,14 +7,15 @@ export let POINTS: Point[] = [
 		'pro',
 		10,
 		3,
-		'meta')
+		'meta'),
 	new Point(
-		'9c99545e-1f79-b334-4100-1f4d92f8ff2c',
+		'f6e600fc-9835-e50b-9699-cac10e5c8b50',
 		'It really will be',
 		'pro',
 		2,
 		0,
-		'opinion')
+		'opinion',
+		'10293842-sdff-4234-lsdfj'),
 	new Point(
 		'9c99545e-1f79-b334-4100-1f4d92f8ff2c',
 		'Testing con',

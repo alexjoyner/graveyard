@@ -1,4 +1,4 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input, Output, EventEmitter} from 'angular2/core';
 import {VoteCellComponent} from '../../shared/vote-cell.component';
 import {Point} from '../../shared/point';
 import {PointsService} from '../../shared/points.service';
@@ -14,6 +14,6 @@ export class MainPointComponent {
 		private _pointsService: PointsService){};
 
 	deletePoint(){
-		this._pointsService.deletePoint(this.point);
+		let status: number = this._pointsService.deletePoint(this.point);
 	}
 }

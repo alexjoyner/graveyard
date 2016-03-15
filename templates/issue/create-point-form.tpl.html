@@ -1,0 +1,99 @@
+<div class="row">
+    <hr/>
+    <div class="row">
+        <!--
+            <div class="col-xs-4">
+                <h3 class="text-center">
+                    Step 1: State your point
+                </h3>
+            </div>
+            <div class="col-xs-4">
+                <h3 class="text-center">
+                    Step 2: Support your point
+                </h3>
+            </div>
+            <div class="col-xs-4">
+                <h3 class="text-center">
+                    Step 3: Tag your post
+                </h3>
+            </div>
+        -->
+    </div>
+    <div id="NewPoint" class="row">
+        <div class="col-xs-12">
+            <textarea
+                class="form-control"
+                rows="6"
+                style="resize: none;"
+                maxlength="400"
+                placeholder="Please enter your main point here. Max 400 Characters"
+                [(ngModel)]="newPoint.problem">
+            </textarea>
+        </div>
+        <!--
+            <div class="col-xs-4">
+                <textarea
+                    class="form-control"
+                    rows="3"
+                    style="resize: none;"
+                    maxlength="400"
+                    placeholder="Support Your Point Here. Max 400 Characters"
+                    [(ngModel)]="newPoint.support.evidence">
+                </textarea>
+                <br/>
+                <textarea
+                    class="form-control"
+                    rows="1"
+                    style="resize: none;"
+                    [(ngModel)]="newPoint.support.source"
+                    placeholder="Please cite your information here. ONLY ONE SOURCE!!!" >
+                </textarea>
+            </div>
+        -->
+        <!--
+            <div class="col-xs-4">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" [(ngModel)]="newPoint.support.tags.metaData"/>
+                                Meta Data
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" [(ngModel)]="newPoint.support.tags.credible"/>
+                                Credible Sources
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" [(ngModel)]="newPoint.support.tags.media"/>
+                                Media Sources
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" [(ngModel)]="newPoint.support.tags.opinion"/>
+                                Personal Opinion
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        -->
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-12">
+        	<button
+        	    class="btn btn-lg btn-success pull-right"
+        	    (click)="createPoint()">
+        	    Add {{pointType}}
+        	</button>
+        </div>
+    </div>
+    <hr/>
+</div>

@@ -22,7 +22,7 @@
     <br/>
     <div class="row">
         <div class="col-xs-2">
-            <button class="btn btn-md" class="btn btn-success">
+            <button class="btn btn-md" class="btn btn-success" (click)="showForm = !showForm">
                 Add a new pro
             </button>
         </div>
@@ -35,5 +35,6 @@
             </div>
         </div>
     </div>
+    <ro-create-point-form *ngIf="!showForm" (added)="ngOnInit()"></ro-create-point-form>
     <ro-points-list></ro-points-list>
 </div>

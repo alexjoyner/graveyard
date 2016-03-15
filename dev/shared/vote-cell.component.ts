@@ -13,7 +13,7 @@ export class VoteCellComponent {
 	constructor(
 		private _voteCellService: VoteCellService){}
 
-	voteIssue(type: string, event: any) {
+	voteIssue(type: string, event: MouseEvent) {
 		event.stopPropagation();
 		this._voteCellService.addVote(
 			this.sourceType, 
