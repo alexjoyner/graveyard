@@ -2,7 +2,7 @@ import {Support} from '../shared/support';
 
 export let SUPPORTS: Support[] = [
 	new Support(
-		'4',
+		'e1c7906b-8e17-7f9d-ea8d-79b1f0953f80',
 		'I think so',
 		'proof',
 		'http://source3.com',
@@ -10,7 +10,7 @@ export let SUPPORTS: Support[] = [
 		1,
 		23),
 	new Support(
-		'10293842-sdff-4234-lsdfj',
+		'e1c7906b-8e17-7f9d-ea8d-79b1f0953f80',
 		'I do not think so',
 		'proof',
 		'http://source2.com',

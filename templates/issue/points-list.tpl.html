@@ -1,13 +1,20 @@
-<div *ngFor="#point of points | roFilter: searchText" class="point">
+<div *ngFor="#point of points | roFilter: searchText; #i = index" class="point">
     <div class="row">
         <div class="col-xs-6 main-point-block text-center">
             <ro-main-point
             	[point]="point"
                 (removed)="onRemoved()"></ro-main-point>
         </div>
-        <div class="col-xs-6 top-support">
-            <ro-top-support *ngIf="point.support"></ro-top-support>
-            <div *ngIf="!point.support">
+        <div class="col-xs-6 top-supports">
+            <ro-top-support *ngIf="point.supports"></ro-top-support>
+            <!-- To show if no supports data has been searched for -->
+            <div *ngIf="!point.supports">
+                <br/>
+                <button type="button" class="btn btn-lg btn-default" (click)="getSupports(point._id, i)">
+                    Get Supports
+                </button>
+            </div>
+            <div *ngIf="point.supports && point.supports.length === 0">
                 <h3 class="text-center">
                     No Support
                 </h3>
@@ -17,5 +24,5 @@
             </div>
         </div>
     </div>
-    <ro-more-support *ngIf="point.support"></ro-more-support>
+    <ro-more-support *ngIf="point.supports"></ro-more-support>
 </div>

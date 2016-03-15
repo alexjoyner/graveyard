@@ -6,7 +6,14 @@ import {SUPPORTS} from '../mock/mock-supports';
 export class SupportsService {
 	/* GET */
 	getSupports(pointId: string){
-
+		let returnArray = [];
+		for (var i = SUPPORTS.length - 1; i >= 0; i--) {
+			if (SUPPORTS[i].point_id === pointId) {
+				console.log('Pushing: ', pointId);
+				returnArray.push(SUPPORTS[i]);
+			}
+		}
+		return returnArray;
 	}
 	getSupport(_id: string){
 
