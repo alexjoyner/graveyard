@@ -6,7 +6,9 @@
                 (removed)="onRemoved()"></ro-main-point>
         </div>
         <div class="col-xs-6 top-supports">
-            <ro-top-support *ngIf="point.supports"></ro-top-support>
+            <ro-top-support 
+                *ngIf="point.supports && point.supports.length > 0"
+                [support]="point.supports[0]"></ro-top-support>
             <!-- To show if no supports data has been searched for -->
             <div *ngIf="!point.supports">
                 <br/>
@@ -24,5 +26,7 @@
             </div>
         </div>
     </div>
-    <ro-more-support *ngIf="point.supports"></ro-more-support>
+    <!-- <ro-more-support 
+        *ngIf="point.supports"
+        [supports]="point.supports"></ro-more-support> -->
 </div>

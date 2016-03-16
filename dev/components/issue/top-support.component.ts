@@ -1,12 +1,11 @@
-import {Component} from 'angular2/core';
+import {Component, Input} from 'angular2/core';
 import {VoteCellComponent} from '../../shared/vote-cell.component';
-
+import {Support} from '../../shared/support'
 @Component({
     selector: 'ro-top-support',
-    template: `
-    	<h2>Top Support</h2>
-    `
+    templateUrl: 'templates/issue/top-support.tpl.html',
+    directives: [VoteCellComponent]
 })
 export class TopSupportComponent {
-	
+	@Input('support') support: Support;
 }
