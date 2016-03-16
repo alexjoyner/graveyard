@@ -1,15 +1,16 @@
 import {Injectable} from 'angular2/core';
 import {Point} from './point';
+import {Support} from './support';
 import {POINTS} from '../mock/mock-points';
 
 @Injectable()
 export class PointsService {
 	selectedPoints: Point[] = [];
 	/* GET */
-	getPoints(issueId: string) {
+	getPoints(issueId: string, type: string) {
 		this.selectedPoints = [];
 		for (var i = POINTS.length - 1; i >= 0; i--) {
-			if (POINTS[i].issue_id === issueId){
+			if (POINTS[i].issue_id === issueId && POINTS[i].type === type){
 				this.selectedPoints.push(POINTS[i]);
 			}
 		}
@@ -28,6 +29,15 @@ export class PointsService {
 		POINTS.unshift(point);
 		this.selectedPoints.unshift(point);
 		return point;
+	}
+	insertSupport(pointIndx: number, support: Support):number{
+		if(this.selectedPoints[pointIndx]['supports']){
+			this.selectedPoints[pointIndx]['supports'].unshift(support);
+			return 200;
+		}else{
+			console.log('No supports');
+			return 400;
+		}
 	}
 	/* DELETE */
 	deletePoint(point: Point):number {		

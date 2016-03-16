@@ -1,4 +1,4 @@
-<div id="HomeIssue" class="row supporting-evidence" *ngFor="#issue of issues | roFilter:searchText" [routerLink]="['Issue', {id: issue._id}]">
+<div id="HomeIssue" class="row supporting-evidence" *ngFor="#issue of issues | roFilter:searchText" [routerLink]="['Issue', {id: issue._id, type: 'pro'}]">
     <div class="col-xs-2">
         <ro-vote-cell
             [sourceType]="'issue'"

@@ -1,1 +1,59 @@
-<h1>This is more support</h1>
+<div *ngFor="#support of supports; #i = index">
+    <hr>
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-2">
+        	<div class="row">
+        		<div class="col-xs-2">
+        		    <h3 class="row  text-center" (click)="voteSupport('ups')">
+        		        <i class="glyphicon glyphicon-chevron-up">
+        		        </i>
+        		    </h3>
+        		    <h3 class="row text-center">
+        		        {{support.ups - support.downs}}
+        		    </h3>
+        		    <h3 class="row  text-center" (click)="voteSupport('downs')">
+        		        <i class="glyphicon glyphicon-chevron-down">
+        		        </i>
+        		    </h3>
+        		</div>
+        		<div class="col-xs-10">
+        		    <h4>{{support.evidence}}</h4>
+        		    <div class="row">
+        		        <div class="col-xs-8" style="text-overflow: ellipsis; overflow: hidden;">
+        		            <u>
+        		                <h4>Sources</h4>
+        		            </u>
+        		            <ul>
+        		                <li>
+        		                    <a [href]="support.source">
+        		                        <h4>{{support.source}}</h4>
+        		                    </a>
+        		                </li>
+        		            </ul>
+        		        </div>
+        		        <div class="col-xs-4">
+        		            <span *ngIf="support.tag === 'metaData'" class="label label-success">
+        		                metaData
+        		            </span>
+        		            <span *ngIf="support.tag === 'credible'" class="label label-success">
+        		                credible
+        		            </span>
+        		            <span *ngIf="support.tag === 'media'" class="label label-warning">
+        		                media
+        		            </span>
+        		            <span *ngIf="support.tag === 'opinion'" class="label label-danger">
+        		                opinion
+        		            </span>
+        		        </div>
+        		    </div>
+        		    <div class="row" style="display:inline-block; vertical-align: middle;">
+        		        <button type="button" class="btn btn-xs btn-danger" (click)="api.removeSupport(support._id, parentIndex, index)">
+        		            <i class="fa fa-close">
+        		            </i>
+        		        </button>
+        		    </div>
+        		</div>
+        	</div>
+        </div>
+    </div>
+</div>

@@ -1,7 +1,7 @@
 import {Injectable} from 'angular2/core';
 import {ISSUES} from '../mock/mock-issues';
 import {POINTS} from '../mock/mock-points';
-
+import {SUPPORTS} from '../mock/mock-supports';
 @Injectable()
 export class VoteCellService {
 	/*POST*/
@@ -32,6 +32,20 @@ export class VoteCellService {
 					} else
 						if (voteType === 'downvote') {
 							POINTS[i].downs++;
+						} else {
+							console.log('No type recognized')
+						}
+				}
+			}
+		} else
+		if (srcType === 'support') {
+			for (var i = SUPPORTS.length - 1; i >= 0; i--) {
+				if (SUPPORTS[i]._id === srcId) {
+					if (voteType === 'upvote') {
+						SUPPORTS[i].ups++;
+					} else
+						if (voteType === 'downvote') {
+							SUPPORTS[i].downs++;
 						} else {
 							console.log('No type recognized')
 						}

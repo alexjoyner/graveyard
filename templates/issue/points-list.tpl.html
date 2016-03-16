@@ -8,7 +8,9 @@
         <div class="col-xs-6 top-supports">
             <ro-top-support 
                 *ngIf="point.supports && point.supports.length > 0"
-                [support]="point.supports[0]"></ro-top-support>
+                [support]="point.supports[0]"
+                (addEvidence)="addEvidence(i)"
+                (viewAll)="viewAll(i)"></ro-top-support>
             <!-- To show if no supports data has been searched for -->
             <div *ngIf="!point.supports">
                 <br/>
@@ -20,13 +22,18 @@
                 <h3 class="text-center">
                     No Support
                 </h3>
-                <button type="button" class="btn btn-xs btn-info">
+                <button type="button" class="btn btn-xs btn-info" (click)="addEvidence(i)">
                     Add Evidence
                 </button>
             </div>
         </div>
     </div>
-    <!-- <ro-more-support 
-        *ngIf="point.supports"
-        [supports]="point.supports"></ro-more-support> -->
+    <ro-more-support 
+        *ngIf="point.supports && point.viewAll"
+        [supports]="point.supports.slice(1)"></ro-more-support>
+    <ro-add-support
+        *ngIf="point.supports && point.addEvidence"
+        [pointId]="point._id"
+        [pointIndex]="i"></ro-add-support>
+    <hr>
 </div>

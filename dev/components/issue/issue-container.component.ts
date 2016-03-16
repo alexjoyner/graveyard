@@ -5,15 +5,17 @@ import {IssuesService} from '../../shared/issues.service';
 import {PointsService} from '../../shared/points.service';
 import {PointsListComponent} from './points-list.component';
 import {CreatePointFormComponent} from './create-point-form.component';
+import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 @Component({// Route no selector
     templateUrl: 'templates/issue/issue-container.tpl.html',
     providers: [IssuesService, PointsService],
-    directives: [PointsListComponent, CreatePointFormComponent]
+    directives: [PointsListComponent, CreatePointFormComponent, ROUTER_DIRECTIVES]
 })
 export class IssueContainerComponent implements OnInit{
 	issue: Issue;
-	private _issueId: string;
+	_issueId: string;
+	private _type: string;
 	searchText: string;
 	constructor(
 		private _routeParams: RouteParams,
@@ -21,6 +23,8 @@ export class IssueContainerComponent implements OnInit{
 
 	ngOnInit():any {
 		this._issueId = this._routeParams.get('id');
+		this._type = this._routeParams.get('type');
+		console.log(this._issueId);
 		this.issue = this._issuesService.getIssue(this._issueId);
 	}
 }

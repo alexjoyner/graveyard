@@ -16,7 +16,7 @@ import {NavbarComponent} from './components/navbar/navbar.component';
 })
 @RouteConfig([
 	{ path: '/Home', name: 'Home', component: HomeContainerComponent, useAsDefault: true },
-	{ path: '/Issue/:id', name: 'Issue', component: IssueContainerComponent}
+    { path: '/Issue/:type/:id', name: 'Issue', component: IssueContainerComponent }
 ])
 export class AppComponent {
 
