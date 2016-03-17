@@ -21,11 +21,9 @@ var supportSchema = new Schema({
         type: String,
         required: true
     },
-    tags: {
-        metaData: Boolean,
-        credible: Boolean,
-        media: Boolean,
-        opinion: Boolean
+    tag: {
+        type: String,
+        required: true
     },
     ups: {
         type: Number,
