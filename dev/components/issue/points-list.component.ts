@@ -44,9 +44,19 @@ export class PointsListComponent implements OnInit{
 	onRemoved(){
 		this.ngOnInit();
 	}
+	removeSupport(pointIndx: number, supportIndx: number){
+		this.points[pointIndx]['supports'].splice(supportIndx, 1);
+	}
 	getSupports(pointId: string, index: number){
 		console.log(pointId, index);
-		this.points[index]['supports'] = this._supportsService.getSupports(pointId);
+		this._supportsService.getSupports(pointId)
+			.subscribe(
+				data => {
+					console.log(data);
+					this.points[index]['supports'] = data
+				},
+				err => console.log('Error: ', err)
+			);
 	}
 	viewAll(index: number){
 		if (this.points[index]['viewAll']){

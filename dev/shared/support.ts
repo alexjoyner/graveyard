@@ -17,7 +17,7 @@ export class Support {
 		ups: number,
 		downs: number,
 		_id?: string){
-		this._id = (_id) ? _id : guid();
+		this._id = (_id) ? _id : null;
 		this.point_id = point_id;
 		this.evidence = evidence;
 		this.type = type;

@@ -18,9 +18,13 @@ export class AddSupportComponent implements OnInit{
 		private _pointsService: PointsService) { };
 
 	createSupport(){
-		this._supportsService.insertSupport(this.newSupport);
-		this._pointsService.insertSupport(this.pointIndex, this.newSupport);
-		this.added.emit(null);
+		this._supportsService.insertSupport(this.newSupport)
+		.subscribe(
+			data => {
+				this.added.emit(null);
+			},
+			err => console.log('Error: ', err)
+		);
 	}
 	ngOnInit():any {
 		this.newSupport = new Support(this.pointId, '', '', '', '', 0, 0);

@@ -1,4 +1,4 @@
-<ro-create-point-form *ngIf="showForm" (added)="showForm = !showForm; ngOnInit()"></ro-create-point-form>
+<ro-create-point-form *ngIf="showForm" (added)="showForm = !showForm"></ro-create-point-form>
 <div *ngFor="#point of points | roFilter: searchText; #i = index" class="point">
     <div class="row">
         <div class="col-xs-6 main-point-block text-center">
@@ -11,7 +11,8 @@
                 *ngIf="point.supports && point.supports.length > 0"
                 [support]="point.supports[0]"
                 (addEvidence)="addEvidence(i)"
-                (viewAll)="viewAll(i)"></ro-top-support>
+                (viewAll)="viewAll(i)"
+                (removed)="removeSupport(i,0)"></ro-top-support>
             <!-- To show if no supports data has been searched for -->
             <div *ngIf="!point.supports">
                 <br/>
@@ -31,11 +32,12 @@
     </div>
     <ro-more-support 
         *ngIf="point.supports && point.viewAll"
-        [supports]="point.supports.slice(1)"></ro-more-support>
+        [supports]="point.supports.slice(1)"
+        (removed)="removeSupport(i,$event)"></ro-more-support>
     <ro-add-support
         *ngIf="point.supports && point.addEvidence"
         [pointId]="point._id"
         [pointIndex]="i"
-        (added)="viewAll(i)"></ro-add-support>
+        (added)="viewAll(i); getSupports(point._id, i)"></ro-add-support>
     <hr>
 </div>

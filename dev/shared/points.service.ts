@@ -13,7 +13,7 @@ export class PointsService {
 	constructor(
 		private _http: Http) { }
 	/* GET */
-	getPoints(issueId: string, type: string) {
+	getPoints(issueId: string, type: string): Observable<any> {
 		return this._http.get(
 			this.endpoint + '/points/getPoints/' +
 			type +
@@ -30,7 +30,7 @@ export class PointsService {
 		// console.log('No point found');
 	}
 	/* POST */
-	insertPoint(point: Point) {
+	insertPoint(point: Point): Observable<any> {
 		const body = JSON.stringify(point);
 		const headers = new Headers();
 		console.log('Posting');
@@ -61,6 +61,6 @@ export class PointsService {
 			point.issue_id +
 			'/' +
 			point._id)
-			.map(res => res.json());
+			.map(res => res);
 	}
 }

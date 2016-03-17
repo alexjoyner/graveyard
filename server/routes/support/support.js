@@ -24,16 +24,8 @@ router.get('/getSupport/:pointId', function(req, res){
 // ###########  POSTS  ###############
 // post create support point
 router.post('/createSupportPoint', function(req, res) {
-    var type = req.body.type,
-        issueId = req.body.issueId,
-        pointId = req.body.pointId,
-        newSupportData = req.body.newSupportData;
-
-    console.log('req.body: ', req.body);
-
-    var support = new supports(newSupportData);
-    support.point_id = pointId;
-    support.type = type;
+    console.log('Req body: ', req.body);
+    var support = new supports(req.body);
     support.save(function(err){
         if(err) throw err;
         res.status(200).send('AYE OK').end();

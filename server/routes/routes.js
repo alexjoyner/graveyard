@@ -11,6 +11,6 @@ module.exports = function(app) {
         .use('/issues', issues)
         .use('/points', points)
         .use('/votes', votes)
-        .use('/support', support);
+        .use('/supports', support);
 
 };
