@@ -1,27 +1,40 @@
+import {Http, Headers} from 'angular2/http';
 import {Injectable} from 'angular2/core';
 import {Issue} from './issue';
 import {ISSUES} from '../mock/mock-issues';
-
+import 'rxjs/Rx';
+import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class IssuesService {
+	private endpoint: string = 'http://localhost:9000';
+	constructor(
+		private _http: Http) {}
 	/* GET */
-	getAllIssues() {
-		return ISSUES;
+	getAllIssues(): Observable<any> {
+		return this._http.get(
+			this.endpoint + '/issues/all')
+			.map(res => res.json());
 	}
 	getIssue(issueId: string){
-		for (var i = ISSUES.length - 1; i >= 0; i--) {
-			if(ISSUES[i]._id === issueId){
-				return ISSUES[i];
-			}
-		}
-		console.log('No issue found');
+		return this._http.get(
+			this.endpoint + '/issues/' + issueId)
+			.map(res => res.json());
 	}
 	/* POST */
-	insertIssue(issue: Issue){
-		ISSUES.unshift(issue);
+	insertIssue(issue: Issue): Observable<any> {
+		const body = JSON.stringify(issue);
+		const headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		return this._http.post(
+			this.endpoint + '/issues/newIssue',
+			body,
+			{ headers: headers })
+				.map(res => res.json());
 	}
 	/* DELETE */
-	deleteIssue(issue: Issue){
-		ISSUES.splice(ISSUES.indexOf(issue), 1);
+	deleteIssue(issueId: string): Observable<any> {
+		return this._http.delete(
+			this.endpoint + '/issues/deleteIssue/' + issueId)
+			.map(res => res);
 	}
 }

@@ -11,7 +11,7 @@ export class Issue {
     	ups: number, 
 		downs: number,
     	_id?: string) {
-		this._id = (_id) ? _id : guid();
+		this._id = (_id) ? _id : null;
 		this.mainQuestion = mainQuestion;
 		this.questionDetail = questionDetail;
 		this.ups = ups;

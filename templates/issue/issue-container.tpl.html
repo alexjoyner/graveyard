@@ -1,10 +1,12 @@
 <div>
-    <h2 class="text-center">
-        {{issue.mainQuestion}}
-    </h2>
-    <h5 class="text-center">
-        {{issue.questionDetail}}
-    </h5>
+    <div style="height: 10%">
+        <h2 class="text-center">
+            {{issue.mainQuestion}}
+        </h2>
+        <h5 class="text-center">
+            {{issue.questionDetail}}
+        </h5>
+    </div>
     <!-- Tab Bar: Tab to issue list type -->
     <ul class="nav nav-tabs">
         <li role="presentation" [ngClass]="{active: _type === 'pro'}">

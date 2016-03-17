@@ -17,9 +17,21 @@ export class  HomeIssueListComponent implements OnInit{
 	issues: Issue[];
 	constructor(private _issuesService: IssuesService){}
 	ngOnInit():any {
-		this.issues = this._issuesService.getAllIssues();
+		this._issuesService.getAllIssues()
+			.subscribe(
+				data => {
+					console.log(data);
+					this.issues = data;
+				},
+				err => console.log('err: ', err)
+			);
 	}
-	deleteIssue(issue: Issue){
-		this._issuesService.deleteIssue(issue);
+	deleteIssue(issue: Issue, event: MouseEvent){
+		event.stopPropagation();
+		this._issuesService.deleteIssue(issue._id)
+			.subscribe(
+				success => this.ngOnInit(),
+				err => console.log('error: ', err)
+			);
 	}
 }

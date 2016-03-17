@@ -13,8 +13,8 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
     directives: [PointsListComponent, CreatePointFormComponent, ROUTER_DIRECTIVES]
 })
 export class IssueContainerComponent implements OnInit{
-	issue: Issue;
-	_issueId: string;
+	issue: Issue = new Issue(' ',' ',0,0);
+	private _issueId: string;
 	private _type: string;
 	searchText: string;
 	constructor(
@@ -24,7 +24,14 @@ export class IssueContainerComponent implements OnInit{
 	ngOnInit():any {
 		this._issueId = this._routeParams.get('id');
 		this._type = this._routeParams.get('type');
-		console.log(this._issueId);
-		this.issue = this._issuesService.getIssue(this._issueId);
+		this._issuesService.getIssue(this._issueId).
+		subscribe(
+			data => {
+				this.issue = data;
+				console.log(this.issue);
+				console.log(this.issue.mainQuestion);
+			},
+			err => console.log('Err: ', err)
+		);
 	}
 }
