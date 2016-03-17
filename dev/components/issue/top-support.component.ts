@@ -9,7 +9,8 @@ import {SupportsService} from '../../shared/supports.service';
 })
 export class TopSupportComponent {
 	@Input('support') support: Support;
-
+	@Input('numMoreSupport') numMoreSupport: number;
+	@Input('showingMore') showingMore: boolean;
 	@Output() addEvidence: EventEmitter<any> = new EventEmitter();
 	@Output() viewAll: EventEmitter<any> = new EventEmitter();
 	@Output() removed: EventEmitter<any> = new EventEmitter();
@@ -18,13 +19,16 @@ export class TopSupportComponent {
 
 
 	removeSupport(supportId: string) {
-		this._supportService.deleteSupport(supportId)
-		.subscribe(
-			success => {
-				this.removed.emit(null);
-			},
-			err => console.log('Error: ', err)
-		);
+		let answer = confirm(`Are you sure you want to delete this support point? This action can't be undone`);
+		if (answer === true) {
+			this._supportService.deleteSupport(supportId)
+			.subscribe(
+				success => {
+					this.removed.emit(null);
+				},
+				err => console.log('Error: ', err)
+			);
+		}
 	};
 
 	toggleViewAll(){

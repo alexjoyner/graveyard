@@ -1,4 +1,4 @@
-<ro-create-point-form *ngIf="showForm" (added)="showForm = !showForm"></ro-create-point-form>
+<ro-create-point-form *ngIf="showForm" (added)="showForm = !showForm; ngOnInit()"></ro-create-point-form>
 <div *ngFor="#point of points | roFilter: searchText; #i = index" class="point">
     <div class="row">
         <div class="col-xs-6 main-point-block text-center">
@@ -10,6 +10,8 @@
             <ro-top-support 
                 *ngIf="point.supports && point.supports.length > 0"
                 [support]="point.supports[0]"
+                [numMoreSupport]="point.supports.length - 1"
+                [showingMore]="point.viewAll"
                 (addEvidence)="addEvidence(i)"
                 (viewAll)="viewAll(i)"
                 (removed)="removeSupport(i,0)"></ro-top-support>

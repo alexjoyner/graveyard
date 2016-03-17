@@ -2,8 +2,14 @@ import {Injectable} from 'angular2/core';
 import {ISSUES} from '../mock/mock-issues';
 import {POINTS} from '../mock/mock-points';
 import {SUPPORTS} from '../mock/mock-supports';
+import 'rxjs/Rx';
+import {Observable} from 'rxjs/Observable';
+import {Http, Headers} from 'angular2/http';
 @Injectable()
 export class VoteCellService {
+	private endpoint: string = 'http://localhost:9000';
+	constructor(
+		private _http: Http) { }
 	/*POST*/
 	addVote(
 		srcType: string, 
@@ -11,46 +17,46 @@ export class VoteCellService {
 		voteType: string){
 		console.log(srcType, srcId, voteType);
 		if(srcType === 'issue'){
-			for (var i = ISSUES.length - 1; i >= 0; i--) {
-				if (ISSUES[i]._id === srcId) {
-					if (voteType === 'upvote') {
-						ISSUES[i].ups++;
-					} else
-					if (voteType === 'downvote') {
-						ISSUES[i].downs++;
-					} else {
-						console.log('No type recognized')
-					}
-				}
-			}
+			const body = JSON.stringify({
+				voteType: voteType,
+				issueId: srcId
+			});
+			const headers = new Headers();
+			headers.append('Content-Type', 'application/json');
+			return this._http.post(
+				this.endpoint + 
+				'/votes/issue', 
+				body,
+				{ headers: headers })
+				.map(res => res);
 		}else
 		if (srcType === 'point') {
-			for (var i = POINTS.length - 1; i >= 0; i--) {
-				if (POINTS[i]._id === srcId) {
-					if (voteType === 'upvote') {
-						POINTS[i].ups++;
-					} else
-						if (voteType === 'downvote') {
-							POINTS[i].downs++;
-						} else {
-							console.log('No type recognized')
-						}
-				}
-			}
+			const body = JSON.stringify({
+				voteType: voteType,
+				pointId: srcId
+			});
+			const headers = new Headers();
+			headers.append('Content-Type', 'application/json');
+			return this._http.post(
+				this.endpoint +
+				'/votes/point',
+				body,
+				{ headers: headers })
+				.map(res => res);
 		} else
 		if (srcType === 'support') {
-			for (var i = SUPPORTS.length - 1; i >= 0; i--) {
-				if (SUPPORTS[i]._id === srcId) {
-					if (voteType === 'upvote') {
-						SUPPORTS[i].ups++;
-					} else
-						if (voteType === 'downvote') {
-							SUPPORTS[i].downs++;
-						} else {
-							console.log('No type recognized')
-						}
-				}
-			}
+			const body = JSON.stringify({
+				voteType: voteType,
+				suppportId: srcId
+			});
+			const headers = new Headers();
+			headers.append('Content-Type', 'application/json');
+			return this._http.post(
+				this.endpoint +
+				'/votes/support',
+				body,
+				{ headers: headers })
+				.map(res => res);
 		} else {
 			console.log('No source type found');
 		}

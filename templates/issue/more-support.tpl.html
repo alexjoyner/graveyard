@@ -4,17 +4,13 @@
         <div class="col-xs-10 col-xs-offset-2">
         	<div class="row">
         		<div class="col-xs-2">
-        		    <h3 class="row  text-center" (click)="voteSupport('ups')">
-        		        <i class="glyphicon glyphicon-chevron-up">
-        		        </i>
-        		    </h3>
-        		    <h3 class="row text-center">
-        		        {{support.ups - support.downs}}
-        		    </h3>
-        		    <h3 class="row  text-center" (click)="voteSupport('downs')">
-        		        <i class="glyphicon glyphicon-chevron-down">
-        		        </i>
-        		    </h3>
+        		    <ro-vote-cell
+		                class="pull-right"
+		                [sourceType]="'support'"
+		                [sourceId]="support._id"
+		                [score]="support.ups - support.downs"
+		                (upVoted)="support.ups=support.ups+1"
+		                (downVoted)="support.downs=support.downs+1"></ro-vote-cell>
         		</div>
         		<div class="col-xs-10">
         		    <h4>{{support.evidence}}</h4>

@@ -3,7 +3,9 @@
         <ro-vote-cell
             [sourceType]="'issue'"
             [sourceId]="issue._id"
-            [score]="issue.ups - issue.downs"></ro-vote-cell>
+            [score]="issue.ups - issue.downs"
+            (upVoted)="issue.ups=issue.ups+1"
+            (downVoted)="issue.downs=issue.downs+1"></ro-vote-cell>
     </div>
     <div class="col-xs-10">
         <div class="row">

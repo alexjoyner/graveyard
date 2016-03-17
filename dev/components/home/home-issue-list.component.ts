@@ -28,10 +28,13 @@ export class  HomeIssueListComponent implements OnInit{
 	}
 	deleteIssue(issue: Issue, event: MouseEvent){
 		event.stopPropagation();
-		this._issuesService.deleteIssue(issue._id)
-			.subscribe(
+		let answer = confirm(`Are you sure you want to delete this issue? This action can't be undone`);
+		if (answer === true) {
+			this._issuesService.deleteIssue(issue._id)
+				.subscribe(
 				success => this.ngOnInit(),
 				err => console.log('error: ', err)
-			);
+				);
+		}
 	}
 }

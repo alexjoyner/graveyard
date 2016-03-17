@@ -14,12 +14,16 @@ export class MoreSupportComponent {
 
 
 	removeSupport(supportId: string, supportIndex: number) {
-		this._supportService.deleteSupport(supportId)
-			.subscribe(
-			success => {
-				this.removed.emit(supportIndex+1);
-			},
-			err => console.log('Error: ', err)
-			);
+		let answer = confirm(`Are you sure you want to delete this support point? 
+			<br/> This action can't be undone`);
+		if (answer === true) {
+			this._supportService.deleteSupport(supportId)
+				.subscribe(
+				success => {
+					this.removed.emit(supportIndex + 1);
+				},
+				err => console.log('Error: ', err)
+				);
+		}
 	};
 }
