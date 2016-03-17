@@ -1,7 +1,6 @@
 import {Injectable} from 'angular2/core';
 import {Point} from './point';
 import {Support} from './support';
-import {POINTS} from '../mock/mock-points';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
 import {Http, Headers} from 'angular2/http';
@@ -9,7 +8,6 @@ import {Http, Headers} from 'angular2/http';
 @Injectable()
 export class PointsService {
 	private endpoint: string = 'http://localhost:9000';
-	selectedPoints: Point[] = [];
 	constructor(
 		private _http: Http) { }
 	/* GET */
@@ -42,7 +40,7 @@ export class PointsService {
 			{ headers: headers })
 			.map(res => res);
 	}
-	insertSupport(pointIndx: number, support: Support):number{
+	/*insertSupport(pointIndx: number, support: Support):number{
 		if(this.selectedPoints[pointIndx]['supports']){
 			this.selectedPoints[pointIndx]['supports'].unshift(support);
 			return 200;
@@ -50,7 +48,7 @@ export class PointsService {
 			console.log('No supports');
 			return 400;
 		}
-	}
+	}*/
 	/* DELETE */
 	deletePoint(point: Point):Observable<any> {		
 		return this._http.delete(

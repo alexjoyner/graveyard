@@ -1,5 +1,4 @@
 export class Issue {
-	_id: string;
 	mainQuestion: string;
     questionDetail: string;
     ups: number;
@@ -9,9 +8,7 @@ export class Issue {
     	mainQuestion: string, 
     	questionDetail: string, 
     	ups: number, 
-		downs: number,
-    	_id?: string) {
-		this._id = (_id) ? _id : null;
+		downs: number) {
 		this.mainQuestion = mainQuestion;
 		this.questionDetail = questionDetail;
 		this.ups = ups;

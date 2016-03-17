@@ -1,4 +1,10 @@
 <ro-create-point-form *ngIf="showForm" (added)="showForm = !showForm; ngOnInit()"></ro-create-point-form>
+<h1 class="text-center" *ngIf="points && points.length === 0 && !showForm">
+    No points here! How about
+    <button class="btn btn-lg btn-success" (click)="showForm = true">
+        ADD ONE!!!
+    </button>
+</h1>
 <div *ngFor="#point of points | roFilter: searchText; #i = index" class="point">
     <div class="row">
         <div class="col-xs-6 main-point-block text-center">

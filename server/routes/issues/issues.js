@@ -45,9 +45,10 @@ router.get('/:id', function(req, res) {
 router.post('/newIssue', function(req, res) {
     console.log(req.body);
     var newIssue = new issues(req.body);
-    newIssue.save(function(err) {
+    newIssue.save(function(err, returned) {
         if (err) throw err;
-        res.status(200).send(newIssue).end();
+        console.log('returned: ', returned);
+        res.status(200).send(returned._id).end();
     });
 });
 // post update to existing issue

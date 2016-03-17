@@ -1,5 +1,4 @@
 export class Point {
-	_id: string;
 	issue_id: string;
     problem: string;
     type: string;
@@ -12,10 +11,8 @@ export class Point {
 		type: string,
 		ups: number,
 		downs: number,
-		tag: string,
-		_id?: string
+		tag: string
 	){
-		this._id = (_id) ? _id : null;
 		this.issue_id = issue_id;
 		this.problem = problem;
 		this.type = type;

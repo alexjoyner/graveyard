@@ -1,19 +1,21 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, OnInit, Input} from 'angular2/core';
 import {Issue} from '../../shared/issue';
 import {IssuesService} from '../../shared/issues.service';
 import {SearchFilterPipe} from '../../pipes/searchFilter.pipe';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 import {VoteCellComponent} from '../../shared/vote-cell.component';
+import {NewIssueForm} from './new-issue-form.component';
 @Component({
     selector: 'ro-home-issue-list',
     templateUrl: 'templates/home/home-issue-list.tpl.html',
     styleUrls: ['src/css/home-issue.css'],
-    directives: [ROUTER_DIRECTIVES, VoteCellComponent],
+    directives: [ROUTER_DIRECTIVES, VoteCellComponent, NewIssueForm],
     providers: [IssuesService],
-    pipes: [SearchFilterPipe],
-    inputs: ['searchText']
+    pipes: [SearchFilterPipe]
 })
 export class  HomeIssueListComponent implements OnInit{
+	@Input('searchText') searchText: string;
+	@Input('startQuestion') startQuestion: boolean;
 	issues: Issue[];
 	constructor(private _issuesService: IssuesService){}
 	ngOnInit():any {

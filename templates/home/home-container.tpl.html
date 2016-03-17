@@ -30,9 +30,8 @@
         </div>
     </div>
     <br>
-    <ro-new-issue-form 
-        *ngIf="startQuestion">
-    </ro-new-issue-form>
     <!-- List out the isses of selected type -->
-    <ro-home-issue-list [searchText]="searchText"></ro-home-issue-list>
+    <ro-home-issue-list 
+        [searchText]="searchText"
+        [startQuestion]="startQuestion"></ro-home-issue-list>
 </div>

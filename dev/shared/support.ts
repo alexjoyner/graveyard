@@ -1,5 +1,4 @@
 export class Support {
-	_id: string;
 	point_id: string;
     evidence: string;
     type: string;
@@ -15,9 +14,7 @@ export class Support {
 		source: string,
 		tag: string,
 		ups: number,
-		downs: number,
-		_id?: string){
-		this._id = (_id) ? _id : null;
+		downs: number){
 		this.point_id = point_id;
 		this.evidence = evidence;
 		this.type = type;
