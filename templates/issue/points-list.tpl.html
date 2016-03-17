@@ -34,6 +34,7 @@
     <ro-add-support
         *ngIf="point.supports && point.addEvidence"
         [pointId]="point._id"
-        [pointIndex]="i"></ro-add-support>
+        [pointIndex]="i"
+        (added)="viewAll(i)"></ro-add-support>
     <hr>
 </div>

@@ -32,7 +32,6 @@ export class PointsListComponent implements OnInit{
 		this.points = this._pointsService.getPoints(this.issueId, this.type);
 		if (this.points && this.points.length > 0)
 			this.getSupports(this.points[0]._id, 0);
-		console.log(this.points);
 	}
 
 	onRemoved(){
