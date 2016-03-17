@@ -1,3 +1,4 @@
+<ro-create-point-form *ngIf="showForm" (added)="showForm = !showForm; ngOnInit()"></ro-create-point-form>
 <div *ngFor="#point of points | roFilter: searchText; #i = index" class="point">
     <div class="row">
         <div class="col-xs-6 main-point-block text-center">

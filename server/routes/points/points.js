@@ -4,6 +4,7 @@ var express = require('express'),
 
 // Mongoose models
 var points = require('../../models/pointModel.js');
+var supports = require('../../models/supportModel.js');
 
 // !! route = '/points'
 
@@ -26,15 +27,11 @@ router.get('/getPoints/:type/:issueId', function(req, res) {
 // ###########  POSTS  ###############
 // post new point set
 router.post('/createPoint', function(req, res) {
-    var type = req.body.type,
-        issueId = req.body.issueId,
-        newPointData = req.body.newPoint;
 
     console.log('Create Point: ', req.body);
 
-    var point = new points(newPointData);
-    point.issue_id = issueId;
-    point.type = type;
+    var point = new points(req.body);
+
     point.save(function(err){
         if(err) throw err;
         res.status(200).send('AYE OK').end();
@@ -44,15 +41,22 @@ router.post('/createPoint', function(req, res) {
 
 // ###########  DELETES  ###############
 // delete point by id
-router.delete('/deletePoint/:pointId', function(req, res) {
+router.delete('/deletePoint/:type/:issue_id/:pointId', function(req, res) {
     var type = req.params.type,
-        issueId = req.params.issueId,
+        issueId = req.params.issue_id,
         pointId = req.params.pointId;
     points.findOneAndRemove({
         '_id': pointId
     }, function(err){
         if(err) throw err;
-        res.status(200).send('Deleted');
+        supports
+            .find({
+                'point_id': pointId
+            })
+            .remove(function(err){
+                if(err) throw err;
+                res.status(200);
+            });
     });
 });
 

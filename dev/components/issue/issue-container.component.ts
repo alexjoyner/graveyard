@@ -4,13 +4,12 @@ import {Issue} from '../../shared/issue';
 import {IssuesService} from '../../shared/issues.service';
 import {PointsService} from '../../shared/points.service';
 import {PointsListComponent} from './points-list.component';
-import {CreatePointFormComponent} from './create-point-form.component';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 @Component({// Route no selector
     templateUrl: 'templates/issue/issue-container.tpl.html',
     providers: [IssuesService, PointsService],
-    directives: [PointsListComponent, CreatePointFormComponent, ROUTER_DIRECTIVES]
+    directives: [PointsListComponent, ROUTER_DIRECTIVES]
 })
 export class IssueContainerComponent implements OnInit{
 	issue: Issue = new Issue(' ',' ',0,0);

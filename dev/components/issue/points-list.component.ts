@@ -1,4 +1,4 @@
-import {Component, OnInit, OnChanges, EventEmitter} from 'angular2/core';
+import {Component, Input, OnInit, OnChanges, EventEmitter} from 'angular2/core';
 import {RouteParams} from 'angular2/router';
 import {PointsService} from '../../shared/points.service';
 import {SupportsService} from '../../shared/supports.service';
@@ -8,16 +8,18 @@ import {TopSupportComponent} from './top-support.component';
 import {MoreSupportComponent} from './more-support.component';
 import {SearchFilterPipe} from '../../pipes/searchFilter.pipe';
 import {AddSupportComponent} from './add-support.component';
+import {CreatePointFormComponent} from './create-point-form.component';
 @Component({
     selector: 'ro-points-list',
     templateUrl: 'templates/issue/points-list.tpl.html',
     styleUrls: ['src/css/points-list.css'],
-    directives: [MainPointComponent, TopSupportComponent, MoreSupportComponent, AddSupportComponent],
+    directives: [MainPointComponent, TopSupportComponent, MoreSupportComponent, AddSupportComponent, CreatePointFormComponent],
     providers: [SupportsService],
     pipes: [SearchFilterPipe],
     inputs: ['searchText']
 })
 export class PointsListComponent implements OnInit{
+	@Input('showForm') showForm: boolean;
 	points: Point[];
 	type: string;
 	issueId: string;
@@ -27,9 +29,14 @@ export class PointsListComponent implements OnInit{
 		private _supportsService: SupportsService) { }
 
 	ngOnInit():any {
+		console.log('getting');
 		this.issueId = this._routeParams.get('id');
 		this.type = this._routeParams.get('type');
-		this.points = this._pointsService.getPoints(this.issueId, this.type);
+		this._pointsService.getPoints(this.issueId, this.type)
+			.subscribe(
+				data => this.points = data,
+				err => console.log('err: ', err)
+			);
 		if (this.points && this.points.length > 0)
 			this.getSupports(this.points[0]._id, 0);
 	}

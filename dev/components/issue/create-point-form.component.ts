@@ -17,8 +17,11 @@ export class CreatePointFormComponent implements OnInit{
 		private _routeParams: RouteParams) { }
 
 	createPoint(){
-		this._pointsService.insertPoint(this.newPoint);
-		this.added.emit(null);
+		this._pointsService.insertPoint(this.newPoint)
+		.subscribe(
+			success => this.added.emit(null),
+			err => console.log('err', err)
+		);
 	}
 
 	ngOnInit():any {

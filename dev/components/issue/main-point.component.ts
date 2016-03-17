@@ -9,10 +9,16 @@ import {PointsService} from '../../shared/points.service';
 })
 export class MainPointComponent {
 	@Input('point') point: Point;
+	@Output() removed: EventEmitter<any> = new EventEmitter();
 	constructor(
 		private _pointsService: PointsService){};
 
 	deletePoint(){
-		let status: number = this._pointsService.deletePoint(this.point);
+		this._pointsService
+		.deletePoint(this.point)
+		.subscribe(
+			success => this.removed.emit(null),
+			err => console.log('Err: ', err)
+		);
 	}
 }

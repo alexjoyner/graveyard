@@ -15,7 +15,7 @@ export class Point {
 		tag: string,
 		_id?: string
 	){
-		this._id = (_id) ? _id : guid();
+		this._id = (_id) ? _id : null;
 		this.issue_id = issue_id;
 		this.problem = problem;
 		this.type = type;
