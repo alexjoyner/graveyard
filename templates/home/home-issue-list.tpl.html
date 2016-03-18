@@ -1,6 +1,5 @@
 <ro-new-issue-form
-    *ngIf="startQuestion"
-    (added)="ngOnInit()">
+    *ngIf="startQuestion">
 </ro-new-issue-form>
 <h1 class="text-center" *ngIf="issues && issues.length === 0 && !startQuestion">
     No issues here! How about

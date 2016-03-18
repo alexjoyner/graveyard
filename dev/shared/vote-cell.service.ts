@@ -47,7 +47,7 @@ export class VoteCellService {
 		if (srcType === 'support') {
 			const body = JSON.stringify({
 				voteType: voteType,
-				suppportId: srcId
+				supportId: srcId
 			});
 			const headers = new Headers();
 			headers.append('Content-Type', 'application/json');

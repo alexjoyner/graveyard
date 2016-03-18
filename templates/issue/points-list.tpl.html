@@ -1,51 +1,61 @@
-<ro-create-point-form *ngIf="showForm" (added)="showForm = !showForm; ngOnInit()"></ro-create-point-form>
+<ro-create-point-form *ngIf="showForm" (added)="showForm = !showForm; ngOnInit()">
+</ro-create-point-form>
 <h1 class="text-center" *ngIf="points && points.length === 0 && !showForm">
-    No points here! How about
+    Awesome!
+    <br/>
+    Start off the search for an answer:
+    <br/>
     <button class="btn btn-lg btn-success" (click)="showForm = true">
-        ADD ONE!!!
+        ADD A {{type | uppercase}}!!!
     </button>
 </h1>
 <div *ngFor="#point of points | roFilter: searchText; #i = index" class="point">
+    <hr/>
     <div class="row">
         <div class="col-xs-6 main-point-block text-center">
             <ro-main-point
-            	[point]="point"
-                (removed)="onRemoved()"></ro-main-point>
+                [point]="point"
+                (removed)="onRemoved()">
+            </ro-main-point>
         </div>
         <div class="col-xs-6 top-supports">
-            <ro-top-support 
-                *ngIf="point.supports && point.supports.length > 0"
+            <ro-top-support
+                *ngIf="point.supports && point.supports.length >0"
                 [support]="point.supports[0]"
                 [numMoreSupport]="point.supports.length - 1"
                 [showingMore]="point.viewAll"
                 (addEvidence)="addEvidence(i)"
                 (viewAll)="viewAll(i)"
-                (removed)="removeSupport(i,0)"></ro-top-support>
+                (removed)="removeSupport(i,0)">
+            </ro-top-support>
             <!-- To show if no supports data has been searched for -->
-            <div *ngIf="!point.supports">
-                <br/>
-                <button type="button" class="btn btn-lg btn-default" (click)="getSupports(point._id, i)">
+            <div *ngIf="!point.supports" class="text-center">
+                <br><br>
+                <button type="button" class="btn btn-lg btn-default " (click)="getSupports(point._id, i)">
                     Get Supports
                 </button>
             </div>
             <div *ngIf="point.supports && point.supports.length === 0">
-                <h3 class="text-center">
+                <h1 class="text-center">
+                    <br/>
                     No Support
-                </h3>
-                <button type="button" class="btn btn-xs btn-info" (click)="addEvidence(i)">
-                    Add Evidence
-                </button>
+                    <hr/>
+                    <button type="button" class="btn btn-lg btn-success" (click)="addEvidence(i)">
+                        Support this point
+                    </button>
+                </h1>
             </div>
         </div>
     </div>
-    <ro-more-support 
+    <ro-more-support
         *ngIf="point.supports && point.viewAll"
         [supports]="point.supports.slice(1)"
-        (removed)="removeSupport(i,$event)"></ro-more-support>
+        (removed)="removeSupport(i,$event)">
+    </ro-more-support>
     <ro-add-support
         *ngIf="point.supports && point.addEvidence"
         [pointId]="point._id"
         [pointIndex]="i"
-        (added)="viewAll(i); getSupports(point._id, i)"></ro-add-support>
-    <hr>
+        (added)="viewAll(i); getSupports(point._id, i)">
+    </ro-add-support>
 </div>

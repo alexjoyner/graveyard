@@ -3,7 +3,8 @@ import {VoteCellService} from './vote-cell.service';
 @Component({
     selector: 'ro-vote-cell',
     templateUrl: 'templates/shared/vote-cell.tpl.html',
-    providers: [VoteCellService]
+    providers: [VoteCellService],
+    styleUrls: ['src/css/vote-cell.css']
 })
 export class VoteCellComponent {
 	@Input('sourceType') sourceType: string;
@@ -22,7 +23,7 @@ export class VoteCellComponent {
 			type)
 		.subscribe(
 			success => {
-				(type = 'upvote')
+				(type === 'upvote')
 					?
 					this.upVoted.emit(null)
 					:

@@ -11,8 +11,10 @@ import {NavbarComponent} from './components/navbar/navbar.component';
     	<div class="container">
     		<router-outlet></router-outlet>
     	</div>
+        <div style="height: 90vh"></div>
     `,
-    directives: [NavbarComponent, ROUTER_DIRECTIVES]
+    directives: [NavbarComponent, ROUTER_DIRECTIVES],
+    styleUrls: ['src/css/app.css']
 })
 @RouteConfig([
 	{ path: '/Home', name: 'Home', component: HomeContainerComponent, useAsDefault: true },

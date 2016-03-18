@@ -87,7 +87,7 @@ router.post('/support', function(req, res) {
         '_id': supportId
     };
     var incOrder;
-    if (voteType === 'ups') {
+    if (voteType === 'upvote') {
         incOrder = {
             '$inc': {
                 'ups': 1
@@ -100,12 +100,14 @@ router.post('/support', function(req, res) {
             }
         };
     }
+    console.log('Query: ', query);
+    console.log('incOrder: ', incOrder);
     supports
         .findOneAndUpdate(query, incOrder)
         .select('ups downs')
-        .exec(function(err, issue) {
+        .exec(function(err, support) {
             if (err) throw err;
-            if (!issue) {
+            if (!support) {
                 res.status(500).send('No Issue Found');
             } else {
                 res.status(200).send(voteType + ' successful').end();
