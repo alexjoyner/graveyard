@@ -9,16 +9,16 @@
     </div>
     <!-- Tab Bar: Tab to issue list type -->
     <ul class="nav nav-tabs">
-        <li role="presentation" [ngClass]="{active: _type === 'pro'}">
+        <li role="presentation" [ngClass]="{active: _type === 'yes'}">
             <a [routerLink]="['Issue', {type: 
-            'pro', id: _issueId}]">
-                Pros
+            'yes', id: _issueId}]">
+                Yes
             </a>
         </li>
-        <li role="presentation" [ngClass]="{active: _type === 'con'}">
+        <li role="presentation" [ngClass]="{active: _type === 'no'}">
             <a [routerLink]="['Issue', {type: 
-            'con', id: _issueId}]">
-                Cons
+            'no', id: _issueId}]">
+                NO
             </a>
         </li>
     </ul>
@@ -26,8 +26,8 @@
     <br/>
     <div class="row">
         <div class="col-xs-2">
-            <button class="btn btn-md" class="btn" [ngClass]="{'btn-success': _type === 'pro', 'btn-danger': _type === 'con'}" (click)="showForm = !showForm">
-                Add a new pro
+            <button class="btn btn-md" class="btn" [ngClass]="{'btn-success': _type === 'yes', 'btn-danger': _type === 'no'}" (click)="showForm = !showForm">
+                Add a new {{_type}}
             </button>
         </div>
         <div class="col-xs-8">

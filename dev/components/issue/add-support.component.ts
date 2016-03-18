@@ -10,8 +10,9 @@ import {PointsService} from '../../shared/points.service';
 export class AddSupportComponent implements OnInit{
 	@Input('pointId') pointId: string;
 	@Input('pointIndex') pointIndex: number;
-	newSupport: Support;
 	@Output() added: EventEmitter<any> = new EventEmitter();
+	newSupport: Support;
+	private showSource: boolean = false;
 
 	constructor(
 		private _supportsService: SupportsService,
@@ -29,4 +30,45 @@ export class AddSupportComponent implements OnInit{
 	ngOnInit():any {
 		this.newSupport = new Support(this.pointId, '', '', '', '', 0, 0);
 	}
+	setTag(tag: string){
+		this.newSupport.tag = 'tag';
+		switch(tag){
+			case 'opinion':
+				this.showSource = false;
+				this.newSupport.source = 'none';
+				break
+			default:
+				this.showSource = true;
+				this.newSupport.source = '';
+				break
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

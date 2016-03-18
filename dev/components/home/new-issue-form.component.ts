@@ -19,7 +19,7 @@ export class NewIssueForm{
 			.subscribe(
 				data => {
 					console.log('Returned: ', data);
-					this._router.navigate(['Issue', {type: 'pro', id: data}]);
+					this._router.navigate(['Issue', {type: 'yes', id: data}]);
 				},
 				err => console.log('Error: ', err)
 			);

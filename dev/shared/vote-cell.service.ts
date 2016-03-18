@@ -1,7 +1,4 @@
 import {Injectable} from 'angular2/core';
-import {ISSUES} from '../mock/mock-issues';
-import {POINTS} from '../mock/mock-points';
-import {SUPPORTS} from '../mock/mock-supports';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
 import {Http, Headers} from 'angular2/http';
