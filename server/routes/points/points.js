@@ -32,8 +32,8 @@ router.post('/createPoint', function(req, res) {
 
     var point = new points(req.body);
 
-    point.save(function(err){
-        if(err) throw err;
+    point.save(function(err) {
+        if (err) throw err;
         res.status(200).send('AYE OK').end();
     });
 });
@@ -45,18 +45,14 @@ router.delete('/deletePoint/:type/:issue_id/:pointId', function(req, res) {
     var type = req.params.type,
         issueId = req.params.issue_id,
         pointId = req.params.pointId;
-    points.findOneAndRemove({
+    points.findOne({
         '_id': pointId
-    }, function(err){
-        if(err) throw err;
-        supports
-            .find({
-                'point_id': pointId
-            })
-            .remove(function(err){
-                if(err) throw err;
-                res.status(200);
-            });
+    }, function(err, point) {
+        if (err) throw err;
+        point.remove(function(err){
+            if (err) throw err;
+            res.status(200).send('success');
+        });
     });
 });
 

@@ -40,10 +40,6 @@ export class PointsListComponent implements OnInit{
 		if (this.points && this.points.length > 0)
 			this.getSupports(this.points[0]._id, 0);
 	}
-
-	onRemoved(){
-		this.ngOnInit();
-	}
 	removeSupport(pointIndx: number, supportIndx: number){
 		this.points[pointIndx]['supports'].splice(supportIndx, 1);
 	}

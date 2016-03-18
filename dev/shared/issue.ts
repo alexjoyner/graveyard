@@ -1,4 +1,5 @@
 export class Issue {
+	_id: string;
 	mainQuestion: string;
     questionDetail: string;
     ups: number;

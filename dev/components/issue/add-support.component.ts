@@ -9,6 +9,7 @@ import {PointsService} from '../../shared/points.service';
 })
 export class AddSupportComponent implements OnInit{
 	@Input('pointId') pointId: string;
+	@Input('issueId') issueId: string;
 	@Input('pointIndex') pointIndex: number;
 	@Output() added: EventEmitter<any> = new EventEmitter();
 	newSupport: Support;
@@ -28,7 +29,7 @@ export class AddSupportComponent implements OnInit{
 		);
 	}
 	ngOnInit():any {
-		this.newSupport = new Support(this.pointId, '', '', '', '', 0, 0);
+		this.newSupport = new Support(this.issueId, this.pointId, '', '', '', '', 0, 0);
 	}
 	setTag(tag: string){
 		this.newSupport.tag = 'tag';

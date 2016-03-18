@@ -17,7 +17,9 @@ export class MainPointComponent {
 		this._pointsService
 		.deletePoint(this.point)
 		.subscribe(
-			success => this.removed.emit(null),
+			success => {
+				this.removed.emit(null)
+			},
 			err => console.log('Err: ', err)
 		);
 	}

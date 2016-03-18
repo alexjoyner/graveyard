@@ -4,6 +4,10 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var supportSchema = new Schema({
+    issue_id: {
+        type: Schema.Types.ObjectId,
+        required: true
+    },
     point_id: {
         type: Schema.Types.ObjectId,
         required: true

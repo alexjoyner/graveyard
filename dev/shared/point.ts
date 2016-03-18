@@ -1,4 +1,5 @@
 export class Point {
+	_id: string;
 	issue_id: string;
     problem: string;
     type: string;

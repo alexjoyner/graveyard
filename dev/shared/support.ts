@@ -1,4 +1,6 @@
 export class Support {
+	_id: string;
+	issue_id: string;
 	point_id: string;
     evidence: string;
     type: string;
@@ -8,6 +10,7 @@ export class Support {
 	downs: number;
 
 	constructor(
+		issue_id: string,
 		point_id: string,
 		evidence: string,
 		type: string,
@@ -15,6 +18,7 @@ export class Support {
 		tag: string,
 		ups: number,
 		downs: number){
+		this.issue_id = issue_id;
 		this.point_id = point_id;
 		this.evidence = evidence;
 		this.type = type;

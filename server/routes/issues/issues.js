@@ -56,19 +56,14 @@ router.post('/newIssue', function(req, res) {
 // ###########  DELETES  ###############
 // delete existing issue
 router.delete('/deleteIssue/:issueId', function(req, res) {
-    issues.findOneAndRemove({
+    issues.findOne({
         '_id': req.params.issueId
-    }, function(err) {
-        if (err) {
-            res.status(500).send('Internal error').end();;
-        } else {
-            points.remove({
-                'issue.id': req.params.issueId
-            }, function(err) {
-                if (err) throw err;
-                res.status(200).send('Deleted Issue').end();;
-            });
-        }
+    }, function(err, issue) {
+        if (err) throw err;
+        issue.remove(function(err){
+            if (err) throw err;
+            res.status(200).send('success');
+        });
     });
 });
 
