@@ -5,11 +5,13 @@ import {SupportsService} from '../../shared/supports.service';
 @Component({
     selector: 'ro-more-support',
     templateUrl: 'templates/issue/more-support.tpl.html',
-    directives: [VoteCellComponent]
+    directives: [VoteCellComponent],
+    styleUrls: ['src/css/more-support.css']
 })
 export class MoreSupportComponent {
 	@Input('supports') supports: Support[];
 	@Output() removed: EventEmitter<any> = new EventEmitter();
+	@Output() goTop: EventEmitter<any> = new EventEmitter();
 	constructor(
 		private _supportService: SupportsService) { };
 
@@ -27,4 +29,7 @@ export class MoreSupportComponent {
 				);
 		}
 	};
+	gotoTop(){
+		this.goTop.emit(null);
+	}
 }

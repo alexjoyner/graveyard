@@ -10,7 +10,7 @@ var supports = require('../../models/supportModel.js');
 // ###########  GETS  ###############
 router.get('/getSupport/:pointId', function(req, res){
 	var pointId = req.params.pointId;
-
+    console.log('pointId: ', pointId);
 	supports
 		.find({
 			'point_id': pointId

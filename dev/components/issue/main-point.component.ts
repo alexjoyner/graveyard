@@ -14,13 +14,16 @@ export class MainPointComponent {
 		private _pointsService: PointsService){};
 
 	deletePoint(){
-		this._pointsService
-		.deletePoint(this.point)
-		.subscribe(
-			success => {
-				this.removed.emit(null)
-			},
-			err => console.log('Err: ', err)
-		);
+		let answer: boolean = confirm(`Are you sure you want to delete this main point? This action can't be undone`);
+		if (answer === true) {
+			this._pointsService
+				.deletePoint(this.point)
+				.subscribe(
+				success => {
+					this.removed.emit(null)
+				},
+				err => console.log('Err: ', err)
+				);
+		}
 	}
 }

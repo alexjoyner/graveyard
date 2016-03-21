@@ -11,7 +11,7 @@ import {NavbarComponent} from './components/navbar/navbar.component';
     	<div class="container">
     		<router-outlet></router-outlet>
     	</div>
-        <div style="height: 90vh"></div>
+        <div style="height: 60vh"></div>
     `,
     directives: [NavbarComponent, ROUTER_DIRECTIVES],
     styleUrls: ['src/css/app.css']

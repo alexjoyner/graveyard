@@ -14,6 +14,7 @@ export class TopSupportComponent {
 	@Output() addEvidence: EventEmitter<any> = new EventEmitter();
 	@Output() viewAll: EventEmitter<any> = new EventEmitter();
 	@Output() removed: EventEmitter<any> = new EventEmitter();
+	@Output() goTop: EventEmitter<any> = new EventEmitter();
 	constructor(
 		private _supportService: SupportsService) { };
 
@@ -37,5 +38,8 @@ export class TopSupportComponent {
 
 	toggleAddEvidence() {
 		this.addEvidence.emit(null);
+	}
+	gotoTop() {
+		this.goTop.emit(null);
 	}
 }
