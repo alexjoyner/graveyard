@@ -29,10 +29,10 @@ export class AddSupportComponent implements OnInit{
 		);
 	}
 	ngOnInit():any {
-		this.newSupport = new Support(this.issueId, this.pointId, '', '', '', '', 0, 0);
+		this.newSupport = new Support(this.issueId, this.pointId, '', '', 'http://', '', 0, 0);
 	}
 	setTag(tag: string){
-		this.newSupport.tag = 'tag';
+		this.newSupport.tag = tag;
 		switch(tag){
 			case 'opinion':
 				this.showSource = false;
@@ -40,7 +40,7 @@ export class AddSupportComponent implements OnInit{
 				break
 			default:
 				this.showSource = true;
-				this.newSupport.source = '';
+				this.newSupport.source = 'http://';
 				break
 		}
 	}

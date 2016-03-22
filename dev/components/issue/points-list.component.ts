@@ -51,8 +51,6 @@ export class PointsListComponent implements OnInit{
 				},
 				err => console.log('err: ', err)
 			);
-		if (this.points && this.points.length > 0)
-			this.getSupports(0, true);
 	}
 	removeSupport(pointIndx: number, supportIndx: number){
 		this.points[pointIndx]['supports'].splice(supportIndx, 1);
