@@ -1,4 +1,4 @@
-<hr>
+<hr/>
 <form class="row" (ngSubmit)="createPoint()">
     <div id="NewPoint" class="row">
         <div class="col-xs-12">
@@ -14,16 +14,19 @@
             </textarea>
         </div>
     </div>
-    <br>
-    <div class="row">
-        <div class="col-xs-12">
-        	<button
-        		type="submit"
-        	    class="btn btn-lg btn-success pull-right"
-        	    >
-        	    Add Main Point
-        	</button>
-        </div>
+    <br/>
+    <div class="pull-right">
+        <button
+            class="btn btn-lg btn-danger"
+            (click)="onCancel()"
+            >
+            Cancel
+        </button>
+        <button
+            type="submit"
+            class="btn btn-lg btn-success"
+            >
+            Add Main Point
+        </button>
     </div>
-    <hr/>
 </form>

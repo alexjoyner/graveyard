@@ -11,6 +11,7 @@ export class CreatePointFormComponent implements OnInit{
 	newPoint: Point;
 	private _issueId: string;
 	@Output() added: EventEmitter<any> = new EventEmitter();
+	@Output() cancel: EventEmitter<any> = new EventEmitter();
 
 	constructor(
 		private _pointsService: PointsService,
@@ -23,7 +24,9 @@ export class CreatePointFormComponent implements OnInit{
 			err => console.log('err', err)
 		);
 	}
-
+	onCancel(){
+		this.cancel.emit(null);
+	}
 	ngOnInit():any {
 		this._issueId = this._routeParams.get('id');
 		let type = this._routeParams.get('type');

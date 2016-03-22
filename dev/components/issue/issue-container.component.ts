@@ -15,7 +15,6 @@ export class IssueContainerComponent implements OnInit{
 	issue: Issue = new Issue(' ',' ',0,0);
 	private _issueId: string;
 	private _type: string;
-	searchText: string;
 	constructor(
 		private _routeParams: RouteParams,
 		private _issuesService: IssuesService){}

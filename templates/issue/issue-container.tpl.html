@@ -22,22 +22,5 @@
             </a>
         </li>
     </ul>
-    <!-- Create and Search Buttons -->
-    <br/>
-    <div class="row">
-        <div class="col-xs-2">
-            <button class="btn btn-md" class="btn" [ngClass]="{'btn-success': _type === 'yes', 'btn-danger': _type === 'no'}" (click)="showForm = !showForm">
-                Add a new {{_type}}
-            </button>
-        </div>
-        <div class="col-xs-8">
-            <div class="input-group">
-                <div class="input-group-addon">
-                    Search
-                </div>
-                <input type="text" class="form-control" id="exampleInputAmount" [(ngModel)]="searchText"/>
-            </div>
-        </div>
-    </div>
-    <ro-points-list [searchText]="searchText" [showForm]="showForm" (added)="showForm = !showForm"></ro-points-list>
+    <ro-points-list></ro-points-list>
 </div>

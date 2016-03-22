@@ -16,15 +16,15 @@ import {CreatePointFormComponent} from './create-point-form.component';
     styleUrls: ['src/css/points-list.css'],
     directives: [MainPointComponent, TopSupportComponent, MoreSupportComponent, AddSupportComponent, CreatePointFormComponent],
     providers: [SupportsService, WINDOW_PROVIDERS],
-    pipes: [SearchFilterPipe],
-    inputs: ['searchText']
+    pipes: [SearchFilterPipe]
 })
 export class PointsListComponent implements OnInit{
-	@Input('showForm') showForm: boolean;
+	showForm: boolean;
 	points: Point[];
 	type: string;
 	issueId: string;
 	win: Window;
+	searchText: string;
 
 	constructor(
 		private _pointsService: PointsService,
@@ -54,6 +54,10 @@ export class PointsListComponent implements OnInit{
 	}
 	onPointAdded(point: Point){
 		this.points.unshift(point);
+		this.getSupports(0, true);
+		setTimeout(() => {
+			this.smoothScroll('point' + 0, 20)
+		}, 900);
 	}
 	removeSupport(pointIndx: number, supportIndx: number){
 		this.points[pointIndx]['supports'].splice(supportIndx, 1);
