@@ -38,7 +38,7 @@ export class PointsService {
 			'/points/createPoint',
 			body,
 			{ headers: headers })
-			.map(res => res);
+			.map(res => res.json());
 	}
 	/*insertSupport(pointIndx: number, support: Support):number{
 		if(this.selectedPoints[pointIndx]['supports']){
@@ -50,7 +50,7 @@ export class PointsService {
 		}
 	}*/
 	/* DELETE */
-	deletePoint(point: Point):Observable<any> {		
+	deletePoint(point: Point): Observable<any> {		
 		return this._http.delete(
 			this.endpoint +
 			'/points/deletePoint/' +

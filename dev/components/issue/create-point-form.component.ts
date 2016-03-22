@@ -19,7 +19,7 @@ export class CreatePointFormComponent implements OnInit{
 	createPoint(){
 		this._pointsService.insertPoint(this.newPoint)
 		.subscribe(
-			success => this.added.emit(null),
+			pointData =>  this.added.emit(pointData),
 			err => console.log('err', err)
 		);
 	}

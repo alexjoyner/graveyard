@@ -32,9 +32,9 @@ router.post('/createPoint', function(req, res) {
 
     var point = new points(req.body);
 
-    point.save(function(err) {
+    point.save(function(err, savedPoint) {
         if (err) throw err;
-        res.status(200).send('AYE OK').end();
+        res.status(200).send(savedPoint).end();
     });
 });
 // post update to point

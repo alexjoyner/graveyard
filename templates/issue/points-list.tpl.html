@@ -1,4 +1,4 @@
-<ro-create-point-form *ngIf="showForm" (added)="showForm = !showForm; ngOnInit()">
+<ro-create-point-form *ngIf="showForm" (added)="showForm = !showForm; onPointAdded($event)">
 </ro-create-point-form>
 <hr/>
 <h1 class="text-center" *ngIf="points && points.length === 0 && !showForm">

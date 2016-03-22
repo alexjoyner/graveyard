@@ -52,6 +52,9 @@ export class PointsListComponent implements OnInit{
 				err => console.log('err: ', err)
 			);
 	}
+	onPointAdded(point: Point){
+		this.points.unshift(point);
+	}
 	removeSupport(pointIndx: number, supportIndx: number){
 		this.points[pointIndx]['supports'].splice(supportIndx, 1);
 	}
