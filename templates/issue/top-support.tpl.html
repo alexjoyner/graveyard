@@ -36,12 +36,12 @@
     </div>
     <div style="display:inline-block;">
         <h4 style="display: inherit;">
-            <span class="label label-success">
+            <span class="label" [ngClass]="support.tag"> 
                 {{support.tag | uppercase}}
             </span>
         </h4>
         <h4 style="display: inherit;">
-            <span class="label label-success">
+            <span class="label label-success" [ngClass]="support.type">
                 {{support.type | uppercase}}
             </span>
         </h4>

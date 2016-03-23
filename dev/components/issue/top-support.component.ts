@@ -5,7 +5,8 @@ import {SupportsService} from '../../shared/supports.service';
 @Component({
     selector: 'ro-top-support',
     templateUrl: 'templates/issue/top-support.tpl.html',
-    directives: [VoteCellComponent]
+    directives: [VoteCellComponent],
+    styleUrls: ['src/css/support.css']
 })
 export class TopSupportComponent {
 	@Input('support') support: Support;
@@ -31,7 +32,6 @@ export class TopSupportComponent {
 			);
 		}
 	};
-
 	toggleViewAll(){
 		this.viewAll.emit(null);
 	}

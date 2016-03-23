@@ -6,7 +6,7 @@ import {SupportsService} from '../../shared/supports.service';
     selector: 'ro-more-support',
     templateUrl: 'templates/issue/more-support.tpl.html',
     directives: [VoteCellComponent],
-    styleUrls: ['src/css/more-support.css']
+    styleUrls: ['src/css/support.css']
 })
 export class MoreSupportComponent {
 	@Input('supports') supports: Support[];
