@@ -5,8 +5,7 @@
     "postinstall": "npm run typings install",
     "lite": "lite-server",
     "gulp": "gulp",
-    "start": "node server.js",
-    "developent": "concurrent \"npm run gulp\" \"node server.js\" \"npm run lite\"",
+    "start": "concurrent \"npm run gulp\" \"node server.js\" \"npm run lite\"",
     "typings": "typings"
   },
   "engines": {
@@ -26,7 +25,6 @@
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.0",
     "systemjs": "0.19.6",
-    "zone.js": "0.5.11",
     "bcrypt": "^0.8.5",
     "body-parser": "^1.13.3",
     "braintree": "^1.29.0",
@@ -55,6 +53,7 @@
     "postcss-scss": "^0.1.3",
     "precss": "^1.3.0",
     "tsd": "^0.6.5-beta",
-    "typings": "^0.6.8"
+    "typings": "^0.6.8",
+    "zone.js": "0.5.11"
   }
 }
