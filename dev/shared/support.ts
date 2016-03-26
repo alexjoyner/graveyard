@@ -3,6 +3,7 @@ export class Support {
 	issue_id: string;
 	point_id: string;
     evidence: string;
+    detail: string;
     type: string;
 	source: string;
 	tag: string;
@@ -13,6 +14,7 @@ export class Support {
 		issue_id: string,
 		point_id: string,
 		evidence: string,
+		detail: string,
 		type: string,
 		source: string,
 		tag: string,
@@ -21,6 +23,7 @@ export class Support {
 		this.issue_id = issue_id;
 		this.point_id = point_id;
 		this.evidence = evidence;
+		this.detail = detail;
 		this.type = type;
 		this.source = source;
 		this.tag = tag;

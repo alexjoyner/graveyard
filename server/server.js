@@ -18,7 +18,7 @@ require('./config/accessHeaders.js')(app);
 // global middleware
 app.use(bodyParser.json());
 app.use(morgan('dev'));
-require('./routes/routes.js')(app);
+require('./server/routes/routes.js')(app);
 
 
 

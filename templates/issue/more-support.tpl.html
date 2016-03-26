@@ -27,6 +27,7 @@
                             </b>
                             {{support.evidence}}
                         </h4>
+                        <p>{{support.detail}}</p>
                         <div class="row">
                             <div class="col-xs-8" *ngIf="support.source !== 'none'">
                                 <u>
@@ -55,12 +56,12 @@
                         </i>
                     </button>
                     <h4 style="display: inherit;">
-                        <span class="label label-success">
+                        <span class="label label-success"[ngClass]="support.tag">
                             {{support.tag | uppercase}}
                         </span>
                     </h4>
                     <h4 style="display: inherit;">
-                        <span class="label label-success">
+                        <span class="label label-success" [ngClass]="support.type">
                             {{support.type | uppercase}}
                         </span>
                     </h4>

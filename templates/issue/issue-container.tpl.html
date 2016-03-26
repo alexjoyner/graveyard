@@ -1,5 +1,14 @@
 <div>
-    <div style="height: 10%">
+    <div class="row">
+        <ro-vote-cell
+            style="margin-left: 10%;"
+            class="pull-left"
+            [sourceType]="'issue'"
+            [sourceId]="issue._id"
+            [score]="issue.ups - issue.downs"
+            (upVoted)="issue.ups=issue.ups+1"
+            (downVoted)="issue.downs=issue.downs+1">
+        </ro-vote-cell>
         <h2 class="text-center">
             {{issue.mainQuestion}}
         </h2>

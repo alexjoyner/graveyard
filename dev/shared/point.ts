@@ -2,6 +2,7 @@ export class Point {
 	_id: string;
 	issue_id: string;
     problem: string;
+    detail: string;
     type: string;
     ups: number;
     downs: number;
@@ -9,6 +10,7 @@ export class Point {
     constructor(
 		issue_id: string,
 		problem: string,
+		detail: string,
 		type: string,
 		ups: number,
 		downs: number,
@@ -16,6 +18,7 @@ export class Point {
 	){
 		this.issue_id = issue_id;
 		this.problem = problem;
+		this.detail = detail;
 		this.type = type;
 		this.ups = ups;
 		this.downs = downs;

@@ -61,6 +61,9 @@ export class PointsListComponent implements OnInit{
 	}
 	removeSupport(pointIndx: number, supportIndx: number){
 		this.points[pointIndx]['supports'].splice(supportIndx, 1);
+		if (this.points[pointIndx]['supports'].length === 1){
+			this.viewAll(pointIndx);
+		}
 	}
 	getSupports(index: number, showAll: boolean){
 		let pointId = this.points[index]._id;

@@ -5,11 +5,12 @@ import {IssuesService} from '../../shared/issues.service';
 import {PointsService} from '../../shared/points.service';
 import {PointsListComponent} from './points-list.component';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
+import {VoteCellComponent} from '../../shared/vote-cell.component';
 
 @Component({// Route no selector
     templateUrl: 'templates/issue/issue-container.tpl.html',
     providers: [IssuesService, PointsService],
-    directives: [PointsListComponent, ROUTER_DIRECTIVES]
+    directives: [PointsListComponent, ROUTER_DIRECTIVES, VoteCellComponent]
 })
 export class IssueContainerComponent implements OnInit{
 	issue: Issue = new Issue(' ',' ',0,0);

@@ -29,7 +29,7 @@ export class AddSupportComponent implements OnInit{
 		);
 	}
 	ngOnInit():any {
-		this.newSupport = new Support(this.issueId, this.pointId, '', '', 'http://', '', 0, 0);
+		this.newSupport = new Support(this.issueId, this.pointId, '', '', '', 'http://', '', 0, 0);
 	}
 	setTag(tag: string){
 		this.newSupport.tag = tag;
@@ -40,6 +40,7 @@ export class AddSupportComponent implements OnInit{
 				break
 			default:
 				this.showSource = true;
+				this.newSupport.detail = ''; 
 				this.newSupport.source = 'http://';
 				break
 		}

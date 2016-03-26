@@ -14,6 +14,10 @@ var pointsSchema = new Schema({
         type: String,
         required: true
     },
+    detail: {
+        type: String,
+        required: false
+    },
     type: {
         type: String,
         required: true

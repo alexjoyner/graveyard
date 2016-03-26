@@ -3,13 +3,12 @@ import {Issue} from '../../shared/issue';
 import {IssuesService} from '../../shared/issues.service';
 import {SearchFilterPipe} from '../../pipes/searchFilter.pipe';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
-import {VoteCellComponent} from '../../shared/vote-cell.component';
 import {NewIssueForm} from './new-issue-form.component';
 @Component({
     selector: 'ro-home-issue-list',
     templateUrl: 'templates/home/home-issue-list.tpl.html',
     styleUrls: ['src/css/home-issue.css'],
-    directives: [ROUTER_DIRECTIVES, VoteCellComponent, NewIssueForm],
+    directives: [ROUTER_DIRECTIVES, NewIssueForm],
     providers: [IssuesService],
     pipes: [SearchFilterPipe]
 })

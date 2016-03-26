@@ -30,6 +30,6 @@ export class CreatePointFormComponent implements OnInit{
 	ngOnInit():any {
 		this._issueId = this._routeParams.get('id');
 		let type = this._routeParams.get('type');
-		this.newPoint = new Point(this._issueId, '', type, 0, 0, '');
+		this.newPoint = new Point(this._issueId, '', '', type, 0, 0, '');
 	}
 }
