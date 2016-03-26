@@ -5,8 +5,16 @@
     "postinstall": "npm run typings install",
     "lite": "lite-server",
     "gulp": "gulp",
-    "start": "concurrent \"npm run gulp\" \"node server.js\" \"npm run lite\"",
+    "start": "node server.js",
+    "developent": "concurrent \"npm run gulp\" \"node server.js\" \"npm run lite\"",
     "typings": "typings"
+  },
+  "engines": {
+    "node": "4.2.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://rosco9awj@bitbucket.org/rosco9awj/metatatruth-ang2.git"
   },
   "license": "ISC",
   "dependencies": {
