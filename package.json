@@ -5,7 +5,7 @@
     "postinstall": "npm run typings install",
     "lite": "lite-server",
     "gulp": "gulp",
-    "start": "concurrent \"npm run gulp\" \"npm run lite\" ",
+    "start": "concurrent \"npm run gulp\" \"node server.js\" \"npm run lite\"",
     "typings": "typings"
   },
   "license": "ISC",
@@ -18,7 +18,17 @@
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.0",
     "systemjs": "0.19.6",
-    "zone.js": "0.5.11"
+    "zone.js": "0.5.11",
+    "bcrypt": "^0.8.5",
+    "body-parser": "^1.13.3",
+    "braintree": "^1.29.0",
+    "express": "^4.13.3",
+    "mongoose": "^4.1.2",
+    "morgan": "^1.6.1",
+    "multer": "^1.0.6",
+    "passport": "^0.2.2",
+    "passport-local": "^1.0.0",
+    "s3fs": "^2.3.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.2.1",
