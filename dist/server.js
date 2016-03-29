@@ -19,21 +19,16 @@ mongoose.connect('mongodb://rosco9awj:1_Password@ds025459.mlab.com:25459/metatru
 //Access headers
 require('./server/config/accessHeaders.js')(app);
 
-// Send files from angular
-app.use('/app', express.static(path.resolve(__dirname, 'app')));
-app.use('/libs', express.static(path.resolve(__dirname, 'libs')));
-
-var renderIndex = (req: express.Request, res: express.Response) => {
-    res.sendFile(path.resolve(__dirname, 'index.html'));
-}
-
-app.get('/*', renderIndex);
-
+// set the static files location /public/img will be /img for users
+app.use(express.static(__dirname + '/public')); 
 // global middleware
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 require('./server/routes/routes.js')(app);
 
+app.get('*', function(request, response) {
+  response.sendFile('./public/index.html');
+});
 
 var port = (process.env.PORT || 9000);
 // Start an express server

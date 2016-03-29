@@ -1,21 +1,20 @@
 var gulp = require('gulp');
+var gulps = require('gulp-series');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
 var path = require('path');
-var assetsDev = 'assets/';
-var assetsProd = 'src/';
+var clean = require('gulp-clean');
+var gulp_jspm = require("gulp-jspm");
 
-var appDev = 'dev/';
-var appProd = 'app/';
-
+var scripts = 'public/scripts/';
+var styles = 'public/styles/';
+var appDist = 'dist/';
 /* Mixed */
 var ext_replace = require('gulp-ext-replace');
 
 /* CSS */
 // var postcss = require('gulp-postcss');
 var sourcemaps = require('gulp-sourcemaps');
-// var autoprefixer = require('autoprefixer');
-// var precss = require('precss');
-// var cssnano = require('cssnano');
-
 /* SCSS */
 var compass = require('gulp-compass');
 
@@ -28,54 +27,71 @@ var imagemin = require('gulp-imagemin');
 
 var tsProject = typescript.createProject('tsconfig.json');
 
-// gulp.task('build-css', function () {
-//     return gulp.src(assetsDev + 'scss/*.scss')
-//         .pipe(sourcemaps.init())
-//         .pipe(postcss([autoprefixer, precss,  cssnano]))
-//         .pipe(sourcemaps.write())
-//         .pipe(ext_replace('.css'))
-//         .pipe(gulp.dest(assetsProd + 'css/'));
-// });
-
 gulp.task('build-css', function() {
     gulp.src('node_modules/bootstrap-sass/assets/fonts/bootstrap/*')
         .pipe(gulp.dest('fonts/bootstrap'));
     gulp.src('node_modules/font-awesome/fonts/*')
         .pipe(gulp.dest('fonts'));
-    gulp.src(assetsDev + 'scss/*.scss')
+    gulp.src(styles + 'scss/*.scss')
         .pipe(compass({
-            css: './src/css',
-            sass: './assets/scss'
+            css: styles + 'css',
+            sass: styles + 'scss'
         }))
-        .pipe(gulp.dest(assetsProd + 'css/'));
+        .pipe(gulp.dest(styles + 'css/'));
 });
 
 gulp.task('build-ts', function() {
-    return gulp.src(appDev + '**/*.ts')
+    return gulp.src(scripts + 'ts/**/*.ts')
         .pipe(sourcemaps.init())
         .pipe(typescript(tsProject))
         .pipe(sourcemaps.write())
         //.pipe(jsuglify())
-        .pipe(gulp.dest(appProd));
+        .pipe(gulp.dest(scripts + 'js'));
 });
+gulp.task("jspm_bundle", ['build-ts'] ,function() {
+    return gulp.src("./public/scripts/js/boot.js")
+        .pipe(gulp_jspm({ selfExecutingBundle: true }))
+        .pipe(gulp.dest("./public/scripts/bundled/"));
 
-gulp.task('build-img', function() {
-    return gulp.src(assetsDev + 'img/**/*')
-        .pipe(imagemin({
-            progressive: true
-        }))
-        .pipe(gulp.dest(assetsProd + 'img/'));
 });
-
-gulp.task('build-html', function() {
-    return gulp.src(appDev + '**/*.html')
-        .pipe(gulp.dest(appProd));
-});
-
 gulp.task('watch', function() {
-    gulp.watch(appDev + '**/*.ts', ['build-ts']);
-    gulp.watch(assetsDev + 'scss/**/*.scss', ['build-css']);
-    gulp.watch(assetsDev + 'img/*', ['build-img']);
+    gulp.watch(scripts + '**/*.ts', ['build-ts']);
+    gulp.watch(styles + 'scss/**/*.scss', ['build-css']);
 });
+gulps.registerTasks({
+    'clean-dist': (function(done){
+        gulp.src(appDist)
+            .pipe(clean())
+            .on('finish', function(){
+                done();
+            });
+    }),
+    'production-build': (function(){
+        // Index.html
+        gulp.src('index.html')
+            .pipe(gulp.dest(appDist+'public'));
+        // Getting all the js files into the dist folder
+        gulp.src(scripts + '**/*.js')
+            .pipe(gulp.dest(appDist+'public/js'));
+        // Getting all the css files into the dist folder
+        gulp.src('src/css/**/*.css')
+            .pipe(gulp.dest(appDist+'public/styles/css'));
+        // Getting all the html files into the dist folder
+        gulp.src('templates/**/*.html')
+            .pipe(gulp.dest(appDist+'public/templates'));
+        // Server files
+        gulp.src('server/**/*.js')
+            .pipe(gulp.dest(appDist+'server'));
+        gulp.src('server.js')
+            .pipe(gulp.dest(appDist));
+        // Package json file
+        gulp.src('package.json')
+            .pipe(gulp.dest(appDist));
+        // gitignore
+        gulp.src('.gitignore')
+            .pipe(gulp.dest(appDist));
 
-gulp.task('default', ['watch', 'build-ts', 'build-css']);
+    })
+})
+gulp.task('default', ['watch', 'build-ts', 'build-css'])
+gulps.registerSeries('build', ['clean-dist','production-build']);
