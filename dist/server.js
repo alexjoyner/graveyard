@@ -1,6 +1,7 @@
 // Clear the console on nodemon restart
 process.stdout.write('\033c');
 
+console.log('Enviorment: ', ENV);
 // Dependencies
 var express = require('express'),
     app = express();
@@ -27,7 +28,6 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 require('./server/routes/routes.js')(app);
 
-console.log('Enviorment: ', ENV);
 if(ENV === 'production'){
 	// Send files from angular
 	app.use('/client', express.static(path.resolve(__dirname, 'client')));
