@@ -98,18 +98,6 @@ gulp.task('build-img', function() {
         .pipe(gulp.dest(assetsProd + 'img/'));
 });
 
-gulp.task('build-server', function(){
-    // Server folder files
-    var server_folder = 
-        gulp.src(dev_server_folder + '**/*.js')
-            .pipe(gulp.dest(dist_server_folder));
-    // Server.js file
-    var server_js =
-        gulp.src(dev_server_js)
-            .pipe(gulp.dest(dist_base));
-    return [server_folder, server_js];
-});
-
 gulp.task('watch', function() {
     gulp.watch(dev_ts + '**/*.ts', ['build-js']);
     gulp.watch(dev_scss + 'scss/**/*.scss', ['build-css']);
