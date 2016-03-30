@@ -7,7 +7,7 @@ import {NewIssueForm} from './new-issue-form.component';
 @Component({
     selector: 'ro-home-issue-list',
     templateUrl: 'templates/home/home-issue-list.tpl.html',
-    styleUrls: ['src/css/home-issue.css'],
+    styleUrls: ['styles/home-issue.css'],
     directives: [ROUTER_DIRECTIVES, NewIssueForm],
     providers: [IssuesService],
     pipes: [SearchFilterPipe]

@@ -14,7 +14,7 @@ import {NavbarComponent} from './components/navbar/navbar.component';
         <div style="height: 60vh"></div>
     `,
     directives: [NavbarComponent, ROUTER_DIRECTIVES],
-    styleUrls: ['src/css/app.css']
+    styleUrls: ['styles/app.css']
 })
 @RouteConfig([
 	{ path: '/Home', name: 'Home', component: HomeContainerComponent, useAsDefault: true },

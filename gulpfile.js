@@ -17,28 +17,29 @@ var tsProject = typescript.createProject('tsconfig.json');
 
 //  ******** DEVELOPMENT FILES ********
 // -------------------------------------
-var dev_scss = 'dev/client/scss';
-var dev_tpl = 'dev/client/templates/**/*.html';
-var dev_ts = 'dev/client/ts';
+var dev_scss = 'dev/client/scss/';
+var dev_tpl = 'dev/client/templates/';
+var dev_ts = 'dev/client/ts/';
 var dev_index = 'dev/client/index.html';
-var dev_server_folder = 'dev/server';
+var dev_server_folder = 'dev/server/';
 var dev_server_js = 'dev/server.js';
+var dev_imgs = 'dev/client/assets/img/';
 
 //  ******** PRE DISTRIBUTION FILES ********
 // ------------------------------------------
-var dist_libs = 'dist/client/libs'; // Distribution library files
-var dist_fonts = 'dist/fonts';
-var dist_css = 'dist/client/styles';
-var dist_ts = 'dist/client/scripts';
-var dist_tpl = 'dist/client/templates';
-var dist_server_folder = 'dist/server';
-var dist_server_js = 'dist/server.js';
+var dist_libs = 'dist/client/libs/'; // Distribution library files
+var dist_fonts = 'dist/client/fonts/';
+var dist_css = 'dist/client/styles/';
+var dist_ts = 'dist/client/scripts/';
+var dist_tpl = 'dist/client/templates/';
+var dist_server_folder = 'dist/server/';
+var dist_base = 'dist/';
 var dist_client_base = 'dist/client/';
 
 /*
   jsNPMDependencies, sometimes order matters here! so becareful!
 */
-var jsNPMDependencies = [
+var jsNPMDependencies = [  // ***** Lib dependencies from index.html
     'es6-shim/es6-shim.min.js',
     'systemjs/dist/system-polyfills.js',
     'angular2/bundles/angular2-polyfills.js',
@@ -59,7 +60,7 @@ gulp.task('build-libs', function(){
 });
 
 gulp.task('build-html', function() {
-    var templates = gulp.src(dev_tpl)
+    var templates = gulp.src(dev_tpl + '**/*.html')
         .pipe(gulp.dest(dist_tpl));
     var index_html = gulp.src(dev_index)
         .pipe(gulp.dest(dist_client_base));
@@ -72,8 +73,9 @@ gulp.task('build-css', function() {
         .pipe(gulp.dest(dist_fonts + '/bootstrap'));
     gulp.src('node_modules/font-awesome/fonts/*')
         .pipe(gulp.dest(dist_fonts));
-    gulp.src(dev_scss + '/*.scss')
+    gulp.src(dev_scss + '*.scss')
         .pipe(compass({
+            css: dist_css,
             sass: dev_scss
         }))
         .pipe(gulp.dest(dist_css));
@@ -89,17 +91,31 @@ gulp.task('build-js', function() {
 });
 
 gulp.task('build-img', function() {
-    return gulp.src(assetsDev + 'img/**/*')
+    return gulp.src(dev_imgs + '**/*')
         .pipe(imagemin({
             progressive: true
         }))
         .pipe(gulp.dest(assetsProd + 'img/'));
 });
 
-gulp.task('watch', function() {
-    gulp.watch(appDev + '**/*.ts', ['build-js']);
-    gulp.watch(assetsDev + 'scss/**/*.scss', ['build-css']);
-    gulp.watch(assetsDev + 'img/*', ['build-img']);
+gulp.task('build-server', function(){
+    // Server folder files
+    var server_folder = 
+        gulp.src(dev_server_folder + '**/*.js')
+            .pipe(gulp.dest(dist_server_folder));
+    // Server.js file
+    var server_js =
+        gulp.src(dev_server_js)
+            .pipe(gulp.dest(dist_base));
+    return [server_folder, server_js];
 });
 
-gulp.task('default', ['watch', 'build-js', 'build-css']);
+gulp.task('watch', function() {
+    gulp.watch(dev_ts + '**/*.ts', ['build-js']);
+    gulp.watch(dev_scss + 'scss/**/*.scss', ['build-css']);
+    gulp.watch(dev_tpl + '**/*.html', ['build-html']);
+    gulp.watch(dev_index, ['build-html']);
+    //gulp.watch(dev_imgs + '*', ['build-img']);
+});
+
+gulp.task('default', ['watch', 'build-js', 'build-css', 'build-html', 'build-libs', 'build-server']);

@@ -13,7 +13,7 @@ import {CreatePointFormComponent} from './create-point-form.component';
 @Component({
     selector: 'ro-points-list',
     templateUrl: 'templates/issue/points-list.tpl.html',
-    styleUrls: ['src/css/points-list.css'],
+    styleUrls: ['styles/points-list.css'],
     directives: [MainPointComponent, TopSupportComponent, MoreSupportComponent, AddSupportComponent, CreatePointFormComponent],
     providers: [SupportsService, WINDOW_PROVIDERS],
     pipes: [SearchFilterPipe]

@@ -6,7 +6,7 @@ import {SupportsService} from '../../shared/supports.service';
     selector: 'ro-top-support',
     templateUrl: 'templates/issue/top-support.tpl.html',
     directives: [VoteCellComponent],
-    styleUrls: ['src/css/support.css']
+    styleUrls: ['styles/support.css']
 })
 export class TopSupportComponent {
 	@Input('support') support: Support;
