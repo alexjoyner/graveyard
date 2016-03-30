@@ -11,15 +11,17 @@
     <div class="col-xs-2">
         <h2>{{issue.ups - issue.downs}}</h2>
     </div>
-    <div class="col-xs-10">
+    <div class="col-xs-8">
         <div class="row">
             <h3 class="text-center">
                 {{issue.mainQuestion}}
             </h3>
         </div>
     </div>
-    <button class="btn btn-md btn-danger deleteButton" (click)="deleteIssue(issue, $event)">
-        <i class="fa fa-close fa-2x">
-        </i>
-    </button>
+    <div class="col-xs-2">
+        <button class="btn btn-md btn-danger deleteButton" (click)="deleteIssue(issue, $event)">
+            <i class="fa fa-close fa-2x">
+            </i>
+        </button>
+    </div>
 </div>
