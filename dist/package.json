@@ -9,7 +9,7 @@
     "typings": "typings",
     "prod_server": "NODE_ENV=\"production\" nodemon dist/server.js",
     "production": "concurrent \"npm run gulp\" \"npm run prod_server\"",
-    "heroku": "NODE_ENV=\"production\" nodemon server.js"
+    "heroku": "nodemon server.js"
   },
   "license": "ISC",
   "dependencies": {
