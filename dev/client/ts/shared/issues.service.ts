@@ -3,9 +3,10 @@ import {Injectable} from 'angular2/core';
 import {Issue} from './issue';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
+import {Config} from '../config/config';
 @Injectable()
 export class IssuesService {
-	private endpoint: string = '';
+	private endpoint: string = Config.endpoint;
 	constructor(
 		private _http: Http) {}
 	/* GET */

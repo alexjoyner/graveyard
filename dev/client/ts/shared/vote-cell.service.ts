@@ -2,9 +2,11 @@ import {Injectable} from 'angular2/core';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
 import {Http, Headers} from 'angular2/http';
+import {Config} from '../config/config';
+
 @Injectable()
 export class VoteCellService {
-	private endpoint: string = '';
+	private endpoint: string = Config.endpoint;
 	constructor(
 		private _http: Http) { }
 	/*POST*/
