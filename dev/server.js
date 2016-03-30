@@ -4,6 +4,7 @@ process.stdout.write('\033c');
 // Dependencies
 var express = require('express'),
     app = express();
+var path = require('path');
 var http = require('http').Server(app);
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
@@ -13,6 +14,8 @@ var options = {
   server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
   replset: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }
 };
+
+
 //Connect to database
 mongoose.connect('mongodb://rosco9awj:1_Password@ds025459.mlab.com:25459/metatruth', options);
 //mongoose.connect('mongodb://localhost:27017/metaTruth');
@@ -28,7 +31,9 @@ console.log('Enviorment: ', ENV);
 if(ENV === 'production'){
 	// Send files from angular
 	app.use('/client', express.static(path.resolve(__dirname, 'client')));
-	app.use('/libs', express.static(path.resolve(__dirname, 'libs')));
+	app.use('/scripts', express.static(path.resolve(__dirname, 'client/scripts')));
+	app.use('/fonts', express.static(path.resolve(__dirname, 'client/fonts')));
+	app.use('/libs', express.static(path.resolve(__dirname, 'client/libs')));
 
 	var renderIndex = function(req, res){
 	    res.sendFile(path.resolve(__dirname, 'client/index.html'));

@@ -115,6 +115,7 @@ gulp.task('watch', function() {
     gulp.watch(dev_scss + 'scss/**/*.scss', ['build-css']);
     gulp.watch(dev_tpl + '**/*.html', ['build-html']);
     gulp.watch(dev_index, ['build-html']);
+    gulp.watch(dev_server_js, ['build-server']);
     //gulp.watch(dev_imgs + '*', ['build-img']);
 });
 
