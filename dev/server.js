@@ -22,23 +22,11 @@ mongoose.connect('mongodb://rosco9awj:1_Password@ds025459.mlab.com:25459/metatru
 //Access headers
 require('./server/config/accessHeaders.js')(app);
 
-// Send files from angular
-app.use('/app', express.static(path.resolve(__dirname, 'app')));
-app.use('/libs', express.static(path.resolve(__dirname, 'libs')));
-
-var renderIndex = (req: express.Request, res: express.Response) => {
-    res.sendFile(path.resolve(__dirname, 'index.html'));
-}
-
-app.get('/*', renderIndex);
-
 // global middleware
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 require('./server/routes/routes.js')(app);
 
-<<<<<<< HEAD:server.js
-=======
 console.log('Enviorment: ', ENV);
 if(ENV === 'production'){
 	// Send files from angular
@@ -53,7 +41,6 @@ if(ENV === 'production'){
 	// ANY ROUTE THAT ISN'T AN API ROUTE, send the homepage
 	app.get('*', renderIndex);	
 }
->>>>>>> alpha-v1:dist/server.js
 
 var port = (process.env.PORT || 9000);
 // Start an express server

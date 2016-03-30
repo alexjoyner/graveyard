@@ -1,12 +1,19 @@
 {
-  "name": "angular2-boilerplate",
-  "version": "1.0.0",
+  "name": "metatruth",
+  "version": "1.0.0-alpha.1",
   "scripts": {
     "postinstall": "npm run typings install",
-    "lite": "lite-server",
+    "lite": "lite-server dist",
     "gulp": "gulp",
+<<<<<<< HEAD
     "start": "concurrent \"npm run gulp\" \"nodemon server.js\"",
     "typings": "typings"
+=======
+    "start": "concurrent \"npm run gulp\" \"npm run lite\"",
+    "typings": "typings",
+    "prod_server": "NODE_ENV=\"production\" nodemon dist/server.js",
+    "production": "concurrent \"npm run gulp\" \"npm run prod_server\""
+>>>>>>> alpha-v1
   },
   "engines": {
     "node": "4.2.6"
@@ -17,15 +24,6 @@
   },
   "license": "ISC",
   "dependencies": {
-    "angular2": "2.0.0-beta.3",
-    "bootstrap-sass": "^3.3.6",
-    "es6-promise": "^3.0.2",
-    "es6-shim": "^0.33.3",
-    "font-awesome": "^4.5.0",
-    "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.0-beta.0",
-    "systemjs": "0.19.6",
-    "zone.js": "0.5.11",
     "bcrypt": "^0.8.5",
     "body-parser": "^1.13.3",
     "braintree": "^1.29.0",
@@ -56,6 +54,15 @@
     "postcss-scss": "^0.1.3",
     "precss": "^1.3.0",
     "tsd": "^0.6.5-beta",
-    "typings": "^0.6.8"
+    "typings": "^0.6.8",
+    "zone.js": "0.5.11",
+    "angular2": "2.0.0-beta.3",
+    "bootstrap-sass": "^3.3.6",
+    "es6-promise": "^3.0.2",
+    "es6-shim": "^0.33.3",
+    "font-awesome": "^4.5.0",
+    "reflect-metadata": "0.1.2",
+    "rxjs": "5.0.0-beta.0",
+    "systemjs": "0.19.6"
   }
 }
