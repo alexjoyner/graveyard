@@ -9,7 +9,7 @@ System.register([], function(exports_1, context_1) {
                 function Config() {
                 }
                 // App configuration
-                Config.endpoint = 'http://localhost:9000';
+                Config.endpoint = '';
                 return Config;
             }());
             exports_1("Config", Config);
