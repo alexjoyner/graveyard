@@ -10,11 +10,7 @@ var appProd = 'app/';
 var ext_replace = require('gulp-ext-replace');
 
 /* CSS */
-// var postcss = require('gulp-postcss');
 var sourcemaps = require('gulp-sourcemaps');
-// var autoprefixer = require('autoprefixer');
-// var precss = require('precss');
-// var cssnano = require('cssnano');
 
 /* SCSS */
 var compass = require('gulp-compass');
@@ -27,15 +23,6 @@ var typescript = require('gulp-typescript');
 var imagemin = require('gulp-imagemin');
 
 var tsProject = typescript.createProject('tsconfig.json');
-
-// gulp.task('build-css', function () {
-//     return gulp.src(assetsDev + 'scss/*.scss')
-//         .pipe(sourcemaps.init())
-//         .pipe(postcss([autoprefixer, precss,  cssnano]))
-//         .pipe(sourcemaps.write())
-//         .pipe(ext_replace('.css'))
-//         .pipe(gulp.dest(assetsProd + 'css/'));
-// });
 
 gulp.task('build-css', function() {
     gulp.src('node_modules/bootstrap-sass/assets/fonts/bootstrap/*')
