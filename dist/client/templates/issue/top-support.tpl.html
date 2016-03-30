@@ -1,0 +1,69 @@
+<div class="row supporting-evidence" [ngStyle]="{'background-color': (support.type === 'proof')? '#DFF0D8' : '#FCC4C4'}" style="padding: 15px; border-radius: 4px">
+    <div class="row">
+        <div class="col-xs-1">
+            <ro-vote-cell
+                class="pull-right"
+                [sourceType]="'support'"
+                [sourceId]="support._id"
+                [score]="support.ups - support.downs"
+                (upVoted)="support.ups=support.ups+1"
+                (downVoted)="support.downs=support.downs+1">
+            </ro-vote-cell>
+        </div>
+        <div class="col-xs-11">
+            <h4>
+                {{support.evidence}}
+            </h4>
+            <p >{{support.detail}}</p>
+            <div class="row">
+                <div class="col-xs-8" *ngIf="support.source !== 'none'">
+                    <h4>
+                        Sources
+                    </h4>
+                    <ul>
+                        <li>
+                            <a [href]="support.source" style="text-decoration: none;">
+                                <h4 style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
+                                    {{support.source}}
+                                </h4>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xs-4">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="display:inline-block;">
+        <h4 style="display: inherit;">
+            <span class="label" [ngClass]="support.tag"> 
+                {{support.tag | uppercase}}
+            </span>
+        </h4>
+        <h4 style="display: inherit;">
+            <span class="label label-success" [ngClass]="support.type">
+                {{support.type | uppercase}}
+            </span>
+        </h4>
+    </div>
+    <br>
+    <div style="display:inline-block;">
+        <button type="button" class="btn btn-xs btn-danger" (click)="removeSupport(support._id)">
+            <i class="fa fa-close">
+            </i>
+        </button>
+        <button type="button" class="btn btn-xs btn-info" *ngIf="numMoreSupport >0" (click)="toggleViewAll()">
+            View
+            <span *ngIf="!showingMore">
+                {{numMoreSupport}} more
+            </span>
+            <span *ngIf="showingMore">
+                Less
+            </span>
+        </button>
+        <button type="button" class="btn btn-xs btn-info" (click)="toggleAddEvidence();gotoTop()">
+            Add Evidence
+        </button>
+    </div>
+</div>
