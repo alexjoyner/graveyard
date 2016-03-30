@@ -3,7 +3,7 @@
   "version": "1.0.0-alpha.1",
   "scripts": {
     "postinstall": "npm run typings install",
-    "lite": "lite-server dist",
+    "lite": "lite-server",
     "gulp": "gulp",
     "start": "concurrent \"npm run gulp\" \"npm run lite\"",
     "typings": "typings",
