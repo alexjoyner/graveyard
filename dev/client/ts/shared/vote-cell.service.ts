@@ -4,7 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import {Http, Headers} from 'angular2/http';
 @Injectable()
 export class VoteCellService {
-	private endpoint: string = 'http://localhost:9000';
+	private endpoint: string = '';
 	constructor(
 		private _http: Http) { }
 	/*POST*/

@@ -107,4 +107,4 @@ gulp.task('watch', function() {
     //gulp.watch(dev_imgs + '*', ['build-img']);
 });
 
-gulp.task('default', ['watch', 'build-js', 'build-css', 'build-html', 'build-libs', 'build-server']);
+gulp.task('default', ['watch', 'build-js', 'build-css', 'build-html', 'build-libs']);

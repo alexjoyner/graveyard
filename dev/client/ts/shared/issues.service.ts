@@ -5,7 +5,7 @@ import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class IssuesService {
-	private endpoint: string = 'http://localhost:9000';
+	private endpoint: string = '';
 	constructor(
 		private _http: Http) {}
 	/* GET */

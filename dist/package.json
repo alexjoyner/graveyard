@@ -8,7 +8,8 @@
     "start": "concurrent \"npm run gulp\" \"npm run lite\"",
     "typings": "typings",
     "prod_server": "NODE_ENV=\"production\" nodemon dist/server.js",
-    "production": "concurrent \"npm run gulp\" \"npm run prod_server\""
+    "production": "concurrent \"npm run gulp\" \"npm run prod_server\"",
+    "heroku": "nodemon server.js"
   },
   "license": "ISC",
   "dependencies": {
