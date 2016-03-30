@@ -1,0 +1,13 @@
+<div class="vote-cell">
+    <h3 class="row  text-center" (click)="vote('upvote', $event)">
+        <i class="glyphicon glyphicon-chevron-up">
+        </i>
+    </h3>
+    <h3 class="row text-center">
+        {{score}}
+    </h3>
+    <h3 class="row  text-center" (click)="vote('downvote', $event)">
+        <i class="glyphicon glyphicon-chevron-down">
+        </i>
+    </h3>
+</div>

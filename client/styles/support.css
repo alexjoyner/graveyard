@@ -1,0 +1,46 @@
+.more-support-container {
+  display: table;
+}
+.more-support-container .left-column {
+  display: table-cell;
+  float: none;
+  border-right: 50px double #DDDDDD;
+  height: 100%;
+  padding: 0;
+}
+.more-support-container .right-column {
+  display: table-cell;
+  float: none;
+}
+
+.meta {
+  background-color: #5cb85c;
+}
+
+.credible {
+  background-color: #5cb85c;
+}
+
+.web {
+  background-color: #f0ad4e;
+}
+
+.opinion {
+  background-color: #f0ad4e;
+}
+
+.media {
+  background-color: #d9534f;
+}
+
+.other {
+  background-color: #337ab7;
+}
+
+.proof {
+  background-color: #5cb85c;
+}
+
+.disproof {
+  background-color: #d9534f;
+}
