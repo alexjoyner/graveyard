@@ -33,7 +33,7 @@ export class  HomeIssueListComponent implements OnInit{
 	}
 	onCreate() {
 		let issue: Issue
-			= new Issue(this.searchText, '', 0, 0);
+			= new Issue(this.searchText + '?', '', 0, 0);
 		this._issuesService.insertIssue(issue)
 			.subscribe(
 			data => {

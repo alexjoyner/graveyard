@@ -5,6 +5,7 @@
     </ro-new-issue-form>
 -->
 <div class="form-group" *ngIf="startQuestion">
+    <h3>Issue: {{searchText}}?</h3>
     <h4>
         <u>
             Issue format helper
@@ -31,8 +32,8 @@
             BAD EX: What is better, windows server or linux server?
         </li>
     </ul>
-    <button class="btn btn-success" (click)="onCreate()">
-        My issue is good! Add it.
+    <button class="btn btn-success" (click)="onCreate()" [disabled]="searchText === ''">
+        My question is good! Add it.
     </button>
 </div>
 <h1 class="text-center" *ngIf="issues && issues.length === 0 && !startQuestion">

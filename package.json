@@ -5,7 +5,7 @@
     "postinstall": "npm run typings install",
     "lite": "lite-server",
     "gulp": "gulp",
-    "start": "concurrent \"npm run gulp\" \"npm run lite\"",
+    "start": "concurrent \"npm run gulp\" \"npm run lite\" \"nodemon dist/server.js\"",
     "typings": "typings",
     "prod_server": "NODE_ENV=\"production\" nodemon dist/server.js",
     "production": "concurrent \"npm run gulp\" \"npm run prod_server\""
