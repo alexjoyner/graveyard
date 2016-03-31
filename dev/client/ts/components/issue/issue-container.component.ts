@@ -13,7 +13,7 @@ import {VoteCellComponent} from '../../shared/vote-cell.component';
     directives: [PointsListComponent, ROUTER_DIRECTIVES, VoteCellComponent]
 })
 export class IssueContainerComponent implements OnInit{
-	issue: Issue = new Issue(' ',' ',0,0);
+	issue: Issue = new Issue('','',0,0);
 	private _issueId: string;
 	private _type: string;
 	constructor(
@@ -26,7 +26,7 @@ export class IssueContainerComponent implements OnInit{
 		this._issuesService.getIssue(this._issueId).
 		subscribe(
 			data => {
-				this.issue = data;
+				setTimeout(() => this.issue = data, 1500);
 				console.log(this.issue);
 				console.log(this.issue.mainQuestion);
 			},

@@ -10,7 +10,7 @@
             (downVoted)="issue.downs=issue.downs+1">
         </ro-vote-cell>
         <h2 class="text-center">
-            {{issue.mainQuestion}}
+            {{issue.mainQuestion}} <span [hidden]="issue.mainQuestion !== ''">Loading main question</span>
         </h2>
         <h5 class="text-center">
             {{issue.questionDetail}}
