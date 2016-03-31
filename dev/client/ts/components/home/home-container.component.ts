@@ -6,6 +6,7 @@ import {HomeIssueListComponent} from './home-issue-list.component';
     directives: [HomeIssueListComponent]
 })
 export class HomeContainerComponent{
+	searchText: string = '';
 	startQuestion: boolean = false;
 	siteHeader: string
 		 = 'ipsum Lorem ipsum dolor sit amet, consectetuer adipiscing elit.';

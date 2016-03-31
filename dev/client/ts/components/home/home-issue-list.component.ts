@@ -2,7 +2,7 @@ import {Component, OnInit, Input} from 'angular2/core';
 import {Issue} from '../../shared/issue';
 import {IssuesService} from '../../shared/issues.service';
 import {SearchFilterPipe} from '../../pipes/searchFilter.pipe';
-import {ROUTER_DIRECTIVES} from 'angular2/router';
+import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
 import {NewIssueForm} from './new-issue-form.component';
 @Component({
     selector: 'ro-home-issue-list',
@@ -16,7 +16,11 @@ export class  HomeIssueListComponent implements OnInit{
 	@Input('searchText') searchText: string;
 	@Input('startQuestion') startQuestion: boolean;
 	issues: Issue[];
-	constructor(private _issuesService: IssuesService){}
+	issue: Issue
+	= new Issue('', '', 0, 0);
+	constructor(
+		private _issuesService: IssuesService,
+		private _router: Router){}
 	ngOnInit():any {
 		this._issuesService.getAllIssues()
 			.subscribe(
@@ -25,6 +29,18 @@ export class  HomeIssueListComponent implements OnInit{
 					this.issues = data;
 				},
 				err => console.log('err: ', err)
+			);
+	}
+	onCreate() {
+		let issue: Issue
+			= new Issue(this.searchText, '', 0, 0);
+		this._issuesService.insertIssue(issue)
+			.subscribe(
+			data => {
+				console.log('Returned: ', data);
+				this._router.navigate(['Issue', { type: 'yes', id: data }]);
+			},
+			err => console.log('Error: ', err)
 			);
 	}
 	deleteIssue(issue: Issue, event: MouseEvent){
