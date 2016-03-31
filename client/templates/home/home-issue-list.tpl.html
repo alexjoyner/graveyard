@@ -7,6 +7,10 @@
         ADD ONE!!!
     </button>
 </h1>
+<h3>Start here: Select an issue: </h3>
+<h1 [hidden]="issues">Loading issues</h1>
+<br>
+    
 <div id="HomeIssue" class="row supporting-evidence" *ngFor="#issue of issues | roFilter:searchText" [routerLink]="['Issue', {id: issue._id, type: 'yes'}]">
     <div class="col-xs-2">
         <h2>{{issue.ups - issue.downs}}</h2>

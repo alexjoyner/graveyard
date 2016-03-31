@@ -1,0 +1,8 @@
+******************  BEFORE DEPLOYING THIS PROJECT TO HEROKU *******************
+-------------------------------------------------------------------------------
+
+	1) Change the endpoint in config.js to ''; not 'http://localhost:9000';
+	2) Change the base url to in index.html from '/' to '/client/';
+
+
+	CONGRATS ON MAKING IT THIS FAR!!!!!!!!!

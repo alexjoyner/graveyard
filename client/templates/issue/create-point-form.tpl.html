@@ -1,6 +1,8 @@
 <hr/>
 <form class="row" (ngSubmit)="createPoint()">
+    <label for="main-point">Main Point</label>
     <textarea
+        name="main-point"
         class="form-control"
         rows="1"
         style="resize: none;"
@@ -13,13 +15,18 @@
     <br>
     <div id="NewPoint" class="row">
         <div class="col-xs-8">
+            <label for="main-point-detail">
+                *** OPTIONAL *** Elaborate on what your point is. <br>
+                !!WARNING!! This is not a place to support your point, please add support data in the SUPPORT POINT section! You will have a chance to add your own supporting data as soon as you create your point.
+            </label>
             <textarea
+                name="main-point-detail"
                 class="form-control"
                 rows="6"
                 style="resize: none;"
                 minlength="20"
                 maxlength="400"
-                placeholder="Briefly describe your point. Max 400 characters"
+                placeholder="OPTIONAL: Add a description that helps elaborate what your point is.  Max 400 characters"
                 [(ngModel)]="newPoint.detail"
                 >
             </textarea>

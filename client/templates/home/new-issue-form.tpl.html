@@ -1,6 +1,9 @@
 <div class="form-group">
     <label for="description">
-        Your question: *** YES or NO Questions only *** EX: Should we legalize weed?
+        Your question: *** YES or NO Questions only ***<br>
+        Keep issues one sided, support for comparisons may be added in the future. <br>
+        GOOD EX: Should we legalize weed? <br>
+        BAD EX: What is better, windows server or linux server?
     </label>
     <input
         class="form-control" maxlength="150"
@@ -11,9 +14,9 @@
     <div class="col-xs-10">
        <div class="form-group">
 		    <label for="description">
-		        Add a description
+		          *** OPTIONAL *** Add a description
 		    </label>
-		    <input class="form-control"  maxlength="200" placeholder="What are the pros and cons of _____ happening? max 400 characters" [(ngModel)]="issue.questionDetail">
+		    <input class="form-control"  maxlength="200" placeholder="max 400 characters" [(ngModel)]="issue.questionDetail">
 	    </div>
     </div>
     <div class="col-xs-2">

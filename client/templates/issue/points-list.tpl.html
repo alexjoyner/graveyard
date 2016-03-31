@@ -11,7 +11,7 @@
     <div class="col-xs-8">
         <div class="input-group">
             <div class="input-group-addon">
-                Search
+                Search Main Points
             </div>
             <input type="text" class="form-control" id="exampleInputAmount" [(ngModel)]="searchText"/>
         </div>
@@ -32,18 +32,25 @@
     <div class="col-xs-6">
         <h2 class="text-center">
             <u>
-                Main Points
+                1: Main Points
             </u>
         </h2>
+        <p>The main points section (left column) is where all argument start. You are currently in the <b>{{type | uppercase}} section</b>. The left side represents all the points that can be made say {{type | uppercase}} to to main issue question. <b>Upvote/Downvote main points based on how relevant the point is towards the main issue</b>.</p>
+        <hr>
     </div>
     <div class="col-xs-6">
         <h2 class="text-center">
             <u>
-                Support Points
+                2: Support Points
             </u>
         </h2>
+        <p>The support points (right column) is where all the support arguments are made.  This is where each point that is made in the main points section is debated to either prove or disprove the main point. <b>Upvote/Downvote supporting points based on how well the support point supports the main point.</b></p>
+        <hr>
     </div>
 </div>
+<h1 [hidden]="points">
+    Loading main points
+</h1>
 <div [attr.id]="'point' + i" *ngFor="#point of points | roFilter: searchText; #i = index" class="point">
     <div class="row">
         <div class="col-xs-6 main-point-block text-center">
