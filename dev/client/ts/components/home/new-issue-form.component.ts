@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, Input} from 'angular2/core';
 import {Issue} from '../../shared/issue';
 import {IssuesService} from '../../shared/issues.service';
 import { Router } from 'angular2/router';
