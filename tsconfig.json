@@ -8,10 +8,10 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
-    "outDir": "./app"
+    "outDir": "./public/scripts/ts"
   },
   "filesGlob": [
-    "./dev/**/*.ts",
+    "./public/scripts/**/*.ts",
     "!./node_modules/**/*.ts"
   ],
   "exclude": [
@@ -23,29 +23,5 @@
     "rewriteTsconfig": true
   },
   "files": [
-    "./dev/app.component.ts",
-    "./dev/boot.ts",
-    "./dev/components/home/home-container.component.ts",
-    "./dev/components/home/home-issue-list.component.ts",
-    "./dev/components/home/new-issue-form.component.ts",
-    "./dev/components/issue/create-point-form.component.ts",
-    "./dev/components/issue/issue-container.component.ts",
-    "./dev/components/issue/main-point.component.ts",
-    "./dev/components/issue/more-support.component.ts",
-    "./dev/components/issue/points-list.component.ts",
-    "./dev/components/issue/top-support.component.ts",
-    "./dev/components/navbar/navbar.component.ts",
-    "./dev/mock/mock-issues.ts",
-    "./dev/mock/mock-points.ts",
-    "./dev/mock/mock-supports.ts",
-    "./dev/pipes/searchFilter.pipe.ts",
-    "./dev/shared/issue.ts",
-    "./dev/shared/issues.service.ts",
-    "./dev/shared/point.ts",
-    "./dev/shared/points.service.ts",
-    "./dev/shared/support.ts",
-    "./dev/shared/supports.service.ts",
-    "./dev/shared/vote-cell.component.ts",
-    "./dev/shared/vote-cell.service.ts"
   ]
 }

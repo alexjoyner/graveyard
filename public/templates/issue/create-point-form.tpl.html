@@ -1,0 +1,43 @@
+<hr/>
+<form class="row" (ngSubmit)="createPoint()">
+    <textarea
+        class="form-control"
+        rows="1"
+        style="resize: none;"
+        minlength="20"
+        maxlength="150"
+        placeholder="Please enter your main point here. Max 150 Characters"
+        [(ngModel)]="newPoint.problem"
+        required>
+    </textarea>
+    <br>
+    <div id="NewPoint" class="row">
+        <div class="col-xs-8">
+            <textarea
+                class="form-control"
+                rows="6"
+                style="resize: none;"
+                minlength="20"
+                maxlength="400"
+                placeholder="Briefly describe your point. Max 400 characters"
+                [(ngModel)]="newPoint.detail"
+                >
+            </textarea>
+        </div>
+        <div class="col-xs-4 pull-right">
+            <button
+                class="btn btn-lg btn-danger"
+                (click)="onCancel()"
+                >
+                Cancel
+            </button>
+            <button
+                type="submit"
+                class="btn btn-lg btn-success"
+                >
+                Add Main Point
+            </button>
+        </div>
+    </div>
+    <br/>
+</form>
