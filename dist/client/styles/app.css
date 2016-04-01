@@ -10068,6 +10068,7 @@ body {
 
 .ro-action-bar {
   display: inline-block;
+  padding: 10px;
 }
 .ro-action-bar .ro-action-bar-item {
   display: inherit;

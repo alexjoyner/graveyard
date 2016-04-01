@@ -1,14 +1,11 @@
 .HomeIssue {
-	position: relative; 
 	margin: 0 auto;
 	border: 1px solid #dddddd; 
 	margin-bottom: 10px;
-	height: 100px;
+	min-height: 100px;
 	width: 728px;
 	.deleteButton {
-		position: absolute; 
-		top: 0; 
-		right: 0; 
+		float: right;
 		margin: 10px; 
 		z-index: 2
 	}
