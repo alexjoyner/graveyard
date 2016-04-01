@@ -1,16 +1,6 @@
-<div class="row supporting-evidence" [ngStyle]="{'background-color': (support.type === 'proof')? '#DFF0D8' : '#FCC4C4'}" style="padding: 15px; border-radius: 4px">
+<div class="row supporting-evidence ro-point" [ngStyle]="{'background-color': (support.type === 'proof')? '#DFF0D8' : '#FCC4C4'}">
     <div class="row">
-        <div class="col-xs-1">
-            <ro-vote-cell
-                class="pull-right"
-                [sourceType]="'support'"
-                [sourceId]="support._id"
-                [score]="support.ups - support.downs"
-                (upVoted)="support.ups=support.ups+1"
-                (downVoted)="support.downs=support.downs+1">
-            </ro-vote-cell>
-        </div>
-        <div class="col-xs-11">
+        <div class="col-xs-12">
             <h4>
                 {{support.evidence}}
             </h4>
@@ -18,7 +8,7 @@
             <div class="row">
                 <div class="col-xs-8" *ngIf="support.source !== 'none'">
                     <h4>
-                        Sources
+                        <u>Source</u>:
                     </h4>
                     <ul>
                         <li>
@@ -36,24 +26,18 @@
         </div>
     </div>
     <div style="display:inline-block;">
-        <h4 style="display: inherit;">
-            <span class="label" [ngClass]="support.tag"> 
-                {{support.tag | uppercase}}
-            </span>
-        </h4>
-        <h4 style="display: inherit;">
-            <span class="label label-success" [ngClass]="support.type">
-                {{support.type | uppercase}}
-            </span>
-        </h4>
     </div>
     <br>
-    <div style="display:inline-block;">
-        <button type="button" class="btn btn-xs btn-danger" (click)="removeSupport(support._id)">
-            <i class="fa fa-close">
-            </i>
-        </button>
-        <button type="button" class="btn btn-xs btn-info" *ngIf="numMoreSupport >0" (click)="toggleViewAll()">
+    <div class="ro-action-bar">
+        <ro-vote-cell
+            class="ro-action-bar-item"
+            [sourceType]="'support'"
+            [sourceId]="support._id"
+            [score]="support.ups - support.downs"
+            (upVoted)="support.ups=support.ups+1"
+            (downVoted)="support.downs=support.downs+1">
+        </ro-vote-cell>
+        <button type="button" class="ro-action-bar-item btn btn-xs btn-info" *ngIf="numMoreSupport >0" (click)="toggleViewAll()">
             View
             <span *ngIf="!showingMore">
                 {{numMoreSupport}} more
@@ -62,8 +46,23 @@
                 Less
             </span>
         </button>
-        <button type="button" class="btn btn-xs btn-info" (click)="toggleAddEvidence();gotoTop()">
+        <button type="button" class="ro-action-bar-item btn btn-xs btn-info" (click)="toggleAddEvidence();gotoTop()">
             Add Evidence
+        </button>
+        <br>
+        <h4 class="ro-action-bar-item">
+            <span class="label" [ngClass]="support.tag"> 
+                {{support.tag | uppercase}}
+            </span>
+        </h4>
+        <h4 class="ro-action-bar-item">
+            <span class="label label-success" [ngClass]="support.type">
+                {{support.type | uppercase}}
+            </span>
+        </h4>
+        <button type="button" class="ro-action-bar-item btn btn-xs btn-danger" (click)="removeSupport(support._id)">
+            <i class="fa fa-close">
+            </i>
         </button>
     </div>
 </div>

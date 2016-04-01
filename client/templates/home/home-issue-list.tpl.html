@@ -1,19 +1,62 @@
-<ro-new-issue-form
-    *ngIf="startQuestion">
-</ro-new-issue-form>
+<!--
+    <ro-new-issue-form
+        *ngIf="startQuestion"
+        (searchText)="searchText">
+    </ro-new-issue-form>
+-->
+<div class="form-group" *ngIf="startQuestion">
+    <h3>Issue: {{searchText}}?</h3>
+    <h4>
+        <u>
+            Issue format helper
+        </u>
+    </h4>
+    <ol>
+        <li>
+            Your question: *** YES or NO Questions only ***
+        </li>
+        <li>
+            Keep issues one sided, support for 
+            comparisons may be added in the future.
+        </li>
+        <li>
+            Keep it complex.  Issues that the answer will be <br>
+            something
+        </li>
+    </ol>
+    <ul>
+        <li>
+            GOOD EX: Should we legalize weed?
+        </li>
+        <li>
+            BAD EX: What is better, windows server or linux server?
+        </li>
+    </ul>
+    <button class="btn btn-success" (click)="onCreate()" [disabled]="searchText === ''">
+        My  is good! Add it.
+    </button>
+</div>
 <h1 class="text-center" *ngIf="issues && issues.length === 0 && !startQuestion">
     No issues here! How about
     <button class="btn btn-lg btn-success" (click)="startQuestion = true">
         ADD ONE!!!
     </button>
 </h1>
-<h3>Start here: Select an issue: </h3>
-<h1 [hidden]="issues">Loading issues</h1>
-<br>
-    
-<div id="HomeIssue" class="row supporting-evidence" *ngFor="#issue of issues | roFilter:searchText" [routerLink]="['Issue', {id: issue._id, type: 'yes'}]">
+<h1 [hidden]="issues">
+    Loading issues
+</h1>
+<br/>
+<div class="HomeIssue text-center row supporting-evidence" *ngFor="#issue of issues | roFilter:searchText" [routerLink]="['Issue', {id: issue._id, type: 'yes'}]">
     <div class="col-xs-2">
-        <h2>{{issue.ups - issue.downs}}</h2>
+        <ro-vote-cell
+            style="position: absolute; left:0px; margin-left: 3em;"
+            class="pull-left"
+            [sourceType]="'issue'"
+            [sourceId]="issue._id"
+            [score]="issue.ups - issue.downs"
+            (upVoted)="issue.ups=issue.ups+1"
+            (downVoted)="issue.downs=issue.downs+1">
+        </ro-vote-cell>
     </div>
     <div class="col-xs-8">
         <div class="row">

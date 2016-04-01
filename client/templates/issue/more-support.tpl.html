@@ -11,16 +11,7 @@
         <div *ngFor="#support of supports; #i = index" >
             <div [ngStyle]="{'background-color': (support.type === 'proof')? '#DFF0D8' : '#FCC4C4'}" style="padding: 15px; border-radius: 4px">
                 <div class="row">
-                    <div class="col-xs-1">
-                        <ro-vote-cell
-                            [sourceType]="'support'"
-                            [sourceId]="support._id"
-                            [score]="support.ups - support.downs"
-                            (upVoted)="support.ups=support.ups+1"
-                            (downVoted)="support.downs=support.downs+1">
-                        </ro-vote-cell>
-                    </div>
-                    <div class="col-xs-11">
+                    <div class="col-xs-12">
                         <h4>
                             <b>
                                 {{support.type | uppercase}}:
@@ -50,21 +41,29 @@
                         </div>
                     </div>
                 </div>
-                <div style="display:inline-block;">
-                    <button type="button" class="btn btn-xs btn-danger" (click)="removeSupport(support._id, i)" style="display: inherit;">
-                        <i class="fa fa-close">
-                        </i>
-                    </button>
-                    <h4 style="display: inherit;">
+                <div class="ro-action-bar">
+                    <ro-vote-cell
+                        class="ro-action-bar-item"
+                        [sourceType]="'support'"
+                        [sourceId]="support._id"
+                        [score]="support.ups - support.downs"
+                        (upVoted)="support.ups=support.ups+1"
+                        (downVoted)="support.downs=support.downs+1">
+                    </ro-vote-cell>
+                    <h4 class="ro-action-bar-item">
                         <span class="label label-success"[ngClass]="support.tag">
                             {{support.tag | uppercase}}
                         </span>
                     </h4>
-                    <h4 style="display: inherit;">
+                    <h4 class="ro-action-bar-item">
                         <span class="label label-success" [ngClass]="support.type">
                             {{support.type | uppercase}}
                         </span>
                     </h4>
+                    <button type="button" class="ro-action-bar-item btn btn-xs btn-danger" (click)="removeSupport(support._id, i)">
+                        <i class="fa fa-close">
+                        </i>
+                    </button>
                 </div>
             </div>
             <hr/>
