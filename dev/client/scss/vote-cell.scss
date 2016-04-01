@@ -1,3 +1,14 @@
 .vote-cell {
-	
+	display: inline;
+	.upvote-btn{
+		display: inherit;
+		.score{
+			margin-left: 6px;
+			padding-left: 6px;
+			border-left: 1px solid grey;
+		}
+	}
+	.downvote-btn{
+		display: inherit;
+	}
 }

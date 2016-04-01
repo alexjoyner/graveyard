@@ -4,11 +4,12 @@ import {IssuesService} from '../../shared/issues.service';
 import {SearchFilterPipe} from '../../pipes/searchFilter.pipe';
 import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
 import {NewIssueForm} from './new-issue-form.component';
+import {VoteCellComponent} from '../../shared/vote-cell.component';
 @Component({
     selector: 'ro-home-issue-list',
     templateUrl: 'templates/home/home-issue-list.tpl.html',
     styleUrls: ['styles/home-issue.css'],
-    directives: [ROUTER_DIRECTIVES, NewIssueForm],
+    directives: [ROUTER_DIRECTIVES, NewIssueForm, VoteCellComponent],
     providers: [IssuesService],
     pipes: [SearchFilterPipe]
 })

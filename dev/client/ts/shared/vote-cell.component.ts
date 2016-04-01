@@ -4,7 +4,7 @@ import {VoteCellService} from './vote-cell.service';
     selector: 'ro-vote-cell',
     templateUrl: 'templates/shared/vote-cell.tpl.html',
     providers: [VoteCellService],
-    /*styleUrls: ['styles/vote-cell.css']*/
+    styleUrls: ['styles/vote-cell.css']
 })
 export class VoteCellComponent {
 	@Input('sourceType') sourceType: string;

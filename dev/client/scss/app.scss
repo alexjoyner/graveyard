@@ -10,3 +10,9 @@ body {
 	display: flex;
 	align-items: center;
 }
+.ro-action-bar{
+	display: inline-block;
+	.ro-action-bar-item{
+		display: inherit;
+	}
+}

@@ -1,13 +1,5 @@
 <div class="row" >
     <div class="col-xs-1" style="height: 150px;">
-        <ro-vote-cell
-            class="vertical-center pull-right"
-            [sourceType]="'point'"
-            [sourceId]="point._id"
-            [score]="point.ups - point.downs"
-            (upVoted)="point.ups=point.ups+1"
-            (downVoted)="point.downs=point.downs+1">
-        </ro-vote-cell>
     </div>
     <div class="col-xs-11">
         <h4 style="text-align: left; padding-left: 10px;">
@@ -18,9 +10,19 @@
         </p>
     </div>
 </div>
-<button
-    class="btn btn-sm btn-danger pull-left"
-    (click)="deletePoint()">
-    <i class="fa fa-close">
-    </i>
-</button>
+<div class="ro-action-bar ro-bar-left">
+    <ro-vote-cell
+        class="ro-action-bar-item"
+        [sourceType]="'point'"
+        [sourceId]="point._id"
+        [score]="point.ups - point.downs"
+        (upVoted)="point.ups=point.ups+1"
+        (downVoted)="point.downs=point.downs+1">
+    </ro-vote-cell>
+    <button
+        class="btn btn-sm btn-danger ro-action-bar-item"
+        (click)="deletePoint()">
+        <i class="fa fa-close">
+        </i>
+    </button>
+</div>
