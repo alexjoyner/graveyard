@@ -1,4 +1,3 @@
-@import './variables';
 .more-support-container{
 	display: table;
 	.left-column{
@@ -12,31 +11,4 @@
 		display: table-cell;
 		float: none;
 	}
-}
-// Colors of labels
-.meta {
-	background-color: $brand-success;
-}
-.credible {
-	background-color: $brand-success;
-}
-.web {
-	background-color: $brand-warning;
-
-}
-.opinion {
-	background-color: $brand-warning;
-}
-.media {
-	background-color: $brand-danger;
-
-}
-.other {
-	background-color: $brand-primary;
-}
-.proof{
-	background-color: $brand-success;
-}
-.disproof{
-	background-color: $brand-danger;
 }
