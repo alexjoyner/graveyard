@@ -14,7 +14,8 @@ export class Point {
 		type: string,
 		ups: number,
 		downs: number,
-		tag: string
+		tag: string,
+		id?: string
 	){
 		this.issue_id = issue_id;
 		this.problem = problem;
@@ -23,6 +24,7 @@ export class Point {
 		this.ups = ups;
 		this.downs = downs;
 		this.tag = tag;
+		(id) ? this._id = id : null;
 	}
 }
 function guid() {

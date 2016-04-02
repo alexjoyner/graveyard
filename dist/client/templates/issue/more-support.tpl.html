@@ -1,7 +1,7 @@
-<div class="row more-support-container" style="margin-top: 10px;" >
+<div class="row more-support-container" style="margin-top: 10px; margin-bottom: 10px; " >
     <div class="col-xs-3 left-column" (click)="gotoTop()">
         <div style="background-color: #DDDDDD; height: 50px; border-radius: 5px 0 0 5px;">
-            <h4 class="text-center" style="margin-top: 0;  ">
+            <h4 class="text-center" style="margin-top: 0; ">
                 <br/>
                 Go to top
             </h4>
@@ -50,20 +50,22 @@
                         (upVoted)="support.ups=support.ups+1"
                         (downVoted)="support.downs=support.downs+1">
                     </ro-vote-cell>
-                    <h4 class="ro-action-bar-item">
-                        <span class="label label-success"[ngClass]="support.tag">
-                            {{support.tag | uppercase}}
-                        </span>
-                    </h4>
-                    <h4 class="ro-action-bar-item">
-                        <span class="label label-success" [ngClass]="support.type">
-                            {{support.type | uppercase}}
-                        </span>
-                    </h4>
-                    <button type="button" class="ro-action-bar-item btn btn-xs btn-danger" (click)="removeSupport(support._id, i)">
-                        <i class="fa fa-close">
-                        </i>
-                    </button>
+                    <div class="ro-inline-items">
+                        <h4 class="ro-action-bar-item">
+                            <span class="label label-success"[ngClass]="support.tag">
+                                {{support.tag | uppercase}}
+                            </span>
+                        </h4>
+                        <h4 class="ro-action-bar-item">
+                            <span class="label label-success" [ngClass]="support.type">
+                                {{support.type | uppercase}}
+                            </span>
+                        </h4>
+                        <button type="button" class="ro-action-bar-item btn btn-xs btn-danger" (click)="removeSupport(support._id, i)">
+                            <i class="fa fa-close">
+                            </i>
+                        </button>
+                    </div>
                 </div>
             </div>
             <hr/>

@@ -40,6 +40,16 @@ export class PointsService {
 			{ headers: headers })
 			.map(res => res.json());
 	}
+	updatePoint(point: Point): Observable<any> {
+		const body = JSON.stringify(point);
+		const headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		return this._http.post(
+			this.endpoint + '/points/updatePoint',
+			body,
+			{ headers: headers })
+			.map(res => res);
+	}
 	/*insertSupport(pointIndx: number, support: Support):number{
 		if(this.selectedPoints[pointIndx]['supports']){
 			this.selectedPoints[pointIndx]['supports'].unshift(support);

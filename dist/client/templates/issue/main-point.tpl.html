@@ -1,12 +1,19 @@
 <div class="ro-point ro-main-point">
-    <div class="ro-contents" >
-        <h4 style="text-align: left; padding-left: 10px;">
+    <div class="ro-contents" *ngIf="!point.editPoint || point.editPoint === false">
+        <h4 class="text-center" style="padding-left: 10px;">
             {{point.problem}}
         </h4>
         <p style="text-align: left; padding-left: 10px;">
             {{point.detail}}
         </p>
     </div>
+    <!-- *ngIf="point.editPoint && point.editPoint === true" -->
+    <ro-edit-point
+        *ngIf="point.editPoint && point.editPoint === true"
+        [myPoint]="point"
+        (edited)="point.editPoint = false"
+        (canceled)="point.editPoint = false">
+    </ro-edit-point>
     <div class="ro-action-bar ro-bar-left">
         <ro-vote-cell
             class="ro-action-bar-item"
@@ -17,6 +24,7 @@
             (downVoted)="point.downs=point.downs+1">
         </ro-vote-cell>
         <button
+            *ngIf="!point.editPoint || point.editPoint === false"
             class="btn btn-sm btn-danger ro-action-bar-item"
             (click)="deletePoint()">
             <i class="fa fa-close">

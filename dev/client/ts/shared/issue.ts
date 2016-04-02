@@ -8,14 +8,14 @@ export class Issue {
     constructor(
     	mainQuestion: string, 
     	questionDetail: string, 
-    	ups?: number, 
-		downs?: number,
+    	ups: number, 
+		downs: number,
 		id?: string) {
 		this.mainQuestion = mainQuestion;
 		this.questionDetail = questionDetail;
 		this.ups = ups;
 		this.downs = downs;
-		this._id = id;
+		(id) ? this._id = id : null;
     }
 }
 function guid() {

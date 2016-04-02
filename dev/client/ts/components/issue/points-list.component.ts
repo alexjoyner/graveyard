@@ -43,31 +43,35 @@ export class PointsListComponent implements OnInit{
 				data => {
 					this.points = data
 					if (this.points && this.points.length > 0){
-							this.getSupports(0, false);
-							this.getSupports(1, false);
-							this.getSupports(2, false);
+							this.getSupports(this.points[0], false);
+							this.getSupports(this.points[1], false);
+							this.getSupports(this.points[2], false);
 						}
 
 				},
 				err => console.log('err: ', err)
 			);
 	}
+	getPointIndx(point: Point): number{
+		return this.points.indexOf(point);
+	}
 	onPointAdded(point: Point){
 		this.points.unshift(point);
-		this.getSupports(0, true);
+		this.getSupports(this.points[0], true);
 		setTimeout(() => {
 			this.smoothScroll('point' + 0, 20)
 		}, 900);
 	}
-	removeSupport(pointIndx: number, supportIndx: number){
+	removeSupport(point: Point, supportIndx: number){
+		let pointIndx = this.getPointIndx(point);
 		this.points[pointIndx]['supports'].splice(supportIndx, 1);
 		if (this.points[pointIndx]['supports'].length === 1){
 			this.viewAll(pointIndx);
 		}
 	}
-	getSupports(index: number, showAll: boolean){
-		let pointId = this.points[index]._id;
-		this._supportsService.getSupports(pointId)
+	getSupports(point: Point, showAll: boolean){
+		let index = this.getPointIndx(point);
+		this._supportsService.getSupports(point._id)
 			.subscribe(
 				data => {
 					console.log(data);
@@ -93,7 +97,8 @@ export class PointsListComponent implements OnInit{
 		}
 		this.points[index]['addEvidence'] = false;
 	}
-	addEvidence(index: number){
+	addEvidence(point: Point) {
+		let index = this.getPointIndx(point);
 		if (this.points[index]['addEvidence']) {
 			this.points[index]['addEvidence'] = !(this.points[index]['addEvidence']);
 		} else {

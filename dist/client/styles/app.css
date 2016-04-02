@@ -10067,9 +10067,12 @@ body {
 }
 
 .ro-action-bar {
-  display: inline-block;
+  display: block;
   padding: 10px;
 }
-.ro-action-bar .ro-action-bar-item {
+.ro-action-bar .ro-inline-items {
+  display: inline-block;
+}
+.ro-action-bar .ro-inline-items .ro-action-bar-item {
   display: inherit;
 }

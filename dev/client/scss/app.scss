@@ -11,9 +11,12 @@ body {
 	align-items: center;
 }
 .ro-action-bar{
-	display: inline-block;
+	display: block;
 	padding: 10px;
-	.ro-action-bar-item{
-		display: inherit;
+	.ro-inline-items{
+		display: inline-block;
+		.ro-action-bar-item{
+			display: inherit;
+		}
 	}
 }

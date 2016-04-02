@@ -59,9 +59,9 @@
             (upVoted)="issue.ups=issue.ups+1"
             (downVoted)="issue.downs=issue.downs+1">
         </ro-vote-cell>
+        <button class="btn btn-sm btn-danger pull-right" (click)="deleteIssue(issue, $event)">
+            <i class="fa fa-close">
+            </i>
+        </button>
     </div>
-    <button class="btn btn-sm btn-danger deleteButton" (click)="deleteIssue(issue, $event)">
-        <i class="fa fa-close">
-        </i>
-    </button>
 </div>
