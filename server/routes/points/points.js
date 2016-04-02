@@ -38,7 +38,22 @@ router.post('/createPoint', function(req, res) {
     });
 });
 // post update to point
-
+router.post('/updatePoint', function(req, res){
+    var point = req.body;
+    console.log(point);
+    points
+        .update({
+            '_id': point._id
+        }, {
+            $set: {
+                problem: point.problem,
+                detail: point.detail
+            }
+        }, function(err){
+            if (err) throw err;
+            res.status(200).send('success');
+        })
+});
 // ###########  DELETES  ###############
 // delete point by id
 router.delete('/deletePoint/:type/:issue_id/:pointId', function(req, res) {

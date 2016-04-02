@@ -5,23 +5,19 @@
                 {{support.evidence}}
             </h4>
             <p >{{support.detail}}</p>
-            <div class="row">
-                <div class="col-xs-8" *ngIf="support.source !== 'none'">
-                    <h4>
-                        <u>Source</u>:
-                    </h4>
-                    <ul>
-                        <li>
-                            <a [href]="support.source" style="text-decoration: none;">
-                                <h4 style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
-                                    {{support.source}}
-                                </h4>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-xs-4">
-                </div>
+            <div *ngIf="support.source !== 'none'">
+                <h4>
+                    <u>Source</u>:
+                </h4>
+                <ul>
+                    <li>
+                        <a [href]="support.source" style="text-decoration: none;">
+                            <h4 style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
+                                {{support.source}}
+                            </h4>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -49,20 +45,21 @@
         <button type="button" class="ro-action-bar-item btn btn-xs btn-info" (click)="toggleAddEvidence();gotoTop()">
             Add Evidence
         </button>
-        <br>
-        <h4 class="ro-action-bar-item">
-            <span class="label" [ngClass]="support.tag"> 
-                {{support.tag | uppercase}}
-            </span>
-        </h4>
-        <h4 class="ro-action-bar-item">
-            <span class="label label-success" [ngClass]="support.type">
-                {{support.type | uppercase}}
-            </span>
-        </h4>
-        <button type="button" class="ro-action-bar-item btn btn-xs btn-danger" (click)="removeSupport(support._id)">
-            <i class="fa fa-close">
-            </i>
-        </button>
+        <div class="ro-inline-items">
+            <h4 class="ro-action-bar-item">
+                <span class="label" [ngClass]="support.tag"> 
+                    {{support.tag | uppercase}}
+                </span>
+            </h4>
+            <h4 class="ro-action-bar-item">
+                <span class="label label-success" [ngClass]="support.type">
+                    {{support.type | uppercase}}
+                </span>
+            </h4>
+            <button type="button" class="ro-action-bar-item btn btn-xs btn-danger" (click)="removeSupport(support._id)">
+                <i class="fa fa-close">
+                </i>
+            </button>
+        </div>
     </div>
 </div>

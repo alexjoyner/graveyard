@@ -28,6 +28,10 @@
                 format: 'register',
                 defaultExtension: 'js'
             }
+        },
+        typescriptOptions: {
+            emitDecoratorMetadata: true,
+            experimentalDecorators: true
         }
     });
     System.import('app/boot')

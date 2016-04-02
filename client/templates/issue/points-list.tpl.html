@@ -40,6 +40,7 @@
         <hr>
     </div>
 </div>
+
 <h1 class="text-center" *ngIf="points && points.length === 0 && !showForm">
     <h2>
         This section has no points:
@@ -65,9 +66,9 @@
                 [support]="point.supports[0]"
                 [numMoreSupport]="point.supports.length - 1"
                 [showingMore]="point.viewAll"
-                (addEvidence)="addEvidence(i)"
+                (addEvidence)="addEvidence(point)"
                 (viewAll)="viewAll(i)"
-                (removed)="removeSupport(i,0)"
+                (removed)="removeSupport(point,0)"
                 (goTop)="smoothScroll('point'+i, 20)">
             </ro-top-support>
             <!-- To show if no supports data has been searched for -->
@@ -77,7 +78,7 @@
                 <button
                     type="button"
                     class="btn btn-lg btn-default "
-                    (click)="getSupports(i, false)">
+                    (click)="getSupports(point, false)">
                     Get Supports
                 </button>
             </div>
@@ -85,7 +86,7 @@
                 <h1 class="text-center">
                     No Support
                     <hr/>
-                    <button type="button" class="btn btn-lg btn-success" (click)="addEvidence(i); smoothScroll('point'+i, 20)">
+                    <button type="button" class="btn btn-lg btn-success" (click)="addEvidence(point); smoothScroll('point'+i, 20)">
                         Support this point
                     </button>
                 </h1>
@@ -96,7 +97,7 @@
     <ro-more-support
         *ngIf="point.supports && point.viewAll"
         [supports]="point.supports.slice(1)"
-        (removed)="removeSupport(i,$event)"
+        (removed)="removeSupport(point,$event)"
         (goTop)="smoothScroll('point'+i, 20)">
     </ro-more-support>
     <ro-add-support
