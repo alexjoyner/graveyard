@@ -60,6 +60,10 @@
                 {{support.type | uppercase}}
             </span>
         </h4>
+        <button class="ro-action-bar-item btn btn-sm btn-info" (click)="editPoint(point, $event)">
+            <i class="fa fa-edit">
+            </i>
+        </button>
         <button type="button" class="ro-action-bar-item btn btn-xs btn-danger" (click)="removeSupport(support._id)">
             <i class="fa fa-close">
             </i>

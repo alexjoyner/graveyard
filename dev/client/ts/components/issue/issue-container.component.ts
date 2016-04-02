@@ -6,11 +6,12 @@ import {PointsService} from '../../shared/points.service';
 import {PointsListComponent} from './points-list.component';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 import {VoteCellComponent} from '../../shared/vote-cell.component';
+import {NewIssueForm} from './issue-form.component';
 
 @Component({// Route no selector
     templateUrl: 'templates/issue/issue-container.tpl.html',
     providers: [IssuesService, PointsService],
-    directives: [PointsListComponent, ROUTER_DIRECTIVES, VoteCellComponent]
+    directives: [PointsListComponent, ROUTER_DIRECTIVES, VoteCellComponent, NewIssueForm]
 })
 export class IssueContainerComponent implements OnInit{
 	issue: Issue = new Issue('','',0,0);
@@ -20,6 +21,17 @@ export class IssueContainerComponent implements OnInit{
 		private _routeParams: RouteParams,
 		private _issuesService: IssuesService){}
 
+	editIssue(issue: Issue, event: MouseEvent, cancelFlag: boolean) {
+		event.stopPropagation();
+		let answer: boolean;
+		if(cancelFlag){
+			answer = confirm('Canceling will discard changes. Continue?');
+		}
+		if (answer || !cancelFlag) {
+			this.issue['editIssue'] =
+				(this.issue['editIssue']) ? !this.issue['editIssue'] : true;
+		}
+	}
 	ngOnInit():any {
 		this._issueId = this._routeParams.get('id');
 		this._type = this._routeParams.get('type');

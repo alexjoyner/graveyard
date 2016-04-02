@@ -83,7 +83,7 @@ gulp.task('build-css', function() {
 });
 
 gulp.task('build-js', function() {
-    return gulp.src(dev_ts + '/**/*.ts')
+    return gulp.src(dev_ts + '**/*.ts')
         .pipe(sourcemaps.init())
         .pipe(typescript(tsProject))
         .pipe(sourcemaps.write())
@@ -97,13 +97,21 @@ gulp.task('build-img', function() {
         }))
         .pipe(gulp.dest(assetsProd + 'img/'));
 });
-
+gulp.task('build-server', function(){
+    var serverjs = gulp.src(dev_server_js)
+                    .pipe(gulp.dest(dist_base));
+    var serverFolder = 
+                gulp.src(dev_server_folder + '**/*.js')
+                    .pipe(gulp.dest(dist_server_folder));
+    return [serverjs, serverFolder];
+});
 gulp.task('watch', function() {
     gulp.watch(dev_ts + '**/*.ts', ['build-js']);
     gulp.watch(dev_scss + '**/*.scss', ['build-css']);
     gulp.watch(dev_tpl + '**/*.html', ['build-html']);
     gulp.watch(dev_index, ['build-html']);
     gulp.watch(dev_server_js, ['build-server']);
+    gulp.watch(dev_server_folder + '**/*.js', ['build-server']);
     //gulp.watch(dev_imgs + '*', ['build-img']);
 });
 gulp.task('default', ['watch', 'build-js', 'build-css', 'build-html', 'build-libs']);

@@ -51,6 +51,22 @@ router.post('/newIssue', function(req, res) {
         res.status(200).send(returned._id).end();
     });
 });
+router.post('/updateIssue', function(req, res){
+    var issue = req.body;
+    console.log(issue);
+    issues
+        .update({
+            '_id': issue._id
+        }, {
+            $set: {
+                mainQuestion: issue.mainQuestion,
+                questionDetail: issue.questionDetail
+            }
+        }, function(err){
+            if (err) throw err;
+            res.status(200).send('success');
+        })
+});
 // post update to existing issue
 
 // ###########  DELETES  ###############

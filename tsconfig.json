@@ -1,4 +1,7 @@
 {
+  "cmd": [
+    "--experimentalDecorators"
+  ],
   "compilerOptions": {
     "target": "ES5",
     "module": "system",

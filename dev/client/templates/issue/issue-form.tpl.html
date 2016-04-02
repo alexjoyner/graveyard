@@ -21,7 +21,10 @@
     </div>
     <div class="col-xs-2">
     	<br>
-        <button class="btn btn-md btn-info" (click)="onCreate()">
+        <button class="btn btn-md btn-info" (click)="onUpdate()" *ngIf="editMode">
+            Save
+        </button>
+        <button class="btn btn-md btn-info" (click)="onCreate()" *ngIf="!editMode">
             Post Question
         </button>
     </div>

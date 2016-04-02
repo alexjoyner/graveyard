@@ -31,6 +31,16 @@ export class IssuesService {
 			{ headers: headers })
 				.map(res => res.json());
 	}
+	updateIssue(issue: Issue): Observable<any>{
+		const body = JSON.stringify(issue);
+		const headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		return this._http.post(
+			this.endpoint + '/issues/updateIssue',
+			body,
+			{ headers: headers })
+			.map(res => res);
+	}
 	/* DELETE */
 	deleteIssue(issueId: string): Observable<any> {
 		return this._http.delete(
