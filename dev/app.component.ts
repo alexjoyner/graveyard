@@ -1,81 +1,27 @@
-import {Component} from 'angular2/core';
-import {HttpService} from './http.service';
+import {Component, OnInit} from 'angular2/core';
+import {RouteConfig, Router, ROUTER_DIRECTIVES} from "angular2/router";
+import {SignupComponent} from "./unprotected/signup.component";
+import {SigninComponent} from "./unprotected/signin.component";
+import {ProtectedComponent} from "./protected/protected.component";
+import {SuperSecretComponent} from "./protected/supersecret.component";
+import {HeaderComponent} from "./shared/header.component";
 
 @Component({
     selector: 'my-app',
     template: `
-    	<div>
-		    <div class="input">
-		        <label for="title">Title</label>
-		        <input type="text" id="title" #title>
-		        <p></p>
-		    </div>
-		    <div class="input">
-		        <label for="body">Body</label>
-		        <input type="text" id="body" #body>
-		        <p></p>
-		    </div>
-		    <div class="input">
-		        <label for="user-id">User ID</label>
-		        <input type="text" id="user-id" #userId>
-		        <p></p>
-		    </div>
-		    <button (click)="onPost(title.value, body.value, userId.value)">Post Data</button>
-		    <button (click)="onGetPosts()">Get All Posts</button>
-		    <p>Response: {{response | json}}</p>
-		</div>
+        <my-header></my-header>
+        <div class="main">
+            <router-outlet></router-outlet>
+        </div>
     `,
-    providers: [HttpService]
+    directives: [HeaderComponent, ROUTER_DIRECTIVES]
 })
+@RouteConfig([
+    {path: '/signup', name: 'Signup', component: SignupComponent, useAsDefault: true},
+    {path: '/signin', name: 'Signin', component: SigninComponent},
+    {path: '/protected', name: 'Protected', component: ProtectedComponent},
+    {path: '/supersecret', name: 'SuperSecret', component: SuperSecretComponent},
+])
 export class AppComponent {
-	response: string;
-	constructor(private _httpService: HttpService) {};
-	onGetPosts() {
-		this._httpService.getPosts()
-			.subscribe(
-				response => this.response = response,
-				error => console.log(error)
-			)
-	}
-	onPost(title: string, body: string, userId: string){
-		console.log('testing')
-		this._httpService.createPost({title: title, body: body, userId: userId})
-			.subscribe(
-				response => this.response = response,
-				error => console.log(error)
-			)		
-	} 
+    constructor(private _router: Router) {}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
