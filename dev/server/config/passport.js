@@ -51,7 +51,7 @@ module.exports = function(passport) {
                             var token = jwt.sign({
                                 email: newUser.local.email
                             }, superSecret, {
-                              expiresInMinutes: 20 //1440 <-- expires in 24 hours
+                              expiresInMinutes: 1440 // <-- expires in 24 hours
                             });
                             return done(null, {
                               profile: newUser,
@@ -91,7 +91,7 @@ module.exports = function(passport) {
                 var token = jwt.sign({
                     email: user.local.email
                 }, superSecret, {
-                  expiresInMinutes: 20 //1440 <-- expires in 24 hours
+                  expiresInMinutes: 1440 // <-- expires in 24 hours
                 });
                 return done(null, {
                   profile: user,

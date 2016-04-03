@@ -31,26 +31,30 @@ export class PointsService {
 	}
 	/* POST */
 	insertPoint(point: Point): Observable<any> {
-			const body = JSON.stringify(point);
-			const headers = new Headers();
-			console.log('Posting');
-			headers.append('Content-Type', 'application/json');
-			return this._http.post(
-				this.endpoint +
-				'/points/createPoint',
-				body,
-				{ headers: headers })
-				.map(res => res.json());
+		const body = JSON.stringify(point);
+		const headers = new Headers();
+		console.log('Posting');
+		headers.append('Content-Type', 'application/json');
+		headers.append('x-access-token',
+			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
+		return this._http.post(
+			this.endpoint +
+			'/points/createPoint',
+			body,
+			{ headers: headers })
+			.map(res => res.json());
 	}
 	updatePoint(point: Point): Observable<any> {
-			const body = JSON.stringify(point);
-			const headers = new Headers();
-			headers.append('Content-Type', 'application/json');
-			return this._http.post(
-				this.endpoint + '/points/updatePoint',
-				body,
-				{ headers: headers })
-					.map(res => res);
+		const body = JSON.stringify(point);
+		const headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		headers.append('x-access-token',
+			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
+		return this._http.post(
+			this.endpoint + '/points/updatePoint',
+			body,
+			{ headers: headers })
+				.map(res => res);
 	}
 	/*insertSupport(pointIndx: number, support: Support):number{
 		if(this.selectedPoints[pointIndx]['supports']){
@@ -62,15 +66,19 @@ export class PointsService {
 		}
 	}*/
 	/* DELETE */
-	deletePoint(point: Point): Observable<any> {	
-			return this._http.delete(
-				this.endpoint +
-				'/points/deletePoint/' +
-				point.type +
-				'/' +
-				point.issue_id +
-				'/' +
-				point._id)
-				.map(res => res);
+	deletePoint(point: Point): Observable<any> {
+		const headers = new Headers();
+		headers.append('x-access-token',
+			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
+		return this._http.delete(
+			this.endpoint +
+			'/points/deletePoint/' +
+			point.type +
+			'/' +
+			point.issue_id +
+			'/' +
+			point._id,
+			{ headers: headers })
+			.map(res => res);
 	}
 }

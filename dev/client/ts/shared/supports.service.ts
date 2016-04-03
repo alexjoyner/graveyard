@@ -28,8 +28,9 @@ export class SupportsService {
 	insertSupport(support: Support): Observable<any> {
 		const body = JSON.stringify(support);
 		const headers = new Headers();
-		console.log('Posting: ', support);
 		headers.append('Content-Type', 'application/json');
+		headers.append('x-access-token',
+			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
 		return this._http.post(
 			this.endpoint +
 			'/supports/createSupportPoint',
@@ -39,7 +40,11 @@ export class SupportsService {
 	}
 
 	/* DELETE */
-	deleteSupport(supportId: string){
+	deleteSupport(supportId: string) {
+		const headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		headers.append('x-access-token',
+			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
 		// id in the future
 		return this._http.delete(
 			this.endpoint +

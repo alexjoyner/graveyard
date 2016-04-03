@@ -13,7 +13,7 @@ var points = require('../../models/pointModel.js');
 router.get('/all', function(req, res) {
     issues
         .find()
-        .select('mainQuestion ups downs')
+        .select('mainQuestion questionDetail ups downs')
         .exec(function(err, allIssues) {
             if (err) throw err;
             if (!allIssues) {

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, OnChanges, EventEmitter} from 'angular2/core';
+import {Component, OnInit, OnChanges} from 'angular2/core';
 import {RouteParams} from 'angular2/router';
 import {PointsService} from '../../shared/points.service';
 import {SupportsService} from '../../shared/supports.service';
@@ -71,7 +71,7 @@ export class PointsListComponent implements OnInit{
 	}
 	getSupports(point: Point, showAll: boolean){
 		let index = this.getPointIndx(point);
-		this._supportsService.getSupports(point._id)
+		this._supportsService.getSupports(this.points[index]._id)
 			.subscribe(
 				data => {
 					console.log(data);
@@ -82,7 +82,7 @@ export class PointsListComponent implements OnInit{
 							this.viewAll(index);
 						} else {
 							// Will close add evidence
-							this.addEvidence(index);
+							this.addEvidence(point);
 						}
 					}
 				},

@@ -54,7 +54,7 @@ export class IssuesService {
 				(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
 			return this._http.delete(
 				this.endpoint + '/issues/deleteIssue/' + issueId,
-				headers)
+				{headers: headers})
 				.map(res => res);
 	}
 }

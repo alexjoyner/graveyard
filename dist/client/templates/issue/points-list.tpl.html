@@ -17,7 +17,7 @@
         </div>
     </div>
 </div>
-<ro-create-point-form *ngIf="showForm" (added)="showForm = false; onPointAdded($event)" (cancel)="showForm = false">
+<ro-create-point-form *ngIf="showForm" (added)="searchText = ''; showForm = false; onPointAdded($event)" (cancel)="showForm = false">
 </ro-create-point-form>
 <hr/>
 <div class="row">
@@ -105,6 +105,6 @@
         [pointId]="point._id"
         [pointIndex]="i"
         [issueId]="issueId"
-        (added)="getSupports(i, true)">
+        (added)="getSupports(point, true)">
     </ro-add-support>
 </div>
