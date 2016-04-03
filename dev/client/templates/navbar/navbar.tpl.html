@@ -4,7 +4,15 @@
         <div class="navbar-header">
             <a class="navbar-brand" [routerLink]="['Home']">Home</a>
         </div>
-        <!-- /.navbar-collapse -->
+       	<ul class="nav navbar-nav navbar-right">
+	        <li >
+	        	<a [routerLink]="['Auth']" *ngIf="!auth()">Login/Register</a>
+	        	<a [routerLink]="['Home']" *ngIf="auth()">{{email}}</a>
+	        </li>
+	        <li>
+	        	<a class="danger" *ngIf="auth()" (click)="logout()">Logout</a>
+	        </li>
+	    </ul>
     </div>
     <!-- /.container-fluid -->
 </nav>

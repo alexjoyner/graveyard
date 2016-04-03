@@ -1,5 +1,6 @@
 import {Component, Input, Output, EventEmitter} from 'angular2/core';
 import {VoteCellService} from './vote-cell.service';
+import {AuthService} from './auth.service';
 @Component({
     selector: 'ro-vote-cell',
     templateUrl: 'templates/shared/vote-cell.tpl.html',
@@ -13,23 +14,26 @@ export class VoteCellComponent {
 	@Output() upVoted: EventEmitter<any> = new EventEmitter();
 	@Output() downVoted: EventEmitter<any> = new EventEmitter();
 	constructor(
-		private _voteCellService: VoteCellService){}
+		private _voteCellService: VoteCellService,
+		private _authService: AuthService){}
 
 	vote(type: string, event: MouseEvent) {
 		event.stopPropagation();
-		this._voteCellService.addVote(
-			this.sourceType, 
-			this.sourceId, 
-			type)
-		.subscribe(
-			success => {
-				(type === 'upvote')
-					?
-					this.upVoted.emit(null)
-					:
-					this.downVoted.emit(null);
-			},
-			err => console.log('Err: ', err)
-		);
+		if (this._authService.checkValid()) {
+			this._voteCellService.addVote(
+				this.sourceType,
+				this.sourceId,
+				type)
+				.subscribe(
+				success => {
+					(type === 'upvote')
+						?
+						this.upVoted.emit(null)
+						:
+						this.downVoted.emit(null);
+				},
+				err => console.log('Err: ', err)
+				);
+		}
 	}
 }

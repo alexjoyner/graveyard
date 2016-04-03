@@ -1,7 +1,7 @@
 'use strict';
 var express = require('express'),
     router = express.Router();
-
+var jwt_verify = require('../../middleware/jwt_verify.js')
 // Mongoose models
 var issues = require('../../models/issueModel.js');
 var points = require('../../models/pointModel.js');
@@ -42,7 +42,7 @@ router.get('/:id', function(req, res) {
 
 // ###########  POSTS   ###############
 // post new issue
-router.post('/newIssue', function(req, res) {
+router.post('/newIssue',jwt_verify, function(req, res) {
     console.log(req.body);
     var newIssue = new issues(req.body);
     newIssue.save(function(err, returned) {
@@ -51,7 +51,7 @@ router.post('/newIssue', function(req, res) {
         res.status(200).send(returned._id).end();
     });
 });
-router.post('/updateIssue', function(req, res){
+router.post('/updateIssue',jwt_verify, function(req, res){
     var issue = req.body;
     console.log(issue);
     issues
@@ -71,7 +71,7 @@ router.post('/updateIssue', function(req, res){
 
 // ###########  DELETES  ###############
 // delete existing issue
-router.delete('/deleteIssue/:issueId', function(req, res) {
+router.delete('/deleteIssue/:issueId',jwt_verify, function(req, res) {
     issues.findOne({
         '_id': req.params.issueId
     }, function(err, issue) {

@@ -4,6 +4,7 @@ import {IssuesService} from '../../shared/issues.service';
 import {SearchFilterPipe} from '../../pipes/searchFilter.pipe';
 import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
 import {VoteCellComponent} from '../../shared/vote-cell.component';
+import {AuthService} from '../../shared/auth.service';
 @Component({
     selector: 'ro-home-issue-list',
     templateUrl: 'templates/home/home-issue-list.tpl.html',
@@ -20,7 +21,8 @@ export class  HomeIssueListComponent implements OnInit{
 	= new Issue('', '', 0, 0);
 	constructor(
 		private _issuesService: IssuesService,
-		private _router: Router){}
+		private _router: Router,
+		private _authService: AuthService){}
 	ngOnInit():any {
 		this._issuesService.getAllIssues()
 			.subscribe(
@@ -32,26 +34,30 @@ export class  HomeIssueListComponent implements OnInit{
 			);
 	}
 	onCreate() {
-		let issue: Issue
-			= new Issue(this.searchText + '?', '', 0, 0);
-		this._issuesService.insertIssue(issue)
-			.subscribe(
-			data => {
-				console.log('Returned: ', data);
-				this._router.navigate(['Issue', { type: 'yes', id: data }]);
-			},
-			err => console.log('Error: ', err)
-			);
+		if (this._authService.checkValid()) {
+			let issue: Issue
+				= new Issue(this.searchText + '?', '', 0, 0);
+			this._issuesService.insertIssue(issue)
+				.subscribe(
+				data => {
+					console.log('Returned: ', data);
+					this._router.navigate(['Issue', { type: 'yes', id: data }]);
+				},
+				err => console.log('Error: ', err)
+				);
+		}
 	}
 	deleteIssue(issue: Issue, event: MouseEvent){
 		event.stopPropagation();
-		let answer = confirm(`Are you sure you want to delete this issue? This action can't be undone`);
-		if (answer === true) {
-			this._issuesService.deleteIssue(issue._id)
-				.subscribe(
-				success => this.ngOnInit(),
-				err => console.log('error: ', err)
-				);
+		if (this._authService.checkValid()) {
+			let answer = confirm(`Are you sure you want to delete this issue? This action can't be undone`);
+			if (answer === true) {
+				this._issuesService.deleteIssue(issue._id)
+					.subscribe(
+					success => this.ngOnInit(),
+					err => console.log('error: ', err)
+					);
+			}
 		}
 	}
 }

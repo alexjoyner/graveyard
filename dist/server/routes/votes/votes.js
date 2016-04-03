@@ -2,6 +2,7 @@
 var express = require('express'),
     router = express.Router();
 
+var jwt_verify = require('../../middleware/jwt_verify.js')
 // Mongoose models
 var issues = require('../../models/issueModel.js');
 var points = require('../../models/pointModel.js');
@@ -11,7 +12,7 @@ var supports = require('../../models/supportModel.js');
 
 // ###########  POSTS  ###############
 // Post vote for issue
-router.post('/issue', function(req, res) {
+router.post('/issue', jwt_verify, function(req, res) {
     var voteType = req.body.voteType, // 'upvote' or 'downvote'
         issueId = req.body.issueId;
     // Build order
@@ -45,7 +46,7 @@ router.post('/issue', function(req, res) {
         });
 });
 // Post vote for point
-router.post('/point', function(req, res) {
+router.post('/point', jwt_verify, function(req, res) {
     var voteType = req.body.voteType, // 'upvote' or 'downvote'
         pointId = req.body.pointId;
     // Build order
@@ -79,7 +80,7 @@ router.post('/point', function(req, res) {
         });
 });
 // Post vote for support
-router.post('/support', function(req, res) {
+router.post('/support', jwt_verify, function(req, res) {
     var voteType = req.body.voteType, // 'upvote' or 'downvote'
         supportId = req.body.supportId;
     // Build order

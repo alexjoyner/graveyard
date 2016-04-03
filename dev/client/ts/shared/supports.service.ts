@@ -4,12 +4,14 @@ import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
 import {Http, Headers} from 'angular2/http';
 import {Config} from '../config/config';
+import {AuthService} from './auth.service';
 
 @Injectable()
 export class SupportsService {
 	private endpoint: string = Config.endpoint;
 	constructor(
-		private _http: Http) { }
+		private _http: Http,
+		private _authService: AuthService) { }
 	/* GET */
 	getSupports(pointId: string): Observable<any> {
 		return this._http.get(

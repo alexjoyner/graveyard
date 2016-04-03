@@ -5,11 +5,13 @@ import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
 import {Http, Headers} from 'angular2/http';
 import {Config} from '../config/config';
+import {AuthService} from './auth.service';
 @Injectable()
 export class PointsService {
 	private endpoint: string = Config.endpoint;
 	constructor(
-		private _http: Http) { }
+		private _http: Http,
+		private _authService: AuthService) { }
 	/* GET */
 	getPoints(issueId: string, type: string): Observable<any> {
 		return this._http.get(
@@ -29,26 +31,26 @@ export class PointsService {
 	}
 	/* POST */
 	insertPoint(point: Point): Observable<any> {
-		const body = JSON.stringify(point);
-		const headers = new Headers();
-		console.log('Posting');
-		headers.append('Content-Type', 'application/json');
-		return this._http.post(
-			this.endpoint +
-			'/points/createPoint',
-			body,
-			{ headers: headers })
-			.map(res => res.json());
+			const body = JSON.stringify(point);
+			const headers = new Headers();
+			console.log('Posting');
+			headers.append('Content-Type', 'application/json');
+			return this._http.post(
+				this.endpoint +
+				'/points/createPoint',
+				body,
+				{ headers: headers })
+				.map(res => res.json());
 	}
 	updatePoint(point: Point): Observable<any> {
-		const body = JSON.stringify(point);
-		const headers = new Headers();
-		headers.append('Content-Type', 'application/json');
-		return this._http.post(
-			this.endpoint + '/points/updatePoint',
-			body,
-			{ headers: headers })
-			.map(res => res);
+			const body = JSON.stringify(point);
+			const headers = new Headers();
+			headers.append('Content-Type', 'application/json');
+			return this._http.post(
+				this.endpoint + '/points/updatePoint',
+				body,
+				{ headers: headers })
+					.map(res => res);
 	}
 	/*insertSupport(pointIndx: number, support: Support):number{
 		if(this.selectedPoints[pointIndx]['supports']){
@@ -60,15 +62,15 @@ export class PointsService {
 		}
 	}*/
 	/* DELETE */
-	deletePoint(point: Point): Observable<any> {		
-		return this._http.delete(
-			this.endpoint +
-			'/points/deletePoint/' +
-			point.type +
-			'/' +
-			point.issue_id +
-			'/' +
-			point._id)
-			.map(res => res);
+	deletePoint(point: Point): Observable<any> {	
+			return this._http.delete(
+				this.endpoint +
+				'/points/deletePoint/' +
+				point.type +
+				'/' +
+				point.issue_id +
+				'/' +
+				point._id)
+				.map(res => res);
 	}
 }

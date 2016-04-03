@@ -1,6 +1,7 @@
 'use strict';
 var express = require('express'),
     router = express.Router();
+var jwt_verify = require('../../middleware/jwt_verify.js')
 
 // Mongoose models
 var points = require('../../models/pointModel.js');
@@ -26,7 +27,7 @@ router.get('/getPoints/:type/:issueId', function(req, res) {
 });
 // ###########  POSTS  ###############
 // post new point set
-router.post('/createPoint', function(req, res) {
+router.post('/createPoint', jwt_verify, function(req, res) {
 
     console.log('Create Point: ', req.body);
 
@@ -38,7 +39,7 @@ router.post('/createPoint', function(req, res) {
     });
 });
 // post update to point
-router.post('/updatePoint', function(req, res){
+router.post('/updatePoint', jwt_verify, function(req, res){
     var point = req.body;
     console.log(point);
     points
@@ -56,7 +57,7 @@ router.post('/updatePoint', function(req, res){
 });
 // ###########  DELETES  ###############
 // delete point by id
-router.delete('/deletePoint/:type/:issue_id/:pointId', function(req, res) {
+router.delete('/deletePoint/:type/:issue_id/:pointId', jwt_verify, function(req, res) {
     var type = req.params.type,
         issueId = req.params.issue_id,
         pointId = req.params.pointId;
