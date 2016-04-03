@@ -12,7 +12,7 @@ export abstract class WINDOW {
   }
 }
 
-class WindowRef_ extends WINDOW {
+export class WindowRef_ extends WINDOW {
   constructor() {
     super();
   }

@@ -12,10 +12,12 @@ import {EditPointComponent} from './edit-point.component';
 export class MainPointComponent {
 	@Input('point') point: Point;
 	@Output() removed: EventEmitter<any> = new EventEmitter();
+	@Output() smoothScroll: EventEmitter<any> = new EventEmitter();
 	constructor(
 		private _pointsService: PointsService){};
 	editPoint(point: Point, event: MouseEvent, cancelFlag: boolean) {
 		event.stopPropagation();
+		this.smoothScroll.emit(null)
 		let answer: boolean;
 		if (cancelFlag) {
 			answer = confirm('Canceling will discard changes. Continue?');
