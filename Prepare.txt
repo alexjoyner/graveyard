@@ -4,6 +4,7 @@
 	1) Change the endpoint in config.js to ''; not 'http://localhost:9000';
 	2) Change the base url to in index.html from '/' to '/client/';
 	3) Make sure the welcome page displays the correct version
+	4) Make sure the packages are transferred over correctly
 
 
 	CONGRATS ON MAKING IT THIS FAR!!!!!!!!!

@@ -2,6 +2,7 @@
 var express = require('express'),
     router = express.Router();
 
+var jwt_verify = require('../../middleware/jwt_verify.js')
 // Mongoose models
 var supports = require('../../models/supportModel.js');
 
@@ -23,7 +24,7 @@ router.get('/getSupport/:pointId', function(req, res){
 
 // ###########  POSTS  ###############
 // post create support point
-router.post('/createSupportPoint', function(req, res) {
+router.post('/createSupportPoint', jwt_verify, function(req, res) {
     console.log('Req body: ', req.body);
     var support = new supports(req.body);
     support.save(function(err){
@@ -34,7 +35,7 @@ router.post('/createSupportPoint', function(req, res) {
 
 // ###########  DELETES  ###############
 // delete PRO support point
-router.delete('/removeSupportPoint/:supportId', function(req, res) {
+router.delete('/removeSupportPoint/:supportId', jwt_verify, function(req, res) {
     var supportId = req.params.supportId;
     supports.findOneAndRemove({
         '_id': supportId

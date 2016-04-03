@@ -3,7 +3,7 @@
   border: 1px solid #dddddd;
   margin-bottom: 10px;
   min-height: 100px;
-  width: 728px;
+  max-width: 728px;
 }
 .HomeIssue .deleteButton {
   float: right;

@@ -3,21 +3,21 @@
 -->
 <br/>
 <div class="row">
-    <div class="col-xs-2">
+    <div class="col-md-10">
+        <div class="input-group">
+            <div class="input-group-addon">
+                Search
+            </div>
+            <input type="text" class="form-control" id="exampleInputAmount" [(ngModel)]="searchText" placeholder="main points" />
+        </div>
+    </div>
+    <div class="col-md-2 text-center">
         <button class="btn btn-md" class="btn" [ngClass]="{'btn-success': type === 'yes', 'btn-danger': type === 'no'}" (click)="showForm = true">
             Add a new {{type}}
         </button>
     </div>
-    <div class="col-xs-8">
-        <div class="input-group">
-            <div class="input-group-addon">
-                Search Main Points
-            </div>
-            <input type="text" class="form-control" id="exampleInputAmount" [(ngModel)]="searchText"/>
-        </div>
-    </div>
 </div>
-<ro-create-point-form *ngIf="showForm" (added)="showForm = false; onPointAdded($event)" (cancel)="showForm = false">
+<ro-create-point-form *ngIf="showForm" (added)="searchText = ''; showForm = false; onPointAdded($event)" (cancel)="showForm = false">
 </ro-create-point-form>
 <hr/>
 <div class="row">
@@ -57,7 +57,8 @@
         <div class="col-xs-6 main-point-block text-center">
             <ro-main-point
                 [point]="point"
-                (removed)="ngOnInit()">
+                (removed)="ngOnInit()"
+                (smoothScroll)="smoothScroll('point'+i, 20)">
             </ro-main-point>
         </div>
         <div class="col-xs-6 top-supports">
@@ -105,6 +106,6 @@
         [pointId]="point._id"
         [pointIndex]="i"
         [issueId]="issueId"
-        (added)="getSupports(i, true)">
+        (added)="getSupports(point, true)">
     </ro-add-support>
 </div>

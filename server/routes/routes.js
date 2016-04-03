@@ -1,16 +1,17 @@
 module.exports = function(app) {
     'use strict';
     //File Dependencies
-    var issues = require('./issues/issues.js'),
+    var auth = require('./auth/auth.js'),
+        issues = require('./issues/issues.js'),
         points = require('./points/points.js'),
         support = require('./support/support.js'),
         votes = require('./votes/votes.js');
     // Routes
     // -------------------------
     app
+        .use('/auth', auth)
         .use('/issues', issues)
         .use('/points', points)
         .use('/votes', votes)
         .use('/supports', support);
-
 };
