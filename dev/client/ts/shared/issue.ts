@@ -4,17 +4,23 @@ export class Issue {
     questionDetail: string;
     ups: number;
     downs: number;
+    ownerId: string;
+    ownerUsername: string;
 
     constructor(
     	mainQuestion: string, 
     	questionDetail: string, 
     	ups: number, 
 		downs: number,
+		ownerId: string,
+		ownerUsername: string,
 		id?: string) {
 		this.mainQuestion = mainQuestion;
 		this.questionDetail = questionDetail;
 		this.ups = ups;
 		this.downs = downs;
+		this.ownerId = ownerId;
+		this.ownerUsername = ownerUsername;
 		(id) ? this._id = id : null;
     }
 }

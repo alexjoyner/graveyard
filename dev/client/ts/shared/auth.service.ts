@@ -15,7 +15,7 @@ export class AuthService {
 	/* GET */
 
 	/* POST */
-	attemptLogin(user: User): Observable<any> {
+	attemptLogin(user?: User): Observable<any> {
 		const body = JSON.stringify(user);
 		const headers = new Headers();
 		headers.append('Content-Type', 'application/json');

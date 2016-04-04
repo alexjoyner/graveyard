@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 import {AuthService} from '../../shared/auth.service';
 import {UsersService} from '../../shared/users.service';
@@ -8,12 +8,16 @@ import {UsersService} from '../../shared/users.service';
     directives: [ROUTER_DIRECTIVES],
     providers: [AuthService]
 })
-export class NavbarComponent{
-	private email: string = 'email';
+export class NavbarComponent implements OnInit{
+	private email: string;
 	constructor(
 		private _authService: AuthService,
 		private _usersService: UsersService){}
+
 	auth():boolean{
+		if (this._usersService.profile) {
+			this.email = this._usersService.profile.local.email;
+		}
 		return localStorage.getItem('token') || false;
 	}
 	logout(){

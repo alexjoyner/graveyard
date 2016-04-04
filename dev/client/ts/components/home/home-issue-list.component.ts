@@ -5,6 +5,7 @@ import {SearchFilterPipe} from '../../pipes/searchFilter.pipe';
 import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
 import {VoteCellComponent} from '../../shared/vote-cell.component';
 import {AuthService} from '../../shared/auth.service';
+import {UsersService} from '../../shared/users.service';
 @Component({
     selector: 'ro-home-issue-list',
     templateUrl: 'templates/home/home-issue-list.tpl.html',
@@ -22,7 +23,8 @@ export class  HomeIssueListComponent implements OnInit{
 	constructor(
 		private _issuesService: IssuesService,
 		private _router: Router,
-		private _authService: AuthService){}
+		private _authService: AuthService,
+		private _usersService: UsersService){}
 	ngOnInit():any {
 		this._issuesService.getAllIssues()
 			.subscribe(
@@ -33,10 +35,15 @@ export class  HomeIssueListComponent implements OnInit{
 				err => console.log('err: ', err)
 			);
 	}
+	stringToDate(string: string){
+		return new Date(string);
+	}
 	onCreate() {
 		if (this._authService.checkValid()) {
 			let issue: Issue
-				= new Issue(this.searchText + '?', '', 0, 0);
+				= new Issue(this.searchText + '?', '', 0, 0,
+					this._usersService.profile._id,
+					this._usersService.profile.local.email);
 			this._issuesService.insertIssue(issue)
 				.subscribe(
 				data => {
@@ -59,5 +66,8 @@ export class  HomeIssueListComponent implements OnInit{
 					);
 			}
 		}
+	}
+	isOwner(username: string){
+		return (username === this._usersService.profile.local.email);
 	}
 }

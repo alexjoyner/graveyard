@@ -12,7 +12,17 @@ export class UsersService {
 	constructor(
 		private _http: Http) { }
 	/* GET */
-
+	getProfile(): Observable<any> {
+		const headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		headers.append('x-access-token',
+			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
+		return this._http.get(
+			this.endpoint + 
+			'/users/profile',
+			{headers : headers})
+		.map(res => res.json());
+	}
 	/* POST */
 
 	/* DELETE */

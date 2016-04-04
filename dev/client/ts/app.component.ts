@@ -30,10 +30,18 @@ export class AppComponent implements OnInit{
         private _authService: AuthService,
         private _usersService: UsersService){}
     ngOnInit():any {
-        // The below Needs to be fixed to get user when the app boots
-        // if (localStorage.getItem('token')) {
-        //     this._authService.attemptLogin()
-        // };
+        //The below Needs to be fixed to get user when the app boots
+        if (localStorage.getItem('token')) {
+            this._usersService.getProfile()
+                .subscribe(
+                    data => {
+                        this._usersService.profile = data;
+                        console.log('Stored profile: ', this._usersService.profile);
+                    },
+                    err => {
+                        console.log('ERROR: ', err);
+                    })
+        };
         this._authService.getLoggedOutEvent()
             .subscribe(
                 data => {
