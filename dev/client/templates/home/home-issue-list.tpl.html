@@ -5,6 +5,7 @@
     </ro-new-issue-form>
 -->
 <div class="form-group" *ngIf="startQuestion">
+    <h2><u>Review issue:</u></h2>
     <h3>Issue: {{searchText}}?</h3>
     <h4>
         <u>
@@ -33,7 +34,10 @@
         </li>
     </ul>
     <button class="btn btn-success" (click)="onCreate()" [disabled]="searchText === ''">
-        My  is good! Add it.
+        My issue is good! Add it.
+    </button>
+    <button class="btn btn-danger" (click)="onCancel()" [disabled]="searchText === ''">
+        Cancel
     </button>
 </div>
 <h1 class="text-center" *ngIf="issues && issues.length === 0 && !startQuestion">

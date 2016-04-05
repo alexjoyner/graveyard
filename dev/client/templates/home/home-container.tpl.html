@@ -33,8 +33,9 @@
     <!-- List out the isses of selected type -->
     <ro-home-issue-list 
         [searchText]="searchText"
-        [startQuestion]="startQuestion"></ro-home-issue-list>
-    <div *ngIf="searchText !== ''">
+        [startQuestion]="startQuestion"
+        (cancel)="searchText = ''; startQuestion = !startQuestion;"></ro-home-issue-list>
+    <div *ngIf="searchText !== '';">
         <hr>
         <h1 class="text-center">
             Couldn't find an issue?

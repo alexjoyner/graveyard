@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from 'angular2/core';
+import {Component, OnInit, Input, Output, EventEmitter} from 'angular2/core';
 import {Issue} from '../../shared/issue';
 import {IssuesService} from '../../shared/issues.service';
 import {SearchFilterPipe} from '../../pipes/searchFilter.pipe';
@@ -17,6 +17,7 @@ import {UsersService} from '../../shared/users.service';
 export class  HomeIssueListComponent implements OnInit{
 	@Input('searchText') searchText: string;
 	@Input('startQuestion') startQuestion: boolean;
+	@Output() cancel: EventEmitter<any> = new EventEmitter();
 	issues: Issue[];
 	issue: Issue
 	= new Issue('', '', 0, 0);
@@ -52,6 +53,9 @@ export class  HomeIssueListComponent implements OnInit{
 				err => console.log('Error: ', err)
 				);
 		}
+	}
+	onCancel(){
+		this.cancel.emit(null);
 	}
 	deleteIssue(issue: Issue, event: MouseEvent){
 		event.stopPropagation();
