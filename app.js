@@ -51,5 +51,5 @@ var port = (process.env.PORT || 9000);
 http.listen(port, function(err) {
     'use strict';
     if (err) throw err;
-    console.log('App running on port 9000');
+    console.log('App running on port ' + port);
 });
