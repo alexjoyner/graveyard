@@ -1,6 +1,6 @@
 {
   "name": "metatruth",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.6",
   "description": "Deployed build of metatruth",
   "main": "server.js",
   "scripts": {

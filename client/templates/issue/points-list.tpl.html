@@ -20,7 +20,7 @@
 <ro-create-point-form *ngIf="showForm" (added)="searchText = ''; showForm = false; onPointAdded($event)" (cancel)="showForm = false">
 </ro-create-point-form>
 <hr/>
-<div class="row">
+<div class="row hidden-xs">
     <div class="col-xs-6">
         <h2 class="text-center">
             <u>
@@ -54,14 +54,14 @@
 </h1>
 <div [attr.id]="'point' + i" *ngFor="#point of points | roFilter: searchText; #i = index" class="point">
     <div class="row">
-        <div class="col-xs-6 main-point-block text-center">
+        <div class="col-xs-12 col-md-6 main-point-block text-center">
             <ro-main-point
                 [point]="point"
                 (removed)="ngOnInit()"
                 (smoothScroll)="smoothScroll('point'+i, 20)">
             </ro-main-point>
         </div>
-        <div class="col-xs-6 top-supports">
+        <div class="col-xs-12 col-md-6 top-supports">
             <ro-top-support
                 *ngIf="point.supports && point.supports.length >0"
                 [support]="point.supports[0]"

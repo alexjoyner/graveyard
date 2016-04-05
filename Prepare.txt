@@ -5,6 +5,7 @@
 	2) Change the base url to in index.html from '/' to '/client/';
 	3) Make sure the welcome page displays the correct version
 	4) Make sure the packages are transferred over correctly
+	5) Change the version in package.json
 
 
 	CONGRATS ON MAKING IT THIS FAR!!!!!!!!!
