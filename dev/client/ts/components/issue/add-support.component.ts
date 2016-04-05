@@ -2,6 +2,7 @@ import {Component, Input, OnInit, Output, EventEmitter} from 'angular2/core';
 import {Support} from '../../shared/support';
 import {SupportsService} from '../../shared/supports.service';
 import {PointsService} from '../../shared/points.service';
+import { UsersService} from '../../shared/users.service';
 // Parent is points-list
 @Component({
     selector: 'ro-add-support',
@@ -17,7 +18,8 @@ export class AddSupportComponent implements OnInit{
 
 	constructor(
 		private _supportsService: SupportsService,
-		private _pointsService: PointsService) { };
+		private _pointsService: PointsService,
+		private _usersService: UsersService) { };
 
 	createSupport(){
 		this._supportsService.insertSupport(this.newSupport)
@@ -29,7 +31,12 @@ export class AddSupportComponent implements OnInit{
 		);
 	}
 	ngOnInit():any {
-		this.newSupport = new Support(this.issueId, this.pointId, '', '', '', 'http://', '', 0, 0);
+		this.newSupport = new Support(
+			this.issueId, 
+			this.pointId, 
+			'', '', '', 'http://', '', 0, 0,
+			this._usersService.profile._id,
+			this._usersService.profile.local.email);
 	}
 	setTag(tag: string){
 		this.newSupport.tag = tag;

@@ -1,5 +1,7 @@
 export class Point {
 	_id: string;
+	ownerId: string;
+	ownerUsername: string;
 	issue_id: string;
     problem: string;
     detail: string;
@@ -15,6 +17,8 @@ export class Point {
 		ups: number,
 		downs: number,
 		tag: string,
+		ownerId: string,
+		ownerUsername: string,
 		id?: string
 	){
 		this.issue_id = issue_id;
@@ -24,6 +28,8 @@ export class Point {
 		this.ups = ups;
 		this.downs = downs;
 		this.tag = tag;
+		this.ownerId = ownerId;
+		this.ownerUsername = ownerUsername;
 		(id) ? this._id = id : null;
 	}
 }

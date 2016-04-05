@@ -12,6 +12,14 @@ var supportSchema = new Schema({
         type: Schema.Types.ObjectId,
         required: true
     },
+    ownerId: {
+        type: Schema.Types.ObjectId,
+        required: true
+    },
+    ownerUsername: {
+        type: String,
+        required: true
+    },
     evidence: {
         type: String,
         required: true
@@ -41,6 +49,8 @@ var supportSchema = new Schema({
         type: Number,
         default: 0
     }
+},{
+    timestamps: true
 });
 
 module.exports = mongoose.model('supports', supportSchema);

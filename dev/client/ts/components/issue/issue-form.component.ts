@@ -2,6 +2,7 @@ import {Component, Input, Output, OnInit, EventEmitter} from 'angular2/core';
 import {Issue} from '../../shared/issue';
 import {IssuesService} from '../../shared/issues.service';
 import { Router } from 'angular2/router';
+import { UsersService} from '../../shared/users.service';
 @Component({
     selector: 'ro-issue-form',
     templateUrl: 'templates/issue/issue-form.tpl.html',
@@ -17,12 +18,15 @@ export class NewIssueForm implements OnInit{
 			this.myIssue.mainQuestion, 
 			this.myIssue.questionDetail, 
 			0,0,
-			this.myIssue._id);
+			this.myIssue._id,
+			this._usersService.profile._id,
+			this._usersService.profile.local.email);
 
 	}
 	constructor(
 		private _issuesService: IssuesService,
-		private _router: Router) {};
+		private _router: Router,
+		private _usersService: UsersService) {};
 
 	onCreate(){
 		this._issuesService.insertIssue(this.issue)

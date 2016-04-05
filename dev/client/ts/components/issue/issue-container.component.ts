@@ -7,6 +7,8 @@ import {PointsListComponent} from './points-list.component';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 import {VoteCellComponent} from '../../shared/vote-cell.component';
 import {NewIssueForm} from './issue-form.component';
+import {UsersService} from '../../shared/users.service';
+import {AuthService} from '../../shared/auth.service';
 
 @Component({// Route no selector
     templateUrl: 'templates/issue/issue-container.tpl.html',
@@ -14,12 +16,14 @@ import {NewIssueForm} from './issue-form.component';
     directives: [PointsListComponent, ROUTER_DIRECTIVES, VoteCellComponent, NewIssueForm]
 })
 export class IssueContainerComponent implements OnInit{
-	issue: Issue = new Issue('','',0,0);
+	issue: Issue = new Issue('','',0,0, '', '');
 	private _issueId: string;
 	private _type: string;
 	constructor(
 		private _routeParams: RouteParams,
-		private _issuesService: IssuesService){}
+		private _issuesService: IssuesService,
+		private _usersService: UsersService,
+		private _authService: AuthService){}
 
 	editIssue(issue: Issue, event: MouseEvent, cancelFlag: boolean) {
 		event.stopPropagation();
@@ -32,17 +36,25 @@ export class IssueContainerComponent implements OnInit{
 				(this.issue['editIssue']) ? !this.issue['editIssue'] : true;
 		}
 	}
-	ngOnInit():any {
-		this._issueId = this._routeParams.get('id');
-		this._type = this._routeParams.get('type');
-		this._issuesService.getIssue(this._issueId).
-		subscribe(
-			data => {
-				setTimeout(() => this.issue = data, 1500);
-				console.log(this.issue);
-				console.log(this.issue.mainQuestion);
-			},
-			err => console.log('Err: ', err)
-		);
+	ngOnInit(): any {
+		if (this._authService.checkValid()) {
+			this._issueId = this._routeParams.get('id');
+			this._type = this._routeParams.get('type');
+			this._issuesService.getIssue(this._issueId).
+				subscribe(
+				data => {
+					this.issue = data;
+					console.log(this.issue);
+					console.log(this.issue.mainQuestion);
+				},
+				err => console.log('Err: ', err)
+				);
+		}
+	}
+	stringToDate(string: string) {
+		return new Date(string);
+	}
+	isOwner(username: string) {
+		return (username === this._usersService.profile.local.email);
 	}
 }

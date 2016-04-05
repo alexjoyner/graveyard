@@ -10,6 +10,14 @@ var pointsSchema = new Schema({
         type: Schema.Types.ObjectId,
         required: true
     },
+    ownerId: {
+        type: Schema.Types.ObjectId,
+        required: true
+    },
+    ownerUsername: {
+        type: String,
+        required: true
+    },
     problem: {
         type: String,
         required: true
@@ -36,6 +44,8 @@ var pointsSchema = new Schema({
         media: Number,
         opinion: Number
     }
+},{
+    timestamps: true
 });
 pointsSchema.pre('remove', function(next) {
     // 'this' is the client being removed. Provide callbacks here if you want

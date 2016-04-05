@@ -1,5 +1,7 @@
 export class Support {
 	_id: string;
+	ownerId: string;
+	ownerUsername: string;
 	issue_id: string;
 	point_id: string;
     evidence: string;
@@ -19,7 +21,9 @@ export class Support {
 		source: string,
 		tag: string,
 		ups: number,
-		downs: number){
+		downs: number,
+		ownerId: string,
+		ownerUsername: string) {
 		this.issue_id = issue_id;
 		this.point_id = point_id;
 		this.evidence = evidence;
@@ -29,6 +33,8 @@ export class Support {
 		this.tag = tag;
 		this.ups = ups;
 		this.downs = downs;
+		this.ownerId = ownerId;
+		this.ownerUsername = ownerUsername;
 	}
 }
 function guid() {

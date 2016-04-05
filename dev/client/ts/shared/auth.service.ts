@@ -44,6 +44,7 @@ export class AuthService {
 	logout() {
 		localStorage.removeItem('token');
 		this._userLoggedOut.emit(null);
+		this._router.navigate(['Auth']);
 	}
 
 	/* Made so the root component can access the  event emitter
@@ -52,11 +53,15 @@ export class AuthService {
 	getLoggedOutEvent(): EventEmitter<any> {
 		return this._userLoggedOut;
 	}
-	checkValid(): boolean{
+	checkValid(flag?: boolean): boolean{
 		if(localStorage.getItem('token') !== null){
 			return true;
 		}else{
-			this._router.navigate(['Auth']);
+			if(flag){
+				return false;
+			}else{
+				this._router.navigate(['Auth']);
+			}
 		}
 	}
 }

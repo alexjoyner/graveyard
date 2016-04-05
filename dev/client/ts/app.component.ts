@@ -6,16 +6,17 @@ import {NavbarComponent} from './components/navbar/navbar.component';
 import {AuthContainerComponent} from './components/auth/auth-container.component';
 import {AuthService} from './shared/auth.service';
 import {UsersService} from './shared/users.service';
+import {AuthRouterOutlet} from './shared/auth-router-outlet.directive';
 @Component({
     selector: 'my-app',
     template: `
     	<ro-navbar></ro-navbar>
     	<div class="container">
-    		<router-outlet></router-outlet>
+    		<auth-router-outlet></auth-router-outlet>
     	</div>
         <div style="height: 60vh"></div>
     `,
-    directives: [NavbarComponent, ROUTER_DIRECTIVES],
+    directives: [NavbarComponent, ROUTER_DIRECTIVES, AuthRouterOutlet],
     providers: [AuthService],
     styleUrls: ['styles/app.css']
 })

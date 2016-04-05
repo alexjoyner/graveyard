@@ -19,6 +19,9 @@
                             {{support.evidence}}
                         </h4>
                         <p>{{support.detail}}</p>
+                        <p class="text-center">
+                            Created by {{support.ownerUsername}} on {{stringToDate(support.createdAt) | date: 'yMMMdjm'}}
+                        </p>
                         <div class="row">
                             <div class="col-xs-8" *ngIf="support.source !== 'none'">
                                 <u>
@@ -61,7 +64,7 @@
                                 {{support.type | uppercase}}
                             </span>
                         </h4>
-                        <button type="button" class="ro-action-bar-item btn btn-xs btn-danger" (click)="removeSupport(support._id, i)">
+                        <button type="button" class="ro-action-bar-item btn btn-xs btn-danger" (click)="removeSupport(support._id, i)" *ngIf="isOwner(support.ownerUsername)">
                             <i class="fa fa-close">
                             </i>
                         </button>

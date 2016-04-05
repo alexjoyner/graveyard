@@ -2,6 +2,7 @@ import {Component, OnInit, EventEmitter, Output} from 'angular2/core';
 import {Point} from '../../shared/point';
 import {PointsService} from '../../shared/points.service';
 import {RouteParams} from 'angular2/router';
+import { UsersService} from '../../shared/users.service';
 
 @Component({
     selector: 'ro-create-point-form',
@@ -15,7 +16,8 @@ export class CreatePointFormComponent implements OnInit{
 
 	constructor(
 		private _pointsService: PointsService,
-		private _routeParams: RouteParams) { }
+		private _routeParams: RouteParams,
+		private _usersService: UsersService) { }
 
 	createPoint(){
 		this._pointsService.insertPoint(this.newPoint)
@@ -30,6 +32,10 @@ export class CreatePointFormComponent implements OnInit{
 	ngOnInit():any {
 		this._issueId = this._routeParams.get('id');
 		let type = this._routeParams.get('type');
-		this.newPoint = new Point(this._issueId, '', '', type, 0, 0, '');
+		this.newPoint = new Point(
+			this._issueId, '', '', 
+			type, 0, 0, '',
+			this._usersService.profile._id,
+			this._usersService.profile.local.email);
 	}
 }

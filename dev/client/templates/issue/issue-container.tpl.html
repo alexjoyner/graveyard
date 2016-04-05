@@ -6,7 +6,10 @@
             </h2>
             <h5 class="text-center">
                 {{issue.questionDetail}}
-            </h5>
+            </h5>      
+            <p class="text-center" *ngIf="issue.ownerUsername !== ''">
+                Created by {{issue.ownerUsername}} on {{stringToDate(issue.createdAt) | date: 'yMMMdjm'}}
+            </p>
         </div>
         <ro-issue-form
              *ngIf="issue.editIssue && issue.editIssue === true"

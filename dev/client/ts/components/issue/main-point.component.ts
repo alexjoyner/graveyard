@@ -3,6 +3,7 @@ import {VoteCellComponent} from '../../shared/vote-cell.component';
 import {Point} from '../../shared/point';
 import {PointsService} from '../../shared/points.service';
 import {EditPointComponent} from './edit-point.component';
+import { UsersService} from '../../shared/users.service';
 @Component({
     selector: 'ro-main-point',
     templateUrl: 'templates/issue/main-point.tpl.html',
@@ -14,7 +15,8 @@ export class MainPointComponent {
 	@Output() removed: EventEmitter<any> = new EventEmitter();
 	@Output() smoothScroll: EventEmitter<any> = new EventEmitter();
 	constructor(
-		private _pointsService: PointsService){};
+		private _pointsService: PointsService,
+		private _usersService: UsersService){};
 	editPoint(point: Point, event: MouseEvent, cancelFlag: boolean) {
 		event.stopPropagation();
 		this.smoothScroll.emit(null)
@@ -39,5 +41,11 @@ export class MainPointComponent {
 				err => console.log('Err: ', err)
 				);
 		}
+	}
+	stringToDate(string: string) {
+		return new Date(string);
+	}
+	isOwner(username: string) {
+		return (username === this._usersService.profile.local.email);
 	}
 }

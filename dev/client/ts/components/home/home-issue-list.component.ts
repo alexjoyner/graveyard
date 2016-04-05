@@ -26,17 +26,16 @@ export class  HomeIssueListComponent implements OnInit{
 		private _authService: AuthService,
 		private _usersService: UsersService){}
 	ngOnInit():any {
-		this._issuesService.getAllIssues()
-			.subscribe(
+		if (this._authService.checkValid()) {
+			this._issuesService.getAllIssues()
+				.subscribe(
 				data => {
 					console.log(data);
 					this.issues = data;
 				},
 				err => console.log('err: ', err)
-			);
-	}
-	stringToDate(string: string){
-		return new Date(string);
+				);
+		}
 	}
 	onCreate() {
 		if (this._authService.checkValid()) {
@@ -66,6 +65,9 @@ export class  HomeIssueListComponent implements OnInit{
 					);
 			}
 		}
+	}
+	stringToDate(string: string) {
+		return new Date(string);
 	}
 	isOwner(username: string){
 		return (username === this._usersService.profile.local.email);
