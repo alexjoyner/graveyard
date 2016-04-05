@@ -42,7 +42,6 @@ export class VoteCellService {
 				console.log('No source type found');
 				return
 		}
-		console.log('VOTING');
 		return this._http.post(
 				this.endpoint +
 				'/votes/'+srcType,

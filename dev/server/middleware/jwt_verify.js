@@ -6,7 +6,6 @@ var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var superSecret = config.secret; //Secret var for jsonWebTokens
 // Verify a JSON WEB TOKEN
 module.exports = function(req, res, next) {
-  console.log('CHECKING');
   // check header or url parameters or post parameters for token
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
