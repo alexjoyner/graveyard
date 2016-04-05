@@ -5,6 +5,7 @@
     </ro-new-issue-form>
 -->
 <div class="form-group" *ngIf="startQuestion">
+    <h2><u>Review issue:</u></h2>
     <h3>Issue: {{searchText}}?</h3>
     <h4>
         <u>
@@ -33,7 +34,10 @@
         </li>
     </ul>
     <button class="btn btn-success" (click)="onCreate()" [disabled]="searchText === ''">
-        My  is good! Add it.
+        My issue is good! Add it.
+    </button>
+    <button class="btn btn-danger" (click)="onCancel()" [disabled]="searchText === ''">
+        Cancel
     </button>
 </div>
 <h1 class="text-center" *ngIf="issues && issues.length === 0 && !startQuestion">
@@ -53,6 +57,9 @@
     <h5 class="text-center">
         {{issue.questionDetail}}
     </h5>
+    <p class="text-center">
+        Created by {{issue.ownerUsername}} on {{stringToDate(issue.createdAt) | date: 'yMMMdjm'}}
+    </p>
     <div class="ro-action-bar">
         <ro-vote-cell
             class="ro-action-bar-item"
@@ -62,9 +69,11 @@
             (upVoted)="issue.ups=issue.ups+1"
             (downVoted)="issue.downs=issue.downs+1">
         </ro-vote-cell>
-        <button class="btn btn-sm btn-danger pull-right" (click)="deleteIssue(issue, $event)">
-            <i class="fa fa-close">
-            </i>
-        </button>
+        <div class="pull-right" *ngIf="isOwner(issue.ownerUsername)">
+            <button class="btn btn-sm btn-danger" (click)="deleteIssue(issue, $event)">
+                <i class="fa fa-close">
+                </i>
+            </button>
+        </div>
     </div>
 </div>

@@ -1,7 +1,7 @@
 <div>
     <!-- Main Header -->
     <h2 class="text-center">
-        MetaTruth v1.0 Alpha.4
+        MetaTruth v1.0 Alpha.5
     </h2>
     <h4 class="text-center">
         An app to help answer the most controversial questions
@@ -33,8 +33,9 @@
     <!-- List out the isses of selected type -->
     <ro-home-issue-list 
         [searchText]="searchText"
-        [startQuestion]="startQuestion"></ro-home-issue-list>
-    <div *ngIf="searchText !== ''">
+        [startQuestion]="startQuestion"
+        (cancel)="searchText = ''; startQuestion = !startQuestion;"></ro-home-issue-list>
+    <div *ngIf="searchText !== '';">
         <hr>
         <h1 class="text-center">
             Couldn't find an issue?
