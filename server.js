@@ -40,10 +40,10 @@ if(ENV === 'production'){
 	app.use('/libs/', express.static(path.resolve(__dirname, 'client/libs')));
 
 	var renderIndex = function(req, res){
-
 	    res.sendFile(path.resolve(__dirname, 'client/index.html'));
 	}
 	// ANY ROUTE THAT ISN'T AN API ROUTE, send the homepage
+	app.get('/client/Issue/*', renderIndex);
 	app.get('/*', renderIndex);	
 }
 
