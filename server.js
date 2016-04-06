@@ -34,7 +34,7 @@ require('./server/routes/routes.js')(app);
 console.log('Enviorment: ', ENV);
 if(ENV === 'production'){
 	// Send files from angular
-	app.use('*/', express.static(path.resolve(__dirname, 'client')));
+	app.use(express.static(path.resolve(__dirname, 'client')));
 
 	var renderIndex = function(req, res){
 		console.log('Rendiing Index');
