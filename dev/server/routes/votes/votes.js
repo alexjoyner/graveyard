@@ -75,11 +75,7 @@ router.post('/issue', jwt_verify, function(req, res) {
                             if (!issue) {
                                 res.status(500).send('No Issue Found');
                             } else {
-                                if(shouldReturn){
-                                    res.status(200).send(voteType + ' successful').end();
-                                }else{
-                                    shouldReturn = !shouldReturn;
-                                }
+                                res.status(200).send(voteType + ' successful').end();
                             }
                         });
                 })
