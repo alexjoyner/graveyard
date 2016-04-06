@@ -27,7 +27,7 @@ System.register(['angular2/core', 'angular2/platform/browser', './app.component'
                 router_1.ROUTER_PROVIDERS,
                 http_1.HTTP_PROVIDERS,
                 users_service_1.UsersService,
-                core_1.provide(router_1.APP_BASE_HREF, { useValue: '/client/' })]);
+                core_1.provide(router_1.APP_BASE_HREF, { useValue: '/' })]);
         }
     }
 });
