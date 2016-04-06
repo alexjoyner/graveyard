@@ -40,11 +40,11 @@ if(ENV === 'production'){
 	app.use('/libs/', express.static(path.resolve(__dirname, 'client/libs')));
 
 	var renderIndex = function(req, res){
+		console.log('Rendiing Index');
 	    res.sendFile(path.resolve(__dirname, 'client/index.html'));
 	}
 	// ANY ROUTE THAT ISN'T AN API ROUTE, send the homepage
-	app.get('/client/Issue/*', renderIndex);
-	app.get('/*', renderIndex);	
+	app.get('*', renderIndex);	
 }
 
 var port = (process.env.PORT || 9000);
