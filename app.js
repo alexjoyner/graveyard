@@ -43,8 +43,7 @@ if(ENV === 'production'){
 	    res.sendFile(path.resolve(__dirname, 'client/index.html'));
 	}
 	// ANY ROUTE THAT ISN'T AN API ROUTE, send the homepage
-	app.get('/', renderIndex);
-	app.get('*', renderIndex);	
+	app.get('/*', renderIndex);	
 }
 
 var port = (process.env.PORT || 9000);
