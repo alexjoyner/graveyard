@@ -9,31 +9,32 @@ var http = require('http').Server(app);
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var morgan = require('morgan');
+var passport = require('passport');
+var config = require('./server/config/config.js');
 var ENV = process.env.NODE_ENV || 'development'; // development || production
 var options = {
   server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
   replset: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }
 };
 
-
+// Configure app
 //Connect to database
-mongoose.connect('mongodb://rosco9awj:1_Password@ds025459.mlab.com:25459/metatruth', options);
-//mongoose.connect('mongodb://localhost:27017/metaTruth');
+mongoose.connect(config.db, options);
+
 //Access headers
 require('./server/config/accessHeaders.js')(app);
+require('./server/config/passport.js')(passport);
 
 // global middleware
 app.use(bodyParser.json());
 app.use(morgan('dev'));
+app.use(passport.initialize());
 require('./server/routes/routes.js')(app);
 
 console.log('Enviorment: ', ENV);
 if(ENV === 'production'){
 	// Send files from angular
-	app.use('/client', express.static(path.resolve(__dirname, 'client')));
-	app.use('/scripts', express.static(path.resolve(__dirname, 'client/scripts')));
-	app.use('/fonts', express.static(path.resolve(__dirname, 'client/fonts')));
-	app.use('/libs', express.static(path.resolve(__dirname, 'client/libs')));
+	app.use(express.static(path.resolve(__dirname, 'client')));
 
 	var renderIndex = function(req, res){
 	    res.sendFile(path.resolve(__dirname, 'client/index.html'));
