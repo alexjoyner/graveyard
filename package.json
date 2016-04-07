@@ -21,6 +21,7 @@
     "mongoose": "^4.1.2",
     "morgan": "^1.6.1",
     "multer": "^1.0.6",
+    "mysql": "felixge/node-mysql",
     "passport": "^0.2.2",
     "passport-local": "^1.0.0",
     "s3fs": "^2.3.0"

@@ -16,6 +16,27 @@ var options = {
   server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
   replset: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }
 };
+// MY SQL IMPLEMENTATION
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+    host: 'localhost',
+    port: '3306',
+    user: 'root',
+    password: '',
+    database: 'metatruth'
+});
+
+connection.connect(function(err) {
+	'use strict';
+    if (err) {
+        console.error('error connecting: ' + err.stack);
+        return;
+    }
+    console.log('connected as id ' + connection.threadId);
+});
+
+
+// END MY SQL IMPLEMENTATION
 
 // Configure app
 //Connect to database
