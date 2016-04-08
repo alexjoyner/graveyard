@@ -24,6 +24,7 @@
     "mysql": "felixge/node-mysql",
     "passport": "^0.2.2",
     "passport-local": "^1.0.0",
+    "pg": "^4.5.2",
     "s3fs": "^2.3.0"
   },
   "devDependencies": {

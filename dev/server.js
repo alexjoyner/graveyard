@@ -16,25 +16,20 @@ var options = {
   server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
   replset: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }
 };
-// MY SQL IMPLEMENTATION
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-    host: 'localhost',
-    port: '3306',
-    user: 'root',
-    password: '',
-    database: 'metatruth'
-});
+// POSTGRES IMPLEMENTATION
+var pg = require('pg');
+var conString = "postgres://rosco:@localhost:5432/postgres";
 
-connection.connect(function(err) {
-	'use strict';
-    if (err) {
-        console.error('error connecting: ' + err.stack);
-        return;
-    }
-    console.log('connected as id ' + connection.threadId);
+//this initializes a connection pool
+//it will keep idle connections open for a (configurable) 30 seconds
+//and set a limit of 10 (also configurable)
+pg.connect(conString, function(err, client, done) {
+  if(err) {
+    return console.error('error fetching client from pool', err);
+  }else {
+  	console.log('CONNECTED!');
+  }
 });
-
 
 // END MY SQL IMPLEMENTATION
 

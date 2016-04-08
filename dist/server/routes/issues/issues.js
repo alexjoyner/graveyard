@@ -2,6 +2,10 @@
 var express = require('express'),
     router = express.Router();
 var jwt_verify = require('../../middleware/jwt_verify.js')
+// POSTGRES IMPLEMENTATION
+var pg = require('pg');
+var conString = "postgres://rosco:@localhost:5432/postgres";
+
 // Mongoose models
 var issues = require('../../models/issueModel.js');
 var points = require('../../models/pointModel.js');
@@ -11,7 +15,29 @@ var points = require('../../models/pointModel.js');
 // ###########  GETS  ###############
 // get all
 router.get('/all', function(req, res) {
-    issues
+    //this initializes a connection pool
+    //it will keep idle connections open for a (configurable) 30 seconds
+    //and set a limit of 10 (also configurable)
+    pg.connect(conString, function(err, client, done) {
+      if(err) {
+        return console.error('error fetching client from pool', err);
+      }
+      var queryString = `
+        SELECT *
+        FROM issues;
+      `;
+      client.query(queryString, function(err, result) {
+        //call `done()` to release the client back to the pool
+        done();
+        if (err) throw err;
+        if (!result.rows[0]) {
+            res.status(500).send('no issues found').end();
+        } else {
+            res.status(200).send(result.rows).end();
+        }
+      });
+    });
+    /*issues
         .find()
         .exec(function(err, allIssues) {
             if (err) throw err;
@@ -20,11 +46,32 @@ router.get('/all', function(req, res) {
             } else {
                 res.status(200).send(allIssues).end();
             }
-        });
+        });*/
 });
 // get one by id
 router.get('/:id', function(req, res) {
-    issues
+    pg.connect(conString, function(err, client, done) {
+      if(err) {
+        return console.error('error fetching client from pool', err);
+      }
+      var queryString = `
+        SELECT *
+        FROM issues
+        WHERE
+            issues._id = $1::int;
+      `;
+      client.query(queryString, [req.params.id], function(err, result) {
+        //call `done()` to release the client back to the pool
+        done();
+        if (err) throw err;
+        if (!result.rows[0]) {
+            res.status(500).send('no issues found').end();
+        } else {
+            res.status(200).send(result.rows[0]).end();
+        }
+      });
+    });
+    /*issues
         .findOne({
             '_id': req.params.id
         })
@@ -35,7 +82,7 @@ router.get('/:id', function(req, res) {
             } else {
                 res.status(200).send(anIssue).end();
             }
-        });
+        });*/
 });
 
 // ###########  POSTS   ###############

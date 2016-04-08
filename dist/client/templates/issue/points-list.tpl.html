@@ -63,7 +63,7 @@
         </div>
         <div class="col-xs-12 col-md-6 top-supports">
             <ro-top-support
-                *ngIf="point.supports && point.supports.length >0"
+                *ngIf="point.supports[0] !== null"
                 [support]="point.supports[0]"
                 [numMoreSupport]="point.supports.length - 1"
                 [showingMore]="point.viewAll"
@@ -73,17 +73,7 @@
                 (goTop)="smoothScroll('point'+i, 20)">
             </ro-top-support>
             <!-- To show if no supports data has been searched for -->
-            <div *ngIf="!point.supports" class="text-center">
-                <br/>
-                <br/>
-                <button
-                    type="button"
-                    class="btn btn-lg btn-default "
-                    (click)="getSupports(point, false)">
-                    Get Supports
-                </button>
-            </div>
-            <div *ngIf="point.supports && point.supports.length === 0">
+            <div *ngIf="point.supports[0] === null">
                 <h1 class="text-center">
                     No Support
                     <hr/>
@@ -96,13 +86,13 @@
     </div>
     <hr/>
     <ro-more-support
-        *ngIf="point.supports && point.viewAll"
+        *ngIf="point.viewAll"
         [supports]="point.supports.slice(1)"
         (removed)="removeSupport(point,$event)"
         (goTop)="smoothScroll('point'+i, 20)">
     </ro-more-support>
     <ro-add-support
-        *ngIf="point.supports && point.addEvidence"
+        *ngIf="point.addEvidence"
         [pointId]="point._id"
         [pointIndex]="i"
         [issueId]="issueId"

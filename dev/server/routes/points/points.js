@@ -2,6 +2,9 @@
 var express = require('express'),
     router = express.Router();
 var jwt_verify = require('../../middleware/jwt_verify.js')
+// POSTGRES IMPLEMENTATION
+var pg = require('pg');
+var conString = "postgres://rosco:@localhost:5432/postgres";
 
 // Mongoose models
 var points = require('../../models/pointModel.js');
@@ -12,7 +15,35 @@ var supports = require('../../models/supportModel.js');
 // ###########  GETS  ###############
 // get points set by id
 router.get('/getPoints/:type/:issueId', function(req, res) {
-    points
+    //this initializes a connection pool
+    //it will keep idle connections open for a (configurable) 30 seconds
+    //and set a limit of 10 (also configurable)
+    pg.connect(conString, function(err, client, done) {
+      if(err) {
+        return console.error('error fetching client from pool', err);
+      }
+      var queryString = `
+        SELECT 
+            p.*,
+            json_agg(s.*) as supports
+        FROM points p
+        LEFT JOIN supports s USING(_id)
+        GROUP BY 
+            p._id
+        ;
+      `;
+      client.query(queryString, function(err, result) {
+        //call `done()` to release the client back to the pool
+        done();
+        if (err) throw err;
+        if (!result.rows[0]) {
+            res.status(500).send('no issues found').end();
+        } else {
+            res.status(200).send(result.rows).end();
+        }
+      });
+    });
+    /*points
         .find({
             'issue_id': req.params.issueId,
             'type': req.params.type
@@ -23,7 +54,7 @@ router.get('/getPoints/:type/:issueId', function(req, res) {
                 res.status(500).send('No Points Found').end();
             if (points)
                 res.status(200).send(points).end();
-        });
+        });*/
 });
 // ###########  POSTS  ###############
 // post new point set
