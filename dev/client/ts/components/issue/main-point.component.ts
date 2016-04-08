@@ -46,6 +46,6 @@ export class MainPointComponent {
 		return new Date(string);
 	}
 	isOwner(username: string) {
-		return (username === this._usersService.profile.local.email);
+		return (username === this._usersService.profile.email);
 	}
 }

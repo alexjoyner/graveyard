@@ -43,7 +43,7 @@ export class  HomeIssueListComponent implements OnInit{
 			let issue: Issue
 				= new Issue(this.searchText + '?', '', 0, 0,
 					this._usersService.profile._id,
-					this._usersService.profile.local.email);
+					this._usersService.profile.email);
 			this._issuesService.insertIssue(issue)
 				.subscribe(
 				data => {
@@ -74,6 +74,6 @@ export class  HomeIssueListComponent implements OnInit{
 		return new Date(string);
 	}
 	isOwner(username: string){
-		return (username === this._usersService.profile.local.email);
+		return (username === this._usersService.profile.email);
 	}
 }

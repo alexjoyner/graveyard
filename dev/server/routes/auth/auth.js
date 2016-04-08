@@ -20,6 +20,7 @@ router.post('/signup', function(req, res, next) {
         if (err) {
             return next(err); // will generate a 500 error
         }
+        console.log('TOKEN: ', JSON.stringify(token));
         // Generate a JSON response reflecting authentication status
         if (!token) {
             return res.status(500).send(info.message).end();

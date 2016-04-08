@@ -36,6 +36,6 @@ export class CreatePointFormComponent implements OnInit{
 			this._issueId, '', '', 
 			type, 0, 0, '',
 			this._usersService.profile._id,
-			this._usersService.profile.local.email);
+			this._usersService.profile.email);
 	}
 }

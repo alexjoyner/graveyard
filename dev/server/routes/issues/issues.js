@@ -88,13 +88,44 @@ router.get('/:id', function(req, res) {
 // ###########  POSTS   ###############
 // post new issue
 router.post('/newIssue',jwt_verify, function(req, res) {
-    console.log(req.body);
-    var newIssue = new issues(req.body);
-    newIssue.save(function(err, returned) {
+    console.log('body: ', req.body);
+    var post = req.body;
+    pg.connect(conString, function(err, client, done) {
+      if(err) {
+        return console.error('error fetching client from pool', err);
+      }
+      var queryString = `
+        INSERT INTO
+            issues (
+            owner_id,
+            mainQuestion,
+            questionDetail)
+        VALUES (
+            $1::INT,
+            $2,
+            $3)
+      `;
+      client.query(queryString, [
+            post.ownerId, 
+            post.mainQuestion, 
+            post.questionDetail], function(err, result) {
+        //call `done()` to release the client back to the pool
+        done();
         if (err) throw err;
-        console.log('returned: ', returned);
-        res.status(200).send(returned._id).end();
+        if (!result.rows[0]) {
+            res.status(500).send('no issues found').end();
+        } else {
+            res.status(200).send(result.rows[0]).end();
+        }
+      });
     });
+    // console.log(req.body);
+    // var newIssue = new issues(req.body);
+    // newIssue.save(function(err, returned) {
+    //     if (err) throw err;
+    //     console.log('returned: ', returned);
+    //     res.status(200).send(returned._id).end();
+    // });
 });
 router.post('/updateIssue',jwt_verify, function(req, res){
     var issue = req.body;

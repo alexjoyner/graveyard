@@ -19,7 +19,7 @@ export class NewIssueForm implements OnInit{
 			this.myIssue.questionDetail, 
 			0,0,
 			this._usersService.profile._id,
-			this._usersService.profile.local.email,
+			this._usersService.profile.email,
 			this.myIssue._id);
 
 	}

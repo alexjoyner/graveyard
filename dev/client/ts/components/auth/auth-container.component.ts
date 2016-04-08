@@ -23,6 +23,7 @@ export class AuthContainerComponent{
 		this._authService.attemptLogin(this.user)
 			.subscribe(
 				data => {
+					console.log('DATA: ', data);
 					//if(this.remember){
 						localStorage.setItem('token', data.token);
 					//}

@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit{
 
 	auth():boolean{
 		if (this._usersService.profile) {
-			this.email = this._usersService.profile.local.email;
+			this.email = this._usersService.profile.email;
 		}
 		return localStorage.getItem('token') || false;
 	}

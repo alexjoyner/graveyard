@@ -36,7 +36,7 @@ export class AddSupportComponent implements OnInit{
 			this.pointId, 
 			'', '', '', 'http://', '', 0, 0,
 			this._usersService.profile._id,
-			this._usersService.profile.local.email);
+			this._usersService.profile.email);
 	}
 	setTag(tag: string){
 		this.newSupport.tag = tag;
