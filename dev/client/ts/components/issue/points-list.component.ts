@@ -57,6 +57,10 @@ export class PointsListComponent implements OnInit{
 			this.smoothScroll('point' + 0, 20)
 		}, 900);
 	}
+	addSupport(pointIndx: number, supportPoint){
+		this.points[pointIndx]['supports'].unshift(supportPoint);
+		this.viewAll(pointIndx)
+	}
 	removeSupport(point: Point, supportIndx: number){
 		let pointIndx = this.getPointIndx(point);
 		this.points[pointIndx]['supports'].splice(supportIndx, 1);

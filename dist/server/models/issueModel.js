@@ -15,11 +15,11 @@ var issuesSchema = new Schema({
         type: String,
         required: true
     },
-    mainQuestion: {
+    mainquestion: {
         type: String,
         required: true
     },
-    questionDetail: {
+    questiondetail: {
         type: String
     },
     ups: {

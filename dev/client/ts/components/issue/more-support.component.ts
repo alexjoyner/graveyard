@@ -7,7 +7,7 @@ import {UsersService} from '../../shared/users.service';
     selector: 'ro-more-support',
     templateUrl: 'templates/issue/more-support.tpl.html',
     directives: [VoteCellComponent],
-    styleUrls: ['styles/support.css']
+    styleUrls: ['styles/support.css', 'styles/point.css']
 })
 export class MoreSupportComponent {
 	@Input('supports') supports: Support[];
@@ -36,7 +36,7 @@ export class MoreSupportComponent {
 	stringToDate(string: string) {
 		return new Date(string);
 	}
-	isOwner(username: string) {
-		return (username === this._usersService.profile.email);
+	isOwner(id: number) {
+		return (id === this._usersService.profile._id);
 	}
 }

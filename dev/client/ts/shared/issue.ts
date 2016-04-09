@@ -1,26 +1,23 @@
 export class Issue {
-	_id: string;
-	mainQuestion: string;
-    questionDetail: string;
+	_id: number;
+	mainquestion: string;
+    questiondetail: string;
     ups: number;
     downs: number;
-    ownerId: string;
-    ownerUsername: string;
+    owner_id: number;
 
     constructor(
-    	mainQuestion: string, 
-    	questionDetail: string, 
+    	mainquestion: string, 
+    	questiondetail: string, 
     	ups: number, 
 		downs: number,
-		ownerId: string,
-		ownerUsername: string,
-		id?: string) {
-		this.mainQuestion = mainQuestion;
-		this.questionDetail = questionDetail;
+		owner_id: number,
+		id?: number) {
+		this.mainquestion = mainquestion;
+		this.questiondetail = questiondetail;
 		this.ups = ups;
 		this.downs = downs;
-		this.ownerId = ownerId;
-		this.ownerUsername = ownerUsername;
+		this.owner_id = owner_id;
 		(id) ? this._id = id : null;
     }
 }

@@ -67,7 +67,7 @@ module.exports = function(passport) {
                             doneConnect();
                             if (err) throw err;
                             var token = jwt.sign({
-                                id: newUser.rows[0]._id,
+                                id: newUser.rows[0].id,
                                 email: newUser.rows[0].email
                             }, superSecret, {
                               expiresIn: 1440 * 60 // <-- expires in 24 hours
@@ -123,10 +123,10 @@ module.exports = function(passport) {
                     // if user is found and password is right
                     // create a token
                     var token = jwt.sign({
-                        id: result.rows[0]._id,
+                        id: result.rows[0].id,
                         email: result.rows[0].email
                     }, superSecret, {
-                      expiresInMinutes: 1440 // <-- expires in 24 hours
+                      expiresIn: 1440 * 60 // <-- expires in 24 hours
                     });
                     return done(null, {
                       profile: result.rows[0],
@@ -154,7 +154,7 @@ module.exports = function(passport) {
                 // if user is found and password is right
                 // create a token
                 var token = jwt.sign({
-                    id: user._id,
+                    id: user.id,
                     email: user.local.email
                 }, superSecret, {
                   expiresInMinutes: 1440 // <-- expires in 24 hours

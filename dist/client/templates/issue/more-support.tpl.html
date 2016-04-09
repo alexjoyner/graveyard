@@ -1,5 +1,5 @@
 <div class="row more-support-container" style="margin-top: 10px; margin-bottom: 10px; " >
-    <div class="col-xs-3 left-column" (click)="gotoTop()">
+    <div class="col-md-3 left-column" (click)="gotoTop()">
         <div style="background-color: #DDDDDD; height: 50px; border-radius: 5px 0 0 5px;">
             <h4 class="text-center" style="margin-top: 0; ">
                 <br/>
@@ -7,7 +7,7 @@
             </h4>
         </div>
     </div>
-    <div class="col-xs-9 right-column">
+    <div class="col-md-9 right-column">
         <div *ngFor="#support of supports; #i = index" >
             <div [ngStyle]="{'background-color': (support.type === 'proof')? '#DFF0D8' : '#FCC4C4'}" style="padding: 15px; border-radius: 4px">
                 <div class="row">
@@ -20,7 +20,7 @@
                         </h4>
                         <p>{{support.detail}}</p>
                         <p class="text-center">
-                            Created by {{support.ownerUsername}} on {{stringToDate(support.createdAt) | date: 'yMMMdjm'}}
+                            Created by {{support.owner_id}} on {{stringToDate(support.createdAt) | date: 'yMMMdjm'}}
                         </p>
                         <div class="row">
                             <div class="col-xs-8" *ngIf="support.source !== 'none'">
@@ -55,16 +55,16 @@
                     </ro-vote-cell>
                     <div class="ro-inline-items">
                         <h4 class="ro-action-bar-item">
-                            <span class="label label-success"[ngClass]="support.tag">
-                                {{support.tag | uppercase}}
+                            <span class="label"[ngClass]="support.sourcetype">
+                                {{support.sourcetype | uppercase}}
                             </span>
                         </h4>
                         <h4 class="ro-action-bar-item">
-                            <span class="label label-success" [ngClass]="support.type">
+                            <span class="label" [ngClass]="support.type">
                                 {{support.type | uppercase}}
                             </span>
                         </h4>
-                        <button type="button" class="ro-action-bar-item btn btn-xs btn-danger" (click)="removeSupport(support._id, i)" *ngIf="isOwner(support.ownerUsername)">
+                        <button type="button" class="ro-action-bar-item btn btn-xs btn-danger" (click)="removeSupport(support._id, i)" *ngIf="isOwner(support.owner_id)">
                             <i class="fa fa-close">
                             </i>
                         </button>

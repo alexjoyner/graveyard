@@ -1,40 +1,31 @@
 export class Support {
-	_id: string;
-	ownerId: string;
-	ownerUsername: string;
-	issue_id: string;
-	point_id: string;
+	_id: number;
+	owner_id: number;
+	issue_id: number;
+	point_id: number;
     evidence: string;
     detail: string;
     type: string;
 	source: string;
-	tag: string;
-	ups: number;
-	downs: number;
+	sourcetype: string;
 
 	constructor(
-		issue_id: string,
-		point_id: string,
+		issue_id: number,
+		point_id: number,
 		evidence: string,
 		detail: string,
 		type: string,
 		source: string,
-		tag: string,
-		ups: number,
-		downs: number,
-		ownerId: string,
-		ownerUsername: string) {
+		sourcetype: string,
+		owner_id: number) {
 		this.issue_id = issue_id;
 		this.point_id = point_id;
 		this.evidence = evidence;
 		this.detail = detail;
 		this.type = type;
 		this.source = source;
-		this.tag = tag;
-		this.ups = ups;
-		this.downs = downs;
-		this.ownerId = ownerId;
-		this.ownerUsername = ownerUsername;
+		this.sourcetype = sourcetype;
+		this.owner_id = owner_id;
 	}
 }
 function guid() {

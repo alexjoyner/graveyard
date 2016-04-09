@@ -2,7 +2,7 @@
     <div class="col-xs-6">
     </div>
     <div class="col-xs-6">
-        <div id="Step1" *ngIf="newSupport.tag === ''">
+        <div id="Step1" *ngIf="newSupport.sourcetype === ''">
             <div class="text-center">
                 <h5>
                     Source Type
@@ -13,7 +13,7 @@
                 <div class="col-xs-4">
                     <div class="checkbox  text-center">
                         <label>
-                            <input type="radio" (click)="setTag('meta')" name="type" required/>
+                            <input type="radio" (click)="setSourceType('meta')" name="type" required/>
                             Meta Analysis
                         </label>
                     </div>
@@ -22,7 +22,7 @@
                     <div class="checkbox  text-center">
                         <label>
                             Credible
-                            <input type="radio" (click)="setTag('credible')" name="type"/>
+                            <input type="radio" (click)="setSourceType('credible')" name="type"/>
                         </label>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                     <div class="checkbox  text-center">
                         <label>
                             Website/Blog
-                            <input type="radio" (click)="setTag('web')" name="type"/>
+                            <input type="radio" (click)="setSourceType('web')" name="type"/>
                         </label>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                 <div class="col-xs-4">
                     <div class="checkbox  text-center">
                         <label>
-                            <input type="radio" (click)="setTag('media')" name="type"/>
+                            <input type="radio" (click)="setSourceType('media')" name="type"/>
                             TV Media <br> (CNN, FOX, HUFFINGTON, etc)
                         </label>
                     </div>
@@ -48,7 +48,7 @@
                     <div class="checkbox  text-center">
                         <label>
                             Personal Opinion
-                            <input type="radio" (click)="setTag('opinion')" name="type"/>
+                            <input type="radio" (click)="setSourceType('opinion')" name="type"/>
                         </label>
                     </div>
                 </div>
@@ -56,13 +56,13 @@
                     <div class="checkbox  text-center">
                         <label>
                             Other
-                            <input type="radio" (click)="setTag('other')" name="type"/>
+                            <input type="radio" (click)="setSourceType('other')" name="type"/>
                         </label>
                     </div>
                 </div>
             </div>
         </div>
-        <div  id="Step1"  *ngIf="newSupport.tag !== ''">
+        <div  id="Step1"  *ngIf="newSupport.sourcetype !== ''">
             <textarea
                 class="form-control"
                 rows="3"
@@ -92,7 +92,7 @@
             </textarea>
             <br/>
             <div  id="Step3">
-                <button class="btn btn-sm btn-success" (click)="newSupport.tag = '';">
+                <button class="btn btn-sm btn-success" (click)="newSupport.sourcetype = '';">
                     Cancel
                 </button>
                 <button type="submit" class="btn btn-sm btn-success" (click)="newSupport.type = 'proof';">

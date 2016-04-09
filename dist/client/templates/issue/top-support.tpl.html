@@ -6,7 +6,7 @@
             </h4>
             <p >{{support.detail}}</p>
             <p class="text-center">
-                Created by {{support.ownerUsername}} on {{stringToDate(support.createdAt) | date: 'yMMMdjm'}}
+                Created by {{support.owner_id}} on {{stringToDate(support.createdAt) | date: 'yMMMdjm'}}
             </p>
             <div *ngIf="support.source !== 'none'">
                 <h4>
@@ -50,16 +50,16 @@
         </button>
         <div class="ro-inline-items">
             <h4 class="ro-action-bar-item">
-                <span class="label" [ngClass]="support.tag"> 
-                    {{support.tag | uppercase}}
+                <span class="label" [ngClass]="support.sourcetype"> 
+                    {{support.sourcetype | uppercase}}
                 </span>
             </h4>
             <h4 class="ro-action-bar-item">
-                <span class="label label-success" [ngClass]="support.type">
+                <span class="label" [ngClass]="support.type">
                     {{support.type | uppercase}}
                 </span>
             </h4>
-            <button type="button" class="ro-action-bar-item btn btn-xs btn-danger" (click)="removeSupport(support._id)" *ngIf="isOwner(support.ownerUsername)">
+            <button type="button" class="ro-action-bar-item btn btn-xs btn-danger" (click)="removeSupport(support._id)" *ngIf="isOwner(support.owner_id)">
                 <i class="fa fa-close">
                 </i>
             </button>

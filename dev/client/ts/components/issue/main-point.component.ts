@@ -45,7 +45,7 @@ export class MainPointComponent {
 	stringToDate(string: string) {
 		return new Date(string);
 	}
-	isOwner(username: string) {
-		return (username === this._usersService.profile.email);
+	isOwner(id: number) {
+		return (id === this._usersService.profile._id);
 	}
 }

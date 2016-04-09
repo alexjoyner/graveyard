@@ -98,25 +98,24 @@ router.post('/newIssue',jwt_verify, function(req, res) {
         INSERT INTO
             issues (
             owner_id,
-            mainQuestion,
-            questionDetail)
+            mainquestion,
+            questiondetail)
         VALUES (
             $1::INT,
             $2,
             $3)
+        RETURNING
+            _id
       `;
       client.query(queryString, [
-            post.ownerId, 
-            post.mainQuestion, 
-            post.questionDetail], function(err, result) {
+            req.decoded.id, 
+            post.mainquestion, 
+            post.questiondetail], function(err, result) {
         //call `done()` to release the client back to the pool
         done();
         if (err) throw err;
-        if (!result.rows[0]) {
-            res.status(500).send('no issues found').end();
-        } else {
-            res.status(200).send(result.rows[0]).end();
-        }
+        console.log(result.rows[0]);
+        res.status(200).send(result.rows[0]).end();
       });
     });
     // console.log(req.body);
@@ -135,8 +134,8 @@ router.post('/updateIssue',jwt_verify, function(req, res){
             '_id': issue._id
         }, {
             $set: {
-                mainQuestion: issue.mainQuestion,
-                questionDetail: issue.questionDetail
+                mainquestion: issue.mainquestion,
+                questiondetail: issue.questiondetail
             }
         }, function(err){
             if (err) throw err;
@@ -148,7 +147,24 @@ router.post('/updateIssue',jwt_verify, function(req, res){
 // ###########  DELETES  ###############
 // delete existing issue
 router.delete('/deleteIssue/:issueId',jwt_verify, function(req, res) {
-    issues.findOne({
+    pg.connect(conString, function(err, client, done) {
+      if(err) {
+        return console.error('error fetching client from pool', err);
+      }
+      var queryString = `
+        DELETE
+        FROM issues
+        WHERE
+            issues._id = $1::int;
+      `;
+      client.query(queryString, [req.params.issueId], function(err, result) {
+        //call `done()` to release the client back to the pool
+        done();
+        if (err) throw err;
+        res.status(200).send('DELETED').end();
+      });
+    });
+    /*issues.findOne({
         '_id': req.params.issueId
     }, function(err, issue) {
         if (err) throw err;
@@ -156,7 +172,7 @@ router.delete('/deleteIssue/:issueId',jwt_verify, function(req, res) {
             if (err) throw err;
             res.status(200).send('success');
         });
-    });
+    });*/
 });
 
 module.exports = router;

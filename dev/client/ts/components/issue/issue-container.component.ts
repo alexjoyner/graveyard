@@ -45,7 +45,7 @@ export class IssueContainerComponent implements OnInit{
 				data => {
 					this.issue = data;
 					console.log(this.issue);
-					console.log(this.issue.mainQuestion);
+					console.log(this.issue.mainquestion);
 				},
 				err => console.log('Err: ', err)
 				);
@@ -54,7 +54,7 @@ export class IssueContainerComponent implements OnInit{
 	stringToDate(string: string) {
 		return new Date(string);
 	}
-	isOwner(username: string) {
-		return (username === this._usersService.profile.email);
+	isOwner(id: number) {
+		return (id === this._usersService.profile._id);
 	}
 }

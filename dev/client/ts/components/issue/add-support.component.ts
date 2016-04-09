@@ -9,8 +9,8 @@ import { UsersService} from '../../shared/users.service';
     templateUrl: 'templates/issue/add-support.tpl.html'
 })
 export class AddSupportComponent implements OnInit{
-	@Input('pointId') pointId: string;
-	@Input('issueId') issueId: string;
+	@Input('pointId') pointId: number;
+	@Input('issueId') issueId: number;
 	@Input('pointIndex') pointIndex: number;
 	@Output() added: EventEmitter<any> = new EventEmitter();
 	newSupport: Support;
@@ -25,7 +25,8 @@ export class AddSupportComponent implements OnInit{
 		this._supportsService.insertSupport(this.newSupport)
 		.subscribe(
 			data => {
-				this.added.emit(null);
+				console.log('NEW SUPPORT: ', data);
+				this.added.emit(data);
 			},
 			err => console.log('Error: ', err)
 		);
@@ -34,16 +35,15 @@ export class AddSupportComponent implements OnInit{
 		this.newSupport = new Support(
 			this.issueId, 
 			this.pointId, 
-			'', '', '', 'http://', '', 0, 0,
-			this._usersService.profile._id,
-			this._usersService.profile.email);
+			'', '', '', 'http://', '',
+			this._usersService.profile._id);
 	}
-	setTag(tag: string){
-		this.newSupport.tag = tag;
-		switch(tag){
+	setSourceType(sourcetype: string){
+		this.newSupport.sourcetype = sourcetype;
+		switch(sourcetype){
 			case 'opinion':
 				this.showSource = false;
-				this.newSupport.source = 'none';
+				this.newSupport.source = null;
 				break
 			default:
 				this.showSource = true;

@@ -10,7 +10,7 @@ import { UsersService} from '../../shared/users.service';
 })
 export class CreatePointFormComponent implements OnInit{
 	newPoint: Point;
-	private _issueId: string;
+	private _issueId: number;
 	@Output() added: EventEmitter<any> = new EventEmitter();
 	@Output() cancel: EventEmitter<any> = new EventEmitter();
 
@@ -30,12 +30,11 @@ export class CreatePointFormComponent implements OnInit{
 		this.cancel.emit(null);
 	}
 	ngOnInit():any {
-		this._issueId = this._routeParams.get('id');
+		this._issueId = +this._routeParams.get('id');
 		let type = this._routeParams.get('type');
 		this.newPoint = new Point(
 			this._issueId, '', '', 
 			type, 0, 0, '',
-			this._usersService.profile._id,
-			this._usersService.profile.email);
+			this._usersService.profile._id);
 	}
 }

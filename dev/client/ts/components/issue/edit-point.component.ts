@@ -19,8 +19,7 @@ export class EditPointComponent implements OnInit {
 				this.myPoint.detail,
 				this.myPoint.type,
 				0,0,'',
-				this.myPoint.ownerId,
-				this.myPoint.ownerUsername,
+				this.myPoint.owner_id,
 				this.myPoint._id);
 
 	}

@@ -27,17 +27,24 @@ router.get('/getPoints/:type/:issueId', function(req, res) {
             p.*,
             json_agg(s.*) as supports
         FROM points p
-        LEFT JOIN supports s USING(_id)
+        LEFT JOIN supports s 
+        ON 
+            (p._id = s.point_id)
+        WHERE
+            p.issue_id = $1
+        AND 
+            p.type = $2
         GROUP BY 
             p._id
         ;
       `;
-      client.query(queryString, function(err, result) {
+      client.query(queryString, [req.params.issueId, req.params.type], function(err, result) {
         //call `done()` to release the client back to the pool
         done();
         if (err) throw err;
+        console.log(result.rows);
         if (!result.rows[0]) {
-            res.status(500).send('no issues found').end();
+            res.status(200).send([]).end();
         } else {
             res.status(200).send(result.rows).end();
         }
@@ -59,15 +66,52 @@ router.get('/getPoints/:type/:issueId', function(req, res) {
 // ###########  POSTS  ###############
 // post new point set
 router.post('/createPoint', jwt_verify, function(req, res) {
-
-    console.log('Create Point: ', req.body);
+    var info = req.body;
+    //this initializes a connection pool
+    //it will keep idle connections open for a (configurable) 30 seconds
+    //and set a limit of 10 (also configurable)
+    pg.connect(conString, function(err, client, done) {
+      if(err) {
+        return console.error('error fetching client from pool', err);
+      }
+      var queryString = `
+        INSERT INTO 
+            points(
+                owner_id,
+                issue_id,
+                type,
+                problem,
+                detail)
+            VALUES(
+                $1,
+                $2,
+                $3,
+                $4,
+                $5)
+            RETURNING
+                *
+        ;
+      `;
+      client.query(queryString, [
+            info.owner_id,
+            info.issue_id,
+            info.type,
+            info.problem,
+            info.detail], function(err, result) {
+        //call `done()` to release the client back to the pool
+        done();
+        if (err) throw err;
+        res.status(200).send(result.rows[0]).end();
+      });
+    });
+    /*console.log('Create Point: ', req.body);
 
     var point = new points(req.body);
 
     point.save(function(err, savedPoint) {
         if (err) throw err;
         res.status(200).send(savedPoint).end();
-    });
+    });*/
 });
 // post update to point
 router.post('/updatePoint', jwt_verify, function(req, res){
@@ -89,7 +133,24 @@ router.post('/updatePoint', jwt_verify, function(req, res){
 // ###########  DELETES  ###############
 // delete point by id
 router.delete('/deletePoint/:type/:issue_id/:pointId', jwt_verify, function(req, res) {
-    var type = req.params.type,
+    pg.connect(conString, function(err, client, done) {
+      if(err) {
+        return console.error('error fetching client from pool', err);
+      }
+      var queryString = `
+        DELETE
+        FROM points
+        WHERE
+            point._id = $1::int;
+      `;
+      client.query(queryString, [req.params.pointId], function(err, result) {
+        //call `done()` to release the client back to the pool
+        done();
+        if (err) throw err;
+        res.status(200).send('DELETED').end();
+      });
+    });
+    /*var type = req.params.type,
         issueId = req.params.issue_id,
         pointId = req.params.pointId;
     points.findOne({
@@ -100,7 +161,7 @@ router.delete('/deletePoint/:type/:issue_id/:pointId', jwt_verify, function(req,
             if (err) throw err;
             res.status(200).send('success');
         });
-    });
+    });*/
 });
 
 

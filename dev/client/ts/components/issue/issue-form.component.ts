@@ -15,8 +15,8 @@ export class NewIssueForm implements OnInit{
 	issue: Issue;
 	ngOnInit(): any {
 		this.issue = new Issue(
-			this.myIssue.mainQuestion, 
-			this.myIssue.questionDetail, 
+			this.myIssue.mainquestion, 
+			this.myIssue.questiondetail, 
 			0,0,
 			this._usersService.profile._id,
 			this._usersService.profile.email,
@@ -43,8 +43,8 @@ export class NewIssueForm implements OnInit{
 			.subscribe(
 				data => {
 					console.log('Success: ', data);
-					this.myIssue.mainQuestion = this.issue.mainQuestion;
-					this.myIssue.questionDetail = this.issue.questionDetail;
+					this.myIssue.mainquestion = this.issue.mainquestion;
+					this.myIssue.questiondetail = this.issue.questiondetail;
 					this.edited.emit(null);
 				},
 				err => console.log('Error: ', err)

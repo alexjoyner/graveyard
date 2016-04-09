@@ -1,8 +1,7 @@
 export class Point {
-	_id: string;
-	ownerId: string;
-	ownerUsername: string;
-	issue_id: string;
+	_id: number;
+	owner_id: number;
+	issue_id: number;
     problem: string;
     detail: string;
     type: string;
@@ -10,16 +9,15 @@ export class Point {
     downs: number;
     tag: string;
     constructor(
-		issue_id: string,
+		issue_id: number,
 		problem: string,
 		detail: string,
 		type: string,
 		ups: number,
 		downs: number,
 		tag: string,
-		ownerId: string,
-		ownerUsername: string,
-		id?: string
+		owner_id: number,
+		id?: number
 	){
 		this.issue_id = issue_id;
 		this.problem = problem;
@@ -28,8 +26,7 @@ export class Point {
 		this.ups = ups;
 		this.downs = downs;
 		this.tag = tag;
-		this.ownerId = ownerId;
-		this.ownerUsername = ownerUsername;
+		this.owner_id = owner_id;
 		(id) ? this._id = id : null;
 	}
 }

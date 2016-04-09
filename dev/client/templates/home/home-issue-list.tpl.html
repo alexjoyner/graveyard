@@ -52,13 +52,13 @@
 <br/>
 <div class="HomeIssue" *ngFor="#issue of issues | roFilter:searchText" [routerLink]="['Issue', {id: issue._id, type: 'yes'}]">
     <h3 class="text-center">
-        {{issue.mainQuestion}}
+        {{issue.mainquestion}}
     </h3>
     <h5 class="text-center">
-        {{issue.questionDetail}}
+        {{issue.questiondetail}}
     </h5>
     <p class="text-center">
-        Created by {{issue.ownerUsername}} on {{stringToDate(issue.createdAt) | date: 'yMMMdjm'}}
+        Created by {{issue.owner_id}} on {{stringToDate(issue.createdAt) | date: 'yMMMdjm'}}
     </p>
     <div class="ro-action-bar">
         <ro-vote-cell
@@ -69,7 +69,7 @@
             (upVoted)="issue.ups=issue.ups+1"
             (downVoted)="issue.downs=issue.downs+1">
         </ro-vote-cell>
-        <div class="pull-right" *ngIf="isOwner(issue.ownerUsername)">
+        <div class="pull-right" *ngIf="isOwner(issue.owner_id)">
             <button class="btn btn-sm btn-danger" (click)="deleteIssue(issue, $event)">
                 <i class="fa fa-close">
                 </i>

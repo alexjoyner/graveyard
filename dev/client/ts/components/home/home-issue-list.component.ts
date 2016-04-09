@@ -47,8 +47,8 @@ export class  HomeIssueListComponent implements OnInit{
 			this._issuesService.insertIssue(issue)
 				.subscribe(
 				data => {
-					console.log('Returned: ', data);
-					this._router.navigate(['Issue', { type: 'yes', id: data }]);
+					console.log('Returned: ', data._id);
+					this._router.navigate(['Issue', { type: 'yes', id: data._id }]);
 				},
 				err => console.log('Error: ', err)
 				);
@@ -73,7 +73,7 @@ export class  HomeIssueListComponent implements OnInit{
 	stringToDate(string: string) {
 		return new Date(string);
 	}
-	isOwner(username: string){
-		return (username === this._usersService.profile.email);
+	isOwner(id: string){
+		return (id === this._usersService.profile._id);
 	}
 }

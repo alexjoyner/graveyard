@@ -36,7 +36,7 @@ export class SupportsService {
 			'/supports/createSupportPoint',
 			body,
 			{ headers: headers })
-			.map(res => res);
+			.map(res => res.json());
 	}
 
 	/* DELETE */
