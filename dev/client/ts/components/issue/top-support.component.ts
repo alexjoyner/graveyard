@@ -25,7 +25,7 @@ export class TopSupportComponent {
 	removeSupport(supportId: string) {
 		let answer = confirm(`Are you sure you want to delete this support point? This action can't be undone`);
 		if (answer === true) {
-			this._postService.deleteSupport(supportId)
+			this._postService.deletePost(supportId)
 			.subscribe(
 				success => {
 					this.removed.emit(null);

@@ -1,13 +1,13 @@
-<div class="row more-support-container" style="margin-top: 10px; margin-bottom: 10px; " >
-    <div class="col-xs-3 left-column" (click)="gotoTop()">
-        <div style="background-color: #DDDDDD; height: 50px; border-radius: 5px 0 0 5px;">
+<div class="row" style="margin-top: 10px; margin-bottom: 10px; " >
+    <div class="col-xs-3" (click)="gotoTop()">
+        <!-- <div style="background-color: #DDDDDD; height: 50px; border-radius: 5px 0 0 5px;">
             <h4 class="text-center" style="margin-top: 0; ">
                 <br/>
                 Go to top
             </h4>
-        </div>
+        </div> -->
     </div>
-    <div class="col-xs-9 right-column">
+    <div class="col-xs-9">
         <div *ngFor="#support of supports; #i = index" >
             <div [ngStyle]="{'background-color': (support.point_type === 'proof')? '#DFF0D8' : '#FCC4C4'}" style="padding: 15px; border-radius: 4px">
                 <div class="row">
@@ -20,7 +20,7 @@
                         </h4>
                         <p>{{support.detail}}</p>
                         <p class="text-center">
-                            Created by {{support.owner_user_id}} on {{stringToDate(support.created_at) | date: 'yMMMdjm'}}
+                            Created on {{stringToDate(support.created_at) | date: 'yMMMd'}}
                         </p>
                         <div class="row">
                             <div class="col-xs-8" *ngIf="support.source !== null">

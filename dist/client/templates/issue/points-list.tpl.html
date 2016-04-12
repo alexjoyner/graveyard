@@ -41,16 +41,13 @@
     </div>
 </div>
 
-<h1 class="text-center" *ngIf="points === null && !showForm">
+<h1 class="text-center" *ngIf="points && points.length == 0 && !showForm">
     <h2>
         This section has no points:
     </h2>
     <button class="btn btn-lg btn-success" (click)="showForm = true">
         ADD A {{type | uppercase}}!!!
     </button>
-</h1>
-<h1 [hidden]="points !== null">
-    Loading main points
 </h1>
 <div [attr.id]="'point' + i" *ngFor="#point of points | roFilter: searchText; #i = index" class="point">
     <div class="row">
@@ -63,7 +60,7 @@
         </div>
         <div class="col-xs-12 col-md-6 top-supports">
             <ro-top-support
-                *ngIf="point.supports[0] !== null"
+                *ngIf="point.supports[0] !== null && point.supports.length > 0"
                 [support]="point.supports[0]"
                 [numMoreSupport]="point.supports.length - 1"
                 [showingMore]="point.viewAll"
@@ -73,7 +70,7 @@
                 (goTop)="smoothScroll('point'+i, 20)">
             </ro-top-support>
             <!-- To show if no supports data has been searched for -->
-            <div *ngIf="point.supports[0] === null">
+            <div *ngIf="point.supports.length === 0 || point.supports[0] === null">
                 <h1 class="text-center">
                     No Support
                     <hr/>

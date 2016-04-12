@@ -1,10 +1,11 @@
 'use strict';
 var express = require('express'),
     router = express.Router();
+var config = require('../../config/config.js');
 var jwt_verify = require('../../middleware/jwt_verify.js')
 // POSTGRES IMPLEMENTATION
 var pg = require('pg');
-var conString = "postgres://rosco:@localhost:5432/postgres";
+var conString = config.db;
 
 // Mongoose models
 var points = require('../../models/pointModel.js');

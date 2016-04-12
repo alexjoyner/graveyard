@@ -41,7 +41,42 @@ export class PointsListComponent{
 		}, 600);
 	}
 	addSupport(pointIndx: number, supportPost){
-		this.points[pointIndx]['supports'].unshift(supportPost);
+		switch (supportPost.point_type_id) {
+			case 3:
+				supportPost['point_type'] = 'proof';
+				break;
+			case 4:
+				supportPost['point_type'] = 'disproof';
+				break;
+		}
+		switch (supportPost.source_type_id) {
+			case 1:
+				supportPost['source_type'] = 'meta';
+				break;
+			case 2:
+				supportPost['source_type'] = 'credible';
+				break;
+			case 3:
+				supportPost['source_type'] = 'web';
+				break;
+			case 4:
+				supportPost['source_type'] = 'media';
+				break;
+			case 5:
+				supportPost['source_type'] = 'opinion';
+				break;
+			case 6:
+				supportPost['source_type'] = 'other';
+				break;
+			default:
+				supportPost['source_type'] = 'opinion';
+				break;
+		}
+		if(this.points[pointIndx]['supports'][0] === null){
+			this.points[pointIndx]['supports'][0] = supportPost;
+		}else{
+			this.points[pointIndx]['supports'].unshift(supportPost);
+		}
 		this.viewAll(pointIndx)
 	}
 	removePoint(pointIndx: number){
@@ -49,7 +84,9 @@ export class PointsListComponent{
 	}
 	removeSupport(point: Post, supportIndx: number){
 		let pointIndx = this.getPostIndx(point);
+		console.log('removing: ', pointIndx);
 		this.points[pointIndx]['supports'].splice(supportIndx, 1);
+		console.log(this.points[pointIndx]['supports']);
 		if (this.points[pointIndx]['supports'].length === 1){
 			this.viewAll(pointIndx);
 		}

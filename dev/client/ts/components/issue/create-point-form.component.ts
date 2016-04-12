@@ -32,13 +32,23 @@ export class CreatePointFormComponent implements OnInit{
 	}
 	ngOnInit():any {
 		this._issueId = +this._routeParams.get('id');
-		let stringType = this._routeParams.get('type');
+		let stringType:string = this._routeParams.get('type');
 		switch(stringType){
 			case 'yes':
 				this._pointType = 1;
+				break;
 			case 'no':
 				this._pointType = 2;
+				break;
 		}
+		/*title: string,
+		post_type_id: number,
+		parent_id?: number,
+		point_type_id?: number,
+		detail?: string,
+		source?: string,
+		source_type_id?: number,
+		_id?: number*/
 		this.newPoint = new Post('',2,this._issueId,this._pointType,'');
 	}
 }

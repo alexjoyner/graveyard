@@ -4,9 +4,10 @@ var config = require('./config.js');
 var LocalStrategy = require('passport-local').Strategy;
 var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var bcrypt = require('bcrypt');
+var config = require('./config.js');
 // POSTGRES IMPLEMENTATION
 var pg = require('pg');
-var conString = "postgres://rosco:@localhost:5432/postgres";
+var conString = config.db;
 
 var superSecret = config.secret; //Secret var for jsonWebTokens
 // Mongoose models
@@ -67,7 +68,7 @@ module.exports = function(passport) {
                             doneConnect();
                             if (err) throw err;
                             var token = jwt.sign({
-                                id: newUser.rows[0].id,
+                                id: newUser.rows[0]._id,
                                 email: newUser.rows[0].email
                             }, superSecret, {
                               expiresIn: 1440 * 60 // <-- expires in 24 hours
@@ -112,7 +113,7 @@ module.exports = function(passport) {
                     return done(err);
                 if (!result.rows[0]) {
                     return done(null, false, {
-                        message: 'That email already taken'
+                        message: 'Invalid Email'
                     });
                 }else
                 if (!validPassword(password, result.rows[0].password)) {

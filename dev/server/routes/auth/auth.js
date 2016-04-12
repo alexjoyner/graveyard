@@ -15,12 +15,10 @@ phone #,
 profile: 3 interests
 */
 router.post('/signup', function(req, res, next) {
-    console.log(req.body);
     passport.authenticate('local-signup', function(err, token, info) {
         if (err) {
             return next(err); // will generate a 500 error
         }
-        console.log('TOKEN: ', JSON.stringify(token));
         // Generate a JSON response reflecting authentication status
         if (!token) {
             return res.status(500).send(info.message).end();
@@ -30,7 +28,6 @@ router.post('/signup', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-    console.log(req.body);
     passport.authenticate('local-login', function(err, user, info) {
         if (err) {
             return next(err); // will generate a 500 error

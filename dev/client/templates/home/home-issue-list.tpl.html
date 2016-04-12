@@ -58,7 +58,7 @@
         {{issue.detail}}
     </h5>
     <p class="text-center">
-        Created by {{issue.owner_user_id}} on {{stringToDate(issue.created_at) | date: 'yMMMdjm'}}
+        Created on {{stringToDate(issue.created_at) | date: 'yMMMd'}}
     </p>
     <div class="ro-action-bar">
         <ro-vote-cell

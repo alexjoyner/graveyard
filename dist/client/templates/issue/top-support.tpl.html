@@ -6,7 +6,7 @@
             </h4>
             <p >{{support.detail}}</p>
             <p class="text-center">
-                Created by {{support.owner_user_id}} on {{stringToDate(support.created_at) | date: 'yMMMdjm'}}
+                Created on {{stringToDate(support.created_at) | date: 'yMMMd'}}
             </p>
             <div *ngIf="support.source !== null">
                 <h4>

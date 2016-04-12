@@ -18,7 +18,7 @@ var options = {
 };
 // POSTGRES IMPLEMENTATION
 var pg = require('pg');
-var conString = "postgres://rosco:@localhost:5432/postgres";
+var conString = config.db;
 
 //this initializes a connection pool
 //it will keep idle connections open for a (configurable) 30 seconds
@@ -27,15 +27,11 @@ pg.connect(conString, function(err, client, done) {
   if(err) {
     return console.error('error fetching client from pool', err);
   }else {
-  	console.log('CONNECTED!');
+  	console.log('CONNECTED TO! \n' + config.db);
   }
 });
 
 // END MY SQL IMPLEMENTATION
-
-// Configure app
-//Connect to database
-mongoose.connect(config.db, options);
 
 //Access headers
 require('./server/config/accessHeaders.js')(app);

@@ -7,7 +7,7 @@
             {{point.detail}}
         </p>  
         <p class="text-center">
-            Created by {{point.owner_user_id}} on {{stringToDate(point.created_at) | date: 'yMMMdjm'}}
+            Created on {{stringToDate(point.created_at) | date: 'yMMMd'}}
         </p>
     </div>
     <!-- *ngIf="point.editPoint && point.editPoint === true" -->

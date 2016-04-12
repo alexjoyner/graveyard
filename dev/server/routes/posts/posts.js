@@ -1,10 +1,11 @@
 'use strict';
 var express = require('express'),
     router = express.Router();
+var config = require('../../config/config.js');
 var jwt_verify = require('../../middleware/jwt_verify.js');
 // POSTGRES IMPLEMENTATION
 var pg = require('pg');
-var conString = "postgres://rosco:@localhost:5432/postgres";
+var conString = config.db;
 // !! route = '/posts'
 // ###########  GETS  ###############
 // get all
@@ -25,7 +26,7 @@ router.get('/all', function(req, res) {
             done();
             if (err) throw err;
             if (!result.rows[0]) {
-                res.status(500).send('no posts found').end();
+                res.status(200).send([]).end();
             } else {
                 res.status(200).send(result.rows).end();
             }
@@ -95,8 +96,11 @@ router.get('/:id/:type', function(req, res) {
                 done();
                 if (err) throw err;
                 if (!result.rows[0]) {
-                    res.status(500).send('no posts found').end();
+                    res.status(500).send('no issue found').end();
                 } else {
+                    if(result.rows[0].points === null){
+                        result.rows[0].points = [];
+                    }
                     res.status(200).send(result.rows[0]).end();
                 }
             });
