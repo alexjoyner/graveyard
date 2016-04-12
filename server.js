@@ -19,7 +19,7 @@ var options = {
 // POSTGRES IMPLEMENTATION
 var pg = require('pg');
 var conString = config.db;
-
+console.log('trying to connect to: \n' + config.db);
 //this initializes a connection pool
 //it will keep idle connections open for a (configurable) 30 seconds
 //and set a limit of 10 (also configurable)
