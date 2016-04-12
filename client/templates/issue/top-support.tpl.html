@@ -1,14 +1,14 @@
-<div class="row supporting-evidence ro-point" [ngStyle]="{'background-color': (support.type === 'proof')? '#DFF0D8' : '#FCC4C4'}">
+<div class="row supporting-evidence ro-point" [ngStyle]="{'background-color': (support.point_type === 'proof')? '#DFF0D8' : '#FCC4C4'}">
     <div class="row">
         <div class="col-xs-12">
             <h4>
-                {{support.evidence}}
+                {{support.title}}
             </h4>
             <p >{{support.detail}}</p>
             <p class="text-center">
-                Created by {{support.ownerUsername}} on {{stringToDate(support.createdAt) | date: 'yMMMdjm'}}
+                Created on {{stringToDate(support.created_at) | date: 'yMMMd'}}
             </p>
-            <div *ngIf="support.source !== 'none'">
+            <div *ngIf="support.source !== null">
                 <h4>
                     <u>Source</u>:
                 </h4>
@@ -50,16 +50,16 @@
         </button>
         <div class="ro-inline-items">
             <h4 class="ro-action-bar-item">
-                <span class="label" [ngClass]="support.tag"> 
-                    {{support.tag | uppercase}}
+                <span class="label" [ngClass]="support.source_type"> 
+                    {{support.source_type | uppercase}}
                 </span>
             </h4>
             <h4 class="ro-action-bar-item">
-                <span class="label label-success" [ngClass]="support.type">
-                    {{support.type | uppercase}}
+                <span class="label" [ngClass]="support.point_type">
+                    {{support.point_type | uppercase}}
                 </span>
             </h4>
-            <button type="button" class="ro-action-bar-item btn btn-xs btn-danger" (click)="removeSupport(support._id)" *ngIf="isOwner(support.ownerUsername)">
+            <button type="button" class="ro-action-bar-item btn btn-xs btn-danger" (click)="removeSupport(support._id)" *ngIf="isOwner(support.owner_user_id)">
                 <i class="fa fa-close">
                 </i>
             </button>

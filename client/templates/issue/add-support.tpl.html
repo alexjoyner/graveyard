@@ -2,7 +2,7 @@
     <div class="col-xs-6">
     </div>
     <div class="col-xs-6">
-        <div id="Step1" *ngIf="newSupport.tag === ''">
+        <div id="Step1" *ngIf="newSupport.source_type_id === null">
             <div class="text-center">
                 <h5>
                     Source Type
@@ -13,7 +13,7 @@
                 <div class="col-xs-4">
                     <div class="checkbox  text-center">
                         <label>
-                            <input type="radio" (click)="setTag('meta')" name="type" required/>
+                            <input type="radio" (click)="setSourceType(1)" name="source_type" required/>
                             Meta Analysis
                         </label>
                     </div>
@@ -22,7 +22,7 @@
                     <div class="checkbox  text-center">
                         <label>
                             Credible
-                            <input type="radio" (click)="setTag('credible')" name="type"/>
+                            <input type="radio" (click)="setSourceType(2)" name="source_type"/>
                         </label>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                     <div class="checkbox  text-center">
                         <label>
                             Website/Blog
-                            <input type="radio" (click)="setTag('web')" name="type"/>
+                            <input type="radio" (click)="setSourceType(3)" name="source_type"/>
                         </label>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                 <div class="col-xs-4">
                     <div class="checkbox  text-center">
                         <label>
-                            <input type="radio" (click)="setTag('media')" name="type"/>
+                            <input type="radio" (click)="setSourceType(4)" name="source_type"/>
                             TV Media <br> (CNN, FOX, HUFFINGTON, etc)
                         </label>
                     </div>
@@ -48,7 +48,7 @@
                     <div class="checkbox  text-center">
                         <label>
                             Personal Opinion
-                            <input type="radio" (click)="setTag('opinion')" name="type"/>
+                            <input type="radio" (click)="setSourceType(5)" name="source_type"/>
                         </label>
                     </div>
                 </div>
@@ -56,13 +56,13 @@
                     <div class="checkbox  text-center">
                         <label>
                             Other
-                            <input type="radio" (click)="setTag('other')" name="type"/>
+                            <input type="radio" (click)="setSourceType(6)" name="source_type"/>
                         </label>
                     </div>
                 </div>
             </div>
         </div>
-        <div  id="Step1"  *ngIf="newSupport.tag !== ''">
+        <div  id="Step1"  *ngIf="newSupport.source_type_id !== null">
             <textarea
                 class="form-control"
                 rows="3"
@@ -70,7 +70,7 @@
                 minlength="20"
                 maxlength="150"
                 placeholder="State what your evidence shows. Max 150 Characters"
-                [(ngModel)]="newSupport.evidence"
+                [(ngModel)]="newSupport.title"
                 required>
             </textarea>
             <br/>
@@ -92,13 +92,13 @@
             </textarea>
             <br/>
             <div  id="Step3">
-                <button class="btn btn-sm btn-success" (click)="newSupport.tag = '';">
+                <button class="btn btn-sm btn-success" (click)="newSupport.source_type_id = null;">
                     Cancel
                 </button>
-                <button type="submit" class="btn btn-sm btn-success" (click)="newSupport.type = 'proof';">
+                <button type="submit" class="btn btn-sm btn-success" (click)="newSupport.point_type_id = 3;">
                     Add as Proof
                 </button>
-                <button type="submit" class="btn btn-sm btn-danger" (click)="newSupport.type = 'disproof';">
+                <button type="submit" class="btn btn-sm btn-danger" (click)="newSupport.point_type_id = 4;">
                     Add as Disproof
                 </button>
             </div>

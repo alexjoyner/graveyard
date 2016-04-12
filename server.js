@@ -16,10 +16,22 @@ var options = {
   server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
   replset: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }
 };
+// POSTGRES IMPLEMENTATION
+var pg = require('pg');
+var conString = config.db;
 
-// Configure app
-//Connect to database
-mongoose.connect(config.db, options);
+//this initializes a connection pool
+//it will keep idle connections open for a (configurable) 30 seconds
+//and set a limit of 10 (also configurable)
+pg.connect(conString, function(err, client, done) {
+  if(err) {
+    return console.error('error fetching client from pool', err);
+  }else {
+  	console.log('CONNECTED TO! \n' + config.db);
+  }
+});
+
+// END MY SQL IMPLEMENTATION
 
 //Access headers
 require('./server/config/accessHeaders.js')(app);

@@ -41,7 +41,7 @@
     </div>
 </div>
 
-<h1 class="text-center" *ngIf="points && points.length === 0 && !showForm">
+<h1 class="text-center" *ngIf="points && points.length == 0 && !showForm">
     <h2>
         This section has no points:
     </h2>
@@ -49,21 +49,18 @@
         ADD A {{type | uppercase}}!!!
     </button>
 </h1>
-<h1 [hidden]="points">
-    Loading main points
-</h1>
 <div [attr.id]="'point' + i" *ngFor="#point of points | roFilter: searchText; #i = index" class="point">
     <div class="row">
         <div class="col-xs-12 col-md-6 main-point-block text-center">
             <ro-main-point
                 [point]="point"
-                (removed)="ngOnInit()"
+                (removed)="removePoint(i)"
                 (smoothScroll)="smoothScroll('point'+i, 20)">
             </ro-main-point>
         </div>
         <div class="col-xs-12 col-md-6 top-supports">
             <ro-top-support
-                *ngIf="point.supports && point.supports.length >0"
+                *ngIf="point.supports[0] !== null && point.supports.length > 0"
                 [support]="point.supports[0]"
                 [numMoreSupport]="point.supports.length - 1"
                 [showingMore]="point.viewAll"
@@ -73,17 +70,7 @@
                 (goTop)="smoothScroll('point'+i, 20)">
             </ro-top-support>
             <!-- To show if no supports data has been searched for -->
-            <div *ngIf="!point.supports" class="text-center">
-                <br/>
-                <br/>
-                <button
-                    type="button"
-                    class="btn btn-lg btn-default "
-                    (click)="getSupports(point, false)">
-                    Get Supports
-                </button>
-            </div>
-            <div *ngIf="point.supports && point.supports.length === 0">
+            <div *ngIf="point.supports.length === 0 || point.supports[0] === null">
                 <h1 class="text-center">
                     No Support
                     <hr/>
@@ -96,16 +83,16 @@
     </div>
     <hr/>
     <ro-more-support
-        *ngIf="point.supports && point.viewAll"
+        *ngIf="point.viewAll"
         [supports]="point.supports.slice(1)"
         (removed)="removeSupport(point,$event)"
         (goTop)="smoothScroll('point'+i, 20)">
     </ro-more-support>
     <ro-add-support
-        *ngIf="point.supports && point.addEvidence"
+        *ngIf="point.addEvidence"
         [pointId]="point._id"
         [pointIndex]="i"
         [issueId]="issueId"
-        (added)="getSupports(point, true)">
+        (added)="addSupport(i, $event)">
     </ro-add-support>
 </div>
