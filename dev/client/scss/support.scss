@@ -1,14 +1,10 @@
 .more-support-container{
-	display: table;
 	.left-column{
-		display: table-cell;
-		float: none;
 		border-right: 50px double #DDDDDD; 
-		height: 100%; 
-		padding: 0;
+		padding-bottom: 100%;
+    	margin-bottom: -100%;
 	}
 	.right-column{
-		display: table-cell;
-		float: none;
+		overflow: hidden;
 	}
 }

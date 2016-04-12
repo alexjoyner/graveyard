@@ -89,13 +89,30 @@ router.post('/createSupportPoint', jwt_verify, function(req, res) {
 // ###########  DELETES  ###############
 // delete PRO support point
 router.delete('/removeSupportPoint/:supportId', jwt_verify, function(req, res) {
-    var supportId = req.params.supportId;
+    pg.connect(conString, function(err, client, done) {
+      if(err) {
+        return console.error('error fetching client from pool', err);
+      }
+      var queryString = `
+        DELETE
+        FROM supports
+        WHERE
+            _id = $1::int;
+      `;
+      client.query(queryString, [req.params.supportId], function(err, result) {
+        //call `done()` to release the client back to the pool
+        done();
+        if (err) throw err;
+        res.status(200).send('DELETED').end();
+      });
+    });
+    /*var supportId = req.params.supportId;
     supports.findOneAndRemove({
         '_id': supportId
     }, function(err){
         if(err) throw err;
         res.status(200).send('Deleted');
-    });
+    });*/
 });
 
 module.exports = router;

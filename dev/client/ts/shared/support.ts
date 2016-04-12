@@ -1,6 +1,6 @@
 export class Support {
 	_id: number;
-	owner_id: number;
+	owner_user_id: number;
 	issue_id: number;
 	point_id: number;
     evidence: string;
@@ -17,7 +17,7 @@ export class Support {
 		type: string,
 		source: string,
 		sourcetype: string,
-		owner_id: number) {
+		owner_user_id: number) {
 		this.issue_id = issue_id;
 		this.point_id = point_id;
 		this.evidence = evidence;
@@ -25,7 +25,7 @@ export class Support {
 		this.type = type;
 		this.source = source;
 		this.sourcetype = sourcetype;
-		this.owner_id = owner_id;
+		this.owner_user_id = owner_user_id;
 	}
 }
 function guid() {

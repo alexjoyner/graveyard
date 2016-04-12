@@ -2,13 +2,13 @@
     <div>
         <div *ngIf="!issue.editIssue || issue.editIssue === false">
             <h2 class="text-center">
-                {{issue.mainquestion}} <span [hidden]="issue.mainquestion !== ''">Loading main question</span>
+                {{issue.title}} <span [hidden]="issue.title !== ''">Loading main question</span>
             </h2>
             <h5 class="text-center">
-                {{issue.questiondetail}}
+                {{issue.detail}}
             </h5>      
-            <p class="text-center" *ngIf="issue.owner_id !== ''">
-                Created by {{issue.owner_id}} on {{stringToDate(issue.createdAt) | date: 'yMMMdjm'}}
+            <p class="text-center" *ngIf="issue.owner_user_id !== ''">
+                Created by {{issue.owner_user_id}} on {{stringToDate(issue.created_at)}}
             </p>
         </div>
         <ro-issue-form
@@ -26,7 +26,7 @@
                 (upVoted)="issue.ups=issue.ups+1"
                 (downVoted)="issue.downs=issue.downs+1">
             </ro-vote-cell>
-            <button class="ro-action-bar-item btn btn-sm btn-info" (click)="editIssue(issue, $event)" *ngIf="issue.mainquestion && !issue.editIssue || issue.editIssue === false">
+            <button class="ro-action-bar-item btn btn-sm btn-info" (click)="editIssue(issue, $event)" *ngIf="issue.title && !issue.editIssue || issue.editIssue === false">
                 <i class="fa fa-edit">
                 </i>
             </button>
@@ -51,5 +51,6 @@
             </a>
         </li>
     </ul>
-    <ro-points-list></ro-points-list>
+    <ro-points-list
+        [points]="issue.points"></ro-points-list>
 </div>

@@ -1,13 +1,13 @@
 <div class="ro-point ro-main-point">
     <div class="ro-contents" *ngIf="!point.editPoint || point.editPoint === false">
         <h4 class="text-center" style="padding-left: 10px;">
-            {{point.problem}}
+            {{point.title}}
         </h4>
         <p style="text-align: left; padding-left: 10px;">
             {{point.detail}}
         </p>  
         <p class="text-center">
-            Created by {{point.owner_id}} on {{stringToDate(point.createdAt) | date: 'yMMMdjm'}}
+            Created by {{point.owner_user_id}} on {{stringToDate(point.created_at) | date: 'yMMMdjm'}}
         </p>
     </div>
     <!-- *ngIf="point.editPoint && point.editPoint === true" -->
@@ -27,13 +27,13 @@
             (downVoted)="point.downs=point.downs+1">
         </ro-vote-cell>
         <button
-            *ngIf="isOwner(point.owner_id) && !point.editPoint || point.editPoint === false"
+            *ngIf="isOwner(point.owner_user_id) && !point.editPoint || point.editPoint === false"
             class="btn btn-sm btn-danger ro-action-bar-item"
             (click)="deletePoint()">
             <i class="fa fa-close">
             </i>
         </button>
-        <button class="ro-action-bar-item btn btn-sm btn-info" (click)="editPoint(point, $event);" *ngIf="isOwner(point.owner_id)">
+        <button class="ro-action-bar-item btn btn-sm btn-info" (click)="editPoint(point, $event);" *ngIf="isOwner(point.owner_user_id)">
             <i class="fa fa-edit">
             </i>
         </button>

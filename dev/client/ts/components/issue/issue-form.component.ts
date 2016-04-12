@@ -1,35 +1,46 @@
 import {Component, Input, Output, OnInit, EventEmitter} from 'angular2/core';
-import {Issue} from '../../shared/issue';
-import {IssuesService} from '../../shared/issues.service';
+import {Post} from '../../shared/post';
+import {PostsService} from '../../shared/posts.service';
 import { Router } from 'angular2/router';
 import { UsersService} from '../../shared/users.service';
 @Component({
     selector: 'ro-issue-form',
     templateUrl: 'templates/issue/issue-form.tpl.html',
-    providers: [IssuesService]
+    providers: [PostsService]
 })
 export class NewIssueForm implements OnInit{
-	@Input() myIssue: Issue;
+	@Input() myIssue: Post;
 	@Input() editMode: boolean;
 	@Output() edited: EventEmitter<any> = new EventEmitter();
-	issue: Issue;
+	issue: Post;
 	ngOnInit(): any {
-		this.issue = new Issue(
-			this.myIssue.mainquestion, 
-			this.myIssue.questiondetail, 
-			0,0,
-			this._usersService.profile._id,
-			this._usersService.profile.email,
-			this.myIssue._id);
+		/*title: string,
+		post_type_id: number,
+		parent_id?: number,
+		point_type_id?: number,
+		detail?: string,
+		source?: string,
+		source_type_id?: number,
+		_id?: number*/
+		this.issue = new Post(
+			this.myIssue.title,
+			null,
+			null,
+			null,
+			this.myIssue.detail,
+			null,
+			null,
+			this.myIssue._id
+		)
 
 	}
 	constructor(
-		private _issuesService: IssuesService,
+		private _postsService: PostsService,
 		private _router: Router,
 		private _usersService: UsersService) {};
 
 	onCreate(){
-		this._issuesService.insertIssue(this.issue)
+		this._postsService.insertPost(this.issue)
 			.subscribe(
 				data => {
 					console.log('Returned: ', data);
@@ -39,12 +50,12 @@ export class NewIssueForm implements OnInit{
 			);
 	}
 	onUpdate(){
-		this._issuesService.updateIssue(this.issue)
+		this._postsService.updatePost(this.issue)
 			.subscribe(
 				data => {
 					console.log('Success: ', data);
-					this.myIssue.mainquestion = this.issue.mainquestion;
-					this.myIssue.questiondetail = this.issue.questiondetail;
+					this.myIssue.title = this.issue.title;
+					this.myIssue.detail = this.issue.detail;
 					this.edited.emit(null);
 				},
 				err => console.log('Error: ', err)

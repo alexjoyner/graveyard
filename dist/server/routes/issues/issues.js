@@ -129,7 +129,29 @@ router.post('/newIssue',jwt_verify, function(req, res) {
 router.post('/updateIssue',jwt_verify, function(req, res){
     var issue = req.body;
     console.log(issue);
-    issues
+    pg.connect(conString, function(err, client, done) {
+      if(err) {
+        return console.error('error fetching client from pool', err);
+      }
+      var queryString = `
+        UPDATE
+            issues
+        SET 
+            mainquestion = $1,
+            questiondetail = $2
+        WHERE
+            _id = $3::int;
+      `;
+      var updateParams = [issue.mainquestion, issue.questiondetail, +issue._id]
+      console.log(updateParams);
+      client.query(queryString, updateParams , function(err, result) {
+        //call `done()` to release the client back to the pool
+        done();
+        if (err) throw err;
+        res.status(200).send('UPDATED').end();
+      });
+    });
+    /*issues
         .update({
             '_id': issue._id
         }, {
@@ -140,7 +162,7 @@ router.post('/updateIssue',jwt_verify, function(req, res){
         }, function(err){
             if (err) throw err;
             res.status(200).send('success');
-        })
+        })*/
 });
 // post update to existing issue
 

@@ -1,6 +1,6 @@
 import {Component, OnInit, EventEmitter, Output} from 'angular2/core';
-import {Point} from '../../shared/point';
-import {PointsService} from '../../shared/points.service';
+import {Post} from '../../shared/post';
+import {PostsService} from '../../shared/posts.service';
 import {RouteParams} from 'angular2/router';
 import { UsersService} from '../../shared/users.service';
 
@@ -9,18 +9,19 @@ import { UsersService} from '../../shared/users.service';
     templateUrl: 'templates/issue/create-point-form.tpl.html'
 })
 export class CreatePointFormComponent implements OnInit{
-	newPoint: Point;
+	private newPoint: Post;
 	private _issueId: number;
+	private _pointType: number;
 	@Output() added: EventEmitter<any> = new EventEmitter();
 	@Output() cancel: EventEmitter<any> = new EventEmitter();
 
 	constructor(
-		private _pointsService: PointsService,
+		private _postsService: PostsService,
 		private _routeParams: RouteParams,
 		private _usersService: UsersService) { }
 
 	createPoint(){
-		this._pointsService.insertPoint(this.newPoint)
+		this._postsService.insertPost(this.newPoint)
 		.subscribe(
 			pointData =>  this.added.emit(pointData),
 			err => console.log('err', err)
@@ -31,10 +32,13 @@ export class CreatePointFormComponent implements OnInit{
 	}
 	ngOnInit():any {
 		this._issueId = +this._routeParams.get('id');
-		let type = this._routeParams.get('type');
-		this.newPoint = new Point(
-			this._issueId, '', '', 
-			type, 0, 0, '',
-			this._usersService.profile._id);
+		let stringType = this._routeParams.get('type');
+		switch(stringType){
+			case 'yes':
+				this._pointType = 1;
+			case 'no':
+				this._pointType = 2;
+		}
+		this.newPoint = new Post('',2,this._issueId,this._pointType,'');
 	}
 }

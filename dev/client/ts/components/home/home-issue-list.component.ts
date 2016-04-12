@@ -1,6 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter} from 'angular2/core';
-import {Issue} from '../../shared/issue';
-import {IssuesService} from '../../shared/issues.service';
+import {Post} from '../../shared/post';
+import {PostsService} from '../../shared/posts.service';
 import {SearchFilterPipe} from '../../pipes/searchFilter.pipe';
 import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
 import {VoteCellComponent} from '../../shared/vote-cell.component';
@@ -11,24 +11,22 @@ import {UsersService} from '../../shared/users.service';
     templateUrl: 'templates/home/home-issue-list.tpl.html',
     styleUrls: ['styles/home-issue.css'],
     directives: [ROUTER_DIRECTIVES, VoteCellComponent],
-    providers: [IssuesService],
+    providers: [PostsService],
     pipes: [SearchFilterPipe]
 })
 export class  HomeIssueListComponent implements OnInit{
 	@Input('searchText') searchText: string;
 	@Input('startQuestion') startQuestion: boolean;
 	@Output() cancel: EventEmitter<any> = new EventEmitter();
-	issues: Issue[];
-	issue: Issue
-	= new Issue('', '', 0, 0);
+	issues: Post[];
 	constructor(
-		private _issuesService: IssuesService,
+		private _postsService: PostsService,
 		private _router: Router,
 		private _authService: AuthService,
 		private _usersService: UsersService){}
 	ngOnInit():any {
 		if (this._authService.checkValid()) {
-			this._issuesService.getAllIssues()
+			this._postsService.getAllPosts()
 				.subscribe(
 				data => {
 					console.log(data);
@@ -39,12 +37,9 @@ export class  HomeIssueListComponent implements OnInit{
 		}
 	}
 	onCreate() {
+		let newIssue: Post = new Post(this.searchText, 1);
 		if (this._authService.checkValid()) {
-			let issue: Issue
-				= new Issue(this.searchText + '?', '', 0, 0,
-					this._usersService.profile._id,
-					this._usersService.profile.email);
-			this._issuesService.insertIssue(issue)
+			this._postsService.insertPost(newIssue)
 				.subscribe(
 				data => {
 					console.log('Returned: ', data._id);
@@ -57,12 +52,12 @@ export class  HomeIssueListComponent implements OnInit{
 	onCancel(){
 		this.cancel.emit(null);
 	}
-	deleteIssue(issue: Issue, event: MouseEvent){
+	deleteIssue(issue: Post, event: MouseEvent){
 		event.stopPropagation();
 		if (this._authService.checkValid()) {
 			let answer = confirm(`Are you sure you want to delete this issue? This action can't be undone`);
 			if (answer === true) {
-				this._issuesService.deleteIssue(issue._id)
+				this._postsService.deletePost(issue._id)
 					.subscribe(
 					success => this.ngOnInit(),
 					err => console.log('error: ', err)

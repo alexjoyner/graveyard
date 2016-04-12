@@ -1,38 +1,47 @@
 import {Component, Input, Output, OnInit, EventEmitter} from 'angular2/core';
-import {Point} from '../../shared/point';
-import {PointsService} from '../../shared/points.service';
+import {Post} from '../../shared/post';
+import {PostsService} from '../../shared/posts.service';
 import { Router } from 'angular2/router';
 @Component({
     selector: 'ro-edit-point',
     templateUrl: 'templates/issue/edit-point.tpl.html',
-    providers: [PointsService]
+    providers: [PostsService]
 })
 export class EditPointComponent implements OnInit {
-	@Input() myPoint: Issue;
+	@Input() myPoint: Post;
 	@Input() editMode: boolean;
 	@Output() edited: EventEmitter<any> = new EventEmitter();
-	point: Point;
+	point: Post;
 	ngOnInit(): any {
-		this.point = new Point(
-				this.myPoint.issue_id,
-				this.myPoint.problem,
-				this.myPoint.detail,
-				this.myPoint.type,
-				0,0,'',
-				this.myPoint.owner_id,
-				this.myPoint._id);
+		/*title: string,
+		post_type_id: number,
+		parent_id?: number,
+		point_type_id?: number,
+		detail?: string,
+		source?: string,
+		source_type_id?: number*/
+		this.point = new Post(
+			this.myPoint.title,
+			null,
+			null,
+			null,
+			this.myPoint.detail,
+			null,
+			null,
+			this.myPoint._id
+		)
 
 	}
 	constructor(
-		private _pointsService: PointsService,
+		private _postsService: PostsService,
 		private _router: Router) { };
 
 	onUpdate() {
-		this._pointsService.updatePoint(this.point)
+		this._postsService.updatePost(this.point)
 			.subscribe(
 			data => {
 				console.log('Success: ', data);
-				this.myPoint.problem = this.point.problem;
+				this.myPoint.title = this.point.title;
 				this.myPoint.detail = this.point.detail;
 				this.edited.emit(null);
 			},

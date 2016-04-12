@@ -1,7 +1,6 @@
 import {Component, Input, OnInit, Output, EventEmitter} from 'angular2/core';
-import {Support} from '../../shared/support';
-import {SupportsService} from '../../shared/supports.service';
-import {PointsService} from '../../shared/points.service';
+import {Post} from '../../shared/post';
+import {PostsService} from '../../shared/posts.service';
 import { UsersService} from '../../shared/users.service';
 // Parent is points-list
 @Component({
@@ -13,16 +12,15 @@ export class AddSupportComponent implements OnInit{
 	@Input('issueId') issueId: number;
 	@Input('pointIndex') pointIndex: number;
 	@Output() added: EventEmitter<any> = new EventEmitter();
-	newSupport: Support;
+	newSupport: Post;
 	private showSource: boolean = false;
 
 	constructor(
-		private _supportsService: SupportsService,
-		private _pointsService: PointsService,
+		private _postsService: PostsService,
 		private _usersService: UsersService) { };
 
 	createSupport(){
-		this._supportsService.insertSupport(this.newSupport)
+		this._postsService.insertPost(this.newSupport)
 		.subscribe(
 			data => {
 				console.log('NEW SUPPORT: ', data);
@@ -32,16 +30,21 @@ export class AddSupportComponent implements OnInit{
 		);
 	}
 	ngOnInit():any {
-		this.newSupport = new Support(
-			this.issueId, 
-			this.pointId, 
-			'', '', '', 'http://', '',
-			this._usersService.profile._id);
+		/*title: string,
+		post_type_id: number,
+		parent_id?: number,
+		point_type_id?: number,
+		detail?: string,
+		source?: string,
+		source_type_id?: number*/
+		this.newSupport = new Post(
+			'',3,this.pointId,null,'');
+		console.log(this.newSupport);
 	}
-	setSourceType(sourcetype: string){
-		this.newSupport.sourcetype = sourcetype;
+	setSourceType(sourcetype: number){
+		this.newSupport.source_type_id = sourcetype;
 		switch(sourcetype){
-			case 'opinion':
+			case 5:
 				this.showSource = false;
 				this.newSupport.source = null;
 				break

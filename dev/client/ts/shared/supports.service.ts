@@ -42,14 +42,14 @@ export class SupportsService {
 	/* DELETE */
 	deleteSupport(supportId: string) {
 		const headers = new Headers();
-		headers.append('Content-Type', 'application/json');
 		headers.append('x-access-token',
 			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
 		// id in the future
 		return this._http.delete(
 			this.endpoint +
 			'/supports/removeSupportPoint/' +
-			supportId)
+			supportId,
+			{ headers: headers })
 			.map(res => res);
 	}
 }

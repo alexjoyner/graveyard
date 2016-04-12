@@ -1,7 +1,7 @@
 import {Component, Input, Output, EventEmitter} from 'angular2/core';
 import {VoteCellComponent} from '../../shared/vote-cell.component';
 import {Support} from '../../shared/support';
-import {SupportsService} from '../../shared/supports.service';
+import {PostsService} from '../../shared/posts.service';
 import { UsersService} from '../../shared/users.service';
 @Component({
     selector: 'ro-top-support',
@@ -18,14 +18,14 @@ export class TopSupportComponent {
 	@Output() removed: EventEmitter<any> = new EventEmitter();
 	@Output() goTop: EventEmitter<any> = new EventEmitter();
 	constructor(
-		private _supportService: SupportsService,
+		private _postService: PostsService,
 		private _usersService: UsersService) { };
 
 
 	removeSupport(supportId: string) {
 		let answer = confirm(`Are you sure you want to delete this support point? This action can't be undone`);
 		if (answer === true) {
-			this._supportService.deleteSupport(supportId)
+			this._postService.deleteSupport(supportId)
 			.subscribe(
 				success => {
 					this.removed.emit(null);

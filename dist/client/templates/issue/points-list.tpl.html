@@ -41,7 +41,7 @@
     </div>
 </div>
 
-<h1 class="text-center" *ngIf="points && points.length === 0 && !showForm">
+<h1 class="text-center" *ngIf="points === null && !showForm">
     <h2>
         This section has no points:
     </h2>
@@ -49,7 +49,7 @@
         ADD A {{type | uppercase}}!!!
     </button>
 </h1>
-<h1 [hidden]="points">
+<h1 [hidden]="points !== null">
     Loading main points
 </h1>
 <div [attr.id]="'point' + i" *ngFor="#point of points | roFilter: searchText; #i = index" class="point">
@@ -57,7 +57,7 @@
         <div class="col-xs-12 col-md-6 main-point-block text-center">
             <ro-main-point
                 [point]="point"
-                (removed)="ngOnInit()"
+                (removed)="removePoint(i)"
                 (smoothScroll)="smoothScroll('point'+i, 20)">
             </ro-main-point>
         </div>
@@ -96,6 +96,6 @@
         [pointId]="point._id"
         [pointIndex]="i"
         [issueId]="issueId"
-        (added)="addSupport(i, event)">
+        (added)="addSupport(i, $event)">
     </ro-add-support>
 </div>

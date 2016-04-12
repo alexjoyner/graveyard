@@ -14,37 +14,18 @@ export class VoteCellService {
 		srcType: string, 
 		srcId: string, 
 		voteType: string){
-		let body: string;
+		let body = JSON.stringify({
+			srcType: srcType,
+			thing_id: srcId,
+			vote_type: voteType
+		});
 		const headers = new Headers();
 		headers.append('Content-Type', 'application/json');
 		headers.append('x-access-token',
 			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
-		switch(srcType){
-			case 'issue':
-				body = JSON.stringify({
-					voteType: voteType,
-					issueId: srcId
-				});
-				break;
-			case 'point':
-				body = JSON.stringify({
-					voteType: voteType,
-					pointId: srcId
-				});
-				break;
-			case 'support':
-				body = JSON.stringify({
-					voteType: voteType,
-					supportId: srcId
-				});
-				break;
-			default:
-				console.log('No source type found');
-				return
-		}
 		return this._http.post(
 				this.endpoint +
-				'/votes/'+srcType,
+				'/votes/create',
 				body,
 				{ headers: headers })
 				.map(res => res);

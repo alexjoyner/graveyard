@@ -23,22 +23,27 @@ router.get('/getPoints/:type/:issueId', function(req, res) {
         return console.error('error fetching client from pool', err);
       }
       var queryString = `
-        SELECT 
-            p.*,
-            json_agg(s.*) as supports
-        FROM points p
-        LEFT JOIN supports s 
-        ON 
-            (p._id = s.point_id)
-        WHERE
-            p.issue_id = $1
-        AND 
-            p.type = $2
-        GROUP BY 
-            p._id
-        ;
+
+        SELECT row_to_json(t)
+        FROM (
+            SELECT 
+                p.*,
+                json_agg(s.*) as supports
+            FROM points p
+            LEFT JOIN posts s 
+            ON 
+                (p._id = s._id)
+            WHERE
+                p._id = $1
+            GROUP BY 
+                p._id
+        ) AS points
+        FROM 
+            posts 
+        WHERE 
+            _id = $1
       `;
-      client.query(queryString, [req.params.issueId, req.params.type], function(err, result) {
+      client.query(queryString, [req.params.issueId/*, req.params.type*/], function(err, result) {
         //call `done()` to release the client back to the pool
         done();
         if (err) throw err;
@@ -101,6 +106,7 @@ router.post('/createPoint', jwt_verify, function(req, res) {
         //call `done()` to release the client back to the pool
         done();
         if (err) throw err;
+        result.rows[0]['supports'] = [null];
         res.status(200).send(result.rows[0]).end();
       });
     });
@@ -117,7 +123,27 @@ router.post('/createPoint', jwt_verify, function(req, res) {
 router.post('/updatePoint', jwt_verify, function(req, res){
     var point = req.body;
     console.log(point);
-    points
+    pg.connect(conString, function(err, client, done) {
+      if(err) {
+        return console.error('error fetching client from pool', err);
+      }
+      var queryString = `
+        UPDATE
+            points
+        SET 
+            problem = $1,
+            detail = $2
+        WHERE
+            _id = $3::int;
+      `;
+      client.query(queryString, [point.problem, point.detail, +point._id], function(err, result) {
+        //call `done()` to release the client back to the pool
+        done();
+        if (err) throw err;
+        res.status(200).send('UPDATED').end();
+      });
+    });
+    /*points
         .update({
             '_id': point._id
         }, {
@@ -128,7 +154,7 @@ router.post('/updatePoint', jwt_verify, function(req, res){
         }, function(err){
             if (err) throw err;
             res.status(200).send('success');
-        })
+        })*/
 });
 // ###########  DELETES  ###############
 // delete point by id
@@ -141,7 +167,7 @@ router.delete('/deletePoint/:type/:issue_id/:pointId', jwt_verify, function(req,
         DELETE
         FROM points
         WHERE
-            point._id = $1::int;
+            _id = $1::int;
       `;
       client.query(queryString, [req.params.pointId], function(err, result) {
         //call `done()` to release the client back to the pool

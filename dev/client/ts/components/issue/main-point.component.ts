@@ -1,7 +1,7 @@
 import {Component, Input, Output, EventEmitter} from 'angular2/core';
 import {VoteCellComponent} from '../../shared/vote-cell.component';
 import {Point} from '../../shared/point';
-import {PointsService} from '../../shared/points.service';
+import {PostsService} from '../../shared/posts.service';
 import {EditPointComponent} from './edit-point.component';
 import { UsersService} from '../../shared/users.service';
 @Component({
@@ -15,7 +15,7 @@ export class MainPointComponent {
 	@Output() removed: EventEmitter<any> = new EventEmitter();
 	@Output() smoothScroll: EventEmitter<any> = new EventEmitter();
 	constructor(
-		private _pointsService: PointsService,
+		private _postsService: PostsService,
 		private _usersService: UsersService){};
 	editPoint(point: Point, event: MouseEvent, cancelFlag: boolean) {
 		event.stopPropagation();
@@ -32,8 +32,8 @@ export class MainPointComponent {
 	deletePoint(){
 		let answer: boolean = confirm(`Are you sure you want to delete this main point? This action can't be undone`);
 		if (answer === true) {
-			this._pointsService
-				.deletePoint(this.point)
+			this._postsService
+				.deletePost(this.point._id)
 				.subscribe(
 				success => {
 					this.removed.emit(null)

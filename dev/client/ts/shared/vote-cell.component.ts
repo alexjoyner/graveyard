@@ -19,7 +19,7 @@ export class VoteCellComponent {
 
 	vote(type: string, event: MouseEvent) {
 		event.stopPropagation();
-		if (this._authService.checkValid()) {
+		/*if (this._authService.checkValid()) {
 			this._voteCellService.addVote(
 				this.sourceType,
 				this.sourceId,
@@ -34,6 +34,6 @@ export class VoteCellComponent {
 				},
 				err => console.log('Err: ', err)
 				);
-		}
+		}*/
 	}
 }

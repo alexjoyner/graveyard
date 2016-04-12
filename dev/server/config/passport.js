@@ -123,7 +123,7 @@ module.exports = function(passport) {
                     // if user is found and password is right
                     // create a token
                     var token = jwt.sign({
-                        id: result.rows[0].id,
+                        id: result.rows[0]._id,
                         email: result.rows[0].email
                     }, superSecret, {
                       expiresIn: 1440 * 60 // <-- expires in 24 hours
