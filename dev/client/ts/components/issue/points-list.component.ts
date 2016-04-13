@@ -9,6 +9,7 @@ import {AddSupportComponent} from './add-support.component';
 import {CreatePointFormComponent} from './create-point-form.component';
 import {SmoothScroll} from '../../shared/smooth-scroll.service';
 import {WINDOW_PROVIDERS} from '../../shared/window.service';
+import {UsersService} from '../../shared/users.service';
 @Component({
     selector: 'ro-points-list',
     templateUrl: 'templates/issue/points-list.tpl.html',
@@ -20,25 +21,41 @@ import {WINDOW_PROVIDERS} from '../../shared/window.service';
 export class PointsListComponent{
 	showForm: boolean;
 	@Input() points: Post[];
-	type: string = this._routeParams.get('type');;
+	type: string = this._routeParams.get('type');
 	issueId: string;
 	searchText: string;
 
 	constructor(
 		private _routeParams: RouteParams,
-		private _smoothScroll: SmoothScroll) { 
+		private _smoothScroll: SmoothScroll,
+		private _usersService: UsersService) { 
+		this.socket = io('/');
+		this.socket.emit('change room', { 
+			newroom: 'issue' + 
+			this._routeParams.get('id') + '/' +
+			this.type
+		})
+		this.socket.on('NewMainPoint', function(point) {
+			this.onPointAdded(point)
+        }.bind(this));
 	}
 	getPostIndx(point: Post): number{
 		return this.points.indexOf(point);
 	}
 	onPointAdded(point: Post){
-		console.log('New point: ', point);
 		point['supports'] = [null];
 		this.points.unshift(point);
-		setTimeout(() => {
-			this.addEvidence(point);
-			this.smoothScroll('point' + 0, 20);
-		}, 600);
+		if(this.isOwner(point.owner_user_id)){
+			this.searchText = ''; 
+			this.showForm = false;
+			setTimeout(() => {
+				this.addEvidence(point);
+				this.smoothScroll('point' + 0, 20);
+			}, 600);
+		}
+	}
+	isOwner(id: number) {
+		return (id === this._usersService.profile._id);
 	}
 	addSupport(pointIndx: number, supportPost){
 		switch (supportPost.point_type_id) {

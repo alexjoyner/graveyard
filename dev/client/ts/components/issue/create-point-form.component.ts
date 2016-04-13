@@ -12,7 +12,6 @@ export class CreatePointFormComponent implements OnInit{
 	private newPoint: Post;
 	private _issueId: number;
 	private _pointType: number;
-	@Output() added: EventEmitter<any> = new EventEmitter();
 	@Output() cancel: EventEmitter<any> = new EventEmitter();
 
 	constructor(
@@ -23,7 +22,7 @@ export class CreatePointFormComponent implements OnInit{
 	createPoint(){
 		this._postsService.insertPost(this.newPoint)
 		.subscribe(
-			pointData =>  this.added.emit(pointData),
+			pointData =>  console.log('SUCCESS creating point'),
 			err => console.log('err', err)
 		);
 	}

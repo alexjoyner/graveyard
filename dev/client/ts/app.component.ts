@@ -29,7 +29,8 @@ export class AppComponent implements OnInit{
     constructor(
         private _router: Router,
         private _authService: AuthService,
-        private _usersService: UsersService){}
+        private _usersService: UsersService) {
+    }
     ngOnInit():any {
         //The below Needs to be fixed to get user when the app boots
         if (localStorage.getItem('token')) {

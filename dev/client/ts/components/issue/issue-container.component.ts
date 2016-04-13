@@ -38,7 +38,6 @@ export class IssueContainerComponent implements OnInit{
 				err => console.log('Err: ', err)
 				);
 		}
-
 	}
 	editIssue(issue: Post, event: MouseEvent, cancelFlag: boolean) {
 		event.stopPropagation();

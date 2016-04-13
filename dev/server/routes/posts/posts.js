@@ -112,14 +112,14 @@ router.get('/:id/:type', function(req, res) {
 router.post('/newPost', jwt_verify, function(req, res) {
     var user = req.decoded;
     var info = req.body;
-    var returnInfo = (info.post_type_id === 1)? ' _id' : ' *';
     var queryString = `
         INSERT INTO
           posts (
           owner_user_id,title,detail,post_type_id,parent_id,point_type_id,source,source_type_id,created_at)
         VALUES (
           $1,$2,$3,$4,$5,$6,$7,$8,$9)
-        RETURNING` + returnInfo;
+        RETURNING
+            *`;
     console.log(user);
     var queryParams = 
     [user.id, info.title, info.detail, info.post_type_id, info.parent_id,
@@ -134,7 +134,16 @@ router.post('/newPost', jwt_verify, function(req, res) {
             done();
             if (err) throw err;
             console.log('Post created ID: ', result.rows[0]);
-            res.status(200).send(result.rows[0]).end();
+
+            if(info.post_type_id === 1){
+                console.log('NEW ISSUE');
+                req.io.to('issues').emit('NewIssue', result.rows[0])
+            }else
+            if(info.post_type_id === 2){
+                console.log('NEW Main Point');
+                req.io.to('issue'+result.rows[0].parent_id).emit('NewMainPoint', result.rows[0])
+            }
+            res.status(200).end();
         });
     });
 });

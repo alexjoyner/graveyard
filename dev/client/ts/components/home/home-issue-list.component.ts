@@ -23,7 +23,14 @@ export class  HomeIssueListComponent implements OnInit{
 		private _postsService: PostsService,
 		private _router: Router,
 		private _authService: AuthService,
-		private _usersService: UsersService){}
+		private _usersService: UsersService){
+		this.socket = io('/');
+		this.socket.emit('change room', {newroom: 'issues'})
+		this.socket.on('NewIssue', function(data){
+			console.log('NEW ISSUE: ', data);
+            this.issues.unshift(data);
+        }.bind(this));
+	}
 	ngOnInit():any {
 		if (this._authService.checkValid()) {
 			this._postsService.getAllPosts()
