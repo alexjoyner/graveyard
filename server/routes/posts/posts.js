@@ -134,16 +134,16 @@ router.post('/newPost', jwt_verify, function(req, res) {
             done();
             if (err) throw err;
             console.log('Post created ID: ', result.rows[0]);
-
+            var type = (info.point_type_id === 1)? 'yes' : 'no';
             if(info.post_type_id === 1){
                 console.log('NEW ISSUE');
                 req.io.to('issues').emit('NewIssue', result.rows[0])
             }else
             if(info.post_type_id === 2){
-                console.log('NEW Main Point');
-                req.io.to('issue'+result.rows[0].parent_id).emit('NewMainPoint', result.rows[0])
+                console.log('NEW Main Point: ' + 'issue'+result.rows[0].parent_id+'/'+type);
+                req.io.to('issue'+result.rows[0].parent_id+'/'+type).emit('NewMainPoint', result.rows[0])
             }
-            res.status(200).end();
+            res.status(200).send({success: true}).end();
         });
     });
 });
