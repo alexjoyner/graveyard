@@ -1,11 +1,10 @@
 ******************  BEFORE DEPLOYING THIS PROJECT TO HEROKU *******************
 -------------------------------------------------------------------------------
 
-	1) Change the endpoint in config.js to ''; not 'http://localhost:9000';
-	2) Switch eb env to metatruth-env
-	3) Make sure the welcome page displays the correct version
-	4) Make sure the packages are transferred over correctly
-	5) Change the version in package.json
+	1) Switch eb env to metatruth-env
+	2) Make sure the welcome page displays the correct version
+	3) Make sure the packages are transferred over correctly
+	4) Change the version in package.json
 
 
 	CONGRATS ON MAKING IT THIS FAR!!!!!!!!!
