@@ -1,0 +1,13 @@
+.HomeIssue {
+	margin: 0 auto;
+	border: 1px solid #dddddd; 
+	margin-bottom: 10px;
+	min-height: 100px;
+	max-width: 728px;
+	.deleteButton {
+		float: right;
+		margin: 10px; 
+		z-index: 2;
+		bottom: 0px;
+	}
+}
