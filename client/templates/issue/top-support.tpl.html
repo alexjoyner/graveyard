@@ -5,9 +5,6 @@
                 {{support.title}}
             </h4>
             <p >{{support.detail}}</p>
-            <p class="text-center">
-                Created on {{stringToDate(support.created_at) | date: 'yMMMd'}}
-            </p>
             <div *ngIf="support.source !== null">
                 <h4>
                     <u>Source</u>:

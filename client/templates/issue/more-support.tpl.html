@@ -19,9 +19,6 @@
                             {{support.title}}
                         </h4>
                         <p>{{support.detail}}</p>
-                        <p class="text-center">
-                            Created on {{stringToDate(support.created_at) | date: 'yMMMd'}}
-                        </p>
                         <div class="row">
                             <div class="col-xs-8" *ngIf="support.source !== null">
                                 <u>

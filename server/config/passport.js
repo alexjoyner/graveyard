@@ -138,35 +138,6 @@ module.exports = function(passport) {
                 }
               });
             });
-            /*users.findOne({
-                'local.email': email
-            }, function(err, user) {
-                if (err) return done(err);
-                if (!user) {
-                    return done(null, false, {
-                        message: 'No user found'
-                    });
-                }
-                if (!user.validPassword(password)) {
-                    return done(null, false, {
-                        message: 'Invalid password'
-                    });
-                }
-                // if user is found and password is right
-                // create a token
-                var token = jwt.sign({
-                    id: user.id,
-                    email: user.local.email
-                }, superSecret, {
-                  expiresInMinutes: 1440 // <-- expires in 24 hours
-                });
-                return done(null, {
-                  profile: user,
-                  success: true,
-                  message: 'Enjoy your token!',
-                  token: token
-                });
-            });*/
         });
     }));
 };

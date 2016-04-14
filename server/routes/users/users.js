@@ -7,13 +7,8 @@ var pg = require('pg');
 var conString = config.db;
 
 var jwt_verify = require('../../middleware/jwt_verify.js')
-// Mongoose models
-var users = require('../../models/userModel.js');
 
 router.get('/profile', jwt_verify, function(req, res){
-    //this initializes a connection pool
-    //it will keep idle connections open for a (configurable) 30 seconds
-    //and set a limit of 10 (also configurable)
     pg.connect(conString, function(err, client, done) {
       if(err) {
         return console.error('error fetching client from pool', err);
@@ -37,15 +32,6 @@ router.get('/profile', jwt_verify, function(req, res){
         }
       });
     });
-	/*users.findOne({
-        'local.email': req.decoded.email
-    }, function(err, user) {
-        if(err) throw err;
-        if (!user) {
-        	res.status(500).send('No user found').end();
-        }
-        res.status(200).send(user).end();
-    });*/
 });
 
 module.exports = router;
