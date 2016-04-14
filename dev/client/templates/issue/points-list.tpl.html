@@ -66,7 +66,6 @@
                 [showingMore]="point.viewAll"
                 (addEvidence)="addEvidence(point)"
                 (viewAll)="viewAll(i)"
-                (removed)="removeSupport(point,0)"
                 (goTop)="smoothScroll('point'+i, 20)">
             </ro-top-support>
             <!-- To show if no supports data has been searched for -->
@@ -85,7 +84,6 @@
     <ro-more-support
         *ngIf="point.viewAll"
         [supports]="point.supports.slice(1)"
-        (removed)="removeSupport(point,$event)"
         (goTop)="smoothScroll('point'+i, 20)">
     </ro-more-support>
     <ro-add-support
@@ -93,6 +91,6 @@
         [pointId]="point._id"
         [pointIndex]="i"
         [issueId]="issueId"
-        (added)="addSupport(i, $event)">
+        [mainPointTypeId]="type">
     </ro-add-support>
 </div>

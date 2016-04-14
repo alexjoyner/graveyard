@@ -24,14 +24,28 @@ export class  HomeIssueListComponent implements OnInit{
 		private _router: Router,
 		private _authService: AuthService,
 		private _usersService: UsersService){
-		this.socket = io('/');
-		this.socket.emit('change room', {newroom: 'issues'})
-		this.socket.on('NewIssue', function(data){
-			console.log('NEW ISSUE: ', data);
-            this.issues.unshift(data);
-        }.bind(this));
 	}
-	ngOnInit():any {
+	ngOnInit(): any {
+		this.socket = io('/');
+		console.log('SOCKETS ROOMS: ', this.socket.rooms);
+		this.socket.emit('change room', { newroom: 'issues' })
+		this.socket.on('NewIssue', function(newIssue) {
+			console.log('NEW ISSUE: ', newIssue);
+			if (this.isOwner(newIssue.owner_user_id)) {
+				console.log('Returned: ', newIssue._id);
+				this._router.navigate(['Issue', { type: 'yes', id: newIssue._id, lastRoom: 'issues'}]);
+			} else {
+				this.issues.unshift(newIssue);
+            }
+        }.bind(this));
+		this.socket.on('DeletedIssue', function(postData) {
+			console.log('Delete: ', postData);
+			for (var i = this.issues.length - 1; i >= 0; i--) {
+				if (this.issues[i]._id === +postData._id) {
+					this.issues.splice(i, 1);
+				}
+			}
+        }.bind(this));
 		if (this._authService.checkValid()) {
 			this._postsService.getAllPosts()
 				.subscribe(
@@ -48,11 +62,10 @@ export class  HomeIssueListComponent implements OnInit{
 		if (this._authService.checkValid()) {
 			this._postsService.insertPost(newIssue)
 				.subscribe(
-				data => {
-					console.log('Returned: ', data._id);
-					this._router.navigate(['Issue', { type: 'yes', id: data._id }]);
-				},
-				err => console.log('Error: ', err)
+					data => {
+						console.log('Success Posting Issue');
+					},
+					err => console.log('Error: ', err)
 				);
 		}
 	}

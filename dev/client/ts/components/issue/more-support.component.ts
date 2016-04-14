@@ -3,6 +3,7 @@ import {VoteCellComponent} from '../../shared/vote-cell.component';
 import {Post} from '../../shared/post';
 import {PostsService} from '../../shared/posts.service';
 import {UsersService} from '../../shared/users.service';
+import {RouteParams} from 'angular2/router';
 @Component({
     selector: 'ro-more-support',
     templateUrl: 'templates/issue/more-support.tpl.html',
@@ -11,20 +12,22 @@ import {UsersService} from '../../shared/users.service';
 })
 export class MoreSupportComponent {
 	@Input('supports') supports: Post[];
-	@Output() removed: EventEmitter<any> = new EventEmitter();
 	@Output() goTop: EventEmitter<any> = new EventEmitter();
+	type: string = this._routeParams.get('type');
+	issueId: string = this._routeParams.get('id');
 	constructor(
 		private _postsService: PostsService,
-		private _usersService: UsersService) { };
+		private _usersService: UsersService,
+		private _routeParams: RouteParams) { };
 
 
 	removeSupport(supportId: string, supportIndex: number) {
 		let answer = confirm(`Are you sure you want to delete this support point? This action can't be undone`);
 		if (answer === true) {
-			this._postsService.deletePost(supportId)
+			this._postsService.deletePost(+supportId, +this.issueId, this.type)
 				.subscribe(
 				success => {
-					this.removed.emit(supportIndex + 1);
+					console.log('Success Delete');
 				},
 				err => console.log('Error: ', err)
 				);

@@ -3,12 +3,6 @@ var express = require('express'),
     router = express.Router();
 
 var jwt_verify = require('../../middleware/jwt_verify.js')
-// Mongoose models
-var issues = require('../../models/issueModel.js');
-var points = require('../../models/pointModel.js');
-var supports = require('../../models/supportModel.js');
-var users = require('../../models/userModel.js');
-var votes = require('../../models/voteModel.js');
 // !! route = '/votes'
 
 // ###########  POSTS  ###############

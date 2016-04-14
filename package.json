@@ -1,6 +1,6 @@
 {
   "name": "metatruth",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.6",
   "scripts": {
     "postinstall": "npm run typings install",
     "lite": "lite-server",
@@ -21,7 +21,6 @@
     "mongoose": "^4.1.2",
     "morgan": "^1.6.1",
     "multer": "^1.0.6",
-    "mysql": "felixge/node-mysql",
     "passport": "^0.2.2",
     "passport-local": "^1.0.0",
     "pg": "^4.5.2",

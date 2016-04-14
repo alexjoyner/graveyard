@@ -12,12 +12,12 @@ var morgan = require('morgan');
 var passport = require('passport');
 var config = require('./server/config/config.js');
 var ENV = process.env.NODE_ENV || 'development'; // development || production
-if(ENV !== 'production'){
-	console.log('Starting live reload server');
-	var livereload = require('livereload'),
-		liveServer = livereload.createServer();
-	console.log(__dirname);
-	liveServer.watch([__dirname + '/server', __dirname + '/client']);
+if (ENV !== 'production') {
+    console.log('Starting live reload server');
+    var livereload = require('livereload'),
+        liveServer = livereload.createServer();
+    console.log(__dirname);
+    liveServer.watch([__dirname + '/server', __dirname + '/client']);
 }
 var options = {
     server: {
@@ -61,7 +61,6 @@ app.use(function(req, res, next) {
     next();
 });
 require('./server/routes/routes.js')(app);
-
 console.log('Enviorment: ', ENV);
 // Send files from angular
 app.use(express.static(path.resolve(__dirname, 'client')));
@@ -70,20 +69,24 @@ var renderIndex = function(req, res) {
     }
     // ANY ROUTE THAT ISN'T AN API ROUTE, send the homepage
 app.get('*', renderIndex);
-
 io.on('connection', function(socket) {
-    console.log('A user just connected with id '+ socket.id);
+    console.log('A user just connected with id ' + socket.id);
     socket.on("change room", function(data) {
-    	console.log('CHANGING ROOM TO: ', data.newroom);
-        socket.leave(socket.room);
+        // this returns a list of all rooms this user is in
+        console.log('Sockets rooms: ', socket.rooms);
+        /*for (var room in socket.rooms) {
+        	console.log('LEAVING ROOM: ', room);
+            socket.leave(room);
+        }*/
+        console.log('JOINING ROOM: ', data.newroom);
+        socket.leaveAll();
         socket.join(data.newroom);
+        console.log('Sockets rooms AFTER: ', socket.rooms);
     });
-    socket.on('disconnect', function(){
-	    console.log('user '+ socket.id +' disconnected');
-	  });
+    socket.on('disconnect', function() {
+        console.log('user ' + socket.id + ' disconnected');
+    });
 })
-
-
 var port = (process.env.PORT || 9000);
 // Start an express server
 http.listen(port, function(err) {

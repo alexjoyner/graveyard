@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, Output, EventEmitter} from 'angular2/core';
+import {Component, Input, OnInit, EventEmitter} from 'angular2/core';
 import {Post} from '../../shared/post';
 import {PostsService} from '../../shared/posts.service';
 import { UsersService} from '../../shared/users.service';
@@ -9,9 +9,9 @@ import { UsersService} from '../../shared/users.service';
 })
 export class AddSupportComponent implements OnInit{
 	@Input('pointId') pointId: number;
+	@Input('mainPointTypeId') main_point_type_id: number;
 	@Input('issueId') issueId: number;
 	@Input('pointIndex') pointIndex: number;
-	@Output() added: EventEmitter<any> = new EventEmitter();
 	newSupport: Post;
 	private showSource: boolean = false;
 
@@ -20,11 +20,12 @@ export class AddSupportComponent implements OnInit{
 		private _usersService: UsersService) { };
 
 	createSupport(){
+		this.newSupport.issue_id = +this.issueId;
+		this.newSupport['correspond_main_point_type_id'] = this.main_point_type_id;
 		this._postsService.insertPost(this.newSupport)
 		.subscribe(
 			data => {
-				console.log('NEW SUPPORT: ', data);
-				this.added.emit(data);
+				console.log('SUCCESS');
 			},
 			err => console.log('Error: ', err)
 		);

@@ -51,12 +51,16 @@ export class PostsService {
 				.map(res => res);
 	}
 	/* DELETE */
-	deletePost(postId: number): Observable<any> {
+	deletePost(postId: number, issueId?: number, mainPointType?: string): Observable<any> {
+		//'/deletePost/:postId/:issueId/:mainPointType'
 			const headers = new Headers();
 			headers.append('x-access-token',
 				(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
 			return this._http.delete(
-				this.endpoint + '/posts/deletePost/' + postId,
+				this.endpoint + '/posts/deletePost/' + 
+				postId + '/' +
+				issueId + '/' +
+				mainPointType,
 				{headers: headers})
 				.map(res => res);
 	}
