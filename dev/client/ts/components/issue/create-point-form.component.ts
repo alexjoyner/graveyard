@@ -1,4 +1,4 @@
-import {Component, OnInit, EventEmitter, Output} from 'angular2/core';
+import {Component, OnInit, EventEmitter, Input, Output} from 'angular2/core';
 import {Post} from '../../shared/post';
 import {PostsService} from '../../shared/posts.service';
 import {RouteParams} from 'angular2/router';
@@ -12,6 +12,7 @@ export class CreatePointFormComponent implements OnInit{
 	private newPoint: Post;
 	private _issueId: number;
 	private _pointType: number;
+	@Input() searchText: string;
 	@Output() cancel: EventEmitter<any> = new EventEmitter();
 
 	constructor(
@@ -20,6 +21,7 @@ export class CreatePointFormComponent implements OnInit{
 		private _usersService: UsersService) { }
 
 	createPoint(){
+		this.newPoint.title = this.searchText;
 		this._postsService.insertPost(this.newPoint)
 		.subscribe(
 			pointData =>  console.log('SUCCESS creating point'),

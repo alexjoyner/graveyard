@@ -8,16 +8,16 @@
             <div class="input-group-addon">
                 Search
             </div>
-            <input type="text" class="form-control" id="exampleInputAmount" [(ngModel)]="searchText" placeholder="main points" />
+            <input type="text" class="form-control" id="exampleInputAmount" [(ngModel)]="searchText" placeholder="main points" maxlength="150" />
         </div>
     </div>
     <div class="col-md-2 text-center">
-        <button class="btn btn-md" class="btn" [ngClass]="{'btn-success': type === 'yes', 'btn-danger': type === 'no'}" (click)="showForm = true">
+        <button class="btn btn-md" class="btn" [ngClass]="{'btn-success': type === 'yes' && !showForm, 'btn-danger': type === 'no' && !showForm, 'btn-default': showForm === true}" (click)="showForm = true">
             Add a new {{type}}
         </button>
     </div>
 </div>
-<ro-create-point-form *ngIf="showForm" (cancel)="showForm = false">
+<ro-create-point-form *ngIf="showForm" (cancel)="showForm = false" [searchText]="searchText">
 </ro-create-point-form>
 <hr/>
 <div class="row hidden-xs">

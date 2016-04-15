@@ -39,6 +39,18 @@ export class IssueContainerComponent implements OnInit{
 				);
 		}
 	}
+	deleteIssue(issueId: number) {
+		if (this._authService.checkValid()) {
+			let answer = confirm(`Are you sure you want to delete this issue? This action can't be undone`);
+			if (answer === true) {
+				this._postsService.deletePost(issueId)
+					.subscribe(
+						success => console.log('Success'),
+						err => console.log('error: ', err)
+					);
+			}
+		}
+	}
 	editIssue(issue: Post, event: MouseEvent, cancelFlag: boolean) {
 		event.stopPropagation();
 		let answer: boolean;

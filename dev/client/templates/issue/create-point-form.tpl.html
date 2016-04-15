@@ -1,18 +1,5 @@
 <hr/>
 <form class="row" (ngSubmit)="createPoint()">
-    <label for="main-point">Main Point</label>
-    <textarea
-        name="main-point"
-        class="form-control"
-        rows="1"
-        style="resize: none;"
-        minlength="20"
-        maxlength="150"
-        placeholder="Please enter your main point here. Max 150 Characters"
-        [(ngModel)]="newPoint.title"
-        required>
-    </textarea>
-    <br>
     <div id="NewPoint" class="row">
         <div class="col-xs-8">
             <label for="main-point-detail">

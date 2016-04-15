@@ -33,6 +33,10 @@
             <button class="ro-action-bar-item btn btn-sm btn-danger" (click)="editIssue(issue, $event, true)" *ngIf="issue.editIssue && issue.editIssue === true">
                 Cancel
             </button>
+            <button class="ro-action-bar-item btn btn-sm btn-danger" (click)="deleteIssue(issue._id)" *ngIf="isOwner(issue.owner_user_id)">
+                <i class="fa fa-close">
+                </i>
+            </button>
         </div>
     </div>
     <br>

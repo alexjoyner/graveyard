@@ -24,7 +24,6 @@ export class TopSupportComponent {
 		private _usersService: UsersService,
 		private _routeParams: RouteParams) { };
 
-
 	removeSupport(supportId: string) {
 		let answer = confirm(`Are you sure you want to delete this support point? This action can't be undone`);
 		if (answer === true) {
