@@ -1,39 +1,34 @@
 import {Component, Input, Output, EventEmitter} from 'angular2/core';
-import {VoteCellService} from './vote-cell.service';
+import {VoteService} from './vote-cell.service';
 import {AuthService} from './auth.service';
 @Component({
     selector: 'ro-vote-cell',
     templateUrl: 'templates/shared/vote-cell.tpl.html',
-    providers: [VoteCellService],
+    providers: [VoteService],
     styleUrls: ['styles/vote-cell.css']
 })
 export class VoteCellComponent {
-	@Input('sourceType') sourceType: string;
-	@Input('sourceId') sourceId: string;
-	@Input('score') score: number;
-	@Output() upVoted: EventEmitter<any> = new EventEmitter();
-	@Output() downVoted: EventEmitter<any> = new EventEmitter();
+	@Input() sourceType: string;
+	@Input() sourceId: string;
+	@Input() score: number;
+	@Output() modVote: EventEmitter<any> = new EventEmitter();
 	constructor(
-		private _voteCellService: VoteCellService,
+		private _voteService: VoteService,
 		private _authService: AuthService){}
 
-	vote(type: string, event: MouseEvent) {
+	vote(typeId: number, event: MouseEvent) {
 		event.stopPropagation();
-		/*if (this._authService.checkValid()) {
-			this._voteCellService.addVote(
-				this.sourceType,
+		if (this._authService.checkValid()) {
+			this._voteService.vote(
 				this.sourceId,
-				type)
+				typeId)
 				.subscribe(
-				success => {
-					(type === 'upvote')
-						?
-						this.upVoted.emit(null)
-						:
-						this.downVoted.emit(null);
-				},
-				err => console.log('Err: ', err)
+					data => {
+						console.log(data);
+						this.score += data.modAmount
+					},
+					err => console.log('Err: ', err)
 				);
-		}*/
+		}
 	}
 }

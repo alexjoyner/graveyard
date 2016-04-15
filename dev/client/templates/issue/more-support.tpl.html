@@ -44,11 +44,9 @@
                 <div class="ro-action-bar">
                     <ro-vote-cell
                         class="ro-action-bar-item"
-                        [sourceType]="'support'"
                         [sourceId]="support._id"
-                        [score]="support.ups - support.downs"
-                        (upVoted)="support.ups=support.ups+1"
-                        (downVoted)="support.downs=support.downs+1">
+                        [score]="support.score"
+                        (modVote)="support.ups=support.ups+$event">
                     </ro-vote-cell>
                     <div class="ro-inline-items">
                         <h4 class="ro-action-bar-item">

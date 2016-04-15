@@ -5,19 +5,17 @@ import {Http, Headers} from 'angular2/http';
 import {Config} from '../config/config';
 
 @Injectable()
-export class VoteCellService {
+export class VoteService {
 	private endpoint: string = Config.endpoint;
 	constructor(
 		private _http: Http) { }
 	/*POST*/
-	addVote(
-		srcType: string, 
+	vote( 
 		srcId: string, 
-		voteType: string){
+		voteType: number){
 		let body = JSON.stringify({
-			srcType: srcType,
 			thing_id: srcId,
-			vote_type: voteType
+			vote_type_id: voteType
 		});
 		const headers = new Headers();
 		headers.append('Content-Type', 'application/json');
@@ -28,7 +26,7 @@ export class VoteCellService {
 				'/votes/create',
 				body,
 				{ headers: headers })
-				.map(res => res);
+				.map(res => res.json());
 		}
 	}
 }

@@ -63,11 +63,9 @@
     <div class="ro-action-bar">
         <ro-vote-cell
             class="ro-action-bar-item"
-            [sourceType]="'issue'"
             [sourceId]="issue._id"
-            [score]="issue.ups - issue.downs"
-            (upVoted)="issue.ups=issue.ups+1"
-            (downVoted)="issue.downs=issue.downs+1">
+            [score]="issue.score"
+            (modVote)="issue.ups = issue.ups + $event">
         </ro-vote-cell>
         <div class="pull-right" *ngIf="isOwner(issue.owner_user_id)">
             <button class="btn btn-sm btn-danger" (click)="deleteIssue(issue, $event)">

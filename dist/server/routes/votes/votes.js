@@ -1,62 +1,120 @@
 'use strict';
 var express = require('express'),
     router = express.Router();
+var config = require('../../config/config.js');
+var jwt_verify = require('../../middleware/jwt_verify.js');
+// POSTGRES IMPLEMENTATION
+var pg = require('pg');
+var conString = config.db;
 
-var jwt_verify = require('../../middleware/jwt_verify.js')
 // !! route = '/votes'
 
 // ###########  POSTS  ###############
 // Post vote for issue
 router.post('/create', jwt_verify, function(req, res) {
-    console.log('REQ: ', req.body);
-    res.status(500).send({
-        message: 'Create vote not set up yet',
-        req: req.body
-    }).end();
-    // Step 1: 
-        // NO 
-            // Step 2: Create a couter for responses
-            // Step 3: Create new vote for user on issue
-            // Step 4: Modify score in isues
-        // YES 
-            // Step 2: Error, already voted
+    var user = req.decoded;
+    var info = req.body;
+    var queryString = `
+        SELECT
+            _id, vote_type_id
+        FROM
+            votes
+        WHERE
+            post_id = $1
+        AND
+            user_id = $2;`;
+    var queryParams = 
+        [info.thing_id, user.id];
+    pg.connect(conString, function(err, client, done) {
+        if (err) {
+            return console.error('error fetching client from pool', err);
+        }
+        client.query(queryString, queryParams, function(err, result) {
+            if (err) throw err;
+            console.log('RESULT: ', result.rows);
+            var newQuery;
+            var newParams;
+            var modAmount;
+            if(result.rows.length === 0){
+                newQuery = `
+                INSERT INTO votes
+                    (post_id, user_id, created_at, vote_type_id)
+                VALUES 
+                    (  $1,       $2,      $3,           $4);`;
+                newParams = 
+                    [info.thing_id, user.id, new Date, info.vote_type_id];
+                switch(info.vote_type_id){
+                    case 1:
+                        modAmount = +1;
+                        break;
+                    case 2:
+                        modAmount = -1;
+                        break;
+                }
+            }else{
+                newQuery = `
+                UPDATE
+                    votes
+                SET 
+                    vote_type_id = $2
+                WHERE
+                    _id = $1;`;
+                var newVoteType;
 
-/*    votes
-        .findOne({ // Step 1
-            $and: [{
-                'userId': profile.id
-            },{
-                'itemId': issueId
-            }]
-        })
-        .exec(function(err, vote){
-            if(err) throw err;
-            if(vote){ // Step 1.YES
-                res.status(500).send('Vote already cast').endl;
-            }else{ // Step 1.NO
-                var newVote = new votes();
-                newVote.itemId = issueId;
-                newVote.itemType = 1;
-                newVote.userId = profile.id;
-                newVote.voteType = voteType;
-                newVote.save(function(err){
-                    if(err) throw err;
-                    issues // Step 1.4
-                        .findOneAndUpdate(query, incOrder)
-                        .select('ups downs')
-                        .exec(function(err, issue) {
-                            if (err) throw err;
-                            if (!issue) {
-                                res.status(500).send('No Issue Found');
-                            } else {
-                                res.status(200).send(voteType + ' successful').end();
-                            }
-                        });
-                })
-                
+                // Check if the vote type is the one stored...
+                //      We are undoing a vote and setting neutral;
+                if(info.vote_type_id === result.rows[0].vote_type_id){
+                    switch(info.vote_type_id){
+                        case 1:
+                            modAmount = -1;
+                            break;
+                        case 2:
+                            modAmount = +1;
+                            break;
+                    }
+                    newVoteType = 3;
+                }else{
+                    // Checking when the vote is different than the one is stored
+                    /*
+                               CHECK TABLE
+                        --------------------------
+                        STORED  1     2     3
+                        SENT    1 X   1 +2  1 +1
+                        SENT    2 -2  2 X   2 -1
 
+                    */
+                    var stored = result.rows[0].vote_type_id;
+                    var sent = info.vote_type_id;
+                    console.log('SENT: ', sent);
+                    console.log('STORED: ', stored);
+                    switch(stored){
+                        case 1:
+                            modAmount = -2;
+                            break;
+                        case 2:
+                            modAmount = +2;
+                            break;
+                        case 3:
+                            if(sent === 1)
+                                modAmount = +1;
+                            else
+                                modAmount = -1;
+                            break;
+                    }
+                    console.log('RESULT: ', modAmount);
+                    newVoteType = info.vote_type_id
+                }
+                newParams = 
+                    [result.rows[0]._id, newVoteType];
             }
-        })*/
+            client.query(newQuery, newParams, function(err, newResult) {
+                //call `done()` to release the client back to the pool
+                done();
+                if (err) throw err;
+                res.status(200).send({modAmount: modAmount}).end();
+            });
+        });
+    });
     
 });
 module.exports = router;

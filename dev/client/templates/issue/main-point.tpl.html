@@ -17,11 +17,9 @@
     <div class="ro-action-bar ro-bar-left">
         <ro-vote-cell
             class="ro-action-bar-item"
-            [sourceType]="'point'"
             [sourceId]="point._id"
-            [score]="point.ups - point.downs"
-            (upVoted)="point.ups=point.ups+1"
-            (downVoted)="point.downs=point.downs+1">
+            [score]="point.score"
+            (modVote)="point.ups=point.ups+$event">
         </ro-vote-cell>
         <button
             *ngIf="isOwner(point.owner_user_id) && !point.editPoint || point.editPoint === false"
