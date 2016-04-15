@@ -5,17 +5,21 @@ import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
 import {Config} from '../config/config';
 import {AuthService} from './auth.service';
+import {GlobalHandlerService} from './globalHandler.service';
 @Injectable()
 export class PostsService {
 	private endpoint: string = Config.endpoint;
 	constructor(
 		private _http: Http,
-		private _authService: AuthService) {}
+		private _authService: AuthService,
+		private _globalHandlerService: GlobalHandlerService) {}
 	/* GET */
 	getAllPosts(): Observable<any> {
-		return this._http.get(
+		var req = this._http.get(
 			this.endpoint + '/posts/all')
-			.map(res => res.json());
+			.map(res => res.json())
+		return req;
+			
 	}
 	getPost(postId: string, pointType: string){
 		return this._http.get(

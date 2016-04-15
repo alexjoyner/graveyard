@@ -72,16 +72,12 @@ app.get('*', renderIndex);
 io.on('connection', function(socket) {
     console.log('A user just connected with id ' + socket.id);
     socket.on("change room", function(data) {
-        // this returns a list of all rooms this user is in
-        console.log('Sockets rooms: ', socket.rooms);
-        /*for (var room in socket.rooms) {
-        	console.log('LEAVING ROOM: ', room);
-            socket.leave(room);
-        }*/
-        console.log('JOINING ROOM: ', data.newroom);
-        socket.leaveAll();
-        socket.join(data.newroom);
-        console.log('Sockets rooms AFTER: ', socket.rooms);
+        for(room in socket.rooms){
+            if(socket.id !== room) socket.leave(room);
+        }
+        socket.join(data.newroom, function(){
+          console.log('rooms', socket.rooms); 
+        });
     });
     socket.on('disconnect', function() {
         console.log('user ' + socket.id + ' disconnected');

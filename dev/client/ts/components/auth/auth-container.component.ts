@@ -20,28 +20,9 @@ export class AuthContainerComponent{
 		private _usersService: UsersService) {};
 
 	login(){
-		this._authService.attemptLogin(this.user)
-			.subscribe(
-				data => {
-					console.log('DATA: ', data);
-					//if(this.remember){
-						localStorage.setItem('token', data.token);
-					//}
-					this._usersService.profile = data.profile;
-					this._router.navigate(['Home']);
-				},
-				err => console.log('Error: ', err))
+		this._authService.attemptLogin(this.user));
 	}
 	signUp(){
-		this._authService.attemptSignup(this.user)
-			.subscribe(
-				data => {
-					//if(this.remember){
-						localStorage.setItem('token', data.token);
-					//}
-					this._usersService.profile = data.profile;
-					this._router.navigate(['Home']);
-				},
-				err => console.log('Error: ', err))
+		this._authService.attemptSignup(this.user);
 	}
 }
