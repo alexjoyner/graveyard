@@ -6,26 +6,31 @@ import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
 import {VoteCellComponent} from '../../shared/vote-cell.component';
 import {AuthService} from '../../shared/auth.service';
 import {UsersService} from '../../shared/users.service';
+import {TagsService} from '../../shared/tags.service';
 @Component({
     selector: 'ro-home-issue-list',
     templateUrl: 'templates/home/home-issue-list.tpl.html',
     styleUrls: ['styles/home-issue.css'],
     directives: [ROUTER_DIRECTIVES, VoteCellComponent],
-    providers: [PostsService],
+    providers: [PostsService, TagsService],
     pipes: [SearchFilterPipe]
 })
 export class  HomeIssueListComponent implements OnInit{
 	@Input('searchText') searchText: string;
 	@Input('startQuestion') startQuestion: boolean;
 	@Output() cancel: EventEmitter<any> = new EventEmitter();
-	issues: Post[];
+	private issues: Post[];
+	private returnedTags: [{id: number, tag_name: string}];
+	private acceptedTags = [];
 	constructor(
 		private _postsService: PostsService,
 		private _router: Router,
 		private _authService: AuthService,
-		private _usersService: UsersService){
+		private _usersService: UsersService,
+		private _tagsService: TagsService){
 	}
 	ngOnInit(): any {
+		this.acceptedTags = [];
 		this.socket = io('/');
 		console.log('SOCKETS ROOMS: ', this.socket.rooms);
 		this.socket.emit('change room', { newroom: 'issues' })
@@ -46,16 +51,38 @@ export class  HomeIssueListComponent implements OnInit{
 				}
 			}
         }.bind(this));
+        this.socket.on('disconnect', function(){
+        	console.log('DISCONNECTED');
+        });
 		if (this._authService.checkValid()) {
 			this._postsService.getAllPosts()
-				.subscribe(
-				data => {
-					console.log(data);
-					this.issues = data;
-				},
-				err => console.log('err: ', err)
-				);
+				.subscribe(data => this.issues=data);
 		}
+	}
+	acceptTag(tag: { id: number, tag_name: string }) {
+		console.log(this.acceptedTags);
+		if (this.acceptedTags.length  < 5) {
+			if (this.acceptedTags.indexOf(tag) === -1) {
+				this.acceptedTags.push(tag);
+			}
+		}else{
+			console.log('You have to many tag');
+		}
+	}
+	removeTag(tag: { id: number, tag_name: string }) {
+		console.log(this.acceptedTags);
+		let index = this.acceptedTags.indexOf(tag);
+		this.acceptedTags.splice(index, 1);
+	}
+	searchTags(searchTerm: string){
+		console.log(searchTerm);
+		this._tagsService.getTags(searchTerm)
+			.subscribe(
+				data => {
+					this.returnedTags = data;
+				},
+				err => console.log('Error: ', err)
+			);
 	}
 	onCreate() {
 		let newIssue: Post = new Post(this.searchText, 1);
@@ -70,6 +97,7 @@ export class  HomeIssueListComponent implements OnInit{
 		}
 	}
 	onCancel(){
+		this.acceptedTags = [];
 		this.cancel.emit(null);
 	}
 	deleteIssue(issue: Post, event: MouseEvent){

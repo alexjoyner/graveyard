@@ -24,7 +24,7 @@
                 [score]="issue.score"
                 (modVote)="issue.ups=issue.ups+$event">
             </ro-vote-cell>
-            <button class="ro-action-bar-item btn btn-sm btn-info" (click)="editIssue(issue, $event)" *ngIf="issue.title && !issue.editIssue || issue.editIssue === false">
+            <button class="ro-action-bar-item btn btn-sm btn-info" (click)="editIssue(issue, $event)" *ngIf="issue.title && isOwner(issue.owner_user_id) && !issue.editIssue || issue.editIssue === false">
                 <i class="fa fa-edit">
                 </i>
             </button>

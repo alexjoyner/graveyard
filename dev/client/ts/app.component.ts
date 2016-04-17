@@ -36,18 +36,11 @@ export class AppComponent implements OnInit{
     
     ngOnInit(): any {
         //The below Needs to be fixed to get user when the app boots
-        if (localStorage.getItem('token')) {
-            this._usersService.getProfile()
-                .subscribe(
-                data => {
-                    this._usersService.profile = data;
-                    console.log('Stored profile: ', this._usersService.profile);
-                })
-        };
+        this._usersService.getProfile();
         this._authService.getLoggedOutEvent()
             .subscribe(
                 data => {
-                    this._router.navigate(['Home']);
+                    this._router.navigate(['Auth']);
                     this._usersService.profile = undefined;
                 })
     }

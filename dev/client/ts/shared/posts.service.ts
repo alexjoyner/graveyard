@@ -15,18 +15,36 @@ export class PostsService {
 		private _globalHandlerService: GlobalHandlerService) {}
 	/* GET */
 	getAllPosts(): Observable<any> {
+		const headers = new Headers();
+		headers.append('x-access-token',
+			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
 		var req = this._http.get(
-			this.endpoint + '/posts/all')
-			.map(res => res.json())
+			this.endpoint + '/posts/all',
+			{ headers: headers })
+			.map(res => res.json());
+		req.subscribe(
+			data => {
+				console.log('GOT POSTS');
+			},
+			err => {
+				this._globalHandlerService.emitStatusMessage({
+					status: err.status,
+					body: err._body
+				})
+			});
 		return req;
 			
 	}
-	getPost(postId: string, pointType: string){
+	getPost(postId: string, pointType: string) {
+		const headers = new Headers();
+		headers.append('x-access-token',
+			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
 		return this._http.get(
 			this.endpoint + '/posts/' + 
 			postId + 
 			'/' +
-			pointType)
+			pointType,
+			{ headers: headers })
 			.map(res => res.json());
 	}
 	/* POST */

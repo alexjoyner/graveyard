@@ -6,10 +6,13 @@ var jwt_verify = require('../../middleware/jwt_verify.js');
 // POSTGRES IMPLEMENTATION
 var pg = require('pg');
 var conString = config.db;
+
+// Special functions
+var sortPosts = require('../../specialFunctions/sortPosts.js');
 // !! route = '/posts'
 // ###########  GETS  ###############
 // get all
-router.get('/all', function(req, res) {
+router.get('/all', jwt_verify, function(req, res) {
     // CONFIGURE QUERY INFO
     var queryString = `
         SELECT *
@@ -28,13 +31,14 @@ router.get('/all', function(req, res) {
             if (!result.rows[0]) {
                 res.status(200).send([]).end();
             } else {
-                res.status(200).send(result.rows).end();
+                var sortedPosts = sortPosts(result.rows);
+                res.status(200).send(sortedPosts).end();
             }
         });
     });
 });
 // get one by id
-router.get('/:id/:type', function(req, res) {
+router.get('/:id/:type', jwt_verify, function(req, res) {
     var type = undefined;
     switch (req.params.type) {
         case 'yes':

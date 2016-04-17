@@ -6,9 +6,10 @@
     <div class="col-md-10">
         <div class="input-group">
             <div class="input-group-addon">
-                Search
+                <span *ngIf="!showForm">Search</span>
+                <span *ngIf="showForm"><b>ENTER</b></span>
             </div>
-            <input type="text" class="form-control" id="exampleInputAmount" [(ngModel)]="searchText" placeholder="main points" maxlength="150" />
+            <input type="text" class="form-control" id="exampleInputAmount" [(ngModel)]="searchText" placeholder="main point" maxlength="150" />
         </div>
     </div>
     <div class="col-md-2 text-center">
