@@ -48,7 +48,7 @@ export class PostsService {
 			.map(res => res.json());
 	}
 	/* POST */
-	insertPost(post: Post): Observable<any> {
+	insertPost({post: Post, tags: []}): Observable<any> {
 			const body = JSON.stringify(post);
 			const headers = new Headers();
 			headers.append('Content-Type', 'application/json');
