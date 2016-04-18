@@ -22,7 +22,7 @@ export class CreatePointFormComponent implements OnInit{
 
 	createPoint(){
 		this.newPoint.title = this.searchText;
-		this._postsService.insertPost(this.newPoint)
+		this._postsService.insertPost({post: this.newPoint, tags: []})
 		.subscribe(
 			pointData =>  console.log('SUCCESS creating point'),
 			err => console.log('err', err)

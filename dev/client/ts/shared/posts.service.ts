@@ -48,8 +48,8 @@ export class PostsService {
 			.map(res => res.json());
 	}
 	/* POST */
-	insertPost({post: Post, tags: []}): Observable<any> {
-			const body = JSON.stringify(post);
+	insertPost(data: {post: Post, tags: []}): Observable<any> {
+			const body = JSON.stringify(data);
 			const headers = new Headers();
 			headers.append('Content-Type', 'application/json');
 			headers.append('x-access-token',

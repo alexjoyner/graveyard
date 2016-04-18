@@ -28,6 +28,22 @@ export class TagsService {
 		return res;
 	}
 	/* POST */
+	postTag(tagName: string): Observable<any> {
+		const body = JSON.stringify({
+			tag_name: tagName
+		});
+		const headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		headers.append('x-access-token',
+			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
+		let res = this._http.post(
+			this.endpoint +
+			'/tags/create',
+			body,
+			{ headers: headers })
+			.map(res => res.json());
+		return res;
 
+	}
 	/* DELETE */
 }

@@ -41,5 +41,34 @@ router.get('/:searchTerm', jwt_verify, function(req, res){
 });
 // ###########  POSTS  ###############
 // Post a new tag if not found
+router.post('/create', jwt_verify, function(req, res) {
+    console.log('BODY: ', req.body);
+    var user = req.decoded;
+    var info = req.body;
+    var queryString = `
+        INSERT INTO
+          tags (
+          tag_name)
+        VALUES (
+          $1)
+        RETURNING
+            *`;
+    console.log(info);
+    var queryParams = 
+    [info.tag_name];
+    console.log(queryParams);
+    pg.connect(conString, function(err, client, done) {
+        if (err) {
+            return console.error('error fetching client from pool', err);
+        }
+        client.query(queryString, queryParams, function(err, result) {
+            //call `done()` to release the client back to the pool
+            done();
+            if(err) throw err;
+            console.log(result.rows[0]);
+            res.status(200).send(result.rows[0]).end();
+        });
+    });
+});
 
 module.exports = router;

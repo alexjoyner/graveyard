@@ -54,7 +54,7 @@
                         {{tag.tag_name}} <button class="btn btn-xs btn-success" (click)="acceptTag(tag)"><i class="fa fa-plus"></i></button>
                     </li>
                 </ul>
-                <p *ngIf="returnedTags && returnedTags.length > 0 && searchTagText.value.length > 0">CREATE TAG: {{searchTagText.value}} <button class="btn btn-xs btn-success" (click)="createTag(searchTagText.value)"><i class="fa fa-plus"></i></button></p>
+                <p *ngIf="searchTagText.value.length > 0">CREATE TAG: {{searchTagText.value}} <button class="btn btn-xs btn-success" (click)="createTag(searchTagText.value)"><i class="fa fa-plus"></i></button></p>
             </div>
             <div class="col-xs-6" style="max-height: 400px">
                 <h4><u>Accepted tags</u></h4>

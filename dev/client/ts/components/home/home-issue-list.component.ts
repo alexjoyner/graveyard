@@ -56,7 +56,10 @@ export class  HomeIssueListComponent implements OnInit{
         });
 		if (this._authService.checkValid()) {
 			this._postsService.getAllPosts()
-				.subscribe(data => this.issues=data);
+				.subscribe(data => {
+					console.log('ISSUES: ', data);
+					this.issues=data
+				});
 		}
 	}
 	acceptTag(tag: { id: number, tag_name: string }) {
@@ -68,6 +71,14 @@ export class  HomeIssueListComponent implements OnInit{
 		}else{
 			console.log('You have to many tag');
 		}
+	}
+	createTag(tagName: string){
+		this._tagsService.postTag(tagName)
+			.subscribe(
+				data => {
+					console.log('CREATED TAG: ', data);
+					this.acceptedTags.push(data);
+				})
 	}
 	removeTag(tag: { id: number, tag_name: string }) {
 		console.log(this.acceptedTags);
@@ -86,8 +97,12 @@ export class  HomeIssueListComponent implements OnInit{
 	}
 	onCreate() {
 		let newIssue: Post = new Post(this.searchText, 1);
+		let tags: [] = [];
+		for (var i = this.acceptedTags.length - 1; i >= 0; i--) {
+			tags.push(this.acceptedTags[i]._id)
+		}
 		if (this._authService.checkValid()) {
-			this._postsService.insertPost(newIssue)
+			this._postsService.insertPost({'post': newIssue, 'tags': tags})
 				.subscribe(
 					data => {
 						console.log('Success Posting Issue');

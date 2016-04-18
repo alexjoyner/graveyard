@@ -22,7 +22,7 @@ export class AddSupportComponent implements OnInit{
 	createSupport(){
 		this.newSupport.issue_id = +this.issueId;
 		this.newSupport['correspond_main_point_type_id'] = this.main_point_type_id;
-		this._postsService.insertPost(this.newSupport)
+		this._postsService.insertPost({post: this.newSupport, tags: []})
 		.subscribe(
 			data => {
 				console.log('SUCCESS');

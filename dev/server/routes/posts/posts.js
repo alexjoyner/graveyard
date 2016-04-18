@@ -6,7 +6,6 @@ var jwt_verify = require('../../middleware/jwt_verify.js');
 // POSTGRES IMPLEMENTATION
 var pg = require('pg');
 var conString = config.db;
-
 // Special functions
 var sortPosts = require('../../specialFunctions/sortPosts.js');
 // !! route = '/posts'
@@ -15,10 +14,14 @@ var sortPosts = require('../../specialFunctions/sortPosts.js');
 router.get('/all', jwt_verify, function(req, res) {
     // CONFIGURE QUERY INFO
     var queryString = `
-        SELECT *
-        FROM posts
+        SELECT 
+            *
+        FROM 
+            posts
         WHERE
-        post_type_id = 1;
+            post_type_id = 1
+        LIMIT
+        20;
     `;
     pg.connect(conString, function(err, client, done) {
         if (err) {
@@ -85,7 +88,20 @@ router.get('/:id/:type', jwt_verify, function(req, res) {
                     p.point_type_id = $2
                 GROUP BY 
                     p._id
-            )a ) as points
+            )a ) as points,
+            (
+            SELECT array_to_json(array_agg(row_to_json(t)))
+            FROM (
+            SELECT
+                *
+            FROM 
+                post_tags_xref
+            LEFT JOIN
+                tags
+            ON
+                (post_tags_xref.tag_id = tags._id)
+            WHERE
+                post_id = $1) t) as tags
         FROM
             posts
         WHERE
@@ -102,7 +118,7 @@ router.get('/:id/:type', jwt_verify, function(req, res) {
                 if (!result.rows[0]) {
                     res.status(500).send('no issue found').end();
                 } else {
-                    if(result.rows[0].points === null){
+                    if (result.rows[0].points === null) {
                         result.rows[0].points = [];
                     }
                     res.status(200).send(result.rows[0]).end();
@@ -116,7 +132,8 @@ router.get('/:id/:type', jwt_verify, function(req, res) {
 router.post('/newPost', jwt_verify, function(req, res) {
     console.log(new Date);
     var user = req.decoded;
-    var info = req.body;
+    var postInfo = req.body.post;
+    var tagsInfo = req.body.tags;
     var queryString = `
         INSERT INTO
           posts (
@@ -125,37 +142,79 @@ router.post('/newPost', jwt_verify, function(req, res) {
           $1,$2,$3,$4,$5,$6,$7,$8,$9)
         RETURNING
             *`;
-    console.log(user);
-    var queryParams = 
-    [user.id, info.title, info.detail, info.post_type_id, info.parent_id,
-    info.point_type_id, info.source, info.source_type_id, new Date];
+    console.log(postInfo);
+    console.log(tagsInfo);
+    var queryParams = [user.id, postInfo.title, postInfo.detail, postInfo.post_type_id, postInfo.parent_id,
+        postInfo.point_type_id, postInfo.source, postInfo.source_type_id, new Date
+    ];
     console.log(queryParams);
     pg.connect(conString, function(err, client, done) {
         if (err) {
             return console.error('error fetching client from pool', err);
         }
         client.query(queryString, queryParams, function(err, result) {
-            //call `done()` to release the client back to the pool
-            done();
-            if (err) throw err;
-            var postData = result.rows[0];
-
-            var type;
-
-            if(info.post_type_id === 1){
-                type = (info.point_type_id === 1)? 'yes' : 'no';
-                req.io.to('issues').emit('NewIssue', result.rows[0])
-            }else
-            if(info.post_type_id === 2){
-                type = (info.point_type_id === 1)? 'yes' : 'no';
-                req.io.to('issue'+result.rows[0].parent_id+'/'+type).emit('NewPost', postData)
-            }else
-            if(info.post_type_id === 3){
-                type = info.correspond_main_point_type_id;
-                console.log('New support: ', 'issue'+info.issue_id+'/'+type);
-                req.io.to('issue'+info.issue_id+'/'+type).emit('NewPost', postData)
+            if (postInfo.post_type_id === 1) {
+                if (err) throw err;
+                var buildStatement = function(rows) {
+                    var params = []
+                    var chunks = []
+                    for (var i = 0; i < rows.length; i++) {
+                        var row = rows[i]
+                        var valueClause = []
+                        params.push(result.rows[0]._id)
+                        valueClause.push('$' + params.length)
+                        params.push(row)
+                        valueClause.push('$' + params.length)
+                        chunks.push('(' + valueClause.join(', ') + ')')
+                    }
+                    return {
+                        text: 'INSERT INTO post_tags_xref(post_id, tag_id) VALUES ' + chunks.join(', '),
+                        values: params
+                    }
+                }
+                console.log('TAG INFO: ', tagsInfo);
+                console.log(buildStatement(tagsInfo));
+                client.query(buildStatement(tagsInfo), function(err, postTagsResult) {
+                    // return client back to the pool
+                    done();
+                    if (err) throw err;
+                    var postData = result.rows[0];
+                    var type;
+                    if (postInfo.post_type_id === 1) {
+                        type = (postInfo.point_type_id === 1) ? 'yes' : 'no';
+                        req.io.to('issues').emit('NewIssue', result.rows[0])
+                    } else
+                    if (postInfo.post_type_id === 2) {
+                        type = (postInfo.point_type_id === 1) ? 'yes' : 'no';
+                        req.io.to('issue' + result.rows[0].parent_id + '/' + type).emit('NewPost', postData)
+                    } else
+                    if (postInfo.post_type_id === 3) {
+                        type = postInfo.correspond_main_point_type_id;
+                        console.log('New support: ', 'issue' + postInfo.issue_id + '/' + type);
+                        req.io.to('issue' + postInfo.issue_id + '/' + type).emit('NewPost', postData)
+                    }
+                    res.status(200).send({
+                        success: true
+                    }).end();
+                });
+            }else{
+                done();
+                if(err) throw err;
+                var postData = result.rows[0];
+                var type;
+                if (postInfo.post_type_id === 2) {
+                    type = (postInfo.point_type_id === 1) ? 'yes' : 'no';
+                    req.io.to('issue' + result.rows[0].parent_id + '/' + type).emit('NewPost', postData)
+                } else
+                if (postInfo.post_type_id === 3) {
+                    type = postInfo.correspond_main_point_type_id;
+                    console.log('New support: ', 'issue' + postInfo.issue_id + '/' + type);
+                    req.io.to('issue' + postInfo.issue_id + '/' + type).emit('NewPost', postData)
+                }
+                res.status(200).send({
+                    success: true
+                }).end();
             }
-            res.status(200).send({success: true}).end();
         });
     });
 });
@@ -191,8 +250,7 @@ router.post('/updatePost', jwt_verify, function(req, res) {
 router.delete('/deletePost/:postId/:issueId/:mainPointType', jwt_verify, function(req, res) {
     // Catch incoming VARS if undefined
     var input_issueId = +req.params.issueId;
-    var input_mainPointType = 
-        (req.params.mainPointType === 'undefined')? undefined : req.params.mainPointType;
+    var input_mainPointType = (req.params.mainPointType === 'undefined') ? undefined : req.params.mainPointType;
     pg.connect(conString, function(err, client, done) {
         if (err) {
             return console.error('error fetching client from pool', err);
@@ -213,17 +271,14 @@ router.delete('/deletePost/:postId/:issueId/:mainPointType', jwt_verify, functio
             var postDeleted = result.rows[0];
             var mainPointType;
             var pointTypeFromId;
-
             var issue_id,
                 support_id,
                 main_point_id;
-
             // Catch point type if deleted a main point
-            if(postDeleted.post_type_id === 2){
-                pointTypeFromId = (+postDeleted.point_type_id === 1)? 'yes' : 'no';
+            if (postDeleted.post_type_id === 2) {
+                pointTypeFromId = (+postDeleted.point_type_id === 1) ? 'yes' : 'no';
             }
-
-            switch(postDeleted.post_type_id){
+            switch (postDeleted.post_type_id) {
                 case 1: // Issue
                     issue_id = postDeleted._id;
                     main_point_id = null;
@@ -243,33 +298,31 @@ router.delete('/deletePost/:postId/:issueId/:mainPointType', jwt_verify, functio
                     mainPointType = input_mainPointType;
                     break;
             }
-
             // Emit template for all types
             var emitPayload = {
-                post_type_id : postDeleted.post_type_id,
-                owner_user_id : postDeleted.owner_user_id,
-                issue_id : issue_id,
-                main_point_id :  main_point_id,
-                support_id : support_id,
-                main_point_type : mainPointType
+                post_type_id: postDeleted.post_type_id,
+                owner_user_id: postDeleted.owner_user_id,
+                issue_id: issue_id,
+                main_point_id: main_point_id,
+                support_id: support_id,
+                main_point_type: mainPointType
             }
-
             console.log('Main point type: ' + mainPointType);
             console.log('Payload: ', JSON.stringify(emitPayload));
-
             // Deleted a support point or main point
-            if(mainPointType !== null){
+            if (mainPointType !== null) {
                 // Notify just the people looking at the main cooresponing
                 //    main point type half of the issue
-                req.io.to('issue'+issue_id+'/'+mainPointType).emit('DeletedPost', emitPayload);
-            }else{ // Deleted an issue
+                req.io.to('issue' + issue_id + '/' + mainPointType).emit('DeletedPost', emitPayload);
+            } else { // Deleted an issue
                 // Notify everyone on issues page
-                req.io.to('issues').emit('DeletedIssue', {_id : postDeleted._id});
+                req.io.to('issues').emit('DeletedIssue', {
+                    _id: postDeleted._id
+                });
                 // Notify everyone looking at the issue
-                req.io.to('issue'+issue_id+'/yes').emit('DeletedPost', emitPayload);
-                req.io.to('issue'+issue_id+'/no').emit('DeletedPost', emitPayload); 
-            } 
-
+                req.io.to('issue' + issue_id + '/yes').emit('DeletedPost', emitPayload);
+                req.io.to('issue' + issue_id + '/no').emit('DeletedPost', emitPayload);
+            }
             res.status(200).send('DELETED').end();
         });
     });

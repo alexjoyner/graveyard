@@ -1,12 +1,13 @@
 <div>
     <div>
         <div *ngIf="!issue.editIssue || issue.editIssue === false">
+            <div style="display: inline">   <h4 style="display: inherit; margin-right: 6px;" *ngFor="#tag of issue.tags" ><span class="label label-info text center">{{tag.tag_name}}</span></h4></div> 
             <h2 class="text-center">
                 {{issue.title}} <span [hidden]="issue.title !== ''">Loading main question</span>
             </h2>
             <h5 class="text-center">
                 {{issue.detail}}
-            </h5>      
+            </h5>  
             <!-- <p class="text-center" *ngIf="issue.owner_user_id !== ''">
                 Created by {{issue.owner_user_id}} on {{stringToDate(issue.created_at)}}
             </p> -->
