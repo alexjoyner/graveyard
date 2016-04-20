@@ -10056,16 +10056,6 @@ button.close {
     display: none !important;
   }
 }
-body {
-  font-family: "Roboto", Arial, sans-serif;
-}
-
-.vertical-center {
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
 .ro-action-bar {
   display: block;
   padding: 10px;
@@ -10074,5 +10064,78 @@ body {
   display: inline-block;
 }
 .ro-action-bar .ro-inline-items .ro-action-bar-item {
+  display: inherit;
+}
+
+.HomeIssue {
+  margin: 0 auto;
+  border: 1px solid #dddddd;
+  margin-bottom: 10px;
+  min-height: 100px;
+  max-width: 728px;
+}
+.HomeIssue .deleteButton {
+  float: right;
+  margin: 10px;
+  z-index: 2;
+  bottom: 0px;
+}
+
+.ro-point {
+  padding: 15px;
+  border-radius: 4px;
+}
+.ro-point .ro-contents {
+  min-height: 50px;
+}
+
+.ro-main-point {
+  background-color: #EEEEEE;
+}
+
+.meta {
+  background-color: #5cb85c;
+}
+
+.credible {
+  background-color: #5cb85c;
+}
+
+.web {
+  background-color: #f0ad4e;
+}
+
+.opinion {
+  background-color: #f0ad4e;
+}
+
+.media {
+  background-color: #d9534f;
+}
+
+.other {
+  background-color: #337ab7;
+}
+
+.proof {
+  background-color: #5cb85c;
+}
+
+.disproof {
+  background-color: #d9534f;
+}
+
+.vote-cell {
+  display: inline;
+}
+.vote-cell .upvote-btn {
+  display: inherit;
+}
+.vote-cell .upvote-btn .score {
+  margin-left: 6px;
+  padding-left: 6px;
+  border-left: 1px solid grey;
+}
+.vote-cell .downvote-btn {
   display: inherit;
 }
