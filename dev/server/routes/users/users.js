@@ -15,13 +15,22 @@ router.get('/profile', jwt_verify, function(req, res){
       }
       var queryString = `
         SELECT 
-            *
+            *,
+            (SELECT array_to_json(array_agg(row_to_json(v)))
+            FROM (
+                SELECT
+                    post_id, vote_type_id
+                FROM 
+                    votes
+                WHERE 
+                    user_id = $1
+            )v) as votes
         FROM users
         WHERE
-            users.email = $1
+            users._id = $1
         ;
       `;
-      client.query(queryString, [req.decoded.email], function(err, result) {
+      client.query(queryString, [req.decoded.id], function(err, result) {
         //call `done()` to release the client back to the pool
         done();
         if (err) throw err;

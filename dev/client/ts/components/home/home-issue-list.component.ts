@@ -53,6 +53,7 @@ export class  HomeIssueListComponent implements OnInit{
         }.bind(this));
         this.socket.on('disconnect', function(){
         	console.log('DISCONNECTED');
+        	location.reload();
         });
 		if (this._authService.checkValid()) {
 			this._postsService.getAllPosts()

@@ -60,7 +60,6 @@ router.post('/create', jwt_verify, function(req, res) {
                 WHERE
                     _id = $1;`;
                 var newVoteType;
-
                 // Check if the vote type is the one stored...
                 //      We are undoing a vote and setting neutral;
                 if(info.vote_type_id === result.rows[0].vote_type_id){
@@ -111,7 +110,7 @@ router.post('/create', jwt_verify, function(req, res) {
                 //call `done()` to release the client back to the pool
                 done();
                 if (err) throw err;
-                res.status(200).send({modAmount: modAmount}).end();
+                res.status(200).send({modAmount: modAmount, modTo: newVoteType | info.vote_type_id}).end();
             });
         });
     });

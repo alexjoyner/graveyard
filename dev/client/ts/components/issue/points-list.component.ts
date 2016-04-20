@@ -48,6 +48,10 @@ export class PointsListComponent implements OnInit{
 					break;
 			}
         }.bind(this));
+        this.socket.on('disconnect', function(){
+        	console.log('DISCONNECTED');
+        	location.reload();
+        });
 		this.socket.on('DeletedPost', function(postData) {
 			console.log('Delete postData: ', postData);
 			switch(postData.post_type_id){

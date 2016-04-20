@@ -3,12 +3,14 @@ import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
 import {Http, Headers} from 'angular2/http';
 import {Config} from '../config/config';
+import {UsersService} from './users.service';
 
 @Injectable()
 export class VoteService {
 	private endpoint: string = Config.endpoint;
 	constructor(
-		private _http: Http) { }
+		private _http: Http,
+		private _usersService: UsersService) {}
 	/*POST*/
 	vote( 
 		srcId: string, 
