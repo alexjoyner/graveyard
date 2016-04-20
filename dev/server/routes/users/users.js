@@ -37,6 +37,9 @@ router.get('/profile', jwt_verify, function(req, res){
         if (!result.rows[0]) {
             res.status(500).send('no issues found').end();
         } else {
+            if(!result.rows[0]['votes']){
+                result.rows[0]['votes'] = [];
+            }
             res.status(200).send(result.rows[0]).end();
         }
       });

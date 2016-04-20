@@ -1,3 +1,3 @@
-<div class="alert alert-danger" role="alert" *ngIf="message !== null">
+<div class="alert" [ngClass]="{'alert-danger': classType === 'danger','alert-info': classType === 'info'}" role="alert" *ngIf="message !== null">
 	<h1 class="text-center">{{message}}</h1>
 </div>

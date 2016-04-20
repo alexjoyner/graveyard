@@ -18,7 +18,7 @@ var tsProject = typescript.createProject('tsconfig.json');
 
 //  ******** DEVELOPMENT FILES ********
 // -------------------------------------
-var dev_scss = 'dev/client/scss/';
+var dev_sass = 'dev/client/sass/';
 var dev_tpl = 'dev/client/templates/';
 var dev_ts = 'dev/client/ts/';
 var dev_index = 'dev/client/index.html';
@@ -74,10 +74,10 @@ gulp.task('build-css', function() {
         .pipe(gulp.dest(dist_fonts + '/bootstrap'));
     gulp.src('node_modules/font-awesome/fonts/*')
         .pipe(gulp.dest(dist_fonts));
-    gulp.src(dev_scss + '*.scss')
+    return gulp.src(dev_sass + '*.sass')
         .pipe(compass({
             css: dist_css,
-            sass: dev_scss
+            sass: dev_sass
         }))
         .pipe(gulp.dest(dist_css));
 });
@@ -107,7 +107,7 @@ gulp.task('build-server', function(){
 });
 gulp.task('watch', function() {
     gulp.watch(dev_ts + '**/*.ts', ['build-js']);
-    gulp.watch(dev_scss + '**/*.scss', ['build-css']);
+    gulp.watch(dev_sass + '**/*.sass', ['build-css']);
     gulp.watch(dev_tpl + '**/*.html', ['build-html']);
     gulp.watch(dev_index, ['build-html']);
     gulp.watch(dev_server_js, ['build-server']);

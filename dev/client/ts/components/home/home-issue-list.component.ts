@@ -7,6 +7,7 @@ import {VoteCellComponent} from '../../shared/vote-cell.component';
 import {AuthService} from '../../shared/auth.service';
 import {UsersService} from '../../shared/users.service';
 import {TagsService} from '../../shared/tags.service';
+import {GlobalHandlerService} from '../../shared/globalHandler.service';
 @Component({
     selector: 'ro-home-issue-list',
     templateUrl: 'templates/home/home-issue-list.tpl.html',
@@ -27,7 +28,8 @@ export class  HomeIssueListComponent implements OnInit{
 		private _router: Router,
 		private _authService: AuthService,
 		private _usersService: UsersService,
-		private _tagsService: TagsService){
+		private _tagsService: TagsService,
+		private _globalHandler: GlobalHandlerService){
 	}
 	ngOnInit(): any {
 		this.acceptedTags = [];
@@ -52,9 +54,12 @@ export class  HomeIssueListComponent implements OnInit{
 			}
         }.bind(this));
         this.socket.on('disconnect', function(){
-        	console.log('DISCONNECTED');
-        	location.reload();
-        });
+        	console.log('DISCONNECTED', );
+        	this._globalHandler.emitStatusMessage({
+        		status: 999, 
+        		body: 'Refresh to receive updates'
+        	});
+        }.bind(this));
 		if (this._authService.checkValid()) {
 			this._postsService.getAllPosts()
 				.subscribe(data => {

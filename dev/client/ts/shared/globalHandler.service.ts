@@ -11,6 +11,9 @@ export class GlobalHandlerService {
 			this.dataChangeObserver = observer;
 		});
 	}
+	init(){
+		console.log('GLOBAL HANDLER INIT');
+	}
 	emitStatusMessage(data: {status: number, body: string}){
 		console.log('EMIT STATUS: ', data);
 		this.data = data;

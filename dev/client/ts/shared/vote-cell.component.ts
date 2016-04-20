@@ -26,11 +26,9 @@ export class VoteCellComponent implements OnInit{
 				switch (this._usersService.profile.votes[i].vote_type_id) {
 					case 1:
 						this.upVoted = true;
-						console.log('UPVOTED: ', this.sourceId);
 						break;
 					case 2:
 						this.downVoted = true;
-						console.log('DOWNVOTED: ', this.sourceId);
 						break;
 				}
 			}

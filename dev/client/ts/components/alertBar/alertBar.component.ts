@@ -15,6 +15,7 @@ export class AlertBarComponent{
 	}
 
 	emitStatus(data: {status: number, body: string}){
+		let keep: boolean;
 		switch (data.status){
 			case 500:
 				this.message = data.body;
@@ -27,11 +28,18 @@ export class AlertBarComponent{
 				this.message = data.body;
 				this.classType = 'danger';
 				break;
+			case 999:
+				this.message = data.body;
+				this.classType = 'info';
+				keep = true;
+				break;
 		}
-		setTimeout(() => {
-			this.message = null;
-			this.classType = null;
-		}, 5000);
+		if(!keep){
+			setTimeout(() => {
+				this.message = null;
+				this.classType = null;
+			}, 5000);	
+		}
 	}
 
 }
