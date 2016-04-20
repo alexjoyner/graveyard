@@ -5,8 +5,8 @@ import {UsersService} from './users.service';
 @Component({
     selector: 'ro-vote-cell',
     templateUrl: 'templates/shared/vote-cell.tpl.html',
-    providers: [VoteService],
-    styleUrls: ['styles/vote-cell.css']
+    providers: [VoteService]
+    //styleUrls: ['styles/vote-cell.css']
 })
 export class VoteCellComponent implements OnInit{
 	@Input() sourceType: string;

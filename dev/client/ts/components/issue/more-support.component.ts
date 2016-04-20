@@ -7,8 +7,8 @@ import {RouteParams} from 'angular2/router';
 @Component({
     selector: 'ro-more-support',
     templateUrl: 'templates/issue/more-support.tpl.html',
-    directives: [VoteCellComponent],
-    styleUrls: ['styles/support.css', 'styles/point.css']
+    directives: [VoteCellComponent]
+    //styleUrls: ['styles/support.css', 'styles/point.css']
 })
 export class MoreSupportComponent {
 	@Input('supports') supports: Post[];

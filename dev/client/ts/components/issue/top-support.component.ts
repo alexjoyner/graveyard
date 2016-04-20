@@ -7,8 +7,8 @@ import {RouteParams} from 'angular2/router';
 @Component({
     selector: 'ro-top-support',
     templateUrl: 'templates/issue/top-support.tpl.html',
-    directives: [VoteCellComponent],
-    styleUrls: ['styles/point.css', 'styles/support.css']
+    directives: [VoteCellComponent]
+    //styleUrls: ['styles/point.css', 'styles/support.css']
 })
 export class TopSupportComponent {
 	@Input('support') support: Post;

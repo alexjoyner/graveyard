@@ -7,8 +7,8 @@ import { UsersService} from '../../shared/users.service';
 @Component({
     selector: 'ro-main-point',
     templateUrl: 'templates/issue/main-point.tpl.html',
-    directives: [VoteCellComponent, EditPointComponent],
-    styleUrls: ['styles/point.css']
+    directives: [VoteCellComponent, EditPointComponent]
+    //styleUrls: ['styles/point.css']
 })
 export class MainPointComponent {
 	@Input('point') point: Point;

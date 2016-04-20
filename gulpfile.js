@@ -74,11 +74,12 @@ gulp.task('build-css', function() {
         .pipe(gulp.dest(dist_fonts + '/bootstrap'));
     gulp.src('node_modules/font-awesome/fonts/*')
         .pipe(gulp.dest(dist_fonts));
-    return gulp.src(dev_sass + '*.sass')
+    return gulp.src(dev_sass + 'app.sass')
         .pipe(compass({
             css: dist_css,
             sass: dev_sass
         }))
+
         .pipe(gulp.dest(dist_css));
 });
 
