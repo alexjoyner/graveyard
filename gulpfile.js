@@ -79,7 +79,6 @@ gulp.task('build-css', function() {
             css: dist_css,
             sass: dev_sass
         }))
-
         .pipe(gulp.dest(dist_css));
 });
 
@@ -109,6 +108,7 @@ gulp.task('build-server', function(){
 gulp.task('watch', function() {
     gulp.watch(dev_ts + '**/*.ts', ['build-js']);
     gulp.watch(dev_sass + '**/*.sass', ['build-css']);
+    gulp.watch(dev_sass + '**/*.scss', ['build-css']);
     gulp.watch(dev_tpl + '**/*.html', ['build-html']);
     gulp.watch(dev_index, ['build-html']);
     gulp.watch(dev_server_js, ['build-server']);

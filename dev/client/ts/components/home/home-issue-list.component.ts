@@ -92,7 +92,6 @@ export class  HomeIssueListComponent implements OnInit{
 		this.acceptedTags.splice(index, 1);
 	}
 	searchTags(searchTerm: string){
-		console.log(searchTerm);
 		this._tagsService.getTags(searchTerm)
 			.subscribe(
 				data => {

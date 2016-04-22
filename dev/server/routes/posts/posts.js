@@ -21,7 +21,7 @@ router.get('/all', jwt_verify, function(req, res) {
         WHERE
             post_type_id = 1
         LIMIT
-        20;
+            20;
     `;
     pg.connect(conString, function(err, client, done) {
         if (err) {

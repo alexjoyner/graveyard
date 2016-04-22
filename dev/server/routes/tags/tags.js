@@ -20,11 +20,14 @@ router.get('/:searchTerm', jwt_verify, function(req, res){
       var queryString = `
         SELECT 
             *
-        FROM tags
+        FROM 
+            tags
         WHERE 
             tag_name
         LIKE
             $1
+        LIMIT
+            5
         ;
       `;
       client.query(queryString, ['%'+req.params.searchTerm+'%'], function(err, result) {

@@ -67,6 +67,7 @@ module.exports = function(passport) {
                             //call `done()` to release the client back to the pool
                             doneConnect();
                             if (err) throw err;
+                            result.rows[0]['votes'] = [];
                             var token = jwt.sign({
                                 id: newUser.rows[0]._id,
                                 email: newUser.rows[0].email
@@ -108,7 +109,6 @@ module.exports = function(passport) {
                 ;
               `;
               client.query(queryString, [email], function(err, result) {
-                doneConnect();
                 if (err)
                     return done(err);
                 if (!result.rows[0]) {
@@ -121,20 +121,39 @@ module.exports = function(passport) {
                         message: 'Invalid password'
                     });
                 }else {
-                    // if user is found and password is right
-                    // create a token
-                    var token = jwt.sign({
-                        id: result.rows[0]._id,
-                        email: result.rows[0].email
-                    }, superSecret, {
-                      expiresIn: 1440 * 60 // <-- expires in 24 hours
-                    });
-                    return done(null, {
-                      profile: result.rows[0],
-                      success: true,
-                      message: 'Enjoy your token!',
-                      token: token
-                    });
+                    client.query(`
+                        SELECT
+                            post_id, vote_type_id
+                        FROM 
+                            votes
+                        WHERE 
+                            user_id = $1`, [result.rows[0]._id],
+                    function(verr, votes){
+                        doneConnect();
+                        if (verr)
+                            return done(verr);
+                        if (!votes.rows) {
+                            return done(null, false, {
+                                message: 'Invalid Email'
+                            });
+                        }else{
+                            result.rows[0]['votes'] = votes.rows;
+                            // if user is found and password is right
+                            // create a token
+                            var token = jwt.sign({
+                                id: result.rows[0]._id,
+                                email: result.rows[0].email
+                            }, superSecret, {
+                              expiresIn: 1440 * 60 // <-- expires in 24 hours
+                            });
+                            return done(null, {
+                              profile: result.rows[0],
+                              success: true,
+                              message: 'Enjoy your token!',
+                              token: token
+                            });
+                        }
+                    })
                 }
               });
             });
