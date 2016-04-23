@@ -6,6 +6,54 @@
     <h4 id="SubHeader" class="text-center">
         An app to help answer the most controversial questions
     </h4>
+    <h4 class="text-center">
+        <label for="step-1-welcome">
+            <a class="btn btn-success">See How It Works!</a>
+        </label>
+    </h4>
+    <input type="radio" id="end-tut" name="tut">
+    <input type="radio" id="step-1-welcome" name="tut">
+    <input type="radio" id="step-2-system" name="tut">
+    <input type="radio" id="step-3-issues" name="tut">
+    <div class="ro-modal">
+        <label for="end-tut" id="ModalClose">
+            <a class="btn btn-default">Close</a>
+        </label>
+        <div id="step-1-modal-container">
+            <h3 class="text-center">Welcome To MetaTruth!</h3>
+            <p class="text-center">
+                This app is designed to help answer the most complex and
+                controversial issues that our society faces
+            </p>
+            <div class="text-center">
+                <label for="step-2-system">
+                    <a class="btn btn-info">Ahh, Tell me more</a>
+                </label>
+            </div>
+        </div>
+        <div id="step-2-modal-container">
+            <h5 class="text-center">
+                MetaTruth is a three tier system consisting of:
+            </h5>
+            <ol>
+                <li>Issues</li>
+                <li>Main Points</li>
+                <li>Support Points</li>
+            </ol>
+            <div class="text-center">
+                <label for="step-3-issues">
+                    <a class="btn btn-info">Ok, How do these work?</a>
+                </label>
+            </div>
+        </div>
+        <div id="step-3-modal-container">
+            <h2>Issues</h2>
+            <h4>On MetaTruth, everything is rooted back to main issues. Issues are the core question to the conversations that take place on the site.</h4>
+            <h5>NOTE: You will notice that on every type of post, there is the ability to vote the post up or down. Generally speaking, you should upvote an issue if you think it is quality/important to our society, and downvote irrelevant points.</h5>
+        </div>
+        <div id="step-3-2-modal-container">
+        </div>
+    </div>
     <!-- Tab Bar: Tab to issue list type -->
    <!--  <ul class="ro-nav ro-nav-tabs">
         <li role="presentation" class="ro-tab active">
@@ -36,7 +84,7 @@
             </div>
         </div>
         <div class="col-md-2 text-center">
-            <button class="btn btn-md btn-success" (click)="startQuestion = !startQuestion" [disabled]="searchText === ''">
+            <button class="btn btn-md btn-success" (click)="startQuestion = !startQuestion" [disabled]="searchText === ''" title="try searching for an issue first to see if your issue already exists">
                 Start New Issue
             </button>
         </div>
