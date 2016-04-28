@@ -5,3 +5,7 @@
 /.gulp-scss-cache
 /dev/client/sass/0-plugins
 /dist_client/client/bundle.min.js
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

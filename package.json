@@ -1,9 +1,10 @@
 {
-  "name": "angular2-quickstart",
-  "version": "1.0.0",
+  "name": "metatruth",
+  "version": "1.0.0-Alpha.8.5",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack --watch"
+    "build": "webpack --watch",
+    "production": "NODE_ENV='production' node server.js"
   },
   "license": "ISC",
   "dependencies": {

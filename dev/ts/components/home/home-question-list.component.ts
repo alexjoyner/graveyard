@@ -28,13 +28,24 @@ export class  HomeQuestionListComponent implements OnInit{
 	private questions: Post[];
 	private returnedTags: [{id: number, tag_name: string}];
 	private acceptedTags = [];
+	private dataReturned: boolean = false;
 	constructor(
 		private _postsService: PostsService,
 		private _router: Router,
 		private _authService: AuthService,
 		private _usersService: UsersService,
 		private _tagsService: TagsService,
-		private _globalHandler: GlobalHandlerService){
+		private _globalHandler: GlobalHandlerService) {
+		if (_authService.checkValid()) {
+			_postsService.getAllPosts()
+				.subscribe(data => {
+					console.log('ISSUES START: ', this.questions);
+					console.log('ISSUES: ', data);
+					this.questions = data;
+					console.log('ISSUES after: ', this.questions);
+					this.dataReturned = true;
+				});
+		}
 	}
 	ngOnInit(): any {
 		this.acceptedTags = [];
@@ -65,13 +76,6 @@ export class  HomeQuestionListComponent implements OnInit{
         		body: 'Refresh to receive updates'
         	});
         }.bind(this));
-		if (this._authService.checkValid()) {
-			this._postsService.getAllPosts()
-				.subscribe(data => {
-					console.log('ISSUES: ', data);
-					this.questions=data
-				});
-		}
 	}
 	acceptTag(tag: { id: number, tag_name: string }) {
 		console.log(this.acceptedTags);

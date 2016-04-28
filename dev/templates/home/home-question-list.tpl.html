@@ -1,9 +1,3 @@
-<!--
-    <ro-new-question-form
-        *ngIf="startQuestion"
-        (searchText)="searchText">
-    </ro-new-question-form>
--->
 <div class="row form-group" *ngIf="startQuestion">
     <div class="col-xs-6">
         <h2><u>Review question:</u></h2>
@@ -64,28 +58,30 @@
     Loading questions
 </h1>
 <br/>
-<div class="HomeQuestion" *ngFor="#question of questions | roFilter:searchText" [routerLink]="['Question', {id: question._id, type: 'yes'}]">
-    <h3 class="text-center">
-        {{question.title}}
-    </h3>
-    <h5 class="text-center">
-        {{question.detail}}
-    </h5>
-    <!-- <p class="text-center">
-        Created on {{stringToDate(question.created_at) | date: 'yMMMd'}}
-    </p> -->
-    <div class="ro-action-bar">
-        <ro-vote-cell
-            class="ro-action-bar-item"
-            [sourceId]="question._id"
-            [score]="question.score"
-            (modVote)="question.ups = question.ups + $event">
-        </ro-vote-cell>
-        <div class="pull-right" *ngIf="isOwner(question.owner_user_id)">
-            <button class="btn btn-sm btn-danger" (click)="deleteQuestion(question, $event)">
-                <i class="fa fa-close">
-                </i>
-            </button>
+<div *ngIf="dataReturned">
+    <div class="HomeQuestion" *ngFor="#question of questions | roFilter:searchText" [routerLink]="['Question', {id: question._id, type: 'yes'}]" >
+        <h3 class="text-center">
+            {{question.title}}
+        </h3>
+        <h5 class="text-center">
+            {{question.detail}}
+        </h5>
+        <!-- <p class="text-center">
+            Created on {{stringToDate(question.created_at) | date: 'yMMMd'}}
+        </p> -->
+        <div class="ro-action-bar">
+            <ro-vote-cell
+                class="ro-action-bar-item"
+                [sourceId]="question._id"
+                [score]="question.score"
+                (modVote)="question.ups = question.ups + $event">
+            </ro-vote-cell>
+            <div class="pull-right" *ngIf="isOwner(question.owner_user_id)">
+                <button class="btn btn-sm btn-danger" (click)="deleteQuestion(question, $event)">
+                    <i class="fa fa-close">
+                    </i>
+                </button>
+            </div>
         </div>
     </div>
 </div>

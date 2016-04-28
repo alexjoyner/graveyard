@@ -12,6 +12,7 @@ var morgan = require('morgan');
 var passport = require('passport');
 var config = require('./server/config/config.js');
 var ENV = process.env.NODE_ENV || 'development'; // development || production
+console.log('Enviorment: ', ENV);
 if (ENV !== 'production') {
     console.log('Starting live reload server');
     var livereload = require('livereload'),
@@ -61,7 +62,6 @@ app.use(function(req, res, next) {
     next();
 });
 require('./server/routes/routes.js')(app);
-console.log('Enviorment: ', ENV);
 // Send files from angular
 app.use(express.static(path.resolve(__dirname, 'dist_client')));
 var renderIndex = function(req, res) {
