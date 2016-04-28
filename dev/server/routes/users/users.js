@@ -35,7 +35,7 @@ router.get('/profile', jwt_verify, function(req, res){
         done();
         if (err) throw err;
         if (!result.rows[0]) {
-            res.status(500).send('no issues found').end();
+            res.status(500).send('no questions found').end();
         } else {
             if(!result.rows[0]['votes']){
                 result.rows[0]['votes'] = [];

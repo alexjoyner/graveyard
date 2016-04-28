@@ -1,7 +1,7 @@
 export class Support {
 	_id: number;
 	owner_user_id: number;
-	issue_id: number;
+	question_id: number;
 	point_id: number;
     evidence: string;
     detail: string;
@@ -10,7 +10,7 @@ export class Support {
 	sourcetype: string;
 
 	constructor(
-		issue_id: number,
+		question_id: number,
 		point_id: number,
 		evidence: string,
 		detail: string,
@@ -18,7 +18,7 @@ export class Support {
 		source: string,
 		sourcetype: string,
 		owner_user_id: number) {
-		this.issue_id = issue_id;
+		this.question_id = question_id;
 		this.point_id = point_id;
 		this.evidence = evidence;
 		this.detail = detail;

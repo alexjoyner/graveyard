@@ -1,7 +1,7 @@
 export class Point {
 	_id: number;
 	owner_user_id: number;
-	issue_id: number;
+	question_id: number;
     problem: string;
     detail: string;
     type: string;
@@ -9,7 +9,7 @@ export class Point {
     downs: number;
     tag: string;
     constructor(
-		issue_id: number,
+		question_id: number,
 		problem: string,
 		detail: string,
 		type: string,
@@ -19,7 +19,7 @@ export class Point {
 		owner_user_id: number,
 		id?: number
 	){
-		this.issue_id = issue_id;
+		this.question_id = question_id;
 		this.problem = problem;
 		this.detail = detail;
 		this.type = type;

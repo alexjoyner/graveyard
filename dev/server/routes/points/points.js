@@ -11,7 +11,7 @@ var conString = config.db;
 
 // ###########  GETS  ###############
 // get points set by id
-router.get('/getPoints/:type/:issueId', function(req, res) {
+router.get('/getPoints/:type/:questionId', function(req, res) {
     //this initializes a connection pool
     //it will keep idle connections open for a (configurable) 30 seconds
     //and set a limit of 10 (also configurable)
@@ -40,7 +40,7 @@ router.get('/getPoints/:type/:issueId', function(req, res) {
         WHERE 
             _id = $1
       `;
-      client.query(queryString, [req.params.issueId/*, req.params.type*/], function(err, result) {
+      client.query(queryString, [req.params.questionId/*, req.params.type*/], function(err, result) {
         //call `done()` to release the client back to the pool
         done();
         if (err) throw err;
@@ -68,7 +68,7 @@ router.post('/createPoint', jwt_verify, function(req, res) {
         INSERT INTO 
             points(
                 owner_id,
-                issue_id,
+                question_id,
                 type,
                 problem,
                 detail)
@@ -84,7 +84,7 @@ router.post('/createPoint', jwt_verify, function(req, res) {
       `;
       client.query(queryString, [
             info.owner_id,
-            info.issue_id,
+            info.question_id,
             info.type,
             info.problem,
             info.detail], function(err, result) {
@@ -123,7 +123,7 @@ router.post('/updatePoint', jwt_verify, function(req, res){
 });
 // ###########  DELETES  ###############
 // delete point by id
-router.delete('/deletePoint/:type/:issue_id/:pointId', jwt_verify, function(req, res) {
+router.delete('/deletePoint/:type/:question_id/:pointId', jwt_verify, function(req, res) {
     pg.connect(conString, function(err, client, done) {
       if(err) {
         return console.error('error fetching client from pool', err);

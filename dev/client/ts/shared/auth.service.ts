@@ -60,6 +60,7 @@ export class AuthService {
 				localStorage.setItem('token', data.token);
 				//}
 				this._usersService.profile = data.profile;
+				this._usersService.showTut = true;
 				this._router.navigate(['Home']);
 			},
 			err => {

@@ -1,7 +1,7 @@
 import {Component, OnInit} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
 import {HomeContainerComponent} from './components/home/home-container.component';
-import {IssueContainerComponent} from './components/issue/issue-container.component';
+import {QuestionContainerComponent} from './components/question/question-container.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {AlertBarComponent} from './components/alertBar/alertBar.component';
 import {AuthContainerComponent} from './components/auth/auth-container.component';
@@ -24,7 +24,7 @@ import {AuthRouterOutlet} from './shared/auth-router-outlet.directive';
 })
 @RouteConfig([
 	{ path: '/', name: 'Home', component: HomeContainerComponent, useAsDefault: true },
-    { path: '/Issue/:type/:id', name: 'Issue', component: IssueContainerComponent },
+    { path: '/Question/:type/:id', name: 'Question', component: QuestionContainerComponent },
     { path: '/Auth', name: 'Auth', component: AuthContainerComponent }
 ])
 export class AppComponent implements OnInit{

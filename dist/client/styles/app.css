@@ -10093,7 +10093,7 @@ html {
   text-align: center;
 }
 
-.HomeIssue {
+.HomeQuestion {
   position: relative;
   margin: 0 auto;
   border: 1px solid #dddddd;
@@ -10103,7 +10103,7 @@ html {
   background-color: #fff;
   transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
-.HomeIssue .deleteButton {
+.HomeQuestion .deleteButton {
   float: right;
   margin: 10px;
   z-index: 2;
@@ -10123,6 +10123,14 @@ html {
   font-size: 20px;
   font-weight: 300;
   margin: 0;
+}
+
+.ro-main-point {
+  position: relative;
+}
+
+.supporting-evidence {
+  position: relative;
 }
 
 .ro-point {
@@ -10243,18 +10251,54 @@ input#step-2-system:checked ~ .ro-modal #ModalClose {
   display: block;
 }
 
-input#step-3-issues:checked ~ .ro-modal:before {
+input#step-3-questions:checked ~ .ro-modal:before {
   display: block;
 }
-input#step-3-issues:checked ~ .ro-modal #step-3-modal-container {
+input#step-3-questions:checked ~ .ro-modal #step-3-modal-container {
   transform: translate(0, 0);
 }
-input#step-3-issues:checked ~ .ro-modal #ModalClose {
+input#step-3-questions:checked ~ .ro-modal #ModalClose {
   display: block;
 }
-input#step-3-issues:checked ~ ro-home-issue-list .HomeIssue {
+input#step-3-questions:checked ~ ro-home-question-list .HomeQuestion {
   z-index: 5;
   transform: translate(30%, 0);
+}
+
+input#step-4-question-intro:checked ~ .ro-modal:before {
+  display: block;
+}
+input#step-4-question-intro:checked ~ .ro-modal #step-4-modal-container {
+  transform: translate(-50%, 0);
+}
+input#step-4-question-intro:checked ~ .ro-modal #ModalClose {
+  display: block;
+}
+
+input#step-5-mainPoints:checked ~ .ro-modal:before {
+  display: block;
+}
+input#step-5-mainPoints:checked ~ .ro-modal #step-5-modal-container {
+  transform: translate(0, 0);
+}
+input#step-5-mainPoints:checked ~ .ro-modal #ModalClose {
+  display: block;
+}
+input#step-5-mainPoints:checked ~ ro-points-list .point .ro-main-point {
+  z-index: 5;
+}
+
+input#step-6-supports:checked ~ .ro-modal:before {
+  display: block;
+}
+input#step-6-supports:checked ~ .ro-modal #step-6-modal-container {
+  transform: translate(0, 0);
+}
+input#step-6-supports:checked ~ .ro-modal #ModalClose {
+  display: block;
+}
+input#step-6-supports:checked ~ ro-points-list .point .supporting-evidence {
+  z-index: 5;
 }
 
 .ro-modal:before {
@@ -10314,4 +10358,45 @@ input#step-3-issues:checked ~ ro-home-issue-list .HomeIssue {
   padding: 20px;
   border-radius: 5px;
   top: 5%;
+}
+.ro-modal #step-4-modal-container {
+  z-index: 10;
+  position: fixed;
+  background-color: #fff;
+  border: 1px solid #000;
+  left: 50%;
+  transform: translate(-50%, -400%);
+  transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  width: 70%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 5px;
+}
+.ro-modal #step-5-modal-container {
+  z-index: 10;
+  position: fixed;
+  background-color: #fff;
+  border: 1px solid #000;
+  right: 5%;
+  transform: translate(400%, 0);
+  transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  width: 70%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 5px;
+  top: 15%;
+}
+.ro-modal #step-6-modal-container {
+  z-index: 10;
+  position: fixed;
+  background-color: #fff;
+  border: 1px solid #000;
+  left: 5%;
+  transform: translate(-400%, 0);
+  transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  width: 70%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 5px;
+  top: 15%;
 }

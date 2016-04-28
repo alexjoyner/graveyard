@@ -21,7 +21,7 @@ export class VoteCellComponent implements OnInit{
 		private _usersService: UsersService){
 	}
 	ngOnInit():any{
-		console.log('CHECHING: ', this.sourceId);
+		console.log('CHECKING: ', this.sourceId);
 		for (var i = this._usersService.profile.votes.length - 1; i >= 0; i--) {
 			if(this._usersService.profile.votes[i].post_id === this.sourceId){
 				switch (this._usersService.profile.votes[i].vote_type_id) {

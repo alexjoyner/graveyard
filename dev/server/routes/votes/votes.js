@@ -10,7 +10,7 @@ var conString = config.db;
 // !! route = '/votes'
 
 // ###########  POSTS  ###############
-// Post vote for issue
+// Post vote for question
 router.post('/create', jwt_verify, function(req, res) {
     var user = req.decoded;
     var info = req.body;

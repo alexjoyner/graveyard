@@ -116,7 +116,7 @@ router.get('/:id/:type', jwt_verify, function(req, res) {
                 done();
                 if (err) throw err;
                 if (!result.rows[0]) {
-                    res.status(500).send('no issue found').end();
+                    res.status(500).send('no question found').end();
                 } else {
                     if (result.rows[0].points === null) {
                         result.rows[0].points = [];
@@ -128,7 +128,7 @@ router.get('/:id/:type', jwt_verify, function(req, res) {
     }
 });
 // ###########  POSTS   ###############
-// post new issue
+// post new question
 router.post('/newPost', jwt_verify, function(req, res) {
     console.log(new Date);
     var user = req.decoded;
@@ -182,16 +182,16 @@ router.post('/newPost', jwt_verify, function(req, res) {
                     var type;
                     if (postInfo.post_type_id === 1) {
                         type = (postInfo.point_type_id === 1) ? 'yes' : 'no';
-                        req.io.to('issues').emit('NewIssue', result.rows[0])
+                        req.io.to('questions').emit('NewQuestion', result.rows[0])
                     } else
                     if (postInfo.post_type_id === 2) {
                         type = (postInfo.point_type_id === 1) ? 'yes' : 'no';
-                        req.io.to('issue' + result.rows[0].parent_id + '/' + type).emit('NewPost', postData)
+                        req.io.to('question' + result.rows[0].parent_id + '/' + type).emit('NewPost', postData)
                     } else
                     if (postInfo.post_type_id === 3) {
                         type = postInfo.correspond_main_point_type_id;
-                        console.log('New support: ', 'issue' + postInfo.issue_id + '/' + type);
-                        req.io.to('issue' + postInfo.issue_id + '/' + type).emit('NewPost', postData)
+                        console.log('New support: ', 'question' + postInfo.question_id + '/' + type);
+                        req.io.to('question' + postInfo.question_id + '/' + type).emit('NewPost', postData)
                     }
                     res.status(200).send({
                         success: true
@@ -204,12 +204,12 @@ router.post('/newPost', jwt_verify, function(req, res) {
                 var type;
                 if (postInfo.post_type_id === 2) {
                     type = (postInfo.point_type_id === 1) ? 'yes' : 'no';
-                    req.io.to('issue' + result.rows[0].parent_id + '/' + type).emit('NewPost', postData)
+                    req.io.to('question' + result.rows[0].parent_id + '/' + type).emit('NewPost', postData)
                 } else
                 if (postInfo.post_type_id === 3) {
                     type = postInfo.correspond_main_point_type_id;
-                    console.log('New support: ', 'issue' + postInfo.issue_id + '/' + type);
-                    req.io.to('issue' + postInfo.issue_id + '/' + type).emit('NewPost', postData)
+                    console.log('New support: ', 'question' + postInfo.question_id + '/' + type);
+                    req.io.to('question' + postInfo.question_id + '/' + type).emit('NewPost', postData)
                 }
                 res.status(200).send({
                     success: true
@@ -244,12 +244,12 @@ router.post('/updatePost', jwt_verify, function(req, res) {
         });
     });
 });
-// post update to existing issue
+// post update to existing question
 // ###########  DELETES  ###############
 // delete existing post
-router.delete('/deletePost/:postId/:issueId/:mainPointType', jwt_verify, function(req, res) {
+router.delete('/deletePost/:postId/:questionId/:mainPointType', jwt_verify, function(req, res) {
     // Catch incoming VARS if undefined
-    var input_issueId = +req.params.issueId;
+    var input_questionId = +req.params.questionId;
     var input_mainPointType = (req.params.mainPointType === 'undefined') ? undefined : req.params.mainPointType;
     pg.connect(conString, function(err, client, done) {
         if (err) {
@@ -271,7 +271,7 @@ router.delete('/deletePost/:postId/:issueId/:mainPointType', jwt_verify, functio
             var postDeleted = result.rows[0];
             var mainPointType;
             var pointTypeFromId;
-            var issue_id,
+            var question_id,
                 support_id,
                 main_point_id;
             // Catch point type if deleted a main point
@@ -279,20 +279,20 @@ router.delete('/deletePost/:postId/:issueId/:mainPointType', jwt_verify, functio
                 pointTypeFromId = (+postDeleted.point_type_id === 1) ? 'yes' : 'no';
             }
             switch (postDeleted.post_type_id) {
-                case 1: // Issue
-                    issue_id = postDeleted._id;
+                case 1: // Question
+                    question_id = postDeleted._id;
                     main_point_id = null;
                     support_id = null;
                     mainPointType = null;
                     break;
                 case 2: // Main Point
-                    issue_id = postDeleted.parent_id;
+                    question_id = postDeleted.parent_id;
                     main_point_id = postDeleted._id;
                     support_id = null;
                     mainPointType = pointTypeFromId;
                     break;
                 case 3: // Support Point
-                    issue_id = input_issueId;
+                    question_id = input_questionId;
                     main_point_id = postDeleted.parent_id;
                     support_id = postDeleted._id;
                     mainPointType = input_mainPointType;
@@ -302,7 +302,7 @@ router.delete('/deletePost/:postId/:issueId/:mainPointType', jwt_verify, functio
             var emitPayload = {
                 post_type_id: postDeleted.post_type_id,
                 owner_user_id: postDeleted.owner_user_id,
-                issue_id: issue_id,
+                question_id: question_id,
                 main_point_id: main_point_id,
                 support_id: support_id,
                 main_point_type: mainPointType
@@ -312,16 +312,16 @@ router.delete('/deletePost/:postId/:issueId/:mainPointType', jwt_verify, functio
             // Deleted a support point or main point
             if (mainPointType !== null) {
                 // Notify just the people looking at the main cooresponing
-                //    main point type half of the issue
-                req.io.to('issue' + issue_id + '/' + mainPointType).emit('DeletedPost', emitPayload);
-            } else { // Deleted an issue
-                // Notify everyone on issues page
-                req.io.to('issues').emit('DeletedIssue', {
+                //    main point type half of the question
+                req.io.to('question' + question_id + '/' + mainPointType).emit('DeletedPost', emitPayload);
+            } else { // Deleted an question
+                // Notify everyone on questions page
+                req.io.to('questions').emit('DeletedQuestion', {
                     _id: postDeleted._id
                 });
-                // Notify everyone looking at the issue
-                req.io.to('issue' + issue_id + '/yes').emit('DeletedPost', emitPayload);
-                req.io.to('issue' + issue_id + '/no').emit('DeletedPost', emitPayload);
+                // Notify everyone looking at the question
+                req.io.to('question' + question_id + '/yes').emit('DeletedPost', emitPayload);
+                req.io.to('question' + question_id + '/no').emit('DeletedPost', emitPayload);
             }
             res.status(200).send('DELETED').end();
         });

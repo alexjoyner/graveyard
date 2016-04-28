@@ -1,6 +1,6 @@
 export class Post {
 	_id: number;
-	issue_id: number = null;
+	question_id: number = null;
 	post_type_id: number;
 	parent_id: number = null;
 	point_type_id: number = null;

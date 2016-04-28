@@ -4,6 +4,7 @@ import {Pipe} from 'angular2/core';
 @Pipe({ name: 'roFilter' })
 export class SearchFilterPipe {
   transform(value, args) {
+    console.log('ARGS: ', args);
     if (!args[0]) {
       return value;
     } else if (value) {

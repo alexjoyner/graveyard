@@ -13,19 +13,6 @@
                 Question format helper
             </u>
         </h4>
-        <ol>
-            <li>
-                Your question: *** YES or NO Questions only ***
-            </li>
-            <li>
-                Keep questions one sided, support for 
-                comparisons may be added in the future.
-            </li>
-            <li>
-                Keep it complex.  Questions that the answer will be <br>
-                something
-            </li>
-        </ol>
         <ul>
             <li>
                 GOOD EX: Should we legalize weed?
@@ -77,7 +64,7 @@
     Loading questions
 </h1>
 <br/>
-<div class="HomeQuestion" *ngFor="#question of questions | roFilter:searchText" [routerLink]="['Question', {id: question._id, type: 'yes'}]">
+<div class="HomeQuestion" *ngFor="#question of questions | roFilter:searchText" [routerLink]="['Question', {id: question._id, type: 'yes', tut: 'true'}]">
     <h3 class="text-center">
         {{question.title}}
     </h3>

@@ -9,6 +9,7 @@ import {GlobalHandlerService} from './globalHandler.service';
 export class UsersService {
 	private endpoint: string = Config.endpoint;
 	public profile;
+	public showTut: boolean;
 	constructor(
 		private _http: Http,
 		private _globalHandlerService: GlobalHandlerService) { }
