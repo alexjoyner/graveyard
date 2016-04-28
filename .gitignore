@@ -4,3 +4,4 @@
 /.sass-cache
 /.gulp-scss-cache
 /dev/client/sass/0-plugins
+/dist_client/client/bundle.min.js

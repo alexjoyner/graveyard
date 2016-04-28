@@ -1,0 +1,99 @@
+<div *ngIf="points">
+    <!--
+        Create and Search Buttons
+    -->
+    <br/>
+    <div class="row">
+        <div [ngClass]="{'col-md-10': !showForm,'col-md-12': showForm}">
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <span *ngIf="!showForm">Search</span>
+                    <span *ngIf="showForm"><b>ENTER</b></span>
+                </div>
+                <input type="text" class="form-control" id="exampleInputAmount" [(ngModel)]="searchText" placeholder="main point" maxlength="150" />
+            </div>
+        </div>
+        <div class="text-center col-md-2" *ngIf="!showForm">
+            <button class="btn btn-md" class="btn" [ngClass]="{'btn-success': type === 'yes', 'btn-danger': type === 'no', 'btn-default': showForm === true}" (click)="showForm = true" *ngIf="!showForm">
+                Add a new {{type}}
+            </button>
+        </div>
+    </div>
+    <ro-create-point-form *ngIf="showForm" (cancel)="showForm = false" [searchText]="searchText">
+    </ro-create-point-form>
+    <hr/>
+    <!-- <div class="row hidden-xs">
+        <div class="col-xs-6">
+            <h2 class="text-center">
+                <u>
+                    1: Main Points
+                </u>
+            </h2>
+            <p>The main points section (left column) is where all argument start. You are currently in the <b>{{type | uppercase}} section</b>. The left side represents all the points that can be made say {{type | uppercase}} to to main question question. <b>Upvote/Downvote main points based on how relevant the point is towards the main question</b>.</p>
+            <hr>
+        </div>
+        <div class="col-xs-6">
+            <h2 class="text-center">
+                <u>
+                    2: Support Points
+                </u>
+            </h2>
+            <p>The support points (right column) is where all the support arguments are made.  This is where each point that is made in the main points section is debated to either prove or disprove the main point. <b>Upvote/Downvote supporting points based on how well the support point supports the main point.</b></p>
+            <hr>
+        </div>
+    </div> -->
+    
+    <h1 class="text-center" *ngIf="points && points.length == 0 && !showForm">
+        <h2>
+            This section has no points:
+        </h2>
+        <button class="btn btn-lg btn-success" (click)="showForm = true">
+            ADD A {{type | uppercase}}!!!
+        </button>
+    </h1>
+    <div [attr.id]="'point' + i" *ngFor="#point of points | roFilter: searchText; #i = index" class="point">
+        <div class="row top-point">
+            <div class="col-xs-12 col-md-6 main-point-block text-center">
+                <ro-main-point
+                    [point]="point"
+                    (removed)="removePoint(i)"
+                    (smoothScroll)="smoothScroll('point'+i, 20)">
+                </ro-main-point>
+            </div>
+            <div class="col-xs-12 col-md-6 top-supports">
+                <ro-top-support
+                    *ngIf="point.supports[0] !== null && point.supports.length > 0"
+                    [support]="point.supports[0]"
+                    [numMoreSupport]="point.supports.length - 1"
+                    [showingMore]="point.viewAll"
+                    (addEvidence)="addEvidence(point)"
+                    (viewAll)="viewAll(i)"
+                    (goTop)="smoothScroll('point'+i, 20)">
+                </ro-top-support>
+                <!-- To show if no supports data has been searched for -->
+                <div *ngIf="point.supports.length === 0 || point.supports[0] === null">
+                    <h1 class="text-center">
+                        No Support
+                        <hr/>
+                        <button type="button" class="btn btn-lg btn-success" (click)="addEvidence(point); smoothScroll('point'+i, 20)">
+                            Support this point
+                        </button>
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <ro-more-support
+            *ngIf="point.viewAll"
+            [supports]="point.supports.slice(1)"
+            (goTop)="smoothScroll('point'+i, 20)">
+        </ro-more-support>
+        <ro-add-support
+            *ngIf="point.addEvidence"
+            [pointId]="point._id"
+            [pointIndex]="i"
+            [questionId]="questionId"
+            [mainPointTypeId]="type">
+        </ro-add-support>
+    </div>
+</div>

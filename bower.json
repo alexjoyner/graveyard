@@ -1,0 +1,23 @@
+{
+  "name": "metatruth",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Rosco <rosco9awj@gmail.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "font-awesome": "^4.6.1"
+  }
+}

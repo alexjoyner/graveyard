@@ -1,0 +1,91 @@
+<!--
+    <ro-new-question-form
+        *ngIf="startQuestion"
+        (searchText)="searchText">
+    </ro-new-question-form>
+-->
+<div class="row form-group" *ngIf="startQuestion">
+    <div class="col-xs-6">
+        <h2><u>Review question:</u></h2>
+        <h3>Question: {{searchText}}?</h3>
+        <h4>
+            <u>
+                Question format helper
+            </u>
+        </h4>
+        <ul>
+            <li>
+                GOOD EX: Should we legalize weed?
+            </li>
+            <li>
+                BAD EX: What is better, windows server or linux server?
+            </li>
+        </ul>
+        <button class="btn btn-success" (click)="onCreate()" [disabled]="searchText === '' || acceptedTags.length === 0">
+            My question is good! Add it.
+        </button>
+        <button class="btn btn-danger" (click)="onCancel()">
+            Cancel
+        </button>
+    </div>
+    <div class="col-xs-6">
+        <div class="row">
+            <div class="col-xs-6" style="max-height: 400px">
+                <div class="input-group">
+                    <div class="input-group-addon">Search</div>
+                    <input type="text" class="form-control" id="exampleInputAmount"placeholder="Tags" #searchTagText (keyup)="searchTags(searchTagText.value)">
+                </div>
+                <h4><u>Tags returned</u></h4>
+                <ul *ngFor="#tag of returnedTags">
+                    <li>
+                        {{tag.tag_name}} <button class="btn btn-xs btn-success" (click)="acceptTag(tag)"><i class="fa fa-plus"></i></button>
+                    </li>
+                </ul>
+                <p *ngIf="searchTagText.value.length > 0">CREATE TAG: {{searchTagText.value}} <button class="btn btn-xs btn-success" (click)="createTag(searchTagText.value); searchTagText.value = ''"><i class="fa fa-plus"></i></button></p>
+            </div>
+            <div class="col-xs-6" style="max-height: 400px">
+                <h4><u>Accepted tags</u></h4>
+                <ul *ngFor="#tag of acceptedTags">
+                    <li>
+                        {{tag.tag_name}} <button class="btn btn-xs btn-danger" (click)="removeTag(tag)"><i class="fa fa-minus"></i></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<h1 class="text-center" *ngIf="questions && questions.length === 0 && !startQuestion">
+    No questions here! How about
+    <button class="btn btn-lg btn-success" (click)="startQuestion = true">
+        ADD ONE!!!
+    </button>
+</h1>
+<h1 [hidden]="questions">
+    Loading questions
+</h1>
+<br/>
+<div class="HomeQuestion" *ngFor="#question of questions | roFilter:searchText" [routerLink]="['Question', {id: question._id, type: 'yes'}]">
+    <h3 class="text-center">
+        {{question.title}}
+    </h3>
+    <h5 class="text-center">
+        {{question.detail}}
+    </h5>
+    <!-- <p class="text-center">
+        Created on {{stringToDate(question.created_at) | date: 'yMMMd'}}
+    </p> -->
+    <div class="ro-action-bar">
+        <ro-vote-cell
+            class="ro-action-bar-item"
+            [sourceId]="question._id"
+            [score]="question.score"
+            (modVote)="question.ups = question.ups + $event">
+        </ro-vote-cell>
+        <div class="pull-right" *ngIf="isOwner(question.owner_user_id)">
+            <button class="btn btn-sm btn-danger" (click)="deleteQuestion(question, $event)">
+                <i class="fa fa-close">
+                </i>
+            </button>
+        </div>
+    </div>
+</div>
