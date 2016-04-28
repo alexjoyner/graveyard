@@ -2,8 +2,8 @@
   "name": "metatruth",
   "version": "1.0.0-Alpha.8.5",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack --watch",
+    "start": "webpack --progress --profile --colors --watch --display-error-details",
+    "build": "NODE_ENV='production' webpack",
     "production": "NODE_ENV='production' node server.js"
   },
   "license": "ISC",
@@ -26,6 +26,7 @@
   "devDependencies": {
     "angular2": "2.0.0-beta.16",
     "awesome-typescript-loader": "^0.17.0",
+    "compression-webpack-plugin": "^0.3.1",
     "core-js": "^2.3.0",
     "css-loader": "^0.23.1",
     "es6-shim": "^0.35.0",
@@ -33,8 +34,10 @@
     "font-awesome": "^4.6.1",
     "font-awesome-webpack": "0.0.4",
     "html-loader": "^0.4.3",
+    "html-minify-loader": "^1.1.0",
     "livereload": "^0.4.1",
     "node-sass": "^3.6.0",
+    "raw-loader": "^0.5.1",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.2",
     "sass-loader": "^3.2.0",
@@ -47,6 +50,7 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1",
+    "webpack-md5-hash": "0.0.5",
     "webpack-merge": "^0.12.0",
     "zone.js": "0.6.12"
   }
