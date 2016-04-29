@@ -34,7 +34,6 @@ export class AppComponent implements OnInit{
     }
     
     ngOnInit(): any {
-        console.log(typeof require('dev/sass/app.scss'));
         this._usersService.getProfile();
         this._authService.getLoggedOutEvent()
             .subscribe(

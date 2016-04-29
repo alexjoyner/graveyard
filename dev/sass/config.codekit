@@ -1434,10 +1434,10 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/app.scss",
-		"outputAbbreviatedPath": "\/Users\/rosco\/Desktop\/angular-2-webpack-quickstart\/dist_client\/client\/app.css",
+		"outputAbbreviatedPath": "\/Users\/rosco\/projects\/metatatruth-ang2\/dist_client\/client\/app.css",
 		"outputPathIsOutsideProject": 1,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 3,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
