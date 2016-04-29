@@ -17,7 +17,7 @@
     <input type="radio" id="step-3-questions" name="tut">
     <div class="ro-modal">
         <label for="end-tut" id="ModalClose">
-            <a class="btn btn-default">Close</a>
+            <a class="btn btn-default" (click)="endTut()">Close</a>
         </label>
         <div id="step-1-modal-container">
             <h3 class="text-center">Welcome To MetaTruth!</h3>
@@ -98,7 +98,7 @@
         <div class="col-md-10">
             <div class="input-group">
                 <div class="input-group-addon">Search</div>
-                <input type="text" class="form-control" id="exampleInputAmount" [(ngModel)]="searchText"  placeholder="Questions">
+                <input type="text" class="form-control" id="exampleInputAmount" [(ngModel)]="searchText"  placeholder="Questions" (keyup)="searchQuestions()">
             </div>
         </div>
         <div class="col-md-2 text-center">
@@ -112,6 +112,7 @@
     <ro-home-question-list 
         [searchText]="searchText"
         [startQuestion]="startQuestion"
+        [questions]="questions"
         (cancel)="searchText = ''; startQuestion = !startQuestion;"></ro-home-question-list>
     <div *ngIf="searchText !== '';">
         <hr>

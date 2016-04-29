@@ -41,7 +41,7 @@ router.get('/all', jwt_verify, function(req, res) {
     });
 });
 // get one by id
-router.get('/:id/:type', jwt_verify, function(req, res) {
+router.get('/post/:id/:type', jwt_verify, function(req, res) {
     var type = undefined;
     switch (req.params.type) {
         case 'yes':
@@ -126,6 +126,39 @@ router.get('/:id/:type', jwt_verify, function(req, res) {
             });
         });
     }
+});
+router.get('/search/:type/:searchTerm', jwt_verify, function(req, res){
+    console.log('Search: ', req.params.searchTerm);
+    pg.connect(conString, function(err, client, done) {
+      if(err) {
+        return console.error('error fetching client from pool', err);
+      }
+      var queryString = `
+        SELECT 
+            *
+        FROM 
+            posts
+        WHERE 
+            title
+        ILike
+            $1
+        AND
+            post_type_id = $2
+        LIMIT
+            5
+        ;
+      `;
+      client.query(queryString, ['%'+req.params.searchTerm+'%', req.params.type], function(err, result) {
+        //call `done()` to release the client back to the pool
+        done();
+        if (err) throw err;
+        if (!result.rows[0]) {
+            res.status(200).send([]).end();
+        } else {
+            res.status(200).send(result.rows).end();
+        }
+      });
+    });
 });
 // ###########  POSTS   ###############
 // post new question
@@ -218,6 +251,7 @@ router.post('/newPost', jwt_verify, function(req, res) {
         });
     });
 });
+
 router.post('/updatePost', jwt_verify, function(req, res) {
     var queryString = `
         UPDATE

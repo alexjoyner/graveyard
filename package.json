@@ -4,7 +4,8 @@
   "scripts": {
     "start": "webpack --progress --profile --colors --watch --display-error-details",
     "build": "NODE_ENV='production' webpack",
-    "production": "NODE_ENV='production' node server.js"
+    "production": "NODE_ENV='production' node server.js",
+    "dev": "nodemon server.js"
   },
   "license": "ISC",
   "dependencies": {

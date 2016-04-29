@@ -29,7 +29,7 @@ export class PointsListComponent implements OnInit{
 	private dataAvailable: boolean = false;
 	type: string = this._routeParams.get('type');
 	questionId: string = this._routeParams.get('id');
-	searchText: string;
+	private searchText: string = '';
 
 	constructor(
 		private _routeParams: RouteParams,

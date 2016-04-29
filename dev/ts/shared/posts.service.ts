@@ -40,25 +40,42 @@ export class PostsService {
 		headers.append('x-access-token',
 			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
 		return this._http.get(
-			this.endpoint + '/posts/' + 
+			this.endpoint + '/posts/post/' + 
 			postId + 
 			'/' +
 			pointType,
 			{ headers: headers })
 			.map(res => res.json());
 	}
+	searchPosts(type: number, searchTerm: string): Observable<any> {
+		const headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		headers.append('x-access-token',
+			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
+		let res = this._http.get(
+			this.endpoint +
+			'/posts/search/' + type + '/'+ searchTerm,
+			{ headers: headers })
+			.map(res => res.json());
+		res.subscribe(
+			data => {
+				console.log('Got Posts: ', data);
+			},
+			err => console.log('Err: ', err))
+		return res;
+	}
 	/* POST */
 	insertPost(data: {post: Post, tags: [number]}): Observable<any> {
-			const body = JSON.stringify(data);
-			const headers = new Headers();
-			headers.append('Content-Type', 'application/json');
-			headers.append('x-access-token',
-				(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
-			return this._http.post(
-				this.endpoint + '/posts/newPost',
-				body,
-				{ headers: headers })
-					.map(res => res.json());
+		const body = JSON.stringify(data);
+		const headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		headers.append('x-access-token',
+			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
+		return this._http.post(
+			this.endpoint + '/posts/newPost',
+			body,
+			{ headers: headers })
+				.map(res => res.json());
 	}
 	updatePost(post: Post): Observable<any>{
 			const body = JSON.stringify(post);

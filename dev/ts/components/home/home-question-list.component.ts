@@ -18,14 +18,14 @@ import {GlobalHandlerService} from '../../shared/globalHandler.service';
     selector: 'ro-home-question-list',
     template: require('dev/templates/home/home-question-list.tpl.html'),
     directives: [ROUTER_DIRECTIVES, VoteCellComponent],
-    providers: [PostsService, TagsService],
+    providers: [TagsService],
     pipes: [SearchFilterPipe]
 })
 export class  HomeQuestionListComponent implements OnInit{
 	@Input('searchText') searchText: string;
 	@Input('startQuestion') startQuestion: boolean;
+	@Input() questions: Post[];
 	@Output() cancel: EventEmitter<any> = new EventEmitter();
-	private questions: Post[];
 	private returnedTags: [{id: number, tag_name: string}];
 	private acceptedTags = [];
 	private dataReturned: boolean = false;
@@ -36,16 +36,6 @@ export class  HomeQuestionListComponent implements OnInit{
 		private _usersService: UsersService,
 		private _tagsService: TagsService,
 		private _globalHandler: GlobalHandlerService) {
-		if (_authService.checkValid()) {
-			_postsService.getAllPosts()
-				.subscribe(data => {
-					console.log('ISSUES START: ', this.questions);
-					console.log('ISSUES: ', data);
-					this.questions = data;
-					console.log('ISSUES after: ', this.questions);
-					this.dataReturned = true;
-				});
-		}
 	}
 	ngOnInit(): any {
 		this.acceptedTags = [];

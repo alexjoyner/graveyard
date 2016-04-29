@@ -48,18 +48,12 @@
         </div>
     </div>
 </div>
-<h1 class="text-center" *ngIf="questions && questions.length === 0 && !startQuestion">
-    No questions here! How about
-    <button class="btn btn-lg btn-success" (click)="startQuestion = true">
-        ADD ONE!!!
-    </button>
-</h1>
 <h1 [hidden]="questions">
     Loading questions
 </h1>
 <br/>
-<div *ngIf="dataReturned">
-    <div class="HomeQuestion" *ngFor="#question of questions | roFilter:searchText" [routerLink]="['Question', {id: question._id, type: 'yes'}]" >
+<div *ngIf="questions">
+    <div class="HomeQuestion" *ngFor="#question of questions" [routerLink]="['Question', {id: question._id, type: 'yes'}]" >
         <h3 class="text-center">
             {{question.title}}
         </h3>
