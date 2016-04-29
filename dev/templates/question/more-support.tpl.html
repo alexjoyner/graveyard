@@ -1,11 +1,15 @@
-<div class="row" style="margin-top: 10px; margin-bottom: 10px; " >
-    <div class="col-xs-3" style="background-color: #DDDDDD; height: 100%; border-radius: 5px 0 0 5px;" (click)="gotoTop()">
+<div class="row" style="margin-top: 10px; margin-bottom: 10px; display: table;" >
+    <div class="hidden-md hidden-sm hidden-xs col-xs-3" style="background-color: #DDDDDD; height: 100%; border-radius: 5px 0 0 5px; float: none;
+    display: table-cell;
+    vertical-align: top;" (click)="gotoTop()">
             <h4 class="text-center" style="margin-top: 0; ">
                 <br/>
                 Go to top
             </h4>
     </div>
-    <div class="col-xs-9">
+    <div class="col-xs-9" style="float: none;
+    display: table-cell;
+    vertical-align: top;">
         <div *ngFor="#support of supports; #i = index" class="supporting-evidence">
             <div [ngStyle]="{'background-color': (support.point_type === 'proof')? '#DFF0D8' : '#FCC4C4'}" style="padding: 15px; border-radius: 4px">
                 <div class="row">
@@ -67,4 +71,5 @@
             <hr/>
         </div>
     </div>
+    <div class="clearfix visible-xs-block"></div>
 </div>

@@ -97,12 +97,15 @@
     <div class="row">
         <div class="col-md-10">
             <div class="input-group">
-                <div class="input-group-addon">Search</div>
+                <div class="input-group-addon">
+                    <span *ngIf="!startQuestion">Search</span>
+                    <span *ngIf="startQuestion"><b>ENTER</b></span>
+                </div>
                 <input type="text" class="form-control" id="exampleInputAmount" [(ngModel)]="searchText"  placeholder="Questions" (keyup)="searchQuestions()">
             </div>
         </div>
         <div class="col-md-2 text-center">
-            <button class="btn btn-md btn-success" (click)="startQuestion = !startQuestion" [disabled]="searchText === ''" title="try searching for an question first to see if your question already exists">
+            <button class="btn btn-md btn-success" (click)="startQuestion = !startQuestion" *ngIf="!startQuestion" title="try searching for an question first to see if your question already exists">
                 Start New Question
             </button>
         </div>

@@ -44,12 +44,9 @@ export class  HomeQuestionListComponent implements OnInit{
 		socket.emit('change room', { newroom: 'questions' })
 		socket.on('NewQuestion', function(newQuestion) {
 			console.log('NEW ISSUE: ', newQuestion);
-			if (this.isOwner(newQuestion.owner_user_id)) {
-				console.log('Returned: ', newQuestion._id);
-				this._router.navigate(['Question', { type: 'yes', id: newQuestion._id, lastRoom: 'questions'}]);
-			} else {
+			if (!this.isOwner(newQuestion.owner_user_id)) {
 				this.questions.unshift(newQuestion);
-            }
+			}
         }.bind(this));
 		socket.on('DeletedQuestion', function(postData) {
 			console.log('Delete: ', postData);
@@ -101,6 +98,9 @@ export class  HomeQuestionListComponent implements OnInit{
 	}
 	onCreate() {
 		let newQuestion: Post = new Post(this.searchText, 1);
+		if (newQuestion.title[newQuestion.title.length - 1] !== '?') {
+			newQuestion.title += '?'
+		}
 		let tags:any = [];
 		for (var i = this.acceptedTags.length - 1; i >= 0; i--) {
 			tags.push(this.acceptedTags[i]._id)

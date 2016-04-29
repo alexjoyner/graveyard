@@ -2,7 +2,7 @@ declare function require(name: string);
 import {Component, OnInit, EventEmitter, Input, Output} from 'angular2/core';
 import {Post} from '../../shared/post';
 import {PostsService} from '../../shared/posts.service';
-import {RouteParams} from 'angular2/router';
+import {RouteParams, Router} from 'angular2/router';
 import { UsersService} from '../../shared/users.service';
 
 @Component({
@@ -19,13 +19,14 @@ export class CreatePointFormComponent implements OnInit{
 	constructor(
 		private _postsService: PostsService,
 		private _routeParams: RouteParams,
+		private _router: Router,
 		private _usersService: UsersService) { }
 
 	createPoint(){
 		this.newPoint.title = this.searchText;
 		this._postsService.insertPost({post: this.newPoint, tags: [null]})
 		.subscribe(
-			pointData =>  console.log('SUCCESS creating point'),
+			pointData => this._router.navigate(['Question', { type: 'yes', id: pointData._id}]),
 			err => console.log('err', err)
 		);
 	}
