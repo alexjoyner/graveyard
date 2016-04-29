@@ -2,6 +2,7 @@
 /dist
 /server/node_modules
 /.sass-cache
+/dev/sass/.sass-cache
 /.gulp-scss-cache
 /dev/client/sass/0-plugins
 # Elastic Beanstalk Files
