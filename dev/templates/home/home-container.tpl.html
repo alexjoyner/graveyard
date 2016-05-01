@@ -6,72 +6,10 @@
     <h4 id="SubHeader" class="text-center">
         An app to help answer the most controversial questions
     </h4>
-    <h4 class="text-center">
-        <label for="step-1-welcome">
-            <a class="btn btn-success" (click)="showTut()">See How It Works!</a>
-        </label>
-    </h4>
-    <input type="radio" id="end-tut" name="tut">
-    <input type="radio" id="step-1-welcome" name="tut">
-    <input type="radio" id="step-2-system" name="tut">
-    <input type="radio" id="step-3-questions" name="tut">
-    <div class="ro-modal">
-        <label for="end-tut" id="ModalClose">
-            <a class="btn btn-default" (click)="endTut()">Close</a>
-        </label>
-        <div id="step-1-modal-container">
-            <h3 class="text-center">Welcome To MetaTruth!</h3>
-            <p class="text-center">
-                This app is designed to help answer the most complex and
-                controversial questions that our society faces
-            </p>
-            <div class="text-center">
-                <label for="step-2-system">
-                    <a class="btn btn-info">Ahh, Tell me more</a>
-                </label>
-            </div>
-        </div>
-        <div id="step-2-modal-container">
-            <h5 class="text-center">
-                MetaTruth is a three tier system consisting of:
-            </h5>
-            <ol>
-                <li>Questions</li>
-                <li>Main Points</li>
-                <li>Support Points</li>
-            </ol>
-            <div class="text-center">
-                <label for="step-3-questions">
-                    <a class="btn btn-info">Ok, How do these work?</a>
-                </label>
-            </div>
-        </div>
-        <div id="step-3-modal-container">
-            <h2>Questions</h2>
-            <h4>On MetaTruth, everything is rooted back to main questions. Questions follow three main rule. They:</h4>
-            <ol>
-                <li>Should be Yes or No questions only</li>
-                <li>Should focus on one thing and not a comparison</li>
-                <ul>
-                    <li>GOOD: Should we go to mars?</li>
-                    <li>BAD: What is better, linux server or windows server?</li>
-                </ul>
-                <li>Should be complex questions that will require many points to answer.</li>
-                <ul>
-                    <li>BAD: Do humans need oxygen to live?</li>
-                    <p>There are plenty of other resources to get or post answers to questions like these. Such as:</p>
-                    <ul>
-                        <li>Quora</li>
-                        <li>Yahoo Answers</li>
-                        <li>Google</li>
-                    </ul>
-                </ul>
-            </ol>
-            <h3 class="text-center">Click a question to proceed</h3>
-        </div>
-        <div id="step-3-2-modal-container">
-        </div>
-    </div>
+    <ro-create-question 
+        *ngIf="startQuestion" 
+        (close)="startQuestion = false"
+        (search)="searchQuestions($event);"></ro-create-question>
     <!-- Tab Bar: Tab to question list type -->
    <!--  <ul class="ro-nav ro-nav-tabs">
         <li role="presentation" class="ro-tab active">
@@ -112,7 +50,7 @@
     </div>
     <br>
     <!-- List out the isses of selected type -->
-    <ro-home-question-list 
+    <ro-home-question-list
         [searchText]="searchText"
         [startQuestion]="startQuestion"
         [questions]="questions"

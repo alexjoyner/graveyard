@@ -1,158 +1,16 @@
-input[name="tut"]
-	display: none
-input#step-1-welcome
-	&:checked 
-		~ .ro-modal
-			&:before
-				display: block
-			#step-1-modal-container
-				transform: translate(-50%, 0)
-			#ModalClose
-				display: block
-input#step-2-system
-	&:checked 
-		~ .ro-modal
-			&:before
-				display: block
-			#step-2-modal-container
-				transform: translate(-50%, 0)
-			#ModalClose
-				display: block
-input#step-3-questions
-	&:checked 
-		~ .ro-modal
-			&:before
-				display: block
-			#step-3-modal-container
-				transform: translate(0, 0)
-			#ModalClose
-				display: block
-		~ ro-home-question-list .HomeQuestion
-			z-index: 5
-			transform: translate(30%, 0)
-input#step-4-question-intro
-	&:checked 
-		~ .ro-modal
-			&:before
-				display: block
-			#step-4-modal-container
-				transform: translate(-50%, 0)
-			#ModalClose
-				display: block
-input#step-5-mainPoints
-	&:checked 
-		~ .ro-modal
-			&:before
-				display: block
-			#step-5-modal-container
-				transform: translate(0, 0)
-			#ModalClose
-				display: block
-		~ ro-points-list
-			.point
-				.ro-main-point
-					z-index: 5
-input#step-6-supports
-	&:checked 
-		~ .ro-modal
-			&:before
-				display: block
-			#step-6-modal-container
-				transform: translate(0, 0)
-			#ModalClose
-				display: block
-		~ ro-points-list
-			.point
-				.supporting-evidence
-					z-index: 5
 .ro-modal
 	&:before
 		content: ""
-		display: none
+		display: block
 		position: fixed
-		background-color: rgba(0,0,0,0.8)
+		background-color: rgba(51,122,183,0.9)
 		top: 0
 		left: 0
 		+size(100%)
 		z-index: 5
-	#ModalClose
-		display: none
+	.ModalClose
+		display: block
 		position: fixed
 		top: 5%
 		left: 90%
 		z-index: 6
-	#step-1-modal-container
-		z-index: 10
-		position: fixed
-		background-color: #fff
-		border: 1px solid #000
-		left: 50%
-		transform: translate(-50%, -400%)
-		transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55)
-		width: 70%
-		max-width: 400px
-		padding: 20px
-		border-radius: 5px
-	#step-2-modal-container
-		z-index: 10
-		position: fixed
-		background-color: #fff
-		border: 1px solid #000
-		left: 50%
-		transform: translate(-50%, 400%)
-		transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55)
-		width: 70%
-		max-width: 400px
-		padding: 20px
-		border-radius: 5px
-	#step-3-modal-container
-		z-index: 10
-		position: fixed
-		background-color: #fff
-		border: 1px solid #000
-		left: 5%
-		transform: translate(-400%, 0)
-		transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55)
-		width: 70%
-		max-width: 400px
-		padding: 20px
-		border-radius: 5px
-		top: 5%
-	#step-4-modal-container
-		z-index: 10
-		position: fixed
-		background-color: #fff
-		border: 1px solid #000
-		left: 50%
-		transform: translate(-50%, -400%)
-		transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55)
-		width: 70%
-		max-width: 400px
-		padding: 20px
-		border-radius: 5px
-	#step-5-modal-container
-		z-index: 10
-		position: fixed
-		background-color: #fff
-		border: 1px solid #000
-		right: 5%
-		transform: translate(400%, 0)
-		transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55)
-		width: 70%
-		max-width: 400px
-		padding: 20px
-		border-radius: 5px
-		top: 15%
-	#step-6-modal-container
-		z-index: 10
-		position: fixed
-		background-color: #fff
-		border: 1px solid #000
-		left: 5%
-		transform: translate(-400%, 0)
-		transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55)
-		width: 70%
-		max-width: 400px
-		padding: 20px
-		border-radius: 5px
-		top: 15%
