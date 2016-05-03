@@ -1,4 +1,17 @@
-<div class="ro-modal">
-	<button class="btn btn-default ModalClose" (click)="endTut()">Close</button>
-    <input type="text" id="QuestionInput" placeholder="Enter A debatable question" autofocus="true" (keyup)="questionControl()" [(ngModel)]="question"><span id="QuestionMarkSpan"></span>
+<button class="btn btn-default ModalClose" (click)="endTut()">
+    Close
+</button>
+<div *ngIf="mode === 'question'">
+    <h4 id="AlertMessage" class="text-center" *ngIf="alertString"  [ngClass]="{'ro-alert-warning': alertType === 'warning','ro-alert-success': alertType === 'success'}">
+        {{ alertString }}
+    </h4>
+    <input type="text" id="QuestionInput" placeholder="Enter A debatable question" autofocus="true" (keyup)="questionControl()" [(ngModel)]="question"/>
+    <span id="QuestionMarkSpan">
+    </span>
+</div>
+<div *ngIf="mode === 'tags'">
+	<ro-tags-form
+		[question]="question"
+		(goBack)="mode = 'question'"
+		(postQuestionEmit)="onCreate($event)"></ro-tags-form>
 </div>

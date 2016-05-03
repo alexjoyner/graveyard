@@ -6,10 +6,13 @@
     <h4 id="SubHeader" class="text-center">
         An app to help answer the most controversial questions
     </h4>
-    <ro-create-question 
-        *ngIf="startQuestion" 
-        (close)="startQuestion = false"
-        (search)="searchQuestions($event);"></ro-create-question>
+    <div class="ro-modal" *ngIf="startQuestion">
+        <ro-create-question
+            [question]="searchText"
+            (close)="startQuestion = false; showQ_ToTut=false"
+            (search)="searchQuestions($event);"
+            (switchTags)="showQ_ToTut = false"></ro-create-question>
+    </div>
     <!-- Tab Bar: Tab to question list type -->
    <!--  <ul class="ro-nav ro-nav-tabs">
         <li role="presentation" class="ro-tab active">
@@ -34,7 +37,7 @@
     <br>
     <div class="row">
         <div class="col-md-10">
-            <div class="input-group">
+            <div class="input-group" style="margin: 3px 0 3px 0;">
                 <div class="input-group-addon">
                     <span *ngIf="!startQuestion">Search</span>
                     <span *ngIf="startQuestion"><b>ENTER</b></span>
@@ -43,7 +46,7 @@
             </div>
         </div>
         <div class="col-md-2 text-center">
-            <button class="btn btn-md btn-success" (click)="startQuestion = !startQuestion" *ngIf="!startQuestion" title="try searching for an question first to see if your question already exists">
+            <button class="btn btn-md btn-success" (click)="startQuestion = !startQuestion" *ngIf="!startQuestion" title="try searching for an question first to see if your question already exists" style="margin: 3px 0 3px 0;">
                 Start New Question
             </button>
         </div>
@@ -54,6 +57,7 @@
         [searchText]="searchText"
         [startQuestion]="startQuestion"
         [questions]="questions"
+        [showInTut]="showQ_ToTut"
         (cancel)="searchText = ''; startQuestion = !startQuestion;"></ro-home-question-list>
     <div *ngIf="searchText !== '';">
         <hr>

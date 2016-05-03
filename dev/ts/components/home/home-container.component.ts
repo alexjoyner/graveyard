@@ -17,6 +17,7 @@ export class HomeContainerComponent implements OnInit{
 	startQuestion: boolean = false;
 	private questions: Post[];
 	private showCreateQuestion: boolean;
+	private showQ_ToTut: boolean = false;
 	constructor(
 		private _usersService: UsersService,
 		private _authService: AuthService,
@@ -40,6 +41,7 @@ export class HomeContainerComponent implements OnInit{
 		}
 	}
 	searchQuestions(searchValue: string){
+		this.showQ_ToTut = (searchValue) ? true : false;
 		let searchString = (searchValue)? searchValue : this.searchText
 		//					(type: number, searchtext: string)
 		this._postsService.searchPosts(1, searchString)

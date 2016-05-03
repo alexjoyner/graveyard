@@ -1,8 +1,8 @@
-<div *ngIf="questionAvailable">
+<div id="QuestionContainer" *ngIf="questionAvailable">
     <div>
         <div *ngIf="!question.editQuestion || question.editQuestion === false">
             <div style="display: inline">   <h4 style="display: inherit; margin-right: 6px;" *ngFor="#tag of question.tags" ><span class="label label-info text center">{{tag.tag_name}}</span></h4></div> 
-            <h2 class="text-center">
+            <h2 class="text-center" id="QuestionHeader">
                 {{question.title}} <span [hidden]="question.title !== ''">Loading main question</span>
             </h2>
             <h5 class="text-center">
@@ -12,12 +12,12 @@
                 Created by {{question.owner_user_id}} on {{stringToDate(question.created_at)}}
             </p> -->
         </div>
-        <ro-question-form
+        <ro-edit-question-form
              *ngIf="question.editQuestion && question.editQuestion === true"
             [myQuestion]="question"
             [editMode]="true"
             (edited)="question.editQuestion = false">
-        </ro-question-form>
+        </ro-edit-question-form>
         <div class="ro-action-bar pull-right">
             <ro-vote-cell
                 class="ro-action-bar-item"
@@ -54,54 +54,6 @@
             </a>
         </li>
     </ul>
-    <input type="radio" id="end-tut" name="tut">
-    <input type="radio" id="step-4-question-intro" name="tut">
-    <input type="radio" id="step-5-mainPoints" name="tut">
-    <input type="radio" id="step-6-supports" name="tut">
-    <div class="ro-modal">
-        <label for="end-tut" id="ModalClose">
-            <a class="btn btn-default" (click)="endTut()">Close</a>
-        </label>
-        <div id="step-4-modal-container">
-            <h3 class="text-center">The questions page!</h3>
-            <p class="text-center">
-                Every main question has its own page which currently consists of:
-            </p>
-            <ul>
-                <li>
-                    A yes/no selector
-                </li>
-                <li>
-                    Main Points
-                </li>
-                <li>
-                    Support Points
-                </li>
-            </ul>
-            <div class="text-center">
-                <label for="step-5-mainPoints">
-                    <a class="btn btn-info">Ahh, Tell me more</a>
-                </label>
-            </div>
-        </div>
-        <div id="step-5-modal-container">
-            <h1>Main Points</h1>
-            <h3>Main points are </h3>
-            <div class="text-center">
-                <label for="step-6-supports">
-                    <a class="btn btn-info">Ahh, Tell me more</a>
-                </label>
-            </div>
-        </div>
-        <div id="step-6-modal-container">
-            <h1>Support Points</h1>
-            <div class="text-center">
-                <label for="end-tut">
-                    <a class="btn btn-info" (click)="endTut()">Ahh, Tell me more</a>
-                </label>
-            </div>
-        </div>
-    </div>
     <ro-points-list
         [points]="question.points" [dataAvailable]="questionAvailable"></ro-points-list>
 </div>

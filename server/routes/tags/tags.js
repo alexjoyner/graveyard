@@ -24,7 +24,7 @@ router.get('/:searchTerm', jwt_verify, function(req, res){
             tags
         WHERE 
             tag_name
-        LIKE
+        ILIKE
             $1
         LIMIT
             5

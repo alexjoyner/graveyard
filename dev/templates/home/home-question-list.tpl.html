@@ -2,7 +2,7 @@
     Loading questions
 </h1>
 <br/>
-<div *ngIf="questions">
+<div *ngIf="questions" [ngClass]="{'isInSearchModal': showInTut}">
     <div class="HomeQuestion" *ngFor="#question of questions" [routerLink]="['Question', {id: question._id, type: 'yes'}]" >
         <h3 class="text-center">
             {{question.title}}
