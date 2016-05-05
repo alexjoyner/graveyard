@@ -5,16 +5,19 @@ import {UsersService} from '../../shared/users.service';
 import {AuthService} from '../../shared/auth.service';
 import {PostsService} from '../../shared/posts.service';
 import {Post} from '../../shared/post';
+import {CreateQuestionFormComponent} from '../forms/create-question-form.component';
 @Component({
     selector: 'ro-home-container',
     template: require('dev/templates/home/home-container.tpl.html'),
-    directives: [HomeQuestionListComponent],
+    directives: [HomeQuestionListComponent, CreateQuestionFormComponent],
     providers: [PostsService]
 })
 export class HomeContainerComponent implements OnInit{
 	searchText: string = '';
 	startQuestion: boolean = false;
 	private questions: Post[];
+	private showCreateQuestion: boolean;
+	private showQ_ToTut: boolean = false;
 	constructor(
 		private _usersService: UsersService,
 		private _authService: AuthService,
@@ -37,9 +40,11 @@ export class HomeContainerComponent implements OnInit{
 				document.getElementById("step-1-welcome").checked = true, 1000)
 		}
 	}
-	searchQuestions(){
+	searchQuestions(searchValue: string){
+		this.showQ_ToTut = (searchValue) ? true : false;
+		let searchString = (searchValue)? searchValue : this.searchText
 		//					(type: number, searchtext: string)
-		this._postsService.searchPosts(1, this.searchText)
+		this._postsService.searchPosts(1, searchString)
 			.subscribe(data => {
 				console.log('ISSUES START: ', this.questions);
 				console.log('ISSUES: ', data);

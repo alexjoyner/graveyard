@@ -3,7 +3,7 @@ import {Component, Input, Output, EventEmitter} from 'angular2/core';
 import {VoteCellComponent} from '../../shared/vote-cell.component';
 import {Point} from '../../shared/point';
 import {PostsService} from '../../shared/posts.service';
-import {EditPointComponent} from './edit-point.component';
+import {EditPointComponent} from '../forms/edit-point-form.component';
 import { UsersService} from '../../shared/users.service';
 @Component({
     selector: 'ro-main-point',

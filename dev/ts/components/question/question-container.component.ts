@@ -5,7 +5,7 @@ import {Post} from '../../shared/post';
 import {PostsService} from '../../shared/posts.service';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 import {VoteCellComponent} from '../../shared/vote-cell.component';
-import {NewQuestionForm} from './question-form.component';
+import {EditQuestionForm} from '../forms/edit-question-form.component';
 import {UsersService} from '../../shared/users.service';
 import {AuthService} from '../../shared/auth.service';
 import {PointsListComponent} from './points-list.component';
@@ -13,9 +13,9 @@ import {PointsListComponent} from './points-list.component';
 @Component({// Route no selector
     template: require('dev/templates/question/question-container.tpl.html'),
     providers: [PostsService],
-    directives: [ROUTER_DIRECTIVES, VoteCellComponent, NewQuestionForm, PointsListComponent]
+    directives: [ROUTER_DIRECTIVES, VoteCellComponent, EditQuestionForm, PointsListComponent]
 })
-export class QuestionContainerComponent implements OnInit{
+export class QuestionContainerComponent{
 	question: Post = new Post('', 1);
 	private _questionId: number;
 	private _type: string;
@@ -39,12 +39,6 @@ export class QuestionContainerComponent implements OnInit{
 					},
 					err => console.log('Err: ', err)
 				);
-		}
-	}
-	ngOnInit():any{
-		if (this._usersService.showTut) {
-			setTimeout(() =>
-				document.getElementById("step-4-question-intro").checked = true, 1000)
 		}
 	}
 	endTut(){

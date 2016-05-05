@@ -12,33 +12,28 @@ import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
 import {VoteCellComponent} from '../../shared/vote-cell.component';
 import {AuthService} from '../../shared/auth.service';
 import {UsersService} from '../../shared/users.service';
-import {TagsService} from '../../shared/tags.service';
 import {GlobalHandlerService} from '../../shared/globalHandler.service';
 @Component({
     selector: 'ro-home-question-list',
     template: require('dev/templates/home/home-question-list.tpl.html'),
     directives: [ROUTER_DIRECTIVES, VoteCellComponent],
-    providers: [TagsService],
     pipes: [SearchFilterPipe]
 })
 export class  HomeQuestionListComponent implements OnInit{
 	@Input('searchText') searchText: string;
 	@Input('startQuestion') startQuestion: boolean;
 	@Input() questions: Post[];
+	@Input() showInTut: boolean;
 	@Output() cancel: EventEmitter<any> = new EventEmitter();
-	private returnedTags: [{id: number, tag_name: string}];
-	private acceptedTags = [];
 	private dataReturned: boolean = false;
 	constructor(
 		private _postsService: PostsService,
 		private _router: Router,
 		private _authService: AuthService,
 		private _usersService: UsersService,
-		private _tagsService: TagsService,
 		private _globalHandler: GlobalHandlerService) {
 	}
 	ngOnInit(): any {
-		this.acceptedTags = [];
 		var socket = io('/');
 		console.log('SOCKETS ROOMS: ', socket.rooms);
 		socket.emit('change room', { newroom: 'questions' })
@@ -46,6 +41,8 @@ export class  HomeQuestionListComponent implements OnInit{
 			console.log('NEW ISSUE: ', newQuestion);
 			if (!this.isOwner(newQuestion.owner_user_id)) {
 				this.questions.unshift(newQuestion);
+			}else{
+				this._router.navigate(['Question', { type: 'yes', id: newQuestion._id }]);
 			}
         }.bind(this));
 		socket.on('DeletedQuestion', function(postData) {
@@ -63,61 +60,6 @@ export class  HomeQuestionListComponent implements OnInit{
         		body: 'Refresh to receive updates'
         	});
         }.bind(this));
-	}
-	acceptTag(tag: { id: number, tag_name: string }) {
-		console.log(this.acceptedTags);
-		if (this.acceptedTags.length  < 5) {
-			if (this.acceptedTags.indexOf(tag) === -1) {
-				this.acceptedTags.push(tag);
-			}
-		}else{
-			console.log('You have to many tag');
-		}
-	}
-	createTag(tagName: string){
-		this._tagsService.postTag(tagName)
-			.subscribe(
-				data => {
-					console.log('CREATED TAG: ', data);
-					this.acceptedTags.push(data);
-				})
-	}
-	removeTag(tag: { id: number, tag_name: string }) {
-		console.log(this.acceptedTags);
-		let index = this.acceptedTags.indexOf(tag);
-		this.acceptedTags.splice(index, 1);
-	}
-	searchTags(searchTerm: string){
-		this._tagsService.getTags(searchTerm)
-			.subscribe(
-				data => {
-					this.returnedTags = data;
-				},
-				err => console.log('Error: ', err)
-			);
-	}
-	onCreate() {
-		let newQuestion: Post = new Post(this.searchText, 1);
-		if (newQuestion.title[newQuestion.title.length - 1] !== '?') {
-			newQuestion.title += '?'
-		}
-		let tags:any = [];
-		for (var i = this.acceptedTags.length - 1; i >= 0; i--) {
-			tags.push(this.acceptedTags[i]._id)
-		}
-		if (this._authService.checkValid()) {
-			this._postsService.insertPost({'post': newQuestion, 'tags': tags})
-				.subscribe(
-					data => {
-						console.log('Success Posting Question');
-					},
-					err => console.log('Error: ', err)
-				);
-		}
-	}
-	onCancel(){
-		this.acceptedTags = [];
-		this.cancel.emit(null);
 	}
 	deleteQuestion(question: Post, event: MouseEvent){
 		event.stopPropagation();

@@ -1,0 +1,23 @@
+<button class="btn btn-default ModalClose" (click)="endTut()">
+    Close
+</button>
+<div *ngIf="mode === 'question'">
+    <h4 id="AlertMessage" class="text-center" *ngIf="alertString"  [ngClass]="{'ro-alert-warning': alertType === 'warning','ro-alert-success': alertType === 'success'}">
+        {{ alertString }}
+    </h4>
+    <input type="text" id="QuestionInput" placeholder="Enter A debatable question" autofocus="true" (keyup)="questionControl()" [(ngModel)]="question"/>
+    <span id="QuestionMarkSpan">
+    </span>
+</div>
+<div *ngIf="mode === 'tags'">
+	<h2 id="HeaderQuestion">
+	    {{ question }}
+	</h2>
+	<ro-tags-form
+		[type]="+1"
+		[acceptedTags]="acceptedTags"
+		(goBack)="mode = 'question'"></ro-tags-form>
+	<button id="PostQuestion" class="btn btn-lg btn-success" (click)="onCreate()">
+		Post Question
+	</button>
+</div>

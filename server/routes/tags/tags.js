@@ -11,7 +11,7 @@ var conString = config.db;
 
 // ###########  GETS  ###############
 // Get tags from a search
-router.get('/:searchTerm', jwt_verify, function(req, res){
+router.get('/:searchTerm/:type', jwt_verify, function(req, res){
     console.log('Search: ', req.params.searchTerm);
     pg.connect(conString, function(err, client, done) {
       if(err) {
@@ -24,13 +24,15 @@ router.get('/:searchTerm', jwt_verify, function(req, res){
             tags
         WHERE 
             tag_name
-        LIKE
+        ILIKE
             $1
+        AND
+            tag_type_id = $2
         LIMIT
             5
         ;
       `;
-      client.query(queryString, ['%'+req.params.searchTerm+'%'], function(err, result) {
+      client.query(queryString, ['%'+req.params.searchTerm+'%', +req.params.type], function(err, result) {
         //call `done()` to release the client back to the pool
         done();
         if (err) throw err;
@@ -51,14 +53,15 @@ router.post('/create', jwt_verify, function(req, res) {
     var queryString = `
         INSERT INTO
           tags (
-          tag_name)
+          tag_name,
+          tag_type_id)
         VALUES (
-          $1)
+          $1, $2)
         RETURNING
             *`;
     console.log(info);
     var queryParams = 
-    [info.tag_name];
+    [info.tag_name, info.tag_type_id];
     console.log(queryParams);
     pg.connect(conString, function(err, client, done) {
         if (err) {

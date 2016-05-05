@@ -1,0 +1,46 @@
+<div id="TagsForm">
+	<div id="TagsContainer">
+		<div class="input-group">
+            <div class="input-group-addon">
+                Search {{typeString}}
+            </div>
+            <input type="text" class="form-control" id="exampleInputAmount"placeholder="Optional" #searchTagText (keyup)="searchTags(searchTagText.value)" autofocus="true" />
+        </div>
+		<div id="SearchTagsContainer">
+	        <h4>
+	            {{typeString}} returned
+	        </h4>
+	        <ul *ngFor="#tag of returnedTags">
+	            <li>
+	                {{ tag.tag_name }}
+	                <button class="btn btn-xs btn-success" (click)="acceptTag(tag)">
+	                    <i class="fa fa-plus">
+	                    </i>
+	                </button>
+	            </li>
+	        </ul>
+	        <p *ngIf="searchTagText.value.length> 0">
+	            CREATE TAG: {{ searchTagText.value }}
+	            <button class="btn btn-xs btn-success" (click)="createTag(searchTagText.value); searchTagText.value = ''">
+	                <i class="fa fa-plus">
+	                </i>
+	            </button>
+	        </p>
+		</div>
+		<div id="AcceptedTagsContainer">
+			<h4>
+	            Accepted {{typeString}}
+	        </h4>
+	        <ul *ngFor="#tag of acceptedTags">
+	            <li>
+	                {{ tag.tag_name }}
+	                <button class="btn btn-xs btn-danger" (click)="removeTag(tag)">
+	                    <i class="fa fa-minus">
+	                    </i>
+	                </button>
+	            </li>
+	        </ul>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
