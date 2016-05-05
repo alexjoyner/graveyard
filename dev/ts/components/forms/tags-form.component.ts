@@ -7,16 +7,17 @@ import {TagsService} from '../../shared/tags.service';
     template: require('dev/templates/forms/tags-form.tpl.html'),
 	providers: [TagsService]
 })
-export class TagsFormComponent {
-	@Input() question: string;
-	@Output() postQuestionEmit: EventEmitter<any> = new EventEmitter();
+export class TagsFormComponent implements OnInit{
+	@Input() acceptedTags: any[];
+	@Input('type') type: number;
+	private typeString: string;
 	private returnedTags: [{ id: number, tag_name: string }];
-	private acceptedTags = [];
 	constructor(
 		private _tagsService: TagsService) {
 	}
-	postQuestion(){
-		this.postQuestionEmit.emit(this.acceptedTags);
+	ngOnInit(): any {
+		this.searchTags('if ');
+		this.typeString = (this.type === 1) ? 'tags' : 'conditions';
 	}
 	acceptTag(tag: { id: number, tag_name: string }) {
 		console.log(this.acceptedTags);
@@ -29,7 +30,7 @@ export class TagsFormComponent {
 		}
 	}
 	createTag(tagName: string) {
-		this._tagsService.postTag(tagName)
+		this._tagsService.postTag(tagName, this.type)
 			.subscribe(
 			data => {
 				console.log('CREATED TAG: ', data);
@@ -42,7 +43,7 @@ export class TagsFormComponent {
 		this.acceptedTags.splice(index, 1);
 	}
 	searchTags(searchTerm: string) {
-		this._tagsService.getTags(searchTerm)
+		this._tagsService.getTags(searchTerm, this.type)
 			.subscribe(
 			data => {
 				this.returnedTags = data;

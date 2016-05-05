@@ -1,17 +1,14 @@
 <div id="TagsForm">
-	<h2 id="HeaderQuestion">
-	    {{ question }}
-	</h2>
 	<div id="TagsContainer">
 		<div class="input-group">
             <div class="input-group-addon">
-                Search
+                Search {{typeString}}
             </div>
-            <input type="text" class="form-control" id="exampleInputAmount"placeholder="Tags" #searchTagText (keyup)="searchTags(searchTagText.value)" autofocus="true" />
+            <input type="text" class="form-control" id="exampleInputAmount"placeholder="Optional" #searchTagText (keyup)="searchTags(searchTagText.value)" autofocus="true" />
         </div>
 		<div id="SearchTagsContainer">
 	        <h4>
-	            Tags returned
+	            {{typeString}} returned
 	        </h4>
 	        <ul *ngFor="#tag of returnedTags">
 	            <li>
@@ -32,7 +29,7 @@
 		</div>
 		<div id="AcceptedTagsContainer">
 			<h4>
-	            Accepted tags
+	            Accepted {{typeString}}
 	        </h4>
 	        <ul *ngFor="#tag of acceptedTags">
 	            <li>
@@ -45,7 +42,5 @@
 	        </ul>
 		</div>
 	</div>
-	<button id="PostQuestion" class="btn btn-lg btn-success" (click)="postQuestion()">
-		Post Question
-	</button>
+	<div class="clearfix"></div>
 </div>

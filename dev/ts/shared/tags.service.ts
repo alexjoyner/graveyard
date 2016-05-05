@@ -10,14 +10,14 @@ export class TagsService {
 	constructor(
 		private _http: Http) { }
 	/* GET */
-	getTags(searchTerm: string): Observable<any> {
+	getTags(searchTerm: string, type: number): Observable<any> {
 		const headers = new Headers();
 		headers.append('Content-Type', 'application/json');
 		headers.append('x-access-token',
 			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
 		let res = this._http.get(
 			this.endpoint +
-			'/tags/'+searchTerm,
+			'/tags/'+searchTerm+'/'+type,
 			{ headers: headers })
 			.map(res => res.json());
 		res.subscribe(
@@ -28,9 +28,10 @@ export class TagsService {
 		return res;
 	}
 	/* POST */
-	postTag(tagName: string): Observable<any> {
+	postTag(tagName: string, tagType: number): Observable<any> {
 		const body = JSON.stringify({
-			tag_name: tagName
+			tag_name: tagName,
+			tag_type_id: tagType
 		});
 		const headers = new Headers();
 		headers.append('Content-Type', 'application/json');

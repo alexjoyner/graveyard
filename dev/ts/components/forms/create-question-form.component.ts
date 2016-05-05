@@ -14,7 +14,8 @@ export class CreateQuestionFormComponent implements OnInit{
 	@Output() search: EventEmitter<any> = new EventEmitter();
 	@Output() switchTags: EventEmitter<any> = new EventEmitter();
 	private alertString: string;
-	@Input('question') question: string;	
+	@Input('question') question: string;
+	private acceptedTags: any[] = [];
 	private alertType: string;
 	private mode: string = 'question';
 	private count: number;
@@ -24,14 +25,14 @@ export class CreateQuestionFormComponent implements OnInit{
 	endTut(){
 		this.close.emit(null);
 	}
-	onCreate(acceptedTags: any[]) {
+	onCreate() {
 		let newQuestion: Post = new Post(this.question, 1);
 		if (newQuestion.title[newQuestion.title.length - 1] !== '?') {
 			newQuestion.title += '?'
 		}
 		let tags: any = [];
-		for (var i = acceptedTags.length - 1; i >= 0; i--) {
-			tags.push(acceptedTags[i]._id)
+		for (var i = this.acceptedTags.length - 1; i >= 0; i--) {
+			tags.push(this.acceptedTags[i]._id)
 		}
 		if (this._authService.checkValid()) {
 			this._postsService.insertPost({ 'post': newQuestion, 'tags': tags })

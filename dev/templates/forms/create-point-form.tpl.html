@@ -1,44 +1,44 @@
 <button class="btn btn-default ModalClose" (click)="onCancel()">
     Close
 </button>
-<div id="CreatePointForm">
+<form id="CreatePointForm">
     <div id="PointConditionsContainer">
-        <div class="input-group">
-            <div class="input-group-addon">
-                IF
-            </div>
-            <input type="text" class="form-control" id="exampleInputAmount" [(ngModel)]="searchText" placeholder="Optional" maxlength="150" />
-        </div>
+        <ro-tags-form
+            [type]="+2"
+            [acceptedTags]="conditions"></ro-tags-form>
     </div>
-    <div id="LargeWord-Then-Container">
+    <!-- <div id="LargeWord-Then-Container">
         <h3 id="LargeWord-Then">
             Then
         </h3>
     </div>
     <div id="YesNoRadioContainer">
-        <!-- <label>
-            <input type="radio"> YES
-        </label> -->
         <div id="YesBtn">
             YES
         </div>
         <div id="NoBtn">
             NO
         </div>
-    </div>
+    </div> -->
+    <label for="WhyPointInput">
+        <span id="PointTypeString">{{stringType | uppercase}}: {{200 - newPoint.title.length}}/200</span>
+    </label>
     <textarea
         id="WhyPointInput"
         name="main-point-detail"
         class="form-control"
         rows="6"
         style="resize: none;"
-        minlength="20"
-        maxlength="400"
-        placeholder="Why: DON'T SUPPORT YOUR POINT HERE!!!"
-        [(ngModel)]="newPoint.detail"
+        minlength="10"
+        maxlength="200"
+        placeholder="What is your point? DON'T SUPPORT YOUR POINT HERE!!!"
+        [(ngModel)]="newPoint.title"
         >
     </textarea>
-</div>
+    <button id="PostPointBtn" type="button" class="btn btn-sm btn-success" (click)="createPoint()">
+        Post point
+    </button>
+</form>
 <!-- <form class="row" (ngSubmit)="createPoint()">
     <div id="NewPoint" class="row">
         <div class="col-xs-8">
