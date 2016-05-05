@@ -64,6 +64,7 @@ app.use(function(req, res, next) {
 require('./server/routes/routes.js')(app);
 // Send files from angular
 app.use(express.static(path.resolve(__dirname, 'dist_client')));
+app.use('/client', express.static(path.resolve(__dirname, 'dist_client/client')));
 var renderIndex = function(req, res) {
     res.sendFile(path.resolve(__dirname, 'dist_client/index.html'));
 };
