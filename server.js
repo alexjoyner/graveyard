@@ -65,18 +65,18 @@ require('./server/routes/routes.js')(app);
 // Send files from angular
 app.use(express.static(path.resolve(__dirname, 'dist_client')));
 var renderIndex = function(req, res) {
-        res.sendFile(path.resolve(__dirname, 'dist_client/index.html'));
-    }
-    // ANY ROUTE THAT ISN'T AN API ROUTE, send the homepage
+    res.sendFile(path.resolve(__dirname, 'dist_client/index.html'));
+};
+// ANY ROUTE THAT ISN'T AN API ROUTE, send the homepage
 app.get('*', renderIndex);
 io.on('connection', function(socket) {
     console.log('A user just connected with id ' + socket.id);
     socket.on("change room", function(data) {
-        for(room in socket.rooms){
-            if(socket.id !== room) socket.leave(room);
+        for (room in socket.rooms) {
+            if (socket.id !== room) socket.leave(room);
         }
-        socket.join(data.newroom, function(){
-          console.log('rooms', socket.rooms); 
+        socket.join(data.newroom, function() {
+            console.log('rooms', socket.rooms);
         });
     });
     socket.on('disconnect', function() {
