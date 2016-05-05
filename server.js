@@ -9,7 +9,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var morgan = require('morgan');
-var passportg = require('passport');
+var passport = require('passport');
 var config = require('./server/config/config.js');
 var ENV = process.env.NODE_ENV || 'development'; // development || production
 console.log('Enviorment: ', ENV);
