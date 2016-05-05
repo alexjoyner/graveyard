@@ -83,7 +83,7 @@ io.on('connection', function(socket) {
         console.log('user ' + socket.id + ' disconnected');
     });
 })
- 
+var port = (process.env.PORT || 9000);
 // Start an express server
 http.listen(port, function(err) {
     'use strict';
