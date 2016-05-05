@@ -22,7 +22,6 @@ module.exports = function(req, res, next) {
         next();
       }
     });
-
   } else {
 
     // if there is no token

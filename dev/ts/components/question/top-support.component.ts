@@ -3,7 +3,7 @@ import {Component, Input, Output, EventEmitter} from 'angular2/core';
 import {VoteCellComponent} from '../../shared/vote-cell.component';
 import {Post} from '../../shared/post';
 import {PostsService} from '../../shared/posts.service';
-import { UsersService} from '../../shared/users.service';
+import {UsersService} from '../../shared/users.service';
 import {RouteParams} from 'angular2/router';
 @Component({
     selector: 'ro-top-support',

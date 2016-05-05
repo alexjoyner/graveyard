@@ -9,7 +9,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var morgan = require('morgan');
-var passport = require('passport');
+var passportg = require('passport');
 var config = require('./server/config/config.js');
 var ENV = process.env.NODE_ENV || 'development'; // development || production
 console.log('Enviorment: ', ENV);
@@ -83,7 +83,7 @@ io.on('connection', function(socket) {
         console.log('user ' + socket.id + ' disconnected');
     });
 })
-var port = (process.env.PORT || 9000);
+ 
 // Start an express server
 http.listen(port, function(err) {
     'use strict';
