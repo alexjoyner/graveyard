@@ -12,7 +12,8 @@ import {UsersService} from '../../shared/users.service';
     directives: [ROUTER_DIRECTIVES]
 })
 export class AuthContainerComponent{
-	user: User = new User('', '');
+	private user: User = new User('', '', null);
+	private specialCode: string;
 	remember: boolean = false;
 	private mode: string = 'login'; 
 	constructor(
@@ -24,6 +25,6 @@ export class AuthContainerComponent{
 		this._authService.attemptLogin(this.user);
 	}
 	signUp(){
-		this._authService.attemptSignup(this.user);
+		this._authService.attemptSignup(this.user, this.specialCode);
 	}
 }

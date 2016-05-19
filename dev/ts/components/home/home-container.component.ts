@@ -22,22 +22,17 @@ export class HomeContainerComponent implements OnInit{
 		private _usersService: UsersService,
 		private _authService: AuthService,
 		private _postsService: PostsService){
-		if (_authService.checkValid()) {
-			_postsService.getAllPosts()
+	}
+
+	ngOnInit(): any {
+		if (this._authService.checkValid()) {
+			this._postsService.getAllPosts()
 				.subscribe(data => {
 					console.log('ISSUES START: ', this.questions);
 					console.log('ISSUES: ', data);
 					this.questions = data;
 					console.log('ISSUES after: ', this.questions);
 				});
-		}
-	}
-
-	ngOnInit():any {
-		console.log('HEY');
-		if(this._usersService.showTut){
-			setTimeout(()=>
-				document.getElementById("step-1-welcome").checked = true, 1000)
 		}
 	}
 	searchQuestions(searchValue: string){

@@ -54,17 +54,17 @@ module.exports = function(passport) {
                         queryString = `
                         INSERT INTO 
                             users   
-                            (email,password)
+                            (email,password, zipcode)
                         VALUES      
-                            ($1,$2)
+                            ($1,$2, $3)
                         RETURNING
                             *
                         ;`;
-                        client.query(queryString, [email, generateHash(password)], function(err, newUser) {
+                        client.query(queryString, [email, generateHash(password), req.body.zipcode], function(err, newUser) {
                             //call `done()` to release the client back to the pool
                             doneConnect();
                             if (err) throw err;
-                            result.rows[0]['votes'] = [];
+                            newUser.rows[0]['votes'] = [];
                             var token = jwt.sign({
                                 id: newUser.rows[0]._id,
                                 email: newUser.rows[0].email

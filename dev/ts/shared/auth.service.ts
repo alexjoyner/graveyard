@@ -45,7 +45,8 @@ export class AuthService {
 			})
 		return res;
 	}
-	attemptSignup(user: User): Observable<any> {
+	attemptSignup(user: User, specialCode: string): Observable<any> {
+		user['specialCode'] = specialCode
 		const body = JSON.stringify(user);
 		const headers = new Headers();
 		headers.append('Content-Type', 'application/json');

@@ -11,7 +11,7 @@ var conString = config.db;
 
 // ###########  GETS  ###############
 // Get tags from a search
-router.get('/:searchTerm/:type', jwt_verify, function(req, res){
+router.get('/:searchTerm/:type', function(req, res){
     console.log('Search: ', req.params.searchTerm);
     pg.connect(conString, function(err, client, done) {
       if(err) {

@@ -10,14 +10,21 @@ import {TagsService} from '../../shared/tags.service';
 export class TagsFormComponent implements OnInit{
 	@Input() acceptedTags: any[];
 	@Input('type') type: number;
-	private typeString: string;
+	@Input('typeString') typeString: string;
+	@Input('tagsFormHeader') tagsFormHeader: string;
+	private searchType: number;
 	private returnedTags: [{ id: number, tag_name: string }];
 	constructor(
 		private _tagsService: TagsService) {
 	}
 	ngOnInit(): any {
-		this.searchTags('if ');
-		this.typeString = (this.type === 1) ? 'tags' : 'conditions';
+		switch(this.type){
+			case 1:
+				this.searchTags('a');
+				break;
+			case 2:
+				this.searchTags('if ');
+		}
 	}
 	acceptTag(tag: { id: number, tag_name: string }) {
 		console.log(this.acceptedTags);

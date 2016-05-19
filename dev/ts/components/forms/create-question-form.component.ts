@@ -22,6 +22,9 @@ export class CreateQuestionFormComponent implements OnInit{
 	constructor(
 		private _authService: AuthService,
 		private _postsService: PostsService) {}
+	ngOnInit():any {
+
+	}
 	endTut(){
 		this.close.emit(null);
 	}
@@ -89,7 +92,7 @@ export class CreateQuestionFormComponent implements OnInit{
 	}
 }
 function checkIsYesOrNo(searchStr: string):boolean {
-	let validCases: string[] = ['should', 'would','will','could','are','is','can','shall','did','am']
+	let validCases: string[] = ['should', 'would','will','could','are','is','can','shall','did','am','do']
 	let firstword: string = searchStr.match(/^([\w\-]+)/)[0].toLowerCase();
 	return validCases.indexOf(firstword) > -1;
 }

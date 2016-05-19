@@ -1,27 +1,26 @@
 <div id="TagsForm">
 	<div id="TagsContainer">
+		<h1 *ngIf="tagsFormHeader">{{tagsFormHeader}}</h1>
 		<div class="input-group">
             <div class="input-group-addon">
-                Search {{typeString}}
+                Search {{typeString}}s
             </div>
             <input type="text" class="form-control" id="exampleInputAmount"placeholder="Optional" #searchTagText (keyup)="searchTags(searchTagText.value)" autofocus="true" />
         </div>
 		<div id="SearchTagsContainer">
 	        <h4>
-	            {{typeString}} returned
+	            {{typeString | uppercase}}S RETURNED
 	        </h4>
-	        <ul *ngFor="#tag of returnedTags">
-	            <li>
-	                {{ tag.tag_name }}
-	                <button class="btn btn-xs btn-success" (click)="acceptTag(tag)">
-	                    <i class="fa fa-plus">
-	                    </i>
-	                </button>
-	            </li>
-	        </ul>
-	        <p *ngIf="searchTagText.value.length> 0">
-	            CREATE TAG: {{ searchTagText.value }}
-	            <button class="btn btn-xs btn-success" (click)="createTag(searchTagText.value); searchTagText.value = ''">
+	        <div *ngFor="#tag of returnedTags" class="ro-tag">
+                <span class="ro-tagName">{{ tag.tag_name }}</span>
+                <button class="btn btn-sm btn-success pull-right" (click)="acceptTag(tag)">
+                    <i class="fa fa-plus">
+                    </i>
+                </button>
+	        </div>
+	        <p *ngIf="searchTagText.value.length> 0" class="ro-tag">
+	            <span class="ro-tagName">CREATE {{typeString | uppercase}}: {{ searchTagText.value }}</span>
+	            <button class="btn btn-sm btn-success pull-right" (click)="createTag(searchTagText.value); searchTagText.value = ''">
 	                <i class="fa fa-plus">
 	                </i>
 	            </button>
@@ -29,18 +28,16 @@
 		</div>
 		<div id="AcceptedTagsContainer">
 			<h4>
-	            Accepted {{typeString}}
+	            ACCEPTED {{typeString | uppercase}}S
 	        </h4>
-	        <ul *ngFor="#tag of acceptedTags">
-	            <li>
-	                {{ tag.tag_name }}
-	                <button class="btn btn-xs btn-danger" (click)="removeTag(tag)">
-	                    <i class="fa fa-minus">
-	                    </i>
-	                </button>
-	            </li>
-	        </ul>
+	        <div *ngFor="#tag of acceptedTags" class="ro-tag">
+                <span class="ro-tagName">{{ tag.tag_name }}</span>
+                <button class="btn btn-sm btn-danger pull-right" (click)="removeTag(tag)">
+                    <i class="fa fa-minus">
+                    </i>
+                </button>
+	        </div>
 		</div>
+		<div class="clearfix"></div>
 	</div>
-	<div class="clearfix"></div>
 </div>

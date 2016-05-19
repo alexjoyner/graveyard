@@ -6,6 +6,7 @@ import {QuestionContainerComponent} from './components/question/question-contain
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {AlertBarComponent} from './components/alertBar/alertBar.component';
 import {AuthContainerComponent} from './components/auth/auth-container.component';
+import {WelcomeComponent} from './components/welcome/welcome.component';
 import {AuthService} from './shared/auth.service';
 import {UsersService} from './shared/users.service';
 @Component({
@@ -22,7 +23,8 @@ import {UsersService} from './shared/users.service';
     providers: [AuthService]
 })
 @RouteConfig([
-	{ path: '/', name: 'Home', component: HomeContainerComponent, useAsDefault: true },
+    { path: '/Welcome', name: 'Welcome', component: WelcomeComponent, useAsDefault: true},
+	{ path: '/', name: 'Home', component: HomeContainerComponent},
     { path: '/Question/:type/:id', name: 'Question', component: QuestionContainerComponent },
     { path: '/Auth', name: 'Auth', component: AuthContainerComponent }
 ])
