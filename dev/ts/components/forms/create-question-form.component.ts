@@ -51,7 +51,7 @@ export class CreateQuestionFormComponent implements OnInit{
 		let daQ = this.question; // daQ (The question)
 		this.alertString = undefined;
 		if(daQ && daQ.length > 2){
-			if (daQ.length > 5 && checkIsYesOrNo(daQ)) {
+			if (checkIsYesOrNo(daQ)) {
 				if (isThreeWords(daQ)) {
 					if (checkNotComparison(daQ)) {
 						if (checkNoYou) {

@@ -1,117 +1,58 @@
 <div id="WelcomeTutorial" class="ro-modal">
     <div  *ngIf="infoStep === 0" [ngSwitch]="tutStep">
         <h1 id="ToMuchInfo" class="CenterContent" *ngSwitchWhen="0">
-            Do you believe that there is
-            <b>
-                to much information
-            </b>
-            to make good decisions
-            <b>
-                easily
-            </b>
-            ?
+            Stop scouring the web for data when you want to try something new. Nobody really enjoys that.
         </h1>
         <h1 class="CenterContent" *ngSwitchWhen="1">
-            Do you believe the
-            <b>
-                world
-            </b>
-            could be more efficient at
-            <b>
-                making decisions
-            </b>
-            ?
+            Have the best data in an instant and in a format that makes sense.
         </h1>
         <h1 class="CenterContent" *ngSwitchWhen="2">
-            Do you believe that
-            <b>
-                ALL
-            </b>
-            decisions should be made by a majority vote of a
-            <b>
-                well educated
-            </b>
-            population?
+            Help answer the world's greatest issues.
         </h1>
         <h1 class="CenterContent" *ngSwitchWhen="3">
-            Do you believe that the best
-            <b>
-                DATA
-            </b>
-            should have the
-            <b>
-                most influence
-            </b>
-            in a vote?
-        </h1>
-        <h1 class="CenterContent" *ngSwitchWhen="4">
-            Do you believe that
-            <b>
-                product claims
-            </b>
-            should be grounded in
-            <b>
-                proof
-            </b>
-            ?
-        </h1>
-        <h1 class="CenterContent" *ngSwitchWhen="5">
-            Have you ever known someone to make a change in their personal habits because they
-            <b>
-                "read something somewhere"
-            </b>
-            ?
+            Let your voice be heard, without having to argue with anyone.
         </h1>
         <div id="TutActionBar">
             <button id="TutYesBtn" class="btn btn-default btn-lg tutActionBarItem" (click)="prevStep()">
                 Back
             </button>
-            <button id="TutYesBtn" class="btn btn-success btn-lg tutActionBarItem" (click)="nextStep(true)">
-                YES
-            </button>
-            <button id="TutNoBtn" class="btn btn-danger btn-lg tutActionBarItem" (click)="nextStep(false)">
-                NO
-            </button>
-            <button id="TutNoBtn" class="btn btn-default btn-lg tutActionBarItem" (click)="nextStep(null)">
-                SKIP
+            <button id="TutYesBtn" class="btn btn-success btn-lg tutActionBarItem" (click)="nextStep()">
+                AWESOME
             </button>
         </div>
     </div>
-    <div class="CenterContent" *ngIf="infoStep === 1">
-    	<p>Your probobly going to love our app!</p>
+    <form class="CenterContent" *ngIf="infoStep === 1" (ngSubmit)="submitContactInfo()">
+        <p>Like to know more. <br> Enter your contact info below.</p>
     	<p>We would love your feedback!</p>
         <div class="form-group">
-            <label for="exampleInputEmail1">
+            <label for="ContactFullName">
                 Full Name
             </label>
-            <input type="text" class="form-control" id="ContactFullName" placeholder="Full Name" [(ngModel)]="userData.fullName"/>
+            <input type="text" class="form-control" id="ContactFullName" placeholder="Full Name" [(ngModel)]="userData.fullName" required />
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">
+            <label for="ContactEmail">
                 Email
             </label>
-            <input type="email" class="form-control" id="ContactEmail" placeholder="Email" [(ngModel)]="userData.email"/>
+            <input type="email" class="form-control" id="ContactEmail" placeholder="Email" [(ngModel)]="userData.email" required/>
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">
-                Re-enter Email
-            </label>
-            <input type="email" class="form-control" id="ContactEmail" placeholder="Email" [(ngModel)]="userData.reentered"/>
+          <label for="interests">Interests: (So we can have testing parties with groups of people with similar interests) <br> ex: sports,cars,health,video games (Minimum of 4)</label>
+          <input class="form-control" id="UserInterests" placeholder="Comma seperated list of your top interests" [(ngModel)]="userData.interests" required pattern="[A-Za-z-]+,+[A-Za-z-]+,+[A-Za-z-]+,+[A-Za-z-]+">
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label for="exampleInputPassword1">
                 Zip Code
             </label>
             <input type="number" class="form-control" id="ContactZip" placeholder="Zip" [(ngModel)]="userData.zipcode"/>
-        </div>
-        <button type="submit" class="btn btn-default" (click)="submitContactInfo()">
+        </div> -->
+        <button type="submit" class="btn btn-default">
             Submit
         </button>
+    </form>
+    <div class="CenterContent" *ngIf="infoStep === 2">
+        <h1>Thank you! We will keep you updated.</h1>
+        <h3>If you know someone else that has to make decisions, be sure to let them sign up too!</h3>
+        <button class="btn btn-lg btn-success" (click)="infoStep = 0; tutStep = 0">Restart slide for someone else</button>
     </div>
-	<ro-tags-form
-		*ngIf="infoStep === 2"
-        [type]="+1"
-        [acceptedTags]="userData.interests"
-        [tagsFormHeader]="'What are your favorite interests to discuss or read about?'"
-        [typeString]="'Interest'"></ro-tags-form>
 </div>

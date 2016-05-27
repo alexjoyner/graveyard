@@ -7,7 +7,7 @@
         	<a class="ro-nav-item pull-right" *ngIf="auth()" (click)="logout()">Logout</a>
         </li>
 		<li >
-        	<a class="ro-nav-item pull-right" [routerLink]="['Auth']" *ngIf="!auth()">Login/Register</a>
+        	<a class="ro-nav-item pull-right" [routerLink]="['Auth']" *ngIf="!auth()">Get started now! Login/Register</a>
         	<a class="ro-nav-item pull-right" [routerLink]="['Home']" *ngIf="auth()">{{email}}</a>
         </li>
 	</ul>

@@ -13,7 +13,7 @@ email,
 phone #,
 profile: 3 interests
 */
-var secretSignupCode = 'awesome'
+var secretSignupCode = 'supertesters'
 router.post('/signup', function(req, res, next) {
     console.log(req.body);
     if(req.body.specialCode === secretSignupCode){

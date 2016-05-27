@@ -97,7 +97,7 @@ export class AuthService {
 			if(flag){
 				return false;
 			}else{
-				this._router.navigate(['Auth']);
+				this._router.navigate(['Welcome']);
 			}
 		}
 	}
