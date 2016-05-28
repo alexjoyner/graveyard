@@ -10,11 +10,13 @@ export class WelcomeUserService {
 	constructor(
 		private _http: Http) { }
 	/* POST */
-	welcomeNewUser(fullName: string, email: string, interests: [string]): Observable<any> {
+	welcomeNewUser(fullName: string, email: string, interests: [string], concerns: [string], tester: boolean): Observable<any> {
 		const body = JSON.stringify({
 			fullName: fullName, 
 			email: email, 
-			interests: interests
+			interests: interests,
+			concerns: concerns,
+			tester: tester
 		});
 		const headers = new Headers();
 		headers.append('Content-Type', 'application/json');

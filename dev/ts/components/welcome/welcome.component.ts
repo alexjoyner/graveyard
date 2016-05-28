@@ -14,7 +14,8 @@ export class WelcomeComponent {
 	private userData: any = {
 		fullName: '',
 		email: '',
-		interests: ''
+		interests: '',
+		tester: true
 	}
 	constructor(
 		private _welcomeService: WelcomeUserService){}
@@ -32,7 +33,9 @@ export class WelcomeComponent {
 	}
 	submitContactInfo(){
 		let interests = this.userData.interests.split(',');
-		let newUser = this._welcomeService.welcomeNewUser(this.userData.fullName, this.userData.email, interests);
+		let concerns = this.userData.concerns.split(',');
+		let newUser = this._welcomeService.welcomeNewUser(
+			this.userData.fullName, this.userData.email, interests, concerns, this.userData.tester);
 		newUser.subscribe(
 			data => {
 				this.infoStep = 2;

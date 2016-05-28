@@ -34,13 +34,13 @@ router.post('/new', function(req, res) {
                 queryString = `
                         INSERT INTO 
                             welcome_users   
-                            (full_name, email, interests)
+                            (full_name, email, interests, concerns, tester)
                         VALUES      
-                            ($1,$2, $3)
+                            ($1,$2, $3, $4, $5)
                         RETURNING
                             *
                         ;`;
-                client.query(queryString, [req.body.fullName, req.body.email, req.body.interests], function(err, newUser) {
+                client.query(queryString, [req.body.fullName, req.body.email, req.body.interests,req.body.concerns, req.body.tester], function(err, newUser) {
                     //call `done()` to release the client back to the pool
                     doneConnect();
                     if (err) throw err;

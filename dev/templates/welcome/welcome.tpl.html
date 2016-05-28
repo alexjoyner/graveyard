@@ -22,8 +22,7 @@
         </div>
     </div>
     <form class="CenterContent" *ngIf="infoStep === 1" (ngSubmit)="submitContactInfo()">
-        <p>Like to know more. <br> Enter your contact info below.</p>
-    	<p>We would love your feedback!</p>
+        <p>Like to know more? <br> Enter your contact info below.</p>
         <div class="form-group">
             <label for="ContactFullName">
                 Full Name
@@ -37,9 +36,21 @@
             <input type="email" class="form-control" id="ContactEmail" placeholder="Email" [(ngModel)]="userData.email" required/>
         </div>
         <div class="form-group">
-          <label for="interests">Interests: (So we can have testing parties with groups of people with similar interests) <br> ex: sports,cars,health,video games (Minimum of 4)</label>
+          <label>Interests: (So we can have testing parties with groups of people with similar interests) <br> ex: sports,cars,health,video games (Minimum of 4)</label>
           <input class="form-control" id="UserInterests" placeholder="Comma seperated list of your top interests" [(ngModel)]="userData.interests" required pattern="[\s\S]{1,59},+[\s\S]{1,59},+[\s\S]{1,59},+[\s\S]{1,59}[\s\S ]">
         </div>
+        <div class="form-group">
+          <label>Concerns: What things are you concerned about in our world today. Personal, Local, National, or international <br> ex: healthcare,teacher pay,transgender rights,healthiness of tea,etc. (Minimum of 4)</label>
+          <input class="form-control" id="UserConcerns" placeholder="Comma seperated list of your top concerns" [(ngModel)]="userData.concerns" required pattern="[\s\S]{1,59},+[\s\S]{1,59},+[\s\S]{1,59},+[\s\S]{1,59}[\s\S ]">
+        </div>
+        <p><b>Testing begins soon! Would you like to participate?</b></p>
+        <p>We would love your feedback!</p>
+        <label>
+            <input type="checkbox" [(ngModel)]="userData.tester">
+            <span *ngIf="userData.tester"> YES! I would love to help with testing!</span>
+            <span *ngIf="!userData.tester"> NO. Just let me know when the final product is ready.</span>
+        </label>
+        <br>
         <!-- <div class="form-group">
             <label for="exampleInputPassword1">
                 Zip Code
