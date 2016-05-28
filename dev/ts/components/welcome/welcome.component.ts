@@ -23,11 +23,8 @@ export class WelcomeComponent implements OnInit{
 		this.nextStep();
 	}
 	nextStep() {
-		if (this.tutStep <= 3) {
-			setTimeout(() => {
-				this.tutStep++;
-				this.nextStep();
-			},4500)
+		if (this.tutStep < 3) {
+			this.tutStep++;
 		}else{
 			this.infoStep = 1;
 		}

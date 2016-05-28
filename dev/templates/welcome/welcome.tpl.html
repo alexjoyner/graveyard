@@ -12,14 +12,14 @@
         <h1 class="CenterContent" *ngSwitchWhen="3">
             Let your voice be heard, without having to argue with anyone.
         </h1>
-        <!-- <div id="TutActionBar">
+        <div id="TutActionBar">
             <button id="TutYesBtn" class="btn btn-default btn-lg tutActionBarItem" (click)="prevStep()">
                 Back
             </button>
             <button id="TutYesBtn" class="btn btn-success btn-lg tutActionBarItem" (click)="nextStep()">
-                AWESOME
+                Next
             </button>
-        </div> -->
+        </div>
     </div>
     <form class="CenterContent" *ngIf="infoStep === 1" (ngSubmit)="submitContactInfo()">
         <p>Like to know more? <br> Enter your contact info below.</p>
