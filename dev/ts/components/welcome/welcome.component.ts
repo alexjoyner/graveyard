@@ -1,5 +1,5 @@
 declare function require(name: string);
-import {Component, OnInit} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {TagsFormComponent} from '../forms/tags-form.component';
 import {WelcomeUserService} from '../../shared/welcome-user.service'
 @Component({//ROUTE NO NEED FOR SELECTOR
@@ -7,7 +7,7 @@ import {WelcomeUserService} from '../../shared/welcome-user.service'
     directives: [TagsFormComponent],
     providers: [WelcomeUserService]
 })
-export class WelcomeComponent implements OnInit{
+export class WelcomeComponent{
 	private infoStep = 0;
 	private tutStep: number = 0;
 	private errorString: string;
@@ -19,11 +19,8 @@ export class WelcomeComponent implements OnInit{
 	}
 	constructor(
 		private _welcomeService: WelcomeUserService){}
-	ngOnInit():any{
-		this.nextStep();
-	}
 	nextStep() {
-		if (this.tutStep < 3) {
+		if (this.tutStep < 8) {
 			this.tutStep++;
 		}else{
 			this.infoStep = 1;

@@ -1,18 +1,40 @@
 <div id="WelcomeTutorial" class="ro-modal">
     <div  *ngIf="infoStep === 0" [ngSwitch]="tutStep">
         <h1 id="ToMuchInfo" class="CenterContent" *ngSwitchWhen="0">
-            Stop scouring the web for data when you want to try something new.
+            <p>To better understand the issue, please find 20 minutes to watch this video. (Pardon the few vulgar moments)</p>
+            <iframe width="100%" height="auto" src="https://www.youtube.com/embed/0Rnq1NpHdmw" frameborder="0" allowfullscreen style="min-height: 400px"></iframe>
+            <button id="TutYesBtn" class="btn btn-default btn-lg" (click)="prevStep()">
+                Back
+            </button>
+            <button id="TutYesBtn" class="btn btn-success btn-lg" (click)="nextStep()">
+                Next
+            </button>
         </h1>
         <h1 class="CenterContent" *ngSwitchWhen="1">
-            Have the best data in an instant and in a format that makes sense.
+            MetaTruth is an application to help answer <b>COMPLEX</b> and <b>OPINIONATED</b> questions
         </h1>
         <h1 class="CenterContent" *ngSwitchWhen="2">
-            Help answer the world's greatest issues.
+            Questions like: Is my coffee giving me Cancer?
         </h1>
         <h1 class="CenterContent" *ngSwitchWhen="3">
-            Let your voice be heard, without having to argue with anyone.
+            Questions where <b>ALL</b> the data needs to be concidered
         </h1>
-        <div id="TutActionBar">
+        <h1 class="CenterContent" *ngSwitchWhen="4">
+            Questions that Google has a tough time answering.
+        </h1>
+        <h1 class="CenterContent" *ngSwitchWhen="5">
+            So it will help you make educated decisions
+        </h1>
+        <h1 class="CenterContent" *ngSwitchWhen="6">
+            By showing YOU the data you need to see
+        </h1>
+        <h1 class="CenterContent" *ngSwitchWhen="7">
+            In a FORMAT that makes sense
+        </h1>
+        <h1 class="CenterContent" *ngSwitchWhen="8">
+            Becuase it should be easier to make decisions.
+        </h1>
+        <div id="TutActionBar" *ngIf="tutStep != 0 ">
             <button id="TutYesBtn" class="btn btn-default btn-lg tutActionBarItem" (click)="prevStep()">
                 Back
             </button>
@@ -22,7 +44,8 @@
         </div>
     </div>
     <form class="CenterContent" *ngIf="infoStep === 1" (ngSubmit)="submitContactInfo()">
-        <p>Like to know more? <br> Enter your contact info below.</p>
+        <h2>Pre-Reqister now</h2>
+        <h4>Until the production launch version is released, you must attend a TESTING party to get access to the app.</h4>
         <div class="form-group">
             <label for="ContactFullName">
                 Full Name
