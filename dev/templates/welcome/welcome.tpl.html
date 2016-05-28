@@ -12,14 +12,14 @@
         <h1 class="CenterContent" *ngSwitchWhen="3">
             Let your voice be heard, without having to argue with anyone.
         </h1>
-        <div id="TutActionBar">
+        <!-- <div id="TutActionBar">
             <button id="TutYesBtn" class="btn btn-default btn-lg tutActionBarItem" (click)="prevStep()">
                 Back
             </button>
             <button id="TutYesBtn" class="btn btn-success btn-lg tutActionBarItem" (click)="nextStep()">
                 AWESOME
             </button>
-        </div>
+        </div> -->
     </div>
     <form class="CenterContent" *ngIf="infoStep === 1" (ngSubmit)="submitContactInfo()">
         <p>Like to know more? <br> Enter your contact info below.</p>
@@ -27,7 +27,7 @@
             <label for="ContactFullName">
                 Full Name
             </label>
-            <input type="text" class="form-control" id="ContactFullName" placeholder="Full Name" [(ngModel)]="userData.fullName" required />
+            <input type="text" class="form-control" id="ContactFullName" placeholder="Full Name" [(ngModel)]="userData.fullName" required autofocus/>
         </div>
         <div class="form-group">
             <label for="ContactEmail">
@@ -40,8 +40,8 @@
           <input class="form-control" id="UserInterests" placeholder="Comma seperated list of your top interests" [(ngModel)]="userData.interests" required pattern="[\s\S]{1,59},+[\s\S]{1,59},+[\s\S]{1,59},+[\s\S]{1,59}[\s\S ]">
         </div>
         <div class="form-group">
-          <label>Concerns: What things are you concerned about in our world today. Personal, Local, National, or international <br> ex: healthcare,teacher pay,transgender rights,healthiness of tea,etc. (Minimum of 4)</label>
-          <input class="form-control" id="UserConcerns" placeholder="Comma seperated list of your top concerns" [(ngModel)]="userData.concerns" required pattern="[\s\S]{1,59},+[\s\S]{1,59},+[\s\S]{1,59},+[\s\S]{1,59}[\s\S ]">
+          <label>Concerns: What personal, local, national, or international things are you most concerned about in our world today. <br> ex: healthcare,teacher pay,transgender rights,healthiness of tea,etc. (Minimum of 1)</label>
+          <input class="form-control" id="UserConcerns" placeholder="Comma seperated list of your top concerns" [(ngModel)]="userData.concerns" required>
         </div>
         <p><b>Testing begins soon! Would you like to participate?</b></p>
         <p>We would love your feedback!</p>
@@ -64,6 +64,6 @@
     <div class="CenterContent" *ngIf="infoStep === 2">
         <h1>Thank you! We will keep you updated.</h1>
         <h3>If you know someone else that has to make decisions, be sure to let them sign up too!</h3>
-        <button class="btn btn-lg btn-success" (click)="infoStep = 0; tutStep = 0">Restart slide for someone else</button>
+        <button class="btn btn-lg btn-success" (click)="infoStep = 0; tutStep = 0; nextStep();">Restart slide for someone else</button>
     </div>
 </div>

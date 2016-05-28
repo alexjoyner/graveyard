@@ -1,5 +1,5 @@
 declare function require(name: string);
-import {Component} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import {TagsFormComponent} from '../forms/tags-form.component';
 import {WelcomeUserService} from '../../shared/welcome-user.service'
 @Component({//ROUTE NO NEED FOR SELECTOR
@@ -7,7 +7,7 @@ import {WelcomeUserService} from '../../shared/welcome-user.service'
     directives: [TagsFormComponent],
     providers: [WelcomeUserService]
 })
-export class WelcomeComponent {
+export class WelcomeComponent implements OnInit{
 	private infoStep = 0;
 	private tutStep: number = 0;
 	private errorString: string;
@@ -19,9 +19,15 @@ export class WelcomeComponent {
 	}
 	constructor(
 		private _welcomeService: WelcomeUserService){}
-	nextStep(choice: boolean) {
-		if (this.tutStep < 3) {
-			this.tutStep++;
+	ngOnInit():any{
+		this.nextStep();
+	}
+	nextStep() {
+		if (this.tutStep <= 3) {
+			setTimeout(() => {
+				this.tutStep++;
+				this.nextStep();
+			},4500)
 		}else{
 			this.infoStep = 1;
 		}
@@ -29,6 +35,14 @@ export class WelcomeComponent {
 	prevStep() {
 		if (this.tutStep > 0) {
 			this.tutStep--;
+		}
+	}
+	resetUserData(){
+		this.userData = {
+			fullName: '',
+			email: '',
+			interests: '',
+			tester: true
 		}
 	}
 	submitContactInfo(){
@@ -39,6 +53,7 @@ export class WelcomeComponent {
 		newUser.subscribe(
 			data => {
 				this.infoStep = 2;
+				this.resetUserData();
 			},
 			err => {
 				this.errorString = err;
