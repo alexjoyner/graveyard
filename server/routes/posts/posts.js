@@ -186,7 +186,7 @@ router.post('/newPost', jwt_verify, function(req, res) {
             return console.error('error fetching client from pool', err);
         }
         client.query(queryString, queryParams, function(err, result) {
-            if (postInfo.post_type_id === 1 || postInfo.post_type_id === 2) {
+            if (postInfo.post_type_id === 1) {
                 if (err) throw err;
                 var buildStatement = function(rows) {
                     var params = []
@@ -237,6 +237,10 @@ router.post('/newPost', jwt_verify, function(req, res) {
                 if(err) throw err;
                 var postData = result.rows[0];
                 var type;
+                if (postInfo.post_type_id === 2) {
+                    type = (postInfo.point_type_id === 1) ? 'yes' : 'no';
+                    req.io.to('question' + result.rows[0].parent_id + '/' + type).emit('NewPost', postData)
+                } else
                 if (postInfo.post_type_id === 3) {
                     type = postInfo.correspond_main_point_type_id;
                     console.log('New support: ', 'question' + postInfo.question_id + '/' + type);

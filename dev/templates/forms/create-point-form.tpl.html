@@ -1,13 +1,13 @@
 <button class="btn btn-default ModalClose" (click)="onCancel()">
     Close
 </button>
-<form id="CreatePointForm">
-    <div id="PointConditionsContainer">
+<form id="CreatePointForm" (ngSubmit)="createPoint()">
+    <!-- <div id="PointConditionsContainer">
         <ro-tags-form
             [type]="+2"
             [acceptedTags]="conditions"
             [typeString]="Conditions"></ro-tags-form>
-    </div>
+    </div> -->
     <!-- <div id="LargeWord-Then-Container">
         <h3 id="LargeWord-Then">
             Then
@@ -32,11 +32,12 @@
         style="resize: none;"
         minlength="10"
         maxlength="200"
-        placeholder="What is your point? DON'T SUPPORT YOUR POINT HERE!!!"
+        placeholder="because, (What is your point? DON'T SUPPORT YOUR POINT HERE!!!)"
         [(ngModel)]="newPoint.title"
+        required
         >
     </textarea>
-    <button id="PostPointBtn" type="button" class="btn btn-sm btn-success" (click)="createPoint()">
+    <button id="PostPointBtn" type="submit" class="btn btn-sm btn-success">
         Post point
     </button>
 </form>
