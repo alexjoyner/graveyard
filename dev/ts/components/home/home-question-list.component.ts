@@ -13,10 +13,11 @@ import {VoteCellComponent} from '../../shared/vote-cell.component';
 import {AuthService} from '../../shared/auth.service';
 import {UsersService} from '../../shared/users.service';
 import {GlobalHandlerService} from '../../shared/globalHandler.service';
+import {MainPointComponent} from '../question/main-point.component';
 @Component({
     selector: 'ro-home-question-list',
     template: require('dev/templates/home/home-question-list.tpl.html'),
-    directives: [ROUTER_DIRECTIVES, VoteCellComponent],
+    directives: [ROUTER_DIRECTIVES, VoteCellComponent, MainPointComponent],
     pipes: [SearchFilterPipe]
 })
 export class  HomeQuestionListComponent implements OnInit{

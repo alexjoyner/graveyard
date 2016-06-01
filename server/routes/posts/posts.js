@@ -15,11 +15,26 @@ router.get('/all', jwt_verify, function(req, res) {
     // CONFIGURE QUERY INFO
     var queryString = `
         SELECT 
-            *
+            p.*,
+            json_agg(rP.*) as most_recent_point
         FROM 
-            posts
+            posts p
+        LEFT JOIN (
+            SELECT
+                mostrecent.*
+            FROM
+                posts mostrecent
+            ORDER BY
+                created_at DESC
+            LIMIT
+                10
+        ) as rP
+        ON
+            rP.parent_id = p._id
         WHERE
-            post_type_id = 1
+            p.post_type_id = 1
+        GROUP BY
+            p._id
         LIMIT
             20;
     `;
