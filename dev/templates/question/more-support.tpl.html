@@ -47,7 +47,7 @@
                     <ro-vote-cell
                         class="ro-action-bar-item"
                         [sourceId]="support._id"
-                        [score]="support.score"
+                        [score]="support.ups - support.dwns"
                         (modVote)="support.ups=support.ups+$event">
                     </ro-vote-cell>
                     <div class="ro-inline-items">

@@ -1,4 +1,4 @@
-CREATE TABLE "public"."vote_types" (
+                                                                                              CREATE TABLE "public"."vote_types" (
     "id" serial,
     "name" varchar(30) NOT NULL,
     PRIMARY KEY ("id")
@@ -21,23 +21,23 @@ $BODY$
 BEGIN
 	IF (TG_OP = 'INSERT') THEN
 		IF (NEW.vote_type_id = 1) THEN
-			UPDATE posts SET score = score+1 WHERE _id = NEW.post_id;
+			UPDATE posts SET ups = ups+1 WHERE _id = NEW.post_id;
 		ELSIF (NEW.vote_type_id = 2) THEN
-			UPDATE posts SET score = score-1 WHERE _id = NEW.post_id;
+			UPDATE posts SET dwns = dwns+1 WHERE _id = NEW.post_id;
 		END IF;
 	ELSEIF (TG_OP = 'UPDATE') THEN
 		IF (NEW.vote_type_id = 3 AND OLD.vote_type_id = 1) THEN
-			UPDATE posts SET score = score-1 WHERE _id = NEW.post_id;
+			UPDATE posts SET ups = ups-1 WHERE _id = NEW.post_id;
 		ELSIF (NEW.vote_type_id = 3 AND OLD.vote_type_id = 2) THEN
-			UPDATE posts SET score = score+1 WHERE _id = NEW.post_id;
+			UPDATE posts SET dwns = dwns-1 WHERE _id = NEW.post_id;
 		ELSIF (NEW.vote_type_id = 2 AND OLD.vote_type_id = 1) THEN
-			UPDATE posts SET score = score-2 WHERE _id = NEW.post_id;
+			UPDATE posts SET ups = ups-1, dwns = dwns+1 WHERE _id = NEW.post_id;
 		ELSIF (NEW.vote_type_id = 2 AND OLD.vote_type_id = 3) THEN
-			UPDATE posts SET score = score-1 WHERE _id = NEW.post_id;
+			UPDATE posts SET dwns = dwns+1 WHERE _id = NEW.post_id;
 		ELSIF (NEW.vote_type_id = 1 AND OLD.vote_type_id = 2) THEN
-			UPDATE posts SET score = score+2 WHERE _id = NEW.post_id;
+			UPDATE posts SET ups = ups+1, dwns = dwns-1 WHERE _id = NEW.post_id;
 		ELSIF (NEW.vote_type_id = 1 AND OLD.vote_type_id = 3) THEN
-			UPDATE posts SET score = score+1 WHERE _id = NEW.post_id;
+			UPDATE posts SET ups = ups+1 WHERE _id = NEW.post_id;
 		END IF;
 	END IF;
 	RETURN NEW;

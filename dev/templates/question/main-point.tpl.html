@@ -18,7 +18,7 @@
         <ro-vote-cell
             class="ro-action-bar-item"
             [sourceId]="point._id"
-            [score]="point.score"
+            [score]="point.ups - point.dwns"
             (modVote)="point.ups=point.ups+$event">
         </ro-vote-cell>
         <button

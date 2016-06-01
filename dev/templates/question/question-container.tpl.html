@@ -22,7 +22,7 @@
             <ro-vote-cell
                 class="ro-action-bar-item"
                 [sourceId]="question._id"
-                [score]="question.score"
+                [score]="question.ups - question.dwns"
                 (modVote)="question.ups = question.ups + $event">
             </ro-vote-cell>
             <button class="ro-action-bar-item btn btn-sm btn-info" (click)="editQuestion(question, $event)" *ngIf="question.title && isOwner(question.owner_user_id) && !question.editQuestion || question.editQuestion === false">
