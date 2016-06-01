@@ -26,8 +26,6 @@ router.get('/all', jwt_verify, function(req, res) {
                 posts mostrecent
             ORDER BY
                 created_at DESC
-            LIMIT
-                10
         ) as rP
         ON
             rP.parent_id = p._id
@@ -36,7 +34,7 @@ router.get('/all', jwt_verify, function(req, res) {
         GROUP BY
             p._id
         LIMIT
-            20;
+            40;
     `;
     pg.connect(conString, function(err, client, done) {
         if (err) {
