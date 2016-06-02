@@ -96,6 +96,12 @@ html {
     z-index: 2;
     bottom: 0px; }
 
+.HomeQuestionSubContent {
+  padding-left: 10px;
+  padding-right: 10px; }
+  .HomeQuestionSubContent p {
+    font-size: 20px; }
+
 .isInSearchModal {
   position: absolute;
   top: 45%;
@@ -141,7 +147,7 @@ html {
     min-height: 50px; }
 
 .ro-main-point {
-  background-color: #EEEEEE; }
+  background-color: #FFF; }
 
 .meta {
   background-color: #5cb85c; }

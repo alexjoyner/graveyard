@@ -37,14 +37,18 @@ export class CreateQuestionFormComponent implements OnInit{
 		for (var i = this.acceptedTags.length - 1; i >= 0; i--) {
 			tags.push(this.acceptedTags[i]._id)
 		}
-		if (this._authService.checkValid()) {
-			this._postsService.insertPost({ 'post': newQuestion, 'tags': tags })
-				.subscribe(
-				data => {
-					console.log('Success Posting Question', data);
-				},
-				err => console.log('Error: ', err)
-				);
+		if (tags.length > 0) {
+			if (this._authService.checkValid()) {
+				this._postsService.insertPost({ 'post': newQuestion, 'tags': tags })
+					.subscribe(
+					data => {
+						console.log('Success Posting Question', data);
+					},
+					err => console.log('Error: ', err)
+					);
+			}
+		}else{
+			alert('You need to add at least 1 tag to a question');
 		}
 	}
 	questionControl(){

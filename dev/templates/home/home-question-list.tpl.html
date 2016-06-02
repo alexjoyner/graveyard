@@ -28,7 +28,7 @@
                     </button>
                 </div>
             </div>
-            <div *ngIf="question.most_recent_point[0] !== null">
+            <div class="HomeQuestionSubContent" *ngIf="question.most_recent_point && question.most_recent_point[0] !== null">
                 <hr>
                 <p style="margin-left: 6px">Most Recent Point: Type <span *ngIf="question.most_recent_point[0].point_type_id === 1">YES</span><span *ngIf="question.most_recent_point[0].point_type_id === 2">NO</span></p>
                 <ro-main-point

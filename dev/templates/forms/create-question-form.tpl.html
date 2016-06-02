@@ -10,13 +10,11 @@
     </span>
 </div>
 <div *ngIf="mode === 'tags'">
-	<h2 id="HeaderQuestion">
-	    {{ question }}
-	</h2>
 	<ro-tags-form
 		[type]="+1"
 		[acceptedTags]="acceptedTags"
-		[typeString]="Tags"
+		[typeString]="'Tag'"
+		[tagsFormHeader]="question"
 		(goBack)="mode = 'question'"></ro-tags-form>
 	<button id="PostQuestion" class="btn btn-lg btn-success" (click)="onCreate()">
 		Post Question
