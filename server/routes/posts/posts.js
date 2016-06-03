@@ -53,7 +53,7 @@ router.get('/all', jwt_verify, function(req, res) {
         });
     });
 });
-// get one by id
+// get one question by id and a type of yes/no
 router.get('/post/:id/:type', jwt_verify, function(req, res) {
     var type = undefined;
     switch (req.params.type) {
@@ -98,7 +98,9 @@ router.get('/post/:id/:type', jwt_verify, function(req, res) {
                 WHERE
                     p.parent_id = $1
                 AND 
-                    p.point_type_id = $2
+                    (p.point_type_id = 1
+                OR
+                    p.point_type_id = 2)
                 GROUP BY 
                     p._id
             )a ) as points,
@@ -124,15 +126,18 @@ router.get('/post/:id/:type', jwt_verify, function(req, res) {
             if (err) {
                 return console.error('error fetching client from pool', err);
             }
-            client.query(queryString, [req.params.id, type], function(err, result) {
+            client.query(queryString, [req.params.id], function(err, result) {
                 //call `done()` to release the client back to the pool
                 done();
                 if (err) throw err;
                 if (!result.rows[0]) {
                     res.status(500).send('no question found').end();
                 } else {
-                    if (result.rows[0].points === null) {
-                        result.rows[0].points = [];
+                    if (result.rows[0].yess === null) {
+                        result.rows[0].yess = [];
+                    }
+                    if (result.rows[0].nos === null) {
+                        result.rows[0].nos = [];
                     }
                     res.status(200).send(result.rows[0]).end();
                 }
@@ -183,14 +188,14 @@ router.post('/newPost', jwt_verify, function(req, res) {
     var queryString = `
         INSERT INTO
           posts (
-          owner_user_id,title,detail,post_type_id,parent_id,point_type_id,source,source_type_id,created_at)
+          private_question, owner_user_id,title,detail,post_type_id,parent_id,point_type_id,source,source_type_id,created_at)
         VALUES (
-          $1,$2,$3,$4,$5,$6,$7,$8,$9)
+          $1,$2,$3,$4,$5,$6,$7,$8,$9, $10)
         RETURNING
             *`;
     console.log(postInfo);
     console.log(tagsInfo);
-    var queryParams = [user.id, postInfo.title, postInfo.detail, postInfo.post_type_id, postInfo.parent_id,
+    var queryParams = [postInfo.privQ, user.id, postInfo.title, postInfo.detail, postInfo.post_type_id, postInfo.parent_id,
         postInfo.point_type_id, postInfo.source, postInfo.source_type_id, new Date
     ];
     console.log(queryParams);
@@ -234,12 +239,12 @@ router.post('/newPost', jwt_verify, function(req, res) {
                     } else
                     if (postInfo.post_type_id === 2) {
                         type = (postInfo.point_type_id === 1) ? 'yes' : 'no';
-                        req.io.to('question' + result.rows[0].parent_id + '/' + type).emit('NewPost', postData)
+                        req.io.to('question' + result.rows[0].parent_id).emit('NewPost', postData)
                     } else
                     if (postInfo.post_type_id === 3) {
                         type = postInfo.correspond_main_point_type_id;
                         console.log('New support: ', 'question' + postInfo.question_id + '/' + type);
-                        req.io.to('question' + postInfo.question_id + '/' + type).emit('NewPost', postData)
+                        req.io.to('question' + postInfo.question_id).emit('NewPost', postData)
                     }
                     res.status(200).send({
                         success: true
@@ -252,12 +257,12 @@ router.post('/newPost', jwt_verify, function(req, res) {
                 var type;
                 if (postInfo.post_type_id === 2) {
                     type = (postInfo.point_type_id === 1) ? 'yes' : 'no';
-                    req.io.to('question' + result.rows[0].parent_id + '/' + type).emit('NewPost', postData)
+                    req.io.to('question' + result.rows[0].parent_id).emit('NewPost', postData)
                 } else
                 if (postInfo.post_type_id === 3) {
                     type = postInfo.correspond_main_point_type_id;
                     console.log('New support: ', 'question' + postInfo.question_id + '/' + type);
-                    req.io.to('question' + postInfo.question_id + '/' + type).emit('NewPost', postData)
+                    req.io.to('question' + postInfo.question_id).emit('NewPost', postData)
                 }
                 res.status(200).send({
                     success: true
@@ -362,15 +367,14 @@ router.delete('/deletePost/:postId/:questionId/:mainPointType', jwt_verify, func
             if (mainPointType !== null) {
                 // Notify just the people looking at the main cooresponing
                 //    main point type half of the question
-                req.io.to('question' + question_id + '/' + mainPointType).emit('DeletedPost', emitPayload);
+                req.io.to('question' + question_id).emit('DeletedPost', emitPayload);
             } else { // Deleted an question
                 // Notify everyone on questions page
                 req.io.to('questions').emit('DeletedQuestion', {
                     _id: postDeleted._id
                 });
                 // Notify everyone looking at the question
-                req.io.to('question' + question_id + '/yes').emit('DeletedPost', emitPayload);
-                req.io.to('question' + question_id + '/no').emit('DeletedPost', emitPayload);
+                req.io.to('question' + question_id).emit('DeletedPost', emitPayload);
             }
             res.status(200).send('DELETED').end();
         });

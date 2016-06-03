@@ -40,20 +40,18 @@
     </div>
     <br>
     <!-- Tab Bar: Tab to question list type -->
-    <ul class="nav nav-tabs">
+    <!-- <ul class="nav nav-tabs">
         <li role="presentation" [ngClass]="{active: _type === 'yes'}">
-            <a [routerLink]="['Question', {type: 
-            'yes', id: _questionId}]">
+            <a (click)="showPoints = question['yess']; _type = 'yes'">
                 Yes
             </a>
         </li>
         <li role="presentation" [ngClass]="{active: _type === 'no'}">
-            <a [routerLink]="['Question', {type: 
-            'no', id: _questionId}]">
+            <a (click)="showPoints = question['nos']; _type = 'no'">
                 NO
             </a>
         </li>
-    </ul>
+    </ul> -->
     <ro-points-list
         [points]="question.points" [dataAvailable]="questionAvailable"></ro-points-list>
 </div>

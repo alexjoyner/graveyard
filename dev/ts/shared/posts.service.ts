@@ -65,7 +65,10 @@ export class PostsService {
 		return res;
 	}
 	/* POST */
-	insertPost(data: {post: Post, tags: [number]}): Observable<any> {
+	insertPost(data: {post: Post, tags: [number]}, privQ?: boolean): Observable<any> {
+		console.log(privQ);
+		(privQ) ? data.post['privQ'] = privQ : data.post['privQ'] = false;
+		console.log('Post data: ', data);
 		const body = JSON.stringify(data);
 		const headers = new Headers();
 		headers.append('Content-Type', 'application/json');

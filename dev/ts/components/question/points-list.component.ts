@@ -44,8 +44,7 @@ export class PointsListComponent implements OnInit{
 		var socket = io('/');
 		socket.emit('change room', { 
 			newroom: 'question' + 
-			this._routeParams.get('id') + '/' +
-			this.type
+			this._routeParams.get('id')
 		})
 		socket.on('NewPost', function(postData) {
 			switch(postData.post_type_id){
@@ -152,10 +151,12 @@ export class PointsListComponent implements OnInit{
 		}
 	}
 	viewAll(index: number){
-		if (this.points[index]['viewAll']){
-			this.points[index]['viewAll'] = !(this.points[index]['viewAll']);
-		}else{
-			this.points[index]['viewAll'] = true;
+		if (this.points[index]['supports'] && this.points[index]['supports'].length > 1) {
+			if (this.points[index]['viewAll']){
+				this.points[index]['viewAll'] = !(this.points[index]['viewAll']);
+			}else{
+				this.points[index]['viewAll'] = true;
+			}
 		}
 		this.points[index]['addEvidence'] = false;
 	}

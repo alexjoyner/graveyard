@@ -16,9 +16,11 @@ export class CreateQuestionFormComponent implements OnInit{
 	private alertString: string;
 	@Input('question') question: string;
 	private acceptedTags: any[] = [];
+	private privQ: boolean = false;
 	private alertType: string;
 	private mode: string = 'question';
 	private count: number;
+	private qComplete: boolean = false;
 	constructor(
 		private _authService: AuthService,
 		private _postsService: PostsService) {}
@@ -39,7 +41,8 @@ export class CreateQuestionFormComponent implements OnInit{
 		}
 		if (tags.length > 0) {
 			if (this._authService.checkValid()) {
-				this._postsService.insertPost({ 'post': newQuestion, 'tags': tags })
+				console.log('PRIVATE? : ', this.privQ);
+				this._postsService.insertPost({ 'post': newQuestion, 'tags': tags}, this.privQ)
 					.subscribe(
 					data => {
 						console.log('Success Posting Question', data);
@@ -64,11 +67,8 @@ export class CreateQuestionFormComponent implements OnInit{
 							this.alertString = 'Awesome, now just top it of with a question mark when your finished to move on!'
 							if (daQ[daQ.length - 1] === '?') {
 								this.alertType = "success"
-								this.alertString = 'Moving on... One moment please'
-								setTimeout(() => {
-									this.mode = 'tags'
-									this.switchTags.emit(null);
-								}, 3000);
+								this.alertString = 'Great! Now just post your question!';
+								this.qComplete = true;
 							}
 						} else {
 							this.alertType = "warning"
@@ -93,6 +93,10 @@ export class CreateQuestionFormComponent implements OnInit{
 		}else{
 			this.alertString = undefined;
 		}
+	}
+	switchToTags(){
+		this.mode = 'tags'
+		this.switchTags.emit(null);
 	}
 }
 function checkIsYesOrNo(searchStr: string):boolean {

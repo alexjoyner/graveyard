@@ -85,10 +85,9 @@
                 class="form-control"
                 rows="5"
                 style="resize: none;"
-                minlength="20"
-                placeholder="Please describe the thought process behind your opinion. No max length"
-                [(ngModel)]="newSupport.detail"
-                required>
+                maxlength="600"
+                placeholder="Please describe the thought process behind your opinion. Max 600 Characters"
+                [(ngModel)]="newSupport.detail">
             </textarea>
             <br/>
             <div  id="Step3">
