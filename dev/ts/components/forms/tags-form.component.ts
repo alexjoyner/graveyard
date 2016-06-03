@@ -1,6 +1,6 @@
 declare function require(name: string);
 import {Component, Input, Output, EventEmitter, OnInit} from 'angular2/core';
-import {TagsService} from '../../shared/tags.service';
+import {TagsService} from '../../shared/net-services/tags.service';
 
 @Component({
     selector: 'ro-tags-form',

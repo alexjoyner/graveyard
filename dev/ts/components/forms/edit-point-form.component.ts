@@ -1,7 +1,7 @@
 declare function require(name: string);
 import {Component, Input, Output, OnInit, EventEmitter} from 'angular2/core';
-import {Post} from '../../shared/post';
-import {PostsService} from '../../shared/posts.service';
+import {Post} from '../../shared/structures/post';
+import {PostsService} from '../../shared/net-services/posts.service';
 import { Router } from 'angular2/router';
 @Component({
     selector: 'ro-edit-point',

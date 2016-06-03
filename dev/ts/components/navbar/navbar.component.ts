@@ -1,8 +1,8 @@
 declare function require(name: string);
 import {Component} from 'angular2/core';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
-import {AuthService} from '../../shared/auth.service';
-import {UsersService} from '../../shared/users.service';
+import {AuthService} from '../../shared/net-services/auth.service';
+import {UsersService} from '../../shared/net-services/users.service';
 @Component({
     selector: 'ro-navbar',
     template: require('dev/templates/navbar/navbar.tpl.html'),

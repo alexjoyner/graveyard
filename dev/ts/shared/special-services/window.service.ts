@@ -21,6 +21,9 @@ export class WindowRef_ extends WINDOW {
   }
 }
 
+/*
+  Include this when you want to access the window
+*/
 export const WINDOW_PROVIDERS = [
   new Provider(WINDOW, { useClass: WindowRef_ }),
 ];

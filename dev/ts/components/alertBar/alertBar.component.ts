@@ -1,6 +1,6 @@
 declare function require(name: string);
 import {Component} from 'angular2/core';
-import {GlobalHandlerService} from '../../shared/globalHandler.service';
+import {GlobalHandlerService} from '../../shared/special-services/globalHandler.service';
 @Component({
     selector: 'ro-alert-bar',
     template: require('dev/templates/alertBar/alertBar.tpl.html')

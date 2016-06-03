@@ -1,10 +1,10 @@
 declare function require(name: string);
 import {Component, Input, Output, EventEmitter} from 'angular2/core';
-import {VoteCellComponent} from '../../shared/vote-cell.component';
-import {Point} from '../../shared/point';
-import {PostsService} from '../../shared/posts.service';
+import {VoteCellComponent} from '../../shared/shared-components/vote-cell.component';
+import {Point} from '../../shared/structures/point';
+import {PostsService} from '../../shared/net-services/posts.service';
 import {EditPointComponent} from '../forms/edit-point-form.component';
-import { UsersService} from '../../shared/users.service';
+import { UsersService} from '../../shared/net-services/users.service';
 @Component({
     selector: 'ro-main-point',
     template: require('dev/templates/question/main-point.tpl.html'),

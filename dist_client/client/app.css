@@ -417,9 +417,4 @@ input[type="text"]#QuestionInput {
       font-size: 1.5em;
       font-weight: 200; }
 
-#WelcomeTutorial:before {
-  background-color: #337ab7 !important; }
-#WelcomeTutorial #UserInterests {
-  resize: vertical; }
-
 /*# sourceMappingURL=app.css.map */

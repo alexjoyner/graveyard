@@ -2,7 +2,7 @@ import {Injectable} from 'angular2/core';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
 import {Http, Headers} from 'angular2/http';
-import {Config} from '../config/config';
+import {Config} from '../../config/config';
 import {UsersService} from './users.service';
 
 @Injectable()

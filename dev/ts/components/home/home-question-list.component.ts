@@ -5,14 +5,14 @@ interface Socket {
     emit(event: string, data: any);
 }
 import {Component, OnInit, Input, Output, EventEmitter} from 'angular2/core';
-import {Post} from '../../shared/post';
-import {PostsService} from '../../shared/posts.service';
+import {Post} from '../../shared/structures/post';
+import {PostsService} from '../../shared/net-services/posts.service';
 import {SearchFilterPipe} from '../../pipes/searchFilter.pipe';
 import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
-import {VoteCellComponent} from '../../shared/vote-cell.component';
-import {AuthService} from '../../shared/auth.service';
-import {UsersService} from '../../shared/users.service';
-import {GlobalHandlerService} from '../../shared/globalHandler.service';
+import {VoteCellComponent} from '../../shared/shared-components/vote-cell.component';
+import {AuthService} from '../../shared/net-services/auth.service';
+import {UsersService} from '../../shared/net-services/users.service';
+import {GlobalHandlerService} from '../../shared/special-services/globalHandler.service';
 import {MainPointComponent} from '../question/main-point.component';
 @Component({
     selector: 'ro-home-question-list',
@@ -64,7 +64,7 @@ export class  HomeQuestionListComponent implements OnInit{
 	}
 	deleteQuestion(question: Post, event: MouseEvent){
 		event.stopPropagation();
-		if (this._authService.checkValid()) {
+		if (this._authService.checkTokenExists()) {
 			let answer = confirm(`Are you sure you want to delete this question? This action can't be undone`);
 			if (answer === true) {
 				this._postsService.deletePost(question._id)

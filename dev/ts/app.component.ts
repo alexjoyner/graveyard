@@ -1,14 +1,26 @@
 declare function require(name: string);
+// Angular imports
 import {Component, OnInit} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
+
+// Component imports
 import {HomeContainerComponent} from './components/home/home-container.component';
 import {QuestionContainerComponent} from './components/question/question-container.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
-import {AlertBarComponent} from './components/alertBar/alertBar.component';
 import {AuthContainerComponent} from './components/auth/auth-container.component';
-import {WelcomeComponent} from './components/welcome/welcome.component';
-import {AuthService} from './shared/auth.service';
-import {UsersService} from './shared/users.service';
+//import {WelcomeComponent} from './components/welcome/welcome.component';
+
+// Services imports
+import {AuthService} from './shared/net-services/auth.service';
+import {UsersService} from './shared/net-services/users.service';
+
+// Components imports (Not many because this is the root)
+import {AlertBarComponent} from './components/alertBar/alertBar.component';
+
+/*
+    The main app component
+    ----------------------
+*/
 @Component({
     selector: 'my-app',
     template: `
@@ -27,10 +39,14 @@ import {UsersService} from './shared/users.service';
     directives: [NavbarComponent, AlertBarComponent, ROUTER_DIRECTIVES],
     providers: [AuthService]
 })
+
+/*
+    Configuring the routes for our application
+    ------------------------------------------
+*/
 @RouteConfig([
-    { path: '/Welcome', name: 'Welcome', component: WelcomeComponent, useAsDefault: true},
-	{ path: '/', name: 'Home', component: HomeContainerComponent},
-    { path: '/Question/:type/:id', name: 'Question', component: QuestionContainerComponent },
+    { path: '/', name: 'Home', component: HomeContainerComponent, useAsDefault: true },
+    { path: '/Question/:id', name: 'Question', component: QuestionContainerComponent },
     { path: '/Auth', name: 'Auth', component: AuthContainerComponent }
 ])
 export class AppComponent implements OnInit{
@@ -41,7 +57,17 @@ export class AppComponent implements OnInit{
     }
     
     ngOnInit(): any {
+        /*
+        When the app starts, attempt to get the users profile
+            if they are already logged in
+        */
         this._usersService.getProfile();
+
+        /*
+        Subscribe to the auth service event so that users if a
+            user logs out from anywhere in the app they will be
+            navigated to the authentication page.
+        */
         this._authService.getLoggedOutEvent()
             .subscribe(
                 data => {

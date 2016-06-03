@@ -1,12 +1,19 @@
-import {Http, Headers} from 'angular2/http';
+// Angular imports
 import {Injectable, EventEmitter} from 'angular2/core';
-import {User} from './user';
+import {Router} from 'angular2/router';
+
+// Imports needed for http
+import {Http, Headers} from 'angular2/http';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
-import {Config} from '../config/config';
-import {Router} from 'angular2/router';
-import {GlobalHandlerService} from './globalHandler.service';
-import {UsersService} from './users.service';
+
+import {Config} from '../../config/config';
+
+import {User} from '../structures/user';
+import {GlobalHandlerService} from '../special-services/globalHandler.service';
+import {UsersService} from '../net-services/users.service';
+
+
 @Injectable()
 export class AuthService {
 	private endpoint: string = Config.endpoint;
@@ -31,9 +38,7 @@ export class AuthService {
 		res.subscribe(
 			data => {
 				console.log('DATA: ', data);
-				//if(this.remember){
 				localStorage.setItem('token', data.token);
-				//}
 				this._usersService.profile = data.profile;
 				this._router.navigate(['Home'])
 			},
@@ -45,6 +50,7 @@ export class AuthService {
 			})
 		return res;
 	}
+
 	attemptSignup(user: User, specialCode: string): Observable<any> {
 		user['specialCode'] = specialCode
 		const body = JSON.stringify(user);
@@ -74,8 +80,7 @@ export class AuthService {
 	}
 
 	/* DELETE */
-	//delete accout
-
+	//delete account
 
 	// Misc
 	logout() {
@@ -90,14 +95,16 @@ export class AuthService {
 	getLoggedOutEvent(): EventEmitter<any> {
 		return this._userLoggedOut;
 	}
-	checkValid(flag?: boolean): boolean{
+
+	/* Quick way to verify if a user is logged in or not*/
+	checkTokenExists(flag?: boolean): boolean{
 		if(localStorage.getItem('token') !== null){
 			return true;
 		}else{
 			if(flag){
 				return false;
 			}else{
-				this._router.navigate(['Welcome']);
+				this._router.navigate(['Auth']);
 			}
 		}
 	}

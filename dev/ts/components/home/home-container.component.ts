@@ -1,10 +1,10 @@
 declare function require(name: string);
 import {Component, OnInit} from 'angular2/core';
 import {HomeQuestionListComponent} from './home-question-list.component';
-import {UsersService} from '../../shared/users.service';
-import {AuthService} from '../../shared/auth.service';
-import {PostsService} from '../../shared/posts.service';
-import {Post} from '../../shared/post';
+import {UsersService} from '../../shared/net-services/users.service';
+import {AuthService} from '../../shared/net-services/auth.service';
+import {PostsService} from '../../shared/net-services/posts.service';
+import {Post} from '../../shared/structures/post';
 import {CreateQuestionFormComponent} from '../forms/create-question-form.component';
 @Component({
     selector: 'ro-home-container',
@@ -25,7 +25,7 @@ export class HomeContainerComponent implements OnInit{
 	}
 
 	ngOnInit(): any {
-		if (this._authService.checkValid()) {
+		if (this._authService.checkTokenExists()) {
 			this._postsService.getAllPosts()
 				.subscribe(data => {
 					console.log('ISSUES START: ', this.questions);

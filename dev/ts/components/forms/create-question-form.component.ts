@@ -1,9 +1,9 @@
 declare function require(name: string);
 import {Component, Input, Output, EventEmitter, OnInit} from 'angular2/core';
 import {TagsFormComponent} from './tags-form.component';
-import {Post} from '../../shared/post';
-import {PostsService} from '../../shared/posts.service';
-import {AuthService} from '../../shared/auth.service';
+import {Post} from '../../shared/structures/post';
+import {PostsService} from '../../shared/net-services/posts.service';
+import {AuthService} from '../../shared/net-services/auth.service';
 @Component({
 	selector: 'ro-create-question',
     template: require('dev/templates/forms/create-question-form.tpl.html'),
@@ -40,7 +40,7 @@ export class CreateQuestionFormComponent implements OnInit{
 			tags.push(this.acceptedTags[i]._id)
 		}
 		if (tags.length > 0) {
-			if (this._authService.checkValid()) {
+			if (this._authService.checkTokenExists()) {
 				console.log('PRIVATE? : ', this.privQ);
 				this._postsService.insertPost({ 'post': newQuestion, 'tags': tags}, this.privQ)
 					.subscribe(

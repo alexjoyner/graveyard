@@ -3,6 +3,8 @@ import {WINDOW} from './window.service';
 
 
 @Injectable()
+
+/* Injectable service to allow the user to smoothly scroll to an id programmatically*/
 export class SmoothScroll{
   win: Window;
   constructor(
@@ -15,6 +17,8 @@ export class SmoothScroll{
     }, duration);
     return;
   }
+
+  /* Call this function with an element ID to initiate a smooth scroll*/
   smoothScroll(eID, offset: number) {
     var startY = currentYPosition();
     var stopY = (elmYPosition(eID) - offset);
@@ -44,6 +48,10 @@ export class SmoothScroll{
     }
   }
 }
+
+/*
+  External functions
+*/
 function currentYPosition() {
   // Firefox, Chrome, Opera, Safari
   if (self.pageYOffset) return self.pageYOffset;

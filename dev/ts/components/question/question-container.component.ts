@@ -1,13 +1,13 @@
 declare function require(name: string);
 import {Component, OnInit} from 'angular2/core';
 import {RouteParams, Router} from 'angular2/router';
-import {Post} from '../../shared/post';
-import {PostsService} from '../../shared/posts.service';
+import {Post} from '../../shared/structures/post';
+import {PostsService} from '../../shared/net-services/posts.service';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
-import {VoteCellComponent} from '../../shared/vote-cell.component';
+import {VoteCellComponent} from '../../shared/shared-components/vote-cell.component';
 import {EditQuestionForm} from '../forms/edit-question-form.component';
-import {UsersService} from '../../shared/users.service';
-import {AuthService} from '../../shared/auth.service';
+import {UsersService} from '../../shared/net-services/users.service';
+import {AuthService} from '../../shared/net-services/auth.service';
 import {PointsListComponent} from './points-list.component';
 
 @Component({// Route no selector
@@ -26,7 +26,7 @@ export class QuestionContainerComponent{
 		private _postsService: PostsService,
 		private _usersService: UsersService,
 		private _authService: AuthService) {
-		if (this._authService.checkValid()) {
+		if (this._authService.checkTokenExists()) {
 			this._questionId = +this._routeParams.get('id');
 			this._type = this._routeParams.get('type');
 			_postsService.getPost(''+this._questionId, this._type).
@@ -45,7 +45,7 @@ export class QuestionContainerComponent{
 		this._usersService.showTut = false;
 	}
 	deleteQuestion(questionId: number) {
-		if (this._authService.checkValid()) {
+		if (this._authService.checkTokenExists()) {
 			let answer = confirm(`Are you sure you want to delete this question? This action can't be undone`);
 			if (answer === true) {
 				this._postsService.deletePost(questionId)

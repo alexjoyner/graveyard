@@ -6,16 +6,16 @@ interface Socket {
 }
 import {Component, Input, OnChanges, OnInit} from 'angular2/core';
 import {RouteParams, Router} from 'angular2/router';
-import {Post} from '../../shared/post';
+import {Post} from '../../shared/structures/post';
 import {MainPointComponent} from './main-point.component';
 import {TopSupportComponent} from './top-support.component';
 import {MoreSupportComponent} from './more-support.component';
 import {SearchFilterPipe} from '../../pipes/searchFilter.pipe';
 import {AddSupportComponent} from '../forms/create-support-form.component';
 import {CreatePointFormComponent} from '../forms/create-point-form.component';
-import {SmoothScroll} from '../../shared/smooth-scroll.service';
-import {WINDOW_PROVIDERS} from '../../shared/window.service';
-import {UsersService} from '../../shared/users.service';
+import {SmoothScroll} from '../../shared/special-services/smooth-scroll.service';
+import {WINDOW_PROVIDERS} from '../../shared/special-services/window.service';
+import {UsersService} from '../../shared/net-services/users.service';
 @Component({
     selector: 'ro-points-list',
     template: require('dev/templates/question/points-list.tpl.html'),

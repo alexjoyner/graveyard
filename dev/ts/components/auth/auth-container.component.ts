@@ -1,9 +1,9 @@
 declare function require(name: string);
 import {Component} from 'angular2/core';
-import {AuthService} from '../../shared/auth.service';
-import {User} from '../../shared/user';
+import {AuthService} from '../../shared/net-services/auth.service';
+import {User} from '../../shared/structures/user';
 import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
-import {UsersService} from '../../shared/users.service';
+import {UsersService} from '../../shared/net-services/users.service';
 
 @Component({
     selector: 'ro-auth-component',

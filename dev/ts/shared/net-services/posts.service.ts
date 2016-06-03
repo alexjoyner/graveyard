@@ -1,11 +1,11 @@
 import {Http, Headers} from 'angular2/http';
 import {Injectable} from 'angular2/core';
-import {Post} from './post';
+import {Post} from '../structures/post';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
-import {Config} from '../config/config';
+import {Config} from '../../config/config';
 import {AuthService} from './auth.service';
-import {GlobalHandlerService} from './globalHandler.service';
+import {GlobalHandlerService} from '../special-services/globalHandler.service';
 @Injectable()
 export class PostsService {
 	private endpoint: string = Config.endpoint;

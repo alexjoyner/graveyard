@@ -1,8 +1,8 @@
 declare function require(name: string);
 import {Component, Input, OnInit, EventEmitter} from 'angular2/core';
-import {Post} from '../../shared/post';
-import {PostsService} from '../../shared/posts.service';
-import {UsersService} from '../../shared/users.service';
+import {Post} from '../../shared/structures/post';
+import {PostsService} from '../../shared/net-services/posts.service';
+import {UsersService} from '../../shared/net-services/users.service';
 // Parent is points-list
 @Component({
     selector: 'ro-add-support',

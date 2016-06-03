@@ -1,8 +1,8 @@
 declare function require(name: string);
 import {Component, Input, Output, EventEmitter, OnInit} from 'angular2/core';
-import {VoteService} from './vote-cell.service';
-import {AuthService} from './auth.service';
-import {UsersService} from './users.service';
+import {VoteService} from '../net-services/vote-cell.service';
+import {AuthService} from '../net-services/auth.service';
+import {UsersService} from '../net-services/users.service';
 @Component({
     selector: 'ro-vote-cell',
     template: require('dev/templates/shared/vote-cell.tpl.html'),
@@ -39,7 +39,7 @@ export class VoteCellComponent implements OnInit{
 	}
 	vote(typeId: number, event: MouseEvent) {
 		event.stopPropagation();
-		if (this._authService.checkValid()) {
+		if (this._authService.checkTokenExists()) {
 			this._voteService.vote(
 				this.sourceId,
 				typeId)

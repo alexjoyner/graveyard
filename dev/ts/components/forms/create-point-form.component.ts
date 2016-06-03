@@ -1,9 +1,9 @@
 declare function require(name: string);
 import {Component, OnInit, EventEmitter, Input, Output} from 'angular2/core';
-import {Post} from '../../shared/post';
-import {PostsService} from '../../shared/posts.service';
+import {Post} from '../../shared/structures/post';
+import {PostsService} from '../../shared/net-services/posts.service';
 import {RouteParams, Router} from 'angular2/router';
-import { UsersService} from '../../shared/users.service';
+import { UsersService} from '../../shared/net-services/users.service';
 import {TagsFormComponent} from './tags-form.component';
 
 @Component({
