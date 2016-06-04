@@ -1,5 +1,6 @@
 'use strict';
 // Dependencies
+var passport = require('passport');
 var config = require('./config.js');
 var LocalStrategy = require('passport-local').Strategy;
 var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
@@ -10,7 +11,7 @@ var pg = require('pg');
 var conString = config.db;
 
 var superSecret = config.secret; //Secret var for jsonWebTokens
-module.exports = function(passport) {
+module.exports = function() {
     passport.serializeUser(function(user, done) {
         done(null, user.id);
     });

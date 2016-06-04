@@ -9,6 +9,7 @@ var conString = config.db;
 var jwt_verify = require('../../middleware/jwt_verify.js')
 
 router.get('/profile', jwt_verify, function(req, res){
+    console.log('YOU FOUND ME!')
     pg.connect(conString, function(err, client, done) {
       if(err) {
         return console.error('error fetching client from pool', err);
