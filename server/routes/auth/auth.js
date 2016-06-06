@@ -5,14 +5,6 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 
 //Routes Base : '/auth'
-/*
-request contents:
-username,
-password,
-email,
-phone #,
-profile: 3 interests
-*/
 var secretSignupCode = 'supertesters'
 router.post('/signup', function(req, res, next) {
     console.log(req.body);

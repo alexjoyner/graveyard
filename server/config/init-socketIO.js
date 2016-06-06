@@ -1,18 +1,3 @@
-var options = {
-    server: {
-        socketOptions: {
-            keepAlive: 1,
-            connectTimeoutMS: 30000
-        }
-    },
-    replset: {
-        socketOptions: {
-            keepAlive: 1,
-            connectTimeoutMS: 30000
-        }
-    }
-};
-
 module.exports = function(app, http){
 	var io = require('socket.io')(http);
 
@@ -38,3 +23,20 @@ module.exports = function(app, http){
 	    });
 	})
 }
+
+/*
+var options = {
+    server: {
+        socketOptions: {
+            keepAlive: 1,
+            connectTimeoutMS: 30000
+        }
+    },
+    replset: {
+        socketOptions: {
+            keepAlive: 1,
+            connectTimeoutMS: 30000
+        }
+    }
+};
+*/

@@ -3,78 +3,45 @@ var express = require('express'),
     router = express.Router();
 var config = require('../../config/config.js');
 var jwt_verify = require('../../middleware/jwt_verify.js');
+var sql_query = require('../../middleware/sql_query.js');
 // POSTGRES IMPLEMENTATION
 var pg = require('pg');
 var conString = config.db;
-
 // !! route = '/tags'
-
 // ###########  GETS  ###############
 // Get tags from a search
-router.get('/:searchTerm/:type', function(req, res){
-    console.log('Search: ', req.params.searchTerm);
-    pg.connect(conString, function(err, client, done) {
-      if(err) {
-        return console.error('error fetching client from pool', err);
-      }
-      var queryString = `
-        SELECT 
-            *
-        FROM 
-            tags
-        WHERE 
-            tag_name
-        ILIKE
-            $1
-        AND
-            tag_type_id = $2
-        LIMIT
-            5
-        ;
-      `;
-      client.query(queryString, ['%'+req.params.searchTerm+'%', +req.params.type], function(err, result) {
-        //call `done()` to release the client back to the pool
-        done();
-        if (err) throw err;
+router.get('/:searchTerm/:type',
+    /*Get tags data
+        1) Attach query string*/
+    require('./queries/search_get_tags.js'),
+    /*  2) Query the attached string*/
+    sql_query.commonQuery,
+    /*  3) Query was successful, do something 
+                with roInfo*/
+    function(req, res) {
+        req.roDone();
+        var result = req.roInfo;
         if (!result.rows[0]) {
             res.status(200).send([]).end();
         } else {
             res.status(200).send(result.rows).end();
         }
-      });
     });
-});
 // ###########  POSTS  ###############
 // Post a new tag if not found
-router.post('/create', jwt_verify, function(req, res) {
-    console.log('BODY: ', req.body);
-    var user = req.decoded;
-    var info = req.body;
-    var queryString = `
-        INSERT INTO
-          tags (
-          tag_name,
-          tag_type_id)
-        VALUES (
-          $1, $2)
-        RETURNING
-            *`;
-    console.log(info);
-    var queryParams = 
-    [info.tag_name, info.tag_type_id];
-    console.log(queryParams);
-    pg.connect(conString, function(err, client, done) {
-        if (err) {
-            return console.error('error fetching client from pool', err);
-        }
-        client.query(queryString, queryParams, function(err, result) {
-            //call `done()` to release the client back to the pool
-            done();
-            if(err) throw err;
-            console.log(result.rows[0]);
-            res.status(200).send(result.rows[0]).end();
-        });
-    });
+router.post('/create', 
+    /*Validate token to route*/
+    jwt_verify,
+    /*Token valid: Get search data
+        1) Attach query string*/
+    require('./queries/insert_new_tag.js'),
+    /*  2) Query the attached string*/
+    sql_query.commonQuery,
+    /*  3) Query was successful, do something 
+                with roInfo*/
+    function(req, res) {
+        req.roDone();
+        var result = req.roInfo;
+        res.status(200).send(result.rows[0]).end();
 });
-
 module.exports = router;

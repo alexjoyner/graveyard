@@ -3,38 +3,23 @@ var express = require('express'),
     router = express.Router();
 var config = require('../../config/config.js');
 // POSTGRES IMPLEMENTATION
-var pg = require('pg');
-var conString = config.db;
+var sql_query = require('../../middleware/sql_query.js');
 
 var jwt_verify = require('../../middleware/jwt_verify.js')
 
-router.get('/profile', jwt_verify, function(req, res){
-    console.log('YOU FOUND ME!')
-    pg.connect(conString, function(err, client, done) {
-      if(err) {
-        return console.error('error fetching client from pool', err);
-      }
-      var queryString = `
-        SELECT 
-            *,
-            (SELECT array_to_json(array_agg(row_to_json(v)))
-            FROM (
-                SELECT
-                    post_id, vote_type_id
-                FROM 
-                    votes
-                WHERE 
-                    user_id = $1
-            )v) as votes
-        FROM users
-        WHERE
-            users._id = $1
-        ;
-      `;
-      client.query(queryString, [req.decoded.id], function(err, result) {
-        //call `done()` to release the client back to the pool
-        done();
-        if (err) throw err;
+router.get('/profile', 
+    /*Validate token to route*/
+    jwt_verify,
+    /*Token valid: Get question data
+        1) Attach query string*/
+    require('./queries/get_profile_by_id.js'),
+    /*  2) Query the attached string*/
+    sql_query.commonQuery,
+    /*  3) Query was successful, do something 
+                with roInfo*/
+    function(req, res){
+        req.roDone();
+        var result = req.roInfo;
         if (!result.rows[0]) {
             res.status(500).send('no questions found').end();
         } else {
@@ -43,8 +28,6 @@ router.get('/profile', jwt_verify, function(req, res){
             }
             res.status(200).send(result.rows[0]).end();
         }
-      });
-    });
 });
 
 module.exports = router;

@@ -8,12 +8,13 @@ var http = require('http').Server(app);
 // Configurations files
 // ------------------------------
 var config = require('./server/config/config.js');
-require('./server/config/init-livereload.js')(config.db);   // init_Livereload (Dev)
-require('./server/config/init-db.js')(config.db);           // init_Postgres
 require('./server/config/accessHeaders.js')(app);           // Access headers
-require('./server/config/passport.js')();                   // Initialize Passport
+require('./server/config/passport/_main.js')();             // Initialize Passport
 require('./server/config/globalMiddleware.js')(app);        // Global Middleware
+require('./server/config/init-livereload.js')(config.db);   // init_Livereload (Dev only)
+require('./server/config/init-db.js')(config.db);           // init_Postgres
 require('./server/config/init-socketIO.js')(app, http);     // init_SocketIO
+
 // Route handler
 // --------------------------------
 require('./server/routes/routes.js')(app);
