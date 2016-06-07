@@ -64,6 +64,45 @@ html {
  * 	// position: relative
  * 	// display: block
  * 	// padding: 10px 15px */
+.ro-modal:before {
+  content: "";
+  display: block;
+  position: fixed;
+  background-color: rgba(51, 122, 183, 0.9);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 5; }
+.ro-modal .ModalClose {
+  display: block;
+  position: fixed;
+  top: 5%;
+  left: 90%;
+  z-index: 6; }
+.ro-modal .CenterContent {
+  -webkit-animation: fadeIn 2s;
+  animation: fadeIn 2s;
+  position: fixed;
+  z-index: 10;
+  background-color: #fff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 200;
+  text-align: center;
+  padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  width: 800px;
+  max-width: 95%; }
+.ro-modal #TutActionBar {
+  position: fixed;
+  z-index: 10;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
 .text-center {
   text-align: center; }
 
@@ -72,9 +111,6 @@ html {
   border-radius: 4px; }
   .ro-point .ro-contents {
     min-height: 50px; }
-
-.ro-main-point {
-  background-color: #FFF; }
 
 .meta {
   background-color: #5cb85c; }
