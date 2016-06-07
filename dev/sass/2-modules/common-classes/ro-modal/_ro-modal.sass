@@ -1,0 +1,38 @@
+.ro-modal
+	&:before
+		content: ""
+		display: block
+		position: fixed
+		background-color: rgba(51,122,183,0.9)
+		top: 0
+		left: 0
+		+size(100%)
+		z-index: 5
+	.ModalClose
+		display: block
+		position: fixed
+		top: 5%
+		left: 90%
+		z-index: 6
+	.CenterContent
+		-webkit-animation: fadeIn 2s /* Chrome, Safari, Opera */ 
+		animation: fadeIn 2s
+		position: fixed
+		z-index: 10
+		background-color: #fff 
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		font-weight: 200
+		text-align: center
+		padding: 20px
+		border: 2px solid #ddd
+		border-radius: 5px
+		width: 800px
+		max-width: 95%
+	#TutActionBar
+		position: fixed
+		z-index: 10 
+		top: 65%
+		left: 50%
+		transform: translate(-50%, -50%)

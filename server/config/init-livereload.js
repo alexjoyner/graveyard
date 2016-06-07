@@ -5,6 +5,6 @@ module.exports = function(){
 		console.log('Starting livereload server');
 		var livereload = require('livereload'),
     		liveServer = livereload.createServer();
-	    liveServer.watch([__dirname + '/server/**.*', __dirname + '/dist_client/**.*']);
+	    liveServer.watch([__dirname + '/../**.*', __dirname + '/../../dist_client/**.*']);
 	}
 }
