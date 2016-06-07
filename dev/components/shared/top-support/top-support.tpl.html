@@ -1,0 +1,59 @@
+<div class="supporting-evidence ro-point" [ngStyle]="{'background-color': (support.point_type === 'proof')? '#DFF0D8' : '#FCC4C4'}">
+    <h4>
+        {{support.title}}
+    </h4>
+    <p >{{support.detail}}</p>
+    <div *ngIf="support.source !== null">
+        <h4>
+            <u>Source</u>:
+        </h4>
+        <ul>
+            <li>
+                <a [href]="support.source" style="text-decoration: none;"  target="_blank">
+                    <h4 style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
+                        {{support.source}}
+                    </h4>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div style="display:inline-block;">
+    </div>
+    <br>
+    <div class="ro-action-bar">
+        <ro-vote-cell
+            class="ro-action-bar-item"
+            [sourceId]="support._id"
+            [score]="support.score"
+            (modVote)="support.ups=support.ups+$event">
+        </ro-vote-cell>
+        <button type="button" class="ro-action-bar-item btn btn-xs btn-info" *ngIf="numMoreSupport >0" (click)="toggleViewAll()">
+            View
+            <span *ngIf="!showingMore">
+                {{numMoreSupport}} more
+            </span>
+            <span *ngIf="showingMore">
+                Less
+            </span>
+        </button>
+        <button type="button" class="ro-action-bar-item btn btn-xs btn-info" (click)="toggleAddEvidence();gotoTop()">
+            Add Evidence
+        </button>
+        <div class="ro-inline-items">
+            <h4 class="ro-action-bar-item">
+                <span class="label" [ngClass]="support.source_type"> 
+                    {{support.source_type | uppercase}}
+                </span>
+            </h4>
+            <h4 class="ro-action-bar-item">
+                <span class="label" [ngClass]="support.point_type">
+                    {{support.point_type | uppercase}}
+                </span>
+            </h4>
+            <button type="button" class="ro-action-bar-item btn btn-xs btn-danger" (click)="removeSupport(support._id)" *ngIf="isOwner(support.owner_user_id)">
+                <i class="fa fa-close">
+                </i>
+            </button>
+        </div>
+    </div>
+</div>

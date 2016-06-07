@@ -4,10 +4,10 @@ import {Component, OnInit} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
 
 // Component imports
-import {HomeContainerComponent} from '../components/home-container/home-container.component';
-import {QuestionContainerComponent} from '../components/question-container/question-container.component';
-import {NavbarComponent} from '../components/navbar/navbar.component';
-import {AuthContainerComponent} from '../components/auth-container/auth-container.component';
+import {HomeContainerComponent} from '../components/containers/home-container/home-container.component';
+import {QuestionContainerComponent} from '../components/containers/question-container/question-container.component';
+import {NavbarComponent} from '../components/shared/navbar/navbar.component';
+import {AuthContainerComponent} from '../components/containers/auth-container/auth-container.component';
 //import {WelcomeComponent} from './components/welcome/welcome.component';
 
 // Services imports
@@ -15,7 +15,7 @@ import {AuthService} from './shared/net-services/auth.service';
 import {UsersService} from './shared/net-services/users.service';
 
 // Components imports (Not many because this is the root)
-import {AlertBarComponent} from '../components/alertBar/alertBar.component';
+import {AlertBarComponent} from '../components/shared/alertBar/alertBar.component';
 
 /*
     The main app component

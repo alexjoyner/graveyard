@@ -136,16 +136,31 @@ html {
 .disproof {
   background-color: #d9534f; }
 
-#Home {
+#Home-Container {
   padding: 0 50px 0 50px; }
-  #Home #MainHeader {
+  #Home-Container #Home-MainHeader {
     font-size: 30px;
     font-weight: 200;
     margin-bottom: 10px; }
-  #Home #SubHeader {
+  #Home-Container #Home-SubHeader {
     font-size: 20px;
     font-weight: 300;
     margin: 0; }
+  #Home-Container #Start-Question-Btn {
+    margin: 3px 0 3px 0; }
+  #Home-Container #Search-Questions-Bar {
+    margin: 3px 0 3px 0; }
+
+#Question-Container #Question-Header-Title {
+  max-width: 80%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  position: relative;
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.95);
+  font-weight: 200; }
 
 #HeaderQuestion {
   position: fixed;
@@ -190,66 +205,6 @@ html {
   .isInSearchModal .HomeQuestion {
     z-index: 5;
     transform: translate(0, 5%); }
-
-.ro-main-point {
-  position: relative; }
-
-.ro-main-nav {
-  width: 100%;
-  background-color: #F8F8F8;
-  border: 1px solid #e7e7e7;
-  position: relative;
-  min-height: 50px;
-  margin-bottom: 20px;
-  padding-top: 0px; }
-  .ro-main-nav .ro-navbar-logo {
-    float: left;
-    height: 50px;
-    line-height: 50px;
-    padding: 0 30px;
-    font-size: 1.4em;
-    color: #777; }
-  .ro-main-nav > ul {
-    margin: 0;
-    padding: 0;
-    color: #777;
-    list-style-type: none;
-    position: relative; }
-  .ro-main-nav .ro-nav-item {
-    display: inline-block;
-    padding: 0 30px;
-    color: #777;
-    height: 48px;
-    line-height: 50px;
-    background-color: #F8F8F8; }
-    .ro-main-nav .ro-nav-item:hover {
-      background-color: #888;
-      color: #fff; }
-
-#QuestionContainer #QuestionHeader {
-  max-width: 80%;
-  left: 50%;
-  transform: translate(-50%, 0);
-  position: relative;
-  border-radius: 5px;
-  padding: 10px;
-  z-index: 10;
-  background-color: rgba(255, 255, 255, 0.95);
-  font-weight: 200; }
-
-.supporting-evidence {
-  position: relative; }
-
-.vote-cell {
-  display: inline; }
-  .vote-cell .upvote-btn {
-    display: inherit; }
-    .vote-cell .upvote-btn .score {
-      margin-left: 6px;
-      padding-left: 6px;
-      border-left: 1px solid grey; }
-  .vote-cell .downvote-btn {
-    display: inherit; }
 
 #CreatePointForm {
   position: absolute;
@@ -412,5 +367,60 @@ input[type="text"]#QuestionInput {
     #TagsForm #TagsContainer .ro-tag .ro-tagName {
       font-size: 1.5em;
       font-weight: 200; }
+
+.ro-main-point {
+  position: relative; }
+
+.ro-main-nav {
+  width: 100%;
+  background-color: #F8F8F8;
+  border: 1px solid #e7e7e7;
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 20px;
+  padding-top: 0px; }
+  .ro-main-nav .ro-navbar-logo {
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 30px;
+    font-size: 1.4em;
+    color: #777; }
+  .ro-main-nav > ul {
+    margin: 0;
+    padding: 0;
+    color: #777;
+    list-style-type: none;
+    position: relative; }
+  .ro-main-nav .ro-nav-item {
+    display: inline-block;
+    padding: 0 30px;
+    color: #777;
+    height: 48px;
+    line-height: 50px;
+    background-color: #F8F8F8; }
+    .ro-main-nav .ro-nav-item:hover {
+      background-color: #888;
+      color: #fff; }
+
+.supporting-evidence {
+  position: relative; }
+
+.ro-tag-cell {
+  display: inline; }
+  .ro-tag-cell h4 {
+    display: inherit;
+    margin-right: 6px; }
+
+.vote-cell {
+  display: inline; }
+  .vote-cell .upvote-btn {
+    display: inherit; }
+    .vote-cell .upvote-btn .score {
+      margin-left: 6px;
+      padding-left: 6px;
+      border-left: 1px solid grey; }
+  .vote-cell .downvote-btn {
+    display: inherit; }
 
 /*# sourceMappingURL=app.css.map */

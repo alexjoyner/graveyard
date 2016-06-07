@@ -1,0 +1,42 @@
+<h1 [hidden]="questions">
+    Loading questions
+</h1>
+<br/>
+<div *ngIf="questions" [ngClass]="{'isInSearchModal': showInTut}">
+    <div *ngFor="#question of questions"  >
+        <div class="HomeQuestion">
+            <h3 class="text-center">
+                <a [routerLink]="['Question', {id: question._id, type: 'yes'}]">{{question.title}}</a>
+            </h3>
+            <h5 class="text-center">
+                {{question.detail}}
+            </h5>
+            <!-- <p class="text-center">
+                Created on {{stringToDate(question.created_at) | date: 'yMMMd'}}
+            </p> -->
+            <div class="ro-action-bar">
+                <ro-vote-cell
+                    class="ro-action-bar-item"
+                    [sourceId]="question._id"
+                    [score]="question.ups - question.dwns"
+                    (modVote)="question.ups = question.ups + $event">
+                </ro-vote-cell>
+                <div class="pull-right" *ngIf="isOwner(question.owner_user_id)">
+                    <button class="btn btn-sm btn-danger" (click)="deleteQuestion(question, $event)">
+                        <i class="fa fa-close">
+                        </i>
+                    </button>
+                </div>
+            </div>
+            <div class="HomeQuestionSubContent" *ngIf="question.most_recent_point && question.most_recent_point[0] !== null">
+                <hr>
+                <p style="margin-left: 6px">Most Recent Point: Type <span *ngIf="question.most_recent_point[0].point_type_id === 1">YES</span><span *ngIf="question.most_recent_point[0].point_type_id === 2">NO</span></p>
+                <ro-main-point
+                    [point]="question.most_recent_point[0]"
+                    (removed)="question.most_recent_point.splice(0, 1)">
+                </ro-main-point>
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>

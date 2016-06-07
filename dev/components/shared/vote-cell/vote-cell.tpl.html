@@ -1,0 +1,16 @@
+<div class="vote-cell">
+    <button class="upvote-btn btn btn-sm" (click)="vote(1, $event)"  
+        [ngClass]="{'btn-info': upVoted, 'btn-default': !upVoted}">
+        <span >
+            Upvote<span *ngIf="upVoted">d</span>
+        </span>
+        <span class="score">
+            {{score}}
+        </span>
+    </button>
+    <button class="downvote-btn btn btn-sm"(click)="vote(2, $event)"  style="display: inherit;" [ngClass]="{'btn-info': downVoted, 'btn-default': !downVoted}">
+        <span>
+            Downvote<span *ngIf="downVoted">d</span>
+        </span>
+    </button>
+</div>
