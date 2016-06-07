@@ -25,7 +25,7 @@ export class CreateQuestionFormComponent implements OnInit{
 		private _authService: AuthService,
 		private _postsService: PostsService) {}
 	ngOnInit():any {
-
+		this.questionControl()
 	}
 	endTut(){
 		this.close.emit(null);
@@ -67,7 +67,7 @@ export class CreateQuestionFormComponent implements OnInit{
 							this.alertString = 'Awesome, now just top it of with a question mark when your finished to move on!'
 							if (daQ[daQ.length - 1] === '?') {
 								this.alertType = "success"
-								this.alertString = 'Great! Now just post your question!';
+								this.alertString = 'Great! Double check your question then click "Tag my question".';
 								this.qComplete = true;
 							}
 						} else {
