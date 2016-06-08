@@ -30,6 +30,7 @@ export class PointsListComponent implements OnInit{
 	type: string = this._routeParams.get('type');
 	questionId: string = this._routeParams.get('id');
 	private searchText: string = '';
+	private showType: number = 1;
 
 	constructor(
 		private _routeParams: RouteParams,
@@ -49,6 +50,7 @@ export class PointsListComponent implements OnInit{
 		socket.on('NewPost', function(postData) {
 			switch(postData.post_type_id){
 				case 2:
+					this.showType = postData.point_type_id;
 					this.onPointAdded(postData);
 					break;
 				case 3:

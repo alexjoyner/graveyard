@@ -3,7 +3,7 @@
 </button>
 <form id="CreatePointForm" (ngSubmit)="createPoint()">
     <label for="WhyPointInput">
-        <ro-yes-no-toggle [selection]="selectedType"></ro-yes-no-toggle><span id="PointTypeString"> {{200 - newPoint.title.length}}/200</span>
+        <ro-yes-no-toggle (changed)="selectedType = $event"></ro-yes-no-toggle><span id="PointTypeString"> {{200 - newPoint.title.length}}/200</span>
     </label>
     <textarea
         id="WhyPointInput"
