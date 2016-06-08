@@ -13,8 +13,8 @@ export class CreateQuestionFormComponent implements OnInit{
 	@Output() close: EventEmitter<any> = new EventEmitter();
 	@Output() search: EventEmitter<any> = new EventEmitter();
 	@Output() switchTags: EventEmitter<any> = new EventEmitter();
-	private alertString: string;
 	@Input('question') question: string;
+	private alertString: string;
 	private acceptedTags: any[] = [];
 	private privQ: boolean = false;
 	private alertType: string;

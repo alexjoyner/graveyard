@@ -6,7 +6,7 @@
     <div *ngFor="#question of questions"  >
         <div class="HomeQuestion">
             <h3 class="text-center">
-                <a [routerLink]="['Question', {id: question._id, type: 'yes'}]">{{question.title}}</a>
+                <a [routerLink]="['Question', {id: question._id}]">{{question.title}}</a>
             </h3>
             <h5 class="text-center">
                 {{question.detail}}

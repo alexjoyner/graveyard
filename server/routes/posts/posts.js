@@ -33,7 +33,7 @@ router.get('/all',
         }
     });
 // get one question by id and a type of yes/no
-router.get('/post/:id/:type',
+router.get('/post/:id',
     /*Validate token to route*/
     jwt_verify,
     /*Token valid: Get question data

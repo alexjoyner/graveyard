@@ -35,15 +35,13 @@ export class PostsService {
 		return req;
 			
 	}
-	getPost(postId: string, pointType: string) {
+	getPost(postId: string) {
 		const headers = new Headers();
 		headers.append('x-access-token',
 			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
 		return this._http.get(
 			this.endpoint + '/posts/post/' + 
-			postId + 
-			'/' +
-			pointType,
+			postId,
 			{ headers: headers })
 			.map(res => res.json());
 	}
@@ -65,7 +63,7 @@ export class PostsService {
 		return res;
 	}
 	/* POST */
-	insertPost(data: {post: Post, tags: [number]}, privQ?: boolean): Observable<any> {
+	insertPost(data: {post: Post, tags?: [number]}, privQ?: boolean): Observable<any> {
 		console.log(privQ);
 		(privQ) ? data.post['privQ'] = privQ : data.post['privQ'] = false;
 		console.log('Post data: ', data);

@@ -2,7 +2,6 @@
     <!--
         Create and Search Buttons
     -->
-    <br/>
     <div class="row">
         <div [ngClass]="{'col-md-10': !showForm,'col-md-12': showForm}">
             <div class="input-group">
@@ -14,14 +13,10 @@
             </div>
         </div>
         <div class="text-center col-md-2" *ngIf="!showForm">
-            <button class="btn btn-md" class="btn" [ngClass]="{'btn-success': type === 'yes', 'btn-danger': type === 'no', 'btn-default': showForm === true}" (click)="showForm = true" *ngIf="!showForm">
-                Add a new {{type}}
+            <button class="btn btn-md btn-success" (click)="showForm = true">
+                Add a new Yes/No
             </button>
         </div>
-    </div>
-    <div class="ro-modal" *ngIf="showForm">
-        <ro-create-point-form (cancel)="showForm = false" [searchText]="searchText">
-        </ro-create-point-form>
     </div>
     <hr/>
     <h1 class="text-center" *ngIf="points && points.length == 0 && !showForm">
@@ -61,14 +56,14 @@
                         </button>
                     </h1>
                 </div>
+                <hr/>
+                <ro-more-support
+                    *ngIf="point.viewAll"
+                    [supports]="point.supports.slice(1)"
+                    (goTop)="smoothScroll('point'+i, 20)">
+                </ro-more-support>
             </div>
         </div>
-        <hr/>
-        <ro-more-support
-            *ngIf="point.viewAll"
-            [supports]="point.supports.slice(1)"
-            (goTop)="smoothScroll('point'+i, 20)">
-        </ro-more-support>
         <ro-add-support
             *ngIf="point.addEvidence"
             [pointId]="point._id"
@@ -77,4 +72,11 @@
             [mainPointTypeId]="type">
         </ro-add-support>
     </div>
+</div>
+<!--            MISC
+    =========================== -->
+<!-- Create Point Modal -->
+<div class="ro-modal" *ngIf="showForm">
+    <ro-create-point-form (cancel)="showForm = false" [searchText]="searchText">
+    </ro-create-point-form>
 </div>

@@ -1,26 +1,10 @@
 <div id="Home-Container">
-    <!-- Page Header -->
     <h2 id="Home-MainHeader" class="text-center">
         MetaTruth v1.0 Alpha.9.2
     </h2>
     <h4 id="Home-SubHeader" class="text-center">
         An app to help answer the most controversial questions
     </h4>
-
-    <!-- Custom Tab Bar: Tab to question list type -->
-       <!--  <ul class="ro-nav ro-nav-tabs">
-            <li role="presentation" class="ro-tab active">
-                <a href="#/Home/All">
-                    All
-                </a>
-            </li>
-            <li role="presentation" class="ro-tab">
-                <a href="#/Home/All">
-                    Tab 2
-                </a>
-            </li>
-        </ul> -->
-    
     <!-- Bootstrap TabBar -->
     <ul id="Home-TabBar" class="nav nav-tabs">
         <li role="presentation" class="active">
@@ -29,7 +13,6 @@
             </a>
         </li>
     </ul>
-   
     <!-- Create and Search Buttons -->
     <br>
     <div class="row">
@@ -49,8 +32,6 @@
         </div>
     </div>
     <br>
-
-
     <!-- List out the isses of selected type -->
     <ro-home-question-list
         [searchText]="searchText"
@@ -58,8 +39,6 @@
         [questions]="questions"
         [showInTut]="showQ_ToTut"
         (cancel)="searchText='';startQuestion=!startQuestion;"></ro-home-question-list>
-
-
     <!-- Let the user know that nothing was found if they
             search for a question and nothing was found -->
     <div *ngIf="searchText !== '';">
@@ -82,3 +61,16 @@
         (search)="searchQuestions($event);"
         (switchTags)="showQ_ToTut = false"></ro-create-question>
 </div>
+<!-- Custom Tab Bar: Tab to question list type -->
+       <!--  <ul class="ro-nav ro-nav-tabs">
+            <li role="presentation" class="ro-tab active">
+                <a href="#/Home/All">
+                    All
+                </a>
+            </li>
+            <li role="presentation" class="ro-tab">
+                <a href="#/Home/All">
+                    Tab 2
+                </a>
+            </li>
+        </ul> -->

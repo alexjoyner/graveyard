@@ -39,8 +39,7 @@ export class QuestionContainerComponent{
 		private _authService: AuthService) {
 		if (this._authService.checkTokenExists()) {
 			this._questionId = +this._routeParams.get('id');
-			this._type = this._routeParams.get('type');
-			_postsService.getPost(''+this._questionId, this._type).
+			_postsService.getPost(''+this._questionId).
 				subscribe(
 					data => {
 						this.question = data;
