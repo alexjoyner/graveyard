@@ -1,6 +1,7 @@
 declare function require(name: string);
-import {Component} from 'angular2/core';
-import {GlobalHandlerService} from '../../../ts/shared/special-services/globalHandler.service';
+import {Component} from "angular2/core";
+import {GlobalHandlerService} from "../../../ts/shared/special-services/globalHandler.service";
+import {AuthService} from "../../../ts/shared/net-services/auth.service";
 @Component({
     selector: 'ro-alert-bar',
     template: require('dev/components/shared/alertBar/alertBar.tpl.html')
@@ -9,7 +10,8 @@ export class AlertBarComponent{
 	private classType: string = null;
 	private message: string = null;
 	constructor(
-		private _globalHandler: GlobalHandlerService
+		private _globalHandler: GlobalHandlerService,
+		private _authService: AuthService
 	) {
 		/* When the global handler emits an error,
 			catch that error and emit notify the user with the alert bar*/
@@ -24,9 +26,7 @@ export class AlertBarComponent{
 		let keep: boolean;
 		switch (data.status){
 			case 403:
-				if(localStorage.getItem('token')){
-					localStorage.removeItem('token')
-				}
+				this._authService.logout();
 			/* 403 should fall through and execute 500*/
 			case 500:
 				this.message = data.body;
@@ -40,7 +40,7 @@ export class AlertBarComponent{
 		}
 		if(!keep){
 			/*Messages not kept should lest for
-				5 seconds and then dissapear*/
+				5 seconds and then disappear*/
 			setTimeout(() => {
 				this.message = null;
 				this.classType = null;

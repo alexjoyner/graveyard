@@ -10,3 +10,4 @@ dev/sass/.sass-cache/*
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+/.idea

@@ -1,17 +1,15 @@
 // Angular imports
-import {Injectable, EventEmitter} from 'angular2/core';
-import {Router} from 'angular2/router';
+import {Injectable, EventEmitter} from "angular2/core";
+import {Router} from "angular2/router";
+import {Http, Headers} from "angular2/http";
+import "rxjs/Rx";
+import {Observable} from "rxjs/Observable";
+import {Config} from "../../config/config";
+import {User} from "../structures/user";
+import {GlobalHandlerService} from "../special-services/globalHandler.service";
+import {UsersService} from "../net-services/users.service";
 
 // Imports needed for http
-import {Http, Headers} from 'angular2/http';
-import 'rxjs/Rx';
-import {Observable} from 'rxjs/Observable';
-
-import {Config} from '../../config/config';
-
-import {User} from '../structures/user';
-import {GlobalHandlerService} from '../special-services/globalHandler.service';
-import {UsersService} from '../net-services/users.service';
 
 
 @Injectable()
@@ -47,12 +45,12 @@ export class AuthService {
 					status: err.status,
 					body: err._body
 				})
-			})
+			});
 		return res;
 	}
 
 	attemptSignup(user: User, specialCode: string): Observable<any> {
-		user['specialCode'] = specialCode
+		user['specialCode'] = specialCode;
 		const body = JSON.stringify(user);
 		const headers = new Headers();
 		headers.append('Content-Type', 'application/json');
@@ -75,7 +73,7 @@ export class AuthService {
 					status: err.status,
 					body: err._body
 				})
-			})
+			});
 		return res;
 	}
 
@@ -84,7 +82,9 @@ export class AuthService {
 
 	// Misc
 	logout() {
-		localStorage.removeItem('token');
+		if (localStorage.getItem('token')) {
+			localStorage.removeItem('token')
+		}
 		this._userLoggedOut.emit(null);
 		this._router.navigate(['Auth']);
 	}

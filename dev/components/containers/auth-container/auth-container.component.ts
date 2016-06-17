@@ -1,14 +1,13 @@
+import {AuthService} from "../../../ts/shared/net-services/auth.service";
+import {Component} from "angular2/core";
+import {ROUTER_DIRECTIVES} from "angular2/router";
+import {User} from "../../../ts/shared/structures/user";
 declare function require(name: string);
 // Angular Imports
-import {Component} from 'angular2/core';
-import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
 
 // Services
-import {AuthService} from '../../../ts/shared/net-services/auth.service';
-import {UsersService} from '../../../ts/shared/net-services/users.service';
 
 // Structures
-import {User} from '../../../ts/shared/structures/user';
 
 @Component({
     // Selector not needed because this is a route
@@ -20,12 +19,9 @@ import {User} from '../../../ts/shared/structures/user';
 export class AuthContainerComponent{
 	private user: User = new User('', '', null);
 	private specialCode: string;
-	private mode: string = 'login';
 	remember: boolean = false; 
 	constructor(
-		private _authService: AuthService,
-		private _router: Router,
-		private _usersService: UsersService) {};
+		private _authService: AuthService) {};
 
 	login(){
 		this._authService.attemptLogin(this.user);

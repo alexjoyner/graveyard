@@ -1,5 +1,5 @@
 declare function require(name: string);
-import {Component, Input, Output, EventEmitter} from 'angular2/core';
+import {Component, Output, EventEmitter} from "angular2/core";
 
 @Component({
     selector: 'ro-yes-no-toggle',

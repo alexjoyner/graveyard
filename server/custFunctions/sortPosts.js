@@ -4,7 +4,7 @@
 		algorithms
 */
 var decay = require('decay')
-  , hotScore = decay.redditHot();
+  , hotScore = decay.redditHot(60*60*24*7);
   
 /*
 	Function receives an array of posts and sorts the posts
@@ -16,4 +16,4 @@ module.exports = function(posts){
 		var bScore = hotScore(postB.ups, postB.dwns, postB.created_at);
 		return bScore - aScore
 	})
-}
+};
