@@ -1,18 +1,10 @@
-declare function require(name: string);
-
-// Angular Imports
 import {Component, OnInit} from "angular2/core";
 import {HomeQuestionListComponent} from "../../lists/home-question-list/home-question-list.component";
 import {CreateQuestionFormComponent} from "../../forms/create-question-form/create-question-form.component";
 import {AuthService} from "../../../ts/shared/net-services/auth.service";
 import {PostsService} from "../../../ts/shared/net-services/posts.service";
 import {Post} from "../../../ts/shared/structures/post";
-
-// Component Imports
-
-// Service
-
-// Structures
+declare function require(name: string);
 
 
 @Component({

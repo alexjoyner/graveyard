@@ -150,6 +150,11 @@ html {
     margin: 3px 0 3px 0; }
   #Home-Container #Search-Questions-Bar {
     margin: 3px 0 3px 0; }
+  #Home-Container #TestInputWrapper {
+    border: 1px solid #dddddd; }
+    #Home-Container #TestInputWrapper #TestInput {
+      border: none;
+      background-color: #fff; }
 
 #Question-Container #Question-Header-Title {
   max-width: 80%;
@@ -290,6 +295,15 @@ input[type="text"]#QuestionInput {
   #FinalizeZone label {
     color: #fff; }
 
+#CreateSupportForm {
+  position: absolute;
+  z-index: 6;
+  top: 30%;
+  left: 0;
+  width: 100%;
+  padding-left: 20%;
+  padding-right: 20%; }
+
 #TagsForm #TagsContainer {
   position: relative;
   z-index: 8;
@@ -370,23 +384,6 @@ input[type="text"]#QuestionInput {
       background-color: #888;
       color: #fff; }
 
-.supporting-evidence {
-  position: relative; }
-
-.more-support {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  display: table; }
-  .more-support .goto-top-box {
-    background-color: #DDDDDD;
-    height: 100%;
-    border-radius: 5px 0 0 5px;
-    float: none;
-    display: table-cell;
-    vertical-align: top; }
-    .more-support .goto-top-box h4 {
-      margin-top: 0; }
-
 .ro-tag-cell {
   display: inline; }
   .ro-tag-cell h4 {
@@ -417,7 +414,7 @@ input[type="text"]#QuestionInput {
 
 input.cmn-toggle-yes-no + label {
   padding: 2px;
-  width: 120px;
+  width: 220px;
   height: 60px; }
   input.cmn-toggle-yes-no + label:before, input.cmn-toggle-yes-no + label:after {
     display: block;
@@ -433,7 +430,7 @@ input.cmn-toggle-yes-no + label {
     text-align: center;
     line-height: 60px; }
   input.cmn-toggle-yes-no + label:before {
-    background-color: #dddddd;
+    background-color: #E37063;
     content: attr(data-off);
     transition: transform 0.5s;
     backface-visibility: hidden; }

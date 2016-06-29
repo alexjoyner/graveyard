@@ -13,7 +13,7 @@ import {VoteCellComponent} from '../../shared/vote-cell/vote-cell.component';
 import {AuthService} from '../../../ts/shared/net-services/auth.service';
 import {UsersService} from '../../../ts/shared/net-services/users.service';
 import {GlobalHandlerService} from '../../../ts/shared/special-services/globalHandler.service';
-import {MainPointComponent} from '../../shared/main-point/main-point.component';
+import {MainPointComponent} from '../../shared/point/point.component';
 @Component({
     selector: 'ro-home-question-list',
     template: require('dev/components/lists/home-question-list/home-question-list.tpl.html'),

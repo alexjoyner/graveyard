@@ -1777,13 +1777,13 @@
 		"suppressImplicitAnyIndexErrors": 0,
 		"targetECMAVersion": 0
 		},
-	"\/dev\/ts\/components\/question\/main-point.component.ts": {
+	"\/dev\/ts\/components\/question\/point.component.ts": {
 		"createDeclarationFile": 0,
 		"createSourceMap": 0,
 		"fileType": 128,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/ts\/components\/question\/main-point.component.ts",
+		"inputAbbreviatedPath": "\/dev\/ts\/components\/question\/point.component.ts",
 		"jsxMode": 0,
 		"minifyOutput": 0,
 		"moduleResolutionType": 0,

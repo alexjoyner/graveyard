@@ -2,6 +2,9 @@
     <div id="Question-Header" *ngIf="!question.editQuestion || question.editQuestion === false">
         <ro-tag-cell
             [tags]="question.tags"></ro-tag-cell>
+        <div *ngIf="question.post_type_id !== 1">
+            <h2>Is this valid?</h2>
+        </div>
         <h2 id="Question-Header-Title" class="text-center">
             {{question.title}} <span [hidden]="question.title !== ''">Loading main question</span>
         </h2>
@@ -25,11 +28,11 @@
             [score]="question.ups - question.dwns"
             (modVote)="question.ups = question.ups + $event">
         </ro-vote-cell>
-        <button class="ro-action-bar-item btn btn-sm btn-info" (click)="editQuestion(question, $event)" *ngIf="question.title && isOwner(question.owner_user_id) && !question.editQuestion || question.editQuestion === false">
+        <button class="ro-action-bar-item btn btn-sm btn-info" (click)="editQuestion($event)" *ngIf="question.title && isOwner(question.owner_user_id) && !question.editQuestion || question.editQuestion === false">
             <i class="fa fa-edit">
             </i>
         </button>
-        <button class="ro-action-bar-item btn btn-sm btn-danger" (click)="editQuestion(question, $event, true)" *ngIf="question.editQuestion && question.editQuestion === true">
+        <button class="ro-action-bar-item btn btn-sm btn-danger" (click)="editQuestion($event, true)" *ngIf="question.editQuestion && question.editQuestion === true">
             Cancel
         </button>
         <button class="ro-action-bar-item btn btn-sm btn-danger" (click)="deleteQuestion(question._id)" *ngIf="isOwner(question.owner_user_id) && !question.editQuestion">
@@ -52,5 +55,6 @@
             </li>
         </ul> -->
     <ro-points-list
-        [points]="question.points" [dataAvailable]="questionAvailable"></ro-points-list>
+        [points]="question.points"
+        [questionType]="question.post_type_id"></ro-points-list>
 </div>

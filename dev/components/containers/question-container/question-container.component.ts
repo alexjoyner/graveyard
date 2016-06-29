@@ -1,25 +1,15 @@
-declare function require(name: string);
-// Anuglar Imports
 import {Component, OnInit} from 'angular2/core';
 import {RouteParams, Router} from 'angular2/router';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
-
-// Forms
-import {EditQuestionForm} from '../../forms/edit-question-form/edit-question-form.component';
-
-// Lists
-import {PointsListComponent} from '../../lists/points-list/points-list.component';
-
-// Shared Components
 import {VoteCellComponent} from '../../shared/vote-cell/vote-cell.component';
 import {TagCellComponent} from '../../shared/tag-cell/tag-cell.component';
-// Services
-	// Net
+import {EditQuestionForm} from '../../forms/edit-question-form/edit-question-form.component';
+import {PointsListComponent} from '../../lists/points-list/points-list.component';
+import {Post} from '../../../ts/shared/structures/post';
 import {UsersService} from '../../../ts/shared/net-services/users.service';
 import {PostsService} from '../../../ts/shared/net-services/posts.service';
 import {AuthService} from '../../../ts/shared/net-services/auth.service';
-	// Structures
-import {Post} from '../../../ts/shared/structures/post';
+declare function require(name: string);
 
 @Component({// Route no selector
     template: require('dev/components/containers/question-container/question-container.tpl.html'),
@@ -30,7 +20,6 @@ export class QuestionContainerComponent{
 	question: Post = new Post('', 1);
 	private _questionId: number;
 	private _type: string;
-	private _isTut: boolean;
 	private questionAvailable: boolean;
 	constructor(
 		private _routeParams: RouteParams,
@@ -49,10 +38,7 @@ export class QuestionContainerComponent{
 					},
 					err => console.log('Err: ', err)
 				);
-		}
-	}
-	endTut(){
-		this._usersService.showTut = false;
+		} // Get the posts associated with this id
 	}
 	deleteQuestion(questionId: number) {
 		if (this._authService.checkTokenExists()) {
@@ -65,8 +51,8 @@ export class QuestionContainerComponent{
 					);
 			}
 		}
-	}
-	editQuestion(question: Post, event: MouseEvent, cancelFlag: boolean) {
+	} // Delete function by ID
+	editQuestion(event: MouseEvent, cancelFlag: boolean) {
 		event.stopPropagation();
 		let answer: boolean;
 		if(cancelFlag){

@@ -3,11 +3,6 @@ import {Component} from "angular2/core";
 import {ROUTER_DIRECTIVES} from "angular2/router";
 import {User} from "../../../ts/shared/structures/user";
 declare function require(name: string);
-// Angular Imports
-
-// Services
-
-// Structures
 
 @Component({
     // Selector not needed because this is a route
