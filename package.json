@@ -5,7 +5,8 @@
     "start": "webpack --progress --profile --colors --watch --display-error-details",
     "build": "NODE_ENV='production' webpack",
     "production": "NODE_ENV='production' node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "sass": "sass ./dev/app.scss:./dist_client/client/app.css --watch"
   },
   "license": "ISC",
   "dependencies": {

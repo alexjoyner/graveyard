@@ -106,7 +106,7 @@ router.post('/newPost',
             if (postInfo.post_type_id === 3) {
                 type = postInfo.correspond_main_point_type_id;
                 console.log('New support: ', 'question' + postInfo.question_id + '/' + type);
-                req.io.to('question' + postInfo.question_id).emit('NewPost', postData)
+                req.io.to('question' + result.rows[0].parent_id).emit('NewPost', postData)
             }
             res.status(200).send({
                 success: true

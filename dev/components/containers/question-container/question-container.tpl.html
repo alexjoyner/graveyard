@@ -2,11 +2,8 @@
     <div id="Question-Header" *ngIf="!question.editQuestion || question.editQuestion === false">
         <ro-tag-cell
             [tags]="question.tags"></ro-tag-cell>
-        <div *ngIf="question.post_type_id !== 1">
-            <h2>Is this valid?</h2>
-        </div>
         <h2 id="Question-Header-Title" class="text-center">
-            {{question.title}} <span [hidden]="question.title !== ''">Loading main question</span>
+            <span *ngIf="question.post_type_id !== 1"><b>Is this valid?</b></span> {{question.title}} <span [hidden]="question.title !== ''">Loading main question</span>
         </h2>
         <h5 id="Question-Header-Detail" class="text-center">
             {{question.detail}}

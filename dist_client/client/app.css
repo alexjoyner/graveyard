@@ -303,6 +303,10 @@ input[type="text"]#QuestionInput {
   width: 100%;
   padding-left: 20%;
   padding-right: 20%; }
+  #CreateSupportForm #Step1, #CreateSupportForm #Step2 {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px; }
 
 #TagsForm #TagsContainer {
   position: relative;

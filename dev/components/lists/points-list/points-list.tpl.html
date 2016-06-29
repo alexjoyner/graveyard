@@ -63,21 +63,15 @@
 <!--            MISC
     =========================== -->
 <!-- Create Point Modal -->
-<div class="ro-modal" *ngIf="showForm && questionType === 1">
-    <ro-create-point-form (cancel)="showForm = false" [searchText]="searchText">
+<div class="ro-modal"
+     *ngIf="showForm && questionType === 1">
+    <ro-create-point-form (cancel)="showForm = false"
+                          [searchText]="searchText">
     </ro-create-point-form>
-    <!--<ro-add-support
-            [pointId]="point._id"
-            [pointIndex]="i"
-            [questionId]="questionId"
-            [mainPointTypeId]="type">
-    </ro-add-support>-->
 </div>
-<div class="ro-modal" *ngIf="showForm && questionType !== 1">
-    <ro-add-support
-            [pointId]="point._id"
-            [pointIndex]="i"
-            [questionId]="questionId"
-            [mainPointTypeId]="type">
+<div class="ro-modal"
+     *ngIf="showForm && questionType !== 1">
+    <ro-add-support (added)="showForm = false"
+                    (cancel)="showForm = false">
     </ro-add-support>
 </div>
