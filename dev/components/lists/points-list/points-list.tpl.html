@@ -26,10 +26,15 @@
                  class="point"
             >
                 <ro-main-point
-                        *ngIf="point.point_type_id === 1 || point.point_type_id === 3"
+                        *ngIf="point.point_type_id === 1"
                         [point]="point"
                         (removed)="removePoint(i)">
                 </ro-main-point>
+                <ro-support-point
+                        *ngIf="point.point_type_id === 3"
+                        [support]="point"
+                        (removed)="removePoint(i)">
+                </ro-support-point>
             </div> <!-- Looping through yess-->
         </div>
         <div class="col-md-6">
@@ -37,10 +42,15 @@
                  *ngFor="#point of points | roFilter: searchText; #i = index"
                  class="point">
                 <ro-main-point
-                        *ngIf="point.point_type_id === 2 || point.point_type_id === 4"
+                        *ngIf="point.point_type_id === 2"
                         [point]="point"
                         (removed)="removePoint(i)">
                 </ro-main-point>
+                <ro-support-point
+                        *ngIf="point.point_type_id === 4"
+                        [support]="point"
+                        (removed)="removePoint(i)">
+                </ro-support-point>
             </div> <!-- Looping through for nos-->
         </div>
     </div> <!--

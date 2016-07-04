@@ -156,7 +156,7 @@ html {
       border: none;
       background-color: #fff; }
 
-#Question-Container #Question-Header-Title {
+#Question-Container #Question-Header-Title, #Question-Container #Question-Header-Detail {
   max-width: 80%;
   left: 50%;
   transform: translate(-50%, 0);
@@ -404,6 +404,11 @@ input[type="text"]#QuestionInput {
       border-left: 1px solid grey; }
   .vote-cell .downvote-btn {
     display: inherit; }
+
+#AlertBar {
+  position: fixed;
+  z-index: 100;
+  width: 100%; }
 
 .cmn-toggle {
   position: absolute;

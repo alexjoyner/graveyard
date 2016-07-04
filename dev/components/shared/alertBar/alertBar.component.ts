@@ -23,7 +23,7 @@ export class AlertBarComponent{
 		/* 
 		Flag for keeping certain error messages
 			till the user refreshes the page*/
-		let keep: boolean;
+		let keep: boolean = false;
 		switch (data.status){
 			case 403:
 				this._authService.logout();

@@ -5,6 +5,7 @@ import {MainPointComponent} from "../../shared/point/point.component";
 import {CreatePointFormComponent} from "../../forms/create-point-form/create-point-form.component";
 import {RouteParams} from "angular2/router";
 import {AddSupportComponent} from "../../forms/create-support-form/create-support-form.component";
+import {SupportPointComponent} from "../../shared/support-point/support-point.component";
 declare function require(name: string);
 declare function io(url: string);
 interface Socket {
@@ -14,7 +15,7 @@ interface Socket {
 @Component({
     selector: 'ro-points-list',
     template: require('dev/components/lists/points-list/points-list.tpl.html'),
-    directives: [MainPointComponent, CreatePointFormComponent, AddSupportComponent],
+    directives: [MainPointComponent, CreatePointFormComponent, AddSupportComponent, SupportPointComponent],
     pipes: [SearchFilterPipe]
 })
 
