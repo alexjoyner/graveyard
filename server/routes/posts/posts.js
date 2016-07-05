@@ -97,20 +97,19 @@ router.post('/newPost',
         } else {
             req.roDone();
             var result = req.roInfo;
-            var postData = result.rows[0];
-            var type;
-            if (postInfo.post_type_id === 2) {
-                type = (postInfo.point_type_id === 1) ? 'yes' : 'no';
-                req.io.to('question' + result.rows[0].parent_id).emit('NewPost', postData)
-            } else
-            if (postInfo.post_type_id === 3) {
-                type = postInfo.correspond_main_point_type_id;
-                console.log('New support: ', 'question' + postInfo.question_id + '/' + type);
-                req.io.to('question' + result.rows[0].parent_id).emit('NewPost', postData)
-            }
-            res.status(200).send({
-                success: true
-            }).end();
+            res.status(200).send(result.rows[0]).end();
+            // var postData = result.rows[0];
+            // var type;
+            // if (postInfo.post_type_id === 2) {
+            //     type = (postInfo.point_type_id === 1) ? 'yes' : 'no';
+            //     req.io.to('question' + result.rows[0].parent_id).emit('NewPost', postData)
+            // } else
+            // if (postInfo.post_type_id === 3) {
+            //     type = postInfo.correspond_main_point_type_id;
+            //     console.log('New support: ', 'question' + postInfo.question_id + '/' + type);
+            //     req.io.to('question' + result.rows[0].parent_id).emit('NewPost', postData)
+            // }
+            
         }
     },
     /*
@@ -153,65 +152,65 @@ router.delete('/deletePost/:postId/:questionId/:mainPointType',
                 with roInfo*/
     function(req, res) {
         var result = req.roInfo;
-        // Catch incoming VARS if undefined
-        var input_questionId = +req.params.questionId;
-        var input_mainPointType = (req.params.mainPointType === 'undefined') ? undefined : req.params.mainPointType;
-        //call `done()` to release the client back to the pool
-        req.roDone();
-        var postDeleted = result.rows[0];
-        var mainPointType;
-        var pointTypeFromId;
-        var question_id,
-            support_id,
-            main_point_id;
-        // Catch point type if deleted a main point
-        if (postDeleted.post_type_id === 2) {
-            pointTypeFromId = (+postDeleted.point_type_id === 1) ? 'yes' : 'no';
-        }
-        switch (postDeleted.post_type_id) {
-            case 1: // Question
-                question_id = postDeleted._id;
-                main_point_id = null;
-                support_id = null;
-                mainPointType = null;
-                break;
-            case 2: // Main Point
-                question_id = postDeleted.parent_id;
-                main_point_id = postDeleted._id;
-                support_id = null;
-                mainPointType = pointTypeFromId;
-                break;
-            case 3: // Support Point
-                question_id = input_questionId;
-                main_point_id = postDeleted.parent_id;
-                support_id = postDeleted._id;
-                mainPointType = input_mainPointType;
-                break;
-        }
-        // Emit template for all types
-        var emitPayload = {
-            post_type_id: postDeleted.post_type_id,
-            owner_user_id: postDeleted.owner_user_id,
-            question_id: question_id,
-            main_point_id: main_point_id,
-            support_id: support_id,
-            main_point_type: mainPointType
-        }
-        console.log('Main point type: ' + mainPointType);
-        console.log('Payload: ', JSON.stringify(emitPayload));
-        // Deleted a support point or main point
-        if (mainPointType !== null) {
-            // Notify just the people looking at the main cooresponing
-            //    main point type half of the question
-            req.io.to('question' + question_id).emit('DeletedPost', emitPayload);
-        } else { // Deleted an question
-            // Notify everyone on questions page
-            req.io.to('questions').emit('DeletedQuestion', {
-                _id: postDeleted._id
-            });
-            // Notify everyone looking at the question
-            req.io.to('question' + question_id).emit('DeletedPost', emitPayload);
-        }
-        res.status(200).send('DELETED').end();
+        res.status(200).send(result.rows[0]).end();
+        // // Catch incoming VARS if undefined
+        // var input_questionId = +req.params.questionId;
+        // var input_mainPointType = (req.params.mainPointType === 'undefined') ? undefined : req.params.mainPointType;
+        // //call `done()` to release the client back to the pool
+        // req.roDone();
+        // var postDeleted = result.rows[0];
+        // var mainPointType;
+        // var pointTypeFromId;
+        // var question_id,
+        //     support_id,
+        //     main_point_id;
+        // // Catch point type if deleted a main point
+        // if (postDeleted.post_type_id === 2) {
+        //     pointTypeFromId = (+postDeleted.point_type_id === 1) ? 'yes' : 'no';
+        // }
+        // switch (postDeleted.post_type_id) {
+        //     case 1: // Question
+        //         question_id = postDeleted._id;
+        //         main_point_id = null;
+        //         support_id = null;
+        //         mainPointType = null;
+        //         break;
+        //     case 2: // Main Point
+        //         question_id = postDeleted.parent_id;
+        //         main_point_id = postDeleted._id;
+        //         support_id = null;
+        //         mainPointType = pointTypeFromId;
+        //         break;
+        //     case 3: // Support Point
+        //         question_id = input_questionId;
+        //         main_point_id = postDeleted.parent_id;
+        //         support_id = postDeleted._id;
+        //         mainPointType = input_mainPointType;
+        //         break;
+        // }
+        // // Emit template for all types
+        // var emitPayload = {
+        //     post_type_id: postDeleted.post_type_id,
+        //     owner_user_id: postDeleted.owner_user_id,
+        //     question_id: question_id,
+        //     main_point_id: main_point_id,
+        //     support_id: support_id,
+        //     main_point_type: mainPointType
+        // }
+        // console.log('Main point type: ' + mainPointType);
+        // console.log('Payload: ', JSON.stringify(emitPayload));
+        // // Deleted a support point or main point
+        // if (mainPointType !== null) {
+        //     // Notify just the people looking at the main cooresponing
+        //     //    main point type half of the question
+        //     req.io.to('question' + question_id).emit('DeletedPost', emitPayload);
+        // } else { // Deleted an question
+        //     // Notify everyone on questions page
+        //     req.io.to('questions').emit('DeletedQuestion', {
+        //         _id: postDeleted._id
+        //     });
+        //     // Notify everyone looking at the question
+        //     req.io.to('question' + question_id).emit('DeletedPost', emitPayload);
+        // }
     });
 module.exports = router;

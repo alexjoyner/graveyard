@@ -3,7 +3,7 @@
 </h1>
 <br/>
 <div *ngIf="questions" [ngClass]="{'isInSearchModal': showInTut}">
-    <div *ngFor="#question of questions"  >
+    <div *ngFor="#question of questions; #i = index"  >
         <div class="HomeQuestion">
             <h3 class="text-center">
                 <a [routerLink]="['Question', {id: question._id}]">{{question.title}}</a>
@@ -22,7 +22,7 @@
                     (modVote)="question.ups = question.ups + $event">
                 </ro-vote-cell>
                 <div class="pull-right" *ngIf="isOwner(question.owner_user_id)">
-                    <button class="btn btn-sm btn-danger" (click)="deleteQuestion(question, $event)">
+                    <button class="btn btn-sm btn-danger" (click)="deleteQuestion(question, $event, i)">
                         <i class="fa fa-close">
                         </i>
                     </button>

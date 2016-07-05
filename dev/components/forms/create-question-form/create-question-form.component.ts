@@ -1,3 +1,4 @@
+import {Router} from "angular2/router";
 declare function require(name: string);
 import {Component, Input, Output, EventEmitter, OnInit} from 'angular2/core';
 import {TagsFormComponent} from '../tags-form/tags-form.component';
@@ -23,7 +24,8 @@ export class CreateQuestionFormComponent implements OnInit{
 	private qComplete: boolean = false;
 	constructor(
 		private _authService: AuthService,
-		private _postsService: PostsService) {}
+		private _postsService: PostsService,
+		private _router: Router) {}
 	ngOnInit():any {
 		this.questionControl()
 	}
@@ -46,6 +48,7 @@ export class CreateQuestionFormComponent implements OnInit{
 					.subscribe(
 					data => {
 						console.log('Success Posting Question', data);
+						this._router.navigate(['Question', { id: data._id }]);
 					},
 					err => console.log('Error: ', err)
 					);

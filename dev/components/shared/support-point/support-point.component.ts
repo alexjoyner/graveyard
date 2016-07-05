@@ -16,6 +16,7 @@ export class SupportPointComponent {
     @Input('numMoreSupport') numMoreSupport: number;
     @Input('showingMore') showingMore: boolean;
     @Output() addEvidence: EventEmitter<any> = new EventEmitter();
+    @Output() removed: EventEmitter<any> = new EventEmitter();
     @Output() viewAll: EventEmitter<any> = new EventEmitter();
     @Output() goTop: EventEmitter<any> = new EventEmitter();
     type: string = this._routeParams.get('type');
@@ -32,6 +33,7 @@ export class SupportPointComponent {
                 .subscribe(
                     success => {
                         console.log('Success Delete');
+                        this.removed.emit(null);
                     },
                     err => console.log('Error: ', err)
                 );

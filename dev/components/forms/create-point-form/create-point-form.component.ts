@@ -39,7 +39,7 @@ export class CreatePointFormComponent implements OnInit{
 		.subscribe(
 			pointData => {
 				console.log('New post');
-				this.cancel.emit(null);
+				this.cancel.emit(pointData);
 			},
 			err => console.log('err', err)
 		);

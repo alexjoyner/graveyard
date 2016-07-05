@@ -32,6 +32,7 @@ export class PointsListComponent implements OnInit{
     ){
     }
     ngOnInit():any {
+        console.log(this.points)
         this.pointsTypeText = (this.questionType === 1)? 'claim' : 'support';
         var socket = io('/');
         socket.emit('change room', {
@@ -39,14 +40,14 @@ export class PointsListComponent implements OnInit{
             this._routeParams.get('id')
         })
         socket.on('NewPost', function(postData) {
-            this.points.unshift(postData);
+            //this.points.unshift(postData);
         }.bind(this));
         socket.on('DeletedPost', function(postData) {
-            for (var i = this.points.length - 1; i >= 0; i--) {
-                if(this.points[i]._id === +postData.main_point_id){
-                    this.points.splice(i, 1);
-                }
-            }
+            // for (var i = this.points.length - 1; i >= 0; i--) {
+            //     if(this.points[i]._id === +postData.main_point_id){
+            //         this.points.splice(i, 1);
+            //     }
+            // }
         }.bind(this));
     }
     removePoint(pointIndx: number){

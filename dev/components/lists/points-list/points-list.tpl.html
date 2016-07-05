@@ -75,13 +75,13 @@
 <!-- Create Point Modal -->
 <div class="ro-modal"
      *ngIf="showForm && questionType === 1">
-    <ro-create-point-form (cancel)="showForm = false"
+    <ro-create-point-form (cancel)="showForm = false; points.unshift($event);"
                           [searchText]="searchText">
     </ro-create-point-form>
 </div>
 <div class="ro-modal"
      *ngIf="showForm && questionType !== 1">
-    <ro-add-support (added)="showForm = false"
+    <ro-add-support (added)="showForm = false; points.unshift($event);"
                     (cancel)="showForm = false">
     </ro-add-support>
 </div>

@@ -28,7 +28,7 @@ export class AddSupportComponent implements OnInit {
             .subscribe(
                 data => {
                     console.log('SUCCESS');
-                    this.added.emit(null);
+                    this.added.emit(data);
                 },
                 err => console.log('Error: ', err)
             );

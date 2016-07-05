@@ -11,8 +11,9 @@ module.exports = function(req, res) {
         var postData = result.rows[0];
         var type;
         if (postInfo.post_type_id === 1) {
-            type = (postInfo.point_type_id === 1) ? 'yes' : 'no';
-            req.io.to('questions').emit('NewQuestion', result.rows[0])
+            //type = (postInfo.point_type_id === 1) ? 'yes' : 'no';
+            res.status(200).send(result.rows[0]).end();
+            //req.io.to('questions').emit('NewQuestion', result.rows[0])
         } else
         if (postInfo.post_type_id === 2) {
             type = (postInfo.point_type_id === 1) ? 'yes' : 'no';
@@ -23,8 +24,8 @@ module.exports = function(req, res) {
             console.log('New support: ', 'question' + postInfo.question_id + '/' + type);
             req.io.to('question' + postInfo.question_id).emit('NewPost', postData)
         }
-        res.status(200).send({
-            success: true
-        }).end();
+        // res.status(200).send({
+        //     success: true
+        // }).end();
     });
 };

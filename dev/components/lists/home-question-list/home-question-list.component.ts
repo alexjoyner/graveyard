@@ -40,19 +40,19 @@ export class  HomeQuestionListComponent implements OnInit{
 		socket.emit('change room', { newroom: 'questions' })
 		socket.on('NewQuestion', function(newQuestion) {
 			console.log('NEW ISSUE: ', newQuestion);
-			if (!this.isOwner(newQuestion.owner_user_id)) {
-				this.questions.unshift(newQuestion);
-			}else{
-				this._router.navigate(['Question', { type: 'yes', id: newQuestion._id }]);
-			}
+			// if (!this.isOwner(newQuestion.owner_user_id)) {
+			// 	this.questions.unshift(newQuestion);
+			// }else{
+			// 	this._router.navigate(['Question', { type: 'yes', id: newQuestion._id }]);
+			// }
         }.bind(this));
 		socket.on('DeletedQuestion', function(postData) {
 			console.log('Delete: ', postData);
-			for (var i = this.questions.length - 1; i >= 0; i--) {
-				if (this.questions[i]._id === +postData._id) {
-					this.questions.splice(i, 1);
-				}
-			}
+			// for (var i = this.questions.length - 1; i >= 0; i--) {
+			// 	if (this.questions[i]._id === +postData._id) {
+			// 		this.questions.splice(i, 1);
+			// 	}
+			// }
         }.bind(this));
         socket.on('disconnect', function(){
         	console.log('DISCONNECTED');
@@ -62,14 +62,16 @@ export class  HomeQuestionListComponent implements OnInit{
         	});
         }.bind(this));
 	}
-	deleteQuestion(question: Post, event: MouseEvent){
+	deleteQuestion(question: Post, event: MouseEvent, qIndex: number){
 		event.stopPropagation();
 		if (this._authService.checkTokenExists()) {
 			let answer = confirm(`Are you sure you want to delete this question? This action can't be undone`);
 			if (answer === true) {
 				this._postsService.deletePost(question._id)
 					.subscribe(
-					success => this.ngOnInit(),
+					success => {
+						this.questions.splice(qIndex, 1)
+					},
 					err => console.log('error: ', err)
 					);
 			}
