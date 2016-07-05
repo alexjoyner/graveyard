@@ -14,7 +14,7 @@ require('./server/config/passport/_main.js')();             // Initialize Passpo
 require('./server/config/globalMiddleware.js')(app);        // Global Middleware
 //require('./server/config/init-livereload.js')(config.db);   // init_Livereload (Dev only)
 require('./server/config/init-db.js')(config.db);           // init_Postgres
-require('./server/config/init-socketIO.js')(app, http);     // init_SocketIO
+//require('./server/config/init-socketIO.js')(app, http);     // init_SocketIO
 
 // (Dev mode only) Start live-reload
 if (config.ENV !== 'production') {

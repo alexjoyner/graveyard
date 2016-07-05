@@ -1,10 +1,5 @@
 declare function require(name: string);
-declare function io(url: string);
-interface Socket {
-    on(event: string, callback: (data: any) => void);
-    emit(event: string, data: any);
-}
-import {Component, OnInit, Input, Output, EventEmitter} from 'angular2/core';
+import {Component, Input, Output, EventEmitter} from 'angular2/core';
 import {Post} from '../../../ts/shared/structures/post';
 import {PostsService} from '../../../ts/shared/net-services/posts.service';
 import {SearchFilterPipe} from '../../../ts/pipes/searchFilter.pipe';
@@ -20,7 +15,7 @@ import {MainPointComponent} from '../../shared/point/point.component';
     directives: [ROUTER_DIRECTIVES, VoteCellComponent, MainPointComponent],
     pipes: [SearchFilterPipe]
 })
-export class  HomeQuestionListComponent implements OnInit{
+export class  HomeQuestionListComponent{
 	@Input('searchText') searchText: string;
 	@Input('startQuestion') startQuestion: boolean;
 	@Input() questions: Post[];
@@ -33,34 +28,6 @@ export class  HomeQuestionListComponent implements OnInit{
 		private _authService: AuthService,
 		private _usersService: UsersService,
 		private _globalHandler: GlobalHandlerService) {
-	}
-	ngOnInit(): any {
-		var socket = io('/');
-		console.log('SOCKETS ROOMS: ', socket.rooms);
-		socket.emit('change room', { newroom: 'questions' })
-		socket.on('NewQuestion', function(newQuestion) {
-			console.log('NEW ISSUE: ', newQuestion);
-			// if (!this.isOwner(newQuestion.owner_user_id)) {
-			// 	this.questions.unshift(newQuestion);
-			// }else{
-			// 	this._router.navigate(['Question', { type: 'yes', id: newQuestion._id }]);
-			// }
-        }.bind(this));
-		socket.on('DeletedQuestion', function(postData) {
-			console.log('Delete: ', postData);
-			// for (var i = this.questions.length - 1; i >= 0; i--) {
-			// 	if (this.questions[i]._id === +postData._id) {
-			// 		this.questions.splice(i, 1);
-			// 	}
-			// }
-        }.bind(this));
-        socket.on('disconnect', function(){
-        	console.log('DISCONNECTED');
-        	this._globalHandler.emitStatusMessage({
-        		status: 999, 
-        		body: 'Refresh to receive updates'
-        	});
-        }.bind(this));
 	}
 	deleteQuestion(question: Post, event: MouseEvent, qIndex: number){
 		event.stopPropagation();
