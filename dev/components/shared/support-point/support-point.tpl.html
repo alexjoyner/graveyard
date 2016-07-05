@@ -27,37 +27,20 @@
         <ro-vote-cell
                 class="ro-action-bar-item"
                 [sourceId]="support._id"
-                [score]="support.score"
+                [score]="support.ups - support.dwns"
                 (modVote)="support.ups=support.ups+$event">
         </ro-vote-cell>
-        <button type="button"
-                class="ro-action-bar-item btn btn-xs btn-info"
-                *ngIf="numMoreSupport >0"
-                (click)="toggleViewAll()">
-            View
-            <span *ngIf="!showingMore">
-                {{numMoreSupport}} more
-            </span>
-            <span *ngIf="showingMore">
-                Less
-            </span>
-        </button>
-        <button type="button"
-                class="ro-action-bar-item btn btn-xs btn-info"
-                (click)="toggleAddEvidence();gotoTop()">
-            Add Evidence
-        </button>
         <div class="ro-inline-items">
             <h4 class="ro-action-bar-item">
                 <span class="label"
-                      [ngClass]="support.source_type">
-                    {{support.source_type | uppercase}}
+                      [ngClass]="source_type_string">
+                    {{source_type_string | uppercase}}
                 </span>
             </h4>
             <h4 class="ro-action-bar-item">
                 <span class="label"
-                      [ngClass]="support.point_type">
-                    {{support.point_type | uppercase}}
+                      [ngClass]="point_type_string">
+                    {{point_type_string | uppercase}}
                 </span>
             </h4>
             <button type="button"

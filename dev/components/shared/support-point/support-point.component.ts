@@ -1,5 +1,5 @@
 declare function require(name: string);
-import {Component, Input, Output, EventEmitter} from 'angular2/core';
+import {Component, Input, Output, EventEmitter, OnInit} from 'angular2/core';
 import {VoteCellComponent} from '../vote-cell/vote-cell.component';
 import {Post} from '../../../ts/shared/structures/post';
 import {PostsService} from '../../../ts/shared/net-services/posts.service';
@@ -11,7 +11,7 @@ import {RouteParams} from 'angular2/router';
     directives: [VoteCellComponent]
     //styleUrls: ['styles/point.css', 'styles/support.css']
 })
-export class SupportPointComponent {
+export class SupportPointComponent implements OnInit{
     @Input('support') support: Post;
     @Input('numMoreSupport') numMoreSupport: number;
     @Input('showingMore') showingMore: boolean;
@@ -21,11 +21,15 @@ export class SupportPointComponent {
     @Output() goTop: EventEmitter<any> = new EventEmitter();
     type: string = this._routeParams.get('type');
     questionId: string = this._routeParams.get('id');
+    private source_type_string: string = 'media';
+    private point_type_string: string = 'proof';
     constructor(
         private _postService: PostsService,
         private _usersService: UsersService,
         private _routeParams: RouteParams) { };
+    ngOnInit():any {
 
+    }
     removeSupport(supportId: string) {
         let answer = confirm(`Are you sure you want to delete this support point? This action can't be undone`);
         if (answer === true) {
