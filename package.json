@@ -1,6 +1,6 @@
 {
   "name": "metatruth",
-  "version": "1.0.0-Alpha.9.2",
+  "version": "1.0.0-Alpha.10",
   "scripts": {
     "start": "webpack --progress --profile --colors --watch --display-error-details",
     "build": "NODE_ENV='production' webpack",
