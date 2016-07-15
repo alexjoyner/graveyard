@@ -13,9 +13,7 @@ var sortPosts = require('../../custFunctions/sortPosts.js');
 // ###########  GETS  ###############
 // get all
 router.get('/all',
-    /*Validate token to route*/
-    jwt_verify,
-    /*Token valid: Query all questions
+    /*Query all questions
         1) Attach query string*/
     require('./queries/get_all_questions.js'),
     /*  2) Query the attached string*/
@@ -34,9 +32,7 @@ router.get('/all',
     });
 // get one question by id and a type of yes/no
 router.get('/post/:id',
-    /*Validate token to route*/
-    jwt_verify,
-    /*Token valid: Get question data
+    /*Get question data
         1) Attach query string*/
     require('./queries/get_question_info_by_id.js'),
     /*  2) Query the attached string*/
@@ -56,9 +52,7 @@ router.get('/post/:id',
         }
     });
 router.get('/search/:type/:searchTerm',
-    /*Validate token to route*/
-    jwt_verify,
-    /*Token valid: Get search data
+    /*Get search data
         1) Attach query string*/
     require('./queries/search_get_posts.js'),
     /*  2) Query the attached string*/

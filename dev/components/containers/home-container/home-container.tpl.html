@@ -1,37 +1,8 @@
 <div id="Home-Container">
-    <h2 id="Home-MainHeader" class="text-center">
-        MetaTruth v1.0 Alpha.10
-    </h2>
-    <h4 id="Home-SubHeader" class="text-center">
-        Community based decision making.
-    </h4>
-    <!-- Bootstrap TabBar -->
-    <!--<ul id="Home-TabBar" class="nav nav-tabs">
-        <li role="presentation" class="active">
-            <a href="#/Home/All">
-                All
-            </a>
-        </li>
-    </ul>-->
-    <!-- Create and Search Buttons -->
-    <br>
-    <div class="row">
-        <div class="col-md-10">
-            <div id="Search-Questions-Bar" class="input-group">
-                <div class="input-group-addon">
-                    <span *ngIf="!startQuestion">Search</span>
-                    <span *ngIf="startQuestion"><b>ENTER</b></span>
-                </div>
-                <input type="text" class="form-control" id="exampleInputAmount" [(ngModel)]="searchText"  placeholder="Questions" (keyup)="searchQuestions()">
-            </div>
-        </div>
-        <div class="col-md-2 text-center">
-            <button id="Start-Question-Btn" class="btn btn-md btn-success" (click)="startQuestion = !startQuestion" *ngIf="!startQuestion" title="try searching for an question first to see if your question already exists">
-                Start New Question
-            </button>
-        </div>
-    </div>
-    <br>
+    <h5 id="Home-MainHeader">
+        Top posts for you
+    </h5>
+    <hr>
     <!-- List out the isses of selected type -->
     <ro-home-question-list
         [searchText]="searchText"
@@ -50,16 +21,6 @@
             </button>
         </h1>
     </div>
-</div>
-<!--                Misc 
-    ==================================  -->
-<!-- Create Question modal -->
-<div class="ro-modal" *ngIf="startQuestion">
-    <ro-create-question
-        [question]="searchText"
-        (close)="startQuestion = false; showQ_ToTut=false"
-        (search)="searchQuestions($event);"
-        (switchTags)="showQ_ToTut = false"></ro-create-question>
 </div>
 <!-- Custom Tab Bar: Tab to question list type -->
        <!--  <ul class="ro-nav ro-nav-tabs">

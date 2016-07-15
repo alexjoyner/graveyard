@@ -1,21 +1,13 @@
-declare function require(name: string);
-// Angular imports
 import {Component, OnInit} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
-
-// Component imports
-import {HomeContainerComponent} from '../components/containers/home-container/home-container.component';
-import {QuestionContainerComponent} from '../components/containers/question-container/question-container.component';
-import {NavbarComponent} from '../components/shared/navbar/navbar.component';
-import {AuthContainerComponent} from '../components/containers/auth-container/auth-container.component';
-//import {WelcomeComponent} from './components/welcome/welcome.component';
-
-// Services imports
-import {AuthService} from './shared/net-services/auth.service';
-import {UsersService} from './shared/net-services/users.service';
-
-// Components imports (Not many because this is the root)
-import {AlertBarComponent} from '../components/shared/alertBar/alertBar.component';
+import {HomeContainerComponent} from '../containers/home-container/home-container.component';
+import {QuestionContainerComponent} from '../containers/question-container/question-container.component';
+import {NavbarComponent} from '../shared/navbar/navbar.component';
+import {AuthContainerComponent} from '../containers/auth-container/auth-container.component';
+import {AuthService} from '../../ts/shared/net-services/auth.service';
+import {UsersService} from '../../ts/shared/net-services/users.service';
+import {AlertBarComponent} from '../shared/alertBar/alertBar.component';
+declare function require(name: string);
 
 /*
     The main app component
@@ -31,7 +23,7 @@ import {AlertBarComponent} from '../components/shared/alertBar/alertBar.componen
                 <h1>Site not yet optimized for mobile devices, please view the site on larger screen</h1>
             </div>
         </div>
-    	<div class="container">
+    	<div id="MainMetaTruthContainer" class="container">
     		<router-outlet></router-outlet>
     	</div>
         <div style="height: 60vh"></div>

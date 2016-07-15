@@ -8,7 +8,7 @@ import {GlobalHandlerService} from '../special-services/globalHandler.service';
 @Injectable()
 export class UsersService {
 	private endpoint: string = Config.endpoint;
-	public profile;
+	public profile = undefined;
 	public showTut: boolean = false;
 	constructor(
 		private _http: Http,

@@ -9,12 +9,13 @@ import {Post} from '../../../ts/shared/structures/post';
 import {UsersService} from '../../../ts/shared/net-services/users.service';
 import {PostsService} from '../../../ts/shared/net-services/posts.service';
 import {AuthService} from '../../../ts/shared/net-services/auth.service';
+import {FollowButtonComponent} from "../../shared/follow-button/follow-button.component";
 declare function require(name: string);
 
 @Component({// Route no selector
     template: require('dev/components/containers/question-container/question-container.tpl.html'),
     providers: [PostsService],
-    directives: [ROUTER_DIRECTIVES, VoteCellComponent, EditQuestionForm, PointsListComponent, TagCellComponent]
+    directives: [ROUTER_DIRECTIVES, VoteCellComponent, EditQuestionForm, PointsListComponent, TagCellComponent, FollowButtonComponent]
 })
 export class QuestionContainerComponent{
 	question: Post = new Post('', 1);
@@ -26,19 +27,17 @@ export class QuestionContainerComponent{
 		private _postsService: PostsService,
 		private _usersService: UsersService,
 		private _authService: AuthService) {
-		if (this._authService.checkTokenExists()) {
-			this._questionId = +this._routeParams.get('id');
-			_postsService.getPost(''+this._questionId).
-				subscribe(
-					data => {
-						this.question = data;
-						this.questionAvailable = true;
-						console.log('Saved question: ', this.question);
-						console.log(this.question.title);
-					},
-					err => console.log('Err: ', err)
-				);
-		} // Get the posts associated with this id
+		this._questionId = +this._routeParams.get('id');
+		_postsService.getPost(''+this._questionId).
+			subscribe(
+				data => {
+					this.question = data;
+					this.questionAvailable = true;
+					console.log('Saved question: ', this.question);
+					console.log(this.question.title);
+				},
+				err => console.log('Err: ', err)
+			);// Get the posts associated with this id
 	}
 	deleteQuestion(questionId: number) {
 		if (this._authService.checkTokenExists()) {
@@ -67,6 +66,6 @@ export class QuestionContainerComponent{
 		return new Date(string);
 	}
 	isOwner(id: number) {
-		return (id === this._usersService.profile._id);
+		return (this._usersService.profile)? (id === this._usersService.profile._id) : false;
 	}
 }

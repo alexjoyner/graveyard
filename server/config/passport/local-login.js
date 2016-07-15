@@ -66,7 +66,7 @@ module.exports = function(passport){
                                 id: result.rows[0]._id,
                                 email: result.rows[0].email
                             }, superSecret, {
-                              expiresIn: 1440 * 60 // <-- expires in 24 hours
+                              expiresIn: 1440 * 60 * 7// <-- expires in 7 days
                             });
                             return done(null, {
                               profile: result.rows[0],

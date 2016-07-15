@@ -5,12 +5,13 @@ import {PostsService} from '../../../ts/shared/net-services/posts.service';
 import {EditPointComponent} from '../../forms/edit-point-form/edit-point-form.component';
 import { UsersService} from '../../../ts/shared/net-services/users.service';
 import {ROUTER_DIRECTIVES} from "angular2/router";
+import {FollowButtonComponent} from "../follow-button/follow-button.component";
 declare function require(name: string);
 
 @Component({
     selector: 'ro-main-point',
     template: require('dev/components/shared/point/point.tpl.html'),
-    directives: [VoteCellComponent, EditPointComponent, ROUTER_DIRECTIVES]
+    directives: [VoteCellComponent, EditPointComponent, ROUTER_DIRECTIVES, FollowButtonComponent]
 })
 export class MainPointComponent {
 	@Input('point') point: Point;
@@ -48,6 +49,6 @@ export class MainPointComponent {
 		return new Date(string);
 	}
 	isOwner(id: number) {
-		return (id === this._usersService.profile._id);
+		return (this._usersService.profile)? (id === this._usersService.profile._id) : false;
 	}
 }

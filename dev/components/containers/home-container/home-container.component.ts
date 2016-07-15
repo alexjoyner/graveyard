@@ -27,23 +27,10 @@ export class HomeContainerComponent implements OnInit{
 
 	ngOnInit(): any {
 		// When the page loads, Get questions for the user
-		if (this._authService.checkTokenExists()) {
-			this._postsService.getAllPosts()
-				.subscribe(data => {
-					this.questions = data;
-				});
-		}
-	}
-
-	/* Search filter function to filter out questions*/
-	searchQuestions(searchValue: string){
-		let searchString = (searchValue)? searchValue : this.searchText;
-		//					(type: number, searchtext: string)
-		this._postsService.searchPosts(1, searchString)
+		this._postsService.getAllPosts()
 			.subscribe(data => {
 				this.questions = data;
-			},
-			err => console.log('ERROR: ', err));
+			});
 	}
 }
 

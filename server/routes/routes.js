@@ -6,7 +6,8 @@ module.exports = function(app) {
         users = require('./users/users.js'),
         posts = require('./posts/posts.js'),
         votes = require('./votes/votes.js'),
-        tags = require('./tags/tags.js');
+        tags = require('./tags/tags.js'),
+        tests = require('./tests/tests.js');
     // Routes
     // -------------------------
     app
@@ -14,5 +15,6 @@ module.exports = function(app) {
         .use('/users', users)
         .use('/posts', posts)
         .use('/votes', votes)
-        .use('/tags', tags);
+        .use('/tags', tags)
+        .use('/tests', tests);
 };

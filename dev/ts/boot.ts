@@ -2,19 +2,22 @@
 declare function require(name: string);
 import "./polyfills"
 import "./vendor"
-import {provide} from 'angular2/core';
+import {provide, enableProdMode} from 'angular2/core';
 
 // Using hash router instead of regular routes
 import {
 	HashLocationStrategy,
 	LocationStrategy} from 'angular2/platform/common';
 import {bootstrap}    from 'angular2/platform/browser'
-import {AppComponent} from './app.component'
+import {AppComponent} from '../components/main/app.component'
 import {
 		ROUTER_PROVIDERS} from 'angular2/router'
 import {HTTP_PROVIDERS} from 'angular2/http'
 import {UsersService} from './shared/net-services/users.service';
 import {GlobalHandlerService} from './shared/special-services/globalHandler.service';
+
+// To enable production mode for angular.
+//enableProdMode();
 
 // Bootstrap the app
 bootstrap(AppComponent, [

@@ -15,6 +15,7 @@ import {YesNoToggleComponent} from '../../misc/yes-no-toggle/yes-no-toggle.compo
 export class CreatePointFormComponent implements OnInit{
 	@Input() searchText: string;
 	@Output() cancel: EventEmitter<any> = new EventEmitter();
+	@Output() added: EventEmitter<any> = new EventEmitter();
 	private newPoint: Post;
 	private _questionId: number;
 	private _pointType: number;
@@ -39,7 +40,7 @@ export class CreatePointFormComponent implements OnInit{
 		.subscribe(
 			pointData => {
 				console.log('New post');
-				this.cancel.emit(pointData);
+				this.added.emit(pointData);
 			},
 			err => console.log('err', err)
 		);

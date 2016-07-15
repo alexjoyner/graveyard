@@ -23,16 +23,18 @@ export class VoteCellComponent implements OnInit{
 		private _usersService: UsersService){
 	}
 	ngOnInit():any{
-		for (var i = this._usersService.profile.votes.length - 1; i >= 0; i--) {
-			if(this._usersService.profile.votes[i].post_id === this.sourceId){
-				this.indexInProfile = i
-				switch (this._usersService.profile.votes[i].vote_type_id) {
-					case 1:
-						this.upVoted = true;
-						break;
-					case 2:
-						this.downVoted = true;
-						break;
+		if (this._authService.checkTokenExists(true)) {
+			for (var i = this._usersService.profile.votes.length - 1; i >= 0; i--) {
+				if (this._usersService.profile.votes[i].post_id === this.sourceId) {
+					this.indexInProfile = i
+					switch (this._usersService.profile.votes[i].vote_type_id) {
+						case 1:
+							this.upVoted = true;
+							break;
+						case 2:
+							this.downVoted = true;
+							break;
+					}
 				}
 			}
 		}

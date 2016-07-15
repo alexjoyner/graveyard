@@ -75,7 +75,8 @@
 <!-- Create Point Modal -->
 <div class="ro-modal"
      *ngIf="showForm && questionType === 1">
-    <ro-create-point-form (cancel)="showForm = false; points.unshift($event);"
+    <ro-create-point-form (added)="showForm = false; points.unshift($event);"
+                          (cancel)="showForm = false"
                           [searchText]="searchText">
     </ro-create-point-form>
 </div>
