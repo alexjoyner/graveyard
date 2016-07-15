@@ -21,9 +21,7 @@
                     [score]="question.ups - question.dwns"
                     (modVote)="question.ups = question.ups + $event">
                 </ro-vote-cell>
-                <button class="ro-action-bar-item pull-right btn btn-sm btn-info">
-                    Follow
-                </button>
+                <follow-button class="pull-right" [postId]="question._id"></follow-button>
             </div>
         </div>
         <hr>

@@ -8,7 +8,7 @@ import {GlobalHandlerService} from '../special-services/globalHandler.service';
 @Injectable()
 export class UsersService {
 	private endpoint: string = Config.endpoint;
-	public profile = undefined;
+	public profile: User = undefined;
 	public showTut: boolean = false;
 	constructor(
 		private _http: Http,
@@ -26,7 +26,12 @@ export class UsersService {
 			.map(res => res.json());
 		res.subscribe(
 			data => {
+				let tempFollowArray: number[] = [];
+				for(var i = 0; i < data.follows.length; i++){
+					tempFollowArray.push(data.follows[i].post_id);
+				}
 				this.profile = data;
+				this.profile.follows = tempFollowArray;
 				console.log('Stored profile: ', this.profile);
 			},
 			err => {

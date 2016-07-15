@@ -1,16 +1,19 @@
 export class User {
-	_id: string;
+	_id: number;
 	email: string;
 	password: string;
-	zipcode: number;
+	votes: {
+		_id: number,
+		post_id: number,
+		vote_type_id: number
+	}[];
+	follows: number[];
 
     constructor(
 		email: string,
 		password: string,
-		zipcode: number,
 		id?: string) {
 		this.email = email;
 		this.password = password;
-		this.zipcode = zipcode;
     }
 }

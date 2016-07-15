@@ -1,3 +1,4 @@
+import {FollowButtonComponent} from "../../shared/follow-button/follow-button.component";
 declare function require(name: string);
 import {Component, Input, Output, EventEmitter} from 'angular2/core';
 import {Post} from '../../../ts/shared/structures/post';
@@ -12,7 +13,7 @@ import {MainPointComponent} from '../../shared/point/point.component';
 @Component({
     selector: 'ro-home-question-list',
     template: require('dev/components/lists/home-question-list/home-question-list.tpl.html'),
-    directives: [ROUTER_DIRECTIVES, VoteCellComponent, MainPointComponent],
+    directives: [ROUTER_DIRECTIVES, VoteCellComponent, MainPointComponent, FollowButtonComponent],
     pipes: [SearchFilterPipe]
 })
 export class  HomeQuestionListComponent{
@@ -47,7 +48,7 @@ export class  HomeQuestionListComponent{
 	stringToDate(string: string) {
 		return new Date(string);
 	}
-	isOwner(id: string){
+	isOwner(id: number){
 		return (id === this._usersService.profile._id);
 	}
 }

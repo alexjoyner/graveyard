@@ -11,7 +11,16 @@ module.exports = function(req, res, next) {
                 votes
             WHERE 
                 user_id = $1
-        )v) as votes
+        )v) as votes,
+        (SELECT array_agg(row_to_json(v))
+        FROM (
+            SELECT
+                post_id
+            FROM 
+                follows
+            WHERE 
+                user_id = $1
+        )v) as follows
     FROM users
     WHERE
         users._id = $1
