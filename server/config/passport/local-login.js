@@ -60,6 +60,7 @@ module.exports = function(passport){
                             });
                         }else{
                             result.rows[0]['votes'] = votes.rows;
+                            result.rows[0]['votes'] = votes.rows;
                             // if user is found and password is right
                             // create a token
                             var token = jwt.sign({

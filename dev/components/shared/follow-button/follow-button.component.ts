@@ -22,6 +22,7 @@ export class FollowButtonComponent implements OnInit {
 
     ngOnInit():any {
         if (this._authService.checkTokenExists(true)) {
+            console.log('PROFILE: ', this._usersService.profile)
             this.isFollowing = (this._usersService.profile.follows.indexOf(this.postId) > -1) ? true : false;
         }
     }

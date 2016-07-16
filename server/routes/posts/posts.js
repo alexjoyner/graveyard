@@ -87,18 +87,23 @@ router.post('/newPost',
                 The new post is a question, so we need to run the process of
                 adding tags to the post
             */
+            req.roSkipTags = false;
             next();
         } else {
-            req.roDone();
-            var result = req.roInfo;
-            res.status(200).send(result.rows[0]).end();
-            
+            req.roSkipTags = true;
+            next();
         }
     },
     /*
         Process to add tags to the post
     */
-    require('./route_func/post_newPost/add_tags_to_post.js'));
+    require('./route_func/post_newPost/add_tags_to_post.js'),
+    function(req, res){
+        var result = req.roInfo;
+        req.roDone();
+        res.status(200).send(result.rows[0]).end();
+    }
+);
 
 
 
