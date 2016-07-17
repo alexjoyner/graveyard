@@ -74,3 +74,10 @@ module.exports = function(passport){
         }
     ));
 }
+
+function generateHash(pass) {
+    var salt = bcrypt.genSaltSync(10);
+    var hash = bcrypt.hashSync(pass, salt);
+    // Store hash in your password DB.
+    return hash;
+};
