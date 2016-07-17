@@ -28,10 +28,12 @@ export class HomeContainerComponent implements OnInit{
 
 	ngOnInit(): any {
 		// When the page loads, Get questions for the user
-		this._postsService.getAllPosts()
-			.subscribe(data => {
-				this.questions = data;
-			});
+		if(this._authService.checkTokenExists()){
+			this._postsService.getAllPosts()
+				.subscribe(data => {
+					this.questions = data;
+				});
+		}
 	}
 }
 

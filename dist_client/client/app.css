@@ -140,6 +140,15 @@ html {
 #MainMetaTruthContainer {
   margin-top: 100px; }
 
+#Auth-Container #Auth-MainHeader {
+  font-size: 30px;
+  font-weight: 200;
+  margin-bottom: 10px; }
+#Auth-Container #Auth-SubHeader {
+  font-size: 20px;
+  font-weight: 300;
+  margin: 0; }
+
 #Home-Container {
   padding: 0 50px 0 50px; }
   #Home-Container #Home-MainHeader {
