@@ -1,4 +1,4 @@
-module.exports = function(rows, _id, parent_id, preStatement) {
+module.exports = function(rows, _id, parent_id, preStatement) { // :TODO This should be more general, so notifications will work
     var params = []
     var chunks = []
     for (var i = 0; i < rows.length; i++) {

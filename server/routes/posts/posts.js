@@ -98,6 +98,7 @@ router.post('/newPost',
         Process to add tags to the post
     */
     require('./route_func/post_newPost/add_tags_to_post.js'),
+    require('./route_func/post_newPost/notify_followers_new_post.js'),
     function(req, res){
         var result = req.roInfo;
         req.roDone();
@@ -107,7 +108,7 @@ router.post('/newPost',
 
 
 
-router.post('/updatePost', jwt_verify, function(req, res) {
+router.post('/updatePost', jwt_verify, function(req, res) { //TODO: This needs to be reformatted to neaten up
     var queryString = require('./queries/update_post.js');
     var post = req.body;
     console.log(post);

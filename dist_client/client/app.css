@@ -344,7 +344,8 @@ input[type="text"]#QuestionInput {
 
 .ro-main-point {
   position: relative;
-  background-color: #cccccc; }
+  background-color: #f3f3f3;
+  border: 1px solid #cccccc; }
 
 .supporting-evidence {
   position: relative; }
@@ -392,6 +393,15 @@ input[type="text"]#QuestionInput {
     top: 60%;
     left: 0;
     width: 100%; }
+
+#NotifButton {
+  position: relative; }
+  #NotifButton #NotifyDropdown {
+    position: absolute;
+    z-index: 50;
+    top: 30%;
+    left: 0;
+    width: 200%; }
 
 .ro-tag-cell {
   display: inline; }

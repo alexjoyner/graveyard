@@ -8,7 +8,7 @@ import {ROUTER_DIRECTIVES, Router} from "angular2/router";
     <br>
     <ul class="list-group">
       <li class="list-group-item" *ngFor="#value of values">
-        <a [routerLink]="['Question', {id: value._id}]" (click)="select(null)">{{value.title}}</a>
+        <a (click)="select(value)">{{value.title}}</a>
       </li>
     </ul>
   `,

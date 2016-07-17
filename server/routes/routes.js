@@ -8,9 +8,10 @@ module.exports = function(app) {
         votes   = require('./votes/votes.js'),
         tags    = require('./tags/tags.js'),
         follows = require('./follows/follows.js'),
-        tests   = require('./tests/tests.js');
+        tests   = require('./tests/tests.js'),
+        notifs  = require('./notifs/notifs.js');
     // Routes
-    // -------------------------
+    // ------------------------
     app
         .use('/auth', auth)
         .use('/users', users)
@@ -18,5 +19,6 @@ module.exports = function(app) {
         .use('/votes', votes)
         .use('/tags', tags)
         .use('/tests', tests)
-        .use('/follows', follows);
+        .use('/follows', follows)
+        .use('/notifs', notifs);
 };

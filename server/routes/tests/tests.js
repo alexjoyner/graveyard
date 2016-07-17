@@ -30,6 +30,10 @@ router.get('/all',
             res.status(200).send(sortedPosts).end();
         }
     });
+router.get('/ping', function(req, res){
+    console.log('You got me!');
+    res.status(200).send({success: true}).end();
+});
 
 
 

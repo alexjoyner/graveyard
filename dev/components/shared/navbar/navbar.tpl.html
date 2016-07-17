@@ -1,36 +1,64 @@
 <nav class="ro-main-nav">
-	<a class="ro-navbar-logo" [routerLink]="['Home']">
-		MetaTruth(v1.0 Alpha.10!)
-	</a>
-	<form id="MainSearchBar" class="navbar-form navbar-left" role="search">
-		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Search" (keyup)="searchStuff(MainSearchValue.value)" #MainSearchValue>
-			<dropdown *ngIf="dataSearched !== null"[values]="dataSearched" (valueChange)="valueSelected(); MainSearchValue.value = ''"></dropdown>
-		</div>
-	</form>
-	<form class="navbar-form navbar-left" role="search">
-		<button type="submit" class="btn btn-default" (click)="startQuestion = !startQuestion">Ask a question</button>
-	</form>
-	<ul>
+    <a class="ro-navbar-logo"
+       [routerLink]="['Home']">
+        MetaTruth(v1.0 Alpha.10!)
+    </a>
+    <form id="MainSearchBar"
+          class="navbar-form navbar-left"
+          role="search">
+        <div class="form-group">
+            <input type="text"
+                   class="form-control"
+                   placeholder="Search"
+                   (keyup)="searchStuff(MainSearchValue.value)"
+                   #MainSearchValue>
+            <dropdown *ngIf="dataSearched !== null"
+                      [values]="dataSearched"
+                      (valueChange)="routeToPost($event._id); MainSearchValue.value = ''"></dropdown>
+        </div>
+    </form>
+    <form class="navbar-form navbar-left"
+          role="search">
+        <button type="submit"
+                class="btn btn-default"
+                (click)="startQuestion = !startQuestion">Ask a question
+        </button>
+    </form>
+    <ul>
         <li>
-        	<a class="ro-nav-item pull-right" *ngIf="auth()" (click)="logout()">Logout</a>
+            <a class="ro-nav-item pull-right"
+               *ngIf="auth()"
+               (click)="logout()">Logout</a>
         </li>
-		<li >
-        	<a class="ro-nav-item pull-right" [routerLink]="['Auth']" *ngIf="!auth()">Alpha Testers Login/Register</a>
-        	<a class="ro-nav-item pull-right" [routerLink]="['Home']" *ngIf="auth()">{{email}}</a>
+        <li>
+            <a class="ro-nav-item pull-right"
+               [routerLink]="['Auth']"
+               *ngIf="!auth()">Alpha Testers Login/Register</a>
+            <a class="ro-nav-item pull-right"
+               [routerLink]="['Home']"
+               *ngIf="auth()">{{email}}</a>
         </li>
-		<li>
-			<a class="ro-nav-item pull-right" *ngIf="auth()"><i class="fa fa-bell-o"></i> Notifications</a>
-		</li>
-	</ul>
+        <li id="NotifButton" class="ro-nav-item pull-right"
+            (click)="toggleShowNotifs()">
+            <a
+                [ngStyle]="{'color': (notifications.length > 0)? 'rgb(243, 9, 5)' : '#333'}"
+                *ngIf="auth()"><i class="fa fa-bell-o"></i> Notifications</a>
+            <dropdown
+                    id="NotifyDropdown"
+                    *ngIf="showNotifs === true"
+                    [values]="notifications"
+                    (valueChange)="showNotifs === false; routeToPost($event.post_id);readNotif($event._id); "></dropdown>
+        </li>
+    </ul>
 </nav>
 <!--                Misc
     ==================================  -->
 <!-- Create Question modal -->
-<div class="ro-modal" *ngIf="startQuestion">
-	<ro-create-question
-			[question]="searchText"
-			(close)="startQuestion = false; showQ_ToTut=false"
-			(search)="null"
-			(switchTags)="showQ_ToTut = false"></ro-create-question>
+<div class="ro-modal"
+     *ngIf="startQuestion">
+    <ro-create-question
+            [question]="searchText"
+            (close)="startQuestion = false; showQ_ToTut=false"
+            (search)="null"
+            (switchTags)="showQ_ToTut = false"></ro-create-question>
 </div>
