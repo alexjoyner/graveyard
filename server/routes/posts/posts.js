@@ -88,9 +88,11 @@ router.post('/newPost',
                 adding tags to the post
             */
             req.roSkipTags = false;
+            req.roSkipNotify = true;
             next();
         } else {
             req.roSkipTags = true;
+            req.roSkipNotify = false;
             next();
         }
     },

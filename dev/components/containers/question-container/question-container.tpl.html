@@ -1,3 +1,4 @@
+<ro-navbar></ro-navbar>
 <div id="Question-Container" *ngIf="questionAvailable">
     <div id="Question-Header" *ngIf="!question.editQuestion || question.editQuestion === false">
         <ro-tag-cell
@@ -56,3 +57,4 @@
         [points]="question.points"
         [questionType]="question.post_type_id"></ro-points-list>
 </div>
+<div style="height: 60vh"></div>

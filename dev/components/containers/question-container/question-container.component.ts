@@ -10,12 +10,13 @@ import {UsersService} from '../../../ts/shared/net-services/users.service';
 import {PostsService} from '../../../ts/shared/net-services/posts.service';
 import {AuthService} from '../../../ts/shared/net-services/auth.service';
 import {FollowButtonComponent} from "../../shared/follow-button/follow-button.component";
+import {NavbarComponent} from "../../shared/navbar/navbar.component";
 declare function require(name: string);
 
 @Component({// Route no selector
     template: require('dev/components/containers/question-container/question-container.tpl.html'),
     providers: [PostsService],
-    directives: [ROUTER_DIRECTIVES, VoteCellComponent, EditQuestionForm, PointsListComponent, TagCellComponent, FollowButtonComponent]
+    directives: [NavbarComponent, ROUTER_DIRECTIVES, VoteCellComponent, EditQuestionForm, PointsListComponent, TagCellComponent, FollowButtonComponent]
 })
 export class QuestionContainerComponent{
 	question: Post = new Post('', 1);

@@ -3,15 +3,32 @@ var express = require('express'),
     router = express.Router();
 var config = require('../../config/config.js');
 var jwt_verify = require('../../middleware/jwt_verify.js');
+var sql_query = require('../../middleware/sql_query.js');
 // POSTGRES IMPLEMENTATION
 var pg = require('pg');
 var conString = config.db;
 
 // !! route = '/votes'
 
+// ###########  GET  ###############
+router.get('/my',
+    /*Validate token to route*/
+    jwt_verify,
+    /*Token valid: Get search data
+     1) Attach query string*/
+    require('./queries/get_my_votes.js'),
+    /*  2) Query the attached string*/
+    sql_query.commonQuery,
+    /*  3) Query was successful, do something
+     with roInfo*/
+    function(req, res) {
+        req.roDone();
+        var result = req.roInfo;
+        res.status(200).send(result.rows).end();
+    });
 // ###########  POSTS  ###############
 // Post vote for question
-router.post('/create', jwt_verify, function(req, res) {
+router.post('/create', jwt_verify, function(req, res) { //TODO: This flow can be neated up some
     var user = req.decoded;
     var info = req.body;
     var queryString = `

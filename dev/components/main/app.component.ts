@@ -2,7 +2,6 @@ import {Component, OnInit} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
 import {HomeContainerComponent} from '../containers/home-container/home-container.component';
 import {QuestionContainerComponent} from '../containers/question-container/question-container.component';
-import {NavbarComponent} from '../shared/navbar/navbar.component';
 import {AuthContainerComponent} from '../containers/auth-container/auth-container.component';
 import {AuthService} from '../../ts/shared/net-services/auth.service';
 import {UsersService} from '../../ts/shared/net-services/users.service';
@@ -16,7 +15,6 @@ declare function require(name: string);
 @Component({
     selector: 'my-app',
     template: `
-        <ro-navbar></ro-navbar>
     	<ro-alert-bar></ro-alert-bar>
         <div id="MobileAlert" class="visible-xs">
             <div id="Content">
@@ -26,9 +24,8 @@ declare function require(name: string);
     	<div id="MainMetaTruthContainer" class="container">
     		<router-outlet></router-outlet>
     	</div>
-        <div style="height: 60vh"></div>
     `,
-    directives: [NavbarComponent, AlertBarComponent, ROUTER_DIRECTIVES],
+    directives: [AlertBarComponent, ROUTER_DIRECTIVES],
     providers: [AuthService]
 })
 

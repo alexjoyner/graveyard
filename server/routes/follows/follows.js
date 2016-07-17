@@ -4,7 +4,22 @@ var express = require('express'),
 var jwt_verify = require('../../middleware/jwt_verify.js');
 var sql_query = require('../../middleware/sql_query.js');
 // !! route = '/follows'
-
+// ###########  GET ################ // TODO: Message for tommorow.  Get all the following / votes / favorite tags when user logs in
+router.get('/my',
+    /*Validate token to route*/
+    jwt_verify,
+    /*Token valid: Get search data
+     1) Attach query string*/
+    require('./queries/get_my_follows.js'),
+    /*  2) Query the attached string*/
+    sql_query.commonQuery,
+    /*  3) Query was successful, do something
+     with roInfo*/
+    function(req, res) {
+        req.roDone();
+        var result = req.roInfo;
+        res.status(200).send(result.rows).end();
+    });
 // ###########  POSTS  ###############
 // Post a new follow if not found
 router.post('/follow',

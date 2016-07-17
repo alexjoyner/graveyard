@@ -4,6 +4,7 @@ import {CreateQuestionFormComponent} from "../../forms/create-question-form/crea
 import {AuthService} from "../../../ts/shared/net-services/auth.service";
 import {PostsService} from "../../../ts/shared/net-services/posts.service";
 import {Post} from "../../../ts/shared/structures/post";
+import {NavbarComponent} from "../../shared/navbar/navbar.component";
 declare function require(name: string);
 
 
@@ -11,7 +12,7 @@ declare function require(name: string);
 	// Routes don't need selectors
     /*selector: 'ro-home-container',*/ 
     template: require('dev/components/containers/home-container/home-container.tpl.html'),
-    directives: [HomeQuestionListComponent, CreateQuestionFormComponent],
+    directives: [NavbarComponent, HomeQuestionListComponent, CreateQuestionFormComponent],
     providers: [PostsService]
 })
 export class HomeContainerComponent implements OnInit{

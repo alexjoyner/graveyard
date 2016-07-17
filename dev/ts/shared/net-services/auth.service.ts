@@ -35,9 +35,14 @@ export class AuthService {
 			.map(res => res.json());
 		res.subscribe(
 			data => {
-				console.log('DATA: ', data);
+				let tempFollowArray: number[] = [];
+				for(var i = 0; i < data.profile.follows.length; i++){
+					tempFollowArray.push(data.profile.follows[i].post_id);
+				}
 				localStorage.setItem('token', data.token);
 				this._usersService.profile = data.profile;
+				this._usersService.profile.follows = tempFollowArray;
+				console.log('STORED PROFILE: ', this._usersService.profile);
 				this._router.navigate(['Home'])
 			},
 			err => {

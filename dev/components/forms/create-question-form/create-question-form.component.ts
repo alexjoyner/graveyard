@@ -41,7 +41,7 @@ export class CreateQuestionFormComponent implements OnInit{
 		for (var i = this.acceptedTags.length - 1; i >= 0; i--) {
 			tags.push(this.acceptedTags[i]._id)
 		}
-		if (tags.length > 0) {
+		if (tags.length > 2) {
 			if (this._authService.checkTokenExists()) {
 				console.log('PRIVATE? : ', this.privQ);
 				this._postsService.insertPost({ 'post': newQuestion, 'tags': tags}, this.privQ)
@@ -54,7 +54,7 @@ export class CreateQuestionFormComponent implements OnInit{
 					);
 			}
 		}else{
-			alert('You need to add at least 1 tag to a question');
+			alert('You need to add at least 3 tag to a question. Search 3 categories that best describe your question.');
 		}
 	}
 	questionControl(){
