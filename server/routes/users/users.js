@@ -29,6 +29,9 @@ router.get('/profile',
             if(!result.rows[0]['follows']){
                 result.rows[0]['follows'] = [];
             }
+            if(!result.rows[0]['favorites']){
+                result.rows[0]['favorites'] = [];
+            }
             res.status(200).send(result.rows[0]).end();
         }
 });

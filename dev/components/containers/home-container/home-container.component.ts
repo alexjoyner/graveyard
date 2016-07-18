@@ -5,6 +5,7 @@ import {AuthService} from "../../../ts/shared/net-services/auth.service";
 import {PostsService} from "../../../ts/shared/net-services/posts.service";
 import {Post} from "../../../ts/shared/structures/post";
 import {NavbarComponent} from "../../shared/navbar/navbar.component";
+import {FavoritesCellComponent} from "../../shared/favorites-cell/favorites-cell.component";
 declare function require(name: string);
 
 
@@ -12,7 +13,7 @@ declare function require(name: string);
 	// Routes don't need selectors
     /*selector: 'ro-home-container',*/ 
     template: require('dev/components/containers/home-container/home-container.tpl.html'),
-    directives: [NavbarComponent, HomeQuestionListComponent, CreateQuestionFormComponent],
+    directives: [NavbarComponent, HomeQuestionListComponent, CreateQuestionFormComponent, FavoritesCellComponent],
     providers: [PostsService]
 })
 export class HomeContainerComponent implements OnInit{
@@ -20,16 +21,23 @@ export class HomeContainerComponent implements OnInit{
 	private startQuestion: boolean = false;
 	private questions: Post[];
 	private showCreateQuestion: boolean;
-
 	constructor(
 		private _authService: AuthService,
 		private _postsService: PostsService){
-	}
+	};
 
 	ngOnInit(): any {
 		// When the page loads, Get questions for the user
 		if(this._authService.checkTokenExists()){
 			this._postsService.getAllPosts()
+				.subscribe(data => {
+					this.questions = data;
+				});
+		}
+	}
+	getQuestionsByTag(tagId: number){
+		if(this._authService.checkTokenExists()){
+			this._postsService.getAllByTagId(tagId)
 				.subscribe(data => {
 					this.questions = data;
 				});

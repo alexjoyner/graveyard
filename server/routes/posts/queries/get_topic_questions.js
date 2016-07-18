@@ -1,28 +1,16 @@
 module.exports = function(req, res, next) {
-    var info = req.body;
-    req.roQueryParams = [];
+    var info = req.params;
+    req.roQueryParams = [info.tagId];
     req.roQueryString = `
-	SELECT 
-	    p.*,
-	    json_agg(rP.*) as most_recent_point
-	FROM 
-	    posts p
-	LEFT JOIN (
-	    SELECT
-	        mostrecent.*
-	    FROM
-	        posts mostrecent
-	    ORDER BY
-	        created_at DESC
-	) as rP
-	ON
-	    rP.parent_id = p._id
-	WHERE
-	    p.post_type_id = 1
-	GROUP BY
-	    p._id
-	LIMIT
-	    40;
-	`;
+	SELECT
+        *
+    FROM
+        post_tags_xref
+    LEFT JOIN
+        posts
+    ON
+        post_tags_xref.post_id = posts._id
+    WHERE
+        tag_id = $1;`;
     next();
 }

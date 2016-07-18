@@ -73,18 +73,18 @@ html {
   left: 0;
   height: 100%;
   width: 100%;
-  z-index: 5; }
+  z-index: 50; }
 .ro-modal .ModalClose {
   display: block;
   position: fixed;
   top: 5%;
   left: 90%;
-  z-index: 6; }
+  z-index: 51; }
 .ro-modal .CenterContent {
   -webkit-animation: fadeIn 2s;
   animation: fadeIn 2s;
   position: fixed;
-  z-index: 10;
+  z-index: 51;
   background-color: #fff;
   top: 50%;
   left: 50%;
@@ -169,7 +169,6 @@ html {
 #Home-Container .TopicsPane {
   border: 1px solid #dddddd;
   width: 70%;
-  height: 200px;
   margin: auto;
   padding: 8px; }
   #Home-Container .TopicsPane h3 {
@@ -204,6 +203,8 @@ html {
     float: right;
     margin: 10px;
     bottom: 0px; }
+  .HomeQuestion .content-container {
+    padding: 20px; }
 
 .HomeQuestionSubContent {
   padding-left: 10px;
@@ -247,7 +248,7 @@ html {
     float: right; }
 
 input[type="text"]#QuestionInput {
-  z-index: 20;
+  z-index: 53;
   position: fixed;
   background-color: transparent;
   border: none;
@@ -267,7 +268,7 @@ input[type="text"]#QuestionInput {
 
 #AlertMessage {
   position: fixed;
-  z-index: 10;
+  z-index: 53;
   padding: 10px;
   border-radius: 10px;
   color: #555;
@@ -285,7 +286,7 @@ input[type="text"]#QuestionInput {
 
 #PostQuestion {
   position: fixed;
-  z-index: 11;
+  z-index: 53;
   top: 80%;
   left: 50%;
   transform: translate(-50%, 0);
@@ -294,7 +295,7 @@ input[type="text"]#QuestionInput {
 
 #FinalizeZone {
   position: fixed;
-  z-index: 11;
+  z-index: 55;
   top: 60%;
   left: 50%;
   transform: translate(-50%, 0); }
@@ -316,7 +317,7 @@ input[type="text"]#QuestionInput {
 
 #TagsForm #TagsContainer {
   position: relative;
-  z-index: 8;
+  z-index: 55;
   width: 90%;
   left: 50%;
   top: 20%;
@@ -374,7 +375,7 @@ input[type="text"]#QuestionInput {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 40;
   min-height: 50px;
   margin-bottom: 20px;
   padding-top: 0px; }
@@ -410,7 +411,7 @@ input[type="text"]#QuestionInput {
   position: relative; }
   #MainSearchBar .form-group dropdown {
     position: absolute;
-    z-index: 50;
+    z-index: 41;
     top: 60%;
     left: 0;
     width: 100%; }
@@ -420,7 +421,7 @@ input[type="text"]#QuestionInput {
   #NotifButton #NotifyDropdown {
     position: absolute;
     line-height: 30px;
-    z-index: 50;
+    z-index: 41;
     top: 50%;
     left: 0;
     width: 200%; }
@@ -441,6 +442,9 @@ input[type="text"]#QuestionInput {
       border-left: 1px solid grey; }
   .vote-cell .downvote-btn {
     display: inherit; }
+
+.NewFavorite:hover {
+  background-color: #b2ffc3; }
 
 #AlertBar {
   position: fixed;

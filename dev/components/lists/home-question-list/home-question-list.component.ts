@@ -1,5 +1,4 @@
 import {FollowButtonComponent} from "../../shared/follow-button/follow-button.component";
-declare function require(name: string);
 import {Component, Input, Output, EventEmitter} from 'angular2/core';
 import {Post} from '../../../ts/shared/structures/post';
 import {PostsService} from '../../../ts/shared/net-services/posts.service';
@@ -10,6 +9,7 @@ import {AuthService} from '../../../ts/shared/net-services/auth.service';
 import {UsersService} from '../../../ts/shared/net-services/users.service';
 import {GlobalHandlerService} from '../../../ts/shared/special-services/globalHandler.service';
 import {MainPointComponent} from '../../shared/point/point.component';
+declare function require(name: string);
 @Component({
     selector: 'ro-home-question-list',
     template: require('dev/components/lists/home-question-list/home-question-list.tpl.html'),

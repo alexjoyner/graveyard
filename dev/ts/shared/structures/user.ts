@@ -7,6 +7,10 @@ export class User {
 		post_id: number,
 		vote_type_id: number
 	}[];
+	favorites: {
+		tag_name: string,
+		_id: number
+	}[];
 	follows: number[];
 
     constructor(

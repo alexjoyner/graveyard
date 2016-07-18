@@ -55,8 +55,20 @@ router.post('/login',
     sql_query.commonQuery,
     /*  3) Query was successful, do something
      with roInfo*/
-    function(req, res) {
+    function(req, res, next) {
         req.user.profile.follows = req.roInfo.rows;
+        next();
+    },
+    /*Token valid: Get search data
+     1) Attach query string*/
+    require('../favorites/queries/get_my_favorites.js'),
+    /*  2) Query the attached string*/
+    sql_query.commonQuery,
+    /*  3) Query was successful, do something
+     with roInfo*/
+    function(req, res) {
+        req.roDone();
+        req.user.profile.favorites = req.roInfo.rows;
         res.status(200).send(req.user).end();
     }
 );

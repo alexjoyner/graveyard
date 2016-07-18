@@ -30,15 +30,15 @@ router.get('/all',
             res.status(200).send(sortedPosts).end();
         }
     });
-/*// get all
-router.get('/all-time-favorites',
-    /!*Query all questions
-        1) Attach query string*!/
-    require('./queries/get_all_questions.js'),
-    /!*  2) Query the attached string*!/
+// get all
+router.get('/topic/:tagId',
+    /*Query all questions
+        1) Attach query string*/
+    require('./queries/get_topic_questions.js'),
+    /*  2) Query the attached string*/
     sql_query.commonQuery,
-    /!*  3) Query was successful, do something
-                with roInfo*!/
+    /*  3) Query was successful, do something
+                with roInfo*/
     function(req, res) {
         req.roDone();
         var result = req.roInfo;
@@ -48,7 +48,7 @@ router.get('/all-time-favorites',
             var sortedPosts = sortPosts(result.rows);
             res.status(200).send(sortedPosts).end();
         }
-    });*/
+    });
 // get one question by id and a type of yes/no
 router.get('/post/:id',
     /*Get question data

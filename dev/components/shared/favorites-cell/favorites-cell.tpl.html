@@ -1,0 +1,35 @@
+<ul>
+    <li *ngFor="#favorite of favorites; #i = index">
+        <a (click)="getQuestionsByTag(favorite._id)">{{favorite.tag_name}}</a>
+        <i class="glyphicon glyphicon-remove text-danger pull-right" *ngIf="editMode" (click)="removeFavorite(favorite._id, i)"></i>
+    </li>
+</ul>
+<button class="btn btn-sm btn-info"
+        style="width: 100%"
+        *ngIf="!editMode"
+        (click)="toggleEditMode()">
+    Edit Favorites
+</button>
+<div *ngIf="editMode">
+    <div class="form-inline">
+        <div class="form-group">
+            <input autofocus
+                   type="text"
+                   class="form-control"
+                   placeholder="Search Tags"
+                   (keydown)="searchTags(searchValue.value)"
+                   #searchValue>
+        </div>
+        <button type="button"
+                class="btn btn-success"
+                (click)="toggleEditMode()">
+            Done
+        </button>
+    </div>
+    <br>
+    <ul class="list-group">
+        <li class="NewFavorite list-group-item" *ngFor="#tag of returnedTags; #i = index" (click)="addFavorite(tag._id, i);">
+            {{tag.tag_name}}
+        </li>
+    </ul>
+</div>

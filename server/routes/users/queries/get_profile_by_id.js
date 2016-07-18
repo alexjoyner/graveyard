@@ -20,7 +20,20 @@ module.exports = function(req, res, next) {
                 follows
             WHERE 
                 user_id = $1
-        )v) as follows
+        )v) as follows,
+        (SELECT array_agg(row_to_json(v))
+        FROM (
+            SELECT 
+                *
+            FROM 
+                "favorites-user_tag_xref"
+            LEFT JOIN
+                tags
+            ON
+                "favorites-user_tag_xref".tag_id = tags._id
+            WHERE
+                user_id = $1
+        )v) as favorites
     FROM users
     WHERE
         users._id = $1

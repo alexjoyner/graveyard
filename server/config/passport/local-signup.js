@@ -55,6 +55,7 @@ module.exports = function(passport){
                             if (err) throw err;
                             newUser.rows[0]['votes'] = [];
                             newUser.rows[0]['follows'] = [];
+                            newUser.rows[0]['favorites'] = [];
                             var token = jwt.sign({
                                 id: newUser.rows[0]._id,
                                 email: newUser.rows[0].email

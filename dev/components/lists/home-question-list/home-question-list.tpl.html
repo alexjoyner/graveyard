@@ -2,29 +2,33 @@
     Loading questions
 </h1>
 <br/>
-<div *ngIf="questions" [ngClass]="{'isInSearchModal': showInTut}">
-    <div *ngFor="#question of questions; #i = index"  >
+<div *ngIf="questions"
+     [ngClass]="{'isInSearchModal': showInTut}">
+    <div *ngFor="#question of questions; #i = index">
         <div class="HomeQuestion">
-            <h3 class="text-center">
-                <a [routerLink]="['Question', {id: question._id}]">{{question.title}}</a>
-            </h3>
-            <h5 class="text-center">
-                {{question.detail}}
-            </h5>
+            <div class="content-container">
+                <h3 class="text-center">
+                    <a [routerLink]="['Question', {id: question._id}]">{{question.title}}</a>
+                </h3>
+                <h5 class="text-center">
+                    {{question.detail}}
+                </h5>
+            </div>
             <!-- <p class="text-center">
                 Created on {{stringToDate(question.created_at) | date: 'yMMMd'}}
             </p> -->
             <div class="ro-action-bar">
                 <ro-vote-cell
-                    class="ro-action-bar-item"
-                    [sourceId]="question._id"
-                    [score]="question.ups - question.dwns"
-                    (modVote)="question.ups = question.ups + $event"
-                    [upvoteText]="'important'"
-                    [downvoteText]="'unimportant'"
-                    [whyVoteText]="'This issue is: '">
+                        class="ro-action-bar-item"
+                        [sourceId]="question._id"
+                        [score]="question.ups - question.dwns"
+                        (modVote)="question.ups = question.ups + $event"
+                        [upvoteText]="'important'"
+                        [downvoteText]="'unimportant'"
+                        [whyVoteText]="'This issue is: '">
                 </ro-vote-cell>
-                <follow-button class="pull-right" [postId]="question._id"></follow-button>
+                <follow-button class="pull-right"
+                               [postId]="question._id"></follow-button>
             </div>
         </div>
         <hr>
