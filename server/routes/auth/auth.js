@@ -6,7 +6,6 @@ var sql_query = require('../../middleware/sql_query.js');
 //Routes Base : '/auth'
 var secretSignupCode = 'supertesters'
 router.post('/signup', function(req, res, next) {
-    console.log(req.body);
     if(req.body.specialCode === secretSignupCode){
         passport.authenticate('local-signup', function(err, token, info) {
             if (err) {

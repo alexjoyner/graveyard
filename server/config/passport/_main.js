@@ -1,3 +1,6 @@
+/* THIS FILES IS CALLED ON STARTUP TO INITIALIZE THE LOCAL STRATAGIES THAT
+* CAN BE USED TO LOGIN AND SIGNUP*/
+
 'use strict';
 // Dependencies
 var passport = require('passport');

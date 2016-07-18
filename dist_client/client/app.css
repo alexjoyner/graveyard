@@ -398,9 +398,9 @@ input[type="text"]#QuestionInput {
     background-color: #F8F8F8; }
     .ro-main-nav .ro-nav-item:hover {
       background-color: #888; }
-      .ro-main-nav .ro-nav-item:hover a {
+      .ro-main-nav .ro-nav-item:hover .nav-link {
         color: #fff; }
-    .ro-main-nav .ro-nav-item a {
+    .ro-main-nav .ro-nav-item .nav-link {
       line-height: 50px;
       color: #777; }
 
@@ -419,8 +419,9 @@ input[type="text"]#QuestionInput {
   position: relative; }
   #NotifButton #NotifyDropdown {
     position: absolute;
+    line-height: 30px;
     z-index: 50;
-    top: 30%;
+    top: 50%;
     left: 0;
     width: 200%; }
 
