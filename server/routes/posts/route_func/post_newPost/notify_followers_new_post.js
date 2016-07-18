@@ -35,19 +35,23 @@ module.exports = function (req, res, next) { //TODO: All three of these steps ne
         `;
         req.roConClient.query(step1_query_string, [postInfo.parent_id, req.decoded.id], function (err, followers) {
             if (err) throw err;
-            var followersIds = getFollowerIds(followers.rows);
-            req.roConClient.query(step2_query_string, [
-                    'New post in something you have followed!', postInfo.parent_id, new Date()],
-                function (err, notification) {
-                    if (err) throw err;
-                    console.log('Notification! ', notification);
-                    req.roConClient.query(buildNotifLinkStatement(
-                        followersIds, notification.rows[0]._id, 'INSERT INTO user_notification_xref(user_id, notif_id) VALUES '),
-                        function (err) {
-                            if (err) throw err;
-                            next();
-                        })
-                })
+            if(followers.rows[0] !== undefined && followers.rows[0] !== null){
+                var followersIds = getFollowerIds(followers.rows);
+                req.roConClient.query(step2_query_string, [
+                        'New post in something you have followed!', postInfo.parent_id, new Date()],
+                    function (err, notification) {
+                        if (err) throw err;
+                        console.log('Notification! ', notification);
+                        req.roConClient.query(buildNotifLinkStatement(
+                            followersIds, notification.rows[0]._id, 'INSERT INTO user_notification_xref(user_id, notif_id) VALUES '),
+                            function (err) {
+                                if (err) throw err;
+                                next();
+                            })
+                    })
+            }else{
+                next();
+            }
         })
     }
 };

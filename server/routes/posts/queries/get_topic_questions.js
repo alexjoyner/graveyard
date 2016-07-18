@@ -1,6 +1,6 @@
 module.exports = function(req, res, next) {
     var info = req.body;
-    req.roQueryParams = [info.];
+    req.roQueryParams = [];
     req.roQueryString = `
 	SELECT 
 	    p.*,

@@ -28,7 +28,10 @@
                 class="ro-action-bar-item"
                 [sourceId]="support._id"
                 [score]="support.ups - support.dwns"
-                (modVote)="support.ups=support.ups+$event">
+                (modVote)="support.ups=support.ups+$event"
+                [upvoteText]="'helpful'"
+                [downvoteText]="'not helpful'"
+                [whyVoteText]="'If this were true, it would be:'">
         </ro-vote-cell>
         <div class="ro-inline-items">
             <h4 class="ro-action-bar-item">
