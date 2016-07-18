@@ -21,7 +21,7 @@ declare function require(name: string);
                 <h1>Site not yet optimized for mobile devices, please view the site on larger screen</h1>
             </div>
         </div>
-    	<div id="MainMetaTruthContainer" class="container">
+    	<div id="MainMetaTruthContainer">
     		<router-outlet></router-outlet>
     	</div>
     `,

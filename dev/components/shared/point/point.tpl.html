@@ -20,7 +20,10 @@
             class="ro-action-bar-item"
             [sourceId]="point._id"
             [score]="point.ups - point.dwns"
-            (modVote)="point.ups=point.ups+$event">
+            (modVote)="point.ups=point.ups+$event"
+            [upvoteText]="'helpful'"
+            [downvoteText]="'not helpful'"
+            [whyVoteText]="'If this were true, it would be:'">
         </ro-vote-cell>
         <button
             *ngIf="isOwner(point.owner_user_id) && !point.editPoint || point.editPoint === false"

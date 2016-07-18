@@ -13,6 +13,9 @@ export class VoteCellComponent implements OnInit{
 	@Input() sourceType: string;
 	@Input() sourceId: number;
 	@Input() score: number;
+	@Input() upvoteText: string;
+	@Input() downvoteText: string;
+	@Input() whyVoteText: string;
 	@Output() modVote: EventEmitter<any> = new EventEmitter();
 	private upVoted: boolean = false;
 	private downVoted: boolean = false;

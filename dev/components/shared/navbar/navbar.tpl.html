@@ -25,24 +25,28 @@
         </button>
     </form>
     <ul>
-        <li>
-            <a class="ro-nav-item pull-right"
+        <li class="ro-nav-item pull-right">
+            <a
                *ngIf="auth()"
                (click)="logout()">Logout</a>
         </li>
-        <li>
-            <a class="ro-nav-item pull-right"
+        <li class="ro-nav-item pull-right">
+            <a
                [routerLink]="['Auth']"
                *ngIf="!auth()">Alpha Testers Login/Register</a>
-            <a class="ro-nav-item pull-right"
+            <a
                [routerLink]="['Home']"
                *ngIf="auth()">{{email}}</a>
         </li>
-        <li id="NotifButton" class="ro-nav-item pull-right"
+        <li id="NotifButton"
+            class="ro-nav-item pull-right"
             (click)="toggleShowNotifs()">
             <a
-                [ngStyle]="{'color': (notifications.length > 0)? 'rgb(243, 9, 5)' : '#333'}"
-                *ngIf="auth()"><i class="fa fa-bell-o"></i> Notifications</a>
+                    *ngIf="auth()">
+                <i class="fa fa-bell"
+                   *ngIf="notifications.length > 0"
+                   [ngStyle]="{'color': (notifications.length > 0)? 'rgb(243, 9, 5)' : '#333'}"></i>
+                Notifications</a>
             <dropdown
                     id="NotifyDropdown"
                     *ngIf="showNotifs === true"

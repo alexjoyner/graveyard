@@ -19,7 +19,10 @@
                     class="ro-action-bar-item"
                     [sourceId]="question._id"
                     [score]="question.ups - question.dwns"
-                    (modVote)="question.ups = question.ups + $event">
+                    (modVote)="question.ups = question.ups + $event"
+                    [upvoteText]="'important'"
+                    [downvoteText]="'unimportant'"
+                    [whyVoteText]="'This issue is: '">
                 </ro-vote-cell>
                 <follow-button class="pull-right" [postId]="question._id"></follow-button>
             </div>

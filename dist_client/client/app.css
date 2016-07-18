@@ -149,25 +149,33 @@ html {
   font-weight: 300;
   margin: 0; }
 
-#Home-Container {
-  padding: 0 50px 0 50px; }
-  #Home-Container #Home-MainHeader {
-    font-size: 30px;
-    font-weight: 200;
-    margin-bottom: 10px; }
-  #Home-Container #Home-SubHeader {
-    font-size: 20px;
-    font-weight: 300;
-    margin: 0; }
-  #Home-Container #Start-Question-Btn {
-    margin: 3px 0 3px 0; }
-  #Home-Container #Search-Questions-Bar {
-    margin: 3px 0 3px 0; }
-  #Home-Container #TestInputWrapper {
-    border: 1px solid #dddddd; }
-    #Home-Container #TestInputWrapper #TestInput {
-      border: none;
-      background-color: #fff; }
+#Home-Container #Home-MainHeader {
+  font-size: 30px;
+  font-weight: 200;
+  margin-bottom: 10px; }
+#Home-Container #Home-SubHeader {
+  font-size: 20px;
+  font-weight: 300;
+  margin: 0; }
+#Home-Container #Start-Question-Btn {
+  margin: 3px 0 3px 0; }
+#Home-Container #Search-Questions-Bar {
+  margin: 3px 0 3px 0; }
+#Home-Container #TestInputWrapper {
+  border: 1px solid #dddddd; }
+  #Home-Container #TestInputWrapper #TestInput {
+    border: none;
+    background-color: #fff; }
+#Home-Container .TopicsPane {
+  border: 1px solid #dddddd;
+  width: 70%;
+  height: 200px;
+  margin: auto;
+  padding: 8px; }
+  #Home-Container .TopicsPane h3 {
+    font-weight: 200; }
+  #Home-Container .TopicsPane h4 {
+    font-weight: 200; }
 
 #Question-Container #Question-Header-Title, #Question-Container #Question-Header-Detail {
   font-weight: 200; }
@@ -366,6 +374,7 @@ input[type="text"]#QuestionInput {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 100;
   min-height: 50px;
   margin-bottom: 20px;
   padding-top: 0px; }
@@ -385,13 +394,15 @@ input[type="text"]#QuestionInput {
   .ro-main-nav .ro-nav-item {
     display: inline-block;
     padding: 0 30px;
-    color: #777;
     height: 48px;
-    line-height: 50px;
     background-color: #F8F8F8; }
     .ro-main-nav .ro-nav-item:hover {
-      background-color: #888;
-      color: #fff; }
+      background-color: #888; }
+      .ro-main-nav .ro-nav-item:hover a {
+        color: #fff; }
+    .ro-main-nav .ro-nav-item a {
+      line-height: 50px;
+      color: #777; }
 
 #MainSearchBar input[type="text"] {
   width: 50em; }
