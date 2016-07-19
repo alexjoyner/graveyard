@@ -23,7 +23,7 @@
             (modVote)="point.ups=point.ups+$event"
             [upvoteText]="'helpful'"
             [downvoteText]="'not helpful'"
-            [whyVoteText]="'If this were true, it would be:'">
+            [whyVoteText]="'If this were true, it would be'">
         </ro-vote-cell>
         <button
             *ngIf="isOwner(point.owner_user_id) && !point.editPoint || point.editPoint === false"

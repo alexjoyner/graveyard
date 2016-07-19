@@ -24,8 +24,8 @@ export class FavoritesCellComponent{
             )
         }
     }
-    getQuestionsByTag(tagId: number){
-        this.getQuestionSet.emit(tagId);
+    getQuestionsByTag(tagId: number, tagName: string){
+        this.getQuestionSet.emit({tagId: tagId, tagName: tagName});
     }
 
     toggleEditMode() {

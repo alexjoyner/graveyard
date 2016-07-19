@@ -14,12 +14,12 @@ export class PostsService {
 		private _authService: AuthService,
 		private _globalHandlerService: GlobalHandlerService) {}
 	/* GET */
-	getAllPosts(): Observable<any> {
+	getHotPosts(): Observable<any> {
 		const headers = new Headers();
 		headers.append('x-access-token',
 			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
 		var req = this._http.get(
-			this.endpoint + '/posts/all',
+			this.endpoint + '/posts/hot',
 			{ headers: headers })
 			.map(res => res.json());
 		req.subscribe(
@@ -41,6 +41,27 @@ export class PostsService {
 			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
 		var req = this._http.get(
 			this.endpoint + '/posts/topic/' + tagId,
+			{ headers: headers })
+			.map(res => res.json());
+		req.subscribe(
+			data => {
+				console.log('GOT POSTS');
+			},
+			err => {
+				this._globalHandlerService.emitStatusMessage({
+					status: err.status,
+					body: err._body
+				})
+			});
+		return req;
+
+	}
+	getAllTimeTop(): Observable<any> {
+		const headers = new Headers();
+		headers.append('x-access-token',
+			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
+		var req = this._http.get(
+			this.endpoint + '/posts/top/',
 			{ headers: headers })
 			.map(res => res.json());
 		req.subscribe(

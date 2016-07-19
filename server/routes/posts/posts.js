@@ -12,7 +12,7 @@ var sortPosts = require('../../custFunctions/sortPosts.js');
 // !! route = '/posts'
 // ###########  GETS  ###############
 // get
-router.get('/all',
+router.get('/hot',
     /*Query all questions
         1) Attach query string*/
     require('./queries/get_all_questions.js'),
@@ -26,7 +26,26 @@ router.get('/all',
         if (!result.rows[0]) {
             res.status(200).send([]).end();
         } else {
-            var sortedPosts = sortPosts(result.rows);
+            var sortedPosts = sortPosts.hotSort(result.rows);
+            res.status(200).send(sortedPosts).end();
+        }
+    });
+// get
+router.get('/top',
+    /*Query all questions
+        1) Attach query string*/
+    require('./queries/get_all_questions.js'),
+    /*  2) Query the attached string*/
+    sql_query.commonQuery,
+    /*  3) Query was successful, do something
+                with roInfo*/
+    function(req, res) {
+        req.roDone();
+        var result = req.roInfo;
+        if (!result.rows[0]) {
+            res.status(200).send([]).end();
+        } else {
+            var sortedPosts = sortPosts.topSort(result.rows);
             res.status(200).send(sortedPosts).end();
         }
     });

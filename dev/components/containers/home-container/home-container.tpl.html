@@ -4,9 +4,20 @@
         <div class="col col-md-3">
             <div class="TopicsPane">
                 <h3 class="text-center">
-                    Find Questions About
+                    Quick Links
                 </h3>
                 <hr>
+                <ul>
+                    <li>
+                        <a (click)="getHotRightNow()">Hot right now</a>
+                    </li>
+                    <li>
+                        <a (click)="getAllTimeTop()">All Time Top</a>
+                    </li>
+                    <li>
+                        <a (click)="getQuestionsByTag({tagId: 35, tagName: 'Controversial'})">Top Controversial</a>
+                    </li>
+                </ul>
                 <h4>
                     <u>Your favorite places and topics</u>
                 </h4>
@@ -15,7 +26,7 @@
         </div>
         <div class="col col-md-6">
             <h5 id="Home-MainHeader">
-                Top posts for you
+                {{headerText}}
             </h5>
             <hr>
             <!-- List out the isses of selected type -->
