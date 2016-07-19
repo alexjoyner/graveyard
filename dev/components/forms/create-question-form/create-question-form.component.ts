@@ -70,7 +70,7 @@ export class CreateQuestionFormComponent implements OnInit{
 							this.alertString = 'Awesome, now just top it of with a question mark when your finished to move on!'
 							if (daQ[daQ.length - 1] === '?') {
 								this.alertType = "success"
-								this.alertString = 'Great! Double check your question then click "Tag my question".';
+								this.alertString = 'Great! Double check your question then hit Enter / Return.';
 								this.qComplete = true;
 							}
 						} else {
@@ -98,8 +98,10 @@ export class CreateQuestionFormComponent implements OnInit{
 		}
 	}
 	switchToTags(){
-		this.mode = 'tags'
-		this.switchTags.emit(null);
+		if(this.qComplete){
+			this.mode = 'tags'
+			this.switchTags.emit(null);
+		}
 	}
 }
 function checkIsYesOrNo(searchStr: string):boolean {

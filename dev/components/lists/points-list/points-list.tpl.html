@@ -35,7 +35,7 @@
                         [support]="point"
                         (removed)="removePoint(i)">
                 </ro-support-point>
-            </div> <!-- Looping through yess-->
+            </div> <!--  Looping through yess -->
         </div>
         <div class="col-md-6">
             <div [attr.id]="'point' + i"
@@ -51,9 +51,10 @@
                         [support]="point"
                         (removed)="removePoint(i)">
                 </ro-support-point>
-            </div> <!-- Looping through for nos-->
+            </div> <!-- Looping through for nos -->
         </div>
-    </div> <!--
+    </div>
+     <!-- Looping through for nos--><!--
         Looping though all of the points given
         - Must loop through twice for both yess and nos
             * Not sure of a better way right now.
@@ -86,3 +87,20 @@
                     (cancel)="showForm = false">
     </ro-add-support>
 </div>
+<!--THIS WAS JUST A TEST OF A DIFFERENT TYPE OF SORTING-->
+<!--<div [attr.id]="'point' + i"
+         *ngFor="#point of points | roFilter: searchText; #i = index"
+         class="point">
+        <ro-main-point
+                [ngClass]="{'pull-left': point.point_type_id === 2, 'pull-right': point.point_type_id === 1}"
+                *ngIf="point.point_type_id === 2 || point.point_type_id === 1"
+                [point]="point"
+                (removed)="removePoint(i)">
+        </ro-main-point>
+        <ro-support-point
+                [ngClass]="{'pull-left': point.point_type_id === 4, 'pull-right': point.point_type_id === 3}"
+                *ngIf="point.point_type_id === 4 || point.point_type_id === 3"
+                [support]="point"
+                (removed)="removePoint(i)">
+        </ro-support-point>
+    </div>-->

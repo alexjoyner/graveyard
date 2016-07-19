@@ -168,9 +168,10 @@ html {
     background-color: #fff; }
 #Home-Container .TopicsPane {
   border: 1px solid #dddddd;
-  width: 70%;
-  margin: auto;
-  padding: 8px; }
+  padding: 8px;
+  width: 300px;
+  position: fixed;
+  left: 25px; }
   #Home-Container .TopicsPane h3 {
     font-weight: 200; }
   #Home-Container .TopicsPane h4 {
@@ -220,7 +221,7 @@ html {
 
 #CreatePointForm {
   position: absolute;
-  z-index: 6;
+  z-index: 53;
   top: 30%;
   left: 0;
   width: 100%;
@@ -304,7 +305,7 @@ input[type="text"]#QuestionInput {
 
 #CreateSupportForm {
   position: absolute;
-  z-index: 6;
+  z-index: 53;
   top: 30%;
   left: 0;
   width: 100%;

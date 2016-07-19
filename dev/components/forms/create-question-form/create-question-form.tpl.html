@@ -1,19 +1,19 @@
 <button class="btn btn-default ModalClose" (click)="endTut()">
     Close
 </button>
-<div *ngIf="mode === 'question'">
+<form *ngIf="mode === 'question'" (ngSubmit)="switchToTags()">
     <h4 id="AlertMessage" class="text-center" *ngIf="alertString"  [ngClass]="{'ro-alert-warning': alertType === 'warning','ro-alert-success': alertType === 'success'}">
         {{ alertString }}
     </h4>
-    <input type="text" id="QuestionInput" placeholder="Enter A debatable question" autofocus="true" (keyup)="questionControl()" [(ngModel)]="question"/>
+    <input type="text" id="QuestionInput" placeholder="Enter A debatable question" autocomplete="off" autofocus="true" (keyup)="questionControl()" [(ngModel)]="question"/>
     <div id="FinalizeZone" *ngIf="qComplete">
     	<!--<label>
             <input type="checkbox" [(ngModel)]="privQ">
             Make Private? (You can rank points yourself and only people with a link to your question can see it)
         </label><br>-->
-    	<button class="btn btn-md btn-success" (click)="switchToTags()">Tag my question</button>
+    	<button type="submit" style="display: none"></button>
     </div>
-</div>
+</form>
 <div *ngIf="mode === 'tags'">
 	<ro-tags-form
 		[type]="+1"

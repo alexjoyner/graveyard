@@ -27,7 +27,8 @@ export class QuestionContainerComponent{
 		private _routeParams: RouteParams,
 		private _postsService: PostsService,
 		private _usersService: UsersService,
-		private _authService: AuthService) {
+		private _authService: AuthService,
+		private _router: Router) {
 		this._questionId = +this._routeParams.get('id');
 		_postsService.getPost(''+this._questionId).
 			subscribe(
@@ -46,7 +47,7 @@ export class QuestionContainerComponent{
 			if (answer === true) {
 				this._postsService.deletePost(questionId)
 					.subscribe(
-						success => console.log('Success'),
+						success => this._router.navigate(['Home']),
 						err => console.log('error: ', err)
 					);
 			}
