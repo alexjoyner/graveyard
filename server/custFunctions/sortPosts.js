@@ -4,7 +4,7 @@
  algorithms
  */
 var decay = require('decay')
-    , hotScore = decay.redditHot(60 * 60 * 24 * 7)
+    , hotScore = decay.redditHot()
     , wilsonScore = decay.wilsonScore();
 
 /*

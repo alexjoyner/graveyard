@@ -64,7 +64,7 @@ router.get('/topic/:tagId',
         if (!result.rows[0]) {
             res.status(200).send([]).end();
         } else {
-            var sortedPosts = sortPosts(result.rows);
+            var sortedPosts = sortPosts.hotSort(result.rows);
             res.status(200).send(sortedPosts).end();
         }
     });
@@ -83,9 +83,13 @@ router.get('/post/:id',
         if (!result.rows[0]) {
             res.status(500).send('no question found').end();
         } else {
+            var sortedPosts;
             if (result.rows[0].points === null) {
-                result.rows[0].points = [];
+                sortedPosts = [];
+            }else{
+                sortedPosts = sortPosts.topSort(result.rows[0].points);
             }
+            result.rows[0].points = sortedPosts;
             res.status(200).send(result.rows[0]).end();
         }
     });
