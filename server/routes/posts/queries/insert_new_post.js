@@ -1,7 +1,6 @@
 module.exports = function(req, res, next) {
     var user = req.decoded;
     var postInfo = req.body.post;
-    var tagsInfo = req.body.tags;
     req.roQueryParams = [postInfo.privQ, user.id, postInfo.title, postInfo.detail, postInfo.post_type_id, postInfo.parent_id,
         postInfo.point_type_id, postInfo.source, postInfo.source_type_id, new Date
     ];

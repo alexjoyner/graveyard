@@ -6,13 +6,11 @@
         {{ alertString }}
     </h4>
     <input type="text" id="QuestionInput" placeholder="Enter A debatable question" autocomplete="off" autofocus="true" (keyup)="questionControl()" [(ngModel)]="question"/>
-    <div id="FinalizeZone" *ngIf="qComplete">
-    	<!--<label>
-            <input type="checkbox" [(ngModel)]="privQ">
-            Make Private? (You can rank points yourself and only people with a link to your question can see it)
-        </label><br>-->
-    	<button type="submit" style="display: none"></button>
-    </div>
+	<!--<label>
+		<input type="checkbox" [(ngModel)]="privQ">
+		Make Private? (You can rank points yourself and only people with a link to your question can see it)
+	</label><br>-->
+	<button type="submit" style="display: none"></button>
 </form>
 <div *ngIf="mode === 'tags'">
 	<ro-tags-form

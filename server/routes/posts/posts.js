@@ -123,6 +123,8 @@ router.post('/newPost',
     /*  3) Query was successful, do something 
                 with roInfo*/
     function(req, res, next) {
+        req.roPostCreated = req.roInfo.rows[0];
+        console.log('Post Created: ', req.roPostCreated);
         var postInfo = req.body.post;
         if (postInfo.post_type_id === 1) {
             /*
@@ -143,10 +145,17 @@ router.post('/newPost',
     */
     require('./route_func/post_newPost/add_tags_to_post.js'),
     require('./route_func/post_newPost/notify_followers_new_post.js'),
+    /* Owner of post always follows their own posts*/
+    function(req, res, next){
+      req.body['post_id'] = req.roInfo.rows[0]._id;
+        next();
+    },
+    require('../follows/queries/insert_new_follow.js'),
+    /*  2) Query the attached string*/
+    sql_query.commonQuery,
     function(req, res){
-        var result = req.roInfo;
         req.roDone();
-        res.status(200).send(result.rows[0]).end();
+        res.status(200).send(req.roPostCreated).end();
     }
 );
 
@@ -173,7 +182,7 @@ router.post('/updatePost', jwt_verify, function(req, res) { //TODO: This needs t
 // post update to existing question
 // ###########  DELETES  ###############
 // delete existing post
-router.delete('/deletePost/:postId/:questionId/:mainPointType',
+router.delete('/deletePost/:postId',
     /*Validate token to route*/
     jwt_verify,
     /*Token valid: Get search data

@@ -5,6 +5,7 @@ import {TagsFormComponent} from '../tags-form/tags-form.component';
 import {Post} from '../../../ts/shared/structures/post';
 import {PostsService} from '../../../ts/shared/net-services/posts.service';
 import {AuthService} from '../../../ts/shared/net-services/auth.service';
+import {UsersService} from "../../../ts/shared/net-services/users.service";
 @Component({
 	selector: 'ro-create-question',
     template: require('dev/components/forms/create-question-form/create-question-form.tpl.html'),
@@ -25,7 +26,8 @@ export class CreateQuestionFormComponent implements OnInit{
 	constructor(
 		private _authService: AuthService,
 		private _postsService: PostsService,
-		private _router: Router) {}
+		private _router: Router,
+		private _usersService: UsersService) {}
 	ngOnInit():any {
 		this.questionControl()
 	}
@@ -48,6 +50,7 @@ export class CreateQuestionFormComponent implements OnInit{
 					.subscribe(
 					data => {
 						console.log('Success Posting Question', data);
+						this._usersService.profile.follows.push(data._id);
 						this._router.navigate(['Question', { id: data._id }]);
 					},
 					err => console.log('Error: ', err)

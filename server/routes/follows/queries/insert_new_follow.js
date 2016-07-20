@@ -1,6 +1,7 @@
 module.exports = function(req, res, next) {
     var info = req.body;
-    req.roQueryParams = [info.user_id, info.post_id];
+    var user = req.decoded;
+    req.roQueryParams = [user.id, info.post_id];
     req.roQueryString = `
     INSERT INTO follows
         (user_id, post_id)

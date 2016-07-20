@@ -3,6 +3,7 @@ declare function require(name:string);
 import {Component, Input, OnInit, Output, EventEmitter} from 'angular2/core';
 import {Post} from '../../../ts/shared/structures/post';
 import {PostsService} from '../../../ts/shared/net-services/posts.service';
+import {UsersService} from "../../../ts/shared/net-services/users.service";
 // Parent is points-list
 @Component({
     selector: 'ro-add-support',
@@ -18,7 +19,8 @@ export class AddSupportComponent implements OnInit {
     private showSource:boolean = false;
 
     constructor(private _postsService:PostsService,
-                private _routeParams:RouteParams) {
+                private _routeParams:RouteParams,
+                private _usersService: UsersService) {
     };
 
     createSupport() {
@@ -28,6 +30,7 @@ export class AddSupportComponent implements OnInit {
             .subscribe(
                 data => {
                     console.log('SUCCESS');
+                    this._usersService.profile.follows.push(data._id);
                     this.added.emit(data);
                 },
                 err => console.log('Error: ', err)

@@ -40,6 +40,7 @@ export class CreatePointFormComponent implements OnInit{
 		.subscribe(
 			pointData => {
 				console.log('New post');
+				this._usersService.profile.follows.push(pointData._id);
 				this.added.emit(pointData);
 			},
 			err => console.log('err', err)

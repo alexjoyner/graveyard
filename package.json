@@ -7,7 +7,7 @@
     "production": "NODE_ENV='production' node server.js",
     "dev": "nodemon server.js",
     "sass": "sass ./dev/app.scss:./dist_client/client/app.css --watch",
-    "all-dev": "concurrently --kill-others 'npm run start' 'npm run dev' 'sass ./dev/app.scss:./dist_client/client/app.css --watch'"
+    "dev-all": "concurrently --kill-others 'npm run start' 'npm run dev' 'sass ./dev/app.scss:./dist_client/client/app.css --watch'"
   },
   "license": "ISC",
   "dependencies": {

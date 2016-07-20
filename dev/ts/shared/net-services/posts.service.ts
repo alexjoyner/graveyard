@@ -6,13 +6,15 @@ import {Observable} from 'rxjs/Observable';
 import {Config} from '../../config/config';
 import {AuthService} from './auth.service';
 import {GlobalHandlerService} from '../special-services/globalHandler.service';
+import {UsersService} from "./users.service";
 @Injectable()
 export class PostsService {
 	private endpoint: string = Config.endpoint;
 	constructor(
 		private _http: Http,
 		private _authService: AuthService,
-		private _globalHandlerService: GlobalHandlerService) {}
+		private _globalHandlerService: GlobalHandlerService,
+		private _usersService: UsersService) {}
 	/* GET */
 	getHotPosts(): Observable<any> {
 		const headers = new Headers();
@@ -114,11 +116,12 @@ export class PostsService {
 		headers.append('Content-Type', 'application/json');
 		headers.append('x-access-token',
 			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
-		return this._http.post(
+		var res = this._http.post(
 			this.endpoint + '/posts/newPost',
 			body,
 			{ headers: headers })
 				.map(res => res.json());
+		return res;
 	}
 	updatePost(post: Post): Observable<any>{
 			const body = JSON.stringify(post);
@@ -140,9 +143,7 @@ export class PostsService {
 				(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
 			return this._http.delete(
 				this.endpoint + '/posts/deletePost/' + 
-				postId + '/' +
-				questionId + '/' +
-				mainPointType,
+				postId,
 				{headers: headers})
 				.map(res => res);
 	}
