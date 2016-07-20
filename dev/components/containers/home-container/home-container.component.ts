@@ -40,7 +40,7 @@ export class HomeContainerComponent implements OnInit{
 		}
 	}
 	scrollTop(){
-		this._smoothService.smoothScroll('RoAppBody', 0);
+		this._smoothService.scrollTo(0, 0);
 	}
 	getQuestionsByTag(data: {tagId: number, tagName: string}){
 		if(this._authService.checkTokenExists()){

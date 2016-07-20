@@ -23,6 +23,7 @@ export class QuestionContainerComponent{
 	private _questionId: number;
 	private _type: string;
 	private questionAvailable: boolean;
+	private stackedMode: boolean = true;
 	constructor(
 		private _routeParams: RouteParams,
 		private _postsService: PostsService,

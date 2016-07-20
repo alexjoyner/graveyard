@@ -5,12 +5,14 @@ module.exports = function(req, res, next) {
 	SELECT
         *
     FROM
-        post_tags_xref
+        post_tags_xref ptxf
     LEFT JOIN
-        posts
+        posts p
     ON
-        post_tags_xref.post_id = posts._id
+        ptxf.post_id = p._id
     WHERE
-        tag_id = $1;`;
+        ptxf.tag_id = $1
+	AND
+		p.is_deleted = false;`;
     next();
 }

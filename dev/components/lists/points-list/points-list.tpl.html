@@ -3,11 +3,12 @@
         <div class="col-md-10">
             <div class="input-group">
                 <div class="input-group-addon">
-                    Search
+                    Filter
                 </div>
                 <input type="text"
                        class="form-control"
                        id="exampleInputAmount"
+                       placeholder="{{pointsTypeText}}s"
                        [(ngModel)]="searchText"
                        maxlength="150"/>
             </div>
@@ -19,7 +20,8 @@
             </button>
         </div>
     </div> <!--Create point button and search points bar-->
-    <div class="row">
+    <div class="row"
+         *ngIf="!stackedMode">
         <div class="col-md-6">
             <div [attr.id]="'point' + i"
                  *ngFor="#point of points | roFilter: searchText; #i = index"
@@ -54,7 +56,25 @@
             </div> <!-- Looping through for nos -->
         </div>
     </div>
-     <!-- Looping through for nos--><!--
+    <!--THIS WAS JUST A TEST OF A DIFFERENT TYPE OF SORTING-->
+    <div *ngIf="stackedMode" class="row">
+        <div class="col col-md-6 col-md-offset-3"><div [attr.id]="'point' + i"
+             *ngFor="#point of points | roFilter: searchText; #i = index"
+             class="point"
+        >
+            <ro-main-point
+                    *ngIf="point.point_type_id === 1 || point.point_type_id === 2"
+                    [point]="point"
+                    (removed)="removePoint(i)">
+            </ro-main-point>
+            <ro-support-point
+                    *ngIf="point.point_type_id === 3 || point.point_type_id === 4"
+                    [support]="point"
+                    (removed)="removePoint(i)">
+            </ro-support-point>
+        </div></div>
+    </div>
+    <!-- Looping through for nos--><!--
         Looping though all of the points given
         - Must loop through twice for both yess and nos
             * Not sure of a better way right now.
@@ -87,20 +107,3 @@
                     (cancel)="showForm = false">
     </ro-add-support>
 </div>
-<!--THIS WAS JUST A TEST OF A DIFFERENT TYPE OF SORTING-->
-<!--<div [attr.id]="'point' + i"
-         *ngFor="#point of points | roFilter: searchText; #i = index"
-         class="point">
-        <ro-main-point
-                [ngClass]="{'pull-left': point.point_type_id === 2, 'pull-right': point.point_type_id === 1}"
-                *ngIf="point.point_type_id === 2 || point.point_type_id === 1"
-                [point]="point"
-                (removed)="removePoint(i)">
-        </ro-main-point>
-        <ro-support-point
-                [ngClass]="{'pull-left': point.point_type_id === 4, 'pull-right': point.point_type_id === 3}"
-                *ngIf="point.point_type_id === 4 || point.point_type_id === 3"
-                [support]="point"
-                (removed)="removePoint(i)">
-        </ro-support-point>
-    </div>-->

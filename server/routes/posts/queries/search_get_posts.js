@@ -18,6 +18,8 @@ module.exports = function(req, res, next) {
         to_tsquery($1)
     AND
         post_type_id = $2
+	AND
+		is_deleted = false
     LIMIT
         5
     ;`;

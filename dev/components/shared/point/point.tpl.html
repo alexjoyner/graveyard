@@ -1,4 +1,5 @@
-<div class="ro-point ro-main-point">
+<div class="ro-point ro-main-point"
+     [ngStyle]="{'background-color': (point.point_type_id === 1)? '#DFF0D8' : '#FCC4C4'}">
     <div class="ro-contents"
          *ngIf="!point.editPoint || point.editPoint === false">
         <h4 class="text-center"
@@ -6,8 +7,12 @@
             <a [routerLink]="['Question', {id: point._id}]">{{point.title}}</a>
         </h4>
         <p style="text-align: left; padding-left: 10px;">
-            <a [routerLink]="['Question', {id: point._id}]">{{point.detail}}</a>
+            {{point.detail}}
         </p>
+        <h4 class="text-center">
+            <u>Current Results</u>
+        </h4>
+        <h5 class="text-center">Insufficient Evidence</h5>
         <h5 class="text-center">
             <button class="btn btn-info btn-sm"
                     [routerLink]="['Question', {id: point._id}]">

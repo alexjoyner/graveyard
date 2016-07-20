@@ -1,8 +1,10 @@
 module.exports = function(req, res, next) {
 	req.roQueryParams = [req.params.postId];
     req.roQueryString = `
-	DELETE
-	FROM posts
+	UPDATE
+		posts
+	SET
+		is_deleted = true
 	WHERE
 	    posts._id = $1::int
 	RETURNING 

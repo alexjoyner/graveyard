@@ -22,6 +22,7 @@ interface Socket {
 export class PointsListComponent implements OnInit{
     @Input() points: Post[];
     @Input() questionType: number;
+    @Input() stackedMode: boolean;
 
     // Only needed in the template
     private searchText: string = '';
