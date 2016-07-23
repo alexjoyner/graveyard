@@ -1,8 +1,27 @@
-<div class="ro-tag-cell">
+<div id="ro-tag-cell">
     <h4 *ngFor="#tag of tags">
-    	<!-- SPAN NEEDED FOR BOOTSTRAP LABEL -->
+        <!-- SPAN NEEDED FOR BOOTSTRAP LABEL -->
         <span class="label label-info text center">
             {{tag.tag_name}}
+            <i *ngIf="editMode"
+               class="fa fa-close text-danger"></i>
         </span>
     </h4>
+    <button class="btn btn-sm btn-info"
+            (click)="editMode = true"
+            *ngIf="!editMode">
+        <i class="fa fa-edit"></i>
+    </button>
+    <br>
+    <br>
+    <div class="ro-modal" *ngIf="editMode">
+        <button class="btn btn-success ModalClose" (click)="editMode = false">
+            Done
+        </button>
+        <ro-tags-form
+                [type]="+1"
+                [acceptedTags]="tags"
+                [typeString]="'Tag'"
+                [tagsFormHeader]="question"></ro-tags-form>
+    </div>
 </div>

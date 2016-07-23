@@ -2,20 +2,30 @@
     Close
 </button>
 <form id="CreatePointForm" (ngSubmit)="createPoint()">
-    <label for="WhyPointInput">
+    <label for="ClaimTitleInput">
         <ro-yes-no-toggle (changed)="selectedType = $event"></ro-yes-no-toggle><span id="PointTypeString"> {{200 - newPoint.title.length}}/200</span>
     </label>
     <textarea
-        id="WhyPointInput"
+        id="ClaimTitleInput"
         name="main-point-detail"
-        class="form-control"
-        rows="6"
+        class="WhyPointInput form-control"
+        rows="4"
         style="resize: none;"
         minlength="10"
         maxlength="200"
         placeholder="What is your claim? NOTE: Claims do not contain links, and just state 1 thing. Good claims also restate the question. Example: For question, 'Are cats good pets?', a good claim would be, 'Yes, because its fun to watch cats chase a laser!'"
         [(ngModel)]="newPoint.title"
         required
+        >
+    </textarea>
+    <textarea
+        name="main-point-detail"
+        class="WhyPointInput form-control"
+        rows="6"
+        style="resize: none;"
+        maxlength="200"
+        placeholder="Optional: Add any necessary details here. Don't add any supporting evidence though.  You can add your own support after your claim is posted."
+        [(ngModel)]="newPoint.detail"
         >
     </textarea>
     <button id="PostPointBtn" type="submit" class="btn btn-sm btn-success">

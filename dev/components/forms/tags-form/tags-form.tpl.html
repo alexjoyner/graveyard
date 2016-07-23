@@ -1,11 +1,12 @@
 <div id="TagsForm">
 	<div id="TagsContainer">
 		<h1 *ngIf="tagsFormHeader">{{tagsFormHeader}}</h1>
+		<p><b>Note: Tags are used to help users easier find relevant questions, make sure to use very general/relevant tags so that your question can be found easier.</b></p>
 		<div class="input-group">
             <div class="input-group-addon">
-                Search {{typeString}}s
+                Search
             </div>
-            <input type="text" class="form-control" id="exampleInputAmount"placeholder="Optional" #searchTagText (keyup)="searchTags(searchTagText.value)" autofocus="true" />
+            <input type="text" class="form-control" id="exampleInputAmount" placeholder="{{typeString}}s" #searchTagText (keyup)="searchTags(searchTagText.value)" autofocus="true" />
         </div>
 		<div id="SearchTagsContainer">
 	        <h4>
