@@ -44,4 +44,32 @@ router.post('/create',
         var result = req.roInfo;
         res.status(200).send(result.rows[0]).end();
 });
+// Add tag to post
+router.post('/addToPost',
+    /*Token valid: Get search data
+        1) Attach query string*/
+    require('./queries/add_tag_to_post.js'),
+    /*  2) Query the attached string*/
+    sql_query.commonQuery,
+    /*  3) Query was successful, do something
+                with roInfo*/
+    function(req, res) {
+        req.roDone();
+        var result = req.roInfo;
+        res.status(200).send({success: true}).end();
+});
+
+// ################### DELETES ####################
+// Delete follow to unfollow
+router.delete('/removeTagFromPost/:tagId/:postId',
+    //1) Attach query string*/
+    require('./queries/delete_aka_removeTag.js'),
+    /*  2) Query the attached string*/
+    sql_query.commonQuery,
+    /*  3) Query was successful, do something
+     with roInfo*/
+    function(req, res) {
+        req.roDone();
+        res.status(200).send({'success': true}).end();
+    });
 module.exports = router;

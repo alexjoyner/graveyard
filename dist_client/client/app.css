@@ -195,6 +195,8 @@ html {
     font-weight: 200; }
   #Home-Container .TopicsPane h4 {
     font-weight: 200; }
+  #Home-Container .TopicsPane a {
+    cursor: pointer; }
 
 #Question-Container #Question-Header-Title, #Question-Container #Question-Header-Detail {
   font-weight: 200; }
@@ -495,10 +497,11 @@ input[type="text"]#QuestionInput {
   .vote-cell .downvote-btn {
     display: inherit; }
 
-.NewFavorite:hover {
+.ro-favorites-cell a {
+  cursor: pointer; }
+.ro-favorites-cell .NewFavorite:hover {
   background-color: #b2ffc3; }
-
-.favorite-remove:hover {
+.ro-favorites-cell .favorite-remove:hover {
   cursor: pointer; }
 
 #AlertBar {

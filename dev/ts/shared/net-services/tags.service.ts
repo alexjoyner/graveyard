@@ -46,5 +46,37 @@ export class TagsService {
 		return res;
 
 	}
+	addTagToPost(tagId: number, postId: number): Observable<any> {
+		const body = JSON.stringify({
+			tag_id: tagId,
+			post_id: postId
+		});
+		const headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		headers.append('x-access-token',
+			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
+		let res = this._http.post(
+			this.endpoint +
+			'/tags/addToPost',
+			body,
+			{ headers: headers })
+			.map(res => res.json());
+		return res;
+
+	}
 	/* DELETE */
+	removeTagFromPost(
+		tag_id: number,
+		post_id: number){
+		const headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		return this._http.delete(
+			this.endpoint +
+			'/tags/removeTagFromPost/'
+			+tag_id
+			+'/'
+			+post_id,
+			{ headers: headers })
+			.map(res => res.json());
+	}
 }
