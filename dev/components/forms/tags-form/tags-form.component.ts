@@ -16,6 +16,7 @@ export class TagsFormComponent implements OnInit{
     @Input() singlesMode: boolean;
 	private searchType: number;
 	private returnedTags: [{ id: number, tag_name: string }];
+	private cantCreate: boolean;
 	constructor(
 		private _tagsService: TagsService,
 		private _routeParams: RouteParams) {
@@ -56,7 +57,7 @@ export class TagsFormComponent implements OnInit{
 			.subscribe(
 			data => {
 				console.log('CREATED TAG: ', data);
-				this.acceptedTags.push(data);
+				this.acceptTag(data)
 			})
 	}
 	removeTag(tag: { _id: number, tag_name: string }) {
@@ -80,6 +81,11 @@ export class TagsFormComponent implements OnInit{
 		this._tagsService.getTags(searchTerm, this.type)
 			.subscribe(
 			data => {
+				for(var i = 0; i < data.length; i++){
+					if(data[i].tag_name.toLowerCase() === searchTerm.toLowerCase()){
+						this.cantCreate = true;
+					}
+				}
 				this.returnedTags = data;
 			},
 			err => console.log('Error: ', err)

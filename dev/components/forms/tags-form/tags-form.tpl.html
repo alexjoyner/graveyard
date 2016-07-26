@@ -19,7 +19,7 @@
                     </i>
                 </button>
 	        </div>
-	        <p *ngIf="searchTagText.value.length> 0" class="ro-tag">
+	        <p *ngIf="searchTagText.value.length> 0 && !cantCreate" class="ro-tag">
 	            <span class="ro-tagName">CREATE {{typeString | uppercase}}: {{ searchTagText.value }}</span>
 	            <button class="btn btn-sm btn-success pull-right" (click)="createTag(searchTagText.value); searchTagText.value = ''">
 	                <i class="fa fa-plus">
