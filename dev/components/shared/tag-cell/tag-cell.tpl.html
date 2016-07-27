@@ -9,7 +9,7 @@
     </h4>
     <button class="btn btn-sm btn-info"
             (click)="editMode = true"
-            *ngIf="!editMode">
+            *ngIf="!editMode && postType === 1">
         <i class="fa fa-edit"></i>
     </button>
     <br>

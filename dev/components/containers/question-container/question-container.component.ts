@@ -24,12 +24,14 @@ export class QuestionContainerComponent{
 	private _type: string;
 	private questionAvailable: boolean;
 	private stackedMode: boolean = false;
+	private recentViewed: any[];
 	constructor(
 		private _routeParams: RouteParams,
 		private _postsService: PostsService,
 		private _usersService: UsersService,
 		private _authService: AuthService,
 		private _router: Router) {
+		this.recentViewed = this._usersService.recentPages;
 		this._questionId = +this._routeParams.get('id');
 		_postsService.getPost(''+this._questionId).
 			subscribe(
@@ -41,6 +43,9 @@ export class QuestionContainerComponent{
 				},
 				err => console.log('Err: ', err)
 			);// Get the posts associated with this id
+	}
+	goToQuestion(id : number, title : string){
+		this._usersService.goToQuestion(id, title);
 	}
 	deleteQuestion(questionId: number) {
 		if (this._authService.checkTokenExists()) {

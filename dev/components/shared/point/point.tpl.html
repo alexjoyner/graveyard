@@ -4,7 +4,7 @@
          *ngIf="!point.editPoint || point.editPoint === false">
         <h4 class="text-center"
             style="padding-left: 10px;">
-            <a [routerLink]="['Question', {id: point._id}]">{{point.title}}</a>
+            <a (click)="goToQuestion(point._id, point.title)">{{point.title}}</a>
         </h4>
         <p style="text-align: left; padding-left: 10px;">
             {{point.detail}}
@@ -15,7 +15,7 @@
         <h5 class="text-center">Insufficient Evidence</h5>
         <h5 class="text-center">
             <button class="btn btn-info btn-sm"
-                    [routerLink]="['Question', {id: point._id}]">
+                    (click)="goToQuestion(point._id, point.title)">
                 View Evidence
             </button>
         </h5>

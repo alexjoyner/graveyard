@@ -29,6 +29,9 @@ export class SupportPointComponent implements OnInit {
                 private _routeParams:RouteParams) {
     };
 
+    goToQuestion(id : number, title : string){
+        this._usersService.goToQuestion(id, title);
+    }
     ngOnInit():any {
         console.log(this.support.source_type_id)
         switch (this.support.source_type_id) {

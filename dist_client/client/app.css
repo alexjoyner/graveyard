@@ -200,12 +200,22 @@ html {
 
 #Question-Container #Question-Header-Title, #Question-Container #Question-Header-Detail {
   font-weight: 200; }
-#Question-Container .TopicsPane {
+#Question-Container .ModesPane {
   border: 1px solid #dddddd;
   padding: 8px;
   width: 200px;
   position: fixed;
   left: 85%; }
+  #Question-Container .ModesPane h3 {
+    font-weight: 200; }
+  #Question-Container .ModesPane h4 {
+    font-weight: 200; }
+#Question-Container .TopicsPane {
+  border: 1px solid #dddddd;
+  padding: 8px;
+  width: 200px;
+  position: fixed;
+  left: 2%; }
   #Question-Container .TopicsPane h3 {
     font-weight: 200; }
   #Question-Container .TopicsPane h4 {

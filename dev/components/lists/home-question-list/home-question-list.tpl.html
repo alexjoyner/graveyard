@@ -8,7 +8,7 @@
         <div class="HomeQuestion">
             <div class="content-container">
                 <h3 class="text-center">
-                    <a [routerLink]="['Question', {id: question._id}]">{{question.title}}</a>
+                    <a (click)="goToQuestion(question._id, question.title)">{{question.title}}</a>
                 </h3>
                 <h5 class="text-center">
                     {{question.detail}}
@@ -20,7 +20,7 @@
                 <h5 class="text-center">Gathering Claims / Evidence</h5>
                 <h5 class="text-center">
                     <button class="btn btn-info btn-sm"
-                            [routerLink]="['Question', {id: question._id}]">
+                            (click)="goToQuestion(question._id, question.title)">
                         Join the discussion
                     </button>
                 </h5>

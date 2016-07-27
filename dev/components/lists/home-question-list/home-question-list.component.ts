@@ -25,10 +25,12 @@ export class  HomeQuestionListComponent{
 	private dataReturned: boolean = false;
 	constructor(
 		private _postsService: PostsService,
-		private _router: Router,
 		private _authService: AuthService,
 		private _usersService: UsersService,
 		private _globalHandler: GlobalHandlerService) {
+	}
+	goToQuestion(id : number, title : string){
+		this._usersService.goToQuestion(id, title);
 	}
 	deleteQuestion(question: Post, event: MouseEvent, qIndex: number){
 		event.stopPropagation();

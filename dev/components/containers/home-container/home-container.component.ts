@@ -8,6 +8,8 @@ import {NavbarComponent} from "../../shared/navbar/navbar.component";
 import {FavoritesCellComponent} from "../../shared/favorites-cell/favorites-cell.component";
 import {SmoothScroll} from "../../../ts/shared/special-services/smooth-scroll.service";
 import {WINDOW_PROVIDERS} from "../../../ts/shared/special-services/window.service";
+import {UsersService} from "../../../ts/shared/net-services/users.service";
+import {Router} from "angular2/router";
 declare function require(name: string);
 
 
@@ -23,14 +25,19 @@ export class HomeContainerComponent implements OnInit{
 	private startQuestion: boolean = false;
 	private questions: Post[];
 	private showCreateQuestion: boolean
-	private headerText: string = 'Hot posts on MataTruth right now'
+	private headerText: string = 'Hot posts on MataTruth right now';
+	private recentViewed: any[];
 	constructor(
 		private _authService: AuthService,
 		private _postsService: PostsService,
-		private _smoothService: SmoothScroll){
+		private _smoothService: SmoothScroll,
+		private _usersService: UsersService){
 	};
-
+	goToQuestion(id : number, title : string){
+		this._usersService.goToQuestion(id, title);
+	}
 	ngOnInit(): any {
+		this.recentViewed = this._usersService.recentPages;
 		// When the page loads, Get questions for the user
 		if(this._authService.checkTokenExists()){
 			this._postsService.getHotPosts()

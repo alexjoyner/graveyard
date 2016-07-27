@@ -12,6 +12,7 @@ import {TagsFormComponent} from "../../forms/tags-form/tags-form.component";
     providers: [TagsService]
 })
 export class TagCellComponent{
+    @Input() postType: number;
 	@Input() tags: [{tag_name: string, _id: number}];
     private returnedTags: any[] = [];
     constructor(

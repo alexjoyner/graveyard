@@ -32,6 +32,10 @@ export class MainPointComponent {
 				(this.point['editPoint']) ? !this.point['editQuestion'] : true;
 		}
 	}
+
+	goToQuestion(id : number, title : string){
+		this._usersService.goToQuestion(id, title);
+	}
 	deletePoint(){
 		let answer: boolean = confirm(`Are you sure you want to delete this main point? This action can't be undone`);
 		if (answer === true) {

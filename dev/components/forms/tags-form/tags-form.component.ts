@@ -84,6 +84,8 @@ export class TagsFormComponent implements OnInit{
 				for(var i = 0; i < data.length; i++){
 					if(data[i].tag_name.toLowerCase() === searchTerm.toLowerCase()){
 						this.cantCreate = true;
+					}else{
+						this.cantCreate = false;
 					}
 				}
 				this.returnedTags = data;

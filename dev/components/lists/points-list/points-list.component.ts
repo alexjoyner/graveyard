@@ -6,6 +6,7 @@ import {CreatePointFormComponent} from "../../forms/create-point-form/create-poi
 import {RouteParams} from "angular2/router";
 import {AddSupportComponent} from "../../forms/create-support-form/create-support-form.component";
 import {SupportPointComponent} from "../../shared/support-point/support-point.component";
+import {UsersService} from "../../../ts/shared/net-services/users.service";
 declare function require(name: string);
 declare function io(url: string);
 interface Socket {
@@ -29,7 +30,6 @@ export class PointsListComponent implements OnInit{
     private pointsTypeText: string;
     
     constructor(
-        private _routeParams: RouteParams
     ){
     }
     ngOnInit():any {

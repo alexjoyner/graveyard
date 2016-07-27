@@ -14,7 +14,7 @@ module.exports = function (passport) {
         passwordField: 'password',
         passReqToCallback: true
     }, function (req, email, password, done) {
-        process.nextTick(function () {
+        process.nextTick(function (){
             //this initializes a connection pool
             //it will keep idle connections open for a (configurable) 30 seconds
             //and set a limit of 10 (also configurable)

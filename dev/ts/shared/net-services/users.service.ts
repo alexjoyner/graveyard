@@ -5,14 +5,46 @@ import {Observable} from 'rxjs/Observable';
 import {Http, Headers} from 'angular2/http';
 import {Config} from '../../config/config';
 import {GlobalHandlerService} from '../special-services/globalHandler.service';
+import {Router} from "angular2/router";
 @Injectable()
 export class UsersService {
 	private endpoint: string = Config.endpoint;
 	public profile: User = undefined;
 	public showTut: boolean = false;
+	public recentPages = [];
 	constructor(
 		private _http: Http,
-		private _globalHandlerService: GlobalHandlerService) { }
+		private _globalHandlerService: GlobalHandlerService,
+		private _router: Router) { }
+	goToQuestion(id: number, title: string): void {
+		/* Logic to set recent pages as a user navigates between questions */
+		let found: boolean = false;
+		let index;
+		/* Loop through all of the recent pages*/
+		for(var i = 0; i < this.recentPages.length; i++){
+			/* If the question is already in recently viewed, tag it as found*/
+			if(this.recentPages[i].id === id){
+				found = true;
+				index = i;
+			}
+		}
+		/* If the question was found, splice it out and bring it to the front of recentViewed*/
+		if(found){
+			console.log('Step 1');
+			this.recentPages.splice(index, 1);
+			this.recentPages.unshift({'id': id, 'title': title});
+		}else
+		/* If it wasn't found, but there isn't more space, pull out the last thing and add new*/
+		if(!found && this.recentPages.length >= 10){
+			console.log('Step 2');
+			this.recentPages.splice(this.recentPages.length - 1, 1);
+			this.recentPages.unshift({'id': id, 'title': title});
+		}else{ /* If the question wasn't found, add it*/
+			console.log('Step 3');
+			this.recentPages.unshift({'id': id, 'title': title});
+		}
+		this._router.navigate(['Question', {'id': id}]);
+	};
 	/* GET */
 	getProfile(): Observable<any> {
 		const headers = new Headers();

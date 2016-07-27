@@ -22,6 +22,14 @@
                     <u>Your favorite places and topics</u>
                 </h4>
                 <favorites-cell (getQuestionSet)="getQuestionsByTag($event)"></favorites-cell>
+                <h4>
+                    <u>Recently Viewed</u>
+                </h4>
+                <ul class="list-group">
+                    <li class="list-group-item" *ngFor="#recView of recentViewed">
+                        <a (click)="goToQuestion(recView.id, recView.title)">{{recView.title}}</a>
+                    </li>
+                </ul>
             </div>
         </div>
         <div class="col col-md-6">
