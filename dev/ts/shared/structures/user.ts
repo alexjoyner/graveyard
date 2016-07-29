@@ -3,7 +3,6 @@ export class User {
 	email: string;
 	password: string;
 	votes: {
-		_id: number,
 		post_id: number,
 		vote_type_id: number
 	}[];

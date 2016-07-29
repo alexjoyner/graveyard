@@ -43,6 +43,8 @@ export class VoteCellComponent {
                         this.score += data.modAmount
                         if (this.indexOfVote) {
                             this._usersService.profile.votes[this.indexOfVote].vote_type_id = data.modTo;
+                        }else{
+                            this._usersService.profile.votes.push({'post_id': this.sourceId, 'vote_type_id': data.modTo});
                         }
                         this.upVoted = false;
                         this.downVoted = false;

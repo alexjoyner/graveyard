@@ -1,29 +1,30 @@
-<div *ngIf="!undoVoteMode"><p>Vote! {{whyVoteText}}: </p>
-    <div class="vote-cell">
-        <button class="upvote-btn btn btn-sm"
-                (click)="vote(1, $event)"
-                [ngClass]="{'btn-info': upVoted, 'btn-default': !upVoted}">
+<p *ngIf="!undoVoteMode">Vote! {{whyVoteText}}: </p>
+<div class="vote-cell"
+     *ngIf="!undoVoteMode">
+    <button class="upvote-btn btn btn-sm"
+            (click)="vote(1, $event)"
+            [ngClass]="{'btn-info': upVoted, 'btn-default': !upVoted}">
         <span>
             <i *ngIf="upVoted"
                class="glyphicon glyphicon-ok"></i> {{upvoteText}}
         </span>
-            <span class="score">
+        <span class="score">
             {{score}}
         </span>
-        </button>
-        <button class="downvote-btn btn btn-sm"
-                (click)="vote(2, $event)"
-                style="display: inherit;"
-                [ngClass]="{'btn-info': downVoted, 'btn-default': !downVoted}">
+    </button>
+    <button class="downvote-btn btn btn-sm"
+            (click)="vote(2, $event)"
+            style="display: inherit;"
+            [ngClass]="{'btn-info': downVoted, 'btn-default': !downVoted}">
         <span>
             <i *ngIf="downVoted"
                class="glyphicon glyphicon-ok"></i> {{downvoteText}}
         </span>
-        </button>
-    </div>
+    </button>
 </div>
 
-<h5 class="text-center" *ngIf="undoVoteMode">
+<h5 class="text-center"
+    *ngIf="undoVoteMode">
     <button class="btn btn-warning btn-sm"
             (click)="vote(2, $event)">
         UNDO
