@@ -240,14 +240,15 @@ html {
   margin-bottom: 10px;
   min-height: 100px;
   max-width: 728px;
-  background-color: #fff; }
+  background-color: #fff;
+  animation-duration: 0.3s;
+  animation-name: popIn; }
   .HomeQuestion .deleteButton {
     float: right;
     margin: 10px;
     bottom: 0px; }
   .HomeQuestion .content-container {
-    padding: 20px 20px 0 20px;
-    margin-bottom: -60px; }
+    padding: 20px 20px 0 20px; }
 
 .HomeQuestionSubContent {
   padding-left: 10px;

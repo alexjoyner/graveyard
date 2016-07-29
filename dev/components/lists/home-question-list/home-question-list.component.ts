@@ -47,6 +47,14 @@ export class  HomeQuestionListComponent{
 			}
 		}
 	}
+	didDownVote(index: number){
+		this.questions[index]['downVoted'] = true;
+		this.questions[index]['didHide'] = true;
+	}
+	didUndoDownVote(index: number){
+		this.questions[index]['downVoted'] = false;
+		this.questions[index]['didHide'] = false;
+	}
 	stringToDate(string: string) {
 		return new Date(string);
 	}

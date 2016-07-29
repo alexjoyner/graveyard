@@ -31,7 +31,9 @@
                 (modVote)="support.ups=support.ups+$event"
                 [upvoteText]="'helpful'"
                 [downvoteText]="'not helpful'"
-                [whyVoteText]="'If this were true, it would be'">
+                [whyVoteText]="'If this were true, it would be'"
+                [upVoted]="support.upVoted"
+                [downVoted]="support.downVoted">
         </ro-vote-cell>
         <div class="ro-inline-items">
             <h4 class="ro-action-bar-item">

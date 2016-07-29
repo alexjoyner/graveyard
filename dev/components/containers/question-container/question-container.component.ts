@@ -11,11 +11,12 @@ import {PostsService} from '../../../ts/shared/net-services/posts.service';
 import {AuthService} from '../../../ts/shared/net-services/auth.service';
 import {FollowButtonComponent} from "../../shared/follow-button/follow-button.component";
 import {NavbarComponent} from "../../shared/navbar/navbar.component";
+import {VoteService} from "../../../ts/shared/net-services/vote-cell.service";
 declare function require(name: string);
 
 @Component({// Route no selector
     template: require('dev/components/containers/question-container/question-container.tpl.html'),
-    providers: [PostsService],
+    providers: [PostsService, VoteService],
     directives: [NavbarComponent, ROUTER_DIRECTIVES, VoteCellComponent, EditQuestionForm, PointsListComponent, TagCellComponent, FollowButtonComponent]
 })
 export class QuestionContainerComponent{
@@ -30,12 +31,14 @@ export class QuestionContainerComponent{
 		private _postsService: PostsService,
 		private _usersService: UsersService,
 		private _authService: AuthService,
-		private _router: Router) {
+		private _router: Router,
+		private _voteService: VoteService) {
 		this.recentViewed = this._usersService.recentPages;
 		this._questionId = +this._routeParams.get('id');
 		_postsService.getPost(''+this._questionId).
 			subscribe(
 				data => {
+					data['points'] = this._voteService.checkPostsUserVoted(data['points']);
 					this.question = data;
 					this.questionAvailable = true;
 					console.log('Saved question: ', this.question);

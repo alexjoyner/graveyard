@@ -5,43 +5,70 @@
 <div *ngIf="questions"
      [ngClass]="{'isInSearchModal': showInTut}">
     <div *ngFor="#question of questions; #i = index">
-        <div class="HomeQuestion">
-            <div class="content-container">
-                <h3 class="text-center">
-                    <a (click)="goToQuestion(question._id, question.title)">{{question.title}}</a>
-                </h3>
-                <h5 class="text-center">
-                    {{question.detail}}
-                </h5>
-                <br>
-                <h4 class="text-center">
-                    <u>Current Stage</u>
-                </h4>
-                <h5 class="text-center">Gathering Claims / Evidence</h5>
-                <h5 class="text-center">
-                    <button class="btn btn-info btn-sm"
-                            (click)="goToQuestion(question._id, question.title)">
-                        Join the discussion
-                    </button>
-                </h5>
+        <div *ngIf="!question.downVoted">
+            <div class="HomeQuestion">
+                <div class="content-container">
+                    <h3 class="text-center">
+                        <a (click)="goToQuestion(question._id, question.title)">{{question.title}}</a>
+                    </h3>
+                    <h5 class="text-center">
+                        {{question.detail}}
+                    </h5>
+                    <br>
+                    <h4 class="text-center">
+                        <u>Current Stage</u>
+                    </h4>
+                    <h5 class="text-center">Gathering Claims / Evidence</h5>
+                    <h5 class="text-center">
+                        <button class="btn btn-info btn-sm"
+                                (click)="goToQuestion(question._id, question.title)">
+                            Join the discussion
+                        </button>
+                    </h5>
+                </div>
+                <!-- <p class="text-center">
+                    Created on {{stringToDate(question.created_at) | date: 'yMMMd'}}
+                </p> -->
+                <div class="ro-action-bar">
+                    <ro-vote-cell
+                            class="ro-action-bar-item"
+                            [sourceId]="question._id"
+                            [score]="question.ups - question.dwns"
+                            (modVote)="question.ups = question.ups + $event"
+                            [upvoteText]="'important'"
+                            [downvoteText]="'unimportant'"
+                            [whyVoteText]="'This issue is'"
+                            [indexofvote]="question.indexOfVote"
+                            [upVoted]="question.upVoted"
+                            [downVoted]="question.downVoted"
+                            (didDownVote)="didDownVote(i)">
+                    </ro-vote-cell>
+                    <follow-button class="pull-right"
+                                   [postId]="question._id"></follow-button>
+                </div>
             </div>
-            <!-- <p class="text-center">
-                Created on {{stringToDate(question.created_at) | date: 'yMMMd'}}
-            </p> -->
-            <div class="ro-action-bar">
-                <ro-vote-cell
-                        class="ro-action-bar-item"
-                        [sourceId]="question._id"
-                        [score]="question.ups - question.dwns"
-                        (modVote)="question.ups = question.ups + $event"
-                        [upvoteText]="'important'"
-                        [downvoteText]="'unimportant'"
-                        [whyVoteText]="'This issue is'">
-                </ro-vote-cell>
-                <follow-button class="pull-right"
-                               [postId]="question._id"></follow-button>
+            <hr>
+        </div>
+        <div *ngIf="question.didHide">
+            <div class="HomeQuestion">
+                <div class="content-container">
+                    <h3 class="text-center">
+                        GOT IT! We wont show you this post again, unless the community says this is very important.
+                    </h3>
+                    <h5 class="text-center">
+                        <ro-vote-cell
+                                class="ro-action-bar-item"
+                                [sourceId]="question._id"
+                                [score]="0"
+                                [indexofvote]="question.indexOfVote"
+                                [upVoted]="question.upVoted"
+                                [downVoted]="question.downVoted"
+                                [undoVoteMode]="true"
+                                (didDownVote)="didUndoDownVote(i)">
+                        </ro-vote-cell>
+                    </h5>
+                </div>
             </div>
         </div>
-        <hr>
     </div>
 </div>

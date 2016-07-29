@@ -35,7 +35,7 @@ export class UsersService {
 			this.recentPages.unshift({'id': id, 'title': title});
 		}else
 		/* If it wasn't found, but there isn't more space, pull out the last thing and add new*/
-		if(!found && this.recentPages.length >= 10){
+		if(!found && this.recentPages.length >= 5){
 			console.log('Step 2');
 			this.recentPages.splice(this.recentPages.length - 1, 1);
 			this.recentPages.unshift({'id': id, 'title': title});
@@ -45,6 +45,7 @@ export class UsersService {
 		}
 		this._router.navigate(['Question', {'id': id}]);
 	};
+
 	/* GET */
 	getProfile(): Observable<any> {
 		const headers = new Headers();
