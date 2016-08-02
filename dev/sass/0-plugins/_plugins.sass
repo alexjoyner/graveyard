@@ -1,3 +1,23 @@
-@import 'bourbon/bourbon'
+@import 'bourbon/_bourbon.scss'
 @import 'neat/neat'
+// Importing the grid from bootstrap 4
+$enable-flex:               true
+$enable-grid-classes:       true
 
+
+
+// Importing bootstrap 4 components
+@import './bootstrap-4-dev/scss/_variables.scss'
+@import './bootstrap-4-dev/scss/_mixins.scss'
+@import './bootstrap-4-dev/scss/_normalize.scss'
+@import './bootstrap-4-dev/scss/_reboot.scss'
+// Everything above is the essentials before importing components
+@import './bootstrap-4-dev/scss/_grid.scss'
+//@import "bootstrap-4-dev/scss/_forms.scss"
+//@import "bootstrap-4-dev/scss/_navbar.scss"
+//@import "bootstrap-4-dev/scss/_nav.scss"
+//@import "bootstrap-4-dev/scss/_buttons.scss"
+//@import "bootstrap-4-dev/scss/_tags.scss"
+//@import "bootstrap-4-dev/scss/_list-group.scss"
+//@import "bootstrap-4-dev/scss/_input-group.scss"
+//@import "bootstrap-4-dev/scss/_utilities.scss"

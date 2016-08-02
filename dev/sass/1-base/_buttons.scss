@@ -1,34 +1,25 @@
-/* #{$all-buttons} {
-  appearance: none;
-  border: 0;
-  border-radius: $base-border-radius;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  font-family: $base-font-family;
-  font-size: $base-font-size;
-  -webkit-font-smoothing: antialiased;
-  font-weight: 600;
-  line-height: 1;
-  padding: $small-spacing $base-spacing;
-  text-decoration: none;
-  transition: background-color $base-duration $base-timing;
-  user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
-
-  &:hover,
-  &:focus {
-    background-color: shade($action-color, 20%);
-    color: #fff;
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-
-    &:hover {
-      background-color: $action-color;
-    }
-  }
-} */
+.ro-btn-success {
+  //@extend .btn-success
+}
+.ro-btn-primary {
+  //@extend .btn-primary
+}
+.ro-btn-secondary {
+  //@extend .btn-secondary
+}
+.ro-btn-info {
+  //@extend .btn-info
+}
+.mt-btn {
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  height: 35px;
+  width: 70px;
+  margin: auto 10px;
+  font-size: 1.2em;
+  outline: none;
+}
+.mt-btn-default {
+  background-color: $mt-main-link-hover-font-color;
+  color: $mt-dark-font-color;
+}

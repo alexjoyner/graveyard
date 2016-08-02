@@ -1,6 +1,6 @@
 <div *ngIf="points">
     <div class="row">
-        <div class="col-md-10">
+        <div class="col col-md-10">
             <div class="input-group">
                 <div class="input-group-addon">
                     Filter
@@ -13,8 +13,8 @@
                        maxlength="150"/>
             </div>
         </div>
-        <div class="text-center col-md-2">
-            <button class="btn btn-md btn-success"
+        <div class="text-center col col-md-2">
+            <button class="btn btn-md ro-btn-success"
                     (click)="showForm = true">
                 Add a new {{pointsTypeText}}
             </button>
@@ -22,7 +22,7 @@
     </div> <!--Create point button and search points bar-->
     <div class="row"
          *ngIf="!stackedMode">
-        <div class="col-md-6">
+        <div class="col col-md-6">
             <div [attr.id]="'point' + i"
                  *ngFor="#point of points | roFilter: searchText; #i = index"
                  class="point"
@@ -39,7 +39,7 @@
                 </ro-support-point>
             </div> <!--  Looping through yess -->
         </div>
-        <div class="col-md-6">
+        <div class="col col-md-6">
             <div [attr.id]="'point' + i"
                  *ngFor="#point of points | roFilter: searchText; #i = index"
                  class="point">
@@ -58,7 +58,7 @@
     </div>
     <!--THIS WAS JUST A TEST OF A DIFFERENT TYPE OF SORTING-->
     <div *ngIf="stackedMode" class="row">
-        <div class="col col-md-6 col-md-offset-3"><div [attr.id]="'point' + i"
+        <div class="col col-md-6 offset-md-3"><div [attr.id]="'point' + i"
              *ngFor="#point of points | roFilter: searchText; #i = index"
              class="point"
         >
@@ -85,7 +85,7 @@
         <h2>
             This question has no {{pointsTypeText}}s:
         </h2>
-        <button class="btn btn-lg btn-success"
+        <button class="btn btn-lg ro-btn-success"
                 (click)="showForm = true">
             ADD A {{pointsTypeText | uppercase}}!!!
         </button>

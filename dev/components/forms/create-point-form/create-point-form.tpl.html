@@ -1,4 +1,4 @@
-<button class="btn btn-default ModalClose" (click)="onCancel()">
+<button class="btn ro-btn-secondary ModalClose" (click)="onCancel()">
     Close
 </button>
 <form id="CreatePointForm" (ngSubmit)="createPoint()">
@@ -8,9 +8,8 @@
     <textarea
         id="ClaimTitleInput"
         name="main-point-detail"
-        class="WhyPointInput form-control"
+        class="create-point-input"
         rows="4"
-        style="resize: none;"
         minlength="10"
         maxlength="200"
         placeholder="What is your claim? NOTE: Claims do not contain links, and just state 1 thing. Good claims also restate the question. Example: For question, 'Are cats good pets?', a good claim would be, 'Yes, because its fun to watch cats chase a laser!'"
@@ -20,15 +19,14 @@
     </textarea>
     <textarea
         name="main-point-detail"
-        class="WhyPointInput form-control"
+        class="create-point-input"
         rows="6"
-        style="resize: none;"
         maxlength="200"
         placeholder="Optional: Add any necessary details here. Don't add any supporting evidence though.  You can add your own support after your claim is posted."
         [(ngModel)]="newPoint.detail"
         >
     </textarea>
-    <button id="PostPointBtn" type="submit" class="btn btn-sm btn-success">
+    <button id="PostPointBtn" type="submit" class="btn btn-sm ro-btn-success">
         Post claim
     </button>
 </form>

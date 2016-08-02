@@ -4,7 +4,8 @@ body {
   font-size: $base-font-size;
   line-height: $base-line-height;
   -webkit-font-smoothing: antialiased;
-  font-weight: 300;
+  font-weight: 400;
+  background-color: $main-background-color;
 }
 
 p {
@@ -12,14 +13,28 @@ p {
 }
 
 a {
-  color: $action-color;
-  text-decoration: none;
-  transition: color $base-duration $base-timing;
-
-  &:active,
-  &:focus,
+  transition: color .4s;
+  color: #265C83;
+  &:link,
+  &:visited {
+    color: #265C83;
+  }
   &:hover {
-    color: shade($action-color, 25%);
+    color: #7FDBFF;
+    cursor: pointer;
+  }
+  &:active {
+    transition: color .3s;
+    color: #007BE6;
+  }
+}
+.ro-link-container {
+  &:hover {
+    cursor: pointer;
+    a {
+      color: #7FDBFF;
+      text-decoration: underline;
+    }
   }
 }
 

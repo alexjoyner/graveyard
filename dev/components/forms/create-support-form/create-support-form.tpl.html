@@ -1,8 +1,7 @@
-<button class="btn btn-default ModalClose" (click)="onCancel()">
+<button class="btn ro-btn-secondary ModalClose" (click)="onCancel()">
     Close
 </button>
 <form id="CreateSupportForm"
-      class="row"
       (ngSubmit)="createSupport()">
     <div id="Step1" *ngIf="newSupport.source_type_id === null">
         <div class="text-center">
@@ -114,12 +113,12 @@
             </textarea>
         <br/>
         <div id="Step3">
-            <button class="btn btn-sm btn-success"
+            <button class="btn btn-sm ro-btn-success"
                     (click)="newSupport.source_type_id = null;">
                 Cancel
             </button>
             <button type="submit"
-                    class="btn btn-sm btn-success"
+                    class="btn btn-sm ro-btn-success"
                     (click)="newSupport.point_type_id = 3;">
                 Add as Proof
             </button>

@@ -37,19 +37,19 @@
         </ro-vote-cell>
         <div class="ro-inline-items">
             <h4 class="ro-action-bar-item">
-                <span class="label"
+                <span class="tag"
                       [ngClass]="source_type_string">
                     {{source_type_string | uppercase}}
                 </span>
             </h4>
             <h4 class="ro-action-bar-item">
-                <span class="label"
+                <span class="tag"
                       [ngClass]="point_type_string">
                     {{point_type_string | uppercase}}
                 </span>
             </h4>
             <button type="button"
-                    class="ro-action-bar-item btn btn-xs btn-danger"
+                    class="ro-action-bar-item btn btn-sm btn-danger"
                     (click)="removeSupport(support._id)"
                     *ngIf="isOwner(support.owner_user_id)">
                 <i class="fa fa-close">

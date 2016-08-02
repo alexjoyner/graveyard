@@ -16,11 +16,11 @@ declare function require(name: string);
     selector: 'my-app',
     template: `
     	<ro-alert-bar></ro-alert-bar>
-        <div id="MobileAlert" class="visible-xs">
+        <!--<div id="MobileAlert" class="visible-xs">
             <div id="Content">
                 <h1>Site not yet optimized for mobile devices, please view the site on larger screen</h1>
             </div>
-        </div>
+        </div>-->
     	<div id="MainMetaTruthContainer">
     		<router-outlet></router-outlet>
     	</div>

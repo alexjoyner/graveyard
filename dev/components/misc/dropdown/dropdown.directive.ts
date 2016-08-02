@@ -6,11 +6,9 @@ import {ROUTER_DIRECTIVES, Router} from "angular2/router";
     selector: 'dropdown',
     template: `
     <br>
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="#value of values">
+    <li class="dropdown-content" *ngFor="#value of values">
         <a (click)="select(value)">{{value.title}}</a>
-      </li>
-    </ul>
+    </li>
   `,
     directives: [ROUTER_DIRECTIVES]
 })
@@ -22,7 +20,7 @@ export class DropdownComponent {
     value:string[];
 
     @Output()
-    valueChange: EventEmitter<any>;
+    valueChange:EventEmitter<any>;
 
     constructor() {
         this.valueChange = new EventEmitter();

@@ -1,46 +1,69 @@
+<ul id="MainNavBar">
+    <li class="nav-item nav-item-left  hidden-lg-down"
+        [routerLink]="['Home']">
+        <a href="/#">MetaTruth Alpha.11.4</a>
+    </li>
+    <li id="SearchInput"
+        class="dropdown">
+        <input type="text"
+               placeholder="Ask or Search"
+               (keyup)="searchStuff(MainSearchValue.value)"
+               #MainSearchValue/>
+        <button class="mt-btn mt-btn-default">Add</button>
+        <div class="dropdown-content"
+             *ngIf="dataSearched !== null">
+            <div *ngFor="#value of dataSearched"
+                 (click)="routeToPost(value._id); MainSearchValue.value = ''">
+                <a>{{value.title}}</a>
+            </div>
+        </div>
+    </li>
+    <li id="ProfileDropDown"
+        class="dropdown dropdown-hover nav-item-right  hidden-lg-down">
+        <a class="dropbtn"
+           [routerLink]="['Auth']"
+           *ngIf="!auth()">Alpha Testers Login/Register</a>
+        <a class="dropbtn"
+           [routerLink]="['Home']"
+           *ngIf="auth()">{{email}}</a>
+        <div class="dropdown-content">
+            <a href="#"
+               *ngIf="auth()"
+               (click)="logout()">Logout</a>
+        </div>
+    </li>
+    <li class="nav-item nav-item-right  hidden-lg-down"
+        (click)="toggleShowNotifs()">
+        <a href="#">Notifications</a>
+        <dropdown
+                id="NotifyDropdown"
+                *ngIf="showNotifs === true"
+                [values]="notifications"
+                (valueChange)="showNotifs === false; routeToPost($event.post_id);readNotif($event._id); "></dropdown>
+    </li>
+</ul>
+<!--
 <nav class="ro-main-nav">
     <a class="ro-navbar-logo"
-       [routerLink]="['Home']">
+       ">
         MetaTruth(v1.0 Alpha.11.4)
     </a>
     <form id="MainSearchBar"
-          class="navbar-form navbar-left"
+          class="form-inline pull-left"
           role="search">
         <div class="form-group">
             <input type="text"
                    class="form-control"
-                   placeholder="Search"
-                   (keyup)="searchStuff(MainSearchValue.value)"
-                   #MainSearchValue>
-            <dropdown *ngIf="dataSearched !== null"
-                      [values]="dataSearched"
-                      (valueChange)="routeToPost($event._id); MainSearchValue.value = ''"></dropdown>
+                   placeholder="Search">
         </div>
-    </form>
-    <form class="navbar-form navbar-left"
-          role="search">
         <button type="submit"
-                class="btn btn-default"
+                class="btn ro-btn-secondary"
                 (click)="startQuestion = !startQuestion">Ask a question
         </button>
     </form>
-    <ul>
-        <li class="ro-nav-item pull-right">
-            <a class="nav-link"
-               *ngIf="auth()"
-               (click)="logout()">Logout</a>
-        </li>
-        <li class="ro-nav-item pull-right">
-            <a class="nav-link"
-               [routerLink]="['Auth']"
-               *ngIf="!auth()">Alpha Testers Login/Register</a>
-            <a class="nav-link"
-               [routerLink]="['Home']"
-               *ngIf="auth()">{{email}}</a>
-        </li>
+    <ul class="pull-right">
         <li id="NotifButton"
-            class="ro-nav-item pull-right"
-            (click)="toggleShowNotifs()">
+            class="ro-nav-item">
             <a
                     class="nav-link"
                     *ngIf="auth()">
@@ -54,11 +77,24 @@
                     [values]="notifications"
                     (valueChange)="showNotifs === false; routeToPost($event.post_id);readNotif($event._id); "></dropdown>
         </li>
+        <li class="ro-nav-item">
+            <a class="nav-link"
+               [routerLink]="['Auth']"
+               *ngIf="!auth()">Alpha Testers Login/Register</a>
+            <a class="nav-link"
+               [routerLink]="['Home']"
+               *ngIf="auth()">{{email}}</a>
+        </li>
+        <li class="ro-nav-item">
+            <a class="nav-link"
+               *ngIf="auth()"
+               (click)="logout()">Logout</a>
+        </li>
     </ul>
 </nav>
-<!--                Misc
-    ==================================  -->
-<!-- Create Question modal -->
+&lt;!&ndash;                Misc
+    ==================================  &ndash;&gt;
+&lt;!&ndash; Create Question modal &ndash;&gt;
 <div class="ro-modal"
      *ngIf="startQuestion">
     <ro-create-question
@@ -66,4 +102,4 @@
             (close)="startQuestion = false; showQ_ToTut=false"
             (search)="null"
             (switchTags)="showQ_ToTut = false"></ro-create-question>
-</div>
+</div>-->

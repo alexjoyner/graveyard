@@ -1,5 +1,5 @@
 <button class="btn btn-sm"
         (click)="follow()"
-        [ngClass]="{'btn-info': !isFollowing, 'btn-default': isFollowing}">
+        [ngClass]="{'ro-btn-info': !isFollowing, 'ro-btn-secondary': isFollowing}">
     follow<span *ngIf="isFollowing">ing</span>
 </button>
