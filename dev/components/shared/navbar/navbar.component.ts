@@ -7,10 +7,9 @@ import {DropdownComponent} from "../../misc/dropdown/dropdown.directive";
 import {CreateQuestionFormComponent} from "../../forms/create-question-form/create-question-form.component";
 import {NotificationsService} from "../../../ts/shared/net-services/notifications.service";
 import {not} from "angular2/src/compiler/output/output_ast";
-declare function require(name:string);
 @Component({
     selector: 'ro-navbar',
-    template: require('dev/components/shared/navbar/navbar.tpl.html'),
+    template: require('./navbar.tpl.html'),
     directives: [ROUTER_DIRECTIVES, DropdownComponent, CreateQuestionFormComponent, ROUTER_DIRECTIVES],
     providers: [AuthService, PostsService, NotificationsService]
 })

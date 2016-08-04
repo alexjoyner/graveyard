@@ -6,11 +6,11 @@ import {EditPointComponent} from '../../forms/edit-point-form/edit-point-form.co
 import { UsersService} from '../../../ts/shared/net-services/users.service';
 import {ROUTER_DIRECTIVES} from "angular2/router";
 import {FollowButtonComponent} from "../follow-button/follow-button.component";
-declare function require(name: string);
+
 
 @Component({
     selector: 'ro-main-point',
-    template: require('dev/components/shared/point/point.tpl.html'),
+    template: require('./point.tpl.html'),
     directives: [VoteCellComponent, EditPointComponent, ROUTER_DIRECTIVES, FollowButtonComponent]
 })
 export class MainPointComponent {
@@ -31,10 +31,6 @@ export class MainPointComponent {
 			this.point['editPoint'] =
 				(this.point['editPoint']) ? !this.point['editQuestion'] : true;
 		}
-	}
-
-	goToQuestion(id : number, title : string){
-		this._usersService.goToQuestion(id, title);
 	}
 	deletePoint(){
 		let answer: boolean = confirm(`Are you sure you want to delete this main point? This action can't be undone`);

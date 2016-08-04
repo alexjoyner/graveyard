@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="text-center col col-md-2">
-            <button class="btn btn-md ro-btn-success"
+            <button class="mt-btn mt-btn-success"
                     (click)="showForm = true">
                 Add a new {{pointsTypeText}}
             </button>
@@ -27,23 +27,28 @@
                  *ngFor="#point of points | roFilter: searchText; #i = index"
                  class="point"
             >
-                <ro-main-point
+
+                <mt-post [post]="point"
+                         *ngIf="point.point_type_id === 1 || point.point_type_id === 3"></mt-post>
+                <!--<ro-main-point
                         *ngIf="point.point_type_id === 1"
                         [point]="point"
                         (removed)="removePoint(i)">
-                </ro-main-point>
-                <ro-support-point
+                </ro-main-point>-->
+                <!--<ro-support-point
                         *ngIf="point.point_type_id === 3"
                         [support]="point"
                         (removed)="removePoint(i)">
-                </ro-support-point>
+                </ro-support-point>-->
             </div> <!--  Looping through yess -->
         </div>
         <div class="col col-md-6">
             <div [attr.id]="'point' + i"
                  *ngFor="#point of points | roFilter: searchText; #i = index"
                  class="point">
-                <ro-main-point
+                <mt-post [post]="point"
+                         *ngIf="point.point_type_id === 2 || point.point_type_id === 4"></mt-post>
+                <!--<ro-main-point
                         *ngIf="point.point_type_id === 2"
                         [point]="point"
                         (removed)="removePoint(i)">
@@ -52,7 +57,7 @@
                         *ngIf="point.point_type_id === 4"
                         [support]="point"
                         (removed)="removePoint(i)">
-                </ro-support-point>
+                </ro-support-point>-->
             </div> <!-- Looping through for nos -->
         </div>
     </div>
@@ -62,11 +67,12 @@
              *ngFor="#point of points | roFilter: searchText; #i = index"
              class="point"
         >
-            <ro-main-point
+            <mt-post [post]="point"></mt-post>
+            <!--<ro-main-point
                     *ngIf="point.point_type_id === 1 || point.point_type_id === 2"
                     [point]="point"
                     (removed)="removePoint(i)">
-            </ro-main-point>
+            </ro-main-point>-->
             <ro-support-point
                     *ngIf="point.point_type_id === 3 || point.point_type_id === 4"
                     [support]="point"

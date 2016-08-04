@@ -2,92 +2,13 @@
 <div id="Question-Container"
      class="row">
     <div class="col col-md-2">
-        <div class="TopicsPane">
-            <h3 class="text-center">
-                Recently Viewed
-            </h3>
-            <ul class="list-group">
-                <li class="list-group-item ro-link-container"
-                    *ngFor="#recView of recentViewed"
-                    (click)="goToQuestion(recView.id, recView.title)">
-                    <a>{{recView.title}}</a>
-                </li>
-            </ul>
-        </div>
+        <mt-recently-viewed></mt-recently-viewed>
     </div>
     <div
             class="col col-md-8"
             *ngIf="questionAvailable">
-        <div id="Question-Header"
-             *ngIf="!question.editQuestion || question.editQuestion === false">
-            <ro-tag-cell
-                    [tags]="question.tags"
-                    [postType]="question.post_type_id"></ro-tag-cell>
-            <h2 id="Question-Header-Title"
-                class="text-center">
-                <span *ngIf="question.post_type_id !== 1"><b>Is this valid?</b></span> {{question.title}}
-                <span [hidden]="question.title !== ''">Loading main question</span>
-            </h2>
-            <h5 id="Question-Header-Detail"
-                class="text-center">
-                {{question.detail}}
-            </h5>
-            <!-- <p class="text-center" *ngIf="question.owner_user_id !== ''">
-                Created by {{question.owner_user_id}} on {{stringToDate(question.created_at)}}
-            </p> -->
-        </div>
-        <ro-edit-question-form
-                *ngIf="question.editQuestion && question.editQuestion === true"
-                [myQuestion]="question"
-                [editMode]="true"
-                (edited)="question.editQuestion = false">
-        </ro-edit-question-form>
-        <div class="question-edit-cell-container">
-            <div class="question-edit-cell">
-                <ro-vote-cell
-                        class="ro-action-bar-item"
-                        [sourceId]="question._id"
-                        [score]="question.ups - question.dwns"
-                        (modVote)="question.ups = question.ups + $event"
-                        [upvoteText]="(question.post_type_id === 1)? 'important': 'helpful'"
-                        [downvoteText]="(question.post_type_id === 1)? 'unimportant': 'not helpful'"
-                        [whyVoteText]="(question.post_type_id === 1)? 'This issue is': 'If this were true, it would be'">
-                </ro-vote-cell>
-                <button class="ro-action-bar-item btn btn-sm ro-btn-info"
-                        (click)="editQuestion($event)"
-                        *ngIf="question.title && isOwner(question.owner_user_id) && !question.editQuestion || question.editQuestion === false">
-                    <i class="fa fa-edit">
-                    </i>
-                </button>
-                <button class="ro-action-bar-item btn btn-sm btn-danger"
-                        (click)="editQuestion($event, true)"
-                        *ngIf="question.editQuestion && question.editQuestion === true">
-                    Cancel
-                </button>
-                <button class="ro-action-bar-item btn btn-sm btn-danger"
-                        (click)="deleteQuestion(question._id)"
-                        *ngIf="isOwner(question.owner_user_id) && !question.editQuestion">
-                    <i class="fa fa-close">
-                    </i>
-                </button>
-                <follow-button class="ro-action-bar-item"
-                               [postId]="question._id"></follow-button>
-            </div>
-            <br class="clear">
-        </div>
-        <!-- Tab Bar: Tab to question list type -->
-        <!-- <ul class="nav nav-tabs">
-            <li role="presentation" [ngClass]="{active: _type === 'yes'}">
-                <a (click)="showPoints = question['yess']; _type = 'yes'">
-                    Yes
-                </a>
-            </li>
-            <li role="presentation" [ngClass]="{active: _type === 'no'}">
-                <a (click)="showPoints = question['nos']; _type = 'no'">
-                    NO
-                </a>
-            </li>
-        </ul> -->
+        <mt-question-header
+            [question]="question"></mt-question-header>
         <ro-points-list
                 [points]="question.points"
                 [questionType]="question.post_type_id"

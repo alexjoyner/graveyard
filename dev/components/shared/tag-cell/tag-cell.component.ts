@@ -1,13 +1,11 @@
 import {DropdownComponent} from "../../misc/dropdown/dropdown.directive";
-declare function require(name: string);
-// Angular Imports
 import {Component, Input} from 'angular2/core';
 import {TagsService} from "../../../ts/shared/net-services/tags.service";
 import {TagsFormComponent} from "../../forms/tags-form/tags-form.component";
 
 @Component({
-    selector: 'ro-tag-cell',
-    template: require('dev/components/shared/tag-cell/tag-cell.tpl.html'),
+    selector: 'mt-tag-cell',
+    template: require('./tag-cell.tpl.html'),
     directives: [DropdownComponent, TagsFormComponent],
     providers: [TagsService]
 })

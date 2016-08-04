@@ -1,15 +1,15 @@
-declare function require(name:string);
+import {Post} from "../../../ts/shared/structures/post";
 import {Component, Input, Output, EventEmitter, OnInit} from 'angular2/core';
 import {VoteService} from '../../../ts/shared/net-services/vote-cell.service';
 import {AuthService} from '../../../ts/shared/net-services/auth.service';
 import {UsersService} from '../../../ts/shared/net-services/users.service';
 @Component({
-    selector: 'ro-vote-cell',
-    template: require('dev/components/shared/vote-cell/vote-cell.tpl.html'),
+    selector: 'mt-vote-cell',
+    template: require('./vote-cell.tpl.html'),
     providers: [VoteService]
-    //styleUrls: ['styles/vote-cell.css']
 })
 export class VoteCellComponent {
+    @Input() post: Post;
     @Input() sourceType:string;
     @Input() sourceId:number;
     @Input() score:number;

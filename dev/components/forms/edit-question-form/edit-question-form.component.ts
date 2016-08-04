@@ -1,4 +1,3 @@
-declare function require(name: string);
 import {Component, Input, Output, OnInit, EventEmitter} from 'angular2/core';
 import {Post} from '../../../ts/shared/structures/post';
 import {PostsService} from '../../../ts/shared/net-services/posts.service';
@@ -6,7 +5,7 @@ import { Router } from 'angular2/router';
 import { UsersService} from '../../../ts/shared/net-services/users.service';
 @Component({
     selector: 'ro-edit-question-form',
-    template: require('dev/components/forms/edit-question-form/edit-question-form.tpl.html'),
+    template: require('./edit-question-form.tpl.html'),
     providers: [PostsService]
 })
 export class EditQuestionForm implements OnInit{

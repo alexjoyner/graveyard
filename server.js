@@ -25,7 +25,6 @@ if (config.ENV !== 'production') {
     liveServer.watch([__dirname + '/server/**.*', __dirname + '/dist_client/**.*']);
 }
 
-
 // Route handler
 // --------------------------------
 require('./server/routes/routes.js')(app);

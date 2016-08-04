@@ -2,11 +2,10 @@ import {Component, Input, OnInit} from "angular2/core";
 import {FollowService} from "../../../ts/shared/net-services/follow.service";
 import {AuthService} from "../../../ts/shared/net-services/auth.service";
 import {UsersService} from "../../../ts/shared/net-services/users.service";
-declare function require(name:string);
 
 @Component({
-    'selector': 'follow-button',
-    'template': require('dev/components/shared/follow-button/follow-button.tpl.html'),
+    'selector': 'mt-follow-button',
+    'template': require('./follow-button.tpl.html'),
     'providers': [FollowService]
 })
 

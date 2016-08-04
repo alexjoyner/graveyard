@@ -7,6 +7,7 @@ import {Config} from '../../config/config';
 import {AuthService} from './auth.service';
 import {GlobalHandlerService} from '../special-services/globalHandler.service';
 import {UsersService} from "./users.service";
+
 @Injectable()
 export class PostsService {
 	private endpoint: string = Config.endpoint;

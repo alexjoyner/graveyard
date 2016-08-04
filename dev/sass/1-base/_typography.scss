@@ -1,11 +1,11 @@
 body {
-  color: $base-font-color;
+  color: $mt-dark-font-color;
   font-family: $base-font-family;
   font-size: $base-font-size;
   line-height: $base-line-height;
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
-  background-color: $main-background-color;
+  background-color: $mt-main-background-color;
 }
 
 p {
@@ -13,28 +13,10 @@ p {
 }
 
 a {
-  transition: color .4s;
-  color: #265C83;
-  &:link,
-  &:visited {
-    color: #265C83;
-  }
-  &:hover {
-    color: #7FDBFF;
-    cursor: pointer;
-  }
-  &:active {
-    transition: color .3s;
-    color: #007BE6;
-  }
-}
-.ro-link-container {
+  color: $mt-dark-font-color;
   &:hover {
     cursor: pointer;
-    a {
-      color: #7FDBFF;
-      text-decoration: underline;
-    }
+    color: $mt-dark-font-color;
   }
 }
 

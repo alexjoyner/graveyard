@@ -6,7 +6,7 @@ import {AuthContainerComponent} from '../containers/auth-container/auth-containe
 import {AuthService} from '../../ts/shared/net-services/auth.service';
 import {UsersService} from '../../ts/shared/net-services/users.service';
 import {AlertBarComponent} from '../shared/alertBar/alertBar.component';
-declare function require(name: string);
+
 
 /*
     The main app component
@@ -14,17 +14,7 @@ declare function require(name: string);
 */
 @Component({
     selector: 'my-app',
-    template: `
-    	<ro-alert-bar></ro-alert-bar>
-        <!--<div id="MobileAlert" class="visible-xs">
-            <div id="Content">
-                <h1>Site not yet optimized for mobile devices, please view the site on larger screen</h1>
-            </div>
-        </div>-->
-    	<div id="MainMetaTruthContainer">
-    		<router-outlet></router-outlet>
-    	</div>
-    `,
+    template: require('./app.tpl.html'),
     directives: [AlertBarComponent, ROUTER_DIRECTIVES],
     providers: [AuthService]
 })
@@ -43,14 +33,14 @@ export class AppComponent implements OnInit{
         private _router: Router,
         private _authService: AuthService,
         private _usersService: UsersService) {
+        /*
+         When the app starts, attempt to get the users profile
+         if they are already logged in
+         */
+        this._usersService.getProfile();
     }
     
     ngOnInit(): any {
-        /*
-        When the app starts, attempt to get the users profile
-            if they are already logged in
-        */
-        this._usersService.getProfile();
 
         /*
         Subscribe to the auth service event so that users if a

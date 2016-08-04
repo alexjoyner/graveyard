@@ -1,11 +1,10 @@
 import {RouteParams} from "angular2/router";
-declare function require(name: string);
-import {Component, Input, Output, EventEmitter, OnInit} from 'angular2/core';
+import {Component, Input, OnInit} from 'angular2/core';
 import {TagsService} from '../../../ts/shared/net-services/tags.service';
 
 @Component({
     selector: 'ro-tags-form',
-    template: require('dev/components/forms/tags-form/tags-form.tpl.html'),
+    template: require('./tags-form.tpl.html'),
 	providers: [TagsService]
 })
 export class TagsFormComponent implements OnInit{
@@ -14,7 +13,6 @@ export class TagsFormComponent implements OnInit{
 	@Input('typeString') typeString: string;
 	@Input('tagsFormHeader') tagsFormHeader: string;
     @Input() singlesMode: boolean;
-	private searchType: number;
 	private returnedTags: [{ id: number, tag_name: string }];
 	private cantCreate: boolean;
 	constructor(

@@ -1,21 +1,21 @@
 import {Router} from "angular2/router";
-declare function require(name: string);
 import {Component, Input, Output, EventEmitter, OnInit} from 'angular2/core';
 import {TagsFormComponent} from '../tags-form/tags-form.component';
 import {Post} from '../../../ts/shared/structures/post';
 import {PostsService} from '../../../ts/shared/net-services/posts.service';
 import {AuthService} from '../../../ts/shared/net-services/auth.service';
 import {UsersService} from "../../../ts/shared/net-services/users.service";
+
 @Component({
 	selector: 'ro-create-question',
-    template: require('dev/components/forms/create-question-form/create-question-form.tpl.html'),
+    template: require('./create-question-form.tpl.html'),
     directives: [TagsFormComponent]
 })
 export class CreateQuestionFormComponent implements OnInit{
+	@Input('question') question: string;
 	@Output() close: EventEmitter<any> = new EventEmitter();
 	@Output() search: EventEmitter<any> = new EventEmitter();
 	@Output() switchTags: EventEmitter<any> = new EventEmitter();
-	@Input('question') question: string;
 	private alertString: string;
 	private acceptedTags: any[] = [];
 	private privQ: boolean = false;
@@ -60,71 +60,91 @@ export class CreateQuestionFormComponent implements OnInit{
 			alert('You need to add at least 3 tag to a question. Search 3 categories that best describe your question.');
 		}
 	}
-	questionControl(){
+	questionControl(): void{
 		let daQ = this.question; // daQ (The question)
 		this.alertString = undefined;
-		if(daQ && daQ.length > 2){
-			if (checkIsYesOrNo(daQ)) {
-				if (isThreeWords(daQ)) {
-					if (checkNotComparison(daQ)) {
-						if (checkNoYou) {
-							this.search.emit(daQ);
-							this.alertType = "success"
-							this.alertString = 'Awesome, now just top it of with a question mark when your finished to move on!'
-							if (daQ[daQ.length - 1] === '?') {
-								this.alertType = "success"
-								this.alertString = 'Great! Double check your question then hit Enter / Return.';
-								this.qComplete = true;
-							}
-						} else {
-							this.alertType = "warning"
-							this.alertString =
-								`Don't put (you) your question, you can direct the question towards yourself, but not another person`
-						}
-					} else {
-						this.alertType = "warning"
-						this.alertString =
-							`Wait right there!! We don't accept comparisons in thes parts 
-						You can't have a question contain the word OR`
-					}
-				}else{
-					this.alertType = "warning"
-					this.alertString =
-						`Your question should be at least 3 words.`
-				}
-			}else {
-				this.alertType = "warning"
-				this.alertString = "Whoa!! Questions must be yes or no."
-			}
-		}else{
+
+		/*
+		* If there is no question or there isn't at least 2 characters to check*/
+		if(!daQ || !daQ.length > 2){
+			// No alerts raised yet
 			this.alertString = undefined;
+			return;
 		}
+		/*
+		* If the question isn't a yes or no*/
+		if(!checkIsYesOrNo(daQ)){
+			this.alertType = "warning";
+			this.alertString = "Whoa!! Questions must be yes or no.";
+			return;
+		}
+
+		/*
+		* If the question isn't at least 3 words (A complete sentence). Ex: Should I run? */
+		if(!isThreeWords(daQ)){
+			this.alertType = "warning";
+			this.alertString = "Hey! Your question needs to be at least 3 words!";
+			return;
+		}
+
+		/*
+		* If the question is a comparison */
+		if(is_comparison(daQ)){
+			this.alertType = "warning";
+			this.alertString =
+				`Wait right there!! We don't accept comparisons in these parts! \n
+				 You can't have a question contain the word OR.`;
+			return;
+		}
+		/*
+		* If the question contains the word you*/
+		if(contains_you(daQ)){
+			this.alertType = "warning"
+			this.alertString =
+				`Don't put (you) your question, you can direct the question towards yourself, but not another person`;
+			return;
+		}
+
+		/*
+		* Everything checked out but the last character isn't a question mark*/
+		if (daQ[daQ.length - 1] !== '?') {
+			this.search.emit(daQ);
+			this.alertType = "success";
+			this.alertString = 'Awesome, now just top it of with a question mark when your finished to move on!';
+			return;
+		}
+
+		this.alertType = "success";
+		this.alertString = 'Great! Double check your question then hit Enter / Return.';
+		this.qComplete = true;
 	}
 	switchToTags(){
 		if(this.qComplete){
-			this.mode = 'tags'
+			this.mode = 'tags';
 			this.switchTags.emit(null);
 		}
 	}
 }
+
+/*
+* =================  EXTERNAL FUNCTIONS =================*/
 function checkIsYesOrNo(searchStr: string):boolean {
 	let validCases: string[] = ['should', 'would','will','could','are','is','can','shall','did','am','do']
 	let firstword: string = searchStr.match(/^([\w\-]+)/)[0].toLowerCase();
 	return validCases.indexOf(firstword) > -1;
 }
-function checkNotComparison(searchStr: string):boolean {
+function is_comparison(searchStr: string):boolean {
 	let lwrStr: string = searchStr.toLowerCase();
 	let test: boolean =
-		/* or is not in the string*/
-		(lwrStr.indexOf(' or') === -1);
-	console.log(test);
+		/* or is in the string*/
+		(lwrStr.indexOf(' or') !== -1);
 	return 	test;
 }
-function checkNoYou(searchStr: string):boolean {
+function contains_you(searchStr: string):boolean {
 	let lwrStr: string = searchStr.toLowerCase();
 	let test: boolean =
-		/* or is not in the string    and    and is not int the string*/
-		(lwrStr.indexOf(' you') === -1);
+		/* the word YOU is contained in the string*/
+		(lwrStr.indexOf(' you') !== -1);
 	console.log(test);
 	return test;
 }

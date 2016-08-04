@@ -1,5 +1,5 @@
 // Need to declare require so webpack can use it without interferance
-declare function require(name: string);
+
 import "./polyfills"
 import "./vendor"
 import {provide, enableProdMode} from 'angular2/core';

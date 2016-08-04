@@ -16,7 +16,7 @@ export class UsersService {
 		private _http: Http,
 		private _globalHandlerService: GlobalHandlerService,
 		private _router: Router) { }
-	goToQuestion(id: number, title: string): void {
+	setViewed(id: number, title: string): void {
 		/* Logic to set recent pages as a user navigates between questions */
 		let found: boolean = false;
 		let index;
@@ -43,7 +43,6 @@ export class UsersService {
 			console.log('Step 3');
 			this.recentPages.unshift({'id': id, 'title': title});
 		}
-		this._router.navigate(['Question', {'id': id}]);
 	};
 
 	/* GET */

@@ -9,11 +9,12 @@ import {AuthService} from '../../../ts/shared/net-services/auth.service';
 import {UsersService} from '../../../ts/shared/net-services/users.service';
 import {GlobalHandlerService} from '../../../ts/shared/special-services/globalHandler.service';
 import {MainPointComponent} from '../../shared/point/point.component';
-declare function require(name: string);
+import {PostComponent} from "../../shared/post/post.component";
+
 @Component({
     selector: 'ro-home-question-list',
-    template: require('dev/components/lists/home-question-list/home-question-list.tpl.html'),
-    directives: [ROUTER_DIRECTIVES, VoteCellComponent, MainPointComponent, FollowButtonComponent],
+    template: require('./home-question-list.tpl.html'),
+    directives: [ROUTER_DIRECTIVES, VoteCellComponent, MainPointComponent, FollowButtonComponent, PostComponent],
     pipes: [SearchFilterPipe]
 })
 export class  HomeQuestionListComponent{
@@ -28,9 +29,6 @@ export class  HomeQuestionListComponent{
 		private _authService: AuthService,
 		private _usersService: UsersService,
 		private _globalHandler: GlobalHandlerService) {
-	}
-	goToQuestion(id : number, title : string){
-		this._usersService.goToQuestion(id, title);
 	}
 	deleteQuestion(question: Post, event: MouseEvent, qIndex: number){
 		event.stopPropagation();

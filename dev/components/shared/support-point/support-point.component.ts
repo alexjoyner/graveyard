@@ -1,4 +1,3 @@
-declare function require(name:string);
 import {Component, Input, Output, EventEmitter, OnInit} from 'angular2/core';
 import {VoteCellComponent} from '../vote-cell/vote-cell.component';
 import {Post} from '../../../ts/shared/structures/post';
@@ -7,11 +6,11 @@ import {UsersService} from '../../../ts/shared/net-services/users.service';
 import {RouteParams} from 'angular2/router';
 @Component({
     selector: 'ro-support-point',
-    template: require('dev/components/shared/support-point/support-point.tpl.html'),
+    template: require('./support-point.tpl.html'),
     directives: [VoteCellComponent]
     //styleUrls: ['styles/point.css', 'styles/support.css']
 })
-export class SupportPointComponent implements OnInit {
+export class SupportPointComponent{
     @Input('support') support:Post;
     @Input('numMoreSupport') numMoreSupport:number;
     @Input('showingMore') showingMore:boolean;
@@ -28,42 +27,6 @@ export class SupportPointComponent implements OnInit {
                 private _usersService:UsersService,
                 private _routeParams:RouteParams) {
     };
-
-    goToQuestion(id : number, title : string){
-        this._usersService.goToQuestion(id, title);
-    }
-    ngOnInit():any {
-        console.log(this.support.source_type_id)
-        switch (this.support.source_type_id) {
-            case 1:
-                this.source_type_string = 'meta';
-                break;
-            case 2:
-                this.source_type_string = 'credible';
-                break;
-            case 3:
-                this.source_type_string = 'web';
-                break;
-            case 4:
-                this.source_type_string = 'media';
-                break;
-            case 5:
-                this.source_type_string = 'opinion';
-                break;
-            case 6:
-                this.source_type_string = 'other';
-                break;
-        }
-        switch (this.support.point_type_id) {
-            case 3:
-                this.point_type_string = 'proof';
-                break;
-            case 4:
-                this.point_type_string = 'disproof';
-                break;
-        }
-
-    }
 
     removeSupport(supportId:string) {
         let answer = confirm(`Are you sure you want to delete this support point? This action can't be undone`);

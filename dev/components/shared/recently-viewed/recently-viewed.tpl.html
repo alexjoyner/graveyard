@@ -1,0 +1,15 @@
+<div [ngClass]="{'show-links': showLinks}">
+    <div class="recently-viewed" (click)="showLinks = !showLinks">
+        <h4>
+            <u>Recently Viewed</u>
+        </h4>
+        <ul class="list-group">
+            <div *ngFor="#recView of recentViewed">
+                <li class="list-group-item ro-link-container"
+                    *ngIf="recView.id !== currentId">
+                    <a [routerLink]="['Question', {'id': recView.id}]">{{recView.title}}</a>
+                </li>
+            </div>
+        </ul>
+    </div>
+</div>

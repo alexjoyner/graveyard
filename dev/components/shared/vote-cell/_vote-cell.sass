@@ -1,5 +1,17 @@
 .vote-cell 
 	display: inline
+	.up-vote-text-post-type-1
+		&:before
+			content: ' Important'
+	.up-vote-text-post-type-2, .up-vote-text-post-type-3
+		&:before
+			content: ' Helpful'
+	.down-vote-text-post-type-1
+		&:before
+			content: ' Irrelevant'
+	.down-vote-text-post-type-2, .down-vote-text-post-type-3
+		&:before
+			content: ' Not Helpful'
 	.upvote-btn
 		display: inherit
 		.score

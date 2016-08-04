@@ -15,7 +15,7 @@
         <h5 class="text-center">Insufficient Evidence</h5>
         <h5 class="text-center">
             <button class="btn ro-btn-info btn-sm"
-                    (click)="goToQuestion(point._id, point.title)">
+                    [routerLink]="['Question', {'id': point._id}]">
                 View Evidence
             </button>
         </h5>
@@ -30,6 +30,7 @@
     <div class="ro-action-bar ro-bar-left">
         <ro-vote-cell
                 class="ro-action-bar-item"
+                [post]="point"
                 [sourceId]="point._id"
                 [score]="point.ups - point.dwns"
                 (modVote)="point.ups=point.ups+$event"
@@ -41,13 +42,13 @@
         </ro-vote-cell>
         <button
                 *ngIf="isOwner(point.owner_user_id) && !point.editPoint || point.editPoint === false"
-                class="btn btn-sm btn-danger ro-action-bar-item"
+                class="mt-btn mt-btn-danger ro-action-bar-item"
                 (click)="deletePoint()">
             <i class="fa fa-close">
             </i>
         </button>
         <button
-                class="ro-action-bar-item btn btn-sm ro-btn-info"
+                class="ro-action-bar-item mt-btn mt-btn-info"
                 (click)="editPoint(point, $event);"
                 *ngIf="isOwner(point.owner_user_id)">
             <i class="fa fa-edit">

@@ -5,7 +5,7 @@
 // import 'reflect-metadata';
 
 // CoreJS has all the polyfills you need
-declare function require(name: string);
+
 import 'core-js';
 require('zone.js/dist/zone');
 require('zone.js/dist/long-stack-trace-zone');

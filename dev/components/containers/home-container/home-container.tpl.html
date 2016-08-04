@@ -1,6 +1,7 @@
 <ro-navbar></ro-navbar>
 <div id="Home-Container">
     <div class="row">
+        <mt-recently-viewed></mt-recently-viewed>
         <div class="col col-xl-3 hidden-lg-down">
             <div class="TopicsPane">
                 <h3 class="text-center">
@@ -23,16 +24,6 @@
                     <u>Your favorite places and topics</u>
                 </h4>
                 <favorites-cell (getQuestionSet)="getQuestionsByTag($event)"></favorites-cell>
-                <h4>
-                    <u>Recently Viewed</u>
-                </h4>
-                <ul class="list-group">
-                    <li class="list-group-item ro-link-container"
-                        *ngFor="#recView of recentViewed"
-                        (click)="goToQuestion(recView.id, recView.title)">
-                        <a>{{recView.title}}</a>
-                    </li>
-                </ul>
             </div>
         </div>
         <div class="col col-xl-6 col-lg-12">
@@ -49,13 +40,12 @@
                     (cancel)="searchText='';startQuestion=!startQuestion;"></ro-home-question-list>
             <!-- Let the user know that nothing was found if they
                     search for a question and nothing was found -->
-            <div *ngIf="searchText !== '';">
-                <hr>
+            <div *ngIf="questions && questions.length < 1">
                 <h1 class="text-center">
-                    Couldn't find an question?
-                    <button class="btn btn-lg ro-btn-success"
+                    There are no questions under this category. How about
+                    <button class="mt-btn mt-btn-success"
                             (click)="startQuestion = !startQuestion">
-                        ADD IT!!!
+                        ADD AN ISSUE!!!
                     </button>
                 </h1>
             </div>

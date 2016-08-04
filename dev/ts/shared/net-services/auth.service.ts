@@ -1,4 +1,3 @@
-// Angular imports
 import {Injectable, EventEmitter} from "angular2/core";
 import {Router} from "angular2/router";
 import {Http, Headers} from "angular2/http";
@@ -8,9 +7,6 @@ import {Config} from "../../config/config";
 import {User} from "../structures/user";
 import {GlobalHandlerService} from "../special-services/globalHandler.service";
 import {UsersService} from "../net-services/users.service";
-
-// Imports needed for http
-
 
 @Injectable()
 export class AuthService {

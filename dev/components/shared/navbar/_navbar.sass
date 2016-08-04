@@ -19,6 +19,7 @@
       &:hover
         background-color: $mt-main-link-hover-font-color
   .nav-item
+    display: inline-block
     &-left
       float: left
     &-right
@@ -31,74 +32,8 @@
       text-decoration: none
     &:hover
       background-color: $mt-main-link-hover-font-color
-  #SearchInput
-    display: inline
-    position: fixed
-    max-width: 100%
+  #MainSearchBar
     input[type="text"]
-      padding-left: 5px
-      line-height: 50px
-      height: 50px
-      font-size: 20px
-      width: 25em
-      color: $mt-dark-font-color
-      background-color: $mt-main-link-hover-font-color
-      border: none
-      outline: none
-//.ro-main-nav
-//  width: 100%
-//  background-color: #F8F8F8
-//  border: 1px solid #e7e7e7
-//  position: fixed
-//  top: 0
-//  left: 0
-//  z-index: 40
-//  min-height: 50px
-//  margin-bottom: 20px
-//  padding-top: 0px
-//  .ro-navbar-logo
-//    float: left
-//    height: 50px
-//    line-height: 50px
-//    padding: 0 30px
-//    font-size: 1.4em
-//    color: #777
-//  > ul
-//    margin: 0
-//    padding: 0
-//    color: #777
-//    list-style-type: none
-//    position: relative
-//  .ro-nav-item
-//    display: inline-block
-//    padding: 0 1em
-//    height: 48px
-//    background-color: #F8F8F8
-//    cursor: pointer
-//    &:hover
-//      background-color: #888
-//      .nav-link
-//        color: #fff
-//    .nav-link
-//      line-height: 50px
-//      color: #777
-//#MainSearchBar
-//  input[type="text"]
-//    width: 40em
-//  .form-group
-//    position: relative
-//    dropdown
-//      position: absolute
-//      z-index: 41
-//      top: 60%
-//      left: 0
-//      width: 100%
-//#NotifButton
-//  position: relative
-//  #NotifyDropdown
-//    position: absolute
-//    line-height: 30px
-//    z-index: 41
-//    top: 50%
-//    left: 0
-//    width: 200%
+      width: 50em
+    .form-group
+      position: relative

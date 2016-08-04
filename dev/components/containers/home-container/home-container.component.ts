@@ -9,16 +9,16 @@ import {FavoritesCellComponent} from "../../shared/favorites-cell/favorites-cell
 import {SmoothScroll} from "../../../ts/shared/special-services/smooth-scroll.service";
 import {WINDOW_PROVIDERS} from "../../../ts/shared/special-services/window.service";
 import {UsersService} from "../../../ts/shared/net-services/users.service";
-import {Router} from "angular2/router";
 import {VoteService} from "../../../ts/shared/net-services/vote-cell.service";
-declare function require(name:string);
-
+import {RecentlyViewedComponent} from "../../shared/recently-viewed/recently-viewed.component";
+import {ROUTER_DIRECTIVES} from "angular2/router";
+// TODO: Make this a route so that the user can link to a certain subject and different categories don't need to be called
 
 @Component({
     // Routes don't need selectors
     /*selector: 'ro-home-container',*/
-    template: require('dev/components/containers/home-container/home-container.tpl.html'),
-    directives: [NavbarComponent, HomeQuestionListComponent, CreateQuestionFormComponent, FavoritesCellComponent],
+    template: require('./home-container.tpl.html'),
+    directives: [NavbarComponent, HomeQuestionListComponent, CreateQuestionFormComponent, FavoritesCellComponent, RecentlyViewedComponent, ROUTER_DIRECTIVES],
     providers: [PostsService, SmoothScroll, WINDOW_PROVIDERS, VoteService]
 })
 export class HomeContainerComponent implements OnInit {
@@ -36,12 +36,7 @@ export class HomeContainerComponent implements OnInit {
                 private _voteService:VoteService) {
     };
 
-    goToQuestion(id:number, title:string) {
-        this._usersService.goToQuestion(id, title);
-    }
-
     ngOnInit():any {
-        this.recentViewed = this._usersService.recentPages;
         // When the page loads, Get questions for the user
         if (this._authService.checkTokenExists()) {
             this._postsService.getHotPosts()

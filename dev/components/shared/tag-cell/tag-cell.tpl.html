@@ -1,13 +1,13 @@
 <div id="ro-tag-cell">
     <h4 *ngFor="#tag of tags">
         <!-- SPAN NEEDED FOR BOOTSTRAP LABEL -->
-        <span class="tag tag-info text center">
+        <span class="tag mt-btn-info text center">
             {{tag.tag_name}}
             <i *ngIf="editMode"
                class="fa fa-close text-danger"></i>
         </span>
     </h4>
-    <button class="btn btn-sm ro-btn-info"
+    <button class="mt-btn mt-btn-sm mt-btn-info"
             (click)="editMode = true"
             *ngIf="!editMode && postType === 1">
         <i class="fa fa-edit"></i>

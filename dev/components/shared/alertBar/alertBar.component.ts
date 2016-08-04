@@ -1,10 +1,9 @@
-declare function require(name: string);
 import {Component} from "angular2/core";
 import {GlobalHandlerService} from "../../../ts/shared/special-services/globalHandler.service";
 import {AuthService} from "../../../ts/shared/net-services/auth.service";
 @Component({
     selector: 'ro-alert-bar',
-    template: require('dev/components/shared/alertBar/alertBar.tpl.html')
+    template: require('./alertBar.tpl.html') //TODO: The alert bar needs to be updated to bootstrap 4 or remade
 })
 export class AlertBarComponent{
 	private classType: string = null;

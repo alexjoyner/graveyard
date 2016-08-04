@@ -2,10 +2,9 @@ import {Component, Output, EventEmitter} from "angular2/core";
 import {TagsService} from "../../../ts/shared/net-services/tags.service";
 import {FavoritesService} from "../../../ts/shared/net-services/favorites.service";
 import {AuthService} from "../../../ts/shared/net-services/auth.service";
-declare function require(name:string);
 @Component({
     'selector': 'favorites-cell',
-    'template': require('dev/components/shared/favorites-cell/favorites-cell.tpl.html'),
+    'template': require('./favorites-cell.tpl.html'),
     providers: [TagsService, FavoritesService]
 })
 

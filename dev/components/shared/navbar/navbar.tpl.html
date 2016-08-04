@@ -3,20 +3,30 @@
         [routerLink]="['Home']">
         <a href="/#">MetaTruth Alpha.11.4</a>
     </li>
-    <li id="SearchInput"
-        class="dropdown">
-        <input type="text"
-               placeholder="Ask or Search"
-               (keyup)="searchStuff(MainSearchValue.value)"
-               #MainSearchValue/>
-        <button class="mt-btn mt-btn-default">Add</button>
-        <div class="dropdown-content"
-             *ngIf="dataSearched !== null">
-            <div *ngFor="#value of dataSearched"
-                 (click)="routeToPost(value._id); MainSearchValue.value = ''">
-                <a>{{value.title}}</a>
+    <li id="MainSearchBar"
+          class="mt-navbar-form nav-item form-inline pull-left"
+          role="search">
+        <div class="mt-form-group dropdown">
+            <input type="text"
+                   class="mt-form-control"
+                   placeholder="Search"
+                   (keyup)="searchStuff(MainSearchValue.value)"
+                   #MainSearchValue>
+            <div class="dropdown-content"
+                 *ngIf="dataSearched !== null">
+                <div *ngFor="#value of dataSearched"
+                     (click)="routeToPost(value._id); MainSearchValue.value = ''">
+                    <a>{{value.title}}</a>
+                </div>
             </div>
         </div>
+    </li>
+    <li class="mt-navbar-form form-inline pull-left"
+          role="search">
+        <button type="submit"
+                class="mt-nav-btn mt-btn-default"
+                (click)="startQuestion = !startQuestion">Ask a question
+        </button>
     </li>
     <li id="ProfileDropDown"
         class="dropdown dropdown-hover nav-item-right  hidden-lg-down">
@@ -43,58 +53,9 @@
     </li>
 </ul>
 <!--
-<nav class="ro-main-nav">
-    <a class="ro-navbar-logo"
-       ">
-        MetaTruth(v1.0 Alpha.11.4)
-    </a>
-    <form id="MainSearchBar"
-          class="form-inline pull-left"
-          role="search">
-        <div class="form-group">
-            <input type="text"
-                   class="form-control"
-                   placeholder="Search">
-        </div>
-        <button type="submit"
-                class="btn ro-btn-secondary"
-                (click)="startQuestion = !startQuestion">Ask a question
-        </button>
-    </form>
-    <ul class="pull-right">
-        <li id="NotifButton"
-            class="ro-nav-item">
-            <a
-                    class="nav-link"
-                    *ngIf="auth()">
-                <i class="fa fa-bell"
-                   *ngIf="notifications.length > 0"
-                   [ngStyle]="{'color': (notifications.length > 0)? 'rgb(243, 9, 5)' : '#333'}"></i>
-                Notifications</a>
-            <dropdown
-                    id="NotifyDropdown"
-                    *ngIf="showNotifs === true"
-                    [values]="notifications"
-                    (valueChange)="showNotifs === false; routeToPost($event.post_id);readNotif($event._id); "></dropdown>
-        </li>
-        <li class="ro-nav-item">
-            <a class="nav-link"
-               [routerLink]="['Auth']"
-               *ngIf="!auth()">Alpha Testers Login/Register</a>
-            <a class="nav-link"
-               [routerLink]="['Home']"
-               *ngIf="auth()">{{email}}</a>
-        </li>
-        <li class="ro-nav-item">
-            <a class="nav-link"
-               *ngIf="auth()"
-               (click)="logout()">Logout</a>
-        </li>
-    </ul>
-</nav>
-&lt;!&ndash;                Misc
-    ==================================  &ndash;&gt;
-&lt;!&ndash; Create Question modal &ndash;&gt;
+             Misc
+==================================
+     Create Question modal-->
 <div class="ro-modal"
      *ngIf="startQuestion">
     <ro-create-question
@@ -102,4 +63,4 @@
             (close)="startQuestion = false; showQ_ToTut=false"
             (search)="null"
             (switchTags)="showQ_ToTut = false"></ro-create-question>
-</div>-->
+</div>

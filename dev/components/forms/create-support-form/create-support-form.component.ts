@@ -1,5 +1,4 @@
 import {RouteParams} from "angular2/router";
-declare function require(name:string);
 import {Component, Input, OnInit, Output, EventEmitter} from 'angular2/core';
 import {Post} from '../../../ts/shared/structures/post';
 import {PostsService} from '../../../ts/shared/net-services/posts.service';
@@ -7,7 +6,7 @@ import {UsersService} from "../../../ts/shared/net-services/users.service";
 // Parent is points-list
 @Component({
     selector: 'ro-add-support',
-    template: require('dev/components/forms/create-support-form/create-support-form.tpl.html')
+    template: require('./create-support-form.tpl.html')
 })
 export class AddSupportComponent implements OnInit {
     @Input('pointId') pointId:number;

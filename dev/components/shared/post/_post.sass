@@ -1,0 +1,86 @@
+$mt-post-border-radius: 8px
+$mt-post-border: 1px solid $mt-brand-color-default
+.mt-post
+  position: relative
+  border: $mt-post-border
+  border-radius: $mt-post-border-radius
+  animation-duration: 0.3s
+  animation-name: popIn
+  width: 100%
+  padding: 0
+  margin: 10px 0
+  .source-link
+    text-overflow: ellipsis
+    overflow: hidden
+    white-space: nowrap
+  .tag
+    &:empty
+      display: inline-block !important
+  .mt-post-contents
+    padding: 20px
+    display: block
+  .mt-post-footer
+    position: relative
+    display: block
+    width: 100%
+    border-radius: 0 0 $mt-post-border-radius $mt-post-border-radius
+    overflow: hidden
+  h2
+    font:
+      size: 1.5em
+      weight: 400
+  h3
+    font:
+      size: 1em
+      weight: 400
+// Styling for different point types (Issues default to basic bg color)
+.point-type-null
+  background-color: #fff
+  .mt-post-pre-title-text
+    &:before
+      content: 'Issue: '
+.point-type-1, .point-type-3
+  background-color: lighten($mt-brand-color-success, 30%)
+  .mt-post-pre-title-text
+    &:before
+      content: 'Yes, because: '
+.point-type-2, .point-type-4
+  background-color: lighten($mt-brand-color-danger, 30%)
+  .mt-post-pre-title-text
+    &:before
+      content: 'No, because: '
+
+
+// Colors of labels for source & point _type_string
+.support-source-type-1
+  background-color: $brand-success
+  &:before
+    content: 'meta'
+.support-source-type-2
+  background-color: $brand-success
+  &:before
+    content: 'credible'
+.support-source-type-3
+  background-color: $brand-warning
+  &:before
+    content: 'web'
+.support-source-type-4
+  background-color: $brand-warning
+  &:before
+    content: 'media'
+.support-source-type-5
+  background-color: $brand-danger
+  &:before
+    content: 'opinion'
+.support-source-type-6
+  background-color: $brand-primary
+  &:before
+    content: 'other'
+.support-point-type-3
+  background-color: $brand-success
+  &:before
+    content: 'proof'
+.support-point-type-4
+  background-color: $brand-danger
+  &:before
+    content: 'disproof'

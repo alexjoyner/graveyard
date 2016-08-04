@@ -1,11 +1,10 @@
-declare function require(name: string);
 import {Component, Input, Output, OnInit, EventEmitter} from 'angular2/core';
 import {Post} from '../../../ts/shared/structures/post';
 import {PostsService} from '../../../ts/shared/net-services/posts.service';
 import { Router } from 'angular2/router';
 @Component({
     selector: 'ro-edit-point',
-    template: require('dev/components/forms/edit-point-form/edit-point-form.tpl.html'),
+    template: require('./edit-point-form.tpl.html'),
     providers: [PostsService]
 })
 export class EditPointComponent implements OnInit {

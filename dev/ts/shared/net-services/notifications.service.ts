@@ -3,6 +3,7 @@ import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
 import {Http, Headers} from 'angular2/http';
 import {Config} from '../../config/config';
+
 @Injectable()
 export class NotificationsService {
     private endpoint: string = Config.endpoint;
