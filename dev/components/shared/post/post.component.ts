@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter} from 'angular2/core';
+import {Component, Input} from 'angular2/core';
 import {Post} from "../../../ts/shared/structures/post";
 import {UsersService} from "../../../ts/shared/net-services/users.service";
 import {VoteCellComponent} from "../vote-cell/vote-cell.component";

@@ -21,7 +21,6 @@ export class CreateQuestionFormComponent implements OnInit{
 	private privQ: boolean = false;
 	private alertType: string;
 	private mode: string = 'question';
-	private count: number;
 	private qComplete: boolean = false;
 	constructor(
 		private _authService: AuthService,

@@ -9,7 +9,7 @@
                        class="form-control"
                        id="exampleInputAmount"
                        placeholder="{{pointsTypeText}}s"
-                       [(ngModel)]="searchText"
+                       #searchText
                        maxlength="150"/>
             </div>
         </div>
@@ -24,7 +24,7 @@
          *ngIf="!stackedMode">
         <div class="col col-md-6">
             <div [attr.id]="'point' + i"
-                 *ngFor="#point of points | roFilter: searchText; #i = index"
+                 *ngFor="#point of points | roFilter: searchText.value; #i = index"
                  class="point"
             >
 
@@ -44,7 +44,7 @@
         </div>
         <div class="col col-md-6">
             <div [attr.id]="'point' + i"
-                 *ngFor="#point of points | roFilter: searchText; #i = index"
+                 *ngFor="#point of points | roFilter: searchText.value; #i = index"
                  class="point">
                 <mt-post [post]="point"
                          *ngIf="point.point_type_id === 2 || point.point_type_id === 4"></mt-post>
@@ -64,7 +64,7 @@
     <!--THIS WAS JUST A TEST OF A DIFFERENT TYPE OF SORTING-->
     <div *ngIf="stackedMode" class="row">
         <div class="col col-md-6 offset-md-3"><div [attr.id]="'point' + i"
-             *ngFor="#point of points | roFilter: searchText; #i = index"
+             *ngFor="#point of points | roFilter: searchText.value; #i = index"
              class="point"
         >
             <mt-post [post]="point"></mt-post>
@@ -104,7 +104,7 @@
      *ngIf="showForm && questionType === 1">
     <ro-create-point-form (added)="showForm = false; points.unshift($event);"
                           (cancel)="showForm = false"
-                          [searchText]="searchText">
+                          [searchText]="searchText.value">
     </ro-create-point-form>
 </div>
 <div class="ro-modal"

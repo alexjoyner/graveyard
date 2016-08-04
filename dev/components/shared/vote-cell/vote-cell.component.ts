@@ -10,7 +10,6 @@ import {UsersService} from '../../../ts/shared/net-services/users.service';
 })
 export class VoteCellComponent {
     @Input() post: Post;
-    @Input() sourceType:string;
     @Input() sourceId:number;
     @Input() score:number;
     @Input() upvoteText:string;

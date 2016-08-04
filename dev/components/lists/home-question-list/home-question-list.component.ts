@@ -7,7 +7,6 @@ import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
 import {VoteCellComponent} from '../../shared/vote-cell/vote-cell.component';
 import {AuthService} from '../../../ts/shared/net-services/auth.service';
 import {UsersService} from '../../../ts/shared/net-services/users.service';
-import {GlobalHandlerService} from '../../../ts/shared/special-services/globalHandler.service';
 import {MainPointComponent} from '../../shared/point/point.component';
 import {PostComponent} from "../../shared/post/post.component";
 
@@ -23,12 +22,10 @@ export class  HomeQuestionListComponent{
 	@Input() questions: Post[];
 	@Input() showInTut: boolean;
 	@Output() cancel: EventEmitter<any> = new EventEmitter();
-	private dataReturned: boolean = false;
 	constructor(
 		private _postsService: PostsService,
 		private _authService: AuthService,
-		private _usersService: UsersService,
-		private _globalHandler: GlobalHandlerService) {
+		private _usersService: UsersService) {
 	}
 	deleteQuestion(question: Post, event: MouseEvent, qIndex: number){
 		event.stopPropagation();
@@ -52,9 +49,6 @@ export class  HomeQuestionListComponent{
 	didUndoDownVote(index: number){
 		this.questions[index]['downVoted'] = false;
 		this.questions[index]['didHide'] = false;
-	}
-	stringToDate(string: string) {
-		return new Date(string);
 	}
 	isOwner(id: number){
 		return (id === this._usersService.profile._id);

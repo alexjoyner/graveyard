@@ -14,14 +14,9 @@ export class SupportPointComponent{
     @Input('support') support:Post;
     @Input('numMoreSupport') numMoreSupport:number;
     @Input('showingMore') showingMore:boolean;
-    @Output() addEvidence:EventEmitter<any> = new EventEmitter();
     @Output() removed:EventEmitter<any> = new EventEmitter();
-    @Output() viewAll:EventEmitter<any> = new EventEmitter();
-    @Output() goTop:EventEmitter<any> = new EventEmitter();
     type:string = this._routeParams.get('type');
     questionId:string = this._routeParams.get('id');
-    private source_type_string:string = 'media';
-    private point_type_string:string = 'proof';
 
     constructor(private _postService:PostsService,
                 private _usersService:UsersService,
@@ -41,22 +36,6 @@ export class SupportPointComponent{
                 );
         }
     };
-
-    toggleViewAll() {
-        this.viewAll.emit(null);
-    }
-
-    toggleAddEvidence() {
-        this.addEvidence.emit(null);
-    }
-
-    gotoTop() {
-        this.goTop.emit(null);
-    }
-
-    stringToDate(string:string) {
-        return new Date(string);
-    }
 
     isOwner(id:number) {
         return (id === this._usersService.profile._id);

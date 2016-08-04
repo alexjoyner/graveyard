@@ -9,7 +9,6 @@ import {ROUTER_DIRECTIVES, RouteParams} from "angular2/router";
 export class RecentlyViewedComponent{
     private recentViewed;
     private currentId: number;
-    private showLinks: boolean = false;
     constructor(
         private _usersService: UsersService,
         private _routeParams: RouteParams

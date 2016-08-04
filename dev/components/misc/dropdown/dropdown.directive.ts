@@ -1,6 +1,6 @@
-import {Component, Input, Output, EventEmitter, ElementRef} from "angular2/core";
+import {Component, Input, Output, EventEmitter} from "angular2/core";
 import {Post} from "../../../ts/shared/structures/post";
-import {ROUTER_DIRECTIVES, Router} from "angular2/router";
+import {ROUTER_DIRECTIVES} from "angular2/router";
 
 @Component({
     selector: 'dropdown',

@@ -2,7 +2,6 @@ import {Component, Input, Output, OnInit, EventEmitter} from 'angular2/core';
 import {Post} from '../../../ts/shared/structures/post';
 import {PostsService} from '../../../ts/shared/net-services/posts.service';
 import { Router } from 'angular2/router';
-import { UsersService} from '../../../ts/shared/net-services/users.service';
 @Component({
     selector: 'ro-edit-question-form',
     template: require('./edit-question-form.tpl.html'),
@@ -36,8 +35,7 @@ export class EditQuestionForm implements OnInit{
 	}
 	constructor(
 		private _postsService: PostsService,
-		private _router: Router,
-		private _usersService: UsersService) {};
+		private _router: Router) {};
 
 	onCreate(){
 		this._postsService.insertPost({post: this.question, tags: [null]})

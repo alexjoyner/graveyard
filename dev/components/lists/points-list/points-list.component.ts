@@ -19,7 +19,6 @@ export class PointsListComponent implements OnInit{
     @Input() stackedMode: boolean;
 
     // Only needed in the template
-    private searchText: string = '';
     private pointsTypeText: string;
     
     constructor(

@@ -45,9 +45,6 @@ export class MainPointComponent {
 				);
 		}
 	}
-	stringToDate(string: string) {
-		return new Date(string);
-	}
 	isOwner(id: number) {
 		return (this._usersService.profile)? (id === this._usersService.profile._id) : false;
 	}

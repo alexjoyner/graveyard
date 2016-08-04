@@ -6,7 +6,6 @@ import {UsersService} from '../../../ts/shared/net-services/users.service';
 import {DropdownComponent} from "../../misc/dropdown/dropdown.directive";
 import {CreateQuestionFormComponent} from "../../forms/create-question-form/create-question-form.component";
 import {NotificationsService} from "../../../ts/shared/net-services/notifications.service";
-import {not} from "angular2/src/compiler/output/output_ast";
 @Component({
     selector: 'ro-navbar',
     template: require('./navbar.tpl.html'),
@@ -18,7 +17,6 @@ export class NavbarComponent {
     private dataSearched:any = null;
     private notifications:any = [];
     private showNotifs:boolean = false;
-    private startQuestion:boolean = false;
 
     constructor(private _authService:AuthService,
                 private _usersService:UsersService,

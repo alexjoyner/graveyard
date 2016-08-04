@@ -8,7 +8,6 @@ import {NavbarComponent} from "../../shared/navbar/navbar.component";
 import {FavoritesCellComponent} from "../../shared/favorites-cell/favorites-cell.component";
 import {SmoothScroll} from "../../../ts/shared/special-services/smooth-scroll.service";
 import {WINDOW_PROVIDERS} from "../../../ts/shared/special-services/window.service";
-import {UsersService} from "../../../ts/shared/net-services/users.service";
 import {VoteService} from "../../../ts/shared/net-services/vote-cell.service";
 import {RecentlyViewedComponent} from "../../shared/recently-viewed/recently-viewed.component";
 import {ROUTER_DIRECTIVES} from "angular2/router";
@@ -22,17 +21,12 @@ import {ROUTER_DIRECTIVES} from "angular2/router";
     providers: [PostsService, SmoothScroll, WINDOW_PROVIDERS, VoteService]
 })
 export class HomeContainerComponent implements OnInit {
-    private searchText:string = '';
-    private startQuestion:boolean = false;
     private questions:Post[];
-    private showCreateQuestion:boolean
     private headerText:string = 'Hot posts on MataTruth right now';
-    private recentViewed:any[];
 
     constructor(private _authService:AuthService,
                 private _postsService:PostsService,
                 private _smoothService:SmoothScroll,
-                private _usersService:UsersService,
                 private _voteService:VoteService) {
     };
 
