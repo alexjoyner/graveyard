@@ -1,6 +1,6 @@
-import {Injectable, EventEmitter} from "angular2/core";
-import {Router} from "angular2/router";
-import {Http, Headers} from "angular2/http";
+import {Injectable, EventEmitter} from "@angular/core";
+import {Router} from "@angular/router";
+import {Http, Headers} from "@angular/http";
 import "rxjs/Rx";
 import {Observable} from "rxjs/Observable";
 import {Config} from "../../config/config";
@@ -39,7 +39,8 @@ export class AuthService {
 				this._usersService.profile = data.profile;
 				this._usersService.profile.follows = tempFollowArray;
 				console.log('STORED PROFILE: ', this._usersService.profile);
-				this._router.navigate(['Home'])
+                let link = ['/']; 
+                this._router.navigate(link);
 			},
 			err => {
 				this._globalHandlerService.emitStatusMessage({
@@ -67,7 +68,8 @@ export class AuthService {
 				//}
 				this._usersService.profile = data.profile;
 				this._usersService.showTut = true;
-				this._router.navigate(['Home']);
+                let link = ['/'];
+                 this._router.navigate(link);
 			},
 			err => {
 				this._globalHandlerService.emitStatusMessage({
@@ -87,7 +89,8 @@ export class AuthService {
 			localStorage.removeItem('token')
 		}
 		this._userLoggedOut.emit(null);
-		this._router.navigate(['Auth']);
+        let link = ['/auth']; 
+        this._router.navigate(link);
 	}
 
 	/* Made so the root component can access the  event emitter
@@ -105,7 +108,8 @@ export class AuthService {
 			if(flag){
 				return false;
 			}else{
-				this._router.navigate(['Auth']);
+                let link = ['/auth'];
+                 this._router.navigate(link);
 			}
 		}
 	}

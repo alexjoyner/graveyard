@@ -1,7 +1,7 @@
 <div class="mt-post"
      [ngClass]="'point-type-' + post.point_type_id">
     <div class="mt-post-contents">
-        <h2><a [routerLink]="['Question', {'id': post._id}]"><span class="mt-post-pre-title-text"></span>{{post.title}}</a>
+        <h2><a (click)="goToQuestion(post._id)"><span class="mt-post-pre-title-text"></span>{{post.title}}</a>
         </h2>
         <h3>{{post.detail}}</h3>
         <div *ngIf="post.source !== null">

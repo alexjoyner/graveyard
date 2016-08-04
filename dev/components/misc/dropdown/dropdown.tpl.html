@@ -1,5 +1,5 @@
 <br>
 <li class="dropdown-content"
-    *ngFor="#value of values">
+    *ngFor="let value of values">
     <a (click)="select(value)">{{value.title}}</a>
 </li>

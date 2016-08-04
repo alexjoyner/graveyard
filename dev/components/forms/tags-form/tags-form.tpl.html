@@ -12,7 +12,7 @@
 	        <h4>
 	            {{typeString | uppercase}}S RETURNED
 	        </h4>
-	        <div *ngFor="#tag of returnedTags" class="ro-tag">
+	        <div *ngFor="let tag of returnedTags" class="ro-tag">
                 <span class="ro-tagName">{{ tag.tag_name }}</span>
                 <button class="btn btn-sm ro-btn-success pull-right" (click)="acceptTag(tag)">
                     <i class="fa fa-plus">
@@ -31,7 +31,7 @@
 			<h4>
 	            ACCEPTED {{typeString | uppercase}}S
 	        </h4>
-	        <div *ngFor="#tag of acceptedTags" class="ro-tag">
+	        <div *ngFor="let tag of acceptedTags" class="ro-tag">
                 <span class="ro-tagName">{{ tag.tag_name }}</span>
                 <button class="btn btn-sm btn-danger pull-right" (click)="removeTag(tag)">
                     <i class="fa fa-minus">

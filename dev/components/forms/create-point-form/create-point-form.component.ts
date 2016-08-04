@@ -1,10 +1,11 @@
-import {Component, OnInit, EventEmitter, Input, Output} from 'angular2/core';
+import {Component, OnInit, EventEmitter, Input, Output} from '@angular/core';
 import {Post} from '../../../ts/shared/structures/post';
 import {PostsService} from '../../../ts/shared/net-services/posts.service';
-import {RouteParams} from 'angular2/router';
+import {} from '@angular/router';
 import { UsersService} from '../../../ts/shared/net-services/users.service';
 import {TagsFormComponent} from '../tags-form/tags-form.component';
 import {YesNoToggleComponent} from '../../misc/yes-no-toggle/yes-no-toggle.component';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: 'ro-create-point-form',
@@ -20,11 +21,11 @@ export class CreatePointFormComponent implements OnInit{
 	private selectedType: boolean = true;
 	constructor(
 		private _postsService: PostsService,
-		private _routeParams: RouteParams,
+		private _activatedRoute: ActivatedRoute,
 		private _usersService: UsersService) {
 	}
 	ngOnInit(): any {
-		this._questionId = +this._routeParams.get('id');
+		this._questionId = +this._activatedRoute.snapshot.params['id'];
 		this.newPoint = new Post(this.searchText, 2, this._questionId, null, '');
 	}
 	createPoint() {

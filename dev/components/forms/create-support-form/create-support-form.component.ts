@@ -1,8 +1,8 @@
-import {RouteParams} from "angular2/router";
-import {Component, Input, OnInit, Output, EventEmitter} from 'angular2/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {Post} from '../../../ts/shared/structures/post';
 import {PostsService} from '../../../ts/shared/net-services/posts.service';
 import {UsersService} from "../../../ts/shared/net-services/users.service";
+import {ActivatedRoute} from "@angular/router";
 // Parent is points-list
 @Component({
     selector: 'ro-add-support',
@@ -18,7 +18,7 @@ export class AddSupportComponent implements OnInit {
     private showSource:boolean = false;
 
     constructor(private _postsService:PostsService,
-                private _routeParams:RouteParams,
+                private _activatedRoute: ActivatedRoute,
                 private _usersService: UsersService) {
     };
 
@@ -45,7 +45,7 @@ export class AddSupportComponent implements OnInit {
          source?: string,
          source_type_id?: number*/
         this.newSupport = new Post(
-            '', 3, +this._routeParams.get('id'), null, '');
+            '', 3, +this._activatedRoute.snapshot.params['id'], null, '');
         console.log(this.newSupport);
     }
 

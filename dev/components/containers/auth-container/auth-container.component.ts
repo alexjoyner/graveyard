@@ -1,6 +1,6 @@
 import {AuthService} from "../../../ts/shared/net-services/auth.service";
-import {Component} from "angular2/core";
-import {ROUTER_DIRECTIVES} from "angular2/router";
+import {Component} from "@angular/core";
+import {ROUTER_DIRECTIVES} from "@angular/router";
 import {AuthLoginFormComponent} from "../../forms/auth-login-form/auth-login-form.component";
 import {AuthSignupFormComponent} from "../../forms/auth-signup-form/auth-signup-form.component";
 @Component({

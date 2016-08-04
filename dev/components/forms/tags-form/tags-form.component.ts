@@ -1,6 +1,7 @@
-import {RouteParams} from "angular2/router";
-import {Component, Input, OnInit} from 'angular2/core';
+import {} from "@angular/router";
+import {Component, Input, OnInit} from '@angular/core';
 import {TagsService} from '../../../ts/shared/net-services/tags.service';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: 'ro-tags-form',
@@ -17,7 +18,7 @@ export class TagsFormComponent implements OnInit{
 	private cantCreate: boolean;
 	constructor(
 		private _tagsService: TagsService,
-		private _routeParams: RouteParams) {
+		private _activatedRoute: ActivatedRoute) {
 	}
 	ngOnInit(): any {
 		switch(this.type){
@@ -32,7 +33,7 @@ export class TagsFormComponent implements OnInit{
 		console.log(this.acceptedTags);
 		if (this.acceptedTags.length < 5) {
 		    if(this.singlesMode){
-		    	let postId = +this._routeParams.get('id');
+		    	let postId = +this._activatedRoute.snapshot.params['id'];
                 this._tagsService.addTagToPost(tag._id, postId).subscribe(
                 	data => {
 						if (this.acceptedTags.indexOf(tag) === -1) {
@@ -60,7 +61,7 @@ export class TagsFormComponent implements OnInit{
 	}
 	removeTag(tag: { _id: number, tag_name: string }) {
 		if(this.singlesMode){
-			let postId = +this._routeParams.get('id');
+			let postId = +this._activatedRoute.snapshot.params['id'];
 			this._tagsService.removeTagFromPost(tag._id, postId).subscribe(
 				data => {
 					console.log(this.acceptedTags);

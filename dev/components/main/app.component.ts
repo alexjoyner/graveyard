@@ -1,8 +1,5 @@
-import {Component, OnInit} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
-import {HomeContainerComponent} from '../containers/home-container/home-container.component';
-import {QuestionContainerComponent} from '../containers/question-container/question-container.component';
-import {AuthContainerComponent} from '../containers/auth-container/auth-container.component';
+import {Component, OnInit} from '@angular/core';
+import {ROUTER_DIRECTIVES, Router} from '@angular/router';
 import {AuthService} from '../../ts/shared/net-services/auth.service';
 import {UsersService} from '../../ts/shared/net-services/users.service';
 import {AlertBarComponent} from '../shared/alertBar/alertBar.component';
@@ -18,16 +15,6 @@ import {AlertBarComponent} from '../shared/alertBar/alertBar.component';
     directives: [AlertBarComponent, ROUTER_DIRECTIVES],
     providers: [AuthService]
 })
-
-/*
-    Configuring the routes for our application
-    ------------------------------------------
-*/
-@RouteConfig([
-    { path: '/', name: 'Home', component: HomeContainerComponent, useAsDefault: true },
-    { path: '/Question/:id', name: 'Question', component: QuestionContainerComponent },
-    { path: '/Auth', name: 'Auth', component: AuthContainerComponent }
-])
 export class AppComponent implements OnInit{
     constructor(
         private _router: Router,
@@ -50,7 +37,8 @@ export class AppComponent implements OnInit{
         this._authService.getLoggedOutEvent()
             .subscribe(
                 data => {
-                    this._router.navigate(['Auth']);
+                    let link = ['/auth'];
+                    this._router.navigate(link);
                     this._usersService.profile = undefined;
                 })
     }

@@ -1,6 +1,6 @@
-import {Component, Input} from "angular2/core";
+import {Component, Input} from "@angular/core";
 import {VoteCellComponent} from "../../../shared/vote-cell/vote-cell.component";
-import {ROUTER_DIRECTIVES, Router} from "angular2/router";
+import {ROUTER_DIRECTIVES, Router} from "@angular/router";
 import {AuthService} from "../../../../ts/shared/net-services/auth.service";
 import {PostsService} from "../../../../ts/shared/net-services/posts.service";
 import {Post} from "../../../../ts/shared/structures/post";
@@ -32,7 +32,7 @@ export class QuestionHeaderComponent {
             if (answer === true) {
                 this._postsService.deletePost(questionId)
                     .subscribe(
-                        success => this._router.navigate(['Home']),
+                        success => this._router.navigate(['/']),
                         err => console.log('error: ', err)
                     );
             }

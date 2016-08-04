@@ -1,4 +1,4 @@
-import {Component, OnInit} from "angular2/core";
+import {Component, OnInit} from "@angular/core";
 import {HomeQuestionListComponent} from "../../lists/home-question-list/home-question-list.component";
 import {CreateQuestionFormComponent} from "../../forms/create-question-form/create-question-form.component";
 import {AuthService} from "../../../ts/shared/net-services/auth.service";
@@ -6,11 +6,11 @@ import {PostsService} from "../../../ts/shared/net-services/posts.service";
 import {Post} from "../../../ts/shared/structures/post";
 import {NavbarComponent} from "../../shared/navbar/navbar.component";
 import {FavoritesCellComponent} from "../../shared/favorites-cell/favorites-cell.component";
-import {SmoothScroll} from "../../../ts/shared/special-services/smooth-scroll.service";
-import {WINDOW_PROVIDERS} from "../../../ts/shared/special-services/window.service";
+// import {SmoothScroll} from "../../../ts/shared/special-services/smooth-scroll.service";
+// import {WINDOW_PROVIDERS} from "../../../ts/shared/special-services/window.service";
 import {VoteService} from "../../../ts/shared/net-services/vote-cell.service";
 import {RecentlyViewedComponent} from "../../shared/recently-viewed/recently-viewed.component";
-import {ROUTER_DIRECTIVES} from "angular2/router";
+import {ROUTER_DIRECTIVES} from "@angular/router";
 // TODO: Make this a route so that the user can link to a certain subject and different categories don't need to be called
 
 @Component({
@@ -18,7 +18,7 @@ import {ROUTER_DIRECTIVES} from "angular2/router";
     /*selector: 'ro-home-container',*/
     template: require('./home-container.tpl.html'),
     directives: [NavbarComponent, HomeQuestionListComponent, CreateQuestionFormComponent, FavoritesCellComponent, RecentlyViewedComponent, ROUTER_DIRECTIVES],
-    providers: [PostsService, SmoothScroll, WINDOW_PROVIDERS, VoteService]
+    providers: [PostsService, VoteService]
 })
 export class HomeContainerComponent implements OnInit {
     private questions:Post[];
@@ -26,7 +26,6 @@ export class HomeContainerComponent implements OnInit {
 
     constructor(private _authService:AuthService,
                 private _postsService:PostsService,
-                private _smoothService:SmoothScroll,
                 private _voteService:VoteService) {
     };
 
@@ -43,10 +42,6 @@ export class HomeContainerComponent implements OnInit {
         }
     }
 
-    scrollTop() {
-        this._smoothService.scrollTo(0, 0);
-    }
-
     getQuestionsByTag(data:{tagId:number, tagName:string}) {
         if (this._authService.checkTokenExists()) {
             this._postsService.getAllByTagId(data.tagId)
@@ -54,7 +49,6 @@ export class HomeContainerComponent implements OnInit {
                     let votePosts = this._voteService.checkPostsUserVoted(response);
                     this.questions = votePosts;
                     this.headerText = 'Top posts in ' + data.tagName;
-                    this.scrollTop()
                 });
         }
     }
@@ -66,7 +60,6 @@ export class HomeContainerComponent implements OnInit {
                     let votePosts = this._voteService.checkPostsUserVoted(data);
                     this.questions = votePosts;
                     this.headerText = 'Hot posts on MataTruth right now';
-                    this.scrollTop()
                 });
         }
     }
@@ -78,7 +71,6 @@ export class HomeContainerComponent implements OnInit {
                     let votePosts = this._voteService.checkPostsUserVoted(response);
                     this.questions = votePosts;
                     this.headerText = 'All time top posts';
-                    this.scrollTop()
                 });
         }
     }

@@ -1,19 +1,18 @@
 import {FollowButtonComponent} from "../../shared/follow-button/follow-button.component";
-import {Component, Input, Output, EventEmitter} from 'angular2/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {Post} from '../../../ts/shared/structures/post';
 import {PostsService} from '../../../ts/shared/net-services/posts.service';
 import {SearchFilterPipe} from '../../../ts/pipes/searchFilter.pipe';
-import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
+import {ROUTER_DIRECTIVES, Router} from '@angular/router';
 import {VoteCellComponent} from '../../shared/vote-cell/vote-cell.component';
 import {AuthService} from '../../../ts/shared/net-services/auth.service';
 import {UsersService} from '../../../ts/shared/net-services/users.service';
-import {MainPointComponent} from '../../shared/point/point.component';
 import {PostComponent} from "../../shared/post/post.component";
 
 @Component({
     selector: 'ro-home-question-list',
     template: require('./home-question-list.tpl.html'),
-    directives: [ROUTER_DIRECTIVES, VoteCellComponent, MainPointComponent, FollowButtonComponent, PostComponent],
+    directives: [ROUTER_DIRECTIVES, VoteCellComponent, FollowButtonComponent, PostComponent],
     pipes: [SearchFilterPipe]
 })
 export class  HomeQuestionListComponent{

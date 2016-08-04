@@ -24,7 +24,7 @@
          *ngIf="!stackedMode">
         <div class="col col-md-6">
             <div [attr.id]="'point' + i"
-                 *ngFor="#point of points | roFilter: searchText.value; #i = index"
+                 *ngFor="let point of points | roFilter: searchText.value; let i = index"
                  class="point"
             >
 
@@ -44,7 +44,7 @@
         </div>
         <div class="col col-md-6">
             <div [attr.id]="'point' + i"
-                 *ngFor="#point of points | roFilter: searchText.value; #i = index"
+                 *ngFor="let point of points | roFilter: searchText.value; let i = index"
                  class="point">
                 <mt-post [post]="point"
                          *ngIf="point.point_type_id === 2 || point.point_type_id === 4"></mt-post>
@@ -64,7 +64,7 @@
     <!--THIS WAS JUST A TEST OF A DIFFERENT TYPE OF SORTING-->
     <div *ngIf="stackedMode" class="row">
         <div class="col col-md-6 offset-md-3"><div [attr.id]="'point' + i"
-             *ngFor="#point of points | roFilter: searchText.value; #i = index"
+             *ngFor="let point of points | roFilter: searchText.value; let i = index"
              class="point"
         >
             <mt-post [post]="point"></mt-post>
@@ -73,11 +73,11 @@
                     [point]="point"
                     (removed)="removePoint(i)">
             </ro-main-point>-->
-            <ro-support-point
+            <!--<ro-support-point
                     *ngIf="point.point_type_id === 3 || point.point_type_id === 4"
                     [support]="point"
                     (removed)="removePoint(i)">
-            </ro-support-point>
+            </ro-support-point>-->
         </div></div>
     </div>
     <!-- Looping through for nos--><!--

@@ -1,5 +1,5 @@
 import {Post} from "../../../ts/shared/structures/post";
-import {Component, Input, Output, EventEmitter, OnInit} from 'angular2/core';
+import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
 import {VoteService} from '../../../ts/shared/net-services/vote-cell.service';
 import {AuthService} from '../../../ts/shared/net-services/auth.service';
 import {UsersService} from '../../../ts/shared/net-services/users.service';

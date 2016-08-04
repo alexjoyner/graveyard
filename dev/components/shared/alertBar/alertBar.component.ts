@@ -1,4 +1,4 @@
-import {Component} from "angular2/core";
+import {Component} from "@angular/core";
 import {GlobalHandlerService} from "../../../ts/shared/special-services/globalHandler.service";
 import {AuthService} from "../../../ts/shared/net-services/auth.service";
 @Component({

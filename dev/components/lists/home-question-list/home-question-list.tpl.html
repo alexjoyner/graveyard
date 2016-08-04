@@ -4,7 +4,7 @@
 <br/>
 <div *ngIf="questions"
      [ngClass]="{'isInSearchModal': showInTut}">
-    <div *ngFor="#question of questions; #i = index">
+    <div *ngFor="let question of questions; let i = index">
         <div *ngIf="!question.downVoted">
             <mt-post [post]="question"
                      (didDownVote)="didDownVote($event)"></mt-post>

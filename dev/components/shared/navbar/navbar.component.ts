@@ -1,6 +1,6 @@
 import {PostsService} from "../../../ts/shared/net-services/posts.service";
-import {Component, OnInit} from 'angular2/core';
-import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
+import {Component} from '@angular/core';
+import {ROUTER_DIRECTIVES, Router} from '@angular/router';
 import {AuthService} from '../../../ts/shared/net-services/auth.service';
 import {UsersService} from '../../../ts/shared/net-services/users.service';
 import {DropdownComponent} from "../../misc/dropdown/dropdown.directive";
@@ -36,7 +36,10 @@ export class NavbarComponent {
             );
         }
     }
-
+    goTo(route: string){
+        let link = ['/'+route];
+        this._router.navigate(link);
+    }
     auth():boolean {
         if (this._usersService.profile) {
             this.email = this._usersService.profile.email;
@@ -62,7 +65,8 @@ export class NavbarComponent {
 
     routeToPost(question_id:number) {
         console.log('Routing away');
-        this._router.navigate(['Question', {id: question_id}]);
+        let link = ['/question', question_id];
+        this._router.navigate(link);
         this.dataSearched = null;
     }
 

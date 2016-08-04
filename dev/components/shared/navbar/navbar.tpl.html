@@ -1,6 +1,6 @@
 <ul id="MainNavBar">
     <li class="nav-item nav-item-left  hidden-lg-down"
-        [routerLink]="['Home']">
+        (click)="goTo('')">
         <a href="/#">MetaTruth Alpha.11.4</a>
     </li>
     <li id="MainSearchBar"
@@ -14,7 +14,7 @@
                    #MainSearchValue>
             <div class="dropdown-content"
                  *ngIf="dataSearched !== null">
-                <div *ngFor="#value of dataSearched"
+                <div *ngFor="let value of dataSearched"
                      (click)="routeToPost(value._id); MainSearchValue.value = ''">
                     <a>{{value.title}}</a>
                 </div>
@@ -31,10 +31,10 @@
     <li id="ProfileDropDown"
         class="dropdown dropdown-hover nav-item-right  hidden-lg-down">
         <a class="dropbtn"
-           [routerLink]="['Auth']"
+           (click)="goTo('auth')"
            *ngIf="!auth()">Alpha Testers Login/Register</a>
         <a class="dropbtn"
-           [routerLink]="['Home']"
+           href="#"
            *ngIf="auth()">{{email}}</a>
         <div class="dropdown-content">
             <a href="#"

@@ -4,7 +4,7 @@
             <u>Recently Viewed</u>
         </h4>
         <ul class="list-group">
-            <div *ngFor="#recView of recentViewed">
+            <div *ngFor="let recView of recentViewed">
                 <li class="list-group-item ro-link-container"
                     *ngIf="recView.id !== currentId">
                     <a [routerLink]="['Question', {'id': recView.id}]">{{recView.title}}</a>

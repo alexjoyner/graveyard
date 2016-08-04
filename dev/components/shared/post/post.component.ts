@@ -1,9 +1,9 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input} from '@angular/core';
 import {Post} from "../../../ts/shared/structures/post";
 import {UsersService} from "../../../ts/shared/net-services/users.service";
 import {VoteCellComponent} from "../vote-cell/vote-cell.component";
 import {FollowButtonComponent} from "../follow-button/follow-button.component";
-import {ROUTER_DIRECTIVES} from "angular2/router";
+import {ROUTER_DIRECTIVES, Router} from "@angular/router";
 
 
 @Component({
@@ -14,9 +14,15 @@ import {ROUTER_DIRECTIVES} from "angular2/router";
 export class PostComponent {
     @Input() post: Post;
     constructor(
-        private _usersService: UsersService
+        private _usersService: UsersService,
+        private _router: Router
     ){}
     isOwner(id: number) {
         return (this._usersService.profile)? (id === this._usersService.profile._id) : false;
+    }
+
+    goToQuestion(id: number){
+        let link = ['/question', id];
+        this._router.navigate(link);
     }
 }

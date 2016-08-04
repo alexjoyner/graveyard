@@ -1,5 +1,5 @@
 import {DropdownComponent} from "../../misc/dropdown/dropdown.directive";
-import {Component, Input} from 'angular2/core';
+import {Component, Input} from '@angular/core';
 import {TagsService} from "../../../ts/shared/net-services/tags.service";
 import {TagsFormComponent} from "../../forms/tags-form/tags-form.component";
 

@@ -1,7 +1,7 @@
-import {Component, Input, Output, OnInit, EventEmitter} from 'angular2/core';
+import {Component, Input, Output, OnInit, EventEmitter} from '@angular/core';
 import {Post} from '../../../ts/shared/structures/post';
 import {PostsService} from '../../../ts/shared/net-services/posts.service';
-import { Router } from 'angular2/router';
+import { Router } from '@angular/router';
 @Component({
     selector: 'ro-edit-point',
     template: require('./edit-point-form.tpl.html'),

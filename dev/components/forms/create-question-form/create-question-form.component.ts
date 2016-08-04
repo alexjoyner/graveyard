@@ -1,5 +1,5 @@
-import {Router} from "angular2/router";
-import {Component, Input, Output, EventEmitter, OnInit} from 'angular2/core';
+import {Router} from "@angular/router";
+import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
 import {TagsFormComponent} from '../tags-form/tags-form.component';
 import {Post} from '../../../ts/shared/structures/post';
 import {PostsService} from '../../../ts/shared/net-services/posts.service';
@@ -50,7 +50,8 @@ export class CreateQuestionFormComponent implements OnInit{
 					data => {
 						console.log('Success Posting Question', data);
 						this._usersService.profile.follows.push(data._id);
-						this._router.navigate(['Question', { id: data._id }]);
+                        let link = ['/question', data._id];
+                         this._router.navigate(link);
 					},
 					err => console.log('Error: ', err)
 					);

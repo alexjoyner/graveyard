@@ -1,6 +1,6 @@
-import {Component} from "angular2/core";
+import {Component} from "@angular/core";
 import {UsersService} from "../../../ts/shared/net-services/users.service";
-import {ROUTER_DIRECTIVES, RouteParams} from "angular2/router";
+import {ROUTER_DIRECTIVES, ActivatedRoute} from "@angular/router";
 @Component({
     selector: 'mt-recently-viewed',
     template: require('./recently-viewed.tpl.html'),
@@ -11,9 +11,9 @@ export class RecentlyViewedComponent{
     private currentId: number;
     constructor(
         private _usersService: UsersService,
-        private _routeParams: RouteParams
+        private _activatedRoute: ActivatedRoute
     ) {
-        this.currentId = +this._routeParams.get('id') || 0;
+        this.currentId = +this._activatedRoute.snapshot.params['id'] || 0;
         this.recentViewed = this._usersService.recentPages;
     }
 }

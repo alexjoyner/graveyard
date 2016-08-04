@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter} from "angular2/core";
+import {Component, Output, EventEmitter} from "@angular/core";
 import {TagsService} from "../../../ts/shared/net-services/tags.service";
 import {FavoritesService} from "../../../ts/shared/net-services/favorites.service";
 import {AuthService} from "../../../ts/shared/net-services/auth.service";

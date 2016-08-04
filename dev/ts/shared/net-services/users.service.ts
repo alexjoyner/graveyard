@@ -1,11 +1,11 @@
-import {Injectable} from 'angular2/core';
+import {Injectable} from '@angular/core';
 import {User} from '../structures/user';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
-import {Http, Headers} from 'angular2/http';
+import {Http, Headers} from '@angular/http';
 import {Config} from '../../config/config';
 import {GlobalHandlerService} from '../special-services/globalHandler.service';
-import {Router} from "angular2/router";
+import {Router} from "@angular/router";
 @Injectable()
 export class UsersService {
 	private endpoint: string = Config.endpoint;
