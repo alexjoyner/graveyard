@@ -52,4 +52,4 @@ bootstrap(AppComponent, [
 	HTTP_PROVIDERS, 
 	UsersService,
 	GlobalHandlerService,
-	{provide: LocationStrategy, useClass: HashLocationStrategy })]);
+	{provide: LocationStrategy, useClass: HashLocationStrategy }]);
