@@ -9,7 +9,8 @@
     "sass": "sass  -r sass-globbing --watch ./dev/app.scss:./dist_client/client/app.css",
     "dev-all": "concurrently --kill-others 'npm run start' 'npm run sass'",
     "test": "karma start",
-    "watch:test": "npm run test -- --auto-watch --no-single-run  --reporters html"
+    "watch:test": "karma start --auto-watch --no-single-run",
+    "phantom-test-server": "live-server ./karma_html/PhantomJS\\ 2.1.1\\ \\(Mac\\ OS\\ X\\ 0.0.0\\)/"
   },
   "license": "ISC",
   "dependencies": {

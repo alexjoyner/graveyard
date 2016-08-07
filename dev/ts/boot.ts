@@ -41,6 +41,7 @@ import {UsersService} from './shared/net-services/users.service';
 import {GlobalHandlerService} from './shared/special-services/globalHandler.service';
 import {APP_ROUTES_PROVIDER} from "./routes";
 import {APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from "@angular/common";
+import {ROUTER_DIRECTIVES} from "@angular/router";
 
 // To enable production mode for angular.
 //enableProdMode();
@@ -52,4 +53,6 @@ bootstrap(AppComponent, [
 	HTTP_PROVIDERS, 
 	UsersService,
 	GlobalHandlerService,
-	{provide: LocationStrategy, useClass: HashLocationStrategy }]);
+	ROUTER_DIRECTIVES,
+	{provide: LocationStrategy, useClass: HashLocationStrategy }])
+	.catch(err => console.error(err));

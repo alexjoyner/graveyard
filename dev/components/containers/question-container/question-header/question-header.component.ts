@@ -10,7 +10,7 @@ import {FollowButtonComponent} from "../../../shared/follow-button/follow-button
 
 @Component({
     'selector': 'mt-question-header',
-    template: require('dev/components/containers/question-container/question-header/question-header.tpl.html'),
+    template: require('./question-header.tpl.html'),
     directives: [VoteCellComponent, ROUTER_DIRECTIVES, TagCellComponent, FollowButtonComponent]
 })
 
