@@ -93,20 +93,17 @@ body { background-color: #eeeeee; padding: 0; margin: 5px; overflow-y: scroll; }
 </style>
 </head>
 
-<body id="HTMLReporter" class="html-reporter showDetails">
-<h1>Tested in PhantomJS 2.1.1 (Mac OS X 0.0.0) on Fri Aug 05 2016</h1>
+<body id="HTMLReporter" class="html-reporter">
+<h1>Tested in PhantomJS 2.1.1 (Mac OS X 0.0.0) on Sat Aug 06 2016</h1>
 
 <div class="alert">
 
 
-<!-- <span class="failingAlert bar">Failed 1 specs</span> -->
-<span class="failingAlert bar"><span class="fold-buttons"><a href="#" onclick="fold();">Fold</a> | 
-  <a href="#" onclick="unfold();">Unfold</a></span>2 specs, 1 failed, 0 pending</span>
-<span class="resultsMenu bar">
-<a class="summaryMenuItem" onclick="showSummary();" href="#">Spec List<a>|<a 
-   class="detailsMenuItem" onclick="showFailures();" href="#">Failures</a>
-</span>
 
+  
+  <span class="passingAlert bar"><span class="fold-buttons"><a href="#" onclick="fold();">Fold</a> | 
+  <a href="#" onclick="unfold();">Unfold</a></span>1 specs, 0 failed, 0 pending</span>
+  
 
 
 </div>
@@ -117,12 +114,8 @@ body { background-color: #eeeeee; padding: 0; margin: 5px; overflow-y: scroll; }
   
   
   
-    <div class="suite failed">
+    <div class="suite passed">
       <span class="description">App</span>
-    
-      <div class="specSummary failed">
-      <span class="description">encountered a declaration exception</span>
-      </div>
     
       <div class="specSummary passed">
       <span class="description">SANITY TEST: should equal 4</span>
@@ -135,25 +128,6 @@ body { background-color: #eeeeee; padding: 0; margin: 5px; overflow-y: scroll; }
 
 <div id="details">
   
-  
-  <div class="specDetail failed">
-    <span class="description">App encountered a declaration exception</span>
-    <div class="stackTrace">
-      <div class="resultMessage">ReferenceError: Can't find variable: App in http://localhost:9876/base/config/spec-bundle.js?69dc1154e81bf6cbd6af5749a4ca015b81c4e2c3 (line 71923)
-http://localhost:9876/base/config/spec-bundle.js?69dc1154e81bf6cbd6af5749a4ca015b81c4e2c3:71923:61
-http://localhost:9876/base/config/spec-bundle.js?69dc1154e81bf6cbd6af5749a4ca015b81c4e2c3:71918:10
-__webpack_require__@http://localhost:9876/base/config/spec-bundle.js?69dc1154e81bf6cbd6af5749a4ca015b81c4e2c3:20:34
-webpackContext@http://localhost:9876/base/config/spec-bundle.js?69dc1154e81bf6cbd6af5749a4ca015b81c4e2c3:71884:29
-map@[native code]
-requireAll@http://localhost:9876/base/config/spec-bundle.js?69dc1154e81bf6cbd6af5749a4ca015b81c4e2c3:103:36
-http://localhost:9876/base/config/spec-bundle.js?69dc1154e81bf6cbd6af5749a4ca015b81c4e2c3:107:26
-__webpack_require__@http://localhost:9876/base/config/spec-bundle.js?69dc1154e81bf6cbd6af5749a4ca015b81c4e2c3:20:34
-http://localhost:9876/base/config/spec-bundle.js?69dc1154e81bf6cbd6af5749a4ca015b81c4e2c3:40:37
-global code@http://localhost:9876/base/config/spec-bundle.js?69dc1154e81bf6cbd6af5749a4ca015b81c4e2c3:41:12</div>
-    </div>
-  </div>
-  
-  
 </div>
 
 <script>
@@ -165,7 +139,7 @@ document.body.onkeypress = function (e) {
   switch (e.keyCode) {
     case 102: toggleFold(); break;
     case 49: showSummary(); break;
-    case 50: showFailures(); break;
+    
   }
 };
 

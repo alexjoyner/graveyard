@@ -7,6 +7,6 @@
 <button class="mt-btn-default mt-btn"
         (click)="follow()"
         [ngClass]="{'ro-btn-info': !isFollowing, 'ro-btn-secondary': isFollowing}">
-    <span *ngIf="isFollowing">Follow</span>
+    <span *ngIf="!isFollowing">Follow</span>
     <span *ngIf="isFollowing">Unfollow</span>
 </button>
