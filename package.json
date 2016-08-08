@@ -1,10 +1,10 @@
 {
   "name": "metatruth",
-  "version": "1.0.0-Alpha.11.4",
+  "version": "1.0.0-Alpha.11.5",
   "scripts": {
     "start": "webpack --progress --profile --colors --watch --display-error-details",
     "build": "NODE_ENV='production' webpack",
-    "production": "NODE_ENV='production' node server.js",
+    "production": "pm2 start process.yml --env env_production",
     "dev": "nodemon server.js",
     "sass": "sass  -r sass-globbing --watch ./dev/app.scss:./dist_client/client/app.css",
     "dev-all": "concurrently --kill-others 'npm run start' 'npm run sass'",
