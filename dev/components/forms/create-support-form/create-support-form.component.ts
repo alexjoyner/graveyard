@@ -55,12 +55,12 @@ export class AddSupportComponent implements OnInit {
             case 5:
                 this.showSource = false;
                 this.newSupport.source = null;
-                break
+                break;
             default:
                 this.showSource = true;
                 this.newSupport.detail = '';
                 this.newSupport.source = 'http://';
-                break
+                break;
         }
     }
 

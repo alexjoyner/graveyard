@@ -1,4 +1,4 @@
-<button class="btn ro-btn-secondary ModalClose" (click)="endTut()">
+<button class="ModalClose" (click)="endTut()">
     Close
 </button>
 <form *ngIf="mode === 'question'" (ngSubmit)="switchToTags()">
@@ -19,7 +19,7 @@
 		[typeString]="'Tag'"
 		[tagsFormHeader]="question"
 		(goBack)="mode = 'question'"></ro-tags-form>
-	<button id="PostQuestion" class="btn btn-lg ro-btn-success" (click)="onCreate()">
+	<button id="PostQuestion" class="mt-btn mt-btn-success" (click)="onCreate()">
 		Post Question
 	</button>
 </div>

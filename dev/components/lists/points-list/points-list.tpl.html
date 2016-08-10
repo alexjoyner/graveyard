@@ -27,20 +27,9 @@
                  *ngFor="let point of points | roFilter: searchText.value; let i = index"
                  class="point"
             >
-
                 <mt-post [post]="point"
                          *ngIf="point.point_type_id === 1 || point.point_type_id === 3"></mt-post>
-                <!--<ro-main-point
-                        *ngIf="point.point_type_id === 1"
-                        [point]="point"
-                        (removed)="removePoint(i)">
-                </ro-main-point>-->
-                <!--<ro-support-point
-                        *ngIf="point.point_type_id === 3"
-                        [support]="point"
-                        (removed)="removePoint(i)">
-                </ro-support-point>-->
-            </div> <!--  Looping through yess -->
+            </div>
         </div>
         <div class="col col-md-6">
             <div [attr.id]="'point' + i"
@@ -48,17 +37,7 @@
                  class="point">
                 <mt-post [post]="point"
                          *ngIf="point.point_type_id === 2 || point.point_type_id === 4"></mt-post>
-                <!--<ro-main-point
-                        *ngIf="point.point_type_id === 2"
-                        [point]="point"
-                        (removed)="removePoint(i)">
-                </ro-main-point>
-                <ro-support-point
-                        *ngIf="point.point_type_id === 4"
-                        [support]="point"
-                        (removed)="removePoint(i)">
-                </ro-support-point>-->
-            </div> <!-- Looping through for nos -->
+            </div>
         </div>
     </div>
     <!--THIS WAS JUST A TEST OF A DIFFERENT TYPE OF SORTING-->
@@ -68,16 +47,6 @@
              class="point"
         >
             <mt-post [post]="point"></mt-post>
-            <!--<ro-main-point
-                    *ngIf="point.point_type_id === 1 || point.point_type_id === 2"
-                    [point]="point"
-                    (removed)="removePoint(i)">
-            </ro-main-point>-->
-            <!--<ro-support-point
-                    *ngIf="point.point_type_id === 3 || point.point_type_id === 4"
-                    [support]="point"
-                    (removed)="removePoint(i)">
-            </ro-support-point>-->
         </div></div>
     </div>
     <!-- Looping through for nos--><!--
@@ -104,7 +73,7 @@
      *ngIf="showForm && questionType === 1">
     <ro-create-point-form (added)="showForm = false; points.unshift($event);"
                           (cancel)="showForm = false"
-                          [searchText]="searchText.value">
+                          [searchText]="''">
     </ro-create-point-form>
 </div>
 <div class="ro-modal"

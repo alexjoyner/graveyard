@@ -24,7 +24,7 @@
 </ro-edit-question-form>
 <div class="question-edit-cell-container">
     <div class="question-edit-cell">
-        <ro-vote-cell
+        <mt-vote-cell
                 class="ro-action-bar-item"
                 [post]="question"
                 [sourceId]="question._id"
@@ -33,7 +33,7 @@
                 [upvoteText]="(question.post_type_id === 1)? 'important': 'helpful'"
                 [downvoteText]="(question.post_type_id === 1)? 'unimportant': 'not helpful'"
                 [whyVoteText]="(question.post_type_id === 1)? 'This issue is': 'If this were true, it would be'">
-        </ro-vote-cell>
+        </mt-vote-cell>
         <button class="ro-action-bar-item mt-btn mt-btn-info"
                 (click)="editQuestion($event)"
                 *ngIf="question.title && isOwner(question.owner_user_id) && !question.editQuestion || question.editQuestion === false">
@@ -51,8 +51,8 @@
             <i class="fa fa-close">
             </i>
         </button>
-        <follow-button class="ro-action-bar-item"
-                       [postId]="question._id"></follow-button>
+        <mt-follow-button class="ro-action-bar-item"
+                       [postId]="question._id"></mt-follow-button>
     </div>
     <br class="clear">
 </div>

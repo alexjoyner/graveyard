@@ -9,7 +9,7 @@
         <div class="mt-form-group dropdown">
             <input type="text"
                    class="mt-form-control"
-                   placeholder="Search"
+                   placeholder="Ask or Search MetaTruth"
                    (keyup)="searchStuff(MainSearchValue.value)"
                    #MainSearchValue>
             <div class="dropdown-content"
@@ -59,7 +59,7 @@
 <div class="ro-modal"
      *ngIf="startQuestion">
     <ro-create-question
-            [question]="searchText"
+            [question]="MainSearchValue.value"
             (close)="startQuestion = false; showQ_ToTut=false"
             (search)="null"
             (switchTags)="showQ_ToTut = false"></ro-create-question>

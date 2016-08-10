@@ -3,7 +3,8 @@
 		content: ""
 		display: block
 		position: fixed
-		background-color: rgba(51,122,183,0.9)
+		background-color: $mt-brand-color-info
+		opacity: 0.95
 		top: 0
 		left: 0
 		+size(100%)
@@ -14,9 +15,10 @@
 		top: 5%
 		left: 90%
 		z-index: 51
+		@extend .mt-btn
+		@extend .mt-btn-sm
+		@extend .mt-btn-default
 	.CenterContent
-		-webkit-animation: fadeIn 2s /* Chrome, Safari, Opera */ 
-		animation: fadeIn 2s
 		position: fixed
 		z-index: 51
 		background-color: #fff 
