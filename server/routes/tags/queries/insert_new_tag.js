@@ -5,7 +5,7 @@ module.exports = function (req, res, next) {
     req.roQueryString = `
     INSERT INTO
       tags (
-      tag_nam,
+      tag_name,
       tag_type_id)
     VALUES (
       $1, $2)

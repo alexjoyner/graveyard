@@ -108,9 +108,6 @@ export class HomeContainerComponent implements OnInit, OnDestroy{
         this._page_num ++;
         this.feedInfoInit();
     }
-    onScroll () {
-        console.log('scrolled!!')
-    }
 }
 
 

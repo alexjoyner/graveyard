@@ -21,6 +21,20 @@
                     </li>
                 </ul>
                 <h4>
+                    <u>Default locations selected by MetaTruth</u>
+                </h4>
+                <ul>
+                    <li>
+                        <a (click)="goTo(['/topic-feed/37/Rocky Mount, NC'])">Rocky Mount, NC</a>
+                    </li>
+                    <li>
+                        <a (click)="goTo(['/topic-feed/45/Nash County, NC'])">Nash County, NC</a>
+                    </li>
+                    <li>
+                        <a (click)="goTo(['/topic-feed/38/Nashville, NC'])">Nashville, NC</a>
+                    </li>
+                </ul>
+                <h4>
                     <u>Your favorite places and topics</u>
                 </h4>
                 <favorites-cell (getQuestionSet)="goTo(['/topic-feed/', $event.tagId, $event.tagName])"></favorites-cell>
