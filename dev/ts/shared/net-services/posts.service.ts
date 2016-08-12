@@ -31,12 +31,15 @@ export class PostsService {
 		return req;
 			
 	}
-	getAllByTagId(tagId: number): Observable<any> {
+	getAllByTagId(tagId: number, page_num: number): Observable<any> {
 		const headers = new Headers();
 		headers.append('x-access-token',
 			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
 		var req = this._http.get(
-			this.endpoint + '/posts/topic/' + tagId,
+			this.endpoint + '/posts/topic/'
+			+ tagId
+			+ '/'
+			+ page_num,
 			{ headers: headers })
 			.map(res => res.json());
 		/*req.subscribe(

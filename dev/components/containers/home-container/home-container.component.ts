@@ -89,7 +89,7 @@ export class HomeContainerComponent implements OnInit, OnDestroy{
     }
     getQuestionsByTag(data:{tagId:number, tagName:string}) {
         if (this._authService.checkTokenExists()) {
-            this._postsService.getAllByTagId(data.tagId)
+            this._postsService.getAllByTagId(data.tagId, this._page_num)
                 .subscribe(post_feed => {
                     if(post_feed.length < this._itemsPerPage){
                         this.canGetMore = false;
@@ -105,8 +105,10 @@ export class HomeContainerComponent implements OnInit, OnDestroy{
         }
     }
     loadMore(){
-        this._page_num ++;
-        this.feedInfoInit();
+        if(this.canGetMore){
+            this._page_num ++;
+            this.feedInfoInit();
+        }
     }
 }
 

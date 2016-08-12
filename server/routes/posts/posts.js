@@ -81,16 +81,17 @@ router.get('/core-feeds/:feed_name/:page_num',
 //         }
 //     });
 // get all
-router.get('/topic/:tagId',
+router.get('/topic/:tagId/:page_num',
 	/*Check cache*/
 	function (req, res, next) {
+		req['roPageNum'] = req.params['page_num'];
 		var results = mtCache.get('tag_feed_' + req.params['tagId']);
 		if (!results) {
 			next();
 			return;
 		}
 		console.log('FROM CACHE');
-		res.status(200).send(results).end();
+		res.status(200).send(getPageContents(req['roPageNum'], results)).end();
 	},
 	/*Query all questions
 	 1) Attach query string*/
@@ -108,7 +109,7 @@ router.get('/topic/:tagId',
 			var sortedPosts = sortPosts.hotSort(result.rows);
 			console.log('CACHING ' + 'tag_feed_' + req.params['tagId']);
 			mtCache.set('tag_feed_' + req.params['tagId'], sortedPosts);
-			res.status(200).send(sortedPosts).end();
+			res.status(200).send(getPageContents(req['roPageNum'], sortedPosts)).end();
 		}
 	});
 // get one question by id and a type of yes/no
