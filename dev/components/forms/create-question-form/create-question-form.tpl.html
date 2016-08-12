@@ -1,7 +1,7 @@
 <button class="ModalClose" (click)="endTut()">
     Close
 </button>
-<form *ngIf="mode === 'question'" (ngSubmit)="switchToTags()">
+<form *ngIf="mode === 'question'" (ngSubmit)="onCreate()">
     <h4 id="AlertMessage" class="text-center" *ngIf="alertString"  [ngClass]="{'ro-alert-warning': alertType === 'warning','ro-alert-success': alertType === 'success'}">
         {{ alertString }}
     </h4>

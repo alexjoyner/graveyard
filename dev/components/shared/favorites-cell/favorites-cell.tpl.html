@@ -2,7 +2,7 @@
     <ul>
         <li *ngFor="let favorite of favorites; let i = index">
             <a (click)="getQuestionsByTag(favorite._id, favorite.tag_name)">{{favorite.tag_name}}</a>
-            <i class="favorite-remove fa fa-close text-danger mt-btn-sm mt-btn-danger pull-right"
+            <i class="favorite-remove fa fa-close mt-btn-sm mt-btn-danger pull-right"
                *ngIf="editMode"
                (click)="removeFavorite(favorite._id, i)"></i>
         </li>

@@ -1,6 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
-require('../server');
+//require('../server');
 module.exports = {
     context: path.join(__dirname + '../../'),
     devtool: "inline-sourcemap",

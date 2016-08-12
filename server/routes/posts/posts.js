@@ -9,10 +9,32 @@ var pg = require('pg');
 var conString = config.db;
 // Special functions
 var sortPosts = require('../../custFunctions/sortPosts.js');
+// Node Cache
+var node_cache = require('node-cache');
+var mtCache = new node_cache( { stdTTL: 100, checkperiod: 120 } );
+
+function getPageContents(page, array){
+    var perPage = 50;
+    var startPos = ((page) - 1) * perPage;
+    var endPos = startPos + perPage;
+    return array.slice(startPos, endPos);
+}
 // !! route = '/posts'
 // ###########  GETS  ###############
 // get
-router.get('/hot',
+router.get('/core-feeds/:feed_name/:page_num',
+    /*Check cache*/
+    function(req, res, next){
+        console.log('Hello');
+        req['roPageNum'] = req.params['page_num'];
+        var results = mtCache.get(req.params['feed_name'] + '_feed');
+        if(!results){
+            next();
+            return;
+        }
+        console.log('FROM CACHE');
+        res.status(200).send(getPageContents(req['roPageNum'], results)).end();
+    },
     /*Query all questions
         1) Attach query string*/
     require('./queries/get_all_questions.js'),
@@ -23,34 +45,54 @@ router.get('/hot',
     function(req, res) {
         req.roDone();
         var result = req.roInfo;
+        var feed_name = req.params['feed_name'];
         if (!result.rows[0]) {
             res.status(200).send([]).end();
-        } else {
+        }
+        if(feed_name !== 'top' && feed_name !== 'hot'){
+            res.status(500).send('No good feed name').end();
+            return;
+        }
+        if(feed_name === 'hot')
             var sortedPosts = sortPosts.hotSort(result.rows);
-            res.status(200).send(sortedPosts).end();
-        }
-    });
-// get
-router.get('/top',
-    /*Query all questions
-        1) Attach query string*/
-    require('./queries/get_all_questions.js'),
-    /*  2) Query the attached string*/
-    sql_query.commonQuery,
-    /*  3) Query was successful, do something
-                with roInfo*/
-    function(req, res) {
-        req.roDone();
-        var result = req.roInfo;
-        if (!result.rows[0]) {
-            res.status(200).send([]).end();
-        } else {
+        if(feed_name === 'top')
             var sortedPosts = sortPosts.topSort(result.rows);
-            res.status(200).send(sortedPosts).end();
-        }
+
+        console.log('CACHING ' + feed_name);
+        mtCache.set(feed_name + '_feed', sortedPosts);
+        res.status(200).send(getPageContents(req['roPageNum'], sortedPosts)).end();
     });
+// // get
+// router.get('/top',
+//     /*Query all questions
+//         1) Attach query string*/
+//     require('./queries/get_all_questions.js'),
+//     /*  2) Query the attached string*/
+//     sql_query.commonQuery,
+//     /*  3) Query was successful, do something
+//                 with roInfo*/
+//     function(req, res) {
+//         req.roDone();
+//         var result = req.roInfo;
+//         if (!result.rows[0]) {
+//             res.status(200).send([]).end();
+//         } else {
+//             var sortedPosts = sortPosts.topSort(result.rows);
+//             res.status(200).send(sortedPosts).end();
+//         }
+//     });
 // get all
 router.get('/topic/:tagId',
+    /*Check cache*/
+    function(req, res, next){
+        var results = mtCache.get('tag_feed_' + req.params['tagId']);
+        if(!results){
+            next();
+            return;
+        }
+        console.log('FROM CACHE');
+        res.status(200).send(results).end();
+    },
     /*Query all questions
         1) Attach query string*/
     require('./queries/get_topic_questions.js'),
@@ -65,6 +107,8 @@ router.get('/topic/:tagId',
             res.status(200).send([]).end();
         } else {
             var sortedPosts = sortPosts.hotSort(result.rows);
+            console.log('CACHING ' + 'tag_feed_' + req.params['tagId']);
+            mtCache.set('tag_feed_' + req.params['tagId'], sortedPosts);
             res.status(200).send(sortedPosts).end();
         }
     });
@@ -131,7 +175,7 @@ router.post('/newPost',
                 The new post is a question, so we need to run the process of
                 adding tags to the post
             */
-            req.roSkipTags = false;
+            req.roSkipTags = true;
             req.roSkipNotify = true;
             next();
         } else {

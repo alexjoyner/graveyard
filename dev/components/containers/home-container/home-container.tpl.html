@@ -10,20 +10,20 @@
                 <hr>
                 <ul>
                     <li>
-                        <a (click)="getHotRightNow()">Hot right now</a>
+                        <a (click)="goTo([''])">Hot right now</a>
                     </li>
                     <li>
-                        <a (click)="getAllTimeTop()">All time top</a>
+                        <a (click)="goTo(['/top'])">All time top</a>
                     </li>
                     <li>
-                        <a (click)="getQuestionsByTag({tagId: 35, tagName: 'Controversial'})">All time top
+                        <a (click)="goTo(['/topic-feed/35/Controversial'])">All time top
                             controversial</a>
                     </li>
                 </ul>
                 <h4>
                     <u>Your favorite places and topics</u>
                 </h4>
-                <favorites-cell (getQuestionSet)="getQuestionsByTag($event)"></favorites-cell>
+                <favorites-cell (getQuestionSet)="goTo(['/topic-feed/', $event.tagId, $event.tagName])"></favorites-cell>
             </div>
         </div>
         <div class="col col-xl-6 col-lg-12">
@@ -46,6 +46,14 @@
                     <button class="mt-btn mt-btn-success"
                             (click)="startQuestion = !startQuestion">
                         ADD AN ISSUE!!!
+                    </button>
+                </h1>
+            </div>
+            <div *ngIf="questions && questions.length > 1 && canGetMore">
+                <h1 class="text-center">
+                    <button class="mt-btn mt-btn-success"
+                            (click)="loadMore()">
+                        Load more
                     </button>
                 </h1>
             </div>

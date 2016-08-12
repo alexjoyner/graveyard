@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, OnDestroy} from "@angular/core";
 import {HomeQuestionListComponent} from "../../lists/home-question-list/home-question-list.component";
 import {CreateQuestionFormComponent} from "../../forms/create-question-form/create-question-form.component";
 import {AuthService} from "../../../ts/shared/net-services/auth.service";
@@ -10,7 +10,7 @@ import {FavoritesCellComponent} from "../../shared/favorites-cell/favorites-cell
 // import {WINDOW_PROVIDERS} from "../../../ts/shared/special-services/window.service";
 import {VoteService} from "../../../ts/shared/net-services/vote-cell.service";
 import {RecentlyViewedComponent} from "../../shared/recently-viewed/recently-viewed.component";
-import {ROUTER_DIRECTIVES} from "@angular/router";
+import {ROUTER_DIRECTIVES, ActivatedRoute, Router} from "@angular/router";
 // TODO: Make this a route so that the user can link to a certain subject and different categories don't need to be called
 
 @Component({
@@ -20,59 +20,79 @@ import {ROUTER_DIRECTIVES} from "@angular/router";
     directives: [NavbarComponent, HomeQuestionListComponent, CreateQuestionFormComponent, FavoritesCellComponent, RecentlyViewedComponent, ROUTER_DIRECTIVES],
     providers: [PostsService, VoteService]
 })
-export class HomeContainerComponent implements OnInit {
+export class HomeContainerComponent implements OnInit, OnDestroy{
     private questions:Post[];
-    private headerText:string = 'Hot posts on MataTruth right now';
-
+    private headerText:string;
+    private _page_num: number = 1;
+    private _feed_name: string;
+    private _tag_id: number;
+    private _tag_name: string;
+    private canGetMore: boolean = true;
+    private sub;
     constructor(private _authService:AuthService,
                 private _postsService:PostsService,
-                private _voteService:VoteService) {
+                private _voteService:VoteService,
+                private _activatedRoute: ActivatedRoute,
+                private _router: Router) {
     };
-
     ngOnInit():any {
-        // When the page loads, Get questions for the user
+        this.sub = this._activatedRoute.params.subscribe(params => {
+            this.questions = [];
+            this._page_num = 1;
+            this._feed_name = params['feed_name'];
+            this._tag_id = +params['tag_id'];
+            this._tag_name = params['tag_name'];
+            this.feedInfoInit();
+        });
+
+    }
+    ngOnDestroy():any {
+        this.sub.unsubscribe();
+    }
+    feedInfoInit(){
+        /* Check first for  */
+        if(this._feed_name === 'top'){
+            this.headerText = 'All time top posts';
+            this.getFeed(this._feed_name);
+            return;
+        }
+        if(this._tag_id){
+            this.getQuestionsByTag({tagId: +this._tag_id, tagName: this._tag_name});
+            return;
+        }
+        this.headerText = 'Hot questions on MetaTruth right now';
+        this.getFeed('hot');
+    }
+    goTo(link: any[]){
+        this._router.navigate(link);
+    }
+
+    getFeed(feed_name: string) {
         if (this._authService.checkTokenExists()) {
-            this._postsService.getHotPosts()
+            this._postsService.getFeed(feed_name, this._page_num)
                 .subscribe(data => {
                     let votePosts = this._voteService.checkPostsUserVoted(data);
-                    this.questions = votePosts;
-                    console.log('questions:', this.questions);
-
+                    if(data.length < 50)
+                        this.canGetMore = false
+                    votePosts.forEach(function(v) {this.questions.push(v)}, this);
                 });
         }
     }
-
     getQuestionsByTag(data:{tagId:number, tagName:string}) {
         if (this._authService.checkTokenExists()) {
             this._postsService.getAllByTagId(data.tagId)
-                .subscribe(response => {
-                    let votePosts = this._voteService.checkPostsUserVoted(response);
-                    this.questions = votePosts;
+                .subscribe(data => {
+                    if(data.length < 50)
+                        this.canGetMore = false
+                    let votePosts = this._voteService.checkPostsUserVoted(data);
+                    votePosts.forEach(function(v) {this.questions.push(v)}, this);
                     this.headerText = 'Top posts in ' + data.tagName;
                 });
         }
     }
-
-    getHotRightNow() {
-        if (this._authService.checkTokenExists()) {
-            this._postsService.getHotPosts()
-                .subscribe(data => {
-                    let votePosts = this._voteService.checkPostsUserVoted(data);
-                    this.questions = votePosts;
-                    this.headerText = 'Hot posts on MataTruth right now';
-                });
-        }
-    }
-
-    getAllTimeTop() {
-        if (this._authService.checkTokenExists()) {
-            this._postsService.getAllTimeTop()
-                .subscribe(response => {
-                    let votePosts = this._voteService.checkPostsUserVoted(response);
-                    this.questions = votePosts;
-                    this.headerText = 'All time top posts';
-                });
-        }
+    loadMore(){
+        this._page_num ++;
+        this.feedInfoInit();
     }
 }
 

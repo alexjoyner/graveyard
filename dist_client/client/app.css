@@ -3023,8 +3023,10 @@ input.cmn-toggle-yes-no:checked + label:after {
 .ro-favorites-cell .NewFavorite:hover {
   background-color: #40BC86;
   color: #ffffff; }
-.ro-favorites-cell .favorite-remove:hover {
-  cursor: pointer; }
+.ro-favorites-cell .favorite-remove {
+  color: #ffffff; }
+  .ro-favorites-cell .favorite-remove:hover {
+    cursor: pointer; }
 
 #MainNavBar {
   position: fixed;
