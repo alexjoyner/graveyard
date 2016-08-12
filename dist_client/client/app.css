@@ -3077,8 +3077,6 @@ input.cmn-toggle-yes-no:checked + label:after {
   position: relative;
   border: 1px solid #F0F1F5;
   border-radius: 8px;
-  animation-duration: 0.3s;
-  animation-name: popIn;
   width: 100%;
   padding: 0;
   margin: 10px 0; }

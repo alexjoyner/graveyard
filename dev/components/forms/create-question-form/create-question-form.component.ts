@@ -33,7 +33,7 @@ export class CreateQuestionFormComponent implements OnInit {
         this.questionControl()
     }
 
-    endTut() {
+    closeForm() {
         this.close.emit(null);
     }
 
@@ -59,6 +59,7 @@ export class CreateQuestionFormComponent implements OnInit {
                         this._usersService.profile.follows.push(data._id);
                         let link = ['/question', data._id];
                         this._router.navigate(link);
+                        this.close.emit(null);
                     },
                     err => console.log('Error: ', err)
                 );

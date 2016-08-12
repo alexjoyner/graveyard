@@ -11,6 +11,8 @@ module.exports = function(req, res, next) {
             FROM posts p
             WHERE
                 p.parent_id = $1
+            AND
+            	p.is_deleted = FALSE
             GROUP BY 
                 p._id
         )a ) as points,

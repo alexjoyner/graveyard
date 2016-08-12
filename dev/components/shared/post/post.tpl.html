@@ -1,6 +1,7 @@
 <div class="mt-post"
      [ngClass]="'point-type-' + post.point_type_id">
-    <div class="mt-post-contents">
+    <div class="mt-post-contents"
+         *ngIf="!post.editPoint || post.editPoint === false">
         <h2><a (click)="goToQuestion(post._id)"><span class="mt-post-pre-title-text"></span>{{post.title}}</a>
         </h2>
         <h3>{{post.detail}}</h3>
@@ -20,6 +21,12 @@
             </h4>
         </div>
     </div>
+    <ro-edit-point
+            *ngIf="post.editPoint && post.editPoint === true"
+            [myPoint]="post"
+            (edited)="post.editPoint = false"
+            (canceled)="post.editPoint = false">
+    </ro-edit-point>
     <div class="mt-post-footer">
         <ul class="mt-action-bar">
             <mt-vote-cell
@@ -56,7 +63,7 @@
                 *ngIf="post.post_type_id !== 1">
                 <button
                         class="mt-btn mt-btn-info"
-                        (click)="editPoint(post, $event);"
+                        (click)="editPoint($event);"
                         *ngIf="isOwner(post.owner_user_id)">
                     <i class="fa fa-edit">
                     </i>

@@ -40,13 +40,9 @@
                     (cancel)="searchText='';startQuestion=!startQuestion;"></ro-home-question-list>
             <!-- Let the user know that nothing was found if they
                     search for a question and nothing was found -->
-            <div *ngIf="questions && questions.length < 1">
+            <div *ngIf="needsMore">
                 <h1 class="text-center">
-                    There are no questions under this category. How about
-                    <button class="mt-btn mt-btn-success"
-                            (click)="startQuestion = !startQuestion">
-                        ADD AN ISSUE!!!
-                    </button>
+                    :( This section could use more questions.
                 </h1>
             </div>
             <div *ngIf="questions && questions.length > 1 && canGetMore">

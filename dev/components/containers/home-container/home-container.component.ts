@@ -28,6 +28,7 @@ export class HomeContainerComponent implements OnInit, OnDestroy{
     private _tag_id: number;
     private _tag_name: string;
     private canGetMore: boolean = true;
+    private needsMore: boolean = false;
     private sub;
     constructor(private _authService:AuthService,
                 private _postsService:PostsService,
@@ -72,8 +73,10 @@ export class HomeContainerComponent implements OnInit, OnDestroy{
             this._postsService.getFeed(feed_name, this._page_num)
                 .subscribe(data => {
                     let votePosts = this._voteService.checkPostsUserVoted(data);
-                    if(data.length < 50)
-                        this.canGetMore = false
+                    if(data.length < 50){
+                        this.canGetMore = false;
+                        this.needsMore = true;
+                    }
                     votePosts.forEach(function(v) {this.questions.push(v)}, this);
                 });
         }
@@ -81,10 +84,12 @@ export class HomeContainerComponent implements OnInit, OnDestroy{
     getQuestionsByTag(data:{tagId:number, tagName:string}) {
         if (this._authService.checkTokenExists()) {
             this._postsService.getAllByTagId(data.tagId)
-                .subscribe(data => {
-                    if(data.length < 50)
-                        this.canGetMore = false
-                    let votePosts = this._voteService.checkPostsUserVoted(data);
+                .subscribe(res => {
+                    if(res.length < 50){
+                        this.canGetMore = false;
+                        this.needsMore = true;
+                    }
+                    let votePosts = this._voteService.checkPostsUserVoted(res);
                     votePosts.forEach(function(v) {this.questions.push(v)}, this);
                     this.headerText = 'Top posts in ' + data.tagName;
                 });

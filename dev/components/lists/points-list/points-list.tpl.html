@@ -28,6 +28,7 @@
                  class="point"
             >
                 <mt-post [post]="point"
+                         (removed)="removePoint(i)"
                          *ngIf="point.point_type_id === 1 || point.point_type_id === 3"></mt-post>
             </div>
         </div>
@@ -36,6 +37,7 @@
                  *ngFor="let point of points | roFilter: searchText.value; let i = index"
                  class="point">
                 <mt-post [post]="point"
+                         (removed)="removePoint(i)"
                          *ngIf="point.point_type_id === 2 || point.point_type_id === 4"></mt-post>
             </div>
         </div>
@@ -46,7 +48,8 @@
              *ngFor="let point of points | roFilter: searchText.value; let i = index"
              class="point"
         >
-            <mt-post [post]="point"></mt-post>
+            <mt-post [post]="point"
+                     (removed)="removePoint(i)"></mt-post>
         </div></div>
     </div>
     <!-- Looping through for nos--><!--

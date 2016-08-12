@@ -7,11 +7,12 @@ import {Post} from "../../../../ts/shared/structures/post";
 import {UsersService} from "../../../../ts/shared/net-services/users.service";
 import {TagCellComponent} from "../../../shared/tag-cell/tag-cell.component";
 import {FollowButtonComponent} from "../../../shared/follow-button/follow-button.component";
+import {EditQuestionForm} from "../../../forms/edit-question-form/edit-question-form.component";
 
 @Component({
     'selector': 'mt-question-header',
     template: require('./question-header.tpl.html'),
-    directives: [VoteCellComponent, ROUTER_DIRECTIVES, TagCellComponent, FollowButtonComponent]
+    directives: [VoteCellComponent, ROUTER_DIRECTIVES, TagCellComponent, FollowButtonComponent, EditQuestionForm]
 })
 
 export class QuestionHeaderComponent {
