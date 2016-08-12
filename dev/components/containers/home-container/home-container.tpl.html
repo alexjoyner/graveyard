@@ -26,7 +26,11 @@
                 <favorites-cell (getQuestionSet)="goTo(['/topic-feed/', $event.tagId, $event.tagName])"></favorites-cell>
             </div>
         </div>
-        <div class="col col-xl-6 col-lg-12">
+        <div class="col col-xl-6 col-lg-12"
+             infinite-scroll
+             [infiniteScrollDistance]="2"
+             [infiniteScrollThrottle]="500"
+             (scrolled)="loadMore()">
             <h5 id="Home-MainHeader">
                 {{headerText}}
             </h5>
@@ -43,14 +47,6 @@
             <div *ngIf="needsMore">
                 <h1 class="text-center">
                     :( This section could use more questions.
-                </h1>
-            </div>
-            <div *ngIf="questions && questions.length > 1 && canGetMore">
-                <h1 class="text-center">
-                    <button class="mt-btn mt-btn-success"
-                            (click)="loadMore()">
-                        Load more
-                    </button>
                 </h1>
             </div>
         </div>

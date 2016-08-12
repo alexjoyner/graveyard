@@ -11,19 +11,21 @@ import {FavoritesCellComponent} from "../../shared/favorites-cell/favorites-cell
 import {VoteService} from "../../../ts/shared/net-services/vote-cell.service";
 import {RecentlyViewedComponent} from "../../shared/recently-viewed/recently-viewed.component";
 import {ROUTER_DIRECTIVES, ActivatedRoute, Router} from "@angular/router";
+import {InfiniteScroll} from "angular2-infinite-scroll";
 // TODO: Make this a route so that the user can link to a certain subject and different categories don't need to be called
 
 @Component({
     // Routes don't need selectors
     /*selector: 'ro-home-container',*/
     template: require('./home-container.tpl.html'),
-    directives: [NavbarComponent, HomeQuestionListComponent, CreateQuestionFormComponent, FavoritesCellComponent, RecentlyViewedComponent, ROUTER_DIRECTIVES],
+    directives: [NavbarComponent, HomeQuestionListComponent, CreateQuestionFormComponent, FavoritesCellComponent, RecentlyViewedComponent, ROUTER_DIRECTIVES, InfiniteScroll],
     providers: [PostsService, VoteService]
 })
 export class HomeContainerComponent implements OnInit, OnDestroy{
     private questions:Post[];
     private headerText:string;
     private _page_num: number = 1;
+    private _itemsPerPage: number = 25;
     private _feed_name: string;
     private _tag_id: number;
     private _tag_name: string;
@@ -71,11 +73,15 @@ export class HomeContainerComponent implements OnInit, OnDestroy{
     getFeed(feed_name: string) {
         if (this._authService.checkTokenExists()) {
             this._postsService.getFeed(feed_name, this._page_num)
-                .subscribe(data => {
-                    let votePosts = this._voteService.checkPostsUserVoted(data);
-                    if(data.length < 50){
+                .subscribe(post_feed => {
+                    let votePosts = this._voteService.checkPostsUserVoted(post_feed);
+                    console.log('Feed length: ', post_feed.length);
+                    if(post_feed.length < this._itemsPerPage){
                         this.canGetMore = false;
                         this.needsMore = true;
+                    }else{
+                        this.canGetMore = true;
+                        this.needsMore = false;
                     }
                     votePosts.forEach(function(v) {this.questions.push(v)}, this);
                 });
@@ -84,12 +90,15 @@ export class HomeContainerComponent implements OnInit, OnDestroy{
     getQuestionsByTag(data:{tagId:number, tagName:string}) {
         if (this._authService.checkTokenExists()) {
             this._postsService.getAllByTagId(data.tagId)
-                .subscribe(res => {
-                    if(res.length < 50){
+                .subscribe(post_feed => {
+                    if(post_feed.length < this._itemsPerPage){
                         this.canGetMore = false;
                         this.needsMore = true;
+                    }else{
+                        this.canGetMore = true;
+                        this.needsMore = false;
                     }
-                    let votePosts = this._voteService.checkPostsUserVoted(res);
+                    let votePosts = this._voteService.checkPostsUserVoted(post_feed);
                     votePosts.forEach(function(v) {this.questions.push(v)}, this);
                     this.headerText = 'Top posts in ' + data.tagName;
                 });
@@ -98,6 +107,9 @@ export class HomeContainerComponent implements OnInit, OnDestroy{
     loadMore(){
         this._page_num ++;
         this.feedInfoInit();
+    }
+    onScroll () {
+        console.log('scrolled!!')
     }
 }
 
