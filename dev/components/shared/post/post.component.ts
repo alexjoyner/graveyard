@@ -16,6 +16,7 @@ import {PostsService} from "../../../ts/shared/net-services/posts.service";
 export class PostComponent {
     @Input() post: Post;
 	@Output() removed: EventEmitter<any> = new EventEmitter();
+	@Output() downVoted: EventEmitter<any> = new EventEmitter();
     constructor(
         private _usersService: UsersService,
         private _router: Router,
@@ -52,5 +53,8 @@ export class PostComponent {
 				err => console.log('Err: ', err)
 				);
 		}
+	}
+	didDownVote(){
+		this.downVoted.emit(null);
 	}
 }

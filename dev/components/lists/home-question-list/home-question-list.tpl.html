@@ -4,7 +4,7 @@
     <div *ngFor="let question of questions; let i = index">
         <div *ngIf="!question.downVoted">
             <mt-post [post]="question"
-                     (didDownVote)="didDownVote($event)"></mt-post>
+                     (downVoted)="downVoted(i)"></mt-post>
         </div>
         <div *ngIf="question.didHide">
             <div class="HomeQuestion">
@@ -13,7 +13,7 @@
                         GOT IT! We wont show you this post again, unless the community says this is very important.
                     </h3>
                     <h5 class="text-center">
-                        <ro-vote-cell
+                        <mt-vote-cell
                                 class="ro-action-bar-item"
                                 [sourceId]="question._id"
                                 [score]="0"
@@ -22,7 +22,7 @@
                                 [downVoted]="question.downVoted"
                                 [undoVoteMode]="true"
                                 (didDownVote)="didUndoDownVote(i)">
-                        </ro-vote-cell>
+                        </mt-vote-cell>
                     </h5>
                 </div>
             </div>

@@ -41,7 +41,7 @@ export class  HomeQuestionListComponent{
 			}
 		}
 	}
-	didDownVote(index: number){
+	downVoted(index: number){
 		this.questions[index]['downVoted'] = true;
 		this.questions[index]['didHide'] = true;
 	}

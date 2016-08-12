@@ -39,7 +39,8 @@
                     [downvoteText]="'not helpful'"
                     [whyVoteText]="'If this were true, it would be'"
                     [upVoted]="post.upVoted"
-                    [downVoted]="post.downVoted">
+                    [downVoted]="post.downVoted"
+                    (didDownVote)="didDownVote()">
             </mt-vote-cell>
             <li class="mt-action-bar-item">
                 <button class="mt-btn mt-btn-info stage-button">
