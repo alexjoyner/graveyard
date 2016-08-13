@@ -23,8 +23,6 @@ export class AlertBarComponent {
          till the user refreshes the page*/
         let keep: boolean = false;
         switch (data.status) {
-            case 403:
-                this._authService.logout();
             /* 403 should fall through and execute 500*/
             case 500:
                 this.message = data.body;

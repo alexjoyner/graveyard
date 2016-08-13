@@ -22,9 +22,9 @@ import {Subscription} from "rxjs";
     directives: [NavbarComponent, HomeQuestionListComponent, CreateQuestionFormComponent, FavoritesCellComponent, RecentlyViewedComponent, ROUTER_DIRECTIVES, InfiniteScroll],
     providers: [PostsService, VoteService]
 })
-export class HomeContainerComponent implements OnDestroy{
-    private questions:Post[];
-    private headerText:string;
+export class HomeContainerComponent implements OnInit, OnDestroy {
+    private questions: Post[];
+    private headerText: string;
     private _page_num: number = 1;
     private _itemsPerPage: number = 25;
     private _feed_name: string;
@@ -33,38 +33,46 @@ export class HomeContainerComponent implements OnDestroy{
     private canGetMore: boolean = true;
     private needsMore: boolean = false;
     private sub: Subscription;
-    constructor(private _authService:AuthService,
-                private _postsService:PostsService,
-                private _voteService:VoteService,
+
+    constructor(private _authService: AuthService,
+                private _postsService: PostsService,
+                private _voteService: VoteService,
                 private _activatedRoute: ActivatedRoute,
                 private _router: Router) {
-        this.sub = this._activatedRoute.params.subscribe((params: any) => {
-            this.questions = [];
-            this._page_num = 1;
-            this._feed_name = params['feed_name'];
-            this._tag_id = +params['tag_id'];
-            this._tag_name = params['tag_name'];
-            this.feedInfoInit();
-        });
+
     };
-    ngOnDestroy():any {
+    ngOnInit():any {
+        this.sub = this._activatedRoute.params.subscribe((params: any) => {
+            if (this._authService.checkTokenExists()) {
+                this.questions = [];
+                this._page_num = 1;
+                this._feed_name = params['feed_name'];
+                this._tag_id = +params['tag_id'];
+                this._tag_name = params['tag_name'];
+                this.feedInfoInit();
+            }
+        });
+    }
+    ngOnDestroy(): any {
         this.sub.unsubscribe();
     }
-    feedInfoInit(){
+
+    feedInfoInit() {
         /* Check first for  */
-        if(this._feed_name === 'top'){
+        if (this._feed_name === 'top') {
             this.headerText = 'All time top posts';
             this.getFeed(this._feed_name);
             return;
         }
-        if(this._tag_id){
+        if (this._tag_id) {
             this.getQuestionsByTag({tagId: +this._tag_id, tagName: this._tag_name});
             return;
         }
         this.headerText = 'Hot questions on MetaTruth right now';
         this.getFeed('hot');
     }
-    goTo(link: any[]){
+
+    goTo(link: any[]) {
         this._router.navigate(link);
     }
 
@@ -74,37 +82,43 @@ export class HomeContainerComponent implements OnDestroy{
                 .subscribe(post_feed => {
                     let votePosts = this._voteService.checkPostsUserVoted(post_feed);
                     console.log('Feed length: ', post_feed.length);
-                    if(post_feed.length < this._itemsPerPage){
+                    if (post_feed.length < this._itemsPerPage) {
                         this.canGetMore = false;
                         this.needsMore = true;
-                    }else{
+                    } else {
                         this.canGetMore = true;
                         this.needsMore = false;
                     }
-                    votePosts.forEach(function(v) {this.questions.push(v)}, this);
+                    votePosts.forEach(function (v) {
+                        this.questions.push(v)
+                    }, this);
                 });
         }
     }
-    getQuestionsByTag(data:{tagId:number, tagName:string}) {
+
+    getQuestionsByTag(data: {tagId: number, tagName: string}) {
         if (this._authService.checkTokenExists()) {
             this._postsService.getAllByTagId(data.tagId, this._page_num)
                 .subscribe(post_feed => {
-                    if(post_feed.length < this._itemsPerPage){
+                    if (post_feed.length < this._itemsPerPage) {
                         this.canGetMore = false;
                         this.needsMore = true;
-                    }else{
+                    } else {
                         this.canGetMore = true;
                         this.needsMore = false;
                     }
                     let votePosts = this._voteService.checkPostsUserVoted(post_feed);
-                    votePosts.forEach(function(v) {this.questions.push(v)}, this);
+                    votePosts.forEach(function (v) {
+                        this.questions.push(v)
+                    }, this);
                     this.headerText = 'Top posts in ' + data.tagName;
                 });
         }
     }
-    loadMore(){
-        if(this.canGetMore){
-            this._page_num ++;
+
+    loadMore() {
+        if (this.canGetMore) {
+            this._page_num++;
             this.feedInfoInit();
         }
     }

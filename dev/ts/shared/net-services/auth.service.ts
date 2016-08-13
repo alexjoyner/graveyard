@@ -106,13 +106,15 @@ export class AuthService {
     checkTokenExists(flag?: boolean): boolean {
         if (localStorage.getItem("token") !== null) {
             return true;
-        } else {
-            if (flag) {
-                return false;
-            } else {
-                let link = ["/auth"];
-                this._router.navigate(link);
-            }
         }
+
+        if (flag) {
+            console.log('USER NOT LOGGED IN FLAG TRUE');
+            return false;
+        }
+
+        console.log('USER NOT LOGGED GOING TO AUTH');
+        let link = ["/auth"];
+        this._router.navigate(link);
     }
 }

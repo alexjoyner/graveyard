@@ -22,7 +22,9 @@ export class AppComponent implements OnInit {
          When the app starts, attempt to get the users profile
          if they are already logged in
          */
-        this._usersService.getProfile();
+        if(_authService.checkTokenExists(true)){
+            this._usersService.getProfile();
+        }
     }
 
     ngOnInit(): any {
