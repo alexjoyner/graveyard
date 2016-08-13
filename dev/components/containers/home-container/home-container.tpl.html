@@ -13,7 +13,7 @@
                         <a (click)="goTo([''])">Hot right now</a>
                     </li>
                     <li>
-                        <a (click)="goTo(['/top'])">All time top</a>
+                        <a (click)="goTo(['/feed/top'])">All time top</a>
                     </li>
                     <li>
                         <a (click)="goTo(['/topic-feed/35/Controversial'])">All time top
@@ -55,7 +55,8 @@
                     [startQuestion]="startQuestion"
                     [questions]="questions"
                     [showInTut]="showQ_ToTut"
-                    (cancel)="searchText='';startQuestion=!startQuestion;"></ro-home-question-list>
+                    (cancel)="searchText='';startQuestion=!startQuestion;"
+                    ></ro-home-question-list>
             <!-- Let the user know that nothing was found if they
                     search for a question and nothing was found -->
             <div *ngIf="needsMore">

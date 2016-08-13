@@ -37,8 +37,7 @@
            href="#"
            *ngIf="auth()">{{email}}</a>
         <div class="dropdown-content">
-            <a href="#"
-               *ngIf="auth()"
+            <a *ngIf="auth()"
                (click)="logout()">Logout</a>
         </div>
     </li>

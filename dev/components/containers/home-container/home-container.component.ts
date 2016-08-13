@@ -12,6 +12,7 @@ import {VoteService} from "../../../ts/shared/net-services/vote-cell.service";
 import {RecentlyViewedComponent} from "../../shared/recently-viewed/recently-viewed.component";
 import {ROUTER_DIRECTIVES, ActivatedRoute, Router} from "@angular/router";
 import {InfiniteScroll} from "angular2-infinite-scroll";
+import {Subscription} from "rxjs";
 // TODO: Make this a route so that the user can link to a certain subject and different categories don't need to be called
 
 @Component({
@@ -21,7 +22,7 @@ import {InfiniteScroll} from "angular2-infinite-scroll";
     directives: [NavbarComponent, HomeQuestionListComponent, CreateQuestionFormComponent, FavoritesCellComponent, RecentlyViewedComponent, ROUTER_DIRECTIVES, InfiniteScroll],
     providers: [PostsService, VoteService]
 })
-export class HomeContainerComponent implements OnInit, OnDestroy{
+export class HomeContainerComponent implements OnDestroy{
     private questions:Post[];
     private headerText:string;
     private _page_num: number = 1;
@@ -31,15 +32,13 @@ export class HomeContainerComponent implements OnInit, OnDestroy{
     private _tag_name: string;
     private canGetMore: boolean = true;
     private needsMore: boolean = false;
-    private sub;
+    private sub: Subscription;
     constructor(private _authService:AuthService,
                 private _postsService:PostsService,
                 private _voteService:VoteService,
                 private _activatedRoute: ActivatedRoute,
                 private _router: Router) {
-    };
-    ngOnInit():any {
-        this.sub = this._activatedRoute.params.subscribe(params => {
+        this.sub = this._activatedRoute.params.subscribe((params: any) => {
             this.questions = [];
             this._page_num = 1;
             this._feed_name = params['feed_name'];
@@ -47,8 +46,7 @@ export class HomeContainerComponent implements OnInit, OnDestroy{
             this._tag_name = params['tag_name'];
             this.feedInfoInit();
         });
-
-    }
+    };
     ngOnDestroy():any {
         this.sub.unsubscribe();
     }

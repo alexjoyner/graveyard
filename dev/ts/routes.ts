@@ -5,7 +5,7 @@ import {provideRouter, RouterConfig} from "@angular/router";
 
 export const APP_ROUTES: RouterConfig = [
     {path: '', component: HomeContainerComponent},
-    {path: ':feed_name', component: HomeContainerComponent},
+    {path: 'feed/:feed_name', component: HomeContainerComponent},
     {path: 'topic-feed/:tag_id/:tag_name', component: HomeContainerComponent},
     {path: 'question/:id', component: QuestionContainerComponent},
     {path: 'auth', component: AuthContainerComponent}

@@ -9,7 +9,11 @@ import {AuthSignupFormComponent} from "../../forms/auth-signup-form/auth-signup-
     providers: [AuthService],
     directives: [AuthLoginFormComponent, AuthSignupFormComponent]
 })
-export class AuthContainerComponent{}
+export class AuthContainerComponent{
+    constructor(){
+        console.log('CONSTRUCTING');
+    }
+}
 
 
 
