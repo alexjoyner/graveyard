@@ -5,7 +5,8 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'ro-edit-point',
     template: require('./edit-point-form.tpl.html'),
-    providers: [PostsService]
+    providers: [PostsService],
+	styles: [require('./_edit-point-form.sass')]
 })
 export class EditPointComponent implements OnInit {
 	@Input() myPoint: Post;

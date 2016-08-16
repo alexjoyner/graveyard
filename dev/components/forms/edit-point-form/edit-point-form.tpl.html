@@ -1,4 +1,4 @@
-<form (ngSubmit)="onUpdate()">
+<form class="edit-point-form" (ngSubmit)="onUpdate()">
     <textarea
         name="main-point"
         class="form-control"
@@ -33,7 +33,7 @@
                 <div class="ro-action-bar-item">
                     <button
                         type="submit"
-                        class="btn btn-sm ro-btn-success"
+                        class="mt-btn mt-btn-sm mt-btn-success"
                         style="margin-bottom: 10px;"
                         >
                         Save
@@ -42,7 +42,7 @@
                 <div class="ro-action-bar-item">
                     <button
                         type="button"
-                        class="btn btn-sm btn-danger"
+                        class="mt-btn mt-btn-sm mt-btn-danger"
                         (click)="onCancel()"
                         style="margin-bottom: 10px;"
                         >

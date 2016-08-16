@@ -5,7 +5,8 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'ro-edit-question-form',
     template: require('./edit-question-form.tpl.html'),
-    providers: [PostsService]
+    providers: [PostsService],
+	styles: [require('./_edit-question-form.sass')]
 })
 export class EditQuestionForm implements OnInit{
 	@Input() myQuestion: Post;

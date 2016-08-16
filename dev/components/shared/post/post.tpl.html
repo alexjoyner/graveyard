@@ -20,6 +20,26 @@
                       [ngClass]="'support-point-type-' + post.point_type_id"></span>
             </h4>
         </div>
+        <ul class="owner-controls">
+            <li *ngIf="post.post_type_id !== 1">
+                <button
+                        *ngIf="isOwner(post.owner_user_id) && !post.editPoint || post.editPoint === false"
+                        class="mt-btn mt-btn-danger"
+                        (click)="deletePoint()">
+                    <i class="fa fa-close">
+                    </i>
+                </button>
+            </li>
+            <li *ngIf="post.post_type_id !== 1">
+                <button
+                        class="mt-btn mt-btn-info"
+                        (click)="editPoint($event);"
+                        *ngIf="isOwner(post.owner_user_id)">
+                    <i class="fa fa-edit">
+                    </i>
+                </button>
+            </li>
+        </ul>
     </div>
     <ro-edit-point
             *ngIf="post.editPoint && post.editPoint === true"
@@ -43,32 +63,12 @@
                     (didDownVote)="didDownVote()">
             </mt-vote-cell>
             <!--<li class="mt-action-bar-item">-->
-                <!--<button class="mt-btn mt-btn-info stage-button">-->
-                    <!--Collecting Evidence-->
-                <!--</button>-->
+            <!--<button class="mt-btn mt-btn-info stage-button">-->
+            <!--Collecting Evidence-->
+            <!--</button>-->
             <!--</li>-->
             <li class="mt-action-bar-item follow-cell pull-right">
                 <mt-follow-button [postId]="post._id"></mt-follow-button>
-            </li>
-            <li class="mt-action-bar-item pull-right"
-                *ngIf="post.post_type_id !== 1">
-                <button
-                        *ngIf="isOwner(post.owner_user_id) && !post.editPoint || post.editPoint === false"
-                        class="mt-btn mt-btn-danger"
-                        (click)="deletePoint()">
-                    <i class="fa fa-close">
-                    </i>
-                </button>
-            </li>
-            <li class="mt-action-bar-item pull-right"
-                *ngIf="post.post_type_id !== 1">
-                <button
-                        class="mt-btn mt-btn-info"
-                        (click)="editPoint($event);"
-                        *ngIf="isOwner(post.owner_user_id)">
-                    <i class="fa fa-edit">
-                    </i>
-                </button>
             </li>
         </ul>
     </div>

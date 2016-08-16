@@ -1,5 +1,5 @@
 <ro-navbar></ro-navbar>
-<div id="Home-Container" *ngIf="questions !== undefined">
+<div id="Home-Container">
     <div class="row">
         <mt-recently-viewed></mt-recently-viewed>
         <div class="col col-xl-3 hidden-lg-down">
@@ -44,7 +44,8 @@
              infinite-scroll
              [infiniteScrollDistance]="2"
              [infiniteScrollThrottle]="500"
-             (scrolled)="loadMore()">
+             (scrolled)="loadMore()"
+             *ngIf="questions !== undefined">
             <h5 id="Home-MainHeader">
                 {{headerText}}
             </h5>

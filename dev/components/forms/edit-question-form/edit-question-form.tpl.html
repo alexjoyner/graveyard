@@ -1,27 +1,37 @@
 <div class="form-group">
-    <label for="description">
+    <label for="title">
         Your question
     </label>
     <input
-        class="form-control" maxlength="150"
-        placeholder="In as few of words as possible, what would you like to know? Max 150 characters"
-        [(ngModel)]="question.title">
+            id="title"
+            class="form-control"
+            maxlength="150"
+            placeholder="In as few of words as possible, what would you like to know? Max 150 characters"
+            [(ngModel)]="question.title">
 </div>
 <div class="row">
     <div class="col-xs-10">
-       <div class="form-group">
-		    <label for="description">
-		          *** OPTIONAL *** Add a description
-		    </label>
-		    <input class="form-control"  maxlength="200" placeholder="max 400 characters" [(ngModel)]="question.detail">
-	    </div>
+        <div class="form-group">
+            <label for="detail">
+                *** OPTIONAL *** Add a description
+            </label>
+            <input id="detail"
+                   class="form-control"
+                   maxlength="200"
+                   placeholder="max 400 characters"
+                   [(ngModel)]="question.detail">
+        </div>
     </div>
     <div class="col-xs-2">
-    	<br>
-        <button class="btn btn-md ro-btn-info" (click)="onUpdate()" *ngIf="editMode">
+        <br>
+        <button class="mt-btn mt-btn-success"
+                (click)="onUpdate()"
+                *ngIf="editMode">
             Save
         </button>
-        <button class="btn btn-md ro-btn-info" (click)="onCreate()" *ngIf="!editMode">
+        <button class="mt-btn mt-btn-success"
+                (click)="onCreate()"
+                *ngIf="!editMode">
             Post Question
         </button>
     </div>

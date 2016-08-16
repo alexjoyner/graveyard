@@ -4,6 +4,7 @@
 $mt-post-border-radius: 8px
 $mt-post-border: 1px solid $mt-brand-color-default
 .mt-post
+  background-color: #fff
   position: relative
   border: $mt-post-border
   border-radius: $mt-post-border-radius
@@ -12,6 +13,7 @@ $mt-post-border: 1px solid $mt-brand-color-default
   width: 100%
   padding: 0
   margin: 10px 0
+  overflow: hidden
   .source-link
     text-overflow: ellipsis
     overflow: hidden
@@ -27,7 +29,6 @@ $mt-post-border: 1px solid $mt-brand-color-default
     display: block
     width: 100%
     border-radius: 0 0 $mt-post-border-radius $mt-post-border-radius
-    overflow: hidden
   h2
     font:
       size: 1.5em
@@ -36,6 +37,12 @@ $mt-post-border: 1px solid $mt-brand-color-default
     font:
       size: 1em
       weight: 400
+  .owner-controls
+    position: absolute
+    top: 0
+    right: 0
+    li
+      list-style: none
 // Styling for different point types (Issues default to basic bg color)
 .point-type-null
   background-color: #fff
@@ -43,12 +50,12 @@ $mt-post-border: 1px solid $mt-brand-color-default
     &:before
       content: 'Issue: '
 .point-type-1, .point-type-3
-  background-color: lighten($mt-brand-color-success, 30%)
+  //background-color: lighten($mt-brand-color-success, 30%)
   .mt-post-pre-title-text
     &:before
       content: 'Yes, because: '
 .point-type-2, .point-type-4
-  background-color: lighten($mt-brand-color-danger, 30%)
+  //background-color: lighten($mt-brand-color-danger, 30%)
   .mt-post-pre-title-text
     &:before
       content: 'No, because: '
