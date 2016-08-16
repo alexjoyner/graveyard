@@ -9,7 +9,8 @@ export class NotificationsService {
     private endpoint: string = Config.endpoint;
     public profile;
     constructor(
-        private _http: Http) { }
+        private _http: Http) {
+    }
     /* GET */
     getAllMyNotifs(): Observable<any> {
         const headers = new Headers();

@@ -1,4 +1,4 @@
-<button class="btn ro-btn-secondary ModalClose" (click)="onCancel()">
+<button class="mt-btn ro-mt-btn-secondary ModalClose" (click)="onCancel()">
     Close
 </button>
 <form id="CreateSupportForm"
@@ -113,17 +113,17 @@
             </textarea>
         <br/>
         <div id="Step3">
-            <button class="btn btn-sm ro-btn-success"
+            <button class="mt-btn mt-btn-sm ro-mt-btn-success"
                     (click)="newSupport.source_type_id = null;">
                 Cancel
             </button>
             <button type="submit"
-                    class="btn btn-sm ro-btn-success"
+                    class="mt-btn mt-btn-sm ro-mt-btn-success"
                     (click)="newSupport.point_type_id = 3;">
                 Add as Proof
             </button>
             <button type="submit"
-                    class="btn btn-sm btn-danger"
+                    class="mt-btn mt-btn-sm mt-btn-danger"
                     (click)="newSupport.point_type_id = 4;">
                 Add as Disproof
             </button>

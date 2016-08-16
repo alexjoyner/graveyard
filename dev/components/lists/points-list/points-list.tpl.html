@@ -1,5 +1,5 @@
 <div *ngIf="points">
-    <div class="row">
+    <!--<div class="row">
         <div class="col col-md-10">
             <div class="input-group">
                 <div class="input-group-addon">
@@ -14,17 +14,13 @@
             </div>
         </div>
         <div class="text-center col col-md-2">
-            <button class="mt-btn mt-btn-success"
-                    (click)="showForm = true">
-                Add a new {{pointsTypeText}}
-            </button>
         </div>
-    </div> <!--Create point button and search points bar-->
+    </div> --><!--Create point button and search points bar-->
     <div class="row"
          *ngIf="!stackedMode">
         <div class="col col-md-6">
             <div [attr.id]="'point' + i"
-                 *ngFor="let point of points | roFilter: searchText.value; let i = index"
+                 *ngFor="let point of points; let i = index"
                  class="point"
             >
                 <mt-post [post]="point"
@@ -34,7 +30,7 @@
         </div>
         <div class="col col-md-6">
             <div [attr.id]="'point' + i"
-                 *ngFor="let point of points | roFilter: searchText.value; let i = index"
+                 *ngFor="let point of points; let i = index"
                  class="point">
                 <mt-post [post]="point"
                          (removed)="removePoint(i)"
@@ -45,7 +41,7 @@
     <!--THIS WAS JUST A TEST OF A DIFFERENT TYPE OF SORTING-->
     <div *ngIf="stackedMode" class="row">
         <div class="col col-md-6 offset-md-3"><div [attr.id]="'point' + i"
-             *ngFor="let point of points | roFilter: searchText.value; let i = index"
+             *ngFor="let point of points; let i = index"
              class="point"
         >
             <mt-post [post]="point"
@@ -63,7 +59,7 @@
         <h2>
             This question has no {{pointsTypeText}}s:
         </h2>
-        <button class="btn btn-lg ro-btn-success"
+        <button class="mt-btn mt-btn-lg mt-btn-success"
                 (click)="showForm = true">
             ADD A {{pointsTypeText | uppercase}}!!!
         </button>
@@ -85,3 +81,7 @@
                     (cancel)="showForm = false">
     </ro-add-support>
 </div>
+<button id="CreateClaim_SupportBtn" class="mt-btn mt-btn-success"
+        (click)="showForm = true">
+    Add a {{pointsTypeText}}
+</button>

@@ -3,7 +3,8 @@ import {GlobalHandlerService} from "../../../ts/shared/special-services/globalHa
 import {AuthService} from "../../../ts/shared/net-services/auth.service";
 @Component({
     selector: "ro-alert-bar",
-    template: require("./alertBar.tpl.html") // TODO: The alert bar needs to be updated to bootstrap 4 or remade
+    template: require("./alertBar.tpl.html"),
+    styles: [require('./_alertBar.sass')] // TODO: The alert bar needs to be updated to bootstrap 4 or remade
 })
 export class AlertBarComponent {
     private classType: string = null;

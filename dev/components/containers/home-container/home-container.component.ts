@@ -6,8 +6,6 @@ import {PostsService} from "../../../ts/shared/net-services/posts.service";
 import {Post} from "../../../ts/shared/structures/post";
 import {NavbarComponent} from "../../shared/navbar/navbar.component";
 import {FavoritesCellComponent} from "../../shared/favorites-cell/favorites-cell.component";
-// import {SmoothScroll} from "../../../ts/shared/special-services/smooth-scroll.service";
-// import {WINDOW_PROVIDERS} from "../../../ts/shared/special-services/window.service";
 import {VoteService} from "../../../ts/shared/net-services/vote-cell.service";
 import {RecentlyViewedComponent} from "../../shared/recently-viewed/recently-viewed.component";
 import {ROUTER_DIRECTIVES, ActivatedRoute, Router} from "@angular/router";
@@ -20,7 +18,8 @@ import {Subscription} from "rxjs";
     /*selector: 'ro-home-container',*/
     template: require('./home-container.tpl.html'),
     directives: [NavbarComponent, HomeQuestionListComponent, CreateQuestionFormComponent, FavoritesCellComponent, RecentlyViewedComponent, ROUTER_DIRECTIVES, InfiniteScroll],
-    providers: [PostsService, VoteService]
+    providers: [PostsService, VoteService],
+    styles: [require('./_home-container.sass')]
 })
 export class HomeContainerComponent implements OnInit, OnDestroy {
     private questions: Post[];

@@ -6,7 +6,8 @@ import {ActivatedRoute} from "@angular/router";
 // Parent is points-list
 @Component({
     selector: 'ro-add-support',
-    template: require('./create-support-form.tpl.html')
+    template: require('./create-support-form.tpl.html'),
+    styles: [require('./_create-support-form.sass')]
 })
 export class AddSupportComponent implements OnInit {
     @Input('pointId') pointId:number;

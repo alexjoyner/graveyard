@@ -7,7 +7,8 @@ import {TagsFormComponent} from "../../forms/tags-form/tags-form.component";
     selector: 'mt-tag-cell',
     template: require('./tag-cell.tpl.html'),
     directives: [DropdownComponent, TagsFormComponent],
-    providers: [TagsService]
+    providers: [TagsService],
+    styles: [require('./_tag-cell.sass')]
 })
 export class TagCellComponent{
     @Input() postType: number;

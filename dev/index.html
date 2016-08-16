@@ -11,6 +11,9 @@
   </head>
   <body id="RoAppBody">
     <my-app><h1 style="margin: 100px">Loading...</h1></my-app>
-  <script type="text/javascript" src="bundle.min.js"></script></body>
-  
+  </body>
+  <% if (webpackConfig.metadata.isDevServer) { %>
+    <!-- Webpack Dev Server reload -->
+    <script src="/webpack-dev-server.js"></script>
+  <% } %>
 </html>

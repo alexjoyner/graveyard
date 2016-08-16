@@ -197,8 +197,7 @@ router.post('/newPost',
 	require('../follows/queries/insert_new_follow.js'),
 	/*  2) Query the attached string*/
 	sql_query.commonQuery,
-	function (req, res) {
-		req.roDone();
+	function (req, res, next) {
 		res.status(200).send(req.roPostCreated).end();
 		next();
 	},

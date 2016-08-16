@@ -12,8 +12,8 @@ export class VoteService {
 	constructor(
 		private _http: Http,
 		private _usersService: UsersService,
-		private _authService: AuthService
-		) {}
+		private _authService: AuthService) {
+	}
 	/*POST*/
 	vote( 
 		srcId: number, 

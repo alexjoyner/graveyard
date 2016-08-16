@@ -7,7 +7,8 @@ import {AuthSignupFormComponent} from "../../forms/auth-signup-form/auth-signup-
     /*selector: 'ro-auth-container',*/
     template: require('./auth-container.tpl.html'),
     providers: [AuthService],
-    directives: [AuthLoginFormComponent, AuthSignupFormComponent]
+    directives: [AuthLoginFormComponent, AuthSignupFormComponent],
+    styles: [require('./_auth-container.sass')]
 })
 export class AuthContainerComponent{
     constructor(){

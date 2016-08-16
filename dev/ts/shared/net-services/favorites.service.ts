@@ -8,7 +8,8 @@ export class FavoritesService {
     private endpoint: string = Config.endpoint;
     public profile;
     constructor(
-        private _http: Http) { }
+        private _http: Http) {
+    }
     /* GET */
     getFavorites(): Observable<any> {
         const headers = new Headers();

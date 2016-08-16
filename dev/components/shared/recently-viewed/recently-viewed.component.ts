@@ -4,7 +4,8 @@ import {ROUTER_DIRECTIVES, ActivatedRoute} from "@angular/router";
 @Component({
     selector: 'mt-recently-viewed',
     template: require('./recently-viewed.tpl.html'),
-    directives: [ROUTER_DIRECTIVES]
+    directives: [ROUTER_DIRECTIVES],
+    styles: [require('./_recently-viewed.sass')]
 })
 export class RecentlyViewedComponent implements OnInit{
     private recentViewed;

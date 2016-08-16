@@ -3,7 +3,8 @@ import {AuthService} from "../../../ts/shared/net-services/auth.service";
 import {User} from "../../../ts/shared/structures/user";
 @Component({
     selector: 'mt-signup-form',
-    template: require('./auth-signup-form.tpl.html')
+    template: require('./auth-signup-form.tpl.html'),
+    styles: [require('./_auth-signup-form.sass')]
 })
 export class AuthSignupFormComponent {
     private _user: User = new User('', '', null);

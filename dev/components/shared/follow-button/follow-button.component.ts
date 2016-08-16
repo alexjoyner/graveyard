@@ -6,7 +6,8 @@ import {UsersService} from "../../../ts/shared/net-services/users.service";
 @Component({
     'selector': 'mt-follow-button',
     'template': require('./follow-button.tpl.html'),
-    'providers': [FollowService]
+    'providers': [FollowService],
+    styles: [require('./_follow-button.sass')]
 })
 
 export class FollowButtonComponent implements OnInit {

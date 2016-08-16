@@ -10,7 +10,8 @@ import {ActivatedRoute} from "@angular/router";
 @Component({
     selector: 'ro-create-point-form',
     template: require('./create-point-form.tpl.html'),
-    directives: [TagsFormComponent, YesNoToggleComponent]
+    directives: [TagsFormComponent, YesNoToggleComponent],
+	styles: [require('./_create-point-form.sass')]
 })
 export class CreatePointFormComponent implements OnInit{
 	@Input() searchText: string;

@@ -6,7 +6,8 @@ import {ActivatedRoute} from "@angular/router";
 @Component({
     selector: 'ro-tags-form',
     template: require('./tags-form.tpl.html'),
-    providers: [TagsService]
+    providers: [TagsService],
+    styles: [require('./_tags-form.sass')]
 })
 export class TagsFormComponent implements OnInit {
     @Input() acceptedTags: any[];

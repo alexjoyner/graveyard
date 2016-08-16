@@ -3,7 +3,8 @@ import {AuthService} from "../../../ts/shared/net-services/auth.service";
 import {User} from "../../../ts/shared/structures/user";
 @Component({
     'selector': 'mt-login-form',
-    'template': require('./auth-login-form.tpl.html')
+    'template': require('./auth-login-form.tpl.html'),
+    styles: [require('./_auth-login-form.sass')]
 })
 
 export class AuthLoginFormComponent {

@@ -9,7 +9,8 @@ export class FollowService {
     private endpoint: string = Config.endpoint;
     constructor(
         private _http: Http,
-        private _usersService: UsersService) {}
+        private _usersService: UsersService) {
+    }
     /*POST*/
     follow(
         post_id: number){

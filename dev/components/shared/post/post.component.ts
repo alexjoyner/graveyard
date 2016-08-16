@@ -11,7 +11,8 @@ import {PostsService} from "../../../ts/shared/net-services/posts.service";
 @Component({
     selector: 'mt-post',
     template: require('./post.tpl.html'),
-    directives: [VoteCellComponent, FollowButtonComponent, ROUTER_DIRECTIVES, EditPointComponent]
+    directives: [VoteCellComponent, FollowButtonComponent, ROUTER_DIRECTIVES, EditPointComponent],
+	styles: [require('./_post.sass')]
 })
 export class PostComponent {
     @Input() post: Post;

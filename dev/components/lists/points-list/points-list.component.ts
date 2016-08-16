@@ -8,7 +8,7 @@ import {PostComponent} from "../../shared/post/post.component";
     selector: 'ro-points-list',
     template: require('./points-list.tpl.html'),
     directives: [CreatePointFormComponent, AddSupportComponent, PostComponent],
-    pipes: [SearchFilterPipe]
+    styles: [require('./_points-list.sass')]
 })
 
 export class PointsListComponent implements OnInit{

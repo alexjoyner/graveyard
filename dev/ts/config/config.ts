@@ -6,5 +6,6 @@ export class Config {
      with the server independant, this is
      usually 'http://localhost:XXXX'
      */
-    static endpoint: string = "";
+    static endpoint: string = (ENV.env_dev)? "http://localhost:8080" : "";
 }
+console.log('ENDPOINT: ', Config.endpoint);

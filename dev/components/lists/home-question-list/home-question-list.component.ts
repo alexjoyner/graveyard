@@ -13,7 +13,8 @@ import {PostComponent} from "../../shared/post/post.component";
     selector: 'ro-home-question-list',
     template: require('./home-question-list.tpl.html'),
     directives: [ROUTER_DIRECTIVES, VoteCellComponent, FollowButtonComponent, PostComponent],
-    pipes: [SearchFilterPipe]
+    pipes: [SearchFilterPipe],
+	styles: [require('./_home-question-list.sass')]
 })
 export class  HomeQuestionListComponent{
 	@Input('searchText') searchText: string;

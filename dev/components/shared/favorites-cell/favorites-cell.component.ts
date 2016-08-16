@@ -5,7 +5,8 @@ import {AuthService} from "../../../ts/shared/net-services/auth.service";
 @Component({
     'selector': 'favorites-cell',
     'template': require('./favorites-cell.tpl.html'),
-    providers: [TagsService, FavoritesService]
+    providers: [TagsService, FavoritesService],
+    styles: [require('./_favorites-cell.sass')]
 })
 
 export class FavoritesCellComponent{

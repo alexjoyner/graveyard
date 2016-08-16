@@ -391,3 +391,5 @@ interface RequireDefine {
 declare var requirejs: Require;
 declare var require: Require;
 declare var define: RequireDefine;
+declare var ENV: {'env_dev': boolean};
+declare var module: any;

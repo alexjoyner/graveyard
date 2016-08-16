@@ -12,5 +12,6 @@ switch (ENV) {
   case 'dev':
   case 'development':
   default:
+    console.log('RUNNING DEV MODE WEBPACK');
     module.exports = require('./config/webpack-dev.js');
 }

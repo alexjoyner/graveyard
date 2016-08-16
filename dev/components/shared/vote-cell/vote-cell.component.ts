@@ -6,7 +6,8 @@ import {UsersService} from '../../../ts/shared/net-services/users.service';
 @Component({
     selector: 'mt-vote-cell',
     template: require('./vote-cell.tpl.html'),
-    providers: [VoteService]
+    providers: [VoteService],
+    styles: [require('./_vote-cell.sass')]
 })
 export class VoteCellComponent {
     @Input() post: Post;

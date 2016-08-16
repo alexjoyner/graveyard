@@ -14,7 +14,8 @@ import {AuthService} from "../../../ts/shared/net-services/auth.service";
 @Component({// Route no selector
     template: require('./question-container.tpl.html'),
     providers: [PostsService, VoteService],
-    directives: [NavbarComponent, PointsListComponent, RecentlyViewedComponent, QuestionHeaderComponent]
+    directives: [NavbarComponent, PointsListComponent, RecentlyViewedComponent, QuestionHeaderComponent],
+    styles: [require('./_question-container.sass')]
 })
 export class QuestionContainerComponent implements OnInit, OnDestroy {
     private question: Post = new Post('', 1);
@@ -27,12 +28,21 @@ export class QuestionContainerComponent implements OnInit, OnDestroy {
                 private _usersService: UsersService,
                 private _voteService: VoteService) {
         this.sub = this._activatedRoute.params.subscribe(params => {
+            this.questionAvailable = false;
             this._questionId = +params['id'];
             this._postsService.getPost('' + this._questionId).subscribe(
                 data => {
-                    data['points'] = this._voteService.checkPostsUserVoted(data['points']);
-                    this.question = data;
-                    this._usersService.setViewed(data._id, data.title);
+                    /* Hacky solution to get vote status of question, checkPostsUserVoted expects
+                    * an array because it is normally pasted a set of points to check, so here we put
+                    * the question data in an array to pass to the checkPostsUserVoted function and then
+                    * set the question to the 0 index that is returned.
+                    *       ||   ||   ||   ||   ||   ||   ||   ||   ||   ||
+                    *       \/   \/   \/   \/   \/   \/   \/   \/   \/   \/*/
+                    let question = this._voteService.checkPostsUserVoted([data])[0];
+                    /*********************************************************************/
+                    question['points'] = this._voteService.checkPostsUserVoted(question['points']);
+                    this.question = question;
+                    this._usersService.setViewed(question._id, question.title);
                     this.questionAvailable = true;
                 },
                 err => console.log('Err: ', err)

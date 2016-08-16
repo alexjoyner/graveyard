@@ -32,7 +32,9 @@
                 (modVote)="question.ups = question.ups + $event"
                 [upvoteText]="(question.post_type_id === 1)? 'important': 'helpful'"
                 [downvoteText]="(question.post_type_id === 1)? 'unimportant': 'not helpful'"
-                [whyVoteText]="(question.post_type_id === 1)? 'This issue is': 'If this were true, it would be'">
+                [whyVoteText]="(question.post_type_id === 1)? 'This issue is': 'If this were true, it would be'"
+                [upVoted]="question.upVoted"
+                [downVoted]="question.downVoted">
         </mt-vote-cell>
         <button class="ro-action-bar-item mt-btn mt-btn-info"
                 (click)="editQuestion($event)"

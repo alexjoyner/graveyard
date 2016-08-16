@@ -5,7 +5,8 @@ import {ROUTER_DIRECTIVES} from "@angular/router";
 @Component({
     selector: 'dropdown',
     template: require('./dropdown.tpl.html'),
-    directives: [ROUTER_DIRECTIVES]
+    directives: [ROUTER_DIRECTIVES],
+    styles: [require('./_dropdown.sass')]
 })
 export class DropdownComponent {
     @Input() values:Post[];

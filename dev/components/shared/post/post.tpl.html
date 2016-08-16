@@ -42,12 +42,12 @@
                     [downVoted]="post.downVoted"
                     (didDownVote)="didDownVote()">
             </mt-vote-cell>
-            <li class="mt-action-bar-item">
-                <button class="mt-btn mt-btn-info stage-button">
-                    Collecting Evidence
-                </button>
-            </li>
-            <li class="action-bar-item follow-cell pull-right">
+            <!--<li class="mt-action-bar-item">-->
+                <!--<button class="mt-btn mt-btn-info stage-button">-->
+                    <!--Collecting Evidence-->
+                <!--</button>-->
+            <!--</li>-->
+            <li class="mt-action-bar-item follow-cell pull-right">
                 <mt-follow-button [postId]="post._id"></mt-follow-button>
             </li>
             <li class="mt-action-bar-item pull-right"

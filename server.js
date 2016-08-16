@@ -22,7 +22,7 @@ if (config.ENV !== 'production') {
     console.log('Starting livereload server');
     var livereload = require('livereload'),
         liveServer = livereload.createServer();
-    liveServer.watch([__dirname + '/server/**.*', __dirname + '/dist_client/**.*']);
+    liveServer.watch([__dirname + '/server/**.*']);
 }
 
 // Route handler
@@ -32,9 +32,10 @@ require('./server/routes/routes.js')(app);
 /*
     !!! Static files must come after routes
 */
-require('./server/config/static-files.js')(app);            // setup static files
-
-var port = (process.env.PORT || 9000);
+if (config.ENV === 'production') {
+    require('./server/config/static-files.js')(app);            // setup static files
+}
+var port = (process.env.PORT || 8080);
 // Start an express server
 http.listen(port, function(err) {
     'use strict';

@@ -9,7 +9,8 @@ import {UsersService} from "../../../ts/shared/net-services/users.service";
 @Component({
     selector: 'ro-create-question',
     template: require('./create-question-form.tpl.html'),
-    directives: [TagsFormComponent]
+    directives: [TagsFormComponent],
+    styles: [require('./_create-question-form.sass')]
 })
 export class CreateQuestionFormComponent implements OnInit {
     @Input('question') question: string;
@@ -72,7 +73,7 @@ export class CreateQuestionFormComponent implements OnInit {
 
         /*
          * If there is no question or there isn't at least 2 characters to check*/
-        if (!daQ || !daQ.length > 2) {
+        if (!daQ || !(daQ.length > 2)) {
             // No alerts raised yet
             this.alertString = undefined;
             return;

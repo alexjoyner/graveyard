@@ -46,13 +46,31 @@ import {ROUTER_DIRECTIVES} from "@angular/router";
 // To enable production mode for angular.
 //enableProdMode();
 
-// Bootstrap the app
-bootstrap(AppComponent, [
-	{provide: APP_BASE_HREF, useValue: ''},
-	APP_ROUTES_PROVIDER,
-	HTTP_PROVIDERS, 
-	UsersService,
-	GlobalHandlerService,
-	ROUTER_DIRECTIVES,
-	{provide: LocationStrategy, useClass: HashLocationStrategy }])
-	.catch(err => console.error(err));
+function main(initialHMRstate) {
+	// you must return
+	// Bootstrap the app
+	return bootstrap(AppComponent, [
+		{provide: APP_BASE_HREF, useValue: ''},
+		APP_ROUTES_PROVIDER,
+		HTTP_PROVIDERS,
+		UsersService,
+		GlobalHandlerService,
+		ROUTER_DIRECTIVES,
+		{provide: LocationStrategy, useClass: HashLocationStrategy }])
+		.catch(err => console.error(err));
+}
+
+/*
+ * Hot Module Reload
+ * experimental version by @gdi2290
+ */
+if (ENV.env_dev) {
+	console.log('HMR Enabled')
+	// activate hot module reload
+	let ngHmr = require('angular2-hmr');
+	ngHmr.hotModuleReplacement(main, module); // pass the main function
+} else {
+	console.log('HMR Disabled')
+	// bootstrap when document is ready
+	document.addEventListener('DOMContentLoaded', () => main(null));
+}

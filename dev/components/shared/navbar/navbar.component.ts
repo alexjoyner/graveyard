@@ -10,13 +10,15 @@ import {NotificationsService} from "../../../ts/shared/net-services/notification
     selector: 'ro-navbar',
     template: require('./navbar.tpl.html'),
     directives: [ROUTER_DIRECTIVES, DropdownComponent, CreateQuestionFormComponent, ROUTER_DIRECTIVES],
-    providers: [AuthService, PostsService, NotificationsService]
+    providers: [AuthService, PostsService, NotificationsService],
+    styles: [require('./_navbar.sass')]
 })
 export class NavbarComponent {
     private email:string;
     private dataSearched:any = null;
     private notifications:any = [];
     private showNotifs:boolean = false;
+    private header: string = 'MetaTruth Alpha.11.7';
 
     constructor(private _authService:AuthService,
                 private _usersService:UsersService,
@@ -44,7 +46,7 @@ export class NavbarComponent {
         if (this._usersService.profile) {
             this.email = this._usersService.profile.email;
         }
-        return localStorage.getItem('token') || false;
+        return (localStorage.getItem('token') !== null) || null;
     }
 
     logout() {

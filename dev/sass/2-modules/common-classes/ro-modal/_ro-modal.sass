@@ -1,3 +1,7 @@
+@import "../../../0-plugins/plugins"
+@import "../../../1-base/variables"
+@import "../../../1-base/buttons"
+@import "../../../1-base/mixins/transform"
 .ro-modal
 	&:before
 		content: ""
@@ -9,15 +13,6 @@
 		left: 0
 		+size(100%)
 		z-index: 50
-	.ModalClose
-		display: block
-		position: fixed
-		top: 5%
-		left: 90%
-		z-index: 51
-		@extend .mt-btn
-		@extend .mt-btn-sm
-		@extend .mt-btn-default
 	.CenterContent
 		position: fixed
 		z-index: 51
@@ -32,9 +27,12 @@
 		border-radius: 5px
 		width: 800px
 		max-width: 95%
-	#TutActionBar
-		position: fixed
-		z-index: 10 
-		top: 65%
-		left: 50%
-		transform: translate(-50%, -50%)
+.ModalClose
+	display: block
+	position: fixed
+	top: 5%
+	left: 90%
+	z-index: 51
+	@extend .mt-btn
+	@extend .mt-btn-sm
+	@extend .mt-btn-default

@@ -6,8 +6,9 @@
         <ul class="list-group">
             <div *ngFor="let recView of recentViewed">
                 <li class="list-group-item ro-link-container"
-                    *ngIf="recView.id !== currentId">
-                    <a [routerLink]="['/question', recView.id]">{{recView.title}}</a>
+                    *ngIf="recView.id !== currentId"
+                    [routerLink]="['/question', recView.id]">
+                    <a >{{recView.title}}</a>
                 </li>
             </div>
         </ul>

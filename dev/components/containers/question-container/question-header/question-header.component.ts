@@ -12,7 +12,8 @@ import {EditQuestionForm} from "../../../forms/edit-question-form/edit-question-
 @Component({
     'selector': 'mt-question-header',
     template: require('./question-header.tpl.html'),
-    directives: [VoteCellComponent, ROUTER_DIRECTIVES, TagCellComponent, FollowButtonComponent, EditQuestionForm]
+    directives: [VoteCellComponent, ROUTER_DIRECTIVES, TagCellComponent, FollowButtonComponent, EditQuestionForm],
+    styles: [require('./_question-header.sass')]
 })
 
 export class QuestionHeaderComponent {
