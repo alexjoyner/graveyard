@@ -21,7 +21,7 @@ import {Subscription} from "rxjs";
     providers: [PostsService, VoteService],
     styles: [require('./_home-container.sass')]
 })
-export class HomeContainerComponent implements OnInit, OnDestroy {
+export class HomeContainerComponent implements OnDestroy {
     private questions: Post[];
     private headerText: string;
     private _page_num: number = 1;
@@ -38,10 +38,7 @@ export class HomeContainerComponent implements OnInit, OnDestroy {
                 private _voteService: VoteService,
                 private _activatedRoute: ActivatedRoute,
                 private _router: Router) {
-
-    };
-    ngOnInit():any {
-        this.sub = this._activatedRoute.params.subscribe((params: any) => {
+        this.sub = _activatedRoute.params.subscribe((params: any) => {
             if (this._authService.checkTokenExists()) {
                 this.questions = [];
                 this._page_num = 1;
@@ -49,9 +46,9 @@ export class HomeContainerComponent implements OnInit, OnDestroy {
                 this._tag_id = +params['tag_id'];
                 this._tag_name = params['tag_name'];
                 this.feedInfoInit();
-            }
-        });
-    }
+            }});
+
+    };
     ngOnDestroy(): any {
         this.sub.unsubscribe();
     }
