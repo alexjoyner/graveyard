@@ -24,7 +24,7 @@ export class PointsListComponent implements OnInit{
     }
     ngOnInit():any {
         console.log(this.points);
-        this.pointsTypeText = (this.questionType === 1)? 'claim' : 'support';
+        this.pointsTypeText = (this.questionType === 1)? 'thought' : 'support';
     }
     removePoint(pointIndx: number){
         this.points.splice(pointIndx, 1);
