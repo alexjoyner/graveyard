@@ -1,14 +1,23 @@
 @import '../../../sass/1-base/mixins/transform'
+@import '../../../sass/1-base/variables'
 @import '../../../sass/2-modules/common-classes/ro-modal/ro-modal'
 @import '../../../sass/1-base/buttons'
 #CreatePointForm
-	position: fixed
+	position: absolute
 	z-index: 53
-	top: 20%
-	width: auto
-	left: 50%
+	top: 0
+	left: 0
 	overflow: hidden
-	@include transform(translate(-50%, 0))
+	.rules-panel
+		position: relative
+		width: 100%
+		background-color: $mt-main-brand-color
+		padding: 10px
+		margin: 10px
+		h4
+			font-size: 2em
+		li
+			font-size: 1em
 	ro-yes-no-toggle
 		float: left
 	#PointConditionsContainer
@@ -20,22 +29,22 @@
 		font-size: 2em
 		font-weight: 200
 		margin-left: 10px
-	textarea
-		margin: 4px
-		resize: none
-		display: inline
-		width: 100%
-		padding: 0.5rem 0.75rem
-		font-size: 25px
-		line-height: 20px
-		color: #55595c
-		background-color: #fff
-		background-image: none
-		background-clip: padding-box
-		border: 1px solid rgba(0, 0, 0, 0.15)
-		border-radius: 0.25rem
-		.create-point-input
-			background-color: #d1d5d8
+	.create-point-input
+		background-color: #d1d5d8
+		&, textarea
+			margin: 4px
+			resize: none
+			display: inline
+			width: 100%
+			padding: 0.5rem 0.75rem
+			font-size: 25px
+			line-height: 20px
+			color: #55595c
+			background-color: #fff
+			background-image: none
+			background-clip: padding-box
+			border: 1px solid rgba(0, 0, 0, 0.15)
+			border-radius: 0.25rem
 	#PostPointBtn
 		margin: 5px
 		float: right

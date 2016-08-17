@@ -54,7 +54,7 @@
             * Not sure of a better way right now.
             * Optimally would like to only have to loop once
     -->
-    <h1 class="text-center"
+    <div class="text-center"
         *ngIf="points && points.length == 0 && !showForm">
         <h2>
             This question has no {{pointsTypeText}}s:
@@ -63,15 +63,18 @@
                 (click)="showForm = true">
             ADD A {{pointsTypeText | uppercase}}!!!
         </button>
-    </h1> <!-- If there are are no points to show for the question-->
+    </div> <!-- If there are are no points to show for the question-->
 </div>
 <!--            MISC
     =========================== -->
 <!-- Create Point Modal -->
 <div class="ro-modal"
      *ngIf="showForm && questionType === 1">
-    <ro-create-point-form (added)="showForm = false; points.unshift($event);"
-                          (cancel)="showForm = false"
+    <button class="btn ro-btn-secondary ModalClose" (click)="showForm = false">
+        Close
+    </button>
+    <ro-create-point-form class="center-content"
+                          (added)="showForm = false; points.unshift($event);"
                           [searchText]="''">
     </ro-create-point-form>
 </div>

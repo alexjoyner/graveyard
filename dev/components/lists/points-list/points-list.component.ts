@@ -18,6 +18,7 @@ export class PointsListComponent implements OnInit{
 
     // Only needed in the template
     private pointsTypeText: string;
+    private showForm: boolean = false;
 
     constructor(
     ){

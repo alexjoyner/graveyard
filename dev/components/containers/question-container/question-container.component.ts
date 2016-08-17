@@ -28,6 +28,7 @@ export class QuestionContainerComponent implements OnInit, OnDestroy {
                 private _usersService: UsersService,
                 private _voteService: VoteService) {
         this.sub = this._activatedRoute.params.subscribe(params => {
+            this.questionAvailable = false;
             this._questionId = +params['id'];
             this._postsService.getPost('' + this._questionId).subscribe(
                 data => {
