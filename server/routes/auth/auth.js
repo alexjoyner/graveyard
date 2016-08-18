@@ -15,7 +15,7 @@ router.post('/signup', function(req, res, next) {
             if (!token) {
                 return res.status(500).send(info.message).end();
             }
-            return res.send(token).end();
+            return res.status(200).send(token).end();
         })(req, res, next); 
     }else{
         res.status(500).send('Special Code not valid');

@@ -8,7 +8,7 @@ module.exports = function(app){
 	app.use(express.static(path.resolve(__dirname, '../../dist_client')));
 	app.use('/client', express.static(path.resolve(__dirname, '../../dist_client/client')));
 	var renderIndex = function(req, res) {
-	    res.render(path.resolve(__dirname, '../../dist_client/index.html'));
+	    res.sendFile(path.resolve(__dirname, '../../dist_client/index.html'));
 	};
 	// ANY ROUTE THAT ISN'T AN API ROUTE, send the homepage
 	app.get('*', renderIndex);
