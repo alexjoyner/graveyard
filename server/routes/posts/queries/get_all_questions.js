@@ -1,6 +1,9 @@
-module.exports = function(req, res, next) {
-	req.roQueryParams = [];
-    req.roQueryString = `
+var Q = require('q');
+var pg = require('pg');
+module.exports = function(client) {
+	var deffered = Q.defer();
+	roQueryParams = [];
+	roQueryString = `
 	SELECT 
 	    *
 	FROM 
@@ -12,5 +15,10 @@ module.exports = function(req, res, next) {
 	LIMIT
 	    40;
 	`;
-	next();
+	client.query(roQueryString, roQueryParams, function(err, result) {
+		console.log('RETURNED');
+		if(err) deferred.reject(new Error(err));
+		deffered.resolve(result.rows);
+	});
+	return deffered.promise;
 };

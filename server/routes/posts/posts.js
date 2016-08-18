@@ -4,6 +4,7 @@ var express = require('express'),
 var config = require('../../config/config.js');
 var jwt_verify = require('../../middleware/jwt_verify.js');
 var sql_query = require('../../middleware/sql_query.js');
+var Q = require('q');
 // POSTGRES IMPLEMENTATION
 var pg = require('pg');
 var conString = config.db;
@@ -28,58 +29,40 @@ router.get('/core-feeds/:feed_name/:page_num',
 		req['roPageNum'] = req.params['page_num'];
 		var results = mtCache.get(req.params['feed_name'] + '_feed');
 		if (!results) {
-			next();
-			return;
+			return next();
 		}
 		console.log('FROM CACHE');
 		res.status(200).send(getPageContents(req['roPageNum'], results)).end();
 	},
-	/*Query all questions
-	 1) Attach query string*/
-	require('./queries/get_all_questions.js'),
-	/*  2) Query the attached string*/
-	sql_query.commonQuery,
-	/*  3) Query was successful, do something
-	 with roInfo*/
 	function (req, res) {
-		req.roDone();
-		var result = req.roInfo;
+		var getAllQuery = require('./queries/get_all_questions.js');
 		var feed_name = req.params['feed_name'];
-		if (!result.rows[0]) {
-			res.status(200).send([]).end();
-		}
-		if (feed_name !== 'top' && feed_name !== 'hot') {
-			res.status(500).send('No good feed name').end();
-			return;
-		}
-		if (feed_name === 'hot')
-			var sortedPosts = sortPosts.hotSort(result.rows);
-		if (feed_name === 'top')
-			var sortedPosts = sortPosts.topSort(result.rows);
+		sql_query
+		.getClient()
+		.then(function(conInfo){
+			console.log('HERE 3');
+			getAllQuery(conInfo.client)
+				.then(function(posts){
+					conInfo.done();
+					if (!posts[0]) {
+						res.status(200).send([]).end();
+					}
+					if (feed_name !== 'top' && feed_name !== 'hot') {
+						res.status(500).send('No good feed name').end();
+						return;
+					}
+					if (feed_name === 'hot')
+						var sortedPosts = sortPosts.hotSort(posts);
+					if (feed_name === 'top')
+						var sortedPosts = sortPosts.topSort(posts);
 
-		console.log('CACHING ' + feed_name);
-		mtCache.set(feed_name + '_feed', sortedPosts);
-		res.status(200).send(getPageContents(req['roPageNum'], sortedPosts)).end();
+					console.log('CACHING ' + feed_name);
+					mtCache.set(feed_name + '_feed', sortedPosts);
+					res.status(200).send(getPageContents(req['roPageNum'], sortedPosts)).end();
+				})
+		})
+
 	});
-// // get
-// router.get('/top',
-//     /*Query all questions
-//         1) Attach query string*/
-//     require('./queries/get_all_questions.js'),
-//     /*  2) Query the attached string*/
-//     sql_query.commonQuery,
-//     /*  3) Query was successful, do something
-//                 with roInfo*/
-//     function(req, res) {
-//         req.roDone();
-//         var result = req.roInfo;
-//         if (!result.rows[0]) {
-//             res.status(200).send([]).end();
-//         } else {
-//             var sortedPosts = sortPosts.topSort(result.rows);
-//             res.status(200).send(sortedPosts).end();
-//         }
-//     });
 // get all
 router.get('/topic/:tagId/:page_num',
 	/*Check cache*/
