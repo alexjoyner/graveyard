@@ -1,7 +1,9 @@
-module.exports = function(req, res, next) {
-    var info = req.params;
-    req.roQueryParams = [info.tagId];
-    req.roQueryString = `
+var Q = require('q');
+var pg = require('pg');
+module.exports = function(client, tagId) {
+    var deffered = Q.defer();
+    roQueryParams = [tagId];
+    roQueryString = `
 	SELECT
         *
     FROM
@@ -14,5 +16,9 @@ module.exports = function(req, res, next) {
         ptxf.tag_id = $1
 	AND
 		p.is_deleted = false;`;
-    next();
-}
+    client.query(roQueryString, roQueryParams, function(err, result) {
+        if(err) deferred.reject(new Error(err));
+        deffered.resolve(result.rows);
+    });
+    return deffered.promise;
+};

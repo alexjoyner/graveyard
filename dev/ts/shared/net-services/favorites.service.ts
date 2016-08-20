@@ -21,11 +21,6 @@ export class FavoritesService {
             '/favorites/my',
             { headers: headers })
             .map(res => res.json());
-        res.subscribe(
-            data => {
-                console.log('Got favorites: ', data);
-            },
-            err => console.log('Err: ', err))
         return res;
     }
     /* POST */

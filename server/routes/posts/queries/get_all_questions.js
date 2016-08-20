@@ -1,5 +1,4 @@
 var Q = require('q');
-var pg = require('pg');
 module.exports = function(client) {
 	var deffered = Q.defer();
 	roQueryParams = [];
@@ -16,7 +15,6 @@ module.exports = function(client) {
 	    40;
 	`;
 	client.query(roQueryString, roQueryParams, function(err, result) {
-		console.log('RETURNED');
 		if(err) deferred.reject(new Error(err));
 		deffered.resolve(result.rows);
 	});

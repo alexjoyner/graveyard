@@ -25,7 +25,6 @@ export class NavbarComponent {
                 private _postsService:PostsService,
                 private _notifService:NotificationsService,
                 private _router:Router) {
-        this.getNotifs();
     }
 
     getNotifs() {

@@ -22,7 +22,7 @@ export class PostsService {
 		headers.append('x-access-token',
 			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
 		var req = this._http.get(
-			this.endpoint + '/posts/core-feeds/'
+			this.endpoint + '/posts/'
 			+ feed_name
 			+ '/'
 			+ page_num,
@@ -60,7 +60,7 @@ export class PostsService {
 		headers.append('x-access-token',
 			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
 		return this._http.get(
-			this.endpoint + '/posts/post/' + 
+			this.endpoint + '/post/' +
 			postId,
 			{ headers: headers })
 			.map(res => res.json());
@@ -93,7 +93,7 @@ export class PostsService {
 		headers.append('x-access-token',
 			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
 		var res = this._http.post(
-			this.endpoint + '/posts/newPost',
+			this.endpoint + '/new/post',
 			body,
 			{ headers: headers })
 				.map(res => res.json());

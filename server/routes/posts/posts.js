@@ -9,17 +9,18 @@ var Q = require('q');
 var pg = require('pg');
 var conString = config.db;
 // Special functions
-var sortPosts = require('../../custFunctions/sortPosts.js');
-// Node Cache
-var node_cache = require('node-cache');
-var mtCache = new node_cache({stdTTL: 86400 /* A full day*/, checkperiod: 3600*4 /*Every 4 hours*/});
+var sortPosts = require('../../custFunctions/sortPosts'),
+	getDB_Client = sql_query.getDB_Client; // Gets db client roConClient and roDone
+var getPageContents = require('../../custFunctions/getPageContents');
 
-function getPageContents(page, array) {
-	var perPage = 25;
-	var startPos = ((page) - 1) * perPage;
-	var endPos = startPos + perPage;
-	return array.slice(startPos, endPos);
-}
+// Core route functions
+// Just include the function as middleware and don't call it,
+// 		you should get the results in the next function as req.roReturned
+var get_core_feed = require('./core_functions/get_core_feed');
+var get_topic_feed = require('./core_functions/get_topic_feed');
+var get_post_by_id = require('./core_functions/get_post_by_id');
+var create_new_post = require('./core_functions/create_new_post');
+var owner_follow_post = require('../follows/queries/insert_new_follow.js');
 // !! route = '/posts'
 // ###########  GETS  ###############
 // get
@@ -27,48 +28,27 @@ router.get('/core-feeds/:feed_name/:page_num',
 	/*Check cache*/
 	function (req, res, next) {
 		req['roPageNum'] = req.params['page_num'];
-		var results = mtCache.get(req.params['feed_name'] + '_feed');
+		var results = req.mtCache.get(req.params['feed_name'] + '_feed');
 		if (!results) {
 			return next();
 		}
 		console.log('FROM CACHE');
-		res.status(200).send(getPageContents(req['roPageNum'], results)).end();
+		res.status(200).send(getPageContents(req['roPageNum'], results, 25)).end();
 	},
+	getDB_Client,
+	get_core_feed,
 	function (req, res) {
-		var getAllQuery = require('./queries/get_all_questions.js');
-		var feed_name = req.params['feed_name'];
-		sql_query
-		.getClient()
-		.then(function(conInfo){
-			console.log('HERE 3');
-			getAllQuery(conInfo.client)
-				.then(function(posts){
-					conInfo.done();
-					if (!posts[0]) {
-						res.status(200).send([]).end();
-					}
-					if (feed_name !== 'top' && feed_name !== 'hot') {
-						res.status(500).send('No good feed name').end();
-						return;
-					}
-					if (feed_name === 'hot')
-						var sortedPosts = sortPosts.hotSort(posts);
-					if (feed_name === 'top')
-						var sortedPosts = sortPosts.topSort(posts);
-
-					console.log('CACHING ' + feed_name);
-					mtCache.set(feed_name + '_feed', sortedPosts);
-					res.status(200).send(getPageContents(req['roPageNum'], sortedPosts)).end();
-				})
-		})
-
+		req.roDone
+		res.status(200).send(getPageContents(req['roPageNum'], req.roReturned, 25)).end();
 	});
-// get all
+
+
+// get all posts of tag
 router.get('/topic/:tagId/:page_num',
 	/*Check cache*/
 	function (req, res, next) {
 		req['roPageNum'] = req.params['page_num'];
-		var results = mtCache.get('tag_feed_' + req.params['tagId']);
+		var results = req.mtCache.get('tag_feed_' + req.params['tagId']);
 		if (!results) {
 			next();
 			return;
@@ -76,50 +56,33 @@ router.get('/topic/:tagId/:page_num',
 		console.log('FROM CACHE');
 		res.status(200).send(getPageContents(req['roPageNum'], results)).end();
 	},
-	/*Query all questions
-	 1) Attach query string*/
-	require('./queries/get_topic_questions.js'),
-	/*  2) Query the attached string*/
-	sql_query.commonQuery,
-	/*  3) Query was successful, do something
-	 with roInfo*/
+	getDB_Client,
+	get_topic_feed,
 	function (req, res) {
 		req.roDone();
-		var result = req.roInfo;
-		if (!result.rows[0]) {
-			res.status(200).send([]).end();
-		} else {
-			var sortedPosts = sortPosts.hotSort(result.rows);
-			console.log('CACHING ' + 'tag_feed_' + req.params['tagId']);
-			mtCache.set('tag_feed_' + req.params['tagId'], sortedPosts);
-			res.status(200).send(getPageContents(req['roPageNum'], sortedPosts)).end();
-		}
+		res.status(200).send(getPageContents(req['roPageNum'], req.roReturned, 25)).end();
 	});
-// get one question by id and a type of yes/no
+
+
 router.get('/post/:id',
-	/*Get question data
-	 1) Attach query string*/
-	require('./queries/get_question_info_by_id.js'),
-	/*  2) Query the attached string*/
-	sql_query.commonQuery,
-	/*  3) Query was successful, do something
-	 with roInfo*/
+	/*Check cache*/
 	function (req, res, next) {
-		req.roDone();
-		var result = req.roInfo;
-		if (!result.rows[0]) {
-			res.status(500).send('no question found').end();
-		} else {
-			var sortedPosts;
-			if (result.rows[0].points === null) {
-				sortedPosts = [];
-			} else {
-				sortedPosts = sortPosts.topSort(result.rows[0].points);
-			}
-			result.rows[0].points = sortedPosts;
-			res.status(200).send(result.rows[0]).end();
+		req['roPageNum'] = req.params['page_num'];
+		var results = req.mtCache.get('tag_feed_' + req.params['tagId']);
+		if (!results) {
+			next();
+			return;
 		}
+		console.log('FROM CACHE');
+		res.status(200).send(getPageContents(req['roPageNum'], results)).end();
+	},
+	getDB_Client,
+	get_post_by_id,
+	function (req, res) {
+		req.roDone();
+		res.status(200).send(req.roReturned).end();
 	});
+
 router.get('/search/:type/:searchTerm',
 	/*Get search data
 	 1) Attach query string*/
@@ -137,76 +100,117 @@ router.get('/search/:type/:searchTerm',
 			res.status(200).send(result.rows).end();
 		}
 	});
+
 // ###########  POSTS   ###############
 // post new question
 router.post('/newPost',
 	/*Validate token to route*/
 	jwt_verify,
-	/*Token valid: Get search data
-	 1) Attach query string*/
-	require('./queries/insert_new_post.js'),
-	/*  2) Query the attached string*/
-	sql_query.commonQuery,
-	/*  3) Query was successful, do something
-	 with roInfo*/
+	getDB_Client,
+	create_new_post,
 	function (req, res, next) {
-		req.roPostCreated = req.roInfo.rows[0];
-		console.log('Post Created: ', req.roPostCreated);
-		var postInfo = req.body.post;
-		if (postInfo.post_type_id === 1) {
-			/*
-			 The new post is a question, so we need to run the process of
-			 adding tags to the post
-			 */
-			req.roSkipTags = true;
-			req.roSkipNotify = true;
-			next();
-		} else {
-			req.roSkipTags = true;
-			req.roSkipNotify = false;
-			next();
-		}
-	},
-	/*
-	 Process to add tags to the post
-	 */
-	require('./route_func/post_newPost/add_tags_to_post.js'),
-	require('./route_func/post_newPost/notify_followers_new_post.js'),
-	/* Owner of post always follows their own posts*/
-	function (req, res, next) {
-		req.body['post_id'] = req.roInfo.rows[0]._id;
+		req.body['post_id'] = req.roReturned._id;
+		req.postCreated = req.roReturned;
 		next();
 	},
-	require('../follows/queries/insert_new_follow.js'),
-	/*  2) Query the attached string*/
-	sql_query.commonQuery,
-	function (req, res, next) {
-		res.status(200).send(req.roPostCreated).end();
-		next();
-	},
-	/*Query all questions
-	 1) Attach query string*/
-	require('./queries/get_all_questions.js'),
-	/*  2) Query the attached string*/
-	sql_query.commonQuery,
+	owner_follow_post,
+	// /*  2) Query the attached string*/
+	// sql_query.commonQuery,
+	// function (req, res, next) {
+	// 	res.status(200).send(req.roPostCreated).end();
+	// 	next();
+	// },
+	// /*Query all questions
+	//  1) Attach query string*/
+	// require('./queries/get_all_questions.js'),
+	// /*  2) Query the attached string*/
+	// sql_query.commonQuery,
 	/*  3) Query was successful, do something
 	 with roInfo*/
-	function (req) {
+	function (req, res) {
 		req.roDone();
-		var result = req.roInfo;
-		var feed_name = req.params['feed_name'];
-		if (!result.rows[0]) {
-			console.error('Could not cache top and hot after new post, because I didn\'t get the posts');
-		}
-		var sortedPosts = sortPosts.hotSort(result.rows);
-		console.log('CACHING hot_feed');
-		mtCache.set('hot_feed', sortedPosts);
-		var sortedPosts = sortPosts.topSort(result.rows);
-		console.log('CACHING top_feed');
-		mtCache.set('top_feed', sortedPosts);
-
+		// var result = req.roInfo;
+		// var feed_name = req.params['feed_name'];
+		// if (!result.rows[0]) {
+		// 	console.error('Could not cache top and hot after new post, because I didn\'t get the posts');
+		// }
+		// var sortedPosts = sortPosts.hotSort(result.rows);
+		// console.log('CACHING hot_feed');
+		// mtCache.set('hot_feed', sortedPosts);
+		// var sortedPosts = sortPosts.topSort(result.rows);
+		// console.log('CACHING top_feed');
+		// mtCache.set('top_feed', sortedPosts);
+		res.status(200).send(req.postCreated).end();
 	}
 );
+// router.post('/newPost',
+// 	/*Validate token to route*/
+// 	jwt_verify,
+// 	/*Token valid: Get search data
+// 	 1) Attach query string*/
+// 	require('./queries/insert_new_post.js'),
+// 	/*  2) Query the attached string*/
+// 	sql_query.commonQuery,
+// 	/*  3) Query was successful, do something
+// 	 with roInfo*/
+// 	function (req, res, next) {
+// 		req.roPostCreated = req.roInfo.rows[0];
+// 		console.log('Post Created: ', req.roPostCreated);
+// 		var postInfo = req.body.post;
+// 		if (postInfo.post_type_id === 1) {
+// 			/*
+// 			 The new post is a question, so we need to run the process of
+// 			 adding tags to the post
+// 			 */
+// 			req.roSkipTags = true;
+// 			req.roSkipNotify = true;
+// 			next();
+// 		} else {
+// 			req.roSkipTags = true;
+// 			req.roSkipNotify = false;
+// 			next();
+// 		}
+// 	},
+// 	/*
+// 	 Process to add tags to the post
+// 	 */
+// 	require('./route_func/post_newPost/add_tags_to_post.js'),
+// 	require('./route_func/post_newPost/notify_followers_new_post.js'),
+// 	/* Owner of post always follows their own posts*/
+// 	function (req, res, next) {
+// 		req.body['post_id'] = req.roInfo.rows[0]._id;
+// 		next();
+// 	},
+// 	require('../follows/queries/insert_new_follow.js'),
+// 	/*  2) Query the attached string*/
+// 	sql_query.commonQuery,
+// 	function (req, res, next) {
+// 		res.status(200).send(req.roPostCreated).end();
+// 		next();
+// 	},
+// 	/*Query all questions
+// 	 1) Attach query string*/
+// 	require('./queries/get_all_questions.js'),
+// 	/*  2) Query the attached string*/
+// 	sql_query.commonQuery,
+// 	/*  3) Query was successful, do something
+// 	 with roInfo*/
+// 	function (req) {
+// 		req.roDone();
+// 		var result = req.roInfo;
+// 		var feed_name = req.params['feed_name'];
+// 		if (!result.rows[0]) {
+// 			console.error('Could not cache top and hot after new post, because I didn\'t get the posts');
+// 		}
+// 		var sortedPosts = sortPosts.hotSort(result.rows);
+// 		console.log('CACHING hot_feed');
+// 		mtCache.set('hot_feed', sortedPosts);
+// 		var sortedPosts = sortPosts.topSort(result.rows);
+// 		console.log('CACHING top_feed');
+// 		mtCache.set('top_feed', sortedPosts);
+//
+// 	}
+// );
 
 
 router.post('/updatePost',
@@ -237,7 +241,7 @@ router.post('/updatePost',
 	sql_query.commonQuery,
 	/*  3) Query was successful, do something
 	 with roInfo*/
-	function(req) {
+	function (req) {
 		req.roDone();
 		var result = req.roInfo;
 		var feed_name = req.params['feed_name'];

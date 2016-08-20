@@ -1,10 +1,12 @@
-module.exports = function(req, res, next) {
-    var user = req.decoded;
-    var postInfo = req.body.post;
-    req.roQueryParams = [postInfo.privQ, user.id, postInfo.title, postInfo.detail, postInfo.post_type_id, postInfo.parent_id,
-        postInfo.point_type_id, postInfo.source, postInfo.source_type_id, new Date
-    ];
-    req.roQueryString = `
+var Q = require('q');
+var pg = require('pg');
+module.exports = function(client, post, user) {
+	var deffered = Q.defer();
+	var postInfo = post;
+	roQueryParams = [postInfo.privQ, user.id, postInfo.title, postInfo.detail, postInfo.post_type_id, postInfo.parent_id,
+		postInfo.point_type_id, postInfo.source, postInfo.source_type_id, new Date
+	];
+	roQueryString = `
 	INSERT INTO
 	  posts (
 	  private_question, owner_user_id,title,detail,post_type_id,parent_id,point_type_id,source,source_type_id,created_at)
@@ -13,5 +15,9 @@ module.exports = function(req, res, next) {
 	RETURNING
 	    *;
 	`;
-	next();
-}
+	client.query(roQueryString, roQueryParams, function(err, result) {
+		if(err) deferred.reject(new Error(err));
+		deffered.resolve(result.rows[0]);
+	});
+	return deffered.promise;
+};

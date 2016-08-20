@@ -1,6 +1,9 @@
-module.exports = function(req, res, next) {
-	req.roQueryParams = [req.params.id];
-    req.roQueryString = `
+var Q = require('q');
+var pg = require('pg');
+module.exports = function(client, postId) {
+	var deffered = Q.defer();
+	roQueryParams = [postId];
+	roQueryString = `
 	SELECT
         *,
         (
@@ -34,5 +37,10 @@ module.exports = function(req, res, next) {
     WHERE
         _id = $1;
 	`;
-    next();
-}
+	client.query(roQueryString, roQueryParams, function(err, result) {
+		console.log('RETURNED');
+		if(err) deferred.reject(new Error(err));
+		deffered.resolve(result.rows[0]);
+	});
+	return deffered.promise;
+};

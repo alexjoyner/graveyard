@@ -4,18 +4,19 @@ process.stdout.write('\033c');
 var express = require('express'),
     app = express();
 var http = require('http').Server(app);
-
+var server_base = './server-2.0'
 
 // Configurations files
 // ------------------------------
-var config = require('./server/config/config.js');
-require('./server/config/accessHeaders.js')(app);           // Access headers
-require('./server/config/passport/_main.js')();             // Initialize Passport
-require('./server/config/globalMiddleware.js')(app);        // Global Middleware
-//require('./server/config/init-livereload.js')(config.db);   // init_Livereload (Dev only)
-require('./server/middleware/sql_query.js').testPing();     // Test postgres_connection
-require('./server/middleware/elastic_query.js').testPing();     // Test elasticsearch_connection
-//require('./server/config/init-socketIO.js')(app, http);     // init_SocketIO
+var config = require(server_base + '/config/config.js');
+require(server_base + '/config/accessHeaders.js')(app);           // Access headers
+require(server_base + '/config/passport/_main.js')();             // Initialize Passport
+require(server_base + '/config/globalMiddleware.js')(app);        // Global Middleware
+//require(server_base + '/config/init-livereload.js')(config.db);   // init_Livereload (Dev only)
+require(server_base + '/config/init-cache.js')(app);              // init global cache
+require(server_base + '/middleware/sql_query.js').testPing();     // Test postgres_connection
+require(server_base + '/middleware/elastic_query.js').testPing();     // Test elasticsearch_connection
+//require(server_base + '/config/init-socketIO.js')(app, http);     // init_SocketIO
 
 // (Dev mode only) Start live-reload
 if (config.ENV !== 'production') {
@@ -27,13 +28,13 @@ if (config.ENV !== 'production') {
 
 // Route handler
 // --------------------------------
-require('./server/routes/routes.js')(app);
+require(server_base + '/routes')(app);
 
 /*
     !!! Static files must come after routes
 */
 if (config.ENV === 'production') {
-    require('./server/config/static-files.js')(app);            // setup static files
+    require(server_base + '/config/static-files.js')(app);            // setup static files
 }
 var port = (process.env.PORT || 8080);
 // Start an express server

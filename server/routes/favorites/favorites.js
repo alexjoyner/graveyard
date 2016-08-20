@@ -23,7 +23,6 @@ router.get('/my',
 // ###########  POSTS  ###############
 // Post a new favorite if not found
 router.post('/create',
-    /*Validate token to route*/
     jwt_verify,
     /*Token valid: Get search data
      1) Attach query string*/
@@ -36,6 +35,20 @@ router.post('/create',
         req.roDone();
         res.status(200).send({'success': true}).end();
     });
+// router.post('/create',
+//     /*Validate token to route*/
+//     jwt_verify,
+//     /*Token valid: Get search data
+//      1) Attach query string*/
+//     require('./queries/insert_new_favorite.js'),
+//     /*  2) Query the attached string*/
+//     sql_query.commonQuery,
+//     /*  3) Query was successful, do something
+//      with roInfo*/
+//     function(req, res) {
+//         req.roDone();
+//         res.status(200).send({'success': true}).end();
+//     });
 // Delete favorite to unfavorite
 router.delete('/unfavorite/:tagId',
     /*Validate token to route*/
