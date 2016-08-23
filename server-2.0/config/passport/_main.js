@@ -6,8 +6,8 @@
 var passport = require('passport');
 
 module.exports = function() {
-    require('./local-signup.js')(passport);     // Signup Strategy
-    require('./local-login.js')(passport);      // Login Strategy
+    require('./../../routes/auth/local-signup/local-signup.js')(passport);     // Signup Strategy
+    require('./../../routes/auth/local-login/local-login.js')(passport);      // Login Strategy
 
     passport.serializeUser(function(user, done) {
         done(null, user.id);

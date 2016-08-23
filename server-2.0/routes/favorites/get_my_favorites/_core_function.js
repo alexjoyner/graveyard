@@ -1,6 +1,6 @@
 var query = require('./_query');
 var check_cache = require('../../../utils/checkCache');
-module.exports = function (req, callback) {
+module.exports = function (req, callback, re_cache_flag) {
 	var query_info = query(req.decoded);
 	var client = req.roConClient;
 	var cache_location = 'favorites_'+ req.decoded.id;
@@ -21,5 +21,5 @@ module.exports = function (req, callback) {
 			callback(null, favorites);
 		});
 
-	});
+	}, re_cache_flag);
 };

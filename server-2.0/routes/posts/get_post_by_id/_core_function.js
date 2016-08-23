@@ -34,5 +34,5 @@ module.exports = function (req, callback) {
 			callback(null, post);
 		});
 
-	});
+	}, true);
 };

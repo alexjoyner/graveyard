@@ -19,7 +19,7 @@ export class VoteService {
 		srcId: number, 
 		voteType: number){
 		let body = JSON.stringify({
-			thing_id: srcId,
+			post_id: srcId,
 			vote_type_id: voteType
 		});
 		const headers = new Headers();
@@ -28,7 +28,7 @@ export class VoteService {
 			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
 		return this._http.post(
 				this.endpoint +
-				'/votes/create',
+				'/votes/mod',
 				body,
 				{ headers: headers })
 				.map(res => res.json());

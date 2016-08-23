@@ -18,7 +18,7 @@ export class TagsService {
 			(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
 		let res = this._http.get(
 			this.endpoint +
-			'/tags/'+searchTerm+'/'+type,
+			'/tags/search/'+searchTerm+'/'+type,
 			{ headers: headers })
 			.map(res => res.json());
 		res.subscribe(

@@ -106,7 +106,7 @@ export class PostsService {
 			headers.append('x-access-token',
 				(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
 			return this._http.post(
-				this.endpoint + '/posts/updatePost',
+				this.endpoint + '/posts/update',
 				body,
 				{ headers: headers })
 				.map(res => res);
@@ -118,7 +118,7 @@ export class PostsService {
 			headers.append('x-access-token',
 				(localStorage.getItem('token')) ? localStorage.getItem('token') : null);
 			return this._http.delete(
-				this.endpoint + '/posts/deletePost/' + 
+				this.endpoint + '/posts/remove/' +
 				postId,
 				{headers: headers})
 				.map(res => res);

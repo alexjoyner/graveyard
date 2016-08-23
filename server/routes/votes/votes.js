@@ -43,7 +43,7 @@ router.post('/create',
         AND
             user_id = $2;`;
 		var queryParams =
-			[info.thing_id, user.id];
+			[info.post_id, user.id];
 		pg.connect(conString, function (err, client, done) {
 			if (err) {
 				return console.error('error fetching client from pool', err);
@@ -129,7 +129,7 @@ router.post('/create',
 					//call `done()` to release the client back to the pool
 					done();
 					if (err) throw err;
-					res.status(200).send({modAmount: modAmount, modTo: newVoteType | info.vote_type_id}).end();
+					res.status(200).send({modAmount: modAmount, modTo: info.vote_type_id}).end();
 				});
 			});
 		});

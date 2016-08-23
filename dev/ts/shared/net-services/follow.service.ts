@@ -38,8 +38,6 @@ export class FollowService {
         return this._http.delete(
             this.endpoint +
             '/follows/unfollow/'
-                +this._usersService.profile._id
-            +'/'
                 +post_id,
             { headers: headers })
             .map(res => res.json());

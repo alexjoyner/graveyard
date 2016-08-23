@@ -4,18 +4,17 @@ var express = require('express'),
 var jwt_verify = require('../../../middleware/jwt_verify');
 var sql_query = require('../../../middleware/sql_query.js'),
 	getDB_Client = sql_query.getDB_Client; // Gets db client roConClient and roDone;
-var core = require('./_core_function');
-router.get('/',
+var coreFunction = require('./_core_function');
+var finalize = require('../../../middleware/finalize');
+
+router.delete('/:post_id',
+	jwt_verify,
 	getDB_Client,
-	function (req, res) {
-		core(req, function (err, favorites) {
-			if(err) {
-				res.status(err.status).send(err.messages).end();
-				return;
-			}
-			res.status(200).send(favorites).end();
-		})
-	}
+	function (req, res, next) {
+		req.roCoreFunc = coreFunction;
+		next();
+	},
+	finalize
 );
 
 module.exports = router;

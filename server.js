@@ -10,7 +10,7 @@ var server_base = './server-2.0'
 // ------------------------------
 var config = require(server_base + '/config/config.js');
 require(server_base + '/config/accessHeaders.js')(app);           // Access headers
-require(server_base + '/config/passport/_main.js')();             // Initialize Passport
+//require(server_base + '/config/passport/_main.js')();             // Initialize Passport
 require(server_base + '/config/globalMiddleware.js')(app);        // Global Middleware
 //require(server_base + '/config/init-livereload.js')(config.db);   // init_Livereload (Dev only)
 require(server_base + '/config/init-cache.js')(app);              // init global cache
