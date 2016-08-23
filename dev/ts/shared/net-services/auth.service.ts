@@ -41,8 +41,8 @@ export class AuthService {
                 this._usersService.profile = data.profile;
                 this._usersService.profile.follows = tempFollowArray;
                 console.log("STORED PROFILE: ", this._usersService.profile);
-                // let link = ["/"];
-                // this._router.navigate(link);
+                let link = ["/"];
+                this._router.navigate(link);
             },
             err => {
                 this._globalHandlerService.emitStatusMessage({

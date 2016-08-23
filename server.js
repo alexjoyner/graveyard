@@ -4,7 +4,7 @@ process.stdout.write('\033c');
 var express = require('express'),
     app = express();
 var http = require('http').Server(app);
-var server_base = './server-2.0'
+var server_base = './server-2.0';
 
 // Configurations files
 // ------------------------------
