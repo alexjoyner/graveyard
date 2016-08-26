@@ -9,7 +9,7 @@ module.exports = function (req, callback) {
 
 	/* Get from db*/
 	client.query(query_info.string, query_info.params, function(err, result){
-		if(err) throw err;
+		if (err) throw err;
 		var posts = result.rows;
 		callback(null, posts)
 	});

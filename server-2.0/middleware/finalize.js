@@ -1,7 +1,7 @@
 module.exports = function(req, res){
 	req.roCoreFunc(req, function (err, result) {
 		req.roDone();
-		if(err) {
+		if (err) {
 			res.status(err.status).send(err.messages).end();
 			return;
 		}

@@ -16,7 +16,7 @@ module.exports = function(passport){
         function(req, email, password, callback) {
             process.nextTick(function() {
                 get_user_by_email(req, email, function (err, user) {
-                    if(err) return callback(err);
+                    if (err) return callback(err);
                     if(user){
                         return callback(null, false, {
                             message: 'That email already taken'

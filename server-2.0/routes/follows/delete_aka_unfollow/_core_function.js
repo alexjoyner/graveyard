@@ -18,7 +18,7 @@ module.exports = function (req, callback) {
 			get_my_follows(req, next, true);
 		}
 	],function(err){
-		if(err) throw err;
+		if (err) throw err;
 		return callback(null, {success: true});
 	});
 

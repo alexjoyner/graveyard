@@ -18,7 +18,7 @@ module.exports = function (req, callback) {
 		}
 		/* Get from db*/
 		get_all_issues(req, function(err, issues){
-			if(err) throw err;
+			if (err) throw err;
 			if (!issues[0]) {
 				callback(null, []);
 				return;

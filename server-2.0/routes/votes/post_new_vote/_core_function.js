@@ -10,7 +10,7 @@ module.exports = function (req, callback) {
 
 	/* Get from db*/
 	client.query(query_info.string, query_info.params, function(err, result){
-		if(err) throw err;
+		if (err) throw err;
 		var vote = result.rows[0];
 		//req.mtCache.set(cache_location, vote);
 		callback(null, vote)

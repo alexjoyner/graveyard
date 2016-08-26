@@ -11,7 +11,7 @@ module.exports = function (req, callback, re_cache_flag) {
 		}
 		/* Get from db*/
 		client.query(query_info.string, query_info.params, function(err, result){
-			if(err) throw err;
+			if (err) throw err;
 			var follows = result.rows;
 			if (!follows[0]) {
 				callback(null, []);

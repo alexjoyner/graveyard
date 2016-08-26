@@ -42,7 +42,7 @@ module.exports = {
                 //call `req.roDone()` to release the client back to the pool
                 req.roConClient = client;
                 req.roDone = done;
-                if(err) throw err;
+                if (err) throw err;
                 req.roInfo = result;
                 next();
             });

@@ -59,7 +59,7 @@ module.exports = function (req, callback) {
 					get_user_votes(req, next);
 				}
 			], function(err, result){
-				if(err) throw err;
+				if (err) throw err;
 				user['follows'] = result[0];
 				user['favorites'] = result[1];
 				user['votes'] = result[2];

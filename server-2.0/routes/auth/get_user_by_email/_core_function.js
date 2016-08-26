@@ -9,7 +9,7 @@ module.exports = function (req, email, callback) {
 
 	/* Get from db*/
 	client.query(query_info.string, query_info.params, function(err, result){
-		if(err) throw err;
+		if (err) throw err;
 		var user = result.rows[0];
 		if(!user){
 			return callback(null, null);
