@@ -33,7 +33,7 @@ module.exports = {
             test: /\.sass$/,
             loaders: ['to-string', 'css', 'sass']
         }, {
-            exclude: /node_modules/,
+            exclude: [helpers.root('src/index.html'), /node_modules/],
             loader: 'babel',
             query: {
                 presets: ['react', 'es2015', 'stage-1']
