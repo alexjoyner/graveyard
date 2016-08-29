@@ -19,12 +19,12 @@ require(server_base + '/middleware/elastic_query.js').testPing();     // Test el
 //require(server_base + '/config/init-socketIO.js')(app, http);     // init_SocketIO
 
 // (Dev mode only) Start live-reload
-if (config.ENV !== 'production') {
-    console.log('Starting livereload server');
-    var livereload = require('livereload'),
-        liveServer = livereload.createServer();
-    liveServer.watch([__dirname + '/server/**.*']);
-}
+// if (config.ENV !== 'production') {
+//     console.log('Starting livereload server');
+//     var livereload = require('livereload'),
+//         liveServer = livereload.createServer();
+//     liveServer.watch([__dirname + '/server/**.*']);
+// }
 
 // Route handler
 // --------------------------------
