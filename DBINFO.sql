@@ -1,4 +1,4 @@
-                                                                                              CREATE TABLE "public"."vote_types" (
+CREATE TABLE "public"."vote_types" (
     "id" serial,
     "name" varchar(30) NOT NULL,
     PRIMARY KEY ("id")
