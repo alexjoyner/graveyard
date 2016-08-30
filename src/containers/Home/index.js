@@ -39,15 +39,15 @@ class HomeContainer extends Component {
 	render() {
 		return (
 			<div className="row">
-				<div className="col col-lg-2 hidden-lg-down">
+				<div className="col col-lg-3 hidden-lg-down">
 					<div className="">
 						<QuickLinks/>
 					</div>
 				</div>
-				<div className="col col-lg-8 col-xs-12">
+				<div className="col col-lg-6 col-xs-12">
 					{this.renderPosts(this.props.posts)}
 				</div>
-				<div className="col col-lg-2 hidden-lg-down">
+				<div className="col col-lg-3 hidden-lg-down">
 
 				</div>
 			</div>

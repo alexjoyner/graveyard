@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {fetchPostDetail} from '../../js/actions/index';
+import MtTagCell from '../../components/tag-cell/index';
 import PostActionBar from '../../components/post/post-detail-action-bar/index';
 require('./_.sass');
 require('./_post_header.sass');
@@ -32,6 +33,7 @@ class PostDetail extends Component {
 		return (
 			<div>
 				<div id="Question-Header">
+					<MtTagCell tags={post.tags}/>
 					<h2 id="Question-Header-Title"
 						className="text-center">
 						{post.title}
