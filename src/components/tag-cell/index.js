@@ -1,6 +1,8 @@
 import React from 'react';
 require('./_.sass');
 export default ({tags}) => {
+	if(!tags || tags.length === 0)
+		return <div></div>;
 	return (
 		<div id="ro-tag-cell">
 			{tags.map(tag => {
