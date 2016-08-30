@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {fetchPostDetail} from '../../js/actions/index';
 require('./_.sass');
+require('./_post_header.sass');
 //import {bindActionCreators} from 'redux';
 class PostDetail extends Component {
-	componentWillReceiveProps(nextProps) {
+	/*componentWillReceiveProps(nextProps) {
 		let params = nextProps.params;
 		this.getPosts(params);
-	}
+	}*/
 	componentWillMount() {
 		let params = this.props.params;
 		this.getPosts(params);
@@ -15,7 +16,7 @@ class PostDetail extends Component {
 	}
 	getPosts(params){
 		/* Check first for  */
-		return this.props.fetchPostDetail(params.postId);
+		this.props.fetchPostDetail(params.postId);
 	}
 	// constructor(props){
 	//  super(props)
@@ -26,7 +27,16 @@ class PostDetail extends Component {
 	//  }
 	renderPostHeader(post){
 		return (
-			<div>{post.title}</div>
+			<div id="Question-Header">
+				<h2 id="Question-Header-Title"
+					className="text-center">
+					{post.title}
+				</h2>
+				<h5 id="Question-Header-Detail"
+					className="text-center">
+					{post.detail}
+				</h5>
+			</div>
 		)
 	}
 	render() {
