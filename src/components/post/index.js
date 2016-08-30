@@ -7,7 +7,7 @@ export default ({ post }) => {
 	return (
 		<div className={`mt-post point-type-`+ post.point_type_id}>
 			<div className="mt-post-contents">
-				<h2 className="mt-post-pre-title-text">{post.title}</h2>
+				<h2 className="mt-post-pre-title-text"><Link to={'post/'+ post._id}>{post.title}</Link></h2>
 				<h3>{post.detail}</h3>
 				{(post.source !== null) ? renderSourceBlock(post) : null}
 				{/*<ul className="owner-controls">

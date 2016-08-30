@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 require('./_.sass');
 //import {bindActionCreators} from 'redux';
-class RENAME_THIS_TO_CONTAINER_NAME extends Component {
+class PostDetail extends Component {
 	// constructor(props){
 	//  super(props)
 	//
@@ -11,7 +11,7 @@ class RENAME_THIS_TO_CONTAINER_NAME extends Component {
 	//  // this.onFormSubmit = this.onFormSubmit.bind(this);
 	//  }
 	render() {
-		return (<div></div>);
+		return (<div><h1>Post Detail</h1></div>);
 	}
 }
 
@@ -24,4 +24,4 @@ class RENAME_THIS_TO_CONTAINER_NAME extends Component {
 // 	return bindActionCreators({RENAME_TO_ACTION}, dispatch);
 // }
 
-export default connect(null, null)(RENAME_THIS_TO_CONTAINER_NAME);
+export default connect(null, null)(PostDetail);

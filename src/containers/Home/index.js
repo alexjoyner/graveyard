@@ -2,34 +2,37 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 //import HomeContainerTpl from './template';
 import QuickLinks from '../../components/panes/quick-links/index';
-import fetchPosts from '../../js/actions/index';
+import {fetchGeneralFeedPosts, fetchTopicFeedPosts} from '../../js/actions/index';
 import Post from '../../components/post/index';
 require('./_.sass');
 class HomeContainer extends Component {
 	componentWillReceiveProps(nextProps) {
 		let params = nextProps.params;
-		/* Check first for  */
-		if (params.feed_name) {
-			this.props.fetchPosts(params.feed_name);
-			return;
-		}
-		this.props.fetchPosts();
+		this.getPosts(params);
 	}
 	componentWillMount() {
 		let params = this.props.params;
+		this.getPosts(params);
+
+	}
+	getPosts(params){
 		/* Check first for  */
-		if (params.feed_name) {
-			this.props.fetchPosts(params.feed_name);
+		if (params.topic_name) {
+			this.props.fetchTopicFeedPosts(params.topic_id);
 			return;
 		}
-		this.props.fetchPosts();
+		if (params.feed_name) {
+			this.props.fetchGeneralFeedPosts(params.feed_name);
+			return;
+		}
+		this.props.fetchGeneralFeedPosts();
 	}
 	renderPosts(posts){
 		console.log('Post: 0 ', posts[0]);
 		return posts.map(post => {
 			return (
 				<div key={post._id}>
-					<Post post={post}></Post>
+					<Post post={post} />
 				</div>
 			)
 		})
@@ -69,4 +72,4 @@ function mapStateToProps(state) {
 //
 // and further simplifying with ES6 syntax:
 //
-export default connect(mapStateToProps, { fetchPosts })(HomeContainer);
+export default connect(mapStateToProps, { fetchGeneralFeedPosts, fetchTopicFeedPosts })(HomeContainer);
