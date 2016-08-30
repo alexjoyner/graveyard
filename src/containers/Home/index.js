@@ -6,13 +6,22 @@ import fetchPosts from '../../js/actions/index';
 import Post from '../../components/post/index';
 require('./_.sass');
 class HomeContainer extends Component {
-	componentWillMount() {
-		/*let params = this.props.params;
-		/!* Check first for  *!/
+	componentWillReceiveProps(nextProps) {
+		let params = nextProps.params;
+		/* Check first for  */
 		if (params.feed_name) {
 			this.props.fetchPosts(params.feed_name);
 			return;
-		}*/
+		}
+		this.props.fetchPosts();
+	}
+	componentWillMount() {
+		let params = this.props.params;
+		/* Check first for  */
+		if (params.feed_name) {
+			this.props.fetchPosts(params.feed_name);
+			return;
+		}
 		this.props.fetchPosts();
 	}
 	renderPosts(posts){
