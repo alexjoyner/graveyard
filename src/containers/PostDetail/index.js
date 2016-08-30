@@ -1,23 +1,26 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import {fetchPostDetail} from '../../js/actions/index';
+import PostActionBar from '../../components/post/post-detail-action-bar/index';
 require('./_.sass');
 require('./_post_header.sass');
 //import {bindActionCreators} from 'redux';
 class PostDetail extends Component {
 	/*componentWillReceiveProps(nextProps) {
-		let params = nextProps.params;
-		this.getPosts(params);
-	}*/
+	 let params = nextProps.params;
+	 this.getPosts(params);
+	 }*/
 	componentWillMount() {
 		let params = this.props.params;
 		this.getPosts(params);
 
 	}
-	getPosts(params){
+
+	getPosts(params) {
 		/* Check first for  */
 		this.props.fetchPostDetail(params.postId);
 	}
+
 	// constructor(props){
 	//  super(props)
 	//
@@ -25,23 +28,27 @@ class PostDetail extends Component {
 	//  // this.onInputChange = this.onInputChange.bind(this);
 	//  // this.onFormSubmit = this.onFormSubmit.bind(this);
 	//  }
-	renderPostHeader(post){
+	renderPostHeader(post) {
 		return (
-			<div id="Question-Header">
-				<h2 id="Question-Header-Title"
-					className="text-center">
-					{post.title}
-				</h2>
-				<h5 id="Question-Header-Detail"
-					className="text-center">
-					{post.detail}
-				</h5>
+			<div>
+				<div id="Question-Header">
+					<h2 id="Question-Header-Title"
+						className="text-center">
+						{post.title}
+					</h2>
+					<h5 id="Question-Header-Detail"
+						className="text-center">
+						{post.detail}
+					</h5>
+				</div>
+				<PostActionBar post={post}/>
 			</div>
 		)
 	}
+
 	render() {
-		if(!this.props.post){
-			return(<div></div>);
+		if (!this.props.post) {
+			return (<div></div>);
 		}
 		return (
 			<div id="QuestionContainer"
@@ -58,7 +65,7 @@ class PostDetail extends Component {
 }
 
 function mapStateToProps(state) {
-	return { post: state.posts.post };
+	return {post: state.posts.post};
 }
 
 
@@ -66,4 +73,4 @@ function mapStateToProps(state) {
 // 	return bindActionCreators({RENAME_TO_ACTION}, dispatch);
 // }
 
-export default connect(mapStateToProps, { fetchPostDetail })(PostDetail);
+export default connect(mapStateToProps, {fetchPostDetail})(PostDetail);
