@@ -16,7 +16,7 @@ module.exports = {
     metadata: METADATA,
     context: path.join(__dirname + '../../'),
     devtool: "inline-sourcemap",
-    entry: "./src/index.js",
+    entry: "./src/js/index.js",
     output: {
         path: path.join(__dirname + '../../') + "/dist",
         filename: "bundle.js"
@@ -28,11 +28,12 @@ module.exports = {
     module: {
         loaders: [{
             test: /\.scss$/,
-            loaders: ['to-string', 'css', 'sass']
+            loaders: ['style', 'css', 'sass']
         }, {
             test: /\.sass$/,
-            loaders: ['to-string', 'css', 'sass']
+            loaders: ['style', 'css', 'sass']
         }, {
+            test: [/\.js/, /\.jsx/],
             exclude: [helpers.root('src/index.html'), /node_modules/],
             loader: 'babel',
             query: {

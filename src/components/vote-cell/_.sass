@@ -1,0 +1,39 @@
+@import '../../sass/1-base/buttons'
+.vote-cell
+	display: inline
+	.up-vote-text-post-type-1
+		&:before
+			content: ' Important'
+	.up-vote-text-post-type-2
+		&:before
+			content: ' Agree'
+	.up-vote-text-post-type-3
+		&:before
+			content: ' True'
+	.down-vote-text-post-type-1
+		&:before
+			content: ' Irrelevant'
+	.down-vote-text-post-type-2
+		&:before
+			content: ' Disagree / Not Helpful'
+	.down-vote-text-post-type-3
+		&:before
+			content: ' False / Not Helpful'
+	.upvote-btn
+		display: inherit
+		.score
+			margin-left: 6px
+			padding-left: 6px
+			border-left: 1px solid grey
+	.downvote-btn
+		display: inherit
+//.upvote-active
+//	background-color: #00ee00
+//	border-color: #00d6b2
+//	.glyphicon-ok
+//		color: #0b97c4
+//.downvote-active
+//	background-color: #2e2e2e
+//	color: #fff
+//	.glyphicon-remove
+//		color: #8B2500
