@@ -6,6 +6,11 @@ import {fetchGeneralFeedPosts, fetchTopicFeedPosts} from '../../js/actions/index
 import Post from '../../components/post/index';
 require('./_.sass');
 class HomeContainer extends Component {
+	constructor(props){
+		super(props);
+
+		this.state = {headerText: ''};
+	}
 	componentWillReceiveProps(nextProps) {
 		let params = nextProps.params;
 		this.getPosts(params);
@@ -18,13 +23,15 @@ class HomeContainer extends Component {
 	getPosts(params){
 		/* Check first for  */
 		if (params.topic_name) {
-			this.props.fetchTopicFeedPosts(params.topic_id);
+			this.props.fetchTopicFeedPosts(params.topic_id).then(() => this.setState({headerText: 'Top posts in ' + params.topic_name}));
 			return;
 		}
-		if (params.feed_name) {
+		if (params.feed_name === 'top') {
+			this.setState({headerText: 'All time top posts'});
 			this.props.fetchGeneralFeedPosts(params.feed_name);
 			return;
 		}
+		this.setState({headerText: 'Hot questions on MetaTruth right now'});
 		this.props.fetchGeneralFeedPosts();
 	}
 	renderPosts(posts){
@@ -38,13 +45,17 @@ class HomeContainer extends Component {
 	}
 	render() {
 		return (
-			<div className="row">
+			<div id="Home-Container" className="row">
 				<div className="col col-lg-3 hidden-lg-down">
 					<div className="">
 						<QuickLinks/>
 					</div>
 				</div>
 				<div className="col col-lg-6 col-xs-12">
+					<h5 id="Home-MainHeader">
+						{this.state.headerText}
+					</h5>
+					<hr/>
 					{this.renderPosts(this.props.posts)}
 				</div>
 				<div className="col col-lg-3 hidden-lg-down">

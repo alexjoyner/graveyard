@@ -5,11 +5,12 @@ import { combineReducers } from 'redux';
 //import { reducer as formReducer } from 'redux-form';
 
 import PostsReducer from './reducer_posts';
-
+import Config from './reducer_config';
 
 // redux form pulls the form values over to the application level state
 const rootReducer = combineReducers({
   posts: PostsReducer,
+  config: Config
 });
 
 export default rootReducer;

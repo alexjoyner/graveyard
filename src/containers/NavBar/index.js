@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import MainSearchBar from '../forms/MainSearchBar/index';
 //import {bindActionCreators} from 'redux';
 require('./_.sass');
 class NavBar extends Component {
@@ -21,20 +22,21 @@ class NavBar extends Component {
 			<ul id="MainNavBar">
 				<li className="nav-item nav-item-left hidden-lg-down"
 					onClick={this.routeHome.bind(this)}>
-					<span>Brand</span>
+					<span>{this.props.config.appName + ' ' + this.props.config.version}</span>
 				</li>
+				{/*<MainSearchBar />*/}
 			</ul>
 		);
 	}
 }
 
-// function mapStateToProps({ weather }){
-// 	return { weather };
-// }
+function mapStateToProps({ config }){
+	return { config };
+}
 
 
 // function mapDispatchToProps(dispatch){
 // 	return bindActionCreators({RENAME_TO_ACTION}, dispatch);
 // }
 
-export default connect(null, null)(NavBar);
+export default connect(mapStateToProps, null)(NavBar);
