@@ -28,7 +28,6 @@ class HomeContainer extends Component {
 		this.props.fetchGeneralFeedPosts();
 	}
 	renderPosts(posts){
-		console.log('Post: 0 ', posts[0]);
 		return posts.map(post => {
 			return (
 				<div key={post._id}>

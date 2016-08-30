@@ -2,6 +2,7 @@ import axios from 'axios';
 // This file contains our Action Creators
 
 export const FETCH_POSTS = 'FETCH_POSTS';
+export const FETCH_POST_DETAIL = 'FETCH_POST_DETAIL';
 
 const ROOT_URL = 'http://localhost:8080';
 
@@ -23,3 +24,11 @@ export function fetchTopicFeedPosts(topicId) {
 	};
 }
 
+export function fetchPostDetail(postId) {
+	const request = axios.get(`${ROOT_URL}/post/${postId}`);
+
+	return {
+		type: FETCH_POST_DETAIL,
+		payload: request
+	};
+}

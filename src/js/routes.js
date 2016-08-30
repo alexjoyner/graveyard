@@ -13,6 +13,6 @@ export default(
 		<IndexRoute component={HomeWrapper} />
 		<Route path='feed/:feed_name' component={HomeWrapper} />
 		<Route path='topicfeed/topicname/:topic_name/topicid/:topic_id' component={HomeWrapper} />
-		<Route path='post/:id' component={PostDetail} />
+		<Route path='post/:postId' component={PostDetail} />
 	</Route>
 )
