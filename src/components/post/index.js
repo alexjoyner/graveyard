@@ -7,9 +7,9 @@ export default ({ post }) => {
 	return (
 		<div className={`mt-post point-type-`+ post.point_type_id}>
 			<div className="mt-post-contents">
-				<h2 className="mt-post-pre-title-text"><Link to={'post/'+ post._id}>{post.title}</Link></h2>
+				<h2 className="mt-post-title"><Link to={'post/'+ post._id}>{post.title}</Link></h2>
 				<h3>{post.detail}</h3>
-				{(post.source !== null) ? renderSourceBlock(post) : null}
+				{(post.source_type_id !== null) ? renderSourceBlock(post) : null}
 				{/*<ul className="owner-controls">
 					<li>
 						<button
@@ -40,7 +40,7 @@ export default ({ post }) => {
 };
 function renderSourceBlock(post) {
 	return (
-		<div>
+		<div className="source-block">
 			<h4 className="source-link">
 				<u>Source</u>:
 				{post.source}
