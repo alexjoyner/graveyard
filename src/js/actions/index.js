@@ -9,7 +9,6 @@ const ROOT_URL = 'http://localhost:8080';
 export function fetchGeneralFeedPosts(feedName) {
 	const FEED = (feedName)? feedName : 'hot';
 	const request = axios.get(`${ROOT_URL}/posts/${FEED}/1`);
-
 	return {
 		type: FETCH_POSTS,
 		payload: request

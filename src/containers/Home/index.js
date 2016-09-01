@@ -23,7 +23,8 @@ class HomeContainer extends Component {
 	getPosts(params){
 		/* Check first for  */
 		if (params.topic_name) {
-			this.props.fetchTopicFeedPosts(params.topic_id).then(() => this.setState({headerText: 'Top posts in ' + params.topic_name}));
+			this.props.fetchTopicFeedPosts(params.topic_id);
+			this.setState({headerText: 'Top posts in ' + params.topic_name})
 			return;
 		}
 		if (params.feed_name === 'top') {
@@ -47,9 +48,7 @@ class HomeContainer extends Component {
 		return (
 			<div id="Home-Container" className="row">
 				<div className="col col-lg-3 hidden-lg-down">
-					<div className="">
-						<QuickLinks/>
-					</div>
+					<QuickLinks/>
 				</div>
 				<div className="col col-lg-6 col-xs-12">
 					<h5 id="Home-MainHeader">
