@@ -2,12 +2,12 @@ import React from 'react';
 import MtVoteCell from '../vote-cell/index';
 import MtFollowButton from '../follow-button/index';
 import {Link} from 'react-router';
-require('./_.sass');
+require('./styles/_.sass');
 export default ({ post }) => {
 	return (
 		<div className={`mt-post point-type-`+ post.point_type_id}>
 			<div className="mt-post-contents">
-				<h2 className="mt-post-title"><Link to={'post/'+ post._id}>{post.title}</Link></h2>
+				<Link to={'post/'+ post._id}><h2 className="mt-post-title">{post.title}</h2></Link>
 				<h3>{post.detail}</h3>
 				{(post.source_type_id !== null) ? renderSourceBlock(post) : null}
 				{/*<ul className="owner-controls">
@@ -43,11 +43,14 @@ function renderSourceBlock(post) {
 		<div className="source-block">
 			<h4 className="source-link">
 				<u>Source</u>:
-				{post.source}
+				<a href={post.source}
+                   target="_blank">
+                    {post.source}
+                </a>
 			</h4>
 			<h4>
-				<span className="tag">Meta</span>
-				<span className="tag">Proof</span>
+				<span className={'tag support-source-type-' + post.source_type_id}/>
+				<span className={'tag support-point-type-'  + post.point_type_id}/>
 			</h4>
 		</div>
 	)

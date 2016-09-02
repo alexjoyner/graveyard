@@ -8,7 +8,7 @@ export default ({ post }) => {
 				<span className={'up-vote-text-post-type-' + post.post_type_id}/>
 				<span className="score">{post.ups - post.dwns}</span>
 			</button>
-			<button className="mt-btn mt-btn-default">
+			<button className="downvote-btn mt-btn mt-btn-default">
 				<i className="fa fa-check"/>
 				<span className={'down-vote-text-post-type-' + post.post_type_id}/>
 			</button>

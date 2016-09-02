@@ -1,5 +1,5 @@
 import React from 'react';
-import MtVoteCell from '../../vote-cell/index';
+import MtVoteCell from '../vote-cell/index';
 require('./_.sass');
 export default ({ post }) => {
 	return (

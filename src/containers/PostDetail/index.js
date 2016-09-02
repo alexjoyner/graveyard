@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {fetchPostDetail} from '../../js/actions/index';
 import MtTagCell from '../../components/tag-cell/index';
 import Post from '../../components/post/index';
-import PostActionBar from '../../components/post/post-detail-action-bar/index';
+import PostActionBar from '../../components/post-detail-action-bar/index';
 require('./_.sass');
 require('./_post_header.sass');
 //import {bindActionCreators} from 'redux';
