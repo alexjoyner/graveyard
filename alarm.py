@@ -31,6 +31,7 @@ try:
 
         # Buzzes the buzzer when the time reaches the set alarm time
         if curr_time == alarm:
+                print('WAKE UP ROSCOOOOOO!')
                 GPIO.output(heaterBlanketPin, True)
                 awake = True
 
