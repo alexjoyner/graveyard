@@ -25,7 +25,7 @@ awake = False
 
 try:
     # Loop to continuously check time, buzz the buzzer for the set alarm time
-    while !programEnded:
+    while programEnded != True:
         # Continually get's the time as an integer value
         curr_time = int(time.strftime("%H%M"))
 
