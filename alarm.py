@@ -5,7 +5,6 @@
 
 import time
 import RPi.GPIO as GPIO
-from buzzer import buzz
 
 heaterBlanketPin = 24
 
