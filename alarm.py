@@ -31,9 +31,9 @@ try:
 
         # Buzzes the buzzer when the time reaches the set alarm time
         if curr_time == alarm:
-                print('WAKE UP ROSCOOOOOO!')
-                GPIO.output(heaterBlanketPin, True)
-                awake = True
+            print('WAKE UP ROSCOOOOOO!')
+            GPIO.output(heaterBlanketPin, True)
+            awake = True
 
         # Snoozes the alarm for 8 minutes from the current time
         # Only works whilst the alarm is buzzing
@@ -41,12 +41,12 @@ try:
                 print("GOOD MORNING ROSCO!!!")
                 programEnded = True
 
-        # If alarm continues past the set alarm time without being
-        # snoozed, the alarm time is changed to the current time.
-        # This ensures the alarm buzzes continuously until the
-        # snooze button is pressed.
-        elif curr_time != alarm and awake:
-                alarm = curr_time
+        # # If alarm continues past the set alarm time without being
+        # # snoozed, the alarm time is changed to the current time.
+        # # This ensures the alarm buzzes continuously until the
+        # # snooze button is pressed.
+        # elif curr_time != alarm and awake:
+        #         alarm = curr_time
 
 finally:
     GPIO.cleanup()
