@@ -11,7 +11,7 @@ heaterBlanketPin = 24
 
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(heaterBlanketPin, GPIO.OUT)
+GPIO.setup(heaterBlanketPin, GPIO.IN)
 GPIO.setup(25, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 print("Right now the time is: " + time.ctime())
 response = raw_input("Please input the time for the alarm in format HHMM: \n")
