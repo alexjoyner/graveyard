@@ -14,7 +14,7 @@ GPIO.setup(heaterBlanketPin, GPIO.OUT)
 GPIO.setup(25, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 print("Right now the time is: " + time.ctime())
 response = raw_input("Please input the time for the alarm in format HHMM: \n")
-GPIO.output(heaterBlanketPin, False)
+GPIO.output(heaterBlanketPin, GPIO.HIGH)
 
 print("Alarm has been set for %s hrs" % response)
 
@@ -31,7 +31,7 @@ try:
         # Buzzes the buzzer when the time reaches the set alarm time
         if curr_time == alarm and awake != True:
             print('WAKE UP ROSCO!')
-            GPIO.output(heaterBlanketPin, True)
+            GPIO.output(heaterBlanketPin, GPIO.LOW)
             awake = True
 
         # Snoozes the alarm for 8 minutes from the current time
