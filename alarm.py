@@ -37,7 +37,7 @@ try:
 
         # Snoozes the alarm for 8 minutes from the current time
         # Only works whilst the alarm is buzzing
-        if GPIO.input(25) == 0 and awake:
+        elif GPIO.input(25) == 0 and awake:
                 print("GOOD MORNING ROSCO!!!")
                 programEnded = True
 
