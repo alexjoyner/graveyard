@@ -16,7 +16,6 @@ print("Right now the time is: " + time.ctime())
 response = raw_input("Please input the time for the alarm in format HHMM: \n")
 
 print("Alarm has been set for %s hrs" % response)
-buzz(500,0.1)
 
 programEnded = False;
 alarm = int(response)
