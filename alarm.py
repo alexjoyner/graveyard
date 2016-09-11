@@ -30,7 +30,7 @@ try:
         curr_time = int(time.strftime("%H%M"))
 
         # Buzzes the buzzer when the time reaches the set alarm time
-        if curr_time == alarm:
+        if curr_time == alarm and awake != True:
             print('WAKE UP ROSCO!')
             GPIO.output(heaterBlanketPin, True)
             awake = True
