@@ -17,4 +17,7 @@ describe('NavBar', () => {
 		const brand = config_info.appName + ' ' + config_info.version;
 		expect(component).to.contain(brand);
 	});
+	it('Should contain an add Question Btn', () => {
+		expect(component).to.contain('add Question');
+	});
 });

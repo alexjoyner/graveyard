@@ -48,7 +48,7 @@ class HomeContainer extends Component {
 		return (
 			<div id="Home-Container" className="row">
 				<div className="col col-lg-3 hidden-lg-down">
-					<QuickLinks/>
+					{/*<QuickLinks/>*/}
 				</div>
 				<div className="col col-lg-6 col-xs-12">
 					<h5 id="Home-MainHeader">

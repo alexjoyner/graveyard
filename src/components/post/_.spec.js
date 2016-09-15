@@ -38,7 +38,7 @@ describe('Post', () => {
 			expect(component.find('.mt-post-title')).to.contain(MOCK_ISSUE_DATA.title);
 		});
 		it('Should contain the correct detail info', () => {
-			expect(component.find('.mt-post-contents')).to.contain(MOCK_ISSUE_DATA.detail);
+			expect(component.find('.mt-post-header')).to.contain(MOCK_ISSUE_DATA.detail);
 		});
 		it('Should not contain any source info', () => {
 			return expect(component.find('.source-block')).to.not.exist;
@@ -57,7 +57,7 @@ describe('Post', () => {
 			expect(component.find('.mt-post-title')).to.contain(MOCK_THOUGHT_DATA.title);
 		});
 		it('Should contain the correct detail info', () => {
-			expect(component.find('.mt-post-contents')).to.contain(MOCK_THOUGHT_DATA.detail);
+			expect(component.find('.mt-post-header')).to.contain(MOCK_THOUGHT_DATA.detail);
 		});
 		it('Should not contain any source info', () => {
 			return expect(component.find('.source-block')).to.not.exist;
@@ -74,7 +74,7 @@ describe('Post', () => {
 			expect(component.find('.mt-post-title')).to.contain(MOCK_SUPPORT_DATA.title);
 		});
 		it('Should contain the correct detail info', () => {
-			expect(component.find('.mt-post-contents')).to.contain(MOCK_SUPPORT_DATA.detail);
+			expect(component.find('.mt-post-header')).to.contain(MOCK_SUPPORT_DATA.detail);
 		});
 		it('Should not contain any source info', () => {
 			return expect(component.find('.source-block')).to.exist;

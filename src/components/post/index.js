@@ -5,36 +5,83 @@ import {Link} from 'react-router';
 require('./styles/_.sass');
 export default ({ post }) => {
 	return (
-		<div className={`mt-post point-type-`+ post.point_type_id}>
-			<div className="mt-post-contents">
-				<Link to={'post/'+ post._id}><h2 className="mt-post-title">{post.title}</h2></Link>
-				<h3>{post.detail}</h3>
-				{(post.source_type_id !== null) ? renderSourceBlock(post) : null}
-				{/*<ul className="owner-controls">
-					<li>
-						<button
-							className="mt-btn mt-btn-danger">
-							<i className="fa fa-close">
-							</i>
-						</button>
+		<div>
+			<div className={`mt-post point-type-`+ post.point_type_id}>
+				<div className="mt-post-header">
+					<Link to={'post/'+ post._id}><h2 className="mt-post-title">{post.title}</h2></Link>
+					<h3>{post.detail}</h3>
+					{(post.source_type_id !== null) ? renderSourceBlock(post) : null}
+				</div>
+				<div className="mt-post-body">
+					<div className="row">
+						<div className="col col-xs-6 vote-status-block">
+							<h2 className="text-center results-percent">0%</h2>
+							<h3 className="text-center vote-status">NOT ENOUGH DATA TO <br/> START OFFICIAL VOTING</h3>
+							<div className="text-center">
+								<button className="mt-btn">
+									CAST YOUR VOTE!
+								</button>
+							</div>
+						</div>
+						<div className="col col-xs-6 data-base">
+							<h3><u>Data so far:</u></h3>
+							<ul>
+								<li>2100 Thought</li>
+								<li>1200 Data Points</li>
+							</ul>
+							<div className="text-center">
+								<button className="mt-btn mt-btn-info">
+									Add Your Thoughts
+								</button>
+							</div>
+							<div className="text-center">
+								<button className="mt-btn mt-btn-info">
+									Add Supporting Data
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div className="mt-post-footer">
+					<ul className="mt-action-bar">
+						<MtVoteCell className="mt-action-bar-item" post={post}/>
+						<li className="mt-action-bar-item follow-cell pull-right">
+						{/*<MtFollowButton />*/}
 					</li>
-					<li>
-						<button
-							className="mt-btn mt-btn-info">
-							<i className="fa fa-edit">
-							</i>
-						</button>
-					</li>
-				</ul>*/}
+					</ul>
+				</div>
 			</div>
-			<div className="mt-post-footer">
-				<ul className="mt-action-bar">
-					<MtVoteCell className="mt-action-bar-item" post={post}/>
-					{/*<li className="mt-action-bar-item follow-cell pull-right">
-						<MtFollowButton />
-					</li>*/}
-				</ul>
-			</div>
+			{/*<div className={`mt-post point-type-`+ post.point_type_id}>
+			 <div className="mt-post-contents">
+			 <Link to={'post/'+ post._id}><h2 className="mt-post-title">{post.title}</h2></Link>
+			 <h3>{post.detail}</h3>
+			 {(post.source_type_id !== null) ? renderSourceBlock(post) : null}
+			 /!*<ul className="owner-controls">
+			 <li>
+			 <button
+			 className="mt-btn mt-btn-danger">
+			 <i className="fa fa-close">
+			 </i>
+			 </button>
+			 </li>
+			 <li>
+			 <button
+			 className="mt-btn mt-btn-info">
+			 <i className="fa fa-edit">
+			 </i>
+			 </button>
+			 </li>
+			 </ul>*!/
+			 </div>
+			 <div className="mt-post-footer">
+			 <ul className="mt-action-bar">
+			 <MtVoteCell className="mt-action-bar-item" post={post}/>
+			 /!*<li className="mt-action-bar-item follow-cell pull-right">
+			 <MtFollowButton />
+			 </li>*!/
+			 </ul>
+			 </div>
+			 </div>*/}
 		</div>
 	);
 };

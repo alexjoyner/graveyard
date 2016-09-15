@@ -22,7 +22,7 @@ $mt-post-border: 1px solid $mt-brand-color-default
 	.tag
 		&:empty
 			display: inline-block !important
-	.mt-post-contents
+	.mt-post-header
 		padding: 20px
 		display: block
 	.mt-post-footer
@@ -31,14 +31,26 @@ $mt-post-border: 1px solid $mt-brand-color-default
 		width: 100%
 		border-radius: 0 0 $mt-post-border-radius $mt-post-border-radius
 		border-top: 1px solid $base-border-color
+	.mt-post-body
+		.vote-status-block
+			color: $base-border-color
+			.vote-status
+				font-weight: 500
+		.data-base
+			border-left: 1px solid black
+			h3
+				font-weight: 500
+		.results-percent
+			font:
+				size: 6em
 	h2
 		font:
 			size: 1.5em
 			weight: 400
 	h3
 		font:
-			size: 1em
-			weight: 400
+			size: 1.2em
+			weight: 300
 	.owner-controls
 		position: absolute
 		top: 0
