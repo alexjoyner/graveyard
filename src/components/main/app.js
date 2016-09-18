@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import NavBar from '../../containers/NavBar';
+import NavBar from '../containers/NavBar';
 require('./_app.sass');
 
 export default class App extends Component {

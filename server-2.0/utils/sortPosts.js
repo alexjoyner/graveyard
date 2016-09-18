@@ -14,15 +14,15 @@ var decay = require('decay')
 module.exports = {
     'hotSort': function (posts) {
         return posts.sort(function (postA, postB) {
-            var aScore = hotScore(postA.ups, postA.dwns, postA.created_at);
-            var bScore = hotScore(postB.ups, postB.dwns, postB.created_at);
+            var aScore = hotScore(postA.pro_ups + postA.con_ups, postA.dwns, postA.created_at);
+            var bScore = hotScore(postB.pro_ups + postB.con_ups, postB.dwns, postB.created_at);
             return bScore - aScore
         })
     },
     'topSort': function (posts) {
         return posts.sort(function (postA, postB) {
-            var aScore = wilsonScore(postA.ups, postA.dwns);
-            var bScore = wilsonScore(postB.ups, postB.dwns);
+            var aScore = wilsonScore(postA.pro_ups + postA.con_ups, postA.dwns);
+            var bScore = wilsonScore(postB.pro_ups + postB.con_ups, postB.dwns);
             return bScore - aScore
         })
     }

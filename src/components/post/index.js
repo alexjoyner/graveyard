@@ -13,7 +13,7 @@ export default ({ post }) => {
 					{(post.source_type_id !== null) ? renderSourceBlock(post) : null}
 				</div>
 				<div className="mt-post-body">
-					<div className="row">
+					{/*<div className="row">
 						<div className="col col-xs-6 vote-status-block">
 							<h2 className="text-center results-percent">0%</h2>
 							<h3 className="text-center vote-status">NOT ENOUGH DATA TO <br/> START OFFICIAL VOTING</h3>
@@ -40,7 +40,7 @@ export default ({ post }) => {
 								</button>
 							</div>
 						</div>
-					</div>
+					</div>*/}
 				</div>
 				<div className="mt-post-footer">
 					<ul className="mt-action-bar">

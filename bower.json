@@ -1,23 +1,21 @@
 {
-  "name": "metatruth",
-  "description": "",
+  "name": "voicir",
+  "description": "An app to give everyone a voice",
   "main": "",
   "authors": [
-    "Rosco <rosco9awj@gmail.com>"
+    "rosco9awj"
   ],
   "license": "ISC",
-  "moduleType": [],
   "homepage": "",
+  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
-    "public/lib",
     "test",
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "^3.3.6",
-    "font-awesome": "^4.6.1"
+    "font-awesome": "^4.6.3"
   }
 }

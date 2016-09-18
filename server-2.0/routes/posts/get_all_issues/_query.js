@@ -5,10 +5,6 @@ module.exports = {
 			*
 		FROM
 			posts
-		WHERE
-			post_type_id = 1
-		AND
-			is_deleted = false
 		LIMIT
 			1000;`
 };

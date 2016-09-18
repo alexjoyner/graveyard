@@ -3,29 +3,21 @@
 @import "../../../1-base/buttons"
 @import "../../../1-base/mixins/transform"
 .ro-modal
-	&:before
-		content: ""
-		display: block
-		position: fixed
-		background-color: $mt-brand-color-info
-		opacity: 0.95
-		top: 0
-		left: 0
-		+size(100%)
-		z-index: 50
-	.CenterContent
+	position: fixed
+	background-color: $mt-brand-color-info
+	opacity: 0.95
+	top: 0
+	left: 0
+	+size(100%)
+	z-index: 50
+	.ro-modal-content
 		position: fixed
 		z-index: 51
 		background-color: #fff 
 		top: 50%
 		left: 50%
 		transform: translate(-50%, -50%)
-		font-weight: 200
-		text-align: center
-		padding: 20px
-		border: 2px solid #ddd
-		border-radius: 5px
-		width: 800px
+		width: 70%
 		max-width: 95%
 .ModalClose
 	display: block
@@ -34,5 +26,4 @@
 	left: 90%
 	z-index: 51
 	@extend .mt-btn
-	@extend .mt-btn-sm
 	@extend .mt-btn-default

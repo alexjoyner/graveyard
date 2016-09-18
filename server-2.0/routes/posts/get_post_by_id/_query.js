@@ -36,4 +36,4 @@ module.exports = function (postId) {
 			_id = $1;
 		`
 	}
-}
+};

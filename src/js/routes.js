@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import HomeWrapper from '../containers/Home/index';
-import PostDetail from '../containers/PostDetail/index';
+import HomeWrapper from '../components/containers/Home/index';
+import PostDetail from '../components/containers/PostDetail/index';
 
 import App from '../components/main/app';
 
