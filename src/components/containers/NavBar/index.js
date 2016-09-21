@@ -1,7 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import MainSearchBar from '../forms/MainSearchBar/index';
-import CreateQuestionForm from '../forms/CreateQuestionForm';
+import MainSearchBar from '../../forms/MainSearchBar/index';
+import CreateQuestionForm from '../../forms/CreateQuestionForm';
+import CreateDataForm from '../../forms/CreateDataForm';
 //import {bindActionCreators} from 'redux';
 require('./_.sass');
 class NavBar extends Component {
@@ -12,7 +13,10 @@ class NavBar extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {showModal: true};
+		this.state = {
+			showCreateQuestionModal: true,
+			showCreateDateModal: false
+		};
 		// this.onInputChange = this.onInputChange.bind(this);
 		// this.onFormSubmit = this.onFormSubmit.bind(this);
 	}
@@ -20,10 +24,27 @@ class NavBar extends Component {
 	routeHome() {
 		this.context.router.push('/')
 	}
+	closeModal(){
+		this.setState({
+			showCreateQuestionModal: false,
+			showCreateDateModal: false
+		});
+	}
+	openModal(name){
+		switch(name){
+			case 'question':
+				this.setState({showCreateQuestionModal: true});
+				break;
+			case 'data':
+				this.setState({showCreateDateModal: true});
+				break;
+		}
+	}
 	render() {
 		return (
 			<div>
-				{(this.state.showModal)? <CreateQuestionForm closeModal={()=>{this.setState({showModal: false})}}/> : null}
+				{(this.state.showCreateQuestionModal)? <CreateQuestionForm router={this.context.router} close={this.closeModal.bind(this)}/> : null}
+				{(this.state.showCreateDateModal)? <CreateDataForm close={this.closeModal.bind(this)}/> : null}
 				<ul id="MainNavBar">
 					<li className="nav-item nav-item-left hidden-lg-down"
 						onClick={this.routeHome.bind(this)}>
@@ -33,7 +54,8 @@ class NavBar extends Component {
 					<li className="mt-navbar-form form-inline pull-left"
 						role="search">
 						<button type="submit"
-								className="mt-nav-btn mt-btn-default">Ask a question
+								className="mt-nav-btn mt-btn-default"
+								onClick={this.openModal.bind(this, 'question')}>Ask a question
 						</button>
 					</li>
 					<li className="mt-navbar-form form-inline pull-left"
@@ -44,7 +66,8 @@ class NavBar extends Component {
 					<li className="mt-navbar-form form-inline pull-left"
 						role="search">
 						<button type="submit"
-								className="mt-nav-btn mt-btn-default">Add Data
+								className="mt-nav-btn mt-btn-default"
+								onClick={this.openModal.bind(this, 'data')}>Add Data
 						</button>
 					</li>
 				</ul>

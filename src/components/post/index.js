@@ -42,14 +42,14 @@ export default ({ post }) => {
 						</div>
 					</div>*/}
 				</div>
-				<div className="mt-post-footer">
+				{/*<div className="mt-post-footer">
 					<ul className="mt-action-bar">
 						<MtVoteCell className="mt-action-bar-item" post={post}/>
 						<li className="mt-action-bar-item follow-cell pull-right">
-						{/*<MtFollowButton />*/}
+						/!*<MtFollowButton />*!/
 					</li>
 					</ul>
-				</div>
+				</div>*/}
 			</div>
 			{/*<div className={`mt-post point-type-`+ post.point_type_id}>
 			 <div className="mt-post-contents">

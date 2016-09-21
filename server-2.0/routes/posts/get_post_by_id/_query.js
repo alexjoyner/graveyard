@@ -8,14 +8,24 @@ module.exports = function (postId) {
 			SELECT array_to_json(array_agg(row_to_json(a)))
 			FROM (
 				SELECT
-					p.*
-				FROM posts p
+					p.*,
+					q.*
+				FROM post_post_xref p
+				LEFT JOIN
+					posts q
+				ON
+					(p.source_post_id = q._id)
 				WHERE
-					p.parent_id = $1
-				AND
-					p.is_deleted = FALSE
+					p.link_post_id = $1
 				GROUP BY 
-					p._id
+					p.source_post_id, 
+					p.link_post_id, 
+					p.link_type_id,
+					p.created_at,
+					p.pro_ups,
+					p.con_ups,
+					p.dwns,
+					q._id
 			)a ) as points,
 			(
 			SELECT array_to_json(array_agg(row_to_json(t)))

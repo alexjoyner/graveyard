@@ -44,7 +44,7 @@ describe('Post', () => {
 			return expect(component.find('.source-block')).to.not.exist;
 		});
 
-		it('Should contain a vote cell block', () => {
+		xit('Should contain a vote cell block', () => {
 			return expect(component.find('.vote-cell')).to.exist;
 		});
 
@@ -62,7 +62,7 @@ describe('Post', () => {
 		it('Should not contain any source info', () => {
 			return expect(component.find('.source-block')).to.not.exist;
 		});
-		it('Should contain a vote cell block', () => {
+		xit('Should contain a vote cell block', () => {
 			return expect(component.find('.vote-cell')).to.exist;
 		});
 	});
@@ -79,7 +79,7 @@ describe('Post', () => {
 		it('Should not contain any source info', () => {
 			return expect(component.find('.source-block')).to.exist;
 		});
-		it('Should contain a vote cell block', () => {
+		xit('Should contain a vote cell block', () => {
 			return expect(component.find('.vote-cell')).to.exist;
 		});
 	});

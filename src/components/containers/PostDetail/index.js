@@ -41,8 +41,7 @@ class PostDetail extends Component {
 				<div className="col col-md-6">
 					<div className="point">
 						{posts.map(post => {
-							if (post.point_type_id === 1 || post.point_type_id === 3)
-								return <Post post={post}
+							return <Post post={post}
 											 key={'yesPost_' + post._id}/>
 						})}
 					</div>
@@ -50,8 +49,7 @@ class PostDetail extends Component {
 				<div className="col col-md-6">
 					<div className="point">
 						{posts.map(post => {
-							if (post.point_type_id === 2 || post.point_type_id === 4)
-								return <Post post={post}
+							return <Post post={post}
 											 key={'noPost_' + post._id}/>
 						})}
 					</div>
