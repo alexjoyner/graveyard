@@ -33,7 +33,7 @@ export function fetchPostDetail(postId) {
 	};
 }
 
-export function postNewQuestion(props) {
+export function createNewPost(props) {
 	const config = {
 		timeout: 1000,
 		headers: {

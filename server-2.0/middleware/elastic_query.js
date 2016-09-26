@@ -10,7 +10,7 @@ var client = new elasticsearch.Client({
 
 module.exports = {
     'testPing': function () {
-        console.log('Uncomment elastic query testPing to connect to elasticsearch.')
+        console.log('Uncomment elastic query testPing to connect to elasticsearch.');
         /*client.ping({
             // ping usually has a 3000ms timeout
             requestTimeout: Infinity,
@@ -23,4 +23,4 @@ module.exports = {
                 console.trace('elasticsearch cluster is down!');
             });*/
     }
-}
+};

@@ -1,5 +1,5 @@
 var query = require('./_query');
-var check_cache = require('../../../utils/checkCache');
+import {check_cache} from '../../../../utils/_server_utils';
 
 /* LOCAL VARS*/
 var query_info, client, cache_location;

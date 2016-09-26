@@ -1,6 +1,5 @@
 var query = require('./_query');
-var check_cache = require('../../../utils/checkCache');
-var sortPosts = require('../../../utils/sortPosts');
+import {check_cache, top_sort_posts} from '../../../../utils/_server_utils';
 /* LOCAL VARS*/
 var query_info, client, cache_location;
 
@@ -28,7 +27,7 @@ module.exports = function (req, callback) {
 			if (post.points === null) {
 				post.points = [];
 			} else {
-				post.points = sortPosts.topSort(post.points);
+				post.points = top_sort_posts(post.points);
 			}
 			req.mtCache.set(cache_location, post);
 			callback(null, post);

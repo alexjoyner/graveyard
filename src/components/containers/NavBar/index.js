@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import MainSearchBar from '../../forms/MainSearchBar/index';
 import CreateQuestionForm from '../../forms/CreateQuestionForm';
 import CreateDataForm from '../../forms/CreateDataForm';
-//import {bindActionCreators} from 'redux';
 require('./_.sass');
 class NavBar extends Component {
 	static contextTypes = {

@@ -1,5 +1,6 @@
 import React from 'react';
-
+import {Field} from 'redux-form';
+const  { DOM: { input, select, textarea } } = React
 export default (props) => {
 	return (
 		<div id="Step1">
@@ -13,9 +14,11 @@ export default (props) => {
 				<div className="col-xs-4">
 					<div className="checkbox  text-center">
 						<label>
-							<input type="radio"
-								   name="source_type"
-								   required/>
+							<Field type="radio"
+								   name="source_type_id"
+								   component="input"
+								   value="1"
+								   onClick={props.next.bind(null)}/>
 							Meta Analysis
 						</label>
 					</div>
@@ -24,8 +27,11 @@ export default (props) => {
 					<div className="checkbox  text-center">
 						<label>
 							Credible
-							<input type="radio"
-								   name="source_type"/>
+							<Field type="radio"
+								   name="source_type_id"
+								   component="input"
+								   value="2"
+								   onClick={props.next.bind(null)}/>
 						</label>
 					</div>
 				</div>
@@ -33,8 +39,11 @@ export default (props) => {
 					<div className="checkbox  text-center">
 						<label>
 							Website/Blog
-							<input type="radio"
-								   name="source_type"/>
+							<Field type="radio"
+								   name="source_type_id"
+								   component="input"
+								   value="3"
+								   onClick={props.next.bind(null)}/>
 						</label>
 					</div>
 				</div>
@@ -43,8 +52,11 @@ export default (props) => {
 				<div className="col-xs-4">
 					<div className="checkbox  text-center">
 						<label>
-							<input type="radio"
-								   name="source_type"/>
+							<Field type="radio"
+								   name="source_type_id"
+								   component="input"
+								   value="4"
+								   onClick={props.next.bind(null)}/>
 							TV Media <br/> (CNN, FOX, HUFFINGTON, etc)
 						</label>
 					</div>
@@ -53,8 +65,11 @@ export default (props) => {
 					<div className="checkbox  text-center">
 						<label>
 							Personal Opinion
-							<input type="radio"
-								   name="source_type"/>
+							<Field type="radio"
+								   name="source_type_id"
+								   component="input"
+								   value="5"
+								   onClick={props.next.bind(null)}/>
 						</label>
 					</div>
 				</div>
@@ -62,8 +77,11 @@ export default (props) => {
 					<div className="checkbox  text-center">
 						<label>
 							Other
-							<input type="radio"
-								   name="source_type"/>
+							<Field type="radio"
+								   name="source_type_id"
+								   component="input"
+								   value="6"
+								   onClick={props.next.bind(null)}/>
 						</label>
 					</div>
 				</div>

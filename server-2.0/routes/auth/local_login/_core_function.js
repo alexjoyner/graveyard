@@ -7,8 +7,7 @@ var get_user_by_email = require('../get_user_by_email/_core_function');
 var get_user_followers = require('../../follows/get_my_follows/_core_function');
 var get_user_favorites = require('../../favorites/get_my_favorites/_core_function');
 var get_user_votes = require('../../votes/get_my_votes/_core_function');
-var check_cache = require('../../../utils/checkCache');
-var validatePassword = require('../../../utils/validatePassword');
+import {check_cache, validate_password} from '../../../../utils/_server_utils';
 /* LOCAL VARS*/
 var client, cache_location;
 
@@ -32,7 +31,7 @@ module.exports = function (req, callback) {
 					message: 'Invalid Email'
 				});
 			}
-			if (!validatePassword(password, user.password)) {
+			if (!validate_password(password, user.password)) {
 				return callback(null, null, {
 					message: 'Invalid password'
 				});

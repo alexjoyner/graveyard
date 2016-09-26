@@ -1,5 +1,5 @@
 var query = require('./_query');
-var check_cache = require('../../../utils/checkCache');
+import {check_cache} from '../../../../utils/_server_utils';
 module.exports = function (req, callback, re_cache_flag) {
 	var query_info = query(req.decoded);
 	var client = req.roConClient;

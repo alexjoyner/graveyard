@@ -1,7 +1,5 @@
-var check_cache = require('../../../utils/checkCache');
-var sortPosts = require('../../../utils/sortPosts');
+import {check_cache, get_page_contents, hot_sort_posts} from '../../../../utils/_server_utils';
 var get_all_issues = require('../get_all_issues/_core_function');
-var getPageContents = require('../../../utils/getPageContents');
 /* LOCAL VARS*/
 const ITEMS_PER_PAGE = 25;
 var client, cache_location, page_items, page_num;
@@ -13,7 +11,7 @@ module.exports = function (req, callback) {
 	check_cache(req, cache_location, function(err, cached_items){
 		req.roDone();
 		if(cached_items){
-			callback(null, getPageContents(page_num, cached_items, ITEMS_PER_PAGE));
+			callback(null, get_page_contents(page_num, cached_items, ITEMS_PER_PAGE));
 			return;
 		}
 		/* Get from db*/
@@ -23,9 +21,9 @@ module.exports = function (req, callback) {
 				callback(null, []);
 				return;
 			}
-			page_items = sortPosts.hotSort(issues);
+			page_items = hot_sort_posts(issues);
 			req.mtCache.set(cache_location, page_items);
-			callback(null, getPageContents(page_num, page_items, ITEMS_PER_PAGE));
+			callback(null, get_page_contents(page_num, page_items, ITEMS_PER_PAGE));
 		});
 
 	});

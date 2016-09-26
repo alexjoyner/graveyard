@@ -1,26 +1,25 @@
-import checkIsYesOrNo from '../utils/checkIsYesOrNo';
-import contains_you from '../utils/contains_you';
-import contains_should from '../utils/contains_should';
-import is_comparison from '../utils/is_comparison';
-import {isOneWord, isThreeWords} from '../utils/isNumOfWords';
+import {is_yes_no} from '../../../../../utils';
+import {is_num_of_words} from '../../../../../utils';
+import {contains_should} from '../../../../../utils';
+import {contains_or} from '../../../../../utils';
 export default function (values) {
-	const errors = {};
+	let errors = {};
 	let daQ = values.title; // daQ (The question)
 	errors.title = undefined;
 
 	/*
 	 * If there is no question or there isn't at least 2 characters to check*/
-	if (!daQ || !isOneWord(daQ)) {
+	if (!daQ || !is_num_of_words(daQ, 1)) {
 		// No alerts raised yet
 		errors.title = 'Enter your question';
 		return errors;
 	}
 	/*
 	 * If the question isn't a yes or no*/
-	if (!checkIsYesOrNo(daQ)) {
+	if (!is_yes_no(daQ)) {
 		/*
 		 * If the question isn't at least 3 words (A complete sentence). Ex: Should I run? */
-		if (!isThreeWords(daQ)) {
+		if (!is_num_of_words(daQ, 3)) {
 			errors.title = "Hey! Your question needs to be at least 3 words!";
 			return errors;
 		}
@@ -41,14 +40,14 @@ export default function (values) {
 
 	/*
 	 * If the question isn't at least 3 words (A complete sentence). Ex: Should I run? */
-	if (!isThreeWords(daQ)) {
+	if (!is_num_of_words(daQ, 3)) {
 		errors.title = "Hey! Your question needs to be at least 3 words!";
 		return errors;
 	}
 
 	/*
 	 * If the question is a comparison */
-	if (is_comparison(daQ)) {
+	if (contains_or(daQ)) {
 		errors.title =
 			`Comparison must be framed as open questions. \n Ex: "Should I use Splenda or Stevia?" \n
 				should be changed to \n "What's the best sweetener?"`;

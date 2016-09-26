@@ -1,5 +1,3 @@
-// Clear the console on nodemon restart
-process.stdout.write('\033c');
 // Dependencies
 var express = require('express'),
     app = express();
