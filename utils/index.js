@@ -1,12 +1,15 @@
-export * from './contains_or';
-export * from './contains_should';
-export * from './contains_you';
-export * from './get_base_statement';
-export * from './get_edited_question';
-export * from './get_first_word';
-export * from './get_question_type';
-export * from './get_valid_yes_no_cases';
-export * from './get_yes_no_options';
-export * from './is_evenly_divisible';
-export * from './is_num_of_words';
-export * from './is_yes_no';
+// Boolean utils (Only return true or false)
+export * from './_global_utils/boolean/contains_or';
+export * from './_global_utils/boolean/contains_should';
+export * from './_global_utils/boolean/contains_you';
+export * from './_global_utils/boolean/is_evenly_divisible';
+export * from './_global_utils/boolean/is_num_of_words';
+export * from './_global_utils/boolean/is_yes_no';
+
+// Not boolean utils
+export * from './_global_utils/get/get_base_statement';
+export * from './_global_utils/get/get_edited_question';
+export * from './_global_utils/get/get_first_word';
+export * from './_global_utils/get/get_question_type';
+export * from './_global_utils/get/get_valid_yes_no_cases';
+export * from './_global_utils/get/get_yes_no_options';

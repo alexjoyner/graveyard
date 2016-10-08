@@ -1,5 +1,5 @@
-import {validCases} from '../get_valid_yes_no_cases';
-import {is_evenly_divisible} from '../is_evenly_divisible';
+import {get_valid_yes_no_cases as validCases} from '../get_valid_yes_no_cases';
+import {is_evenly_divisible} from '../../boolean/is_evenly_divisible';
 export function get_yes_no_options(word) {
 	let index = validCases().indexOf(word);
 	if (word === validCases()[0] || word === validCases()[1]) {

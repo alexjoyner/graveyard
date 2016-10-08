@@ -3,12 +3,22 @@ import MtVoteCell from '../vote-cell/index';
 import MtFollowButton from '../follow-button/index';
 import {Link} from 'react-router';
 require('./styles/_.sass');
+function getPostType(pros, cons, dwns){
+	let score = (pros + cons) - dwns;
+	if(score === 0)
+		return 'neutral';
+	let pro_con = pros - cons;
+	if(pro_con < 0)
+		return 'con';
+
+	return 'pro';
+}
 export default ({ post }) => {
 	return (
-		<div>
-			<div className={`mt-post point-type-`+ post.point_type_id}>
+		<div >
+			<div className={`mt-post `+ getPostType(post.pro_ups, post.con_ups, post.dwns) +` point-type-`+ post.point_type_id}>
 				<div className="mt-post-header">
-					<Link to={'post/'+ post._id}><h2 className="mt-post-title">{post.title}</h2></Link>
+					<Link to={'post/'+ post._id}><h2 className="mt-post-title">{post._id + ' ' + post.title}</h2></Link>
 					<h3>{post.detail}</h3>
 					{(post.source_type_id !== null) ? renderSourceBlock(post) : null}
 				</div>

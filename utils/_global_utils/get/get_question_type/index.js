@@ -1,7 +1,7 @@
-import {is_yes_no} from '../is_yes_no';
-import {is_num_of_words} from '../is_num_of_words';
-import {contains_should} from '../contains_should';
-import {contains_or} from '../contains_or';
+import {is_yes_no} from '../../boolean/is_yes_no';
+import {is_num_of_words} from '../../boolean/is_num_of_words';
+import {contains_should} from '../../boolean/contains_should';
+import {contains_or} from '../../boolean/contains_or';
 export function get_question_type(daQ, source_type_id) {
 	const ERRORS = {};
 	ERRORS.title = undefined;

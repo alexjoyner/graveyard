@@ -1,4 +1,25 @@
 @import "../../../sass/1-base/variables"
+$break-small: 320px
+$break-large: 1200px
+.container
+	min-height: 50vh
+	width: 90%
+	min-width: 500px
+	max-width: 1000px
+	.con
+		width: 80%
+		background-color: lighten($mt-brand-color-danger, 30%)
+		float: right
+	.pro
+		width: 80%
+		background-color: lighten($mt-brand-color-success, 30%)
+		float: left
+	.neutral
+		width: 80%
+		background-color: #fff
+		clear: both
+		margin: 10px auto
+
 .ModesPane
 	border: 1px solid #dddddd
 	background-color: $base-background-color

@@ -20,7 +20,7 @@ module.exports = function (req, callback) {
 		client.query(query_info.string, query_info.params, function(err, result){
 			if (err) throw err;
 			var issues = result.rows;
-			sortedPosts = hot_sort_posts(issues);
+			var sortedPosts = hot_sort_posts(issues);
 			req.mtCache.set(cache_location, sortedPosts);
 			callback(null, sortedPosts);
 		});

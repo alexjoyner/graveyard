@@ -4,6 +4,7 @@ import axios from 'axios';
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const FETCH_POST_DETAIL = 'FETCH_POST_DETAIL';
 export const POST_NEW_QUESTION = 'POST_NEW_QUESTION';
+export const POST_NEW_LINK = 'POST_NEW_LINK';
 
 const ROOT_URL = 'http://localhost:8080';
 
@@ -44,6 +45,20 @@ export function createNewPost(props) {
 
 	return {
 		type: POST_NEW_QUESTION,
+		payload: request
+	}
+}
+export function createNewLink(props) {
+	const config = {
+		timeout: 1000,
+		headers: {
+			'x-access-token': (localStorage.getItem('token')) ? localStorage.getItem('token') : null
+		}
+	};
+	const request = axios.post(`${ROOT_URL}/new/postlink`, props, config);
+
+	return {
+		type: POST_NEW_LINK,
 		payload: request
 	}
 }

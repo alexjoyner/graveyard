@@ -14,12 +14,12 @@ module.exports = function (postId) {
 				LEFT JOIN
 					posts q
 				ON
-					(p.source_post_id = q._id)
+					(p.from_post_id = q._id)
 				WHERE
-					p.link_post_id = $1
+					p.to_post_id = $1
 				GROUP BY 
-					p.source_post_id, 
-					p.link_post_id, 
+					p.from_post_id, 
+					p.to_post_id, 
 					p.link_type_id,
 					p.created_at,
 					p.pro_ups,

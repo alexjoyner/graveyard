@@ -10,7 +10,7 @@ require('./_post_header.sass');
 class PostDetail extends Component {
 	componentWillReceiveProps(nextProps) {
 		let routeChanged = nextProps.location !== this.props.location
-		if (routeChanged){
+		if (routeChanged) {
 			let params = nextProps.params;
 			this.getPosts(params);
 		}
@@ -37,23 +37,11 @@ class PostDetail extends Component {
 
 	renderPostList(posts) {
 		return (
-			<div className="row">
-				<div className="col col-md-6">
-					<div className="point">
-						{posts.map(post => {
-							return <Post post={post}
-											 key={'yesPost_' + post._id}/>
-						})}
-					</div>
-				</div>
-				<div className="col col-md-6">
-					<div className="point">
-						{posts.map(post => {
-							return <Post post={post}
-											 key={'noPost_' + post._id}/>
-						})}
-					</div>
-				</div>
+			<div className="container">
+				{posts.map(post => {
+					return <Post post={post}
+								 key={'yesPost_' + post._id}/>
+				})}
 			</div>
 		)
 	}
@@ -65,7 +53,7 @@ class PostDetail extends Component {
 					<MtTagCell tags={post.tags}/>
 					<h2 id="Question-Header-Title"
 						className="text-center">
-						{post.title}
+						{post._id + ' ' + post.title}
 					</h2>
 					<h5 id="Question-Header-Detail"
 						className="text-center">

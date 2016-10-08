@@ -6,6 +6,7 @@ module.exports = function (app) {
 	var get_topic_issues = require('./get_topic_issues');
 	var get_post_by_id = require('./get_post_by_id');
 	var post_new_post = require('./post_new_post');
+	var post_new_post_link = require('./post_new_post_link');
 	var delete_post_by_id = require('./delete_post_by_id');
 	var post_update_post = require('./post_update_post');
 	var get_search_posts = require('./get_search_posts');
@@ -16,6 +17,7 @@ module.exports = function (app) {
 		.use('/posts/top', get_top_issues)
 		.use('/posts/topic', get_topic_issues)
 		.use('/new/post', post_new_post)
+		.use('/new/postlink', post_new_post_link)
 		.use('/post', get_post_by_id)
 		.use('/posts/remove', delete_post_by_id)
 		.use('/posts/update', post_update_post)
