@@ -26,7 +26,7 @@
         </p>
       {% else %}
         <p class="lead">
-          Thanks for checking out our example prelaunch site!
+          Right now, Voicir is in private Alpha Testing. <br>Join the waitlist with your email below and we will keep you up to date
         </p>
       {% endif %}
 
@@ -37,20 +37,12 @@
         </div>
       {% endif %}
 
-      <p>Deploy this project to gather user interest while you work on building out your product. We've included html email templates for the following email transactions: <a href="">Confirmation</a>, <a href="">Verification</a> &amp; <a href="">Campaign</a>.</p>
-      <p>
-        <a href="https://heroku.com/deploy?template=https://github.com/mailgun/node-prelaunch/tree/master">
-          <img src="https://www.herokucdn.com/deploy/button.png" alt="Deploy">
-        </a>
-      </p>
-      <p>or try it out this live demo by signing up below</p>
-
       {% if !confirmed %}
         <form class="signup-form" ng-submit="submit()">
           <div class="input-group input-group-md" ng-class="{'has-error': formError}">
             <input type="email" class="form-control" ng-model="email" ng-disabled="submitted">
             <span class="input-group-btn">
-              <button class="btn btn-danger" type="submit" ng-disabled="submitted">SIGN UP</button>
+              <button class="btn btn-success" type="submit" ng-disabled="submitted">SIGN UP</button>
             </span>
           </div>
           <div class="alert alert-info" role="alert" ng-if="formSuccess">
@@ -61,33 +53,6 @@
           </div>
         </form>
       {% endif %}
-
-      <div class="built-with">
-        <p>Node Prelaunch is built with:</p>
-        <div class="row">
-          <div class="col-xs-4 col-md-4">
-            <a href="https://nodejs.org/" class="thumbnail">
-              <img src="/images/nodejs.png" alt="">
-            </a>
-          </div>
-          <div class="col-xs-4 col-md-4">
-            <a href="http://www.mailgun.com/" class="thumbnail">
-              <img src="/images/mailgun.png" alt="">
-            </a>
-          </div>
-          <div class="col-xs-4 col-md-4">
-            <a href="https://heroku.com/" class="thumbnail">
-              <img src="/images/heroku.png" alt="">
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <p><iframe src="https://ghbtns.com/github-btn.html?user=mailgun&repo=node-prelaunch&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe> <iframe src="https://ghbtns.com/github-btn.html?user=mailgun&repo=node-prelaunch&type=fork&count=true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe> <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://github.com/mailgun/node-prelaunch" data-text="Checkout this prelaunch app written in Node.js & powered by @Mail_Gun, @heroku & MongoDB">Tweet</a></p>
-      <p>
-        brought to you by <a href="https://twitter.com/Mail_Gun">@Mail_Gun</a>
-      </p>
-    </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
