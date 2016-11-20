@@ -35,7 +35,7 @@
                 </tr>
                 <tr>
                   <td class="content-block">
-                    <a href="https://node-prelaunch.herokuapp.com">&mdash; Node Prelaunch App</a>
+                    <a href="http://www.voicir.com">&mdash; Voicir</a>
                   </td>
                 </tr>
               </table>
