@@ -4,6 +4,7 @@ import {fetchPostDetail} from '../../../js/actions/index';
 import MtTagCell from '../../../components/tag-cell/index';
 import Post from '../../../components/post/index';
 import PostActionBar from '../../../components/post-detail-action-bar/index';
+import CreatePointForm from '../../forms/CreatePointForm';
 require('./_.sass');
 require('./_post_header.sass');
 //import {bindActionCreators} from 'redux';
@@ -27,14 +28,24 @@ class PostDetail extends Component {
 		this.props.fetchPostDetail(params.postId);
 	}
 
-	// constructor(props){
-	//  super(props)
-	//
-	//  // this.state = {term: ''};
-	//  // this.onInputChange = this.onInputChange.bind(this);
-	//  // this.onFormSubmit = this.onFormSubmit.bind(this);
-	//  }
-
+	constructor(props) {
+		super(props);
+		this.state = {
+			showAddPointModal: false
+		};
+	}
+	closeModal(){
+		this.setState({
+			showAddPointModal: false
+		});
+	}
+	openModal(name){
+		switch(name){
+			case 'for_a_should':
+				this.setState({showAddPointModal: true});
+				break;
+		}
+	}
 	renderPostList(posts) {
 		return (
 			<div className="container">
@@ -49,6 +60,7 @@ class PostDetail extends Component {
 	renderPostHeader(post) {
 		return (
 			<div>
+				{(this.state.showAddPointModal)? <CreatePointForm close={this.closeModal.bind(this)}/> : null}
 				<div id="Question-Header">
 					<MtTagCell tags={post.tags}/>
 					<h2 id="Question-Header-Title"
@@ -60,7 +72,7 @@ class PostDetail extends Component {
 						{post.detail}
 					</h5>
 				</div>
-				<PostActionBar post={post}/>
+				<PostActionBar post={post} showAddPointModal={this.openModal.bind(this, 'for_a_should')}/>
 			</div>
 		)
 	}

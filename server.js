@@ -1,28 +1,21 @@
 // Dependencies
-var express = require('express'),
-    app = express();
-var http = require('http').Server(app);
-var server_base = './server-2.0';
+import express from 'express';
+import http from 'http';
+let app = express();
+let express_http = http.Server(app);
+let server_base = './server-2.0';
 
 // Configurations files
 // ------------------------------
 var config = require(server_base + '/config/config.js');
 require(server_base + '/config/accessHeaders.js')(app);           // Access headers
-//require(server_base + '/config/passport/_main.js')();             // Initialize Passport
 require(server_base + '/config/globalMiddleware.js')(app);        // Global Middleware
-//require(server_base + '/config/init-livereload.js')(config.db);   // init_Livereload (Dev only)
-require(server_base + '/config/init-cache.js')(app);              // init global cache
-require(server_base + '/middleware/sql_query.js').testPing();     // Test postgres_connection
-require(server_base + '/middleware/elastic_query.js').testPing();     // Test elasticsearch_connection
-//require(server_base + '/config/init-socketIO.js')(app, http);     // init_SocketIO
 
-// (Dev mode only) Start live-reload
-// if (config.ENV !== 'production') {
-//     console.log('Starting livereload server');
-//     var livereload = require('livereload'),
-//         liveServer = livereload.createServer();
-//     liveServer.watch([__dirname + '/server/**.*']);
-// }
+// Globally available utilities
+export * from './server-2.0/config/init-cache.js'; //roCache
+export * from './server-2.0/config/search_db'; //roSearchDB
+export * from './server-2.0/config/sql_db'; //roSQL_Query
+export * from './utils/_server_utils'; // misc server utils
 
 // Route handler
 // --------------------------------
@@ -36,7 +29,7 @@ if (config.ENV === 'production') {
 }
 var port = (process.env.PORT || 8080);
 // Start an express server
-http.listen(port, function(err) {
+express_http.listen(port, function(err) {
     'use strict';
     if (err) throw err;
     console.log('App running on port ' + port);

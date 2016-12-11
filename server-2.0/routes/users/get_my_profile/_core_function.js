@@ -1,5 +1,5 @@
 var query = require('./_query');
-import {check_cache} from '../../../../utils/_server_utils';
+import {roCache} from '../../../../server';
 
 /* LOCAL VARS*/
 var query_info, client, cache_location;
@@ -9,7 +9,7 @@ module.exports = function (req, callback) {
 	client = req.roConClient;
 	cache_location = 'profile_'+ req.decoded.id;
 
-	check_cache(req, cache_location, function(err, cached_test){
+	roCache(req, cache_location, function(err, cached_test){
 		if(cached_test){
 			callback(null, cached_test);
 			return;

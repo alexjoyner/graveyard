@@ -23,11 +23,11 @@ export default function (values) {
 			errors.title = "Hey! Your question needs to be at least 3 words!";
 			return errors;
 		}
-		if (!contains_should(daQ)) {
+		/*if (!contains_should(daQ)) {
 			// No alerts raised yet
 			errors.title = 'Non yes/no questions MUST contain the word should';
 			return errors;
-		}
+		}*/
 		/*
 		 * Everything checked out but the last character isn't a question mark*/
 		if (daQ[daQ.length - 1] !== '?') {

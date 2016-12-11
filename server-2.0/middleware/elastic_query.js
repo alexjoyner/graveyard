@@ -8,19 +8,25 @@ var client = new elasticsearch.Client({
     //log: 'trace'
 });
 
-module.exports = {
-    'testPing': function () {
-        console.log('Uncomment elastic query testPing to connect to elasticsearch.');
-        /*client.ping({
-            // ping usually has a 3000ms timeout
-            requestTimeout: Infinity,
-            // undocumented params are appended to the query string
-            hello: "elasticsearch!"
-        }).then(
-            function () {
-                console.log('All is well with elasticSearch: ' + conString);
-            }, function () {
-                console.trace('elasticsearch cluster is down!');
-            });*/
-    }
-};
+function testPing() {
+    //console.log('Uncomment elastic query testPing to connect to elasticsearch.');
+    client.ping({
+        // ping usually has a 3000ms timeout
+        requestTimeout: Infinity,
+        // undocumented params are appended to the query string
+        hello: "elasticsearch!"
+    }).then(
+        function () {
+            console.log('All is well with elasticSearch: ' + conString);
+        }, function () {
+            console.trace('elasticsearch cluster is down!');
+        });
+}
+
+function elasticClient(){
+    return client;
+}
+
+testPing();
+export {testPing, elasticClient};
+

@@ -1,7 +1,7 @@
 var async = require('async');
 /* LOCAL VARS*/
 var client;
-import {get_new_mod_amount, get_update_mod_amount} from '../../../../utils/_server_utils';
+import {get_new_mod_amount, get_update_mod_amount} from '../../../../server';
 var get_vote = require('../get_vote/_core_function');
 var post_new_vote = require('../post_new_vote/_core_function');
 var post_update_vote = require('../post_update_vote/_core_function');

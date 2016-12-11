@@ -7,7 +7,7 @@ var get_user_by_email = require('../get_user_by_email/_core_function');
 var get_user_followers = require('../../follows/get_my_follows/_core_function');
 var get_user_favorites = require('../../favorites/get_my_favorites/_core_function');
 var get_user_votes = require('../../votes/get_my_votes/_core_function');
-import {check_cache, validate_password} from '../../../../utils/_server_utils';
+import {roCache, validate_password} from '../../../../server';
 /* LOCAL VARS*/
 var client, cache_location;
 
@@ -18,7 +18,7 @@ module.exports = function (req, callback) {
 	client = req.roConClient;
 	cache_location = 'user_' + userTryInfo.email.toLowerCase();
 
-	check_cache(req,cache_location, function(err, cached_test){
+	roCache(req,cache_location, function(err, cached_test){
 		if(cached_test){
 			callback(null, cached_test);
 			return;

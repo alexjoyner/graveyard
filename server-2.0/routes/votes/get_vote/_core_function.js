@@ -1,10 +1,10 @@
 var query = require('./_query');
-import {check_cache} from '../../../../utils/_server_utils';
+import {roCache} from '../../../../server';
 module.exports = function (req, callback, re_cache_flag) {
 	var query_info = query(req.body.post_id, req.decoded.id);
 	var client = req.roConClient;
 	var cache_location = 'vote_'+ req.body.vote_id + '_' +  req.decoded.id;
-	check_cache(req, cache_location, function(err, cached_vote){
+	roCache(req, cache_location, function(err, cached_vote){
 		if(cached_vote){
 			callback(null, cached_vote);
 			return;

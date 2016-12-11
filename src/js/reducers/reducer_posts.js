@@ -1,6 +1,6 @@
-import { FETCH_POSTS, FETCH_POST_DETAIL } from '../actions/index';
+import { FETCH_POSTS, FETCH_POST_DETAIL, SEARCH_POSTS } from '../actions/index';
 
-const INITIAL_STATE = { all: [], post: null };
+const INITIAL_STATE = { all: [], post: null, searchResults: [] };
 
 // With axios and redux promises, the data returned
 // from API calls will be available at action.payload.data
@@ -17,6 +17,10 @@ export default function(state = INITIAL_STATE, action) {
 		case FETCH_POST_DETAIL:
 			console.log(action.payload.data);
 			return { ...state, post: action.payload.data };
+			break;
+		case SEARCH_POSTS:
+			console.log(action.payload.data);
+			return { ...state, searchResults: action.payload.data || [] };
 			break;
 		default:
 			return state;

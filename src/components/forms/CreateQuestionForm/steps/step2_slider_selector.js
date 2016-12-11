@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import MarkDown from 'react-remarkable';
-import get_edited_question from '../../../../../utils/get_edited_question';
-import get_base_statement from '../../../../../utils/get_base_statement';
+import {get_edited_question} from '../../../../../utils';
+import {get_base_statement} from '../../../../../utils';
 require('./_.sass');
 class SliderStep extends Component {
 	constructor(props) {

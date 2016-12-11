@@ -1,5 +1,5 @@
 var query = require('./_query');
-import {check_cache, hot_sort_posts} from '../../../../utils/_server_utils';
+import {roCache, hot_sort_posts, pg_query} from '../../../../server';
 
 /* LOCAL VARS*/
 var query_info, client, cache_location;
@@ -8,20 +8,17 @@ module.exports = function (req, callback) {
 	query_info = query(req.params.tag_id);
 	cache_location = 'topic_feed_' + req.params.tag_id;
 
-	client = req.roConClient;
-
-	check_cache(req, cache_location, function(err, cached_test){
-		req.roDone();
+	roCache.get(cache_location, function(err, cached_test){
 		if(cached_test){
 			callback(null, cached_test);
 			return;
 		}
 		/* Get from db*/
-		client.query(query_info.string, query_info.params, function(err, result){
+		pg_query(query_info.string, query_info.params, function(err, result){
 			if (err) throw err;
 			var issues = result.rows;
 			var sortedPosts = hot_sort_posts(issues);
-			req.mtCache.set(cache_location, sortedPosts);
+			roCache.set(cache_location, sortedPosts);
 			callback(null, sortedPosts);
 		});
 

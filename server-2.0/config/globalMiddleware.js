@@ -6,4 +6,4 @@ module.exports = function(app){
 	app.use(bodyParser.json());
 	app.use(morgan('dev'));
 	app.use(passport.initialize());
-}
+};

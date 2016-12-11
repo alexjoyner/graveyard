@@ -1,5 +1,5 @@
 var query = require('./_query');
-import {check_cache, top_sort_posts} from '../../../../utils/_server_utils';
+import {roCache, top_sort_posts} from '../../../../server';
 /* LOCAL VARS*/
 var query_info, client, cache_location;
 
@@ -8,7 +8,7 @@ module.exports = function (req, callback) {
 	client = req.roConClient;
 	cache_location = 'post_' + req.params.id;
 
-	check_cache(req,cache_location, function(err, cached_post){
+	roCache(req,cache_location, function(err, cached_post){
 		if(cached_post){
 			callback(null, cached_post);
 			return;

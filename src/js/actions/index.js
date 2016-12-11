@@ -5,6 +5,7 @@ export const FETCH_POSTS = 'FETCH_POSTS';
 export const FETCH_POST_DETAIL = 'FETCH_POST_DETAIL';
 export const POST_NEW_QUESTION = 'POST_NEW_QUESTION';
 export const POST_NEW_LINK = 'POST_NEW_LINK';
+export const SEARCH_POSTS = 'SEARCH_POSTS';
 
 const ROOT_URL = 'http://localhost:8080';
 
@@ -26,10 +27,18 @@ export function fetchTopicFeedPosts(topicId) {
 }
 
 export function fetchPostDetail(postId) {
-	const request = axios.get(`${ROOT_URL}/post/${postId}`);
+	const request = axios.get(`${ROOT_URL}/post/detail/${postId}`);
 
 	return {
 		type: FETCH_POST_DETAIL,
+		payload: request
+	};
+}
+export function searchPosts(searchTerm) {
+	const request = axios.get(`${ROOT_URL}/posts/search/${searchTerm}`);
+
+	return {
+		type: SEARCH_POSTS,
 		payload: request
 	};
 }

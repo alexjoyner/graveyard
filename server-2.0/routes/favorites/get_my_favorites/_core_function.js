@@ -1,10 +1,10 @@
 var query = require('./_query');
-import {check_cache} from '../../../../utils/_server_utils';
+import {roCache} from '../../../../server';
 module.exports = function (req, callback, re_cache_flag) {
 	var query_info = query(req.decoded);
 	var client = req.roConClient;
 	var cache_location = 'favorites_'+ req.decoded.id;
-	check_cache(req, cache_location, function(err, cached_favs){
+	roCache(req, cache_location, function(err, cached_favs){
 		if(cached_favs){
 			callback(null, cached_favs);
 			return;

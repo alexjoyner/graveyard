@@ -1,5 +1,5 @@
 var query = require('./_query');
-import {check_cache} from '../../../../utils/_server_utils';
+import {roCache} from '../../../../server';
 
 /* LOCAL VARS*/
 var query_info, client, cache_location, post_id;

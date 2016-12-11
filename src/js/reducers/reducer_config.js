@@ -1,6 +1,6 @@
 import { FETCH_POSTS, FETCH_POST_DETAIL } from '../actions/index';
 
-const INITIAL_STATE = { appName: 'MetaTruth', version: 'v1.0.0 Alpha.11.5' };
+const INITIAL_STATE = { appName: 'Voicir', version: 'v1.0.0 Alpha.11.5' };
 
 // With axios and redux promises, the data returned
 // from API calls will be available at action.payload.data
