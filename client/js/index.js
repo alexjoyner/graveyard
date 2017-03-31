@@ -9,8 +9,12 @@ import routes from './routes';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
+/* This is the root of our app where everything starts.
+* ReactDOM calls the render function to start our app*/
 ReactDOM.render(
+    /* This provider is the app that will be injected as our
+    * application into the root div*/
   <Provider store={createStoreWithMiddleware(reducers)}>
       <Router history={hashHistory} routes={routes}/>
   </Provider>
-  , document.querySelector('.appContainer'));
+  , document.querySelector('.xx-appContainer')); // It attaches to the root div in INDEX.html
