@@ -1,0 +1,15 @@
+<html>
+<head>
+    <title>your-project-name</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="your-project-name"/>
+</head>
+<body id="RoAppBody">
+    <div class="appContainer"></div>
+</body>
+<% if (webpackConfig.metadata.isDevServer) { %>
+<!-- Webpack Dev Server reload -->
+<script src="/webpack-dev-server.js"></script>
+<% } %>
+</html>

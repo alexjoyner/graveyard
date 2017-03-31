@@ -1,0 +1,12 @@
+branch-defaults:
+  master:
+    environment: metatruth-env
+  webpack-conversion:
+    environment: metatruth-env
+global:
+  application_name: metatruth
+  default_ec2_keyname: null
+  default_platform: 64bit Amazon Linux 2015.09 v2.0.8 running Node.js
+  default_region: us-east-1
+  profile: eb-cli
+  sc: git
