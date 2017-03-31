@@ -4,8 +4,8 @@ var config = {
     secret: 'thisisareallycoolsecretpassword',
     ENV: '',
     db: '',
-}
-config.ENV = process.env.NODE_ENV || 'development', // development || production
+};
+config.ENV = process.env.NODE_ENV || 'development'; // development || production
 
 // Configure the database to use depending on the environment
 config.db = (config.ENV === 'production')

@@ -8,7 +8,7 @@ var coreFunction = require('./_core_function');
 var finalize = require('../../../middleware/finalize');
 
 router.post('/',
-	jwt_verify,
+	/*jwt_verify,*/
 	getDB_Client,
 	function (req, res, next) {
 		req.roCoreFunc = coreFunction;

@@ -18,48 +18,50 @@ export default ({ post }) => {
 		<div >
 			<div className={`mt-post `+ getPostType(post.pro_ups, post.con_ups, post.dwns) +` point-type-`+ post.point_type_id}>
 				<div className="mt-post-header">
-					<Link to={'post/'+ post._id}><h2 className="mt-post-title">{post._id + ' ' + post.title}</h2></Link>
+					{/*<Link to={'post/'+ post._id}>*/}
+						<h2 className="mt-post-title">{post._id + ' ' + post.title}</h2>
+					{/*</Link>*/}
 					<h3>{post.detail}</h3>
 					{(post.source_type_id !== null) ? renderSourceBlock(post) : null}
 				</div>
 				<div className="mt-post-body">
-					{/*<div className="row">
-						<div className="col col-xs-6 vote-status-block">
-							<h2 className="text-center results-percent">0%</h2>
-							<h3 className="text-center vote-status">NOT ENOUGH DATA TO <br/> START OFFICIAL VOTING</h3>
-							<div className="text-center">
-								<button className="mt-btn">
-									CAST YOUR VOTE!
-								</button>
-							</div>
-						</div>
-						<div className="col col-xs-6 data-base">
-							<h3><u>Data so far:</u></h3>
-							<ul>
-								<li>2100 Thought</li>
-								<li>1200 Data Points</li>
-							</ul>
-							<div className="text-center">
-								<button className="mt-btn mt-btn-info">
-									Add Your Thoughts
-								</button>
-							</div>
-							<div className="text-center">
-								<button className="mt-btn mt-btn-info">
-									Add Supporting Data
-								</button>
-							</div>
-						</div>
-					</div>*/}
+					{/*<div className="row">*/}
+						{/*<div className="col col-xs-6 vote-status-block">*/}
+							{/*<h2 className="text-center results-percent">0%</h2>*/}
+							{/*<h3 className="text-center vote-status">NOT ENOUGH DATA TO <br/> START OFFICIAL VOTING</h3>*/}
+							{/*<div className="text-center">*/}
+								{/*<button className="mt-btn">*/}
+									{/*CAST YOUR VOTE!*/}
+								{/*</button>*/}
+							{/*</div>*/}
+						{/*</div>*/}
+						{/*<div className="col col-xs-6 data-base">*/}
+							{/*<h3><u>Data so far:</u></h3>*/}
+							{/*<ul>*/}
+								{/*<li>2100 Thought</li>*/}
+								{/*<li>1200 Data Points</li>*/}
+							{/*</ul>*/}
+							{/*<div className="text-center">*/}
+								{/*<button className="mt-btn mt-btn-info">*/}
+									{/*Add Your Thoughts*/}
+								{/*</button>*/}
+							{/*</div>*/}
+							{/*<div className="text-center">*/}
+								{/*<button className="mt-btn mt-btn-info">*/}
+									{/*Add Supporting Data*/}
+								{/*</button>*/}
+							{/*</div>*/}
+						{/*</div>*/}
+					{/*</div>*/}
 				</div>
-				{/*<div className="mt-post-footer">
+				<div className="mt-post-footer">
 					<ul className="mt-action-bar">
 						<MtVoteCell className="mt-action-bar-item" post={post}/>
 						<li className="mt-action-bar-item follow-cell pull-right">
-						/!*<MtFollowButton />*!/
-					</li>
+							<MtFollowButton />
+						</li>
 					</ul>
-				</div>*/}
+				</div>
 			</div>
 			{/*<div className={`mt-post point-type-`+ post.point_type_id}>
 			 <div className="mt-post-contents">

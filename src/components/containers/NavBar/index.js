@@ -25,6 +25,9 @@ class NavBar extends Component {
 	routeHome() {
 		this.context.router.push('/')
 	}
+	routeLogin() {
+		this.context.router.push('login')
+	}
 	closeModal(){
 		this.setState({
 			showCreateQuestionModal: false,
@@ -61,33 +64,40 @@ class NavBar extends Component {
 						role="search">
 						<button type="submit"
 								className="mt-nav-btn mt-btn-default"
-								onClick={this.openModal.bind(this, 'question')}>Ask a question
+								onClick={this.openModal.bind(this, 'question')}>Add an issue
 						</button>
 					</li>
-					<li className="mt-navbar-form form-inline pull-left"
-						role="search">
-						<div className="mt-nav-btn mt-btn-default">OR
-						</div>
-					</li>
-					<li className="mt-navbar-form form-inline pull-left"
-						role="search">
-						<button type="submit"
-								className="mt-nav-btn mt-btn-default"
-								onClick={this.openModal.bind(this, 'data')}>Add Data
-						</button>
-					</li>
-					<li className="mt-navbar-form form-inline pull-left"
-						role="search">
-						<div className="mt-nav-btn mt-btn-default">OR
-						</div>
-					</li>
-					<li className="mt-navbar-form form-inline pull-left"
-						role="search">
-						<button type="submit"
-								className="mt-nav-btn mt-btn-default"
-								onClick={this.openModal.bind(this, 'link')}>Add A Link
-						</button>
-					</li>
+					{/*<li className="mt-navbar-form form-inline pull-left"*/}
+						{/*role="search">*/}
+						{/*<div className="mt-nav-btn mt-btn-default">OR*/}
+						{/*</div>*/}
+					{/*</li>*/}
+					{/*<li className="mt-navbar-form form-inline pull-left"*/}
+						{/*role="search">*/}
+						{/*<button type="submit"*/}
+								{/*className="mt-nav-btn mt-btn-default"*/}
+								{/*onClick={this.openModal.bind(this, 'data')}>Add Data*/}
+						{/*</button>*/}
+					{/*</li>*/}
+					{/*<li className="mt-navbar-form form-inline pull-left"*/}
+						{/*role="search">*/}
+						{/*<div className="mt-nav-btn mt-btn-default">OR*/}
+						{/*</div>*/}
+					{/*</li>*/}
+					{/*<li className="mt-navbar-form form-inline pull-left"*/}
+						{/*role="search">*/}
+						{/*<button type="submit"*/}
+								{/*className="mt-nav-btn mt-btn-default"*/}
+								{/*onClick={this.openModal.bind(this, 'link')}>Add A Link*/}
+						{/*</button>*/}
+					{/*</li>*/}
+					{/*<li className="mt-navbar-form form-inline pull-right"*/}
+						{/*role="search">*/}
+						{/*<button type="submit"*/}
+								{/*className="mt-nav-btn mt-btn-default"*/}
+								{/*onClick={this.openModal.bind(this, 'login')}>Login*/}
+						{/*</button>*/}
+					{/*</li>*/}
 				</ul>
 			</div>
 		);

@@ -11,6 +11,6 @@ module.exports = function (req, callback) {
 	client.query(query_info.string, query_info.params, function(err, result){
 		if (err) throw err;
 		var posts = result.rows;
-		callback(null, posts)
+		callback(null, posts);
 	});
 };

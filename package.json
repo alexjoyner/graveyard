@@ -5,7 +5,8 @@
     "start": "concurrently --kill-others 'npm run server:dev' 'npm run webpack:dev'",
     "build": "NODE_ENV='production' webpack -p",
     "production": "pm2 start process.yml --env env_production && pm2 logs",
-    "server:dev": "nodemon server.js --exec babel-node --presets es2015,stage-2",
+    "server:dev": "babel-node server.js --presets es2015,stage-2",
+    "server:dev:watch": "nodemon server.js --exec babel-node --presets es2015,stage-2",
     "webpack:dev": "webpack-dev-server -d --progress --profile --colors --watch --display-error-details --content-base ./dist_client --inline --hot ",
     "test": "mocha $(find src utils -path '*spec*') --full-trace --compilers js:babel-core/register --require ignore-styles ./src/js/test_helper.js",
     "test:watch": "npm run test -- --watch"
