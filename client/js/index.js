@@ -17,8 +17,8 @@ const store = createStoreWithMiddleware(reducers);
 /* This is the root of our app where everything starts.
 * ReactDOM calls the render function to start our app*/
 ReactDOM.render(
-    /* This provider is the app that will be injected as our
-    * application into the root div*/
+	/* The Provider element makes our store available to all of our
+	* containers.  It becomes our root component of the app.*/
   <Provider store={store}>
       <Router history={hashHistory} routes={routes}/>
   </Provider>
