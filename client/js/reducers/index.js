@@ -1,3 +1,13 @@
+/*
+*    REDUCERS:  This is the main reducers file
+*    What are the reducers?
+*    Reducers are essentially a bunch of javascript objects that make up our store of data.
+*    In React, the store of data is 1 Large javascript object.  Here we are combining all of
+*    our reducers, or all of our individual javascript objects, to make up one large object that
+*    will ultimately get passed back to createstore() in js/index.js
+* */
+
+
 import { combineReducers } from 'redux';
 
 // using redux-form HOC, docs at http://redux-form.com redux-form@4.1.3
