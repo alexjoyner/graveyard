@@ -3,7 +3,7 @@ import { Route, IndexRoute } from 'react-router';
 import HomeWrapper from '../components/containers/Home/index';
 import PostDetail from '../components/containers/PostDetail/index';
 import Login from '../components/containers/Login';
-import App from '../components/main/app';
+import App from '../components/_app-root/app';
 
 // IndexRoute:
 // If the route is '/', show App and show PostsIndex

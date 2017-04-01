@@ -5,7 +5,7 @@
 import { FETCH_POSTS, FETCH_POST_DETAIL } from '../actions/index';
 
 const INITIAL_STATE = {
-	appName: 'Voicir',
+	appName: 'your-app-name',
 	version: 'v1.0.0 Alpha.11.5'
 };
 

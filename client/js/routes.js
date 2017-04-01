@@ -2,21 +2,19 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-/* Import the main app wrapper component
-* 		this is the main component that
+/* Import the _app-root app wrapper component
+* 		this is the _app-root component that
 * 		everything will root from through
 * 		calling {this.props.children}
 */
-import App from '../components/main/app';
 
-/* Import main container routes */
+/* Import _app-root container routes */
 import HomeWrapper from '../components/containers/Home/index';
 
 // IndexRoute:
-// If the route is '/', show App and show PostsIndex
+// If the route is '/', show our home page
 export default(
-	//<Route path='/' component={App}></Route>
-	<Route path='/' component={App}>
+	<Route path='/'>
 		{/*We need an index route that will be
 		our home container at / */}
 		<IndexRoute component={HomeWrapper} />
