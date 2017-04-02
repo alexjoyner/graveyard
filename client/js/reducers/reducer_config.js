@@ -6,7 +6,8 @@ import { FETCH_POSTS, FETCH_POST_DETAIL } from '../actions/index';
 
 const INITIAL_STATE = {
 	appName: 'your-app-name',
-	version: 'v1.0.0 Alpha.11.5'
+	version: 'v1.0.0 Alpha.11.5',
+	preOrders: 1
 };
 
 // With axios and redux promises, the data returned

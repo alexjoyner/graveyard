@@ -9,10 +9,11 @@
 * */
 
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {} from '../../../js/actions/index';
+import {preOrderApp} from '../../../js/actions/index';
 require('./_.sass');
-class HomeContainer extends Component {
+class DemoContainer extends Component {
 	constructor(props){
 		super(props);
 		this.state = {};
@@ -25,10 +26,19 @@ class HomeContainer extends Component {
 				{/*Once we have mapStateToProps properly setup,
 				 we can just call this.props.[our data path]*/}
 				<h2>This is {this.props.config.appName}</h2>
+				<h3>Pre-Orders: {this.props.config.preOrders}</h3>
+				<button onClick={() => this.props.preOrderApp(this.props.config.preOrders)}>New PreOrder</button>
 			</div>
 		);
 	}
 }
+/*
+* A container essentially has two functions to manage data flow:
+* - mapStateToProps(): manages getting data from store into our container
+* - mapDispatchToProps(): manages handling callback when a user makes an actions
+* */
+
+
 
 /* mapStateToProps() is a super easy function that people
 * make over complicated.  It just takes what is in our store
@@ -39,9 +49,19 @@ function mapStateToProps(state) {
 	};
 }
 
+/*
+* Map dispatch to props just bundles up all the actions that this state will
+* need and passes them through this.props
+* */
+function mapDispatchToProps(dispatch){
+	return bindActionCreators({
+		preOrderApp: preOrderApp
+	}, dispatch);
+}
+
 /* When we export just a component as it's name it is just a component
-* ex: export default HomeContainer;
+* ex: export default DemoContainer;
 * When we add in connect, and connect our component to the mapStateToProps function,
 * this is what gives our component the steroids to become the super hero container.
 * */
-export default connect(mapStateToProps, {})(HomeContainer);
+export const Demo = connect(mapStateToProps, mapDispatchToProps)(DemoContainer);

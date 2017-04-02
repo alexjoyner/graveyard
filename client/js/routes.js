@@ -9,7 +9,7 @@ import { Route, IndexRoute } from 'react-router';
 */
 
 /* Import _app-root container routes */
-import HomeWrapper from '../components/containers/Home/index';
+import {Demo} from '../components/containers/Home/index';
 
 // IndexRoute:
 // If the route is '/', show our home page
@@ -17,6 +17,6 @@ export default(
 	<Route path='/'>
 		{/*We need an index route that will be
 		our home container at / */}
-		<IndexRoute component={HomeWrapper} />
+		<IndexRoute component={Demo} />
 	</Route>
 )
