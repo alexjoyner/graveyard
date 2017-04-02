@@ -2,7 +2,7 @@
   "name": "your-project-name",
   "version": "v0.0.0",
   "scripts": {
-    "start": "concurrently --kill-others 'npm run server:dev' 'npm run webpack:dev'",
+    "start": "concurrently --kill-others 'npm run server:dev:watch' 'npm run webpack:dev'",
     "build": "NODE_ENV='production' webpack -p",
     "production": "pm2 start process.yml --env env_production && pm2 logs",
     "server:dev": "babel-node server.js --presets es2015,stage-2",
