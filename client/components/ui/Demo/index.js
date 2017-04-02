@@ -6,7 +6,7 @@
 
 import React from 'react';
 require('./_.sass');
-export default ({props}) => {
+const DemoUI = ({props}) => {
 	const {preOrderApp} = props;
 	const {appName, preOrders} = props.config;
 	return (
@@ -20,4 +20,6 @@ export default ({props}) => {
 			<button onClick={() => preOrderApp(preOrders)}>New PreOrder</button>
 		</div>
 	);
-}
+};
+
+export {DemoUI};

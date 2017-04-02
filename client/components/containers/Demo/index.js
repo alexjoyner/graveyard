@@ -12,7 +12,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {preOrderApp} from '../../../js/actions/index';
-import DemoUI from '../../ui/Demo';
+import {DemoUI} from '../../ui/Demo';
 /* Containers should not have styles
 * NO!!! require('_.sass)*/
 
