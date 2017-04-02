@@ -17,8 +17,7 @@ const ROOT_URL = 'http://localhost:8080';
 * This function preOrderApp is called an action creator,
 * an action creator is a function that returns an action
 * */
-export const preOrderApp = (preOrders) => {
-	console.log('PREORDERS: ', preOrders + 1);
+export const preOrderApp = (preOrders) => {/**/
 	/*
 	* The return data is the action, for this action creator.
 	*

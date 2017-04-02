@@ -9,7 +9,7 @@ import { Route, IndexRoute } from 'react-router';
 */
 
 /* Import _app-root container routes */
-import {Demo} from '../components/containers/Home/index';
+import {Demo} from '../components/containers/Demo/index';
 
 // IndexRoute:
 // If the route is '/', show our home page

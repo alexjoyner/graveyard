@@ -2,7 +2,7 @@ import {renderComponent, expect} from '../../../js/test_helper';
 import Home from './';
 
 // Used describe to group together similar tests
-describe('Home', () => {
+describe('Demo', () => {
 	let component;
 	describe('Hot Feed Nothing Passed or Route \'/\'', () => {
 		beforeEach(() => {

@@ -12,7 +12,10 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {preOrderApp} from '../../../js/actions/index';
-require('./_.sass');
+import DemoUI from '../../ui/Demo';
+/* Containers should not have styles
+* NO!!! require('_.sass)*/
+
 class DemoContainer extends Component {
 	constructor(props){
 		super(props);
@@ -21,14 +24,7 @@ class DemoContainer extends Component {
 	render() {
 		return (
 			/*Our return function MUST only return one element*/
-			<div>
-				<h1>HELLO WORLD</h1>
-				{/*Once we have mapStateToProps properly setup,
-				 we can just call this.props.[our data path]*/}
-				<h2>This is {this.props.config.appName}</h2>
-				<h3>Pre-Orders: {this.props.config.preOrders}</h3>
-				<button onClick={() => this.props.preOrderApp(this.props.config.preOrders)}>New PreOrder</button>
-			</div>
+			<DemoUI props={this.props}/>
 		);
 	}
 }
