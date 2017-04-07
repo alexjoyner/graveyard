@@ -8,7 +8,7 @@ let express_http = http.Server(app);
 import {router} from './server/routes';
 import {renderIndex} from './utils';
 import {
-	setAccessHeaderMiddleware
+	setAccessHeaderMiddleware,
 	APP_CONFIG_SETTINGS} from './server/config';
 
 app.use(setAccessHeaderMiddleware);
