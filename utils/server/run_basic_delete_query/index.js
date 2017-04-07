@@ -6,7 +6,6 @@
 import {roCache} from '../../../../server';
 
 const run_basic_delete_query =  (req, options, callback) => {
-	/* Get from db*/
 	req.roConClient.query(options.query, options.params, function(err, result){
 		if (err) throw err;
 		var result = result.rows;

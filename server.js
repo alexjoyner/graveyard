@@ -27,7 +27,8 @@ export * from './utils'; // misc utils
 
 // Route handler: the source of all our project routes
 // ---------------------------------------------------
-require(server_base + '/routes')(app);
+import {router} from './server/routes';
+app.use('/', router);
 
 /*
     !!! Static files must come after routes

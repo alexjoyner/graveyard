@@ -27,7 +27,7 @@ export default function(state = INITIAL_STATE, action) {
 		case POST_PREORDER:
 			/*
 			* When an action happens, this is where we modify our state based off
-			* the changes. The following line of code modifies the number of preOrders of our demo
+			* the changes. The following line of code modifies the number of preOrders of our preorders
 			* with the syntax
 			* ...state (Take our state object) ,
 			* preOrders : [data] (Change our preOrders with this data)

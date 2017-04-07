@@ -1,8 +1,10 @@
-/*
-* This is the bases file where we include all of our base routes
-* */
+'use strict';
+var express = require('express'),
+    router = express.Router();
 
-module.exports = function(app) {
-    'use strict';
-    require('./demo')(app);
-};
+import {handlePostNewPreOrder} from './preorders/post_new_preorder';
+
+router.post('/new/preorder', handlePostNewPreOrder);
+
+
+export {router};
