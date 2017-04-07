@@ -7,15 +7,15 @@ import promise from 'redux-promise';
 import reducers from './reducers';
 import routes from './routes';
 
-const createStoreWithPromises = applyMiddleware(promise)(createStore);
-const storeWithPromises = createStoreWithPromises(reducers);
+const CREATE_STORE_WITH_PROMISES = applyMiddleware(promise)(createStore);
+const STORE_WITH_PROMISES = CREATE_STORE_WITH_PROMISES(reducers);
 
-const renderAppWithReact = ReactDOM.render;
-const baseProviderElement = (
-	<Provider store={storeWithPromises}>
+const RENDER_APP_WITH_REACT = ReactDOM.render;
+const BASE_PROVIDER_ELEMENT = (
+	<Provider store={STORE_WITH_PROMISES}>
 		<Router history={hashHistory} routes={routes}/>
 	</Provider>);
-const baseIndexHtmlAppComponent = document.querySelector('.xx-appContainer');
+const BASE_INDEX_HTML_APP_ELEMENT = document.querySelector('.xx-appContainer');
 
 
-renderAppWithReact(baseProviderElement, baseIndexHtmlAppComponent);
+RENDER_APP_WITH_REACT(BASE_PROVIDER_ELEMENT, BASE_INDEX_HTML_APP_ELEMENT);
