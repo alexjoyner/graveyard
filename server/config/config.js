@@ -1,20 +1,20 @@
-console.log('Env: ', process.env.NODE_ENV || 'development');
+const ENVIRONMENT = process.env.NODE_ENV || 'development';
 
-var config = {
-	// Configuring the JSON Web tokens password
-    secret: 'thisisareallycoolsecretpassword',
-    ENV: process.env.NODE_ENV || 'development', // development || production
-    db: '',
+/* JWT secret keys can be anything, just be unique*/
+const JWT_SECRET_KEY = 'inputYourTokenSecretKeyHERE';
+
+const DEV_CONFIG_SETTINGS = {
+    secret: JWT_SECRET_KEY,
+    env: ENVIRONMENT,
+    primaryDB: 'your-project-dev-db-link',
+	searchDB: 'your-project-dev-db-link'
 };
 
-// Configure the database to use depending on the environment
-var prod_db = 'your-project-production-db-link';
-var dev_db = 'your-project-dev-db-link';
+const PROD_CONFIG_SETTINGS = {
+    secret: JWT_SECRET_KEY,
+    env: ENVIRONMENT,
+	primaryDB: 'your-project-production-db-link',
+	searchDB: 'your-project-production-search-db-link'
+};
 
-var prod_search_db = 'your-project-production-search-db-link';
-var dev_search_db = 'your-project-dev-db-link';
-
-config.db = (config.ENV === 'production')? prod_db : dev_db;
-config.searchdb = (config.ENV === 'production')? prod_search_db : dev_search_db;
-
-module.exports = config;
+module.exports = (ENVIRONMENT === 'production')? prod_db : dev_db;
