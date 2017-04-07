@@ -1,31 +1,13 @@
 <html>
 <head>
     <title>your-project-name</title>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1">
-
-    <!-- This is the Main description used by google for
-    the intro to the app on Googles Search page.  It should give a super
-    short description as to what the app is about-->
-    <meta name="description"
-          content="your-project-name"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="your-project-name"/>
 </head>
 <body >
-<!--Anything custom CSS should be prefixed with xx- to prevent conflicts
-with other css frameworks
-IMPORTANT NOTE: You can do a global search and replace to change the xx- that's already
-in place. This is the base Container Element that our app will be
-generated from.  It MUST be the same class name as in ./js/index.
-It doesn't matter what the element name is.-->
-<App class="xx-appContainer"></App>
+    <App class="xx-appContainer"></App>
 </body>
-
-<!-- This is treated like an if statement by WebPack, if we
-aren't running the dev server, don't load the HMR file-->
 <% if (webpackConfig.metadata.isDevServer) { %>
-<!-- Webpack Dev Server reload
-While in development mode, this hidden file served
-will provide Hot Module Reload Support for our project-->
-<script src="/webpack-dev-server.js"></script>
+    <script src="/webpack-dev-server.js"></script>
 <% } %>
 </html>
