@@ -3,13 +3,13 @@ import http from 'http';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import path from 'path';
-let app = express();
-let express_http = http.Server(app);
 import {router} from './server/routes';
 import {renderIndex} from './utils';
 import {
 	setAccessHeaderMiddleware,
 	APP_CONFIG_SETTINGS} from './server/config';
+let app = express();
+let express_http = http.Server(app);
 
 app.use(setAccessHeaderMiddleware);
 app.use(bodyParser.json());
@@ -26,7 +26,6 @@ if (APP_CONFIG_SETTINGS.env === 'production') {
 var port = (process.env.PORT || 8080);
 
 express_http.listen(port, function(err) {
-    'use strict';
     if (err) throw err;
     console.log('App running on port ' + port);
 });

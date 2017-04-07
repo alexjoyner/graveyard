@@ -9,7 +9,7 @@ import routes from './routes';
 
 /* Creating our store with a promise middleware injected so that
 * we can Mock Up data for our test environments.  This is for testing purposes
-* and as far as our regular development is concerned, we are just foing
+* and as far as our regular development is concerned, we are just doing
 * const store = createstore(reducers);*/
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 const store = createStoreWithMiddleware(reducers);
@@ -22,4 +22,4 @@ ReactDOM.render(
   <Provider store={store}>
       <Router history={hashHistory} routes={routes}/>
   </Provider>
-  , document.querySelector('.xx-appContainer')); // It attaches to the root div in INDEX.html
+  , document.querySelector('.xx-appContainer'));
