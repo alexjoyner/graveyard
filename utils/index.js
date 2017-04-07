@@ -1,1 +1,1 @@
-console.log('NO UTILITIES INSTALLED');
+export * from './server/renderIndex';

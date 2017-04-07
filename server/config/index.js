@@ -4,17 +4,22 @@ const ENVIRONMENT = process.env.NODE_ENV || 'development';
 const JWT_SECRET_KEY = 'inputYourTokenSecretKeyHERE';
 
 const DEV_CONFIG_SETTINGS = {
-    secret: JWT_SECRET_KEY,
-    env: ENVIRONMENT,
-    primaryDB: 'your-project-dev-db-link',
+	jwt_secret: JWT_SECRET_KEY,
+	env: ENVIRONMENT,
+	primaryDB: 'your-project-dev-db-link',
 	searchDB: 'your-project-dev-db-link'
 };
 
 const PROD_CONFIG_SETTINGS = {
-    secret: JWT_SECRET_KEY,
-    env: ENVIRONMENT,
+	jwt_secret: JWT_SECRET_KEY,
+	env: ENVIRONMENT,
 	primaryDB: 'your-project-production-db-link',
 	searchDB: 'your-project-production-search-db-link'
 };
 
-module.exports = (ENVIRONMENT === 'production')? prod_db : dev_db;
+const APP_CONFIG_SETTINGS =
+	(ENVIRONMENT === 'production')? PROD_CONFIG_SETTINGS : DEV_CONFIG_SETTINGS;
+
+export {APP_CONFIG_SETTINGS};
+export * from './accessHeaders';
+export * from './cache';
