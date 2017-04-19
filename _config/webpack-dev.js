@@ -17,10 +17,12 @@ module.exports = {
     metadata: METADATA,
     context: path.join(__dirname + '../../'),
     devtool: "inline-sourcemap",
-    entry: "./client/js/index.js",
+    entry: {
+        bundle: "./client/js/index.js"
+    },
     output: {
-        path: path.join(__dirname + '../../') + "/dist",
-        filename: "bundle.js"
+        path: path.join(__dirname + '../../') + "/doc",
+        filename: "[name].js"
     },
     resolve: {
         root: [path.join(__dirname + '../../')],

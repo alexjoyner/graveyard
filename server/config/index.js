@@ -6,15 +6,15 @@ const JWT_SECRET_KEY = 'inputYourTokenSecretKeyHERE';
 const DEV_CONFIG_SETTINGS = {
 	jwt_secret: JWT_SECRET_KEY,
 	env: ENVIRONMENT,
-	primaryDB: 'your-project-dev-db-link',
-	searchDB: 'your-project-dev-db-link'
+	primaryDB: 'yourProjectDevDbLink',
+	searchDB: 'yourProjectDevDbLink'
 };
 
 const PROD_CONFIG_SETTINGS = {
 	jwt_secret: JWT_SECRET_KEY,
 	env: ENVIRONMENT,
-	primaryDB: 'your-project-production-db-link',
-	searchDB: 'your-project-production-search-db-link'
+	primaryDB: 'yourProjectProductionDbLink',
+	searchDB: 'yourProjectProductionSearchDbLink'
 };
 
 const APP_CONFIG_SETTINGS =
