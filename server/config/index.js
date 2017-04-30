@@ -5,6 +5,10 @@ import bodyParser from 'body-parser';
 import {setAccessHeaderMiddleware} from './accessHeaders';
 import {APP_CONFIG_SETTINGS} from './db';
 function init(express, app) {
+	// this must come before app.get('*');
+	// or it will be overwritten
+	app.use('/', router);
+
 	if (APP_CONFIG_SETTINGS.env === 'production') {
 		app.use(express.static(path.resolve(__dirname, '../../docs')));
 		app.use('/client', express.static(path.resolve(__dirname, '../../docs')));
@@ -16,8 +20,6 @@ function init(express, app) {
 	app.use(setAccessHeaderMiddleware);
 	app.use(bodyParser.json());
 	app.use(morgan('dev'));
-
-	app.use('/', router);
-};
+}
 
 export {init};
