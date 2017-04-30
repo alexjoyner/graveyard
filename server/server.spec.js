@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import * as server from './server.js';
+import {app} from './server.js';
 
 describe('All exported utilities', () => {
 	it('should have addTwoNumbers', () => {

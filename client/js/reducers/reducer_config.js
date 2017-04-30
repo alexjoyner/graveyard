@@ -2,7 +2,7 @@ import { POST_PREORDER } from '../actions/index';
 
 const INITIAL_STATE = {
 	appName: 'your-app-name',
-	version: 'v1.0.0',
+	version: 'v0.0.1',
 	preOrders: 1
 };
 

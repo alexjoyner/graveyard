@@ -1,7 +1,12 @@
-import {renderComponent, expect} from '../test_helper';
+import {expect} from '../test_helper';
+import {configReducer} from './reducer_config';
 
-
-// Used describe to group together similar tests
-describe('RENAME_THIS', () => {
-
+describe('config reducer', () => {
+	it('should return the initial state', () => {
+		expect(configReducer(undefined, {})).to.deep.equal({
+			appName: 'your-app-name',
+			version: 'v0.0.1',
+			preOrders: 1
+		});
+	});
 });
