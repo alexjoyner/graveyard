@@ -1,6 +1,8 @@
 ro-utils
 ==========
 
+**_v0.0.1 Currently just getting set up_**
+
 A library set of quick utilities for all my projects.
 
 ## Installation
