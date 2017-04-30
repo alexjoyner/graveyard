@@ -4,7 +4,7 @@ ro-utils
 A library set of quick utilities for all my projects.
 
 ## Installation
-    `npm install @alexjoyner/ro-utils`
+    `npm install ro-utils`
 
 
 ## Usages 
