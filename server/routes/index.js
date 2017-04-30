@@ -2,9 +2,9 @@
 import express from 'express';
 let router = express.Router();
 
-import {handlePostNewPreOrder} from './preorders/post_new_preorder';
+import {getDemos} from './demo/post_new_demo';
 
-router.post('/new/preorder', handlePostNewPreOrder);
+router.get('/demos', getDemos);
 
 
 export {router};

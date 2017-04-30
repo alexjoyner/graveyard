@@ -13,6 +13,7 @@ This starter pack uses the following tech:
 #####Testing
 * Mocha
 * Chai
+* SuperTest
 
 ##Install
     npm install

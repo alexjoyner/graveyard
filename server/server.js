@@ -12,3 +12,5 @@ express_http.listen(port, function(err) {
     if (err) throw err;
     console.log('App running on port ' + port);
 });
+
+export {app};
