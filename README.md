@@ -1,5 +1,7 @@
 ro-utils
 ==========
+[![Build Status](https://travis-ci.org/alexjoyner/ro-utils.svg?branch=master)](https://travis-ci.org/alexjoyner/ro-utils)
+[![Coverage Status](https://coveralls.io/repos/github/alexjoyner/ro-utils/badge.svg?branch=master)](https://coveralls.io/github/alexjoyner/ro-utils?branch=master)
 
 **_v0.0.1 Currently just getting set up_**
 
