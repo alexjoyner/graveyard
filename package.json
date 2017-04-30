@@ -1,0 +1,31 @@
+{
+  "name": "ro-utils",
+  "version": "0.0.1",
+  "description": "A library set of quick utilities",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm index.js",
+    "watch": "nodemon index.js",
+    "test": "mocha ./*.spec.js --reporter spec --compilers js:babel-core/register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://alexjoyner@github.com/alexjoyner/ro-utils.git"
+  },
+  "keywords": [
+    "utilities"
+  ],
+  "author": "Alex Joyner <alex@voicir.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexjoyner/ro-utils/issues"
+  },
+  "homepage": "https://github.com/alexjoyner/ro-utils#readme",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "beeper": "^1.1.1",
+    "chai": "^3.5.0",
+    "mocha": "^3.3.0"
+  }
+}
