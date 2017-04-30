@@ -1,6 +1,3 @@
-import axios from 'axios';
-
-
 const POST_PREORDER = 'POST_PREORDER';
 
 const ROOT_URL = 'http://localhost:8080';
