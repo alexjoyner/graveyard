@@ -1,13 +1,3 @@
-/*
-* THIS IS A REQUIRED HELPER FILE FOR EASY SETUP OF MOCHA CHAI TESTING
-* -------------------------------------------------------------------
-*
-* 		!!! TO HAVE TESTING SETUP, THIS FILE MUST BE INCLUDED IN
-* 	THE LOCATION SPECIFIED IN THE PACKAGE.JSON TEST SCRIPT COMMANDS
-*
-* */
-
-
 import jsdom from 'jsdom';
 import jquery from 'jquery';
 import TestUtils from 'react-addons-test-utils';

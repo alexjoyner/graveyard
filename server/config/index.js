@@ -3,13 +3,13 @@ import path from 'path';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import {setAccessHeaderMiddleware} from './accessHeaders';
-import {APP_CONFIG_SETTINGS} from './db';
+import {getConfig} from './db';
 function init(express, app) {
 	// this must come before app.get('*');
 	// or it will be overwritten
 	app.use('/', router);
 
-	if (APP_CONFIG_SETTINGS.env === 'production') {
+	if (getConfig().env === 'production') {
 		app.use(express.static(path.resolve(__dirname, '../../docs')));
 		app.use('/client', express.static(path.resolve(__dirname, '../../docs')));
 		app.get('*', function (req, res) {

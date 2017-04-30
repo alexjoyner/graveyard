@@ -5,34 +5,37 @@ project-starter
 
 this is the foundation boilerplate that I am using to build my projects.  It is definitely a work in progress, so proceed with caution if you would like to use it yourself.
 
-##Background info
+## Background info
 This starter pack uses the following tech:
-#####FrontEnd
+
+##### FrontEnd
 * React
 * Redux
-#####Backend
+
+##### Backend
 * Node/Express
-#####Testing
+
+##### Testing
 * Mocha
 * Chai
 * SuperTest
 
-##Install
+## Install
     npm install
     npm start
     
-##Testing
-#####Main test scripts
+## Testing
+##### Main test scripts
     npm test
     or
     npm test:watch
     
-#####Coverage Support
+##### Coverage Support
     npm run cover
 
-##Docs
+## Docs
 
-
+Currently, the absolute best documentation for this starter package is going to be in the tests of all the modules.  This project strives to be as close to 100% coverage as possible at all times.
 
 ## Contributing
 

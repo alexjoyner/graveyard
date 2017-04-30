@@ -5,7 +5,7 @@ import {Demo} from './';
 describe('Demo', () => {
 	let component;
 	beforeEach(() => {
-		component = renderComponent(Demo, {params: {}});
+		component = renderComponent(Demo, {params: {}}, {});
 	});
 	it('Should instantiate', () => {
 		expect(component).to.exist;

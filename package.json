@@ -67,6 +67,7 @@
     "raw-loader": "0.5.1",
     "react-addons-test-utils": "^0.14.7",
     "redux-thunk": "^2.1.0",
+    "rewire": "^2.5.2",
     "sass-loader": "^4.0.0",
     "sinon": "^1.17.5",
     "source-map-loader": "^0.1.5",
