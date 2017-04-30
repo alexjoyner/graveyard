@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm index.js",
     "watch": "nodemon index.js",
-    "test": "mocha ./*.spec.js --reporter spec --compilers js:babel-core/register"
+    "test": "mocha **/*.spec.js --reporter spec --compilers js:babel-core/register"
   },
   "repository": {
     "type": "git",

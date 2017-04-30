@@ -1,8 +1,8 @@
 import {expect} from 'chai';
-import index from './index';
+import * as index from './index.js';
 
-describe('Index', () => {
-	it('Should add two numbers', () => {
-		expect(index.addTwoNumbers(2, 5)).to.equal(7);
+describe('All exported utilities', () => {
+	it('should have addTwoNumbers', () => {
+		expect(index.addTwoNumbers).to.be.instanceOf(Function);
 	});
 });
