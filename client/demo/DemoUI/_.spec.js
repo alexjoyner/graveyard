@@ -1,4 +1,4 @@
-import {expect, renderComponent} from '../../js/test_helper';
+import {expect, renderComponent} from '../../_startup/test_helper';
 import sinion from 'sinon';
 import {combineReducers} from 'redux';
 import {DemoUI} from './';

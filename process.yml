@@ -1,5 +1,5 @@
 apps:
-  - script   : ./server.js
+  - script   : ./server._startup
     name     : 'your-project-name'
     exec_mode:
       NODE_ENV: 'production'

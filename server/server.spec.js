@@ -1,16 +1,22 @@
 import request from 'supertest';
-import {app} from './server';
 describe('loading node express', () => {
+	let server;
+	beforeEach(() => {
+		server = require('./server').server;
+	});
+	afterEach(() => {
+		server.close();
+	});
 
 	it('responds to /', function testSlash(done) {
-		request(app)
+		request(server)
 			.get('/')
 			.expect(200)
 			.expect('Content-Type', 'text/html; charset=UTF-8')
 			.end(done);
 	});
 	it('should send everything else to /', function testPath(done) {
-		request(app)
+		request(server)
 			.get('/foo/bar')
 			.expect(200)
 			.expect('Content-Type', 'text/html; charset=UTF-8')

@@ -1,4 +1,4 @@
-import {expect} from '../js/test_helper';
+import {expect} from '../_startup/test_helper';
 import {demoReducer} from './reducer';
 import * as types from './actions';
 describe('config reducer', () => {

@@ -1,4 +1,4 @@
-import {renderComponent, expect} from '../js/test_helper';
+import {renderComponent, expect} from '../_startup/test_helper';
 import {Demo} from './container';
 
 // Used describe to group together similar tests

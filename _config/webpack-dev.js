@@ -18,7 +18,7 @@ module.exports = {
     context: path.join(__dirname + '/../'),
     devtool: "inline-sourcemap",
     entry: {
-        bundle: "./client/js/index.js"
+        bundle: "./client/_startup/index.js"
     },
     output: {
         path: path.join(__dirname + '/../') + "/docs",
@@ -86,7 +86,7 @@ module.exports = {
     ],
     /**
      * Webpack Development Server configuration
-     * Description: The webpack-dev-server is a little node.js Express server.
+     * Description: The webpack-dev-server is a little node._startup Express server.
      * The server emits information about the compilation state to the client,
      * which reacts to those events.
      *

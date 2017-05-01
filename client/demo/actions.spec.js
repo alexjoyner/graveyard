@@ -1,4 +1,4 @@
-import {expect} from '../js/test_helper';
+import {expect} from '../_startup/test_helper';
 import {preOrderApp, POST_PREORDER} from './actions';
 
 // Used describe to group together similar tests

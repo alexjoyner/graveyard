@@ -1,5 +1,5 @@
 var ENV = process.env.NODE_ENV || "dev";
-// Look in ./_config folder for webpack.dev.js
+// Look in ./_config folder for webpack.dev._startup
 switch (ENV) {
   case 'dev':
   case 'development':
