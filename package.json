@@ -10,7 +10,7 @@
     "webpack:dev": "webpack-dev-server -d --progress --profile --colors --watch --display-error-details --content-base ./dist_client --inline --hot ",
     "test": "NODE_ENV='production' mocha $(find ./client ./server -path '*spec*') --full-trace --compilers js:babel-core/register --require ignore-styles ./client/js/test_helper.js",
     "cover": "NODE_ENV='production' node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec client/**/*.spec.js server/**/*.spec.js  --compilers js:babel-core/register",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "PORT=2080 npm run test -- --watch "
   },
   "license": "MIT",
   "dependencies": {

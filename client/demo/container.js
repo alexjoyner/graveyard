@@ -7,11 +7,10 @@
  * usb drives, nudes, etc.  I don't care what you put on your container. I'm not telling you how to live
  * your life... OK? Kapeesh? GOOD.
  * */
-
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {preOrderApp} from '../js/actions/index';
+import {preOrderApp} from './actions';
 import {DemoUI} from './DemoUI';
 /* Containers should not have styles
  * NO!!! require('_.sass)*/

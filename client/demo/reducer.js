@@ -6,7 +6,7 @@ const INITIAL_STATE = {
 	preOrders: 1
 };
 
-const configReducer = (state = INITIAL_STATE, action) => {
+const demoReducer = (state = INITIAL_STATE, action) => {
 	switch(action.type) {
 		case POST_PREORDER:
 			return {...state, preOrders: action.payload.data.preOrdersNow};
@@ -15,4 +15,4 @@ const configReducer = (state = INITIAL_STATE, action) => {
 	}
 };
 
-export {configReducer};
+export {demoReducer};

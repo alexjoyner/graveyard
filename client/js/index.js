@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { Router, browserHistory } from 'react-router';
 import promise from 'redux-promise';
-import reducers from './reducers';
+import reducers from './combine_reducers';
 import routes from './routes';
 
 const CREATE_STORE_WITH_PROMISES = applyMiddleware(promise)(createStore);

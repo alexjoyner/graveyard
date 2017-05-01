@@ -1,10 +1,10 @@
 import {expect} from '../js/test_helper';
-import {configReducer} from './reducer';
+import {demoReducer} from './reducer';
 import * as types from './actions';
 describe('config reducer', () => {
 
 	it('should return the initial state', () => {
-		expect(configReducer(undefined, {})).to.deep.equal({
+		expect(demoReducer(undefined, {})).to.deep.equal({
 			appName: 'your-app-name',
 			version: 'v0.0.1',
 			preOrders: 1
@@ -12,7 +12,7 @@ describe('config reducer', () => {
 	});
 
 	it('should post new preorder', () => {
-		expect(configReducer(undefined, {
+		expect(demoReducer(undefined, {
 			type: types.POST_PREORDER,
 			payload: {
 				data: {

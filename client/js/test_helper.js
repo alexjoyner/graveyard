@@ -6,7 +6,7 @@ import chai, { expect } from 'chai';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import reducers from '../js/reducers';
+import reducers from './combine_reducers';
 import chaiJquery from 'chai-jquery';
 
 // set up test environment to run like a browser in the command line
