@@ -6,7 +6,7 @@ const HtmlElementsPlugin = require('./html-elements-plugin');
 // process.env.PORT = 8080;
 // require('../server');
 console.log('Development server running');
-console.log(path.join(__dirname + '../../'));
+console.log(path.join(__dirname + '/../'));
 /*
  * Webpack Constants
  */
@@ -15,17 +15,17 @@ const METADATA = {
 };
 module.exports = {
     metadata: METADATA,
-    context: path.join(__dirname + '../../'),
+    context: path.join(__dirname + '/../'),
     devtool: "inline-sourcemap",
     entry: {
         bundle: "./client/js/index.js"
     },
     output: {
-        path: path.join(__dirname + '../../') + "/docs",
+        path: path.join(__dirname + '/../') + "/docs",
         filename: "[name].js"
     },
     resolve: {
-        root: [path.join(__dirname + '../../')],
+        root: [path.join(__dirname + '/../')],
         extensions: ['', '.js', '.jsx']
     },
     module: {

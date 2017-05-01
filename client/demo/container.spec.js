@@ -1,5 +1,5 @@
-import {renderComponent, expect} from '../../../js/test_helper';
-import {Demo} from './';
+import {renderComponent, expect} from '../js/test_helper';
+import {Demo} from './container';
 
 // Used describe to group together similar tests
 describe('demo Container', () => {

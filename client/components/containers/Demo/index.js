@@ -12,14 +12,13 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {preOrderApp} from '../../../js/actions/index';
-import {DemoUI} from '../../ui/Demo';
+import {DemoUI} from '../../stateless/Demo';
 /* Containers should not have styles
 * NO!!! require('_.sass)*/
 
 class DemoContainer extends Component {
 	constructor(props){
 		super(props);
-		this.state = {};
 	}
 	render() {
 		return (

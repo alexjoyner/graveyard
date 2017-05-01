@@ -5,8 +5,12 @@ describe('DB Config', () => {
 	let dbConfig = rewire('./db');
 
 	it('should return a correct instance of production cache', () => {
-		let ENVIRONMENT = 'production';
-		dbConfig.__set__('ENVIRONMENT', ENVIRONMENT);
+		/*  No need to set production environment,
+		* that is the Environment we set with NODE_ENV
+		* at the test script.
+		* */
+		// let ENVIRONMENT = 'production';
+		// dbConfig.__set__('ENVIRONMENT', ENVIRONMENT);
 
 		expect(dbConfig.getConfig()).to.deep.equal({
 			jwt_secret: 'inputYourTokenSecretKeyHERE',

@@ -1,4 +1,4 @@
-import { POST_PREORDER } from '../actions/index';
+import { POST_PREORDER } from './actions';
 
 const INITIAL_STATE = {
 	appName: 'your-app-name',

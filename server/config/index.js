@@ -12,7 +12,7 @@ function init(express, app) {
 	if (getConfig().env === 'production') {
 		app.use(express.static(path.resolve(__dirname, '../../docs')));
 		app.use('/client', express.static(path.resolve(__dirname, '../../docs')));
-		app.get('*', function (req, res) {
+		app.get('*', (req, res) => {
 			res.sendFile(path.resolve(__dirname, '../../docs/index.html'));
 		});
 	}
