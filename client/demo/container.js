@@ -10,7 +10,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {preOrderApp} from './actions';
+import {preOrderApp, addComment} from './actions';
 import {DemoUI} from './DemoUI';
 /* Containers should not have styles
  * NO!!! require('_.sass)*/
@@ -38,9 +38,7 @@ class DemoContainer extends Component {
  * make over complicated.  It just takes what is in our store
  * and passes it to our container through this.props "Our containers properties"*/
 function mapStateToProps(state) {
-	return {
-		config: state.config
-	};
+	return state.demoInfo;
 }
 
 /*
@@ -49,7 +47,7 @@ function mapStateToProps(state) {
  * */
 function mapDispatchToProps(dispatch){
 	return bindActionCreators({
-		preOrderApp: preOrderApp
+		preOrderApp, addComment
 	}, dispatch);
 }
 

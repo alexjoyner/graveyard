@@ -1,13 +1,22 @@
 import {expect, renderComponent} from '../../_startup/test_helper';
-import CommentBox from './';
+import {FeedbackBox} from './';
+import sinon from 'sinon';
 
-describe('Comment Box component', () => {
-	let component;
+describe('Feedback Box component', () => {
+	let component, textArea, mock;
 	beforeEach(() => {
-		component = renderComponent(CommentBox);
+		mock = sinon.spy();
+		component = renderComponent(FeedbackBox, {
+			addComment: mock
+		});
 	});
-	xit('Should allow for text input', () => {
-		component.find('textarea').simulate('change', 'Test Comment');
-		expect(component).to.have.value('Test Comment');
+	it('should allow for text input', () => {
+		textArea = component.find('textarea');
+		textArea.simulate('change', 'test comment');
+		expect(textArea).to.have.value('test comment');
+	});
+	it('should post new comment', () => {
+		component.find('#addComment').simulate('click');
+		expect(mock.called).to.be.equal(true);
 	});
 });

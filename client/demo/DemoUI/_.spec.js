@@ -22,7 +22,7 @@ describe('demo-UI component', () => {
 		expect(component).to.contain('HELLO WORLD');
 	});
 	it('Should pre-order when pre-order button is clicked', () => {
-		component.find('button').simulate('click');
+		component.find('#preOrderButton').simulate('click');
 		expect(preOrderApp.calledOnce).to.equal(true);
 	})
 });

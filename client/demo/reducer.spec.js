@@ -6,23 +6,28 @@ describe('config reducer', () => {
 	it('should return the initial state', () => {
 		expect(demoReducer(undefined, {})).to.deep.equal({
 			appName: 'your-app-name',
-			version: 'v0.0.1',
+			comments: ['Test comment'],
 			preOrders: 1
 		});
 	});
 
 	it('should post new preorder', () => {
 		expect(demoReducer(undefined, {
-			type: types.POST_PREORDER,
-			payload: {
-				data: {
-					preOrdersNow: 'success test POST_PREORDER'
-				}
-			}
+			type: types.POST_PREORDER
 		})).to.deep.equal({
 			appName: 'your-app-name',
-			version: 'v0.0.1',
-			preOrders: 'success test POST_PREORDER'
+			comments: ['Test comment'],
+			preOrders: 2
+		});
+	});
+	it('should post new comment', () => {
+		expect(demoReducer(undefined, {
+			type: types.POST_COMMENT,
+			data: 'new test'
+		})).to.deep.equal({
+			appName: 'your-app-name',
+			comments: ['Test comment', 'new test'],
+			preOrders: 1
 		});
 	});
 });

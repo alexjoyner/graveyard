@@ -5,10 +5,11 @@ let app = express();
 init(express, app);
 
 let port = (process.env.PORT || 8000);
-
-var server = app.listen(port, function (err) {
-	if (err) throw err;
-	console.log('App running on port ' + port);
-});
+let server;
+if(!module.parent){
+	server = app.listen(port, function () {
+		console.log('App running on port ' + port);
+	});
+}
 
 export {app, server};

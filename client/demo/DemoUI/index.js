@@ -1,11 +1,11 @@
 import React from 'react';
 import {FeedbackBox} from '../FeedbackBox';
+import {commentList} from '../../utils/commentList';
 require('./_.sass');
 
 
 const DemoUI = ({props}) => {
-	const {preOrderApp} = props;
-	const {appName, preOrders} = props.config;
+	const {appName, preOrders, preOrderApp} = props;
 	return (
 		/*Components only return one element*/
 		<div>
@@ -14,8 +14,11 @@ const DemoUI = ({props}) => {
 			 we can just call this.props.[our data path]*/}
 			<h2>This is {appName}</h2>
 			<h3>Pre-Orders: {preOrders}</h3>
-			<FeedbackBox props={props}/>
-			<button onClick={() => preOrderApp(preOrders)}>New PreOrder</button>
+			Comments
+			<commentList {...props} />
+			<br/>
+			<FeedbackBox {...props}/>
+			<button id="preOrderButton" onClick={() => preOrderApp()}>New PreOrder</button>
 		</div>
 	);
 };

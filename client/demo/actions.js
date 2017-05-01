@@ -1,19 +1,17 @@
-const POST_PREORDER = 'POST_PREORDER';
-
+export const POST_PREORDER = 'POST_PREORDER';
+export const POST_COMMENT = 'POST_COMMENT';
 const ROOT_URL = 'http://localhost:8080';
 
-const preOrderApp = (preOrders) => {
+const preOrderApp = () => {
 	return {
-		type: POST_PREORDER,
-		payload: {
-			data: {
-				preOrdersNow: preOrders + 1
-			}
-		}
+		type: POST_PREORDER
 	};
 };
+const addComment = (comment) => {
+	return {
+		type: POST_COMMENT,
+		data: comment
+	}
+};
 
-export {
-	POST_PREORDER,
-	preOrderApp
-}
+export {preOrderApp, addComment};

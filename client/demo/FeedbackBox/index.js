@@ -6,7 +6,6 @@ class FeedbackBox extends Component{
 		this.state = {comment: ''}
 	}
 	handleChange = (event) => {
-		console.log('Taco');
 		this.setState({
 			comment: event.target.value
 		})
@@ -14,9 +13,14 @@ class FeedbackBox extends Component{
 	render() {
 		return (
 			<div>
+				{this.state.comment}
 				<textarea
+					placeholder="Comments"
 					value={this.state.comment}
 					onChange={this.handleChange} />
+				<button id="addComment" onClick={() => this.props.addComment(this.state.comment)}>
+					Add Comment
+				</button>
 			</div>
 		);
 	}

@@ -4,7 +4,7 @@ import {demoReducer} from '../demo/reducer';
 
 
 const rootReducer = combineReducers({
-  config: demoReducer,
+  demoInfo: demoReducer,
   form: formReducer
 });
 
