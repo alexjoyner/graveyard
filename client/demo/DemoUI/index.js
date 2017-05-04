@@ -1,6 +1,6 @@
 import React from 'react';
 import {FeedbackBox} from '../FeedbackBox';
-import {commentList} from '../../utils/commentList';
+import {CommentList} from '../../utils/commentList';
 require('./_.sass');
 
 
@@ -15,7 +15,7 @@ const DemoUI = ({props}) => {
 			<h2>This is {appName}</h2>
 			<h3>Pre-Orders: {preOrders}</h3>
 			Comments
-			<commentList {...props} />
+			<CommentList {...props} />
 			<br/>
 			<FeedbackBox {...props}/>
 			<button id="preOrderButton" onClick={() => preOrderApp()}>New PreOrder</button>

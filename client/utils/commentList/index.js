@@ -1,12 +1,13 @@
 import React from 'react';
 
-const commentList = (props) => {
+const CommentList = (props) => {
+	console.log(props);
 	return (
-		<div>
-			{props.comments.map((comment, i) => <p key={i}>{comment}</p>)}
-		</div>
+		<ul>
+			{props.comments.map((comment, i) => <li key={i}>{comment}</li>)}
+		</ul>
 	)
 };
 
 
-export {commentList};
+export {CommentList};

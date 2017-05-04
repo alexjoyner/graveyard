@@ -1,6 +1,5 @@
 import {expect, renderComponent} from '../../_startup/test_helper';
 import sinion from 'sinon';
-import {combineReducers} from 'redux';
 import {DemoUI} from './';
 
 describe('demo-UI component', () => {
@@ -9,10 +8,9 @@ describe('demo-UI component', () => {
 		preOrderApp = sinion.stub().returns(1);
 		component = renderComponent(DemoUI, {
 			props: {
-				config: {
-					appName: 'TEST',
-					preOrders: 1,
-				},
+				comments: ['test comment'],
+				appName: 'TEST',
+				preOrders: 1,
 				preOrderApp: preOrderApp
 			}
 		});

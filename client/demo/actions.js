@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const POST_PREORDER = 'POST_PREORDER';
 export const POST_COMMENT = 'POST_COMMENT';
 const ROOT_URL = 'http://localhost:8080';

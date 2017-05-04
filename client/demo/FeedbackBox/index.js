@@ -13,7 +13,6 @@ class FeedbackBox extends Component{
 	render() {
 		return (
 			<div>
-				{this.state.comment}
 				<textarea
 					placeholder="Comments"
 					value={this.state.comment}

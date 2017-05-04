@@ -1,10 +1,10 @@
 import {renderComponent, expect} from '../../_startup/test_helper';
-import {commentList} from './';
+import {CommentList} from './';
 
 describe('Comment List', () => {
 	let component;
 	beforeEach(() => {
-		component = renderComponent(commentList, {
+		component = renderComponent(CommentList, {
 			comments: ['TEST COMMENT']
 		});
 	});
