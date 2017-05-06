@@ -10,7 +10,6 @@ dev/sass/.sass-cache/*
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
-/.idea
 
 # compiled output
 /dist
@@ -21,7 +20,6 @@ dev/sass/.sass-cache/*
 /bower_components
 
 # IDEs and editors
-/.idea
 .project
 .classpath
 *.launch
@@ -44,3 +42,4 @@ testem.log
 #System Files
 .DS_Store
 Thumbs.db
+/bower.json
