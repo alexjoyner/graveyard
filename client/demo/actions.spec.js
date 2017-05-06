@@ -8,6 +8,7 @@ describe('actions', () => {
 			type: POST_PREORDER
 		})
 	});
+
 	it('correctly posts comment', () => {
 		expect(addComment('test comment')).to.deep.equal({
 			type: POST_COMMENT,
