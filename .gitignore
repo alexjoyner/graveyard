@@ -59,7 +59,7 @@ dev/sass/.sass-cache/*
 
 # dependencies
 /node_modules
-/bower_components
+/client/lib
 
 # IDEs and editors
 .project

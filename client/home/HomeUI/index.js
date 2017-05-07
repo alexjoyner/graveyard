@@ -1,10 +1,11 @@
 import React from 'react';
+import {NavBar} from '../../utils/navbar';
 require('./_.sass');
 
 const HomeUI = ({props}) => {
 	return (
 		<div>
-			<h1>HELLO WORLD</h1>
+			<NavBar {...props} />
 		</div>
 	);
 };
