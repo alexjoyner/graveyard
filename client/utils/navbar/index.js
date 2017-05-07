@@ -1,17 +1,18 @@
 import React from 'react';
+import {Link} from 'react-router';
 require('./_.sass');
 
 const NavBar = ({props}) => {
 	return (
-		<ul id="NavBar">
-			<li>HOME</li>
-			<li>ABOUT</li>
-			<li>WORKOUT PROGRAMS</li>
-			<li>APPAREL</li>
-			<li>FAQ</li>
-			<li>SOCIAL</li>
-			<li>CONTACT</li>
-		</ul>
+		<nav id="NavBar">
+			<Link className="nav-item">HOME</Link>
+			<Link className="nav-item">ABOUT</Link>
+			<Link className="nav-item">WORKOUT PROGRAMS</Link>
+			<Link className="nav-item">APPAREL</Link>
+			<Link className="nav-item">FAQ</Link>
+			<Link className="nav-item">SOCIAL</Link>
+			<Link className="nav-item">CONTACT</Link>
+		</nav>
 	)
 };
 
