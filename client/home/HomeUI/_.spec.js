@@ -14,4 +14,7 @@ describe('demo-UI component', () => {
 	it('Should render a navbar', () => {
 		expect(component.find('#NavBar')).to.exist;
 	});
+	it('Should render a hero image', () => {
+		expect(component.find('.hero-image')).to.exist;
+	});
 });

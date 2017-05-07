@@ -2,11 +2,15 @@
 @import "../../lib/neat/core/neat.scss"
 
 #NavBar
+	position: fixed
+	top: 0
+	z-index: 100
+	width: 100%
 	list-style-type: none
 	margin: 0
 	padding: 0
 	overflow: hidden
-	background-color: #333
+	background-color: rgba(0,0,0,0.7)
 	.nav-item
 		&:hover
 			background-color: #4CAF50
@@ -18,6 +22,4 @@
 		text-decoration: none
 @media screen and (max-width: 600px)
   #NavBar .nav-item
-    &.right
-      float: none
-    float: none
+    display: none

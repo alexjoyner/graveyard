@@ -2,7 +2,7 @@ import {expect, renderComponent} from '../../_startup/test_helper';
 import sinion from 'sinon';
 import {NavBar} from './';
 
-describe('demo-UI component', () => {
+describe('navbar component', () => {
 	let component, preOrderApp;
 	beforeEach(() => {
 		preOrderApp = sinion.stub().returns(1);

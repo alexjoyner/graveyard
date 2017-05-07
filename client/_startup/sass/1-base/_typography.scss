@@ -1,0 +1,30 @@
+@import "variables";
+body {
+  color: $mt-dark-font-color;
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+  background-color: $mt-main-background-color;
+}
+
+p {
+  margin: 0 0 $small-spacing;
+}
+
+a {
+  color: $mt-dark-font-color;
+  &:hover {
+    cursor: pointer;
+    color: $mt-dark-font-color;
+  }
+}
+
+hr {
+  border-bottom: $base-border;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  margin: $base-spacing 0;
+}
