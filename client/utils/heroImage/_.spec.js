@@ -10,8 +10,4 @@ describe('hero image component', () => {
 			props: {}
 		});
 	});
-
-	it('should contain bullsweet fitness', () => {
-		expect(component).to.contain('BullSweet Fitness')
-	});
 });

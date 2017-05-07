@@ -5,8 +5,8 @@ require('./_.sass');
 const NavBar = ({props}) => {
 	return (
 		<nav id="NavBar">
-			<Link className="nav-item">HOME</Link>
-			<Link className="nav-item">ABOUT</Link>
+			<Link to={'/'} className="nav-item">HOME</Link>
+			<Link to={'/about'} className="nav-item">ABOUT</Link>
 			<Link className="nav-item">WORKOUT PROGRAMS</Link>
 			<Link className="nav-item">APPAREL</Link>
 			<Link className="nav-item">FAQ</Link>
