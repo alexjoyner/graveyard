@@ -11,7 +11,7 @@ describe('demo-UI component', () => {
 		});
 	});
 
-	it('Should render Hello World', () => {
-		expect(component).to.contain('HELLO WORLD');
+	it('Should render a navbar', () => {
+		expect(component.find('#NavBar')).to.exist;
 	});
 });
