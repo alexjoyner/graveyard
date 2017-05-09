@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {preOrderApp, addComment} from './actions';
-import {DemoUI} from './DemoUI';
+import {postNewClient} from './actions';
+import {CheckInUI} from './CheckInUI';
 /* Containers should not have styles
  * NO!!! require('_.sass)*/
 
-class DemoContainer extends Component {
+class CheckInContainer extends Component {
 	constructor(props){
 		super(props);
 	}
 	render() {
 		return (
 			/*Our return function MUST only return one element*/
-			<DemoUI props={this.props}/>
+			<CheckInUI props={this.props}/>
 		);
 	}
 }
@@ -22,7 +22,7 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch){
 	return bindActionCreators({
-		preOrderApp, addComment
+		postNewClient
 	}, dispatch);
 }
-export const Demo = connect(mapStateToProps, mapDispatchToProps)(DemoContainer);
+export const CheckIn = connect(mapStateToProps, mapDispatchToProps)(CheckInContainer);

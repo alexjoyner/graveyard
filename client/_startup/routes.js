@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import {Demo} from '../demo/container';
+import {CheckIn} from '../checkIn/container';
 
 const APP_ROUTES = (
 	<Route path='/'>
-		<IndexRoute component={Demo} />
+		<IndexRoute component={CheckIn} />
 	</Route>
 );
 
