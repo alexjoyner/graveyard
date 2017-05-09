@@ -2,42 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13266802-5edd-4917-8a8f-fde13e24e652" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/checkIn/CheckInForm/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/checkIn/CheckInUI/_.sass" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/checkIn/CheckInUI/_.spec.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/checkIn/CheckInUI/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/checkIn/reducer.spec.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/config/error.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/config/error.spec.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/routes/clients/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/routes/clients/index.spec.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/utils/client.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/utils/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/utils/readFileData.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/demo/DemoUI/_.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/demo/DemoUI/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/demo/FeedbackBox/_.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/demo/FeedbackBox/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/demo/reducer.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/utils/commentList/_.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/utils/commentList/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/routes/demo/post_new_demo/index.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/demo/DemoUI/_.sass" afterPath="$PROJECT_DIR$/client/checkIn/CheckInForm/_.spec.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/demo/actions.js" afterPath="$PROJECT_DIR$/client/checkIn/actions.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/demo/actions.spec.js" afterPath="$PROJECT_DIR$/client/checkIn/actions.spec.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/demo/container.js" afterPath="$PROJECT_DIR$/client/checkIn/container.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/demo/container.spec.js" afterPath="$PROJECT_DIR$/client/checkIn/container.spec.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/demo/reducer.js" afterPath="$PROJECT_DIR$/client/checkIn/reducer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/_startup/combine_reducers.js" afterPath="$PROJECT_DIR$/client/_startup/combine_reducers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/_startup/routes.js" afterPath="$PROJECT_DIR$/client/_startup/routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/index.html" afterPath="$PROJECT_DIR$/client/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/config/index.js" afterPath="$PROJECT_DIR$/server/config/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/_.spec.js" afterPath="$PROJECT_DIR$/server/routes/_.spec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/index.js" afterPath="$PROJECT_DIR$/server/routes/index.js" />
     </list>
     <ignored path="project-starter.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,14 +26,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="_.spec.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/client/checkIn/CheckInUI/_.spec.js">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-              <folding>
-                <element signature="e#0#67#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="203">
+              <caret line="23" column="10" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -96,7 +60,6 @@
         <option value="$PROJECT_DIR$/client/demo/DemoUI/_.spec.js" />
         <option value="$PROJECT_DIR$/client/demo/actions.js" />
         <option value="$PROJECT_DIR$/client/demo/actions.spec.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/client/demo/reducer.js" />
         <option value="$PROJECT_DIR$/client/demo/container.spec.js" />
         <option value="$PROJECT_DIR$/client/demo/CheckInUI/_.spec.js" />
@@ -131,6 +94,7 @@
         <option value="$PROJECT_DIR$/client/index.html" />
         <option value="$PROJECT_DIR$/client/checkIn/CheckInUI/_.spec.js" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -167,7 +131,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="Scope" currentSubView="testing" proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers Scope="false" />
       <showModules />
@@ -387,7 +351,24 @@
         <subPane subId="Tests" />
       </pane>
       <pane id="ProjectPane">
-        <subPane />
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CET-Database" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CET-Database" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CET-Database" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
       </pane>
     </panes>
   </component>
@@ -489,7 +470,7 @@
       <workItem from="1493513609171" duration="5672000" />
       <workItem from="1493552234407" duration="62712000" />
       <workItem from="1494102711850" duration="1822000" />
-      <workItem from="1494258494534" duration="32366000" />
+      <workItem from="1494258494534" duration="32665000" />
     </task>
     <task id="LOCAL-00001" summary="deleted unnecessary _installs file.  Just use version control.&#10;installed coveralls and got testing setup">
       <created>1493569286783</created>
@@ -593,10 +574,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112035000" />
+    <option name="totallyTimeSpent" value="112334000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="33" width="1440" height="826" extended-state="1" />
+    <frame x="0" y="33" width="1440" height="826" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.205074" sideWeight="0.7151052" order="0" side_tool="false" content_ui="combo" />
@@ -723,14 +704,6 @@
     <entry file="file://$PROJECT_DIR$/node_modules/react/lib/ReactReconciler.js" />
     <entry file="file://$PROJECT_DIR$/node_modules/react/lib/Transaction.js" />
     <entry file="file://$PROJECT_DIR$/node_modules/react/lib/ReactMount.js" />
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Prepare.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1079,11 +1052,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/checkIn/CheckInUI/_.spec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+        <state relative-caret-position="315">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
             <element signature="e#0#67#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="23" column="10" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>
