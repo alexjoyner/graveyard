@@ -1,6 +1,7 @@
-import {expect, renderComponent} from '../../_startup/test_helper';
+import {renderComponent, expect} from 'ro-utils';
 import sinion from 'sinon';
 import {DemoUI} from './';
+import reducers from '../../_startup/combine_reducers';
 
 describe('demo-UI component', () => {
 	let component, preOrderApp;
@@ -13,7 +14,7 @@ describe('demo-UI component', () => {
 				preOrders: 1,
 				preOrderApp: preOrderApp
 			}
-		});
+		}, {}, reducers);
 	});
 
 	it('Should render Hello World', () => {

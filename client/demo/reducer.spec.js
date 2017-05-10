@@ -1,4 +1,4 @@
-import {expect} from '../_startup/test_helper';
+import {renderComponent, expect} from 'ro-utils';
 import {demoReducer} from './reducer';
 import * as types from './actions';
 describe('config reducer', () => {

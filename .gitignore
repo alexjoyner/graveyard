@@ -24,7 +24,7 @@ dev/sass/.sass-cache/*
 .classpath
 *.launch
 .settings/
-
+/.idea/workspace.xml
 # misc
 /.sass-cache
 /connect.lock

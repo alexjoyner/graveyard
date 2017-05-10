@@ -1,6 +1,7 @@
-import {expect, renderComponent} from '../../_startup/test_helper';
+import {renderComponent, expect} from 'ro-utils';
 import {FeedbackBox} from './';
 import sinon from 'sinon';
+import reducers from '../../_startup/combine_reducers';
 
 describe('Feedback Box component', () => {
 	let component, textArea, mock;
@@ -8,7 +9,7 @@ describe('Feedback Box component', () => {
 		mock = sinon.spy();
 		component = renderComponent(FeedbackBox, {
 			addComment: mock
-		});
+		}, {}, reducers);
 	});
 	it('should allow for text input', () => {
 		textArea = component.find('textarea');

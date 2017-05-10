@@ -7,8 +7,8 @@
     "production": "pm2 start process.yml --env env_production && pm2 logs",
     "server:dev": "babel-node ./server/server.js --presets es2015,stage-2",
     "server:dev:watch": "nodemon ./server/server.js --exec babel-node --presets es2015,stage-2",
-    "webpack:dev": "webpack-dev-server -d --progress --profile --colors --watch --display-error-details --content-base ./dist_client --inline --hot ",
-    "test": "mocha $(find ./client ./server -path '*spec*') --full-trace --compilers js:babel-core/register --require ignore-styles ./client/_startup/test_helper.js",
+    "webpack:dev": "webpack-dev-server -d --progress --profile --colors --watch --display-error-details --content-base ./docs --inline --hot",
+    "test": "mocha $(find ./client ./server -path '*spec*') --full-trace --compilers js:babel-core/register --require ignore-styles",
     "cover": "PORT=2081 node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec $(find ./client ./server -path '*spec*')  --compilers js:babel-core/register ",
     "test:watch": "PORT=2080 npm run test -- --watch ",
     "cover:with_open": "npm runt cover && open ./coverage/lcov-report/index.html"

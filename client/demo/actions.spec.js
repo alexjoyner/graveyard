@@ -1,4 +1,4 @@
-import {expect} from '../_startup/test_helper';
+import {expect} from 'ro-utils';
 import {preOrderApp, addComment, POST_PREORDER, POST_COMMENT} from './actions';
 
 // Used describe to group together similar tests
