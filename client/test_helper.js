@@ -41,9 +41,4 @@ $.fn.simulate = function(eventName, value){
 // Set up chai-jquery
 chaiJquery(chai, chai.util, $);
 
-const TestHelper = {
-	renderComponent,
-	expect
-};
-
-export {TestHelper};
+export {renderComponent, expect};
