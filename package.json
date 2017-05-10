@@ -7,7 +7,9 @@
     "start": "npm index.js",
     "watch": "nodemon index.js",
     "test": "mocha **/*.spec.js --reporter spec --compilers js:babel-core/register",
-    "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec **/*.spec.js  --compilers js:babel-core/register"
+    "test:watch": "PORT=2080 npm run test -- --watch",
+    "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec **/*.spec.js  --compilers js:babel-core/register",
+    "cover:with_open": "npm run cover && open ./coverage/lcov-report/index.html"
   },
   "repository": {
     "type": "git",
@@ -29,6 +31,13 @@
     "chai": "^3.5.0",
     "coveralls": "^2.13.1",
     "istanbul": "^1.1.0-alpha.1",
-    "mocha": "^3.3.0"
+    "mocha": "^3.3.0",
+    "rewire": "^2.5.2",
+    "sinon": "^2.2.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "morgan": "^1.8.1",
+    "node-cache": "^4.1.1"
   }
 }
