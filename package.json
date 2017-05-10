@@ -11,7 +11,7 @@
     "test": "mocha $(find ./client ./server -path '*spec*') --full-trace --compilers js:babel-core/register --require ignore-styles",
     "cover": "PORT=2081 node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec $(find ./client ./server -path '*spec*')  --compilers js:babel-core/register ",
     "test:watch": "PORT=2080 npm run test -- --watch ",
-    "cover:with_open": "npm runt cover && open ./coverage/lcov-report/index.html"
+    "cover:with_open": "npm run cover && open ./coverage/lcov-report/index.html"
   },
   "license": "MIT",
   "dependencies": {

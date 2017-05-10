@@ -8,14 +8,7 @@ const BASE_DIR = path.resolve(__dirname + '/../');
 // this must come before app.get('*');
 // or it will be overwritten
 app.use('/', router);
-init(app);
 configRoutes(express, app, BASE_DIR);
-let port = (process.env.PORT || 8000);
-let server;
-if(!module.parent){
-	server = app.listen(port, function () {
-		console.log('App running on port ' + port);
-	});
-}
+init(app);
 
-export {app, server};
+export {app};
