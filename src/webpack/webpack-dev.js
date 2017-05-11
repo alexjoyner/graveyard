@@ -2,7 +2,7 @@ var webpack = require('webpack');
 var path = require('path');
 var helpers = require('./helpers');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlElementsPlugin = require('./html-elements-plugin');
+const HtmlElementsPlugin = require('./html-elements-plugin/index');
 // process.env.PORT = 8080;
 // require('../server');
 /*

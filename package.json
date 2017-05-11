@@ -1,14 +1,15 @@
 {
   "name": "ro-utils",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A library set of quick utilities",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node index.js",
-    "watch": "nodemon index.js",
-    "test": "mocha $(find ./client ./server ./utils ./webpack index.spec.js -path '*spec*') --reporter spec --compilers js:babel-core/register",
+    "start": "node dist/",
+    "build": "babel src --out-dir dist",
+    "watch": "nodemon index.babel.js",
+    "test": "mocha $(find ./src -path '*spec*') --reporter spec --compilers js:babel-core/register",
     "test:watch": "PORT=2080 npm run test -- --watch",
-    "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec **/*.spec.js  --compilers js:babel-core/register",
+    "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec $(find ./src -path '*spec*')  --compilers js:babel-core/register",
     "cover:with_open": "npm run cover && open ./coverage/lcov-report/index.html"
   },
   "repository": {
