@@ -5,6 +5,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.expect = exports.renderComponent = undefined;
 
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
 var _jsdom = require('jsdom');
 
 var _jsdom2 = _interopRequireDefault(_jsdom);
@@ -24,10 +28,6 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 var _chai = require('chai');
 
 var _chai2 = _interopRequireDefault(_chai);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = require('react-redux');
 

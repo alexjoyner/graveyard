@@ -1,9 +1,9 @@
+import React from 'react';
 import jsdom from 'jsdom';
 import jquery from 'jquery';
 import TestUtils from 'react-dom/test-utils';
 import ReactDom from 'react-dom';
 import chai, { expect } from 'chai';
-import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import chaiJquery from 'chai-jquery';

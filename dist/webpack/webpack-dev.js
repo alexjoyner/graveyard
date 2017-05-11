@@ -83,7 +83,8 @@ var webpack_dev_config = function webpack_dev_config(BASE_DIR) {
          *
          * Dependencies: HtmlWebpackPlugin
          */
-        new HtmlElementsPlugin(), new webpack.DefinePlugin({
+        //new HtmlElementsPlugin(),
+        new webpack.DefinePlugin({
             ENV: require(path.join(__dirname, './environment/webpack-dev-env.js'))
         })],
         /**

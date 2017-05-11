@@ -1,6 +1,5 @@
 import path from 'path';
 const configRoutes = (express, app, BASE_DIR) => {
-	console.log('PATH TEST: ', path.join(BASE_DIR, 'docs/index.html'));
 	app.use(express.static(path.join(BASE_DIR, '/docs')));
 	app.use('/client', express.static(path.join(BASE_DIR, 'docs')));
 	app.get('*', (req, res) => {

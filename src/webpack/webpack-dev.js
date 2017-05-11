@@ -2,7 +2,6 @@ var webpack = require('webpack');
 var path = require('path');
 var helpers = require('./helpers');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlElementsPlugin = require('./html-elements-plugin/index');
 // process.env.PORT = 8080;
 // require('../server');
 /*
@@ -78,7 +77,6 @@ const webpack_dev_config = (BASE_DIR) => {
              *
              * Dependencies: HtmlWebpackPlugin
              */
-            new HtmlElementsPlugin(),
             new webpack.DefinePlugin({
                 ENV: require(path.join(__dirname, './environment/webpack-dev-env.js'))
             })
