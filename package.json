@@ -2,9 +2,9 @@
   "name": "ro-utils",
   "version": "0.0.3",
   "description": "A library set of quick utilities",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "node dist/",
+    "start": "node dist/index.js",
     "build": "babel src --out-dir dist",
     "watch": "nodemon index.babel.js",
     "test": "mocha $(find ./src -path '*spec*') --reporter spec --compilers js:babel-core/register",
