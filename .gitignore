@@ -11,6 +11,8 @@ dev/sass/.sass-cache/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 
+.idea/workspace.xml
+
 # compiled output
 /dist
 /tmp
@@ -24,7 +26,6 @@ dev/sass/.sass-cache/*
 .classpath
 *.launch
 .settings/
-/.idea/workspace.xml
 # misc
 /.sass-cache
 /connect.lock
@@ -43,3 +44,4 @@ testem.log
 .DS_Store
 Thumbs.db
 /bower.json
+/.idea/workspace.xml
