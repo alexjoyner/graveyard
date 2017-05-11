@@ -1,4 +1,4 @@
-import { POST_PREORDER, POST_COMMENT } from './actions';
+import {} from './actions';
 
 const INITIAL_STATE = {};
 

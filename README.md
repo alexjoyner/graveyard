@@ -20,6 +20,8 @@ This starter pack uses the following tech:
 * Chai
 * SuperTest
 
+One thing to note is that, most all of the basic configuration stuff that would usually go along with setting up a project has been abstracted out to an npm package called ro-utils. So you can focus on building the latest and greatest thing without a bunch of configuration code in the way. :)
+
 ## Install
     npm install
     npm start
