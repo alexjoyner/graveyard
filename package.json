@@ -30,7 +30,7 @@
     "redux": "^3.0.4",
     "redux-form": "^6.0.5",
     "redux-promise": "^0.5.3",
-    "ro-utils": "0.0.2"
+    "ro-utils": "*"
   },
   "devDependencies": {
     "axios": "^0.16.1",
