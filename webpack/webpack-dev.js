@@ -5,7 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlElementsPlugin = require('./html-elements-plugin');
 // process.env.PORT = 8080;
 // require('../server');
-console.log('Development server running');
 /*
  * Webpack Constants
  */

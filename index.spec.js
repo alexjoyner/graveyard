@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import * as index from './index.js';
+import * as index from './';
 
 describe('All exported utilities', () => {
 	it('should have addTwoNumbers', () => {
