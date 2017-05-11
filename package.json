@@ -15,6 +15,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "ro-utils": "*",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "lodash": "^3.10.1",
@@ -29,8 +30,7 @@
     "react-router": "^2.0.1",
     "redux": "^3.0.4",
     "redux-form": "^6.0.5",
-    "redux-promise": "^0.5.3",
-    "ro-utils": "*"
+    "redux-promise": "^0.5.3"
   },
   "devDependencies": {
     "axios": "^0.16.1",
