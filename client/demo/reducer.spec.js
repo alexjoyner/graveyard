@@ -1,4 +1,4 @@
-import {renderComponent, expect} from 'ro-utils';
+import {renderComponent, expect} from 'ro-dev-utils';
 import {CONTAINER_NAME} from './_config';
 import {demoReducer} from './reducer';
 import * as types from './actions';

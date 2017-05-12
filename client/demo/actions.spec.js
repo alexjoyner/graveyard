@@ -1,4 +1,4 @@
-import {expect} from 'ro-utils';
+import {expect} from 'ro-dev-utils';
 import {CONTAINER_NAME} from './_config';
 import {} from './actions';
 

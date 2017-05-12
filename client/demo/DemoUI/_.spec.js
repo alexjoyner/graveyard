@@ -1,4 +1,4 @@
-import {renderComponent, expect} from 'ro-utils';
+import {renderComponent, expect} from 'ro-dev-utils';
 import sinion from 'sinon';
 import {DemoUI} from './';
 import reducers from '../../_startup/combine_reducers';
