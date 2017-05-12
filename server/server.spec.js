@@ -1,5 +1,5 @@
+import { request } from 'ro-dev-utils';
 import {app} from './server';
-import request from 'supertest';
 request.agent(app.listen());
 
 describe('loading node express', () => {

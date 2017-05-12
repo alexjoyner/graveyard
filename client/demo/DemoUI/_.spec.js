@@ -1,12 +1,11 @@
-import {renderComponent, expect} from 'ro-dev-utils';
-import sinion from 'sinon';
+import {renderComponent, expect, sinon} from 'ro-dev-utils';
 import {DemoUI} from './';
 import reducers from '../../_startup/combine_reducers';
 
 describe('demo-UI component', () => {
 	let component, preOrderApp;
 	beforeEach(() => {
-		preOrderApp = sinion.stub().returns(1);
+		preOrderApp = sinon.stub().returns(1);
 		component = renderComponent(DemoUI, {
 			props: {
 				comments: ['test comment'],

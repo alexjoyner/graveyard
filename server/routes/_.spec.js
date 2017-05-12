@@ -1,6 +1,5 @@
-import request from 'supertest';
+import {request, expect} from 'ro-dev-utils';
 import {app} from '../server';
-import expect from 'chai';
 import {router} from './';
 app.use(router);
 
