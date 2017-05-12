@@ -15,7 +15,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "ro-utils": "*",
+    "axios": "^0.16.1",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "lodash": "^3.10.1",
@@ -27,7 +27,7 @@
     "redux": "^3.0.4",
     "redux-form": "^6.0.5",
     "redux-promise": "^0.5.3",
-    "axios": "^0.16.1"
+    "ro-utils": "^1.0.0-alpha.2"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -39,6 +39,6 @@
     "coveralls": "^2.13.1",
     "istanbul": "^1.1.0-alpha.1",
     "mocha": "^3.3.0",
-    "ro-dev-utils": "*"
+    "ro-dev-utils": "^1.0.0-Alpha.2"
   }
 }
