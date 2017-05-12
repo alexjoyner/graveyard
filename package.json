@@ -1,6 +1,6 @@
 {
   "name": "ro-dev-utils",
-  "version": "1.0.0-Alpha.1",
+  "version": "1.0.0-Alpha.3",
   "description": "A library of utilities meant for development",
   "main": "dist/index.js",
   "scripts": {
