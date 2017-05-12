@@ -21,7 +21,7 @@ var webpack_dev_config = function webpack_dev_config(BASE_DIR) {
         context: path.join(BASE_DIR),
         devtool: "inline-sourcemap",
         entry: {
-            bundle: "testing/_startup/index.js"
+            bundle: "client/_startup/index.js"
         },
         output: {
             path: path.join(BASE_DIR, 'docs'),
@@ -40,7 +40,7 @@ var webpack_dev_config = function webpack_dev_config(BASE_DIR) {
                 loaders: ['style', 'css', 'sass']
             }, {
                 test: [/\.js/, /\.jsx/],
-                exclude: [path.join(BASE_DIR, 'testing/index.html'), /node_modules/],
+                exclude: [path.join(BASE_DIR, 'client/index.html'), /node_modules/],
                 loader: 'babel',
                 query: {
                     presets: ['react', 'es2015', 'stage-1']
@@ -57,7 +57,7 @@ var webpack_dev_config = function webpack_dev_config(BASE_DIR) {
          * See: https://github.com/ampedandwired/html-webpack-plugin
          */
         new HtmlWebpackPlugin({
-            template: path.join(BASE_DIR, 'testing/index.html'),
+            template: path.join(BASE_DIR, 'client/index.html'),
             chunksSortMode: 'dependency'
         }),
         /*

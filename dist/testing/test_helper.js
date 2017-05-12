@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.expect = exports.renderComponent = undefined;
+exports.request = exports.sinon = exports.expect = exports.renderComponent = undefined;
 
 var _react = require('react');
 
@@ -36,6 +36,14 @@ var _redux = require('redux');
 var _chaiJquery = require('chai-jquery');
 
 var _chaiJquery2 = _interopRequireDefault(_chaiJquery);
+
+var _sinon = require('sinon');
+
+var _sinon2 = _interopRequireDefault(_sinon);
+
+var _supertest = require('supertest');
+
+var _supertest2 = _interopRequireDefault(_supertest);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -71,3 +79,5 @@ $.fn.simulate = function (eventName, value) {
 
 exports.renderComponent = renderComponent;
 exports.expect = _chai.expect;
+exports.sinon = _sinon2.default;
+exports.request = _supertest2.default;

@@ -7,6 +7,8 @@ import chai, { expect } from 'chai';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import chaiJquery from 'chai-jquery';
+import sinon from 'sinon';
+import request from 'supertest';
 
 // set up test environment to run like a browser in the command line
 global.document = jsdom.jsdom('<!doctype html><html><body></body></html>');
@@ -41,4 +43,4 @@ $.fn.simulate = function(eventName, value){
 // Set up chai-jquery
 chaiJquery(chai, chai.util, $);
 
-export {renderComponent, expect};
+export {renderComponent, expect, sinon, request};
