@@ -5,11 +5,15 @@ class AppGenerator extends Generator {
 	constructor(args, opts){
 		super(args, opts);
 	}
-	method1() {
-		this.log('method blah just ran');
-	}
-	method2() {
-		this.log('method 2 just ran');
+	prompting() {
+		return this.prompt([{
+			type    :   'input',
+			name    :   'appName',
+			message :   'Your-project-name',
+			default :   this.appname    //Default to current folder name
+		}]).then((answers) => {
+			this.log('app name', answers.appName);
+		});
 	}
 }
 

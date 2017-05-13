@@ -24,20 +24,22 @@ var AppGenerator = function (_Generator) {
 	}
 
 	_createClass(AppGenerator, [{
-		key: 'method1',
-		value: function method1() {
-			this.log('method blah just ran');
-		}
-	}, {
-		key: 'method2',
-		value: function method2() {
-			this.log('method 2 just ran');
+		key: 'prompting',
+		value: function prompting() {
+			var _this2 = this;
+
+			return this.prompt([{
+				type: 'input',
+				name: 'appName',
+				message: 'Your-project-name',
+				default: this.appname //Default to current folder name
+			}]).then(function (answers) {
+				_this2.log('app name', answers.appName);
+			});
 		}
 	}]);
 
 	return AppGenerator;
 }(_yeomanGenerator2.default);
-
-;
 
 module.exports = AppGenerator;
