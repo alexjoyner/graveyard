@@ -11,27 +11,32 @@
             <id />
           </State>
           <State>
-            <id>Code style issuesJavaScript</id>
+            <id>Bitwise operation issuesJavaScript</id>
           </State>
           <State>
-            <id>CoffeeScript</id>
+            <id>Control flow issuesJavaScript</id>
           </State>
           <State>
-            <id>GeneralCoffeeScript</id>
+            <id>Cucumber</id>
           </State>
           <State>
             <id>GeneralJavaScript</id>
           </State>
           <State>
-            <id>JavaScript</id>
+            <id>Internationalization issues</id>
           </State>
           <State>
-            <id>Node.jsJavaScript</id>
+            <id>JavaScript</id>
           </State>
           <State>
             <id>Potentially confusing code constructsJavaScript</id>
           </State>
         </expanded-state>
+        <selected-state>
+          <State>
+            <id>AngularJS</id>
+          </State>
+        </selected-state>
       </profile-state>
     </entry>
   </component>
@@ -44,35 +49,5 @@
     <OptionsSetting value="true" id="Edit" />
     <ConfirmationsSetting value="0" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="MarkdownNavigator.LinkMap.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ScopeChooserConfigurable.UI">
-        <settings>
-          <last-edited>config files</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-          <order>
-            <scope name="config files" />
-          </order>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>

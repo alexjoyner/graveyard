@@ -26,15 +26,13 @@ var AppGenerator = function (_Generator) {
 
 		var _this = _possibleConstructorReturn(this, (AppGenerator.__proto__ || Object.getPrototypeOf(AppGenerator)).call(this, args, opts));
 
-		_this.config.save();
-		_this.argument('appName', { type: String, required: false });
+		_this.argument('containerName', { type: String, required: true });
 		return _this;
 	}
 
 	_createClass(AppGenerator, [{
 		key: 'initializing',
 		value: function initializing() {
-			this.appName = this.options.appName || this.appName;
 			this._paths();
 		}
 	}, {
@@ -43,41 +41,12 @@ var AppGenerator = function (_Generator) {
 			this.sourceRoot(_path2.default.resolve(__dirname + '/../../templates'));
 		}
 	}, {
-		key: 'prompting',
-		value: function prompting() {
-			var _this2 = this;
-
-			return this.prompt([{
-				type: 'input',
-				name: 'rootUrl',
-				message: 'What is the root url of your local server?',
-				default: 'http://localhost:8000'
-			}, {
-				type: 'input',
-				name: 'cssPrefix',
-				message: 'What would you like the css prefix?',
-				default: 'ro'
-			}, {
-				type: 'input',
-				name: 'homeContainerName',
-				message: 'What is the name of your home container? All lowercase',
-				default: 'home'
-			}]).then(function (answers) {
-				_this2.rootUrl = answers.rootUrl;
-				_this2.cssPrefix = answers.cssPrefix;
-				_this2.homeContainerName = answers.homeContainerName;
-			});
-		}
-	}, {
 		key: 'writing',
 		value: function writing() {
-			var upperHomeContainerName = this._uppercase_first_letter(this.homeContainerName);
-			this.fs.copyTpl(this.templatePath('main'), this.destinationPath(this.appName), {
-				appName: this.options.appName,
-				rootURL: this.rootUrl,
-				cssPrefix: this.cssPrefix,
-				homeContainerName: this.homeContainerName,
-				upperHomeContainerName: upperHomeContainerName
+			var upperContainerName = this._uppercase_first_letter(this.options.containerName);
+			this.fs.copyTpl(this.templatePath('container'), this.destinationPath('client/' + this.options.containerName), {
+				containerName: this.options.containerName,
+				upperContainerName: upperContainerName
 			});
 		}
 	}, {
