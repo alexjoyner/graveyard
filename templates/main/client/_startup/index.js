@@ -15,7 +15,7 @@ const BASE_PROVIDER_ELEMENT = (
 		<Router history={browserHistory} routes={routes}/>
 	</Provider>);
 
-const BASE_INDEX_HTML_APP_ELEMENT = document.querySelector('.<% cssPrefix %>-appContainer');
+const BASE_INDEX_HTML_APP_ELEMENT = document.querySelector('.<%= cssPrefix %>-appContainer');
 
 
 ReactDOM.render(BASE_PROVIDER_ELEMENT, BASE_INDEX_HTML_APP_ELEMENT);

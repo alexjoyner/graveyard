@@ -1,5 +1,5 @@
 {
-  "name": "your-project-name",
+  "name": "<%= appName %>",
   "version": "v0.0.1",
   "scripts": {
     "start": "concurrently --kill-others 'npm run server:dev:watch' 'npm run webpack:dev'",

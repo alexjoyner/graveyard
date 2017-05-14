@@ -1,7 +1,7 @@
 project-starter
 ===============
-[![Build Status](https://travis-ci.org/alexjoyner/<% appName %>.svg?branch=master)](https://travis-ci.org/alexjoyner/<% appName %>)
-[![Coverage Status](https://coveralls.io/repos/github/alexjoyner/<% appName %>/badge.svg?branch=master)](https://coveralls.io/github/alexjoyner/<% appName %>?branch=master)
+[![Build Status](https://travis-ci.org/alexjoyner/<%= appName %>.svg?branch=master)](https://travis-ci.org/alexjoyner/<%= appName %>)
+[![Coverage Status](https://coveralls.io/repos/github/alexjoyner/<%= appName %>/badge.svg?branch=master)](https://coveralls.io/github/alexjoyner/<%= appName %>?branch=master)
 
 this is the foundation boilerplate that I am using to build my projects.  It is definitely a work in progress, so proceed with caution if you would like to use it yourself.
 

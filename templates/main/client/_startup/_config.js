@@ -1,1 +1,1 @@
-export const ROOT_URL = <% rootURL %>;
+export const ROOT_URL = '<%= rootURL %>';

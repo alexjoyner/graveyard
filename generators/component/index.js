@@ -24,7 +24,10 @@ var AppGenerator = function (_Generator) {
 	function AppGenerator(args, opts) {
 		_classCallCheck(this, AppGenerator);
 
-		return _possibleConstructorReturn(this, (AppGenerator.__proto__ || Object.getPrototypeOf(AppGenerator)).call(this, args, opts));
+		var _this = _possibleConstructorReturn(this, (AppGenerator.__proto__ || Object.getPrototypeOf(AppGenerator)).call(this, args, opts));
+
+		_this.argument('componentName', { type: String, required: true });
+		return _this;
 	}
 
 	_createClass(AppGenerator, [{
@@ -38,39 +41,37 @@ var AppGenerator = function (_Generator) {
 			this.sourceRoot(_path2.default.resolve(__dirname + '/../../templates'));
 		}
 	}, {
-		key: 'promting',
-		value: function promting() {
+		key: 'prompting',
+		value: function prompting() {
 			var _this2 = this;
 
-			var promps = [];
-			if (!this.config.get('MainAppCreation')) {
-				promps.push({
-					type: 'input',
-					name: 'containerName',
-					message: 'What is the name of your container?',
-					default: 'Home'
-				});
-			}
-			return this.prompt(promps).then(function (answers) {
-				_this2.containerName = _this2.config.get('homeContainerName') || answers.containerName;
+			return this.prompt([{
+				type: 'input',
+				name: 'componentLocation',
+				message: 'Where are we storing this component?',
+				default: 'Utils'
+			}]).then(function (answers) {
+				_this2.componentLocation = answers.componentLocation;
 			});
 		}
 	}, {
 		key: 'writing',
 		value: function writing() {
-			var upperContainerName = this._uppercase_first_letter(this.containerName);
-			this.fs.copyTpl(this.templatePath('container'), this.destinationPath('client/' + upperContainerName), {
-				containerName: this.homeContainerName,
-				upperContainerName: upperContainerName
-			});
-			this.fs.copyTpl(this.templatePath('component'), this.destinationPath('client/' + upperContainerName + '/' + upperContainerName + 'UI'), {
-				componentName: upperContainerName + 'UI'
+			var upperComponentLocation = this._uppercase_first_letter(this.componentLocation);
+			var lowerComponentName = this._lowercase_first_letter(this.options.componentName);
+			this.fs.copyTpl(this.templatePath('component'), this.destinationPath('client/' + upperComponentLocation + '/' + lowerComponentName), {
+				componentName: lowerComponentName
 			});
 		}
 	}, {
 		key: '_uppercase_first_letter',
 		value: function _uppercase_first_letter(string) {
 			return string.charAt(0).toUpperCase() + string.slice(1);
+		}
+	}, {
+		key: '_lowercase_first_letter',
+		value: function _lowercase_first_letter(string) {
+			return string.charAt(0).toLowerCase() + string.slice(1);
 		}
 	}]);
 

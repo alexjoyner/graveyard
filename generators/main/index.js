@@ -38,34 +38,64 @@ var AppGenerator = function (_Generator) {
 			this.sourceRoot(_path2.default.resolve(__dirname + '/../../templates'));
 		}
 	}, {
-		key: 'promting',
-		value: function promting() {
+		key: 'prompting',
+		value: function prompting() {
 			var _this2 = this;
 
-			var promps = [];
-			if (!this.config.get('MainAppCreation')) {
-				promps.push({
-					type: 'input',
-					name: 'containerName',
-					message: 'What is the name of your container?',
-					default: 'Home'
-				});
-			}
-			return this.prompt(promps).then(function (answers) {
-				_this2.containerName = _this2.config.get('homeContainerName') || answers.containerName;
+			return this.prompt([{
+				type: 'input',
+				name: 'name',
+				message: 'Your project name?',
+				default: this.appname // Default to current folder name
+			}, {
+				type: 'input',
+				name: 'rootUrl',
+				message: 'root url of your local server?',
+				default: 'http://localhost:8000'
+			}, {
+				type: 'input',
+				name: 'cssPrefix',
+				message: 'css prefix',
+				default: 'ro'
+			}, {
+				type: 'input',
+				name: 'homeContainerName',
+				message: 'Home container name',
+				default: 'Home' // Default to current folder name
+			}]).then(function (answers) {
+				_this2.name = answers.name;
+				_this2.rootUrl = answers.rootUrl;
+				_this2.cssPrefix = answers.cssPrefix;
+				_this2.config.set('homeContainerName', answers.homeContainerName);
+				_this2.homeContainerName = answers.homeContainerName;
 			});
 		}
 	}, {
 		key: 'writing',
 		value: function writing() {
-			var upperContainerName = this._uppercase_first_letter(this.containerName);
-			this.fs.copyTpl(this.templatePath('container'), this.destinationPath('client/' + upperContainerName), {
-				containerName: this.homeContainerName,
-				upperContainerName: upperContainerName
-			});
-			this.fs.copyTpl(this.templatePath('component'), this.destinationPath('client/' + upperContainerName + '/' + upperContainerName + 'UI'), {
-				componentName: upperContainerName + 'UI'
-			});
+			var tplVars = {
+				appName: this.name,
+				rootURL: this.rootUrl,
+				cssPrefix: this.cssPrefix,
+				upperHomeContainerName: this._uppercase_first_letter(this.homeContainerName),
+				homeContainerName: this.homeContainerName
+			};
+			this.log('tplVars: ', JSON.stringify(tplVars));
+			this.fs.copyTpl(this.templatePath('main'), this.destinationPath(''), tplVars);
+			// Copy all dotfiles
+			this.fs.copy(this.templatePath('main/.*'), this.destinationRoot());
+		}
+	}, {
+		key: 'install',
+		value: function install() {
+			//this.npmInstall();
+		}
+	}, {
+		key: 'end',
+		value: function end() {
+			this.log('Thanks for choosing ro-react!');
+			this.config.delete('MainAppCreation');
+			this.config.delete('homeContainerName');
 		}
 	}, {
 		key: '_uppercase_first_letter',

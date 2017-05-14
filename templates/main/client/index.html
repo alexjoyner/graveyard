@@ -1,11 +1,11 @@
 <html>
 <head>
-    <title><% appName %></title>
+    <title><%= appName %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="<% appName %>"/>
+    <meta name="description" content="<%= appName %>"/>
 </head>
 <body >
-    <App class="<% cssPrefix %>-appContainer"></App>
+    <App class="<%= cssPrefix %>-appContainer"></App>
 </body>
 <%% if (webpackConfig.metadata.isDevServer) { %%>
     <script src="/webpack-dev-server.js"></script>

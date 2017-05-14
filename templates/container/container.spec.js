@@ -1,9 +1,8 @@
 import {renderComponent, expect} from 'ro-dev-utils';
-import {CONTAINER_NAME} from './_config';
 import {<%= upperContainerName %>} from './container';
 import reducers from '../_startup/combine_reducers';
 // Used describe to group together similar tests
-describe(<%= upperContainerName %> + ' Container', () => {
+describe('<%= upperContainerName %> Container', () => {
 	let component;
 	beforeEach(() => {
 		component = renderComponent(<%= upperContainerName %>, {params: {}}, {}, reducers);

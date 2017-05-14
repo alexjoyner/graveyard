@@ -6,10 +6,6 @@ var _yeomanGenerator = require('yeoman-generator');
 
 var _yeomanGenerator2 = _interopRequireDefault(_yeomanGenerator);
 
-var _path = require('path');
-
-var _path2 = _interopRequireDefault(_path);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21,69 +17,18 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var AppGenerator = function (_Generator) {
 	_inherits(AppGenerator, _Generator);
 
-	function AppGenerator(args, opts) {
+	function AppGenerator() {
 		_classCallCheck(this, AppGenerator);
 
-		var _this = _possibleConstructorReturn(this, (AppGenerator.__proto__ || Object.getPrototypeOf(AppGenerator)).call(this, args, opts));
-
-		_this.config.save();
-		_this.argument('appName', { type: String, required: false });
-		return _this;
+		return _possibleConstructorReturn(this, (AppGenerator.__proto__ || Object.getPrototypeOf(AppGenerator)).apply(this, arguments));
 	}
 
 	_createClass(AppGenerator, [{
 		key: 'initializing',
 		value: function initializing() {
-			this.appName = this.options.appName || this.appName;
-			this._paths();
-		}
-	}, {
-		key: '_paths',
-		value: function _paths() {
-			this.sourceRoot(_path2.default.resolve(__dirname + '/../../templates'));
-		}
-	}, {
-		key: 'prompting',
-		value: function prompting() {
-			var _this2 = this;
-
-			return this.prompt([{
-				type: 'input',
-				name: 'rootUrl',
-				message: 'What is the root url of your local server?',
-				default: 'http://localhost:8000'
-			}, {
-				type: 'input',
-				name: 'cssPrefix',
-				message: 'What would you like the css prefix?',
-				default: 'ro'
-			}, {
-				type: 'input',
-				name: 'homeContainerName',
-				message: 'What is the name of your home container? All lowercase',
-				default: 'home'
-			}]).then(function (answers) {
-				_this2.rootUrl = answers.rootUrl;
-				_this2.cssPrefix = answers.cssPrefix;
-				_this2.homeContainerName = answers.homeContainerName;
-			});
-		}
-	}, {
-		key: 'writing',
-		value: function writing() {
-			var upperHomeContainerName = this._uppercase_first_letter(this.homeContainerName);
-			this.fs.copyTpl(this.templatePath('main'), this.destinationPath(this.appName), {
-				appName: this.options.appName,
-				rootURL: this.rootUrl,
-				cssPrefix: this.cssPrefix,
-				homeContainerName: this.homeContainerName,
-				upperHomeContainerName: upperHomeContainerName
-			});
-		}
-	}, {
-		key: '_uppercase_first_letter',
-		value: function _uppercase_first_letter(string) {
-			return string.charAt(0).toUpperCase() + string.slice(1);
+			this.config.set('MainAppCreation', true);
+			this.composeWith(require.resolve('../main'));
+			this.composeWith(require.resolve('../container'));
 		}
 	}]);
 
