@@ -61,7 +61,7 @@ class AppGenerator extends Generator {
 		);
 	}
 	install(){
-		//this.npmInstall();
+		this.npmInstall();
 	}
 	end(){
 		this.log('Thanks for choosing ro-react!');

@@ -24,20 +24,17 @@ class AppGenerator extends Generator {
 	}
 	writing() {
 		let upperComponentLocation = this._uppercase_first_letter(this.componentLocation);
-		let lowerComponentName = this._lowercase_first_letter(this.options.componentName);
+		let upperComponentName = this._uppercase_first_letter(this.options.componentName);
 		this.fs.copyTpl(
 			this.templatePath('component'),
-			this.destinationPath('client/' + upperComponentLocation + '/' + lowerComponentName),
+			this.destinationPath('client/' + upperComponentLocation + '/' + upperComponentName),
 			{
-				componentName : lowerComponentName
+				componentName : upperComponentName
 			}
 		)
 	}
-	_uppercase_first_letter(string){
+	_uppercase_first_letter(string) {
 		return string.charAt(0).toUpperCase() + string.slice(1);
-	}
-	_lowercase_first_letter(string){
-		return string.charAt(0).toLowerCase() + string.slice(1);
 	}
 }
 

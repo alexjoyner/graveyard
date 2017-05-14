@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {} from './actions';
-import {<%= upperContainerName %>UI} from './<%= containerName %>UI';
+import {<%= upperContainerName %>UI} from './<%= upperContainerName %>UI';
 
 function mapStateToProps(state) {
 	return {};
