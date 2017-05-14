@@ -83,12 +83,14 @@ var AppGenerator = function (_Generator) {
 			this.log('tplVars: ', JSON.stringify(tplVars));
 			this.fs.copyTpl(this.templatePath('main'), this.destinationPath(''), tplVars);
 			// Copy all dotfiles
-			this.fs.copy(this.templatePath('main/.*'), this.destinationRoot());
+			this.fs.copy(this.templatePath('idea/scopes'), this.destinationPath('.idea/scopes'));
+			// Copy all dotfiles
+			this.fs.copy(this.templatePath('main/**/.*'), this.destinationRoot());
 		}
 	}, {
 		key: 'install',
 		value: function install() {
-			this.npmInstall();
+			//this.npmInstall();
 		}
 	}, {
 		key: 'end',

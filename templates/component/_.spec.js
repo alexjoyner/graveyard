@@ -5,12 +5,12 @@ import reducers from '../../_startup/combine_reducers';
 describe('<%= componentName %> component', () => {
 	let component;
 	beforeEach(() => {
-		renderComponent(<%= componentName %>, {
+		component = renderComponent(<%= componentName %>, {
 			props: {}
 		}, {}, reducers);
 	});
 
-	it('Should render Hello World', () => {
+	it('Should render Hello <%= componentName %>', () => {
 		expect(component).to.contain('HELLO <%= componentName %>');
 	});
 });

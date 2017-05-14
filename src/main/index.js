@@ -56,12 +56,17 @@ class AppGenerator extends Generator {
 		);
 		// Copy all dotfiles
 		this.fs.copy(
-			this.templatePath('main/.*'),
+			this.templatePath('idea/scopes'),
+			this.destinationPath('.idea/scopes')
+		);
+		// Copy all dotfiles
+		this.fs.copy(
+			this.templatePath('main/**/.*'),
 			this.destinationRoot()
 		);
 	}
 	install(){
-		this.npmInstall();
+		//this.npmInstall();
 	}
 	end(){
 		this.log('Thanks for choosing ro-react!');
