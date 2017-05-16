@@ -11,7 +11,6 @@ dev/sass/.sass-cache/*
 !.elasticbeanstalk/*.global.yml
 
 # compiled output
-/docs
 /tmp
 
 # dependencies
