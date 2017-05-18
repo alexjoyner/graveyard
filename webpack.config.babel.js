@@ -7,6 +7,5 @@ switch (ENV) {
   case 'dev':
   case 'development':
   default:
-    console.log('RUNNING DEV MODE WEBPACK');
     module.exports = webpack_dev_config(BASE_DIR);
 }

@@ -4,7 +4,7 @@
   "scripts": {
     "start": "concurrently --kill-others 'npm run server:dev:watch' 'npm run webpack:dev'",
     "electron": "electron ./electron/main.js",
-    "build": "NODE_ENV='production' webpack -p && babel ",
+    "build": "webpack -p --define process.env.NODE_ENV='\"production\"' --progress --colors",
     "production": "pm2 start process.yml --env env_production && pm2 logs",
     "server:dev": "babel-node ./server/server.js",
     "server:dev:watch": "nodemon ./server/server.js --exec babel-node",
