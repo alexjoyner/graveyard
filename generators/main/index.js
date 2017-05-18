@@ -90,7 +90,7 @@ var AppGenerator = function (_Generator) {
 	}, {
 		key: 'install',
 		value: function install() {
-			//this.npmInstall();
+			this.npmInstall();
 		}
 	}, {
 		key: 'end',
