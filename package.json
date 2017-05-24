@@ -21,14 +21,14 @@
     "express": "^4.14.0",
     "lodash": "^3.10.1",
     "moment": "^2.14.1",
-    "react": "^0.14.3",
-    "react-dom": "^0.14.3",
-    "react-redux": "^4.0.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.4",
+    "redux": "^3.6.0",
     "react-router": "^2.0.1",
-    "redux": "^3.0.4",
     "redux-form": "^6.0.5",
     "redux-promise": "^0.5.3",
-    "ro-utils": "^1.0.0-alpha.2"
+    "ro-utils": "^1.0.0-alpha.3"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -40,6 +40,6 @@
     "coveralls": "^2.13.1",
     "istanbul": "^1.1.0-alpha.1",
     "mocha": "^3.3.0",
-    "ro-dev-utils": "^1.0.0-Alpha.2"
+    "ro-dev-utils": "^1.0.0-Alpha.3"
   }
 }
