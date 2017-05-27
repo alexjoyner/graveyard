@@ -9,7 +9,7 @@
     "server:dev": "babel-node ./server/server.js",
     "server:dev:watch": "nodemon ./server/server.js --exec babel-node",
     "webpack:dev": "webpack-dev-server -d --progress --profile --colors --watch --display-error-details --content-base ./docs --inline --hot",
-    "test": "mocha $(find ./client ./server -path '*spec*') --full-trace --compilers js:babel-core/register --require ignore-styles",
+    "test": "mocha $(find ./client ./server -path '*spec*') --compilers js:babel-core/register --require ignore-styles",
     "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec $(find ./client ./server -path '*spec*')  --compilers js:babel-core/register ",
     "test:watch": "PORT=2080 npm run test -- --watch ",
     "cover:with_open": "npm run cover && open ./coverage/lcov-report/index.html"
@@ -28,7 +28,7 @@
     "react-router": "^2.0.1",
     "redux-form": "^6.0.5",
     "redux-promise": "^0.5.3",
-    "ro-utils": "^1.0.0-alpha.3"
+    "ro-utils": "^1.0.0-alpha.16"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

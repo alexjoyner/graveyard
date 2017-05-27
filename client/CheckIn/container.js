@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 import {postCheckIn} from './actions';
 import {CheckInUI} from './CheckInUI';
 
-function mapStateToProps(state) {
-	return {};
+function mapStateToProps({checkIn}) {
+	return {
+		checkIn
+	};
 }
 function mapDispatchToProps(dispatch){
 	return bindActionCreators({

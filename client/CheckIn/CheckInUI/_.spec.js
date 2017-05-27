@@ -10,7 +10,13 @@ describe('CheckInUI component', () => {
 		}, {}, reducers);
 	});
 
-	xit('Should render Hello CheckInUI', () => {
-		expect(component).to.contain('HELLO CheckInUI');
+	it('Should render NavBar', () => {
+		expect(component.find('.NavBar')).to.exist;
 	});
+	it('Should render footer', () => {
+		expect(component.find('.Footer')).to.exist;
+	});
+	it('Should render the Check In Form', () => {
+		expect(component.find('.FormBody')).to.exist;
+	})
 });

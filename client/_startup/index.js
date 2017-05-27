@@ -6,7 +6,7 @@ import { Router, browserHistory } from 'react-router';
 import promise from 'redux-promise';
 import reducers from './combine_reducers';
 import routes from './routes';
-
+require('./globalStyles.sass');
 const CREATE_STORE_WITH_PROMISES = applyMiddleware(promise)(createStore);
 const STORE_WITH_PROMISES = CREATE_STORE_WITH_PROMISES(reducers);
 

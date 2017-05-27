@@ -2,12 +2,12 @@ import React from 'react';
 require('./_.sass');
 
 
-const CheckOutUI = (props) => {
+const Footer = (props) => {
 	return (
 		<div>
-			<h1>HELLO CheckOutUI</h1>
+			<div className="Footer"></div>
 		</div>
 	);
 };
 
-export {CheckOutUI};
+export {Footer};

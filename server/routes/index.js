@@ -1,10 +1,9 @@
 'use strict';
 import express from 'express';
 let router = express.Router();
+import {newClient} from './clients/newClient'
 
-//import {getDemos} from '../../../demo/post_new_demo';
-
-//router.get('/demos', getDemos);
+router.post('/new/client', newClient);
 
 
 export {router};

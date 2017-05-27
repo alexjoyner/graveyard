@@ -1,26 +1,36 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
-
+import {Field, reduxForm} from 'redux-form';
+import {Header} from '../../Utils/Form/Header';
+import {Input} from '../../Utils/Form/Input';
+import {TextArea} from '../../Utils/Form/TextArea';
+import {BasicBtn} from '../../Utils/Buttons/BasicBtn';
+require('../../Utils/Form/Container/_.sass');
+require('../../Utils/Form/Body/_.sass');
+require('./_.sass');
 const CheckInFormComponent = (props) => {
-	const { handleSubmit } = props;
+	const {handleSubmit} = props;
 	return (
-		<form onSubmit={handleSubmit}>
-			<div>
-				<label htmlFor="firstName">First Name</label>
-				<br/>
-				<Field name="firstName" component="input" type="text"/>
+		<form id="CheckInForm"
+		      className="FormContainer"
+		      onSubmit={handleSubmit}>
+			<Header HeaderText="Check In"/>
+			<div className="FormBody">
+				<Field name="clientName"
+				       component={Input}
+				       type="text"
+				       props={{
+				       	placeholder: 'Clients full name?'
+				       }}/>
+				<Field name="problemDesc"
+				       component={TextArea}
+				       type="textarea"
+				       props={{
+					       placeholder: 'Describe the problem?',
+					       rows: 5,
+					       maxLength: 140
+				       }}/>
+				<BasicBtn type="submit" text="Submit"/>
 			</div>
-			<div>
-				<label htmlFor="lastName">Last Name</label>
-				<br/>
-				<Field name="lastName" component="input" type="text"/>
-			</div>
-			<div>
-				<label htmlFor="description">Short Description</label>
-				<br/>
-				<Field name="description" component="textarea" type="text"/>
-			</div>
-			<button type="submit">Submit</button>
 		</form>
 	)
 };
