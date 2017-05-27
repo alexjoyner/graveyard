@@ -10,7 +10,7 @@
     "server:dev:watch": "nodemon ./server/server.js --exec babel-node",
     "webpack:dev": "webpack-dev-server -d --progress --profile --colors --watch --display-error-details --content-base ./docs --inline --hot",
     "test": "mocha $(find ./client ./server -path '*spec*') --compilers js:babel-core/register --require ignore-styles",
-    "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec $(find ./client ./server -path '*spec*')  --compilers js:babel-core/register ",
+    "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec $(find ./client ./server -path '*spec*')  --compilers js:babel-core/register --require ignore-styles",
     "test:watch": "PORT=2080 npm run test -- --watch ",
     "cover:with_open": "npm run cover && open ./coverage/lcov-report/index.html"
   },

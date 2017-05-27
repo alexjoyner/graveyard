@@ -7,10 +7,10 @@ import {BasicBtn} from '../../Utils/Buttons/BasicBtn';
 require('../../Utils/Form/Container/_.sass');
 require('../../Utils/Form/Body/_.sass');
 require('./_.sass');
-const CheckInFormComponent = (props) => {
+const CheckOutFormComponent = (props) => {
 	const {handleSubmit} = props;
 	return (
-		<form id="CheckInForm"
+		<form id="CheckOutForm"
 		      className="FormContainer"
 		      onSubmit={handleSubmit}>
 			<Header HeaderText="Check In"/>
@@ -19,13 +19,13 @@ const CheckInFormComponent = (props) => {
 				       component={Input}
 				       type="text"
 				       props={{
-				       	placeholder: 'Clients full name?'
+					       placeholder: 'Search by client name'
 				       }}/>
 				<Field name="problemDesc"
 				       component={TextArea}
 				       type="textarea"
 				       props={{
-					       placeholder: 'Describe the problem?',
+					       placeholder: 'Search by problem description',
 					       rows: 5,
 					       maxLength: 140
 				       }}/>
@@ -36,8 +36,8 @@ const CheckInFormComponent = (props) => {
 };
 
 // Decorate the form component
-const CheckInForm = reduxForm({
-	form: 'checkinclient' // a unique name for this form
-})(CheckInFormComponent);
+const CheckOutForm = reduxForm({
+	form: 'checkoutclient' // a unique name for this form
+})(CheckOutFormComponent);
 
-export {CheckInForm};
+export {CheckOutForm};

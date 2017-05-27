@@ -1,14 +1,19 @@
 import React from 'react';
+import {Success} from '../Icons/Success';
 require('./_.sass');
 
 
-const Notification = (props) => {
+const Notification = ({header, message}) => {
 	return (
 		<div>
 			<div className="Notification">
-				<i className="statusIcon">Status</i>
-				<h1 className="statusHeader">Status Header</h1>
-				<div className="message">Message</div>
+				<div className="iconContainer">
+					<Success />
+				</div>
+				<div className="contentContainer">
+					<h1 className="statusHeader">{header}</h1>
+					<div className="message">{message}</div>
+				</div>
 			</div>
 		</div>
 	);

@@ -15,7 +15,28 @@ class Client {
 		if(this._clientAlreadyExists(clients)){
 			return callback(CLIENT_EXISTS);
 		}
-		this._writeNewClientToDisk(clients, newClient);
+		this._writeClientsToDisk(clients, newClient);
+		callback();
+		return this;
+	}
+
+	checkOut(callback){
+		let clients = this._getAllClients();
+		if(!this._clientAlreadyExists(clients)){
+			return callback({
+				status: 400,
+				message: 'Client doesn\'t exist'
+			});
+		}
+		let existingClientIndex = this._getExistingClientIndex(clients);
+		if(clients[existingClientIndex].checkOut){
+			return callback({
+				status: 400,
+				message: 'Client already checked out'
+			});
+		}
+		clients[existingClientIndex]['checkOut'] = new Date();
+		this._writeClientsToDisk(clients);
 		callback();
 		return this;
 	}
@@ -24,15 +45,26 @@ class Client {
 		return readFileData('clients.txt');
 	}
 
-	_clientAlreadyExists(clients){
-		let filtered = clients.filter((client) => {
+	_getExistingClient(clients){
+		return clients.filter((client) => {
 			return (client.clientName === this.clientName)
 		});
-		return filtered.length !== 0;
+	}
+	_getExistingClientIndex(clients){
+		for(let i = 0; i < clients.length; i++){
+			if(clients[i].clientName === this.clientName){
+				return i;
+			}
+		}
+	}
+	_clientAlreadyExists(clients){
+		return this._getExistingClient(clients).length !== 0;
 	}
 
-	_writeNewClientToDisk(allClients, newClient){
-		allClients.push(newClient);
+	_writeClientsToDisk(allClients, newClient){
+		if(newClient){
+			allClients.push(newClient);
+		}
 		fs.writeFileSync('clients.txt', JSON.stringify(allClients));
 	}
 

@@ -5,19 +5,21 @@ import {Footer} from '../../Utils/page/Footer';
 import {Notification} from '../../Utils/Notification';
 require('./_.sass');
 
+
 const CheckInUI = (props) => {
-	let {postCheckIn} = props;
-	let showNotif = true;
-	let successNotif = (showNotif)? <Notification {...props}/> : null;
+	let {postCheckIn, hideNotif, showNotif} = props;
 	const createClient = (data) => {
-		showNotif = false;
-		postCheckIn(data);
+		postCheckIn(data).data.then(() => {
+			setTimeout(() => {
+				hideNotif();
+			}, 5000)
+		});
 	};
 	return (
 		<div>
 			<NavBar/>
 			<CheckInForm {...props} onSubmit={createClient}/>
-			{successNotif}
+			{((showNotif)? <Notification {...props} header="Success!" message="Client Created"/> : null)}
 			<Footer/>
 		</div>
 	);

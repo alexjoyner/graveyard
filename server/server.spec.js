@@ -1,9 +1,6 @@
 import { request } from 'ro-dev-utils';
 import {app} from './server';
-let port = 2201;
-request.agent(app.listen(port, function () {
-	console.log('Test app running on port ' + port);
-}));
+request.agent(app.listen());
 
 describe('loading node express', () => {
 	it('responds to /', function testSlash(done) {
