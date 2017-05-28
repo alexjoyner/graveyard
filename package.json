@@ -6,6 +6,7 @@
     "electron": "electron ./electron/main.js",
     "package": "babel server --out-dir electron && electron-packager ./electron CET-DB --all --out ~/Desktop/CET-DB --electron-version 1.6.10 --overwrite",
     "build": "webpack -p --define process.env.NODE_ENV='\"production\"'",
+    "build:server": "babel server --out-dir serverDist",
     "production": "pm2 start process.yml --env env_production && pm2 logs",
     "server:dev": "babel-node ./server/server.js",
     "server:dev:watch": "nodemon ./server/server.js --exec babel-node",
