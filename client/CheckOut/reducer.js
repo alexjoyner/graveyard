@@ -6,8 +6,6 @@ const INITIAL_STATE = {
 
 const Reducer = (state = INITIAL_STATE, action) => {
 	switch(action.type) {
-		case HIDE_NOTIFICATIONS:
-			return {...state, showNotif: false};
 		case CHECKOUT_CLIENT:
 			return {...state, showNotif: true};
 		default:

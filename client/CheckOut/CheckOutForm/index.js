@@ -13,21 +13,13 @@ const CheckOutFormComponent = (props) => {
 		<form id="CheckOutForm"
 		      className="FormContainer"
 		      onSubmit={handleSubmit}>
-			<Header HeaderText="Check In"/>
+			<Header HeaderText="Check Out"/>
 			<div className="FormBody">
 				<Field name="clientName"
 				       component={Input}
 				       type="text"
 				       props={{
 					       placeholder: 'Search by client name'
-				       }}/>
-				<Field name="problemDesc"
-				       component={TextArea}
-				       type="textarea"
-				       props={{
-					       placeholder: 'Search by problem description',
-					       rows: 5,
-					       maxLength: 140
 				       }}/>
 				<BasicBtn type="submit" text="Submit"/>
 			</div>

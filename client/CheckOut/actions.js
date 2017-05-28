@@ -10,10 +10,5 @@ const checkOutClient = (clientData) => {
 		data: request
 	}
 };
-const hideNotif = () => {
-	return {
-		type: HIDE_NOTIFICATIONS
-	}
-};
 
-export {CHECKOUT_CLIENT, checkOutClient, hideNotif, HIDE_NOTIFICATIONS};
+export {CHECKOUT_CLIENT, checkOutClient};

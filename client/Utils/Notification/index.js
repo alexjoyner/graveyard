@@ -1,14 +1,17 @@
 import React from 'react';
 import {Success} from '../Icons/Success';
+import {Error} from '../Icons/Error';
 require('./_.sass');
 
 
-const Notification = ({header, message}) => {
+const Notification = (props) => {
+	console.log(props);
+	let {header, message, status} = props;
 	return (
 		<div>
 			<div className="Notification">
 				<div className="iconContainer">
-					<Success />
+					{(status === 'success')?<Success /> : <Error/>}
 				</div>
 				<div className="contentContainer">
 					<h1 className="statusHeader">{header}</h1>

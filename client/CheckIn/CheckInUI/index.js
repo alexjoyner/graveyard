@@ -8,18 +8,27 @@ require('./_.sass');
 
 const CheckInUI = (props) => {
 	let {postCheckIn, hideNotif, showNotif} = props;
+	let {notifId} = props.Notifs;
 	const createClient = (data) => {
-		postCheckIn(data).data.then(() => {
+		postCheckIn(data).data.then(({data}) => {
+			showNotif(data.notifInfo);
 			setTimeout(() => {
 				hideNotif();
 			}, 5000)
 		});
 	};
+	const renderNotif = () => {
+		if (notifId === 1) {
+			return (
+				<Notification {...props}{...props.Notifs.content}/>
+			)
+		}
+	};
 	return (
 		<div>
 			<NavBar/>
 			<CheckInForm {...props} onSubmit={createClient}/>
-			{((showNotif)? <Notification {...props} header="Success!" message="Client Created"/> : null)}
+			{renderNotif()}
 			<Footer/>
 		</div>
 	);

@@ -8,18 +8,27 @@ require('./_.sass');
 
 const CheckOutUI = (props) => {
 	const {checkOutClient, showNotif, hideNotif} = props;
+	const {notifId} = props.Notifs;
 	const completeClient = (data) => {
-		checkOutClient(data).data.then(() => {
+		checkOutClient(data).data.then(({data}) => {
+			showNotif(data.notifInfo);
 			setTimeout(() => {
 				hideNotif();
 			}, 5000)
 		});
 	};
+	const renderNotif = () => {
+		if (notifId === 1) {
+			return (
+				<Notification {...props}{...props.Notifs.content}/>
+			)
+		}
+	};
 	return (
 		<div>
 			<NavBar/>
 			<CheckOutForm {...props} onSubmit={completeClient}/>
-			{((showNotif)? <Notification {...props} header="Success!" message="Client Checked Out!"/> : null)}
+			{renderNotif()}
 			<Footer/>
 		</div>
 	);

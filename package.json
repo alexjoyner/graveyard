@@ -1,10 +1,11 @@
 {
   "name": "cet-db",
-  "version": "v0.0.1",
+  "version": "0.0.1",
   "scripts": {
     "start": "concurrently --kill-others 'npm run server:dev:watch' 'npm run webpack:dev'",
     "electron": "electron ./electron/main.js",
-    "build": "webpack -p --define process.env.NODE_ENV='\"production\"' --progress --colors",
+    "package": "babel server --out-dir electron && electron-packager ./electron CET-DB --all --out ~/Desktop/CET-DB --electron-version 1.6.10 --overwrite",
+    "build": "webpack -p --define process.env.NODE_ENV='\"production\"'",
     "production": "pm2 start process.yml --env env_production && pm2 logs",
     "server:dev": "babel-node ./server/server.js",
     "server:dev:watch": "nodemon ./server/server.js --exec babel-node",
@@ -18,14 +19,15 @@
   "dependencies": {
     "axios": "^0.16.1",
     "body-parser": "^1.15.2",
+    "electron": "^1.6.10",
     "express": "^4.14.0",
     "lodash": "^3.10.1",
     "moment": "^2.14.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
-    "redux": "^3.6.0",
     "react-router": "^2.0.1",
+    "redux": "^3.6.0",
     "redux-form": "^6.0.5",
     "redux-promise": "^0.5.3",
     "ro-utils": "^1.0.0-alpha.16"
@@ -38,6 +40,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
     "coveralls": "^2.13.1",
+    "electron-packager": "^8.7.0",
     "istanbul": "^1.1.0-alpha.1",
     "mocha": "^3.3.0",
     "ro-dev-utils": "^1.0.0-Alpha.3"

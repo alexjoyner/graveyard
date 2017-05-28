@@ -1,5 +1,5 @@
 import fs from 'fs';
-import {CLIENT_EXISTS} from './errors';
+import {CLIENT_EXISTS, CLIENT_DOESNT_EXIST, ALREADY_CHECKED_OUT} from './errors';
 import {readFileData} from './readFileData';
 class Client {
 	constructor({ clientName, problemDesc}){
@@ -23,17 +23,11 @@ class Client {
 	checkOut(callback){
 		let clients = this._getAllClients();
 		if(!this._clientAlreadyExists(clients)){
-			return callback({
-				status: 400,
-				message: 'Client doesn\'t exist'
-			});
+			return callback(CLIENT_DOESNT_EXIST);
 		}
 		let existingClientIndex = this._getExistingClientIndex(clients);
 		if(clients[existingClientIndex].checkOut){
-			return callback({
-				status: 400,
-				message: 'Client already checked out'
-			});
+			return callback(ALREADY_CHECKED_OUT);
 		}
 		clients[existingClientIndex]['checkOut'] = new Date();
 		this._writeClientsToDisk(clients);

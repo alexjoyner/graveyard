@@ -1,15 +1,11 @@
-import {POST_CHECK_IN, HIDE_NOTIFICATIONS} from './actions';
+import {POST_CHECK_IN} from './actions';
 
-const INITIAL_STATE = {
-	showNotif: false
-};
+const INITIAL_STATE = {};
 
 const Reducer = (state = INITIAL_STATE, action) => {
 	switch(action.type) {
-		case HIDE_NOTIFICATIONS:
-			return {...state, showNotif: false};
 		case POST_CHECK_IN:
-			return {...state, showNotif: true};
+			return {...state};
 		default:
 			return state;
 	}

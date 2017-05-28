@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {checkOutClient, hideNotif} from './actions';
+import {showNotif, hideNotif} from '../shared/notifications/actions';
+import {checkOutClient} from './actions';
 import {CheckOutUI} from './CheckOutUI';
 
-function mapStateToProps({checkOut}) {
+function mapStateToProps({Notifs}) {
 	return {
-		showNotif: checkOut.showNotif
+		Notifs
 	};
 }
 function mapDispatchToProps(dispatch){
 	return bindActionCreators({
-		checkOutClient, hideNotif //TODO: Abstract out hide notif
+		checkOutClient, hideNotif, showNotif
 	}, dispatch);
 }
 export const CheckOut = connect(mapStateToProps, mapDispatchToProps)(CheckOutUI);
