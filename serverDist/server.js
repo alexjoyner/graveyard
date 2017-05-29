@@ -17,6 +17,8 @@ var _routes = require('./routes');
 
 var _roUtils = require('ro-utils');
 
+var _ping = require('./utils/elasticsearch/ping');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = (0, _express2.default)();

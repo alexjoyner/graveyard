@@ -9,16 +9,20 @@ var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
 
-var _newClient = require('./clients/newClient');
+var _checkIn = require('./jobs/checkIn');
 
-var _checkOut = require('./clients/checkOut');
+var _checkOut = require('./jobs/checkOut');
+
+var _getClientById = require('./jobs/getClientById');
+
+var _searchUnfinished = require('./jobs/searchUnfinished');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var router = _express2.default.Router();
 
-
-router.post('/new/client', _newClient.newClient);
-router.post('/checkout', _checkOut.checkOut);
-
+router.post('/checkIn', _checkIn.checkIn);
+router.post('/checkOut/:id', _checkOut.checkOut);
+router.get('/client/:id', _getClientById.getClientById);
+router.get('/searchUnfinished/:searchTerm', _searchUnfinished.searchUnfinished);
 exports.router = router;

@@ -4,14 +4,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _client = require('./client');
+var _job = require('./job');
 
-Object.keys(_client).forEach(function (key) {
+Object.keys(_job).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _client[key];
+      return _job[key];
     }
   });
 });
@@ -36,6 +36,18 @@ Object.keys(_errors).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _errors[key];
+    }
+  });
+});
+
+var _client = require('./elasticsearch/client');
+
+Object.keys(_client).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _client[key];
     }
   });
 });

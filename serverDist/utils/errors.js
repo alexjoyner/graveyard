@@ -3,67 +3,34 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-var standardError = 200;
-/*Handle errors on the client side*/
-var CLIENT_EXISTS = {
-	status: standardError,
-	message: {
+var success = exports.success = function success(message) {
+	return {
 		notifInfo: {
 			notifId: 1,
-			header: 'Error',
-			message: 'Client already exists',
-			status: 'error'
+			header: 'Success',
+			message: message,
+			status: 'success'
 		}
-	}
+	};
 };
-var ALREADY_CHECKED_OUT = {
-	status: standardError,
-	message: {
-		notifInfo: {
-			notifId: 1,
-			header: 'Error',
-			message: 'Already checked out',
-			status: 'error'
+var standardError = function standardError(message) {
+	return {
+		status: 200,
+		message: {
+			notifInfo: {
+				notifId: 1,
+				header: 'Error',
+				message: message,
+				status: 'error'
+			}
 		}
-	}
+	};
 };
-var CLIENT_DOESNT_EXIST = {
-	status: standardError,
-	message: {
-		notifInfo: {
-			notifId: 1,
-			header: 'Error',
-			message: 'Client doesn\'t exist',
-			status: 'error'
-		}
-	}
-};
-var NO_CLIENT_NAME = {
-	status: standardError,
-	message: {
-		notifInfo: {
-			notifId: 1,
-			header: 'Error',
-			message: 'No client name passed',
-			status: 'error'
-		}
-	}
-};
-
-var NO_DESC = {
-	status: standardError,
-	message: {
-		notifInfo: {
-			notifId: 1,
-			header: 'Error',
-			message: 'No description passed',
-			status: 'error'
-		}
-	}
-};
-
-exports.CLIENT_EXISTS = CLIENT_EXISTS;
-exports.ALREADY_CHECKED_OUT = ALREADY_CHECKED_OUT;
-exports.CLIENT_DOESNT_EXIST = CLIENT_DOESNT_EXIST;
-exports.NO_CLIENT_NAME = NO_CLIENT_NAME;
-exports.NO_DESC = NO_DESC;
+var ALREADY_CHECKED_OUT = exports.ALREADY_CHECKED_OUT = standardError('Job already checked out');
+var JOB_EXISTS = exports.JOB_EXISTS = standardError('Job already exists');
+var JOB_DOESNT_EXIST = exports.JOB_DOESNT_EXIST = standardError('Job doesn\'t exist');
+var NO_CLIENT_NAME = exports.NO_CLIENT_NAME = standardError('No client name passed');
+var NO_ID_PASSED = exports.NO_ID_PASSED = standardError('No ID Passed');
+var NO_TECH_SOLUTION = exports.NO_TECH_SOLUTION = standardError('No technical solution');
+var NO_DESC = exports.NO_DESC = standardError('No description passed');
+var COULDNT_UPDATE = exports.COULDNT_UPDATE = standardError('Failed to update: Try Again :)');
