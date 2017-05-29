@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "start": "concurrently --kill-others 'npm run server:dev:watch' 'npm run webpack:dev'",
-    "electron": "electron ./electron/main.js",
-    "package": "babel server --out-dir electron && electron-packager ./electron CET-DB --all --out ~/Desktop/CET-DB --electron-version 1.6.10 --overwrite",
+    "electron": "npm run build && electron ./docs/main.js",
+    "package": "babel server --out-dir docs && electron-packager ./electron CET-DB --all --out ~/Desktop/CET-DB --electron-version 1.6.10 --overwrite",
     "build": "webpack -p --define process.env.NODE_ENV='\"production\"'",
     "build:server": "babel server --out-dir serverDist",
     "production": "pm2 start process.yml --env env_production && pm2 logs",
