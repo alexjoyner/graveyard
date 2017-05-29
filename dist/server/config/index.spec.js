@@ -10,6 +10,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 describe('App Config', function () {
 	it('Should create all initialize all middleware', function () {
-		(0, _.init)(_express2.default.Router());
+		(0, _.init)(_express2.default);
 	});
 });

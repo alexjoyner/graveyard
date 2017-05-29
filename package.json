@@ -1,9 +1,10 @@
 {
   "name": "ro-utils",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.16",
   "description": "A library set of quick utilities",
   "main": "dist/index.js",
   "scripts": {
+    "deploy": "npm run build && npm publish",
     "start": "node dist/index.js",
     "build": "babel src --out-dir dist",
     "link": "npm run build && npm link",
@@ -30,11 +31,7 @@
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "morgan": "^1.8.1",
-    "node-cache": "^4.1.1",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-redux": "^5.0.4",
-    "redux": "^3.6.0"
+    "node-cache": "^4.1.1"
   },
   "devDependencies": {
     "axios": "^0.16.1",
@@ -60,5 +57,11 @@
     "ro-dev-utils": "^1.0.0-Alpha.1",
     "sinon": "^1.17.5",
     "supertest": "^3.0.0"
+  },
+  "peerDependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.4",
+    "redux": "^3.6.0"
   }
 }

@@ -20,7 +20,7 @@ var configRoutes = function configRoutes(express, app, BASE_DIR) {
 
 	/* ERROR HANDLER */
 	app.use(function (err, req, res, next) {
-		console.log('ERROR');
+		console.log('ERROR: ', err);
 		res.status(err.status).send(err.message);
 	});
 };
