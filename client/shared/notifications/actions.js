@@ -5,7 +5,7 @@ const showNotif = (contents) => {
 	const {notifId ,header, message, status} = contents;
 	return {
 		type: SHOW_NOTIFICATION,
-		data: {notifId ,header, message, status}
+		payload: {notifId ,header, message, status}
 	}
 };
 const hideNotif = () => {

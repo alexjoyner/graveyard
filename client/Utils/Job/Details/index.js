@@ -3,9 +3,24 @@ require('./_.sass');
 
 
 const Details = (props) => {
+	const job = props._source;
 	return (
-		<div>
-			<h1>HELLO Details</h1>
+		<div className="JobDetails">
+			<div className="lineHeader">
+				CLIENT NAME
+			</div>
+			<hr/>
+			<div className="detailText">
+				{job.clientName}
+			</div>
+			<br/>
+			<div className="lineHeader">
+				Problem
+			</div>
+			<hr/>
+			<div className="detailText">
+				{job.problemDesc}
+			</div>
 		</div>
 	);
 };

@@ -7,7 +7,7 @@ const ping = client.ping({
 	if (error) {
 		console.trace('elasticsearch cluster is down!');
 	} else {
-		console.log('All is well');
+		console.log('All is well with elasticsearch');
 	}
 });
 

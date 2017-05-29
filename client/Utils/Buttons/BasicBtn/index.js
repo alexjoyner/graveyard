@@ -2,10 +2,10 @@ import React from 'react';
 require('./_.sass');
 
 
-const BasicBtn = ({text}) => {
+const BasicBtn = ({text, clickEvent}) => {
 	return (
 		<div>
-			<button className="BasicBtn">{text}</button>
+			<button className="BasicBtn" onClick={clickEvent}>{text}</button>
 		</div>
 	);
 };

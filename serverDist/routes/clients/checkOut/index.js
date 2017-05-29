@@ -26,7 +26,7 @@ var checkOut = function checkOut(req, res, next) {
 			notifInfo: {
 				notifId: 1,
 				header: 'Success',
-				message: 'Client checked out',
+				message: 'Job checked out',
 				status: 'success'
 			}
 		}).end();

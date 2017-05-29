@@ -1,69 +1,33 @@
-const standardError = 200;
-/*Handle errors on the client side*/
-const CLIENT_EXISTS = {
-	status: standardError,
-	message: {
+export const success = message => {
+	return {
 		notifInfo: {
 			notifId: 1,
-			header: 'Error',
-			message: 'Client already exists',
-			status: 'error'
+			header: 'Success',
+			message: message,
+			status: 'success'
 		}
 	}
 };
-const ALREADY_CHECKED_OUT = {
-	status: standardError,
-	message: {
-		notifInfo: {
-			notifId: 1,
-			header: 'Error',
-			message: 'Already checked out',
-			status: 'error'
+const standardError = (message) => {
+	return 	{
+		status: 200,
+		message: {
+			notifInfo: {
+				notifId: 1,
+				header: 'Error',
+				message: message,
+				status: 'error'
+			}
 		}
 	}
 };
-const CLIENT_DOESNT_EXIST = {
-	status: standardError,
-	message: {
-		notifInfo: {
-			notifId: 1,
-			header: 'Error',
-			message: 'Client doesn\'t exist',
-			status: 'error'
-		}
-	}
-};
-const NO_CLIENT_NAME = {
-	status: standardError,
-	message: {
-		notifInfo: {
-			notifId: 1,
-			header: 'Error',
-			message: 'No client name passed',
-			status: 'error'
-		}
-	}
-};
-
-const NO_DESC = {
-	status: standardError,
-	message: {
-		notifInfo: {
-			notifId: 1,
-			header: 'Error',
-			message: 'No description passed',
-			status: 'error'
-		}
-	}
-};
-
-
-export {
-	CLIENT_EXISTS,
-	ALREADY_CHECKED_OUT,
-	CLIENT_DOESNT_EXIST,
-	NO_CLIENT_NAME,
-	NO_DESC
-};
+export const ALREADY_CHECKED_OUT = standardError('Job already checked out');
+export const JOB_EXISTS = standardError('Job already exists');
+export const JOB_DOESNT_EXIST = standardError('Job doesn\'t exist');
+export const NO_CLIENT_NAME = standardError('No client name passed');
+export const NO_ID_PASSED = standardError('No ID Passed');
+export const NO_TECH_SOLUTION = standardError('No technical solution');
+export const NO_DESC = standardError('No description passed');
+export const COULDNT_UPDATE = standardError('Failed to update: Try Again :)');
 
 

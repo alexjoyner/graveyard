@@ -5,6 +5,8 @@ import {init, configRoutes} from 'ro-utils';
 let app = express();
 const BASE_DIR = path.resolve(__dirname + '/../');
 
+import {ping} from './utils/elasticsearch/ping';
+
 init(app);
 // this must come before app.get('*');
 // or it will be ovutilserwritten

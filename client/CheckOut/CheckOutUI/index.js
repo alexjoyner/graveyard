@@ -2,21 +2,14 @@ import React from 'react';
 import {NavBar} from '../../Utils/page/NavBar';
 import {Footer} from '../../Utils/page/Footer';
 import {Notification} from '../../Utils/Notification';
-import {CheckOutForm} from '../CheckOutForm'
+import {CheckOutForm} from '../CheckOutForm';
+import {SearchResults} from '../SearchResults';
 require('./_.sass');
 
 
 const CheckOutUI = (props) => {
 	const {checkOutClient, showNotif, hideNotif} = props;
 	const {notifId} = props.Notifs;
-	const completeClient = (data) => {
-		checkOutClient(data).data.then(({data}) => {
-			showNotif(data.notifInfo);
-			setTimeout(() => {
-				hideNotif();
-			}, 5000)
-		});
-	};
 	const renderNotif = () => {
 		if (notifId === 1) {
 			return (
@@ -25,9 +18,10 @@ const CheckOutUI = (props) => {
 		}
 	};
 	return (
-		<div>
+		<div id="CheckOutUi">
 			<NavBar/>
-			<CheckOutForm {...props} onSubmit={completeClient}/>
+			<CheckOutForm {...props}/>
+			<SearchResults {...props}/>
 			{renderNotif()}
 			<Footer/>
 		</div>

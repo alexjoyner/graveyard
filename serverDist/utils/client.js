@@ -33,7 +33,7 @@ var Client = function () {
 	}
 
 	_createClass(Client, [{
-		key: 'saveClient',
+		key: 'checkIn',
 		value: function saveClient(callback) {
 			var clients = this._getAllClients();
 			var newClient = this.getNewClientData();
@@ -63,7 +63,7 @@ var Client = function () {
 	}, {
 		key: '_getAllClients',
 		value: function _getAllClients() {
-			return (0, _readFileData.readFileData)('clients.txt');
+			return (0, _readFileData.readFileData)('jobs.txt');
 		}
 	}, {
 		key: '_getExistingClient',
@@ -94,7 +94,7 @@ var Client = function () {
 			if (newClient) {
 				allClients.push(newClient);
 			}
-			_fs2.default.writeFileSync('clients.txt', JSON.stringify(allClients));
+			_fs2.default.writeFileSync('jobs.txt', JSON.stringify(allClients));
 		}
 	}, {
 		key: 'getNewClientData',

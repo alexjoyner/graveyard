@@ -7,7 +7,7 @@ const INITIAL_STATE = {
 const Reducer = (state = INITIAL_STATE, action) => {
 	switch(action.type) {
 		case SHOW_NOTIFICATION:
-			let {notifId ,header, message, status} = action.data;
+			let {notifId ,header, message, status} = action.payload;
 			return {...state, notifId , content: {header, message, status}};
 		case HIDE_NOTIFICATION:
 			return {...state, notifId: 0};

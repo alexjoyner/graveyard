@@ -5,7 +5,6 @@ require('./_.sass');
 
 
 const Notification = (props) => {
-	console.log(props);
 	let {header, message, status} = props;
 	return (
 		<div>

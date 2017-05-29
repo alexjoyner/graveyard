@@ -1,11 +1,12 @@
 'use strict';
 import express from 'express';
 let router = express.Router();
-import {newClient} from './clients/newClient';
-import {checkOut} from './clients/checkOut';
-
-router.post('/new/client', newClient);
-router.post('/checkout', checkOut);
-
-
+import {checkIn} from './jobs/checkIn';
+import {checkOut} from './jobs/checkOut';
+import {getClientById} from './jobs/getClientById';
+import {searchUnfinished} from './jobs/searchUnfinished'
+router.post('/checkIn', checkIn);
+router.post('/checkOut/:id', checkOut);
+router.get('/client/:id', getClientById);
+router.get('/searchUnfinished/:searchTerm', searchUnfinished);
 export {router};

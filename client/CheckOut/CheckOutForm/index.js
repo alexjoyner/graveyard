@@ -3,25 +3,27 @@ import {Field, reduxForm} from 'redux-form';
 import {Header} from '../../Utils/Form/Header';
 import {Input} from '../../Utils/Form/Input';
 import {TextArea} from '../../Utils/Form/TextArea';
-import {BasicBtn} from '../../Utils/Buttons/BasicBtn';
+import _ from 'lodash';
 require('../../Utils/Form/Container/_.sass');
 require('../../Utils/Form/Body/_.sass');
 require('./_.sass');
 const CheckOutFormComponent = (props) => {
-	const {handleSubmit} = props;
+	const {searchUnfinished} = props;
+	const searchThrottled = _.debounce((term) => {
+		searchUnfinished(term);
+	}, 300);
 	return (
 		<form id="CheckOutForm"
-		      className="FormContainer"
-		      onSubmit={handleSubmit}>
-			<Header HeaderText="Check Out"/>
+		      className="FormContainer">
+			<Header HeaderText="Search Active Jobs"/>
 			<div className="FormBody">
-				<Field name="clientName"
+				<Field name="term"
+				       onChange={searchThrottled}
 				       component={Input}
 				       type="text"
 				       props={{
-					       placeholder: 'Search by client name'
+					       placeholder: 'Search Jobs'
 				       }}/>
-				<BasicBtn type="submit" text="Submit"/>
 			</div>
 		</form>
 	)

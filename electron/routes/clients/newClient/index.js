@@ -17,13 +17,13 @@ function newClient(req, res, next) {
 		return next(_utils.NO_DESC);
 	}
 	var client = new _utils.Client(clientInfo);
-	client.saveClient(function (err) {
+	client.checkIn(function (err) {
 		if (err) return next(err);
 		res.status(201).send({
 			notifInfo: {
 				notifId: 1,
 				header: 'Success!',
-				message: 'Client created',
+				message: 'Job created',
 				status: 'success'
 			}
 		}).end();
