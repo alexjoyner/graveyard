@@ -3,8 +3,10 @@
   "version": "0.0.1",
   "scripts": {
     "start": "concurrently --kill-others 'npm run server:dev:watch' 'npm run webpack:dev'",
-    "electron": "npm run build && electron ./docs/main.js",
-    "package": "babel server --out-dir docs && electron-packager ./electron CET-DB --all --out ~/Desktop/CET-DB --electron-version 1.6.10 --overwrite",
+    "electron": "electron ./docs/main.js",
+    "electron:build": "npm run build && electron ./docs/main.js",
+    "package": "babel server --out-dir docs && electron-packager ./docs CET-DB --all --out ~/Desktop/CET-DB --electron-version 1.6.10 --overwrite",
+    "package:mac": "electron-packager ./docs CET-DB --platform='darwin' --out ~/Desktop/CET-DB --electron-version 1.6.10 --overwrite --icon ./docs/icons/mac/icon.png.icns",
     "build": "npm run build:webpack && npm run build:server",
     "build:webpack": "webpack -p --define process.env.NODE_ENV='\"production\"'",
     "build:server": "babel server --out-dir serverDist",
