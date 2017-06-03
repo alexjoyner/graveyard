@@ -102,7 +102,8 @@ var Job = function () {
 			var _this2 = this;
 
 			var id = checkOutData.id,
-			    techSolution = checkOutData.techSolution;
+			    techSolution = checkOutData.techSolution,
+			    techName = checkOutData.techName;
 
 			_async2.default.series([function (callback) {
 				_this2.getClient(id, function (err, result) {
@@ -115,7 +116,8 @@ var Job = function () {
 			}, function (callback) {
 				_this2._updateJob(id, {
 					'checkOut': Date.now(),
-					'techSolution': techSolution
+					techSolution: techSolution,
+					techName: techName
 				}, callback);
 			}], done);
 		}

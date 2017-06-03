@@ -32,5 +32,6 @@ var JOB_DOESNT_EXIST = exports.JOB_DOESNT_EXIST = standardError('Job doesn\'t ex
 var NO_CLIENT_NAME = exports.NO_CLIENT_NAME = standardError('No client name passed');
 var NO_ID_PASSED = exports.NO_ID_PASSED = standardError('No ID Passed');
 var NO_TECH_SOLUTION = exports.NO_TECH_SOLUTION = standardError('No technical solution');
+var NO_TECH_NAME = exports.NO_TECH_NAME = standardError('No tech name');
 var NO_DESC = exports.NO_DESC = standardError('No description passed');
 var COULDNT_UPDATE = exports.COULDNT_UPDATE = standardError('Failed to update: Try Again :)');
