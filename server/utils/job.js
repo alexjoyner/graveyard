@@ -24,7 +24,7 @@ class Job {
 	}
 
 	static checkOut(checkOutData, done){
-		const {id, techSolution} = checkOutData;
+		const {id, techSolution, techName} = checkOutData;
 		async.series([
 			(callback) => {
 				this.getClient(id, (err, result) => {
@@ -38,7 +38,8 @@ class Job {
 			(callback) => {
 				this._updateJob(id, {
 					'checkOut': Date.now(),
-					'techSolution': techSolution
+					techSolution,
+					techName
 				}, callback)
 			}
 		], done);

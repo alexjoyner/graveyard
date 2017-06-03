@@ -11,14 +11,16 @@ const CheckInUI = (props) => {
 	let {notifId} = props.Notifs;
 	const createClient = (data) => {
 		postCheckIn(data).data.then(({data}) => {
-			showNotif(data.notifInfo);
+			let notifInfo = data.notifInfo;
+			notifInfo.notifId = 'checkinui';
+			showNotif(notifInfo);
 			setTimeout(() => {
 				hideNotif();
 			}, 5000)
 		});
 	};
 	const renderNotif = () => {
-		if (notifId === 1) {
+		if (notifId === 'checkinui') {
 			return (
 				<Notification {...props}{...props.Notifs.content}/>
 			)

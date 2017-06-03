@@ -8,7 +8,6 @@ require('./_.sass');
 
 
 const Posting = (form) => {
-	console.log(form);
 	const {handleSubmit} = form;
 	const {job} = form.props;
 	return (
@@ -18,6 +17,13 @@ const Posting = (form) => {
 			<div className="FormBody">
 				<Details {...job}/>
 				<br/>
+				<Field
+					type="text"
+					name="techName"
+					component={TextArea}
+					props={{
+						placeholder: "Tech Name"
+					}}/>
 				<Field
 					type="text"
 					name="techSolution"
