@@ -1,6 +1,6 @@
 {
   "name": "ro-dev-utils",
-  "version": "1.0.0-Alpha.3",
+  "version": "1.0.1",
   "description": "A library of utilities meant for development",
   "main": "dist/index.js",
   "scripts": {
@@ -28,10 +28,6 @@
   },
   "homepage": "https://github.com/alexjoyner/ro-dev-utils#readme",
   "dependencies": {
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-redux": "^5.0.4",
-    "redux": "^3.6.0",
     "axios-mock-adapter": "^1.6.1",
     "chai": "^3.5.0",
     "chai-jquery": "^2.0.0",
@@ -74,5 +70,11 @@
     "babel-core": "^6.2.1",
     "babel-preset-es2015": "^6.14.0",
     "babel-preset-react": "^6.24.1"
+  },
+  "peerDependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.4",
+    "redux": "^3.6.0"
   }
 }
