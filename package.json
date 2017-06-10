@@ -1,6 +1,6 @@
 {
   "name": "ro-utils",
-  "version": "1.0.0-alpha.16",
+  "version": "1.0.1",
   "description": "A library set of quick utilities",
   "main": "dist/index.js",
   "scripts": {
