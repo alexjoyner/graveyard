@@ -1,4 +1,4 @@
 {
   "verbose": true,
-  "ignore": ["clients.txt", "client/*"]
+    "ignore": ["clients.txt", "client/*", ".idea/workspace.xml",  ".DS_Store"]
 }
