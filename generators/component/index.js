@@ -59,7 +59,15 @@ var AppGenerator = function (_Generator) {
 		value: function writing() {
 			var upperComponentLocation = this._uppercase_first_letter(this.componentLocation);
 			var upperComponentName = this._uppercase_first_letter(this.options.componentName);
+			var slashes = upperComponentLocation.split('').filter(function (char) {
+				return char === '/';
+			}).length;
+			var dirOffset = '';
+			for (var i = 0; i < slashes; i++) {
+				dirOffset += '../';
+			}
 			this.fs.copyTpl(this.templatePath('component'), this.destinationPath('client/' + upperComponentLocation + '/' + upperComponentName), {
+				dirOffset: dirOffset,
 				componentName: upperComponentName
 			});
 		}

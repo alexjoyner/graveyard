@@ -11,12 +11,11 @@ dev/sass/.sass-cache/*
 !.elasticbeanstalk/*.global.yml
 
 # compiled output
-/docs
 /tmp
 
 # dependencies
 /node_modules
-/bower_components
+/docs/lib
 
 # IDEs and editors
 .project

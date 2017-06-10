@@ -25,6 +25,19 @@ var AppGenerator = function (_Generator) {
 		_classCallCheck(this, AppGenerator);
 
 		return _possibleConstructorReturn(this, (AppGenerator.__proto__ || Object.getPrototypeOf(AppGenerator)).call(this, args, opts));
+		// welcome message
+		// var welcome =
+		// 	'\n     _-----_' +
+		// 	'\n    |       |' +
+		// 	'\n    |' + '--(o)--'.red + '|   .--------------------------.' +
+		// 	'\n   `---------´  |    ' + 'Welcome to Ro-React,'.yellow.bold + '    |' +
+		// 	'\n    ' + '( '.yellow + '_' + '´U`'.yellow + '_' + ' )'.yellow + '   |   ' + 'ladies and gentlemen!'.yellow.bold + '  |' +
+		// 	'\n    /___A___\\   \'__________________________\'' +
+		// 	'\n     |  ~  |'.yellow +
+		// 	'\n   __' + '\'.___.\''.yellow + '__' +
+		// 	'\n ´   ' + '`  |'.red + '° ' + '´ Y'.red + ' `\n';
+		//
+		// this.log(welcome);
 	}
 
 	_createClass(AppGenerator, [{
@@ -62,12 +75,18 @@ var AppGenerator = function (_Generator) {
 				name: 'homeContainerName',
 				message: 'Home container name',
 				default: 'Home' // Default to current folder name
+			}, {
+				name: 'runInstall',
+				message: 'Would you like to run npm install?',
+				default: 'Y/n',
+				warning: 'By selecting no, you must run this yourself!'
 			}]).then(function (answers) {
 				_this2.name = answers.name;
 				_this2.rootUrl = answers.rootUrl;
 				_this2.cssPrefix = answers.cssPrefix;
 				_this2.config.set('homeContainerName', answers.homeContainerName);
 				_this2.homeContainerName = answers.homeContainerName;
+				_this2.runInstall = answers.runInstall === 'Y' || answers.runInstall === 'y';
 			});
 		}
 	}, {
@@ -82,15 +101,16 @@ var AppGenerator = function (_Generator) {
 			};
 			this.log('tplVars: ', JSON.stringify(tplVars));
 			this.fs.copyTpl(this.templatePath('main'), this.destinationPath(''), tplVars);
-			// Copy all dotfiles
-			this.fs.copy(this.templatePath('idea/scopes'), this.destinationPath('.idea/scopes'));
+			this.fs.copyTpl(this.templatePath('scopes'), this.destinationPath('.idea/scopes'), tplVars);
 			// Copy all dotfiles
 			this.fs.copy(this.templatePath('main/**/.*'), this.destinationRoot());
 		}
 	}, {
 		key: 'install',
 		value: function install() {
-			this.npmInstall();
+			if (this.runInstall) {
+				this.npmInstall();
+			}
 		}
 	}, {
 		key: 'end',

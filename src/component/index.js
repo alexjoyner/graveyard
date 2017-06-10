@@ -25,10 +25,16 @@ class AppGenerator extends Generator {
 	writing() {
 		let upperComponentLocation = this._uppercase_first_letter(this.componentLocation);
 		let upperComponentName = this._uppercase_first_letter(this.options.componentName);
+		let slashes = upperComponentLocation.split('').filter((char) => char === '/').length;
+		let dirOffset = '';
+		for(let i = 0; i < slashes; i++){
+			dirOffset += '../'
+		}
 		this.fs.copyTpl(
 			this.templatePath('component'),
 			this.destinationPath('client/' + upperComponentLocation + '/' + upperComponentName),
 			{
+				dirOffset,
 				componentName : upperComponentName
 			}
 		)

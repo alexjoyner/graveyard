@@ -39,6 +39,7 @@ class AppGenerator extends Generator {
 			this.templatePath('component'),
 			this.destinationPath('client/' + upperContainerName + '/' + upperContainerName + 'UI'),
 			{
+				dirOffset: '',
 				componentName : upperContainerName + 'UI'
 			}
 		)

@@ -64,6 +64,7 @@ var AppGenerator = function (_Generator) {
 				upperContainerName: upperContainerName
 			});
 			this.fs.copyTpl(this.templatePath('component'), this.destinationPath('client/' + upperContainerName + '/' + upperContainerName + 'UI'), {
+				dirOffset: '',
 				componentName: upperContainerName + 'UI'
 			});
 		}

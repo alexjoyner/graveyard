@@ -1,9 +1,9 @@
-project-starter
+<%= appName %>
 ===============
 [![Build Status](https://travis-ci.org/alexjoyner/<%= appName %>.svg?branch=master)](https://travis-ci.org/alexjoyner/<%= appName %>)
 [![Coverage Status](https://coveralls.io/repos/github/alexjoyner/<%= appName %>/badge.svg?branch=master)](https://coveralls.io/github/alexjoyner/<%= appName %>?branch=master)
 
-this is the foundation boilerplate that I am using to build my projects.  It is definitely a work in progress, so proceed with caution if you would like to use it yourself.
+This project was built using the yo ro-react boilerplate template.  It uses the following technologies
 
 ## Background info
 This starter pack uses the following tech:
@@ -27,13 +27,8 @@ One thing to note is that, most all of the basic configuration stuff that would 
     npm start
     
 ## Testing
-##### Main test scripts
+##### Main test script
     npm test
-    or
-    npm test:watch
-    
-##### Coverage Support
-    npm run cover
 
 ## Docs
 

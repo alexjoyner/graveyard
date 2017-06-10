@@ -1,6 +1,6 @@
 import {renderComponent, expect, sinon} from 'ro-dev-utils';
 import {<%= componentName %>} from './';
-import reducers from '../../_startup/combine_reducers';
+import reducers from '<%= dirOffset %>../../_startup/combine_reducers';
 
 describe('<%= componentName %> component', () => {
 	let component;

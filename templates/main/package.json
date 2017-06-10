@@ -1,17 +1,10 @@
 {
   "name": "<%= appName %>",
-  "version": "v0.0.1",
+  "version": "0.0.1",
   "scripts": {
-    "start": "concurrently --kill-others 'npm run server:dev:watch' 'npm run webpack:dev'",
-    "build": "NODE_ENV='production' webpack -p",
-    "production": "pm2 start process.yml --env env_production && pm2 logs",
-    "server:dev": "babel-node ./server/server.js",
-    "server:dev:watch": "nodemon ./server/server.js --exec babel-node",
-    "webpack:dev": "webpack-dev-server -d --progress --profile --colors --watch --display-error-details --content-base ./docs --inline --hot",
-    "test": "mocha $(find ./client ./server -path '*spec*') --full-trace --compilers js:babel-core/register --require ignore-styles",
-    "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec $(find ./client ./server -path '*spec*')  --compilers js:babel-core/register ",
-    "test:watch": "PORT=2080 npm run test -- --watch ",
-    "cover:with_open": "npm run cover && open ./coverage/lcov-report/index.html"
+    "start": "./npm-scripts/start.sh",
+    "test": "./npm-scripts/test.sh",
+    "deploy": "./npm-scripts/deploy.sh"
   },
   "license": "MIT",
   "dependencies": {
@@ -20,14 +13,14 @@
     "express": "^4.14.0",
     "lodash": "^3.10.1",
     "moment": "^2.14.1",
-    "react": "^0.14.3",
-    "react-dom": "^0.14.3",
-    "react-redux": "^4.0.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.4",
+    "redux": "^3.6.0",
     "react-router": "^2.0.1",
-    "redux": "^3.0.4",
     "redux-form": "^6.0.5",
     "redux-promise": "^0.5.3",
-    "ro-utils": "^1.0.0-alpha.2"
+    "ro-utils": "*"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -39,6 +32,6 @@
     "coveralls": "^2.13.1",
     "istanbul": "^1.1.0-alpha.1",
     "mocha": "^3.3.0",
-    "ro-dev-utils": "^1.0.0-Alpha.2"
+    "ro-dev-utils": "*"
   }
 }
