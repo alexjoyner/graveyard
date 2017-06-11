@@ -8,7 +8,10 @@ WORKDIR /usr/src/app
 COPY package.json /usr/src/app/
 RUN npm install
 
+# Install pm2 *globally* so we can run our application
+RUN npm i -g pm2
+
 # Bundle app source
 COPY . /usr/src/app
 
-CMD [ "npm", "start" ]
+CMD [ "npm", "run", "prod" ]

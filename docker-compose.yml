@@ -1,10 +1,10 @@
 version: '3'
 
 services:
-  test-app:
-    build: ./test-app
+  web:
+    build: ./web
     image: rosco-first-test/test-web
     volumes:
-      - ./test-app:/usr/src/app
+      - ./web:/usr/src/app
     ports:
       - 5001:8000

@@ -1,9 +1,0 @@
-apps:
-  - script   : ./server/server.js
-    name     : 
-    exec_mode:
-      NODE_ENV: 'production'
-    env:
-      NODE_ENV: 'production'
-    env_production:
-      NODE_ENV: 'production'

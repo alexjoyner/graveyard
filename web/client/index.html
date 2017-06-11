@@ -1,0 +1,14 @@
+<html>
+<head>
+    <title>test-app</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="test-app"/>
+</head>
+<body >
+    <App class="ro-appContainer"></App>
+</body>
+<% if (webpackConfig.metadata.isDevServer) { %>
+    <script src="/webpack-dev-server.js"></script>
+<% } %>
+
+</html>
