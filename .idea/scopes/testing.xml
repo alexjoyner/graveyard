@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="testing" pattern="(!file:.babelrc&amp;&amp;!file:.bowerrc&amp;&amp;!file:.gitignore&amp;&amp;!file[test-app]:docs//*&amp;&amp;!file[test-app]:_Design_Assets//*&amp;&amp;!file[test-app]:.idea//*&amp;&amp;!file[test-app]:_config//*&amp;&amp;!file:process.yml&amp;&amp;!file:bower.json&amp;&amp;!file:webpack.config.js&amp;&amp;!file:Prepare.txt||file[test-app]:server/config/*)&amp;&amp;!file:.travis.yml&amp;&amp;!file:npm-debug.log&amp;&amp;!file[test-app]:coverage//*&amp;&amp;!file[test-app]:npm-scripts//*&amp;&amp;!file:.yo-rc.json&amp;&amp;!file:nodemon.json&amp;&amp;!file:package.json&amp;&amp;!file:README.md&amp;&amp;!file:webpack.config.babel.js"/>
+</component>

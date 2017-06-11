@@ -1,0 +1,8 @@
+# Created by .ignore support plugin (hsz.mobi)
+/node_modules
+.idea/first-docker-app.iml
+.idea/markdown-navigator/
+.idea/misc.xml
+.idea/modules.xml
+.idea/workspace.xml
+web/node_modules/

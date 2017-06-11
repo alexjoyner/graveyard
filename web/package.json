@@ -1,0 +1,23 @@
+{
+  "name": "first-docker-app",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://alexjoyner@github.com/alexjoyner/first-docker-app.git"
+  },
+  "author": "Alex Joyner <alex@voicir.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexjoyner/first-docker-app/issues"
+  },
+  "homepage": "https://github.com/alexjoyner/first-docker-app#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}

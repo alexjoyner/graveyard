@@ -1,0 +1,43 @@
+/dist
+/server/node_modules
+/.sass-cache
+dev/sass/.sass-cache
+dev/sass/.sass-cache/*
+/.gulp-scss-cache
+/dev/client/sass/0-plugins
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+# compiled output
+/tmp
+
+# dependencies
+/node_modules
+/docs/lib
+
+# IDEs and editors
+.project
+.classpath
+*.launch
+.settings/
+# misc
+/.sass-cache
+/connect.lock
+/coverage/*
+./karma_html/**/*
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+#System Files
+.DS_Store
+Thumbs.db
+/bower.json
+/.idea/workspace.xml
