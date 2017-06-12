@@ -2,9 +2,12 @@ version: '3'
 
 services:
   web:
-    build: ./web
-    image: rosco-first-test/test-web
+    build: ./www
+    image: docker-webpack-test/web
     volumes:
-      - ./web:/usr/src/app
+      - ./www:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - NODE_ENV=dev
     ports:
       - 5001:8000
