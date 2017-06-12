@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var path = require('path');
 var helpers = require('./helpers');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+var hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
 // process.env.PORT = 8080;
 // require('../server');
 /*
@@ -16,7 +17,7 @@ const webpack_dev_config = (BASE_DIR) => {
         context: path.join(BASE_DIR),
         devtool: "inline-sourcemap",
         entry: {
-            bundle: "client/_startup/index.js"
+            bundle: ["client/_startup/index.js", hotMiddlewareScript]
         },
         output: {
             path: path.join(BASE_DIR, 'docs'),
@@ -43,6 +44,9 @@ const webpack_dev_config = (BASE_DIR) => {
             }]
         },
         plugins: [
+            new webpack.optimize.OccurenceOrderPlugin(),
+            new webpack.HotModuleReplacementPlugin(),
+            new webpack.NoErrorsPlugin(),
             /*
              * Plugin: HtmlWebpackPlugin
              * Description: Simplifies creation of HTML files to serve your webpack bundles.
@@ -92,6 +96,7 @@ const webpack_dev_config = (BASE_DIR) => {
         devServer: {
             port: 9000,
             host: 'localhost',
+            hot: true,
             historyApiFallback: true
             // watchOptions: {
             //     aggregateTimeout: 300,
