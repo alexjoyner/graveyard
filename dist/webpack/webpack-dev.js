@@ -108,3 +108,4 @@ var webpack_dev_config = function webpack_dev_config(BASE_DIR) {
 };
 
 exports.webpack_dev_config = webpack_dev_config;
+exports.webpack = webpack;
