@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<parameters><par ipa="0" name="Setpoint" descr="" typetarg="short" typepar="short" scale="1" onValueToText="EWDevice.ValueToText_1dec" onTextToValue="EWDevice.TextToValue_1dec" form="%.1d" offs="0" um="°C" readonly="false" defval="180" accesslevel="3"><protocol name="Modbus" commaddr="16384" commsubindex="0"/><menu id="1000" order="0"/><menu id="1001" order="0"/><protocol name="EwDMI" commaddr="16384" commsubindex="0"/></par><par ipa="1" name="Differentiation" descr="" typetarg="short" typepar="short" scale="1" onValueToText="EWDevice.ValueToText_1dec" onTextToValue="EWDevice.TextToValue_1dec" form="%.1d" offs="0" um="°C" readonly="false" defval="20" accesslevel="3"><protocol name="Modbus" commaddr="16385" commsubindex="0"/><menu id="1000" order="1"/><menu id="1001" order="1"/><protocol name="EwDMI" commaddr="16385" commsubindex="0"/></par><par ipa="5000" name="Ambient_Temp" descr="" typetarg="short" typepar="short" scale="1" onValueToText="EWDevice.ValueToText_1dec" onTextToValue="EWDevice.TextToValue_1dec" form="%.1d" offs="0" um="°C" readonly="true" defval="" accesslevel="3"><protocol name="Modbus" commaddr="8960" commsubindex="0"/><menu id="1001" order="2"/><protocol name="EwDMI" commaddr="8960" commsubindex="0"/></par><par ipa="10001" readonly="false" name="CF01" typepar="short" typetarg="char" descr="Select COM1 protocol" min="0" max="1" um="num" defval="1">
+		<protocol name="Modbus" commaddr="0xD011" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD011" commsubindex="0"/>
+		<menu id="01"/>
+	</par>
+	<par ipa="10002" readonly="false" name="CF20" typepar="short" typetarg="char" descr="Protocol controller address" min="0" max="14" um="num" defval="0">
+		<protocol name="Modbus" commaddr="0xD018" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD018" commsubindex="0"/>
+		<menu id="01"/>
+	</par>
+	<par ipa="10003" readonly="false" name="CF21" typepar="short" typetarg="char" descr="Protocol controller family" min="0" max="14" um="num" defval="0">
+		<protocol name="Modbus" commaddr="0xD019" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD019" commsubindex="0"/>
+		<menu id="01"/>
+	</par>
+	<par ipa="10004" readonly="false" name="CF30" typepar="short" typetarg="unsignedChar" descr="Modbus protocol controller address" min="1" max="255" um="num" defval="1">
+		<protocol name="Modbus" commaddr="0xD01A" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD01A" commsubindex="0"/>
+		<menu id="01"/>
+	</par>
+	<par ipa="10005" readonly="false" name="CF31" typepar="enum1" typetarg="char" descr="Modbus baud rate protocol" min="0" max="7" um="num" defval="3">
+		<protocol name="Modbus" commaddr="0xD01B" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD01B" commsubindex="0"/>
+		<menu id="01"/>
+	</par>
+	<par ipa="10006" readonly="false" name="CF32" typepar="enum2" typetarg="char" descr="Modbus parity protocol" min="1" max="3" um="num" defval="1">
+		<protocol name="Modbus" commaddr="0xD01C" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD01C" commsubindex="0"/>
+		<menu id="01"/>
+	</par>
+	<par ipa="10007" readonly="false" name="CF60" typepar="short" typetarg="short" descr="Customer code 1" min="0" max="999" um="num" defval="0">
+		<protocol name="Modbus" commaddr="0x3D17" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x3D17" commsubindex="0"/>
+		<menu id="01"/>
+	</par>
+	<par ipa="10008" readonly="false" name="CF61" typepar="short" typetarg="short" descr="Customer code 2" min="0" max="999" um="num" defval="0">
+		<protocol name="Modbus" commaddr="0x3D18" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x3D18" commsubindex="0"/>
+		<menu id="01"/>
+	</par>
+	<par ipa="10009" readonly="false" name="CL00" typepar="enum10" typetarg="char" descr="AIL1 analogue input type" min="0" max="8" um="num" defval="2">
+		<protocol name="Modbus" commaddr="0xD038" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD038" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10010" readonly="false" name="CL01" typepar="enum10" typetarg="char" descr="AIL2 analogue input type" min="0" max="8" um="num" defval="2">
+		<protocol name="Modbus" commaddr="0xD039" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD039" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10011" readonly="false" name="CL02" typepar="enum11" typetarg="char" descr="AIL3 analogue input type" min="0" max="7" um="num" defval="2">
+		<protocol name="Modbus" commaddr="0xD03A" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD03A" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10012" readonly="false" name="CL03" typepar="enum11" typetarg="char" descr="AIL4 analogue input type" min="0" max="7" um="num" defval="2">
+		<protocol name="Modbus" commaddr="0xD03B" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD03B" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10013" readonly="false" name="CL04" typepar="enum10" typetarg="char" descr="AIL5 analogue input type" min="0" max="8" um="num" defval="2">
+		<protocol name="Modbus" commaddr="0xD03C" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD03C" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10014" readonly="false" name="CL10" typepar="short" typetarg="short" descr="AIL3 analogue input full scale value" min="-9999" max="9999" um="°C/Bar" defval="500">
+		<protocol name="Modbus" commaddr="0x3D21" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x3D21" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10015" readonly="false" name="CL11" typepar="short" typetarg="short" descr="AIL3 analogue input start of scale value" min="-9999" max="9999" um="°C/Bar" defval="0">
+		<protocol name="Modbus" commaddr="0x3D27" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x3D27" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10016" readonly="false" name="CL12" typepar="short" typetarg="short" descr="AIL4 analogue input full scale value" min="-9999" max="9999" um="°C/Bar" defval="500">
+		<protocol name="Modbus" commaddr="0x3D22" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x3D22" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10017" readonly="false" name="CL13" typepar="short" typetarg="short" descr="AIL4 analogue input start of scale value" min="-9999" max="9999" um="°C/Bar" defval="0">
+		<protocol name="Modbus" commaddr="0x3D28" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x3D28" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10018" readonly="false" name="CL20" typepar="short" typetarg="char" descr="AIL1 analogue input differential" min="-120" max="120" um="°C" defval="0">
+		<protocol name="Modbus" commaddr="0xD056" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD056" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10019" readonly="false" name="CL21" typepar="short" typetarg="char" descr="AIL2 analogue input differential" min="-120" max="120" um="°C" defval="0">
+		<protocol name="Modbus" commaddr="0xD057" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD057" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10020" readonly="false" name="CL22" typepar="short" typetarg="char" descr="AIL3 analogue input differential" min="-120" max="120" um="°C/Bar" defval="0">
+		<protocol name="Modbus" commaddr="0xD058" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD058" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10021" readonly="false" name="CL23" typepar="short" typetarg="char" descr="AIL4 analogue input differential" min="-120" max="120" um="°C/Bar" defval="0">
+		<protocol name="Modbus" commaddr="0xD059" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD059" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10022" readonly="false" name="CL24" typepar="short" typetarg="char" descr="AIL5 analogue input differential" min="-120" max="120" um="°C" defval="0">
+		<protocol name="Modbus" commaddr="0xD05A" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD05A" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10023" readonly="false" name="CL60" typepar="enum12" typetarg="char" descr="AOL5 analogue output type" min="0" max="2" um="num" defval="0">
+		<protocol name="Modbus" commaddr="0xD060" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD060" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10024" readonly="false" name="CL70" typepar="enum13" typetarg="char" descr="Enable TCL1 analogue output" min="0" max="2" um="num" defval="0">
+		<protocol name="Modbus" commaddr="0xD062" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD062" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10025" readonly="false" name="CL71" typepar="enum13" typetarg="char" descr="Enable AOL1 analogue output" min="0" max="2" um="num" defval="0">
+		<protocol name="Modbus" commaddr="0xD063" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD063" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10026" readonly="false" name="CL72" typepar="enum13" typetarg="char" descr="Enable AOL2 analogue output" min="0" max="2" um="num" defval="1">
+		<protocol name="Modbus" commaddr="0xD064" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD064" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10027" readonly="false" name="CL73" typepar="short" typetarg="char" descr="Phase shift TCL1 analogue output" min="0" max="90" um="Deg" defval="27">
+		<protocol name="Modbus" commaddr="0xD065" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD065" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10028" readonly="false" name="CL74" typepar="short" typetarg="char" descr="Phase shift AOL1 analogue output" min="0" max="90" um="Deg" defval="27">
+		<protocol name="Modbus" commaddr="0xD066" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD066" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10029" readonly="false" name="CL75" typepar="short" typetarg="char" descr="Phase shift AOL2 analogue output" min="0" max="90" um="Deg" defval="27">
+		<protocol name="Modbus" commaddr="0xD067" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD067" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10030" readonly="false" name="CL76" typepar="short" typetarg="char" descr="TCL1 analogue output pulse length" min="5" max="40" um="69 µsec" defval="10">
+		<protocol name="Modbus" commaddr="0xD068" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD068" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10031" readonly="false" name="CL77" typepar="short" typetarg="char" descr="AOL1 analogue output pulse length" min="5" max="40" um="69 µsec" defval="10">
+		<protocol name="Modbus" commaddr="0xD069" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD069" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10032" readonly="false" name="CL78" typepar="short" typetarg="char" descr="AOL2 analogue output pulse length" min="5" max="40" um="69 µsec" defval="10">
+		<protocol name="Modbus" commaddr="0xD06A" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD06A" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10033" readonly="false" name="CR00" typepar="enum8" typetarg="char" descr="AIR1 analogue input type" min="0" max="2" um="num" defval="2">
+		<protocol name="Modbus" commaddr="0xD200" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD200" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10034" readonly="false" name="CR01" typepar="enum9" typetarg="char" descr="AIR2 analogue input type" min="0" max="3" um="num" defval="2">
+		<protocol name="Modbus" commaddr="0xD201" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD201" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10035" readonly="false" name="CR10" typepar="short" typetarg="short" descr="AIR2 local analogue input fullscale value" min="-9999" max="9999" um="°C/Bar" defval="500">
+		<protocol name="Modbus" commaddr="0x3E02" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x3E02" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10036" readonly="false" name="CR11" typepar="short" typetarg="short" descr="AIR2 local analogue input start of scale value" min="-9999" max="9999" um="°C/Bar" defval="0">
+		<protocol name="Modbus" commaddr="0x3E04" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x3E04" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10037" readonly="false" name="CR20" typepar="short" typetarg="char" descr="AIR1 local analogue input differential" min="-120" max="120" um="°C" defval="0">
+		<protocol name="Modbus" commaddr="0xD20A" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD20A" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10038" readonly="false" name="CR21" typepar="short" typetarg="char" descr="AIR2 local analogue input differential" min="-120" max="120" um="°C/Bar" defval="0">
+		<protocol name="Modbus" commaddr="0xD20B" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD20B" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10039" readonly="false" name="CE00" typepar="enum4" typetarg="char" descr="AIE1 analogue input type" min="0" max="2" um="num" defval="2">
+		<protocol name="Modbus" commaddr="0xD220" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD220" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10040" readonly="false" name="CE01" typepar="enum4" typetarg="char" descr="AIE2 analogue input type" min="0" max="2" um="num" defval="2">
+		<protocol name="Modbus" commaddr="0xD221" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD221" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10041" readonly="false" name="CE02" typepar="enum11" typetarg="char" descr="AIE3 analogue input type" min="0" max="7" um="num" defval="2">
+		<protocol name="Modbus" commaddr="0xD222" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD222" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10042" readonly="false" name="CE03" typepar="enum11" typetarg="char" descr="AIE4 analogue input type" min="0" max="7" um="num" defval="2">
+		<protocol name="Modbus" commaddr="0xD223" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD223" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10043" readonly="false" name="CE04" typepar="enum4" typetarg="char" descr="AIE5 analogue input type" min="0" max="2" um="num" defval="2">
+		<protocol name="Modbus" commaddr="0xD224" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD224" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10044" readonly="false" name="CE10" typepar="short" typetarg="short" descr="AIE3 analogue input full scale value" min="-9999" max="9999" um="°C/Bar" defval="500">
+		<protocol name="Modbus" commaddr="0x3E15" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x3E15" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10045" readonly="false" name="CE11" typepar="short" typetarg="short" descr="AIE3 analogue input start of scale value" min="-9999" max="9999" um="°C/Bar" defval="0">
+		<protocol name="Modbus" commaddr="0x3E1B" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x3E1B" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10046" readonly="false" name="CE12" typepar="short" typetarg="short" descr="AIE4 analogue input full scale value" min="-9999" max="9999" um="°C/Bar" defval="500">
+		<protocol name="Modbus" commaddr="0x3E16" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x3E16" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10047" readonly="false" name="CE13" typepar="short" typetarg="short" descr="AIE4 analogue input start of scale value" min="-9999" max="9999" um="°C/Bar" defval="0">
+		<protocol name="Modbus" commaddr="0x3E1C" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x3E1C" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10048" readonly="false" name="CE20" typepar="short" typetarg="char" descr="AIE1 analogue input differential" min="-120" max="120" um="°C" defval="0">
+		<protocol name="Modbus" commaddr="0xD23E" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD23E" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10049" readonly="false" name="CE21" typepar="short" typetarg="char" descr="AIE2 analogue input differential" min="-120" max="120" um="°C" defval="0">
+		<protocol name="Modbus" commaddr="0xD23F" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD23F" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10050" readonly="false" name="CE22" typepar="short" typetarg="char" descr="AIE3 analogue input differential" min="-120" max="120" um="°C/Bar" defval="0">
+		<protocol name="Modbus" commaddr="0xD240" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD240" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10051" readonly="false" name="CE23" typepar="short" typetarg="char" descr="AIE4 analogue input differential" min="-120" max="120" um="°C/Bar" defval="0">
+		<protocol name="Modbus" commaddr="0xD241" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD241" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10052" readonly="false" name="CE24" typepar="short" typetarg="char" descr="AIE5 analogue input differential" min="-120" max="120" um="°C" defval="0">
+		<protocol name="Modbus" commaddr="0xD242" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD242" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10053" readonly="false" name="CE60" typepar="enum6" typetarg="char" descr="AOE5 analogue output type" min="0" max="1" um="num" defval="0">
+		<protocol name="Modbus" commaddr="0xD248" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD248" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10054" readonly="false" name="CE70" typepar="enum7" typetarg="char" descr="Enable TCE1 analogue output" min="0" max="1" um="num" defval="0">
+		<protocol name="Modbus" commaddr="0xD24A" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD24A" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10055" readonly="false" name="CE71" typepar="enum7" typetarg="char" descr="Enable AOE1 analogue output" min="0" max="1" um="num" defval="0">
+		<protocol name="Modbus" commaddr="0xD24B" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD24B" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10056" readonly="false" name="CE72" typepar="enum7" typetarg="char" descr="Enable AOE2 analogue output" min="0" max="1" um="num" defval="0">
+		<protocol name="Modbus" commaddr="0xD24C" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD24C" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10057" readonly="false" name="CE73" typepar="short" typetarg="char" descr="Phase shift TCE1 analogue output" min="0" max="90" um="Deg" defval="27">
+		<protocol name="Modbus" commaddr="0xD24D" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD24D" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10058" readonly="false" name="CE74" typepar="short" typetarg="char" descr="Phase shift AOE1 analogue output" min="0" max="90" um="Deg" defval="27">
+		<protocol name="Modbus" commaddr="0xD24E" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD24E" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10059" readonly="false" name="CE75" typepar="short" typetarg="char" descr="Phase shift AOE2 analogue output" min="0" max="90" um="Deg" defval="27">
+		<protocol name="Modbus" commaddr="0xD24F" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD24F" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10060" readonly="false" name="CE76" typepar="short" typetarg="char" descr="TCE1 analogue output pulse length" min="5" max="40" um="69 µsec" defval="10">
+		<protocol name="Modbus" commaddr="0xD250" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD250" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10061" readonly="false" name="CE77" typepar="short" typetarg="char" descr="AOE1 analogue output pulse length" min="5" max="40" um="69 µsec" defval="10">
+		<protocol name="Modbus" commaddr="0xD251" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD251" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10062" readonly="false" name="CE78" typepar="short" typetarg="char" descr="AOE2 analogue output pulse length" min="5" max="40" um="69 µsec" defval="10">
+		<protocol name="Modbus" commaddr="0xD252" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD252" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10063" readonly="false" name="CF50" typepar="enum3" typetarg="char" descr="RTC present" min="0" max="1" um="num" defval="1">
+		<protocol name="Modbus" commaddr="0xD0D0" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0xD0D0" commsubindex="0"/>
+		<menu id="01"/>
+	</par>
+	<par ipa="10064" readonly="false" name="Ui26" typepar="short" typetarg="short" descr="Key hold time to enable function" min="0" max="999" um="4ms" defval="350">
+		<protocol name="Modbus" commaddr="0x3D63" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x3D63" commsubindex="0"/>
+		<menu id="01"/>
+	</par>
+	<par ipa="10065" readonly="false" name="Ui27" typepar="short" typetarg="short" descr="Installation engineer password" min="0" max="255" um="num" defval="1">
+		<protocol name="Modbus" commaddr="0x3D80" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x3D80" commsubindex="0"/>
+		<menu id="01"/>
+	</par>
+	<par ipa="10066" readonly="false" name="Ui28" typepar="short" typetarg="short" descr="Manufacturer password" min="0" max="255" um="num" defval="2">
+		<protocol name="Modbus" commaddr="0x3D81" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x3D81" commsubindex="0"/>
+		<menu id="01"/>
+	</par>
+	<par ipa="11000" readonly="true" name="AIL1" typepar="float" typetarg="short" defval="0" scale="10" form="%.1d" descr="AIL1 analogue input">
+		<protocol name="Modbus" commaddr="0x2090" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2090" commsubindex="0"/>
+		<menu id="06"/>
+		<option name="showInFundamentalState">1</option>
+	</par>
+	<par ipa="11001" readonly="true" name="AIL2" typepar="float" typetarg="short" defval="0" scale="10" form="%.1d" descr="AIL2 analogue input">
+		<protocol name="Modbus" commaddr="0x2091" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2091" commsubindex="0"/>
+		<menu id="06"/>
+		<option name="showInFundamentalState">1</option>
+	</par>
+	<par ipa="11002" readonly="true" name="AIL3" typepar="float" typetarg="short" defval="0" scale="10" form="%.1d" descr="AIL3 analogue input">
+		<protocol name="Modbus" commaddr="0x2092" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2092" commsubindex="0"/>
+		<menu id="06"/>
+		<option name="showInFundamentalState">1</option>
+	</par>
+	<par ipa="11003" readonly="true" name="AIL4" typepar="float" typetarg="short" defval="0" scale="10" form="%.1d" descr="AIL4 analogue input">
+		<protocol name="Modbus" commaddr="0x2093" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2093" commsubindex="0"/>
+		<menu id="06"/>
+		<option name="showInFundamentalState">1</option>
+	</par>
+	<par ipa="11004" readonly="true" name="AIL5" typepar="float" typetarg="short" defval="0" scale="10" form="%.1d" descr="AIL5 analogue input">
+		<protocol name="Modbus" commaddr="0x2094" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2094" commsubindex="0"/>
+		<menu id="06"/>
+		<option name="showInFundamentalState">1</option>
+	</par>
+	<par ipa="11005" readonly="true" name="DIL1" typepar="boolean" typetarg="boolean" defval="0" descr="DIL1 digital input">
+		<protocol name="Modbus" commaddr="0x2000" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2000" commsubindex="0"/>
+		<menu id="06"/>
+	</par>
+	<par ipa="11006" readonly="true" name="DIL2" typepar="boolean" typetarg="boolean" defval="0" descr="DIL2 digital input">
+		<protocol name="Modbus" commaddr="0x2001" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2001" commsubindex="0"/>
+		<menu id="06"/>
+	</par>
+	<par ipa="11007" readonly="true" name="DIL3" typepar="boolean" typetarg="boolean" defval="0" descr="DIL3 digital input">
+		<protocol name="Modbus" commaddr="0x2002" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2002" commsubindex="0"/>
+		<menu id="06"/>
+	</par>
+	<par ipa="11008" readonly="true" name="DIL4" typepar="boolean" typetarg="boolean" defval="0" descr="DIL4 digital input">
+		<protocol name="Modbus" commaddr="0x2003" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2003" commsubindex="0"/>
+		<menu id="06"/>
+	</par>
+	<par ipa="11009" readonly="true" name="DIL5" typepar="boolean" typetarg="boolean" defval="0" descr="DIL5 digital input">
+		<protocol name="Modbus" commaddr="0x2004" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2004" commsubindex="0"/>
+		<menu id="06"/>
+	</par>
+	<par ipa="11010" readonly="true" name="DIL6" typepar="boolean" typetarg="boolean" defval="0" descr="DIL6 digital input">
+		<protocol name="Modbus" commaddr="0x2005" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2005" commsubindex="0"/>
+		<menu id="06"/>
+	</par>
+	<par ipa="11011" readonly="false" name="DOL1" typepar="boolean" typetarg="boolean" defval="0" descr="DOL1 digital output">
+		<protocol name="Modbus" commaddr="0x2150" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2150" commsubindex="0"/>
+		<menu id="06"/>
+	</par>
+	<par ipa="11012" readonly="false" name="DOL2" typepar="boolean" typetarg="boolean" defval="0" descr="DOL2 digital output">
+		<protocol name="Modbus" commaddr="0x2151" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2151" commsubindex="0"/>
+		<menu id="06"/>
+	</par>
+	<par ipa="11013" readonly="false" name="DOL3" typepar="boolean" typetarg="boolean" defval="0" descr="DOL3 digital output">
+		<protocol name="Modbus" commaddr="0x2152" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2152" commsubindex="0"/>
+		<menu id="06"/>
+	</par>
+	<par ipa="11014" readonly="false" name="DOL4" typepar="boolean" typetarg="boolean" defval="0" descr="DOL4 digital output">
+		<protocol name="Modbus" commaddr="0x2153" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2153" commsubindex="0"/>
+		<menu id="06"/>
+	</par>
+	<par ipa="11015" readonly="false" name="DOL5" typepar="boolean" typetarg="boolean" defval="0" descr="DOL5 digital output">
+		<protocol name="Modbus" commaddr="0x2154" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2154" commsubindex="0"/>
+		<menu id="06"/>
+	</par>
+	<par ipa="11016" readonly="false" name="DOL6" typepar="boolean" typetarg="boolean" defval="0" descr="DOL6 digital output">
+		<protocol name="Modbus" commaddr="0x2155" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2155" commsubindex="0"/>
+		<menu id="06"/>
+	</par>
+	<par ipa="11018" readonly="false" name="AOL1" typepar="float" typetarg="short" defval="0" scale="10" form="%.1d" descr="AOL1 analogue output">
+		<protocol name="Modbus" commaddr="0x2100" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2100" commsubindex="0"/>
+		<menu id="06"/>
+		<option name="showInFundamentalState">1</option>
+	</par>
+	<par ipa="11019" readonly="false" name="AOL2" typepar="float" typetarg="short" defval="0" scale="10" form="%.1d" descr="AOL2 analogue output">
+		<protocol name="Modbus" commaddr="0x2101" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2101" commsubindex="0"/>
+		<menu id="06"/>
+		<option name="showInFundamentalState">1</option>
+	</par>
+	<par ipa="11020" readonly="false" name="AOL3" typepar="float" typetarg="short" defval="0" scale="10" form="%.1d" descr="AOL3 analogue output">
+		<protocol name="Modbus" commaddr="0x2102" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2102" commsubindex="0"/>
+		<menu id="06"/>
+		<option name="showInFundamentalState">1</option>
+	</par>
+	<par ipa="11021" readonly="false" name="AOL4" typepar="float" typetarg="short" defval="0" scale="10" form="%.1d" descr="AOL4 analogue output">
+		<protocol name="Modbus" commaddr="0x2103" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2103" commsubindex="0"/>
+		<menu id="06"/>
+		<option name="showInFundamentalState">1</option>
+	</par>
+	<par ipa="11022" readonly="false" name="AOL5" typepar="float" typetarg="short" defval="0" scale="10" form="%.1d" descr="AOL5 analogue output">
+		<protocol name="Modbus" commaddr="0x2104" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2104" commsubindex="0"/>
+		<menu id="06"/>
+		<option name="showInFundamentalState">1</option>
+	</par>
+	<par ipa="11017" readonly="false" name="TCL1" typepar="float" typetarg="short" defval="0" scale="10" form="%.1d" descr="TCL1 analogue output">
+		<protocol name="Modbus" commaddr="0x2105" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2105" commsubindex="0"/>
+		<menu id="06"/>
+		<option name="showInFundamentalState">1</option>
+	</par>
+	<par ipa="11023" readonly="true" name="AIE1" typepar="float" typetarg="short" defval="0" scale="10" form="%.1d" descr="AIE1 analogue input">
+		<protocol name="Modbus" commaddr="0x20A0" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x20A0" commsubindex="0"/>
+		<menu id="07"/>
+		<option name="showInFundamentalState">1</option>
+	</par>
+	<par ipa="11024" readonly="true" name="AIE2" typepar="float" typetarg="short" defval="0" scale="10" form="%.1d" descr="AIE2 analogue input">
+		<protocol name="Modbus" commaddr="0x20A1" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x20A1" commsubindex="0"/>
+		<menu id="07"/>
+		<option name="showInFundamentalState">1</option>
+	</par>
+	<par ipa="11025" readonly="true" name="AIE3" typepar="float" typetarg="short" defval="0" scale="10" form="%.1d" descr="AIE3 analogue input">
+		<protocol name="Modbus" commaddr="0x20A2" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x20A2" commsubindex="0"/>
+		<menu id="07"/>
+		<option name="showInFundamentalState">1</option>
+	</par>
+	<par ipa="11026" readonly="true" name="AIE4" typepar="float" typetarg="short" defval="0" scale="10" form="%.1d" descr="AIE4 analogue input">
+		<protocol name="Modbus" commaddr="0x20A3" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x20A3" commsubindex="0"/>
+		<menu id="07"/>
+		<option name="showInFundamentalState">1</option>
+	</par>
+	<par ipa="11027" readonly="true" name="AIE5" typepar="float" typetarg="short" defval="0" scale="10" form="%.1d" descr="AIE5 analogue input">
+		<protocol name="Modbus" commaddr="0x20A4" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x20A4" commsubindex="0"/>
+		<menu id="07"/>
+		<option name="showInFundamentalState">1</option>
+	</par>
+	<par ipa="11028" readonly="true" name="DIE1" typepar="boolean" typetarg="boolean" defval="0" descr="DIE1 digital input">
+		<protocol name="Modbus" commaddr="0x2020" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2020" commsubindex="0"/>
+		<menu id="07"/>
+	</par>
+	<par ipa="11029" readonly="true" name="DIE2" typepar="boolean" typetarg="boolean" defval="0" descr="DIE2 digital input">
+		<protocol name="Modbus" commaddr="0x2021" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2021" commsubindex="0"/>
+		<menu id="07"/>
+	</par>
+	<par ipa="11030" readonly="true" name="DIE3" typepar="boolean" typetarg="boolean" defval="0" descr="DIE3 digital input">
+		<protocol name="Modbus" commaddr="0x2022" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2022" commsubindex="0"/>
+		<menu id="07"/>
+	</par>
+	<par ipa="11031" readonly="true" name="DIE4" typepar="boolean" typetarg="boolean" defval="0" descr="DIE4 digital input">
+		<protocol name="Modbus" commaddr="0x2023" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2023" commsubindex="0"/>
+		<menu id="07"/>
+	</par>
+	<par ipa="11032" readonly="true" name="DIE5" typepar="boolean" typetarg="boolean" defval="0" descr="DIE5 digital input">
+		<protocol name="Modbus" commaddr="0x2024" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2024" commsubindex="0"/>
+		<menu id="07"/>
+	</par>
+	<par ipa="11033" readonly="true" name="DIE6" typepar="boolean" typetarg="boolean" defval="0" descr="DIE6 digital input">
+		<protocol name="Modbus" commaddr="0x2025" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2025" commsubindex="0"/>
+		<menu id="07"/>
+	</par>
+	<par ipa="11034" readonly="false" name="DOE1" typepar="boolean" typetarg="boolean" defval="0" descr="DOE1 digital output">
+		<protocol name="Modbus" commaddr="0x2160" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2160" commsubindex="0"/>
+		<menu id="07"/>
+	</par>
+	<par ipa="11035" readonly="false" name="DOE2" typepar="boolean" typetarg="boolean" defval="0" descr="DOE2 digital output">
+		<protocol name="Modbus" commaddr="0x2161" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2161" commsubindex="0"/>
+		<menu id="07"/>
+	</par>
+	<par ipa="11036" readonly="false" name="DOE3" typepar="boolean" typetarg="boolean" defval="0" descr="DOE3 digital output">
+		<protocol name="Modbus" commaddr="0x2162" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2162" commsubindex="0"/>
+		<menu id="07"/>
+	</par>
+	<par ipa="11037" readonly="false" name="DOE4" typepar="boolean" typetarg="boolean" defval="0" descr="DOE4 digital output">
+		<protocol name="Modbus" commaddr="0x2163" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2163" commsubindex="0"/>
+		<menu id="07"/>
+	</par>
+	<par ipa="11038" readonly="false" name="DOE5" typepar="boolean" typetarg="boolean" defval="0" descr="DOE5 digital output">
+		<protocol name="Modbus" commaddr="0x2164" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2164" commsubindex="0"/>
+		<menu id="07"/>
+	</par>
+	<par ipa="11039" readonly="false" name="DOE6" typepar="boolean" typetarg="boolean" defval="0" descr="DOE6 digital output">
+		<protocol name="Modbus" commaddr="0x2165" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2165" commsubindex="0"/>
+		<menu id="07"/>
+	</par>
+	<par ipa="11041" readonly="false" name="AOE1" typepar="float" typetarg="short" defval="0" scale="10" form="%.1d" descr="AOE1 analogue output">
+		<protocol name="Modbus" commaddr="0x2110" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2110" commsubindex="0"/>
+		<menu id="07"/>
+		<option name="showInFundamentalState">1</option>
+	</par>
+	<par ipa="11042" readonly="false" name="AOE2" typepar="float" typetarg="short" defval="0" scale="10" form="%.1d" descr="AOE2 analogue output">
+		<protocol name="Modbus" commaddr="0x2111" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2111" commsubindex="0"/>
+		<menu id="07"/>
+		<option name="showInFundamentalState">1</option>
+	</par>
+	<par ipa="11043" readonly="false" name="AOE3" typepar="float" typetarg="short" defval="0" scale="10" form="%.1d" descr="AOE3 analogue output">
+		<protocol name="Modbus" commaddr="0x2112" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2112" commsubindex="0"/>
+		<menu id="07"/>
+		<option name="showInFundamentalState">1</option>
+	</par>
+	<par ipa="11044" readonly="false" name="AOE4" typepar="float" typetarg="short" defval="0" scale="10" form="%.1d" descr="AOE4 analogue output">
+		<protocol name="Modbus" commaddr="0x2113" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2113" commsubindex="0"/>
+		<menu id="07"/>
+		<option name="showInFundamentalState">1</option>
+	</par>
+	<par ipa="11045" readonly="false" name="AOE5" typepar="float" typetarg="short" defval="0" scale="10" form="%.1d" descr="AOE5 analogue output">
+		<protocol name="Modbus" commaddr="0x2114" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2114" commsubindex="0"/>
+		<menu id="07"/>
+		<option name="showInFundamentalState">1</option>
+	</par>
+	<par ipa="11040" readonly="false" name="TCE1" typepar="short" typetarg="short" defval="0" scale="10" form="%.1d" descr="TCE1 analogue output">
+		<protocol name="Modbus" commaddr="0x2115" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x2115" commsubindex="0"/>
+		<menu id="07"/>
+		<option name="showInFundamentalState">1</option>
+	</par>
+	<par ipa="11046" readonly="true" name="AIR1" typepar="float" typetarg="short" defval="0" scale="10" form="%.1d" descr="AIR1 analogue input">
+		<protocol name="Modbus" commaddr="0x20F0" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x20F0" commsubindex="0"/>
+		<menu id="08"/>
+		<option name="showInFundamentalState">1</option>
+	</par>
+	<par ipa="11047" readonly="true" name="AIR2" typepar="float" typetarg="short" defval="0" scale="10" form="%.1d" descr="AIR2 analogue input">
+		<protocol name="Modbus" commaddr="0x20F1" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x20F1" commsubindex="0"/>
+		<menu id="08"/>
+		<option name="showInFundamentalState">1</option>
+	</par>
+	<par ipa="11048" name="Par_POLI" descr="Polycarbonate code" defval="0" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort" onbeforewrite="EWDevice.OnBeforeWrite_POLI" onchange="EWDevice.OnChange_POLI">
+		<protocol name="Modbus" commaddr="0x3D14" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="0x3D14" commsubindex="0"/>
+		<menu id="01"/>
+	</par>
+	<par ipa="11400" name="PASSWORD" descr="Numeric Password for Application protection. Write-only parameter, One Time Programmable!!!" defval="4294967295" min="0" max="4294967295" um="num" typepar="unsignedInt" typetarg="unsignedInt" writeonly="true">
+		<protocol name="Modbus" commaddr="24320" commsubindex="0"/>
+		<protocol name="EwDMI" commaddr="24320" commsubindex="0"/>
+		<menu id="09"/>
+	</par>
+</parameters>

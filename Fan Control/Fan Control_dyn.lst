@@ -1,0 +1,206 @@
+***********************************************************************
+*
+*	DYNAMIC LINK AND INDIRECT ALLOCATION LISTING FOR: Fan Control
+*
+***********************************************************************
+
+
+***************************************************
+	 FIRST CODE AREA
+***************************************************
+
+***************************************************
+	 DATABLOCK PATCHES
+***************************************************
+*
+* List of data blocks that will be checked run-time for consistency with
+* their definition available at compile-time
+*
+*
+*	REQUIREMENTS for DATA BLOCK %Q1
+*		Process image: 0
+*		Number of elements: 13
+*		Data size (bytes): 1
+0000	00 02 01 00 0D 00 00 00 01 00 00 00 
+
+*
+*	REQUIREMENTS for DATA BLOCK %I1
+*		Process image: 1
+*		Number of elements: 10
+*		Data size (bytes): 2
+000C	01 01 01 00 0A 00 00 00 02 00 00 00 
+
+*
+*	REQUIREMENTS for DATA BLOCK %Q0
+*		Process image: 0
+*		Number of elements: 6
+*		Data size (bytes): 2
+0018	00 02 00 00 06 00 00 00 02 00 00 00 
+
+*
+*	REQUIREMENTS for DATA BLOCK %I0
+*		Process image: 1
+*		Number of elements: 14
+*		Data size (bytes): 1
+0024	01 01 00 00 0E 00 00 00 01 00 00 00 
+
+*
+* List of all references to data allocated on data blocks
+* along with the whole information required by the run-time linker
+*
+*
+*	1 REFERENCE(S) TO 16-BIT VAR AT BYTE #4 OF DATA BLOCK %I1
+0000	00 0E 01 00 04 00 00 00 01 02 01 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000B30
+000C	30 0B 00 00 
+
+*
+*	1 REFERENCE(S) TO 16-BIT VAR AT BYTE #0 OF DATA BLOCK %Q0
+0010	44 0D 00 00 00 00 00 00 02 02 01 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000B1A
+001C	1A 0B 00 00 
+
+*
+*	3 REFERENCE(S) TO 8-BIT VAR AT BYTE #4 OF DATA BLOCK %Q1
+0020	00 00 01 00 04 00 00 00 02 01 03 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x0009C1
+002C	C1 09 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000A84
+0030	84 0A 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000AEB
+0034	EB 0A 00 00 
+
+*
+*	1 REFERENCE(S) TO 8-BIT VAR AT BYTE #0 OF DATA BLOCK %I0
+0038	24 0C 00 00 00 00 00 00 01 01 01 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000B23
+0044	23 0B 00 00 
+
+*
+*	5 REFERENCE(S) TO 8-BIT VAR AT BYTE #3 OF DATA BLOCK %Q1
+0048	00 00 01 00 03 00 00 00 02 01 05 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x0009CF
+0054	CF 09 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000A0C
+0058	0C 0A 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000A1F
+005C	1F 0A 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000A92
+0060	92 0A 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000AF9
+0064	F9 0A 00 00 
+
+*
+*	4 REFERENCE(S) TO 8-BIT VAR AT BYTE #5 OF DATA BLOCK %Q1
+0068	A0 0C 01 00 05 00 00 00 02 01 04 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x0009B3
+0074	B3 09 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000A76
+0078	76 0A 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000AA5
+007C	A5 0A 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000ADD
+0080	DD 0A 00 00 
+
+*
+*	2 REFERENCE(S) TO 8-BIT VAR AT BYTE #1 OF DATA BLOCK %Q1
+0084	00 00 01 00 01 00 00 00 02 01 02 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000ACF
+0090	CF 0A 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000B0C
+0094	0C 0B 00 00 
+
+
+***************************************************
+	 FUNCTION PATCHES
+***************************************************
+
+***************************************************
+	MEMORY AREA ACCESS PATCH
+***************************************************
+*
+* List of all references to data allocated in memory areas
+* along with the whole information required by the run-time linker
+*
+*
+*	4 REFERENCE(S) TO 8-BIT VAR AT BYTE #8 OF DATA AREA
+0000	44 01 04 00 08 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000998
+0008	98 09 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x0009D7
+000C	D7 09 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000A27
+0010	27 0A 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000B29
+0014	29 0B 00 00 
+
+*
+*	6 REFERENCE(S) TO 16-BIT VAR AT BYTE #10 OF DATA AREA
+0018	44 02 06 00 0A 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x0009E4
+0020	E4 09 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000A34
+0024	34 0A 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000A49
+0028	49 0A 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000AAC
+002C	AC 0A 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000B13
+0030	13 0B 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000B37
+0034	37 0B 00 00 
+

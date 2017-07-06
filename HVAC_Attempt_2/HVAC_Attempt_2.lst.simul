@@ -1,0 +1,7242 @@
+***********************************************************************
+*
+*	CODE GENERATION LISTING FOR: HVAC_Attempt_2
+*	COMPILER VERSION: 2.1.0
+*
+***********************************************************************
+
+***********************************************************************
+UNUSED FUNCTIONS:
+
+	BITTOWORD
+	BITTOBYTE
+	BYTETOWORD
+***********************************************************************
+
+***********************************************************************
+UNUSED FUNCTION BLOCKS:
+
+	PULSE
+	FF_D
+	BYTETOBIT
+	WORDTOBIT
+	WORDTOBYTE
+	CTD
+	CTD_DINT
+	CTD_UDINT
+	CTU
+	CTU_DINT
+	CTU_UDINT
+	CTUD
+	CTUD_DINT
+	CTUD_UDINT
+	TOF
+	TON
+	TP
+	SR
+	RS
+	R_TRIG
+	F_TRIG
+	DAYLIGHTSAVING
+	OPERATINGHOURS
+	PIDADVANCED
+	PIDAUTOTUNING
+	STEPCONTROLLERANALOG
+	THREEPOINTACTUATOR
+	AHUPLANTMODESTRATEGY
+	AHUTEMPCNTRLSTRATEGY
+	PSYCHROMETRIC
+	COPCALCULATION
+	COUNTER2ENERGY
+	PULSE2COUNTER
+	THERMALPOWERCALCULATION
+	COMPALARMMGMT
+	COMPAPPLIMIT
+	COMPCNTRL_ONOFF
+	COMPCNTRL_SLIDER
+	COMPCNTRL_VS
+	COMPMGMT
+	DOUBLEINTERPO_5X8
+	FANMGMT
+	FLOATINGHIGHPRESCNTRL
+	FLUID_DENSITY
+	FLUID_ENTHALPY
+	THERMALPOWER_ENTHALPY
+	PRESS2TEMP
+	TEMP2PRESS
+	REDUNDANTPUMPCNTRL
+***********************************************************************
+
+**************************************************
+	List function: SHOWPARAMETER
+**************************************************
+
+FUNCTION SHOWPARAMETER : BOOL
+
+	VAR_INPUT
+	STATES : BOOL; 
+	CURRENTMENU : UINT; 
+	CURRENTPARAMETER : UINT; 
+	CURRENTACCESSLEVEL : USINT; 
+	END_VAR
+
+	VAR
+	ACCESSLEVEL : USINT; 
+	END_VAR
+
+END_FUNCTION
+
+	*** Function data allocation
+
+	Res SHOWPARAMETER: LOCAL STACK FRAME AT -4(ebp)
+	Par STATES: CALLER STACK FRAME AT 8(ebp)
+	Par CURRENTMENU: CALLER STACK FRAME AT 12(ebp)
+	Par CURRENTPARAMETER: CALLER STACK FRAME AT 16(ebp)
+	Par CURRENTACCESSLEVEL: CALLER STACK FRAME AT 20(ebp)
+	Var ACCESSLEVEL: LOCAL STACK FRAME AT -8(ebp)
+
+008A04A0  55                            push ebp
+008A04A1  8B EC                         mov ebp, esp
+008A04A3  81 EC 0C 00 00 00             sub esp, 12
+
+#0		{SRC:SHOWPARAMETER}
+#1
+#2
+#3
+#4
+#5		{L:2}
+(*) UNDEF
+008A04A9  33 C0                         xor eax, eax
+008A04AB  8A 45 08                      mov al, 8[ebp]
+
+#6		{L:2}
+(-) BOOL
+008A04AE  84 C0                         test al, al
+008A04B0  90 74 30 90 90 90             je 008A04E3H
+
+#7
+#8
+#9
+#10
+#11
+#12
+#13
+#14		{L:5}
+(*) UNDEF
+008A04B6  33 C0                         xor eax, eax
+008A04B8  66 8B 45 0C                   mov ax, 12[ebp]
+
+#15		{L:5}
+(*) UINT
+008A04BC  3D 00 00 00 00                cmp eax, 0
+008A04C1  0F 94 C0                      sete al
+008A04C4  25 FF 00 00 00                and eax, 0FFh
+
+#16
+(-) BOOL
+008A04C9  84 C0                         test al, al
+008A04CB  90 75 08 90 90 90             jne 008A04D6H
+
+#17
+(-) BOOL
+008A04D1  EB 0B 90 90 90                jmp 008A04DEH
+
+#18
+#19
+#20
+#21
+#22
+#23		{L:6}
+(*) BOOL
+008A04D6  B8 03 00 00 00                mov eax, 3
+008A04DB  88 45 F8                      mov -8[ebp], al
+
+#24
+#25
+#26
+#27
+#28
+(-) USINT
+008A04DE  EB 2B 90 90 90                jmp 008A050BH
+
+#29
+#30
+#31
+#32
+#33
+#34
+#35
+#36
+#37		{L:13}
+(*) UNDEF
+008A04E3  33 C0                         xor eax, eax
+008A04E5  66 8B 45 0C                   mov ax, 12[ebp]
+
+#38		{L:13}
+(*) UINT
+008A04E9  3D 00 00 00 00                cmp eax, 0
+008A04EE  0F 94 C0                      sete al
+008A04F1  25 FF 00 00 00                and eax, 0FFh
+
+#39
+(-) BOOL
+008A04F6  84 C0                         test al, al
+008A04F8  90 75 08 90 90 90             jne 008A0503H
+
+#40
+(-) BOOL
+008A04FE  EB 0B 90 90 90                jmp 008A050BH
+
+#41
+#42
+#43
+#44
+#45
+#46		{L:14}
+(*) BOOL
+008A0503  B8 03 00 00 00                mov eax, 3
+008A0508  88 45 F8                      mov -8[ebp], al
+
+#47
+#48
+#49
+#50
+#51
+#52
+#53
+#54
+#55
+#56
+#57
+#58
+#59
+#60		{L:24}
+(*) UNDEF
+008A050B  33 C0                         xor eax, eax
+008A050D  8A 45 14                      mov al, 20[ebp]
+
+#61		{L:24}
+(*) USINT
+008A0510  3D 02 00 00 00                cmp eax, 2
+008A0515  0F 94 C0                      sete al
+008A0518  25 FF 00 00 00                and eax, 0FFh
+
+#62		{L:24}
+(*) BOOL
+008A051D  50                            push eax
+008A051E  33 C0                         xor eax, eax
+008A0520  8A 45 F8                      mov al, -8[ebp]
+
+#63		{L:24}
+(*) USINT
+008A0523  3D 02 00 00 00                cmp eax, 2
+008A0528  0F 94 C0                      sete al
+008A052B  25 FF 00 00 00                and eax, 0FFh
+
+#64		{L:24}
+(*) BOOL
+008A0530  8B C8                         mov ecx, eax
+008A0532  58                            pop eax
+008A0533  23 C1                         and eax, ecx
+
+#65		{L:24}
+(*) BOOL
+008A0535  50                            push eax
+008A0536  33 C0                         xor eax, eax
+008A0538  8A 45 14                      mov al, 20[ebp]
+
+#66		{L:24}
+(*) USINT
+008A053B  3D 01 00 00 00                cmp eax, 1
+008A0540  0F 9D C0                      setge al
+008A0543  25 FF 00 00 00                and eax, 0FFh
+
+#67		{L:24}
+(*) BOOL
+008A0548  50                            push eax
+008A0549  33 C0                         xor eax, eax
+008A054B  8A 45 F8                      mov al, -8[ebp]
+
+#68		{L:24}
+(*) USINT
+008A054E  3D 01 00 00 00                cmp eax, 1
+008A0553  0F 94 C0                      sete al
+008A0556  25 FF 00 00 00                and eax, 0FFh
+
+#69		{L:24}
+(*) BOOL
+008A055B  8B C8                         mov ecx, eax
+008A055D  58                            pop eax
+008A055E  23 C1                         and eax, ecx
+
+#70		{L:24}
+(*) BOOL
+008A0560  50                            push eax
+008A0561  33 C0                         xor eax, eax
+008A0563  8A 45 F8                      mov al, -8[ebp]
+
+#71		{L:24}
+(*) USINT
+008A0566  3D 03 00 00 00                cmp eax, 3
+008A056B  0F 94 C0                      sete al
+008A056E  25 FF 00 00 00                and eax, 0FFh
+
+#72		{L:24}
+(*) BOOL
+008A0573  8B C8                         mov ecx, eax
+008A0575  58                            pop eax
+008A0576  0B C1                         or eax, ecx
+
+#73		{L:24}
+(*) BOOL
+008A0578  8B C8                         mov ecx, eax
+008A057A  58                            pop eax
+008A057B  0B C1                         or eax, ecx
+
+#74		{L:24}
+(*) BOOL
+008A057D  50                            push eax
+008A057E  33 C0                         xor eax, eax
+008A0580  8A 45 F8                      mov al, -8[ebp]
+
+#75		{L:24}
+(*) USINT
+008A0583  3D 00 00 00 00                cmp eax, 0
+008A0588  0F 95 C0                      setne al
+008A058B  25 FF 00 00 00                and eax, 0FFh
+
+#76		{L:24}
+(*) BOOL
+008A0590  8B C8                         mov ecx, eax
+008A0592  58                            pop eax
+008A0593  23 C1                         and eax, ecx
+
+#77		{L:24}
+(*) BOOL
+008A0595  84 C0                         test al, al
+008A0597  0F 95 45 FC                   setne -4[ebp]
+
+008A059B  33 C0                         xor eax, eax
+008A059D  8A 45 FC                      mov al, -4[ebp]
+008A05A0  8B E5                         mov esp, ebp
+008A05A2  5D                            pop ebp
+
+008A05A3  C3                            ret
+
+END_FUNCTION
+**************************************************
+	List function: SHOWMENU
+**************************************************
+
+FUNCTION SHOWMENU : BOOL
+
+	VAR_INPUT
+	STATES : BOOL; 
+	CURRENTMENU : UINT; 
+	CURRENTACCESSLEVEL : USINT; 
+	END_VAR
+
+	VAR
+	REQUIREDACCESSLEVEL : USINT; 
+	END_VAR
+
+END_FUNCTION
+
+	*** Function data allocation
+
+	Res SHOWMENU: LOCAL STACK FRAME AT -4(ebp)
+	Par STATES: CALLER STACK FRAME AT 8(ebp)
+	Par CURRENTMENU: CALLER STACK FRAME AT 12(ebp)
+	Par CURRENTACCESSLEVEL: CALLER STACK FRAME AT 16(ebp)
+	Var REQUIREDACCESSLEVEL: LOCAL STACK FRAME AT -8(ebp)
+
+008A05A4  55                            push ebp
+008A05A5  8B EC                         mov ebp, esp
+008A05A7  81 EC 0C 00 00 00             sub esp, 12
+
+#0		{SRC:SHOWMENU}
+#1
+#2
+#3
+#4
+#5		{L:2}
+(*) UNDEF
+008A05AD  33 C0                         xor eax, eax
+008A05AF  8A 45 08                      mov al, 8[ebp]
+
+#6		{L:2}
+(-) BOOL
+008A05B2  84 C0                         test al, al
+008A05B4  90 74 65 90 90 90             je 008A061CH
+
+#7
+#8
+#9
+#10
+#11
+#12
+#13
+#14		{L:5}
+(*) UNDEF
+008A05BA  33 C0                         xor eax, eax
+008A05BC  66 8B 45 0C                   mov ax, 12[ebp]
+
+#15		{L:5}
+(*) UINT
+008A05C0  3D 00 00 00 00                cmp eax, 0
+008A05C5  0F 94 C0                      sete al
+008A05C8  25 FF 00 00 00                and eax, 0FFh
+
+#16
+(-) BOOL
+008A05CD  84 C0                         test al, al
+008A05CF  90 75 23 90 90 90             jne 008A05F5H
+
+#17
+#18
+#19		{L:8}
+(*) UNDEF
+008A05D5  33 C0                         xor eax, eax
+008A05D7  66 8B 45 0C                   mov ax, 12[ebp]
+
+#20		{L:8}
+(*) UINT
+008A05DB  3D 01 00 00 00                cmp eax, 1
+008A05E0  0F 94 C0                      sete al
+008A05E3  25 FF 00 00 00                and eax, 0FFh
+
+#21
+(-) BOOL
+008A05E8  84 C0                         test al, al
+008A05EA  90 75 15 90 90 90             jne 008A0602H
+
+#22
+#23
+#24
+(-) BOOL
+008A05F0  EB 1D 90 90 90                jmp 008A060FH
+
+#25
+#26
+#27
+#28
+#29
+#30		{L:6}
+(*) BOOL
+008A05F5  B8 00 00 00 00                mov eax, 0
+008A05FA  88 45 F8                      mov -8[ebp], al
+
+#31
+(-) USINT
+008A05FD  EB 18 90 90 90                jmp 008A0617H
+
+#32
+#33
+#34
+#35		{L:9}
+(*) USINT
+008A0602  B8 00 00 00 00                mov eax, 0
+008A0607  88 45 F8                      mov -8[ebp], al
+
+#36
+(-) USINT
+008A060A  EB 0B 90 90 90                jmp 008A0617H
+
+#37
+#38
+#39
+#40		{L:12}
+(*) USINT
+008A060F  B8 FF 00 00 00                mov eax, 255
+008A0614  88 45 F8                      mov -8[ebp], al
+
+#41
+#42
+#43
+#44
+#45
+(-) USINT
+008A0617  EB 38 90 90 90                jmp 008A0651H
+
+#46
+#47
+#48
+#49
+#50
+#51
+#52
+#53
+#54		{L:19}
+(*) UNDEF
+008A061C  33 C0                         xor eax, eax
+008A061E  66 8B 45 0C                   mov ax, 12[ebp]
+
+#55		{L:19}
+(*) UINT
+008A0622  3D 00 00 00 00                cmp eax, 0
+008A0627  0F 94 C0                      sete al
+008A062A  25 FF 00 00 00                and eax, 0FFh
+
+#56
+(-) BOOL
+008A062F  84 C0                         test al, al
+008A0631  90 75 08 90 90 90             jne 008A063CH
+
+#57
+#58
+#59
+(-) BOOL
+008A0637  EB 10 90 90 90                jmp 008A0649H
+
+#60
+#61
+#62
+#63
+#64
+#65		{L:20}
+(*) BOOL
+008A063C  B8 00 00 00 00                mov eax, 0
+008A0641  88 45 F8                      mov -8[ebp], al
+
+#66
+(-) USINT
+008A0644  EB 0B 90 90 90                jmp 008A0651H
+
+#67
+#68
+#69
+#70		{L:23}
+(*) USINT
+008A0649  B8 FF 00 00 00                mov eax, 255
+008A064E  88 45 F8                      mov -8[ebp], al
+
+#71
+#72
+#73
+#74
+#75
+#76
+#77
+#78
+#79
+#80		{L:28}
+(*) UNDEF
+008A0651  33 C0                         xor eax, eax
+008A0653  8A 45 10                      mov al, 16[ebp]
+
+#81		{L:28}
+(*) USINT
+008A0656  33 C9                         xor ecx, ecx
+008A0658  8A 4D F8                      mov cl, -8[ebp]
+008A065B  3B C1                         cmp eax, ecx
+008A065D  0F 9D C0                      setge al
+008A0660  25 FF 00 00 00                and eax, 0FFh
+
+#82		{L:28}
+(*) BOOL
+008A0665  84 C0                         test al, al
+008A0667  0F 95 45 FC                   setne -4[ebp]
+
+008A066B  33 C0                         xor eax, eax
+008A066D  8A 45 FC                      mov al, -4[ebp]
+008A0670  8B E5                         mov esp, ebp
+008A0672  5D                            pop ebp
+
+008A0673  C3                            ret
+
+END_FUNCTION
+**************************************************
+	List function: PRINTALARM
+**************************************************
+
+FUNCTION PRINTALARM : BOOL
+
+	VAR_INPUT
+	CURRENTALARM : UINT; 
+	END_VAR
+
+	VAR
+	ALARMNAME : STRING[ 5 ]; 
+	WARNINGSKILLER : BOOL; 
+	END_VAR
+
+END_FUNCTION
+
+	*** Function data allocation
+
+	Res PRINTALARM: LOCAL STACK FRAME AT -4(ebp)
+	Par CURRENTALARM: CALLER STACK FRAME AT 8(ebp)
+	Var ALARMNAME: LOCAL STACK FRAME AT -12(ebp)
+	Var WARNINGSKILLER: LOCAL STACK FRAME AT -16(ebp)
+
+008A0674  55                            push ebp
+008A0675  8B EC                         mov ebp, esp
+008A0677  81 EC 14 00 00 00             sub esp, 20
+
+#0		{SRC:PRINTALARM}
+#1
+#2
+#3
+#4
+#5
+#6
+#7		{L:4}
+(*) UNDEF
+008A067D  33 C0                         xor eax, eax
+008A067F  66 8B 45 08                   mov ax, 8[ebp]
+
+#8		{L:4}
+(*) UINT
+008A0683  3D 00 00 00 00                cmp eax, 0
+008A0688  0F 94 C0                      sete al
+008A068B  25 FF 00 00 00                and eax, 0FFh
+
+#9
+(-) BOOL
+008A0690  84 C0                         test al, al
+008A0692  90 75 08 90 90 90             jne 008A069DH
+
+#10
+(-) BOOL
+008A0698  EB 26 90 90 90                jmp 008A06C0H
+
+#11
+#12
+#13
+#14
+#15
+#16		{L:5}
+(*) BOOL
+008A069D  B8 CC CC CC CC                mov eax, CCCCCCCCH ; $$CODE$$+276
+008A06A2  50                            push eax
+008A06A3  68 05 00 00 00                push 5
+008A06A8  50                            push eax
+008A06A9  8B D5                         mov edx, ebp
+008A06AB  81 C2 F4 FF FF FF             add edx, -12
+008A06B1  52                            push edx
+008A06B2  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; STRNCPY
+008A06B7  FF D1                         call ecx
+008A06B9  81 C4 0C 00 00 00             add esp, 12
+008A06BF  58                            pop eax
+
+#17
+#18
+#19
+#20
+#21
+#22
+#23		{L:9}
+(*) UNDEF
+008A06C0  8B C5                         mov eax, ebp
+008A06C2  05 F4 FF FF FF                add eax, -12
+
+#24		{L:9}
+(-) STRING
+008A06C7  68 00 00 00 00                push 0
+008A06CC  50                            push eax
+008A06CD  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; WRITESTRLOCALDISPLAY
+008A06D2  FF D1                         call ecx
+008A06D4  81 C4 08 00 00 00             add esp, 8
+
+#25		{L:9}
+(*) BOOL
+008A06DA  84 C0                         test al, al
+008A06DC  0F 95 45 F0                   setne -16[ebp]
+
+#26
+#27
+#28		{L:10}
+(*) BOOL
+008A06E0  B8 01 00 00 00                mov eax, 1
+008A06E5  84 C0                         test al, al
+008A06E7  0F 95 45 FC                   setne -4[ebp]
+
+008A06EB  33 C0                         xor eax, eax
+008A06ED  8A 45 FC                      mov al, -4[ebp]
+008A06F0  8B E5                         mov esp, ebp
+008A06F2  5D                            pop ebp
+
+008A06F3  C3                            ret
+
+END_FUNCTION
+**************************************************
+	List function: PRINTPARAMETER
+**************************************************
+
+FUNCTION PRINTPARAMETER : BOOL
+
+	VAR_INPUT
+	STATES : BOOL; 
+	CURRENTMENU : UINT; 
+	CURRENTPARAMETER : UINT; 
+	END_VAR
+
+	VAR
+	PARAMETERNAME : STRING[ 5 ]; 
+	WARNINGSKILLER : BOOL; 
+	END_VAR
+
+END_FUNCTION
+
+	*** Function data allocation
+
+	Res PRINTPARAMETER: LOCAL STACK FRAME AT -4(ebp)
+	Par STATES: CALLER STACK FRAME AT 8(ebp)
+	Par CURRENTMENU: CALLER STACK FRAME AT 12(ebp)
+	Par CURRENTPARAMETER: CALLER STACK FRAME AT 16(ebp)
+	Var PARAMETERNAME: LOCAL STACK FRAME AT -12(ebp)
+	Var WARNINGSKILLER: LOCAL STACK FRAME AT -16(ebp)
+
+008A06F4  55                            push ebp
+008A06F5  8B EC                         mov ebp, esp
+008A06F7  81 EC 14 00 00 00             sub esp, 20
+
+#0		{SRC:PRINTPARAMETER}
+#1
+#2
+#3
+#4
+#5		{L:2}
+(*) UNDEF
+008A06FD  33 C0                         xor eax, eax
+008A06FF  8A 45 08                      mov al, 8[ebp]
+
+#6		{L:2}
+(-) BOOL
+008A0702  84 C0                         test al, al
+008A0704  0F 84 EE 00 00 00             je 008A07F8H
+
+#7
+#8
+#9
+#10
+#11
+#12
+#13
+#14		{L:5}
+(*) UNDEF
+008A070A  33 C0                         xor eax, eax
+008A070C  66 8B 45 0C                   mov ax, 12[ebp]
+
+#15		{L:5}
+(*) UINT
+008A0710  3D 00 00 00 00                cmp eax, 0
+008A0715  0F 94 C0                      sete al
+008A0718  25 FF 00 00 00                and eax, 0FFh
+
+#16
+(-) BOOL
+008A071D  84 C0                         test al, al
+008A071F  90 75 08 90 90 90             jne 008A072AH
+
+#17
+(-) BOOL
+008A0725  E9 C9 00 00 00                jmp 008A07F3H
+
+#18
+#19
+#20
+#21
+#22
+#23
+#24
+#25
+#26		{L:8}
+(*) UNDEF
+008A072A  33 C0                         xor eax, eax
+008A072C  66 8B 45 10                   mov ax, 16[ebp]
+
+#27		{L:8}
+(*) UINT
+008A0730  3D 00 00 00 00                cmp eax, 0
+008A0735  0F 94 C0                      sete al
+008A0738  25 FF 00 00 00                and eax, 0FFh
+
+#28
+(-) BOOL
+008A073D  84 C0                         test al, al
+008A073F  90 75 3E 90 90 90             jne 008A0780H
+
+#29
+#30
+#31		{L:11}
+(*) UNDEF
+008A0745  33 C0                         xor eax, eax
+008A0747  66 8B 45 10                   mov ax, 16[ebp]
+
+#32		{L:11}
+(*) UINT
+008A074B  3D 01 00 00 00                cmp eax, 1
+008A0750  0F 94 C0                      sete al
+008A0753  25 FF 00 00 00                and eax, 0FFh
+
+#33
+(-) BOOL
+008A0758  84 C0                         test al, al
+008A075A  90 75 4B 90 90 90             jne 008A07A8H
+
+#34
+#35
+#36		{L:14}
+(*) UNDEF
+008A0760  33 C0                         xor eax, eax
+008A0762  66 8B 45 10                   mov ax, 16[ebp]
+
+#37		{L:14}
+(*) UINT
+008A0766  3D 02 00 00 00                cmp eax, 2
+008A076B  0F 94 C0                      sete al
+008A076E  25 FF 00 00 00                and eax, 0FFh
+
+#38
+(-) BOOL
+008A0773  84 C0                         test al, al
+008A0775  90 75 58 90 90 90             jne 008A07D0H
+
+#39
+(-) BOOL
+008A077B  EB 76 90 90 90                jmp 008A07F3H
+
+#40
+#41
+#42
+#43
+#44
+#45		{L:9}
+(*) BOOL
+008A0780  B8 CC CC CC CC                mov eax, CCCCCCCCH ; $$CODE$$+258
+008A0785  50                            push eax
+008A0786  68 05 00 00 00                push 5
+008A078B  50                            push eax
+008A078C  8B D5                         mov edx, ebp
+008A078E  81 C2 F4 FF FF FF             add edx, -12
+008A0794  52                            push edx
+008A0795  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; STRNCPY
+008A079A  FF D1                         call ecx
+008A079C  81 C4 0C 00 00 00             add esp, 12
+008A07A2  58                            pop eax
+
+#46
+(-) STRING
+008A07A3  EB 4E 90 90 90                jmp 008A07F3H
+
+#47
+#48
+#49
+#50		{L:12}
+(*) STRING
+008A07A8  B8 CC CC CC CC                mov eax, CCCCCCCCH ; $$CODE$$+264
+008A07AD  50                            push eax
+008A07AE  68 05 00 00 00                push 5
+008A07B3  50                            push eax
+008A07B4  8B D5                         mov edx, ebp
+008A07B6  81 C2 F4 FF FF FF             add edx, -12
+008A07BC  52                            push edx
+008A07BD  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; STRNCPY
+008A07C2  FF D1                         call ecx
+008A07C4  81 C4 0C 00 00 00             add esp, 12
+008A07CA  58                            pop eax
+
+#51
+(-) STRING
+008A07CB  EB 26 90 90 90                jmp 008A07F3H
+
+#52
+#53
+#54
+#55		{L:15}
+(*) STRING
+008A07D0  B8 CC CC CC CC                mov eax, CCCCCCCCH ; $$CODE$$+270
+008A07D5  50                            push eax
+008A07D6  68 05 00 00 00                push 5
+008A07DB  50                            push eax
+008A07DC  8B D5                         mov edx, ebp
+008A07DE  81 C2 F4 FF FF FF             add edx, -12
+008A07E4  52                            push edx
+008A07E5  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; STRNCPY
+008A07EA  FF D1                         call ecx
+008A07EC  81 C4 0C 00 00 00             add esp, 12
+008A07F2  58                            pop eax
+
+#56
+#57
+#58
+#59
+#60
+#61
+#62
+#63
+#64
+(-) STRING
+008A07F3  E9 A6 00 00 00                jmp 008A089EH
+
+#65
+#66
+#67
+#68
+#69
+#70
+#71
+#72
+#73		{L:23}
+(*) UNDEF
+008A07F8  33 C0                         xor eax, eax
+008A07FA  66 8B 45 0C                   mov ax, 12[ebp]
+
+#74		{L:23}
+(*) UINT
+008A07FE  3D 00 00 00 00                cmp eax, 0
+008A0803  0F 94 C0                      sete al
+008A0806  25 FF 00 00 00                and eax, 0FFh
+
+#75
+(-) BOOL
+008A080B  84 C0                         test al, al
+008A080D  90 75 08 90 90 90             jne 008A0818H
+
+#76
+(-) BOOL
+008A0813  E9 86 00 00 00                jmp 008A089EH
+
+#77
+#78
+#79
+#80
+#81
+#82
+#83
+#84
+#85		{L:26}
+(*) UNDEF
+008A0818  33 C0                         xor eax, eax
+008A081A  66 8B 45 10                   mov ax, 16[ebp]
+
+#86		{L:26}
+(*) UINT
+008A081E  3D 00 00 00 00                cmp eax, 0
+008A0823  0F 94 C0                      sete al
+008A0826  25 FF 00 00 00                and eax, 0FFh
+
+#87
+(-) BOOL
+008A082B  84 C0                         test al, al
+008A082D  90 75 23 90 90 90             jne 008A0853H
+
+#88
+#89
+#90		{L:29}
+(*) UNDEF
+008A0833  33 C0                         xor eax, eax
+008A0835  66 8B 45 10                   mov ax, 16[ebp]
+
+#91		{L:29}
+(*) UINT
+008A0839  3D 01 00 00 00                cmp eax, 1
+008A083E  0F 94 C0                      sete al
+008A0841  25 FF 00 00 00                and eax, 0FFh
+
+#92
+(-) BOOL
+008A0846  84 C0                         test al, al
+008A0848  90 75 30 90 90 90             jne 008A087BH
+
+#93
+(-) BOOL
+008A084E  EB 4E 90 90 90                jmp 008A089EH
+
+#94
+#95
+#96
+#97
+#98
+#99		{L:27}
+(*) BOOL
+008A0853  B8 CC CC CC CC                mov eax, CCCCCCCCH ; $$CODE$$+258
+008A0858  50                            push eax
+008A0859  68 05 00 00 00                push 5
+008A085E  50                            push eax
+008A085F  8B D5                         mov edx, ebp
+008A0861  81 C2 F4 FF FF FF             add edx, -12
+008A0867  52                            push edx
+008A0868  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; STRNCPY
+008A086D  FF D1                         call ecx
+008A086F  81 C4 0C 00 00 00             add esp, 12
+008A0875  58                            pop eax
+
+#100
+(-) STRING
+008A0876  EB 26 90 90 90                jmp 008A089EH
+
+#101
+#102
+#103
+#104		{L:30}
+(*) STRING
+008A087B  B8 CC CC CC CC                mov eax, CCCCCCCCH ; $$CODE$$+264
+008A0880  50                            push eax
+008A0881  68 05 00 00 00                push 5
+008A0886  50                            push eax
+008A0887  8B D5                         mov edx, ebp
+008A0889  81 C2 F4 FF FF FF             add edx, -12
+008A088F  52                            push edx
+008A0890  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; STRNCPY
+008A0895  FF D1                         call ecx
+008A0897  81 C4 0C 00 00 00             add esp, 12
+008A089D  58                            pop eax
+
+#105
+#106
+#107
+#108
+#109
+#110
+#111
+#112
+#113
+#114
+#115
+#116
+#117
+#118		{L:37}
+(*) UNDEF
+008A089E  8B C5                         mov eax, ebp
+008A08A0  05 F4 FF FF FF                add eax, -12
+
+#119		{L:37}
+(-) STRING
+008A08A5  68 00 00 00 00                push 0
+008A08AA  50                            push eax
+008A08AB  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; WRITESTRLOCALDISPLAY
+008A08B0  FF D1                         call ecx
+008A08B2  81 C4 08 00 00 00             add esp, 8
+
+#120		{L:37}
+(*) BOOL
+008A08B8  84 C0                         test al, al
+008A08BA  0F 95 45 F0                   setne -16[ebp]
+
+#121
+#122
+#123		{L:38}
+(*) BOOL
+008A08BE  B8 01 00 00 00                mov eax, 1
+008A08C3  84 C0                         test al, al
+008A08C5  0F 95 45 FC                   setne -4[ebp]
+
+008A08C9  33 C0                         xor eax, eax
+008A08CB  8A 45 FC                      mov al, -4[ebp]
+008A08CE  8B E5                         mov esp, ebp
+008A08D0  5D                            pop ebp
+
+008A08D1  C3                            ret
+
+END_FUNCTION
+**************************************************
+	List function: PRINTMENU
+**************************************************
+
+FUNCTION PRINTMENU : BOOL
+
+	VAR_INPUT
+	STATES : BOOL; 
+	CURRENTMENU : UINT; 
+	END_VAR
+
+	VAR
+	CAPTION : STRING[ 5 ]; 
+	WARNINGSKILLER : BOOL; 
+	END_VAR
+
+END_FUNCTION
+
+	*** Function data allocation
+
+	Res PRINTMENU: LOCAL STACK FRAME AT -4(ebp)
+	Par STATES: CALLER STACK FRAME AT 8(ebp)
+	Par CURRENTMENU: CALLER STACK FRAME AT 12(ebp)
+	Var CAPTION: LOCAL STACK FRAME AT -12(ebp)
+	Var WARNINGSKILLER: LOCAL STACK FRAME AT -16(ebp)
+
+008A08D2  55                            push ebp
+008A08D3  8B EC                         mov ebp, esp
+008A08D5  81 EC 14 00 00 00             sub esp, 20
+
+#0		{SRC:PRINTMENU}
+#1
+#2
+#3
+#4
+#5		{L:2}
+(*) UNDEF
+008A08DB  33 C0                         xor eax, eax
+008A08DD  8A 45 08                      mov al, 8[ebp]
+
+#6		{L:2}
+(-) BOOL
+008A08E0  84 C0                         test al, al
+008A08E2  0F 84 8B 00 00 00             je 008A0973H
+
+#7
+#8
+#9
+#10
+#11
+#12
+#13
+#14		{L:5}
+(*) UNDEF
+008A08E8  33 C0                         xor eax, eax
+008A08EA  66 8B 45 0C                   mov ax, 12[ebp]
+
+#15		{L:5}
+(*) UINT
+008A08EE  3D 00 00 00 00                cmp eax, 0
+008A08F3  0F 94 C0                      sete al
+008A08F6  25 FF 00 00 00                and eax, 0FFh
+
+#16
+(-) BOOL
+008A08FB  84 C0                         test al, al
+008A08FD  90 75 23 90 90 90             jne 008A0923H
+
+#17
+#18
+#19		{L:8}
+(*) UNDEF
+008A0903  33 C0                         xor eax, eax
+008A0905  66 8B 45 0C                   mov ax, 12[ebp]
+
+#20		{L:8}
+(*) UINT
+008A0909  3D 01 00 00 00                cmp eax, 1
+008A090E  0F 94 C0                      sete al
+008A0911  25 FF 00 00 00                and eax, 0FFh
+
+#21
+(-) BOOL
+008A0916  84 C0                         test al, al
+008A0918  90 75 30 90 90 90             jne 008A094BH
+
+#22
+(-) BOOL
+008A091E  EB 4E 90 90 90                jmp 008A096EH
+
+#23
+#24
+#25
+#26
+#27
+#28		{L:6}
+(*) BOOL
+008A0923  B8 CC CC CC CC                mov eax, CCCCCCCCH ; $$CODE$$+244
+008A0928  50                            push eax
+008A0929  68 05 00 00 00                push 5
+008A092E  50                            push eax
+008A092F  8B D5                         mov edx, ebp
+008A0931  81 C2 F4 FF FF FF             add edx, -12
+008A0937  52                            push edx
+008A0938  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; STRNCPY
+008A093D  FF D1                         call ecx
+008A093F  81 C4 0C 00 00 00             add esp, 12
+008A0945  58                            pop eax
+
+#29
+(-) STRING
+008A0946  EB 26 90 90 90                jmp 008A096EH
+
+#30
+#31
+#32
+#33		{L:9}
+(*) STRING
+008A094B  B8 CC CC CC CC                mov eax, CCCCCCCCH ; $$CODE$$+250
+008A0950  50                            push eax
+008A0951  68 05 00 00 00                push 5
+008A0956  50                            push eax
+008A0957  8B D5                         mov edx, ebp
+008A0959  81 C2 F4 FF FF FF             add edx, -12
+008A095F  52                            push edx
+008A0960  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; STRNCPY
+008A0965  FF D1                         call ecx
+008A0967  81 C4 0C 00 00 00             add esp, 12
+008A096D  58                            pop eax
+
+#34
+#35
+#36
+#37
+#38
+(-) STRING
+008A096E  EB 46 90 90 90                jmp 008A09B6H
+
+#39
+#40
+#41
+#42
+#43
+#44
+#45
+#46
+#47		{L:15}
+(*) UNDEF
+008A0973  33 C0                         xor eax, eax
+008A0975  66 8B 45 0C                   mov ax, 12[ebp]
+
+#48		{L:15}
+(*) UINT
+008A0979  3D 00 00 00 00                cmp eax, 0
+008A097E  0F 94 C0                      sete al
+008A0981  25 FF 00 00 00                and eax, 0FFh
+
+#49
+(-) BOOL
+008A0986  84 C0                         test al, al
+008A0988  90 75 08 90 90 90             jne 008A0993H
+
+#50
+(-) BOOL
+008A098E  EB 26 90 90 90                jmp 008A09B6H
+
+#51
+#52
+#53
+#54
+#55
+#56		{L:16}
+(*) BOOL
+008A0993  B8 CC CC CC CC                mov eax, CCCCCCCCH ; $$CODE$$+254
+008A0998  50                            push eax
+008A0999  68 05 00 00 00                push 5
+008A099E  50                            push eax
+008A099F  8B D5                         mov edx, ebp
+008A09A1  81 C2 F4 FF FF FF             add edx, -12
+008A09A7  52                            push edx
+008A09A8  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; STRNCPY
+008A09AD  FF D1                         call ecx
+008A09AF  81 C4 0C 00 00 00             add esp, 12
+008A09B5  58                            pop eax
+
+#57
+#58
+#59
+#60
+#61
+#62
+#63
+#64
+#65
+#66		{L:21}
+(*) UNDEF
+008A09B6  8B C5                         mov eax, ebp
+008A09B8  05 F4 FF FF FF                add eax, -12
+
+#67		{L:21}
+(-) STRING
+008A09BD  68 00 00 00 00                push 0
+008A09C2  50                            push eax
+008A09C3  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; WRITESTRLOCALDISPLAY
+008A09C8  FF D1                         call ecx
+008A09CA  81 C4 08 00 00 00             add esp, 8
+
+#68		{L:21}
+(*) BOOL
+008A09D0  84 C0                         test al, al
+008A09D2  0F 95 45 F0                   setne -16[ebp]
+
+#69
+#70
+#71		{L:22}
+(*) BOOL
+008A09D6  B8 01 00 00 00                mov eax, 1
+008A09DB  84 C0                         test al, al
+008A09DD  0F 95 45 FC                   setne -4[ebp]
+
+008A09E1  33 C0                         xor eax, eax
+008A09E3  8A 45 FC                      mov al, -4[ebp]
+008A09E6  8B E5                         mov esp, ebp
+008A09E8  5D                            pop ebp
+
+008A09E9  C3                            ret
+
+END_FUNCTION
+**************************************************
+	List function: DECREMENT
+**************************************************
+
+FUNCTION DECREMENT : UINT
+
+	VAR_INPUT
+	CURRENTMENU : UINT; 
+	MAXMENU : UINT; 
+	END_VAR
+
+END_FUNCTION
+
+	*** Function data allocation
+
+	Res DECREMENT: LOCAL STACK FRAME AT -4(ebp)
+	Par CURRENTMENU: CALLER STACK FRAME AT 8(ebp)
+	Par MAXMENU: CALLER STACK FRAME AT 12(ebp)
+
+008A09EA  55                            push ebp
+008A09EB  8B EC                         mov ebp, esp
+008A09ED  81 EC 08 00 00 00             sub esp, 8
+
+#0		{SRC:DECREMENT}
+#1
+#2
+#3
+#4
+#5		{L:2}
+(*) UNDEF
+008A09F3  33 C0                         xor eax, eax
+008A09F5  66 8B 45 08                   mov ax, 8[ebp]
+
+#6		{L:2}
+(*) UINT
+008A09F9  3D 00 00 00 00                cmp eax, 0
+008A09FE  0F 9F C0                      setg al
+008A0A01  25 FF 00 00 00                and eax, 0FFh
+
+#7		{L:2}
+(-) BOOL
+008A0A06  84 C0                         test al, al
+008A0A08  90 74 17 90 90 90             je 008A0A22H
+
+#8
+#9
+#10
+#11
+#12		{L:3}
+(*) UNDEF
+008A0A0E  33 C0                         xor eax, eax
+008A0A10  66 8B 45 08                   mov ax, 8[ebp]
+
+#13		{L:3}
+(*) UINT
+008A0A14  2D 01 00 00 00                sub eax, 1
+
+#14		{L:3}
+(*) UINT
+008A0A19  66 89 45 FC                   mov -4[ebp], ax
+
+#15
+(-) UINT
+008A0A1D  EB 0D 90 90 90                jmp 008A0A2CH
+
+#16
+#17
+#18
+#19
+#20
+#21		{L:5}
+(*) UINT
+008A0A22  33 C0                         xor eax, eax
+008A0A24  66 8B 45 0C                   mov ax, 12[ebp]
+008A0A28  66 89 45 FC                   mov -4[ebp], ax
+
+008A0A2C  33 C0                         xor eax, eax
+008A0A2E  66 8B 45 FC                   mov ax, -4[ebp]
+008A0A32  8B E5                         mov esp, ebp
+008A0A34  5D                            pop ebp
+
+008A0A35  C3                            ret
+
+END_FUNCTION
+**************************************************
+	List function: INCREMENT
+**************************************************
+
+FUNCTION INCREMENT : UINT
+
+	VAR_INPUT
+	CURRENTMENU : UINT; 
+	MAXMENU : UINT; 
+	END_VAR
+
+END_FUNCTION
+
+	*** Function data allocation
+
+	Res INCREMENT: LOCAL STACK FRAME AT -4(ebp)
+	Par CURRENTMENU: CALLER STACK FRAME AT 8(ebp)
+	Par MAXMENU: CALLER STACK FRAME AT 12(ebp)
+
+008A0A36  55                            push ebp
+008A0A37  8B EC                         mov ebp, esp
+008A0A39  81 EC 08 00 00 00             sub esp, 8
+
+#0		{SRC:INCREMENT}
+#1
+#2
+#3
+#4
+#5		{L:2}
+(*) UNDEF
+008A0A3F  33 C0                         xor eax, eax
+008A0A41  66 8B 45 08                   mov ax, 8[ebp]
+
+#6		{L:2}
+(*) UINT
+008A0A45  05 01 00 00 00                add eax, 1
+
+#7		{L:2}
+(*) UINT
+008A0A4A  33 C9                         xor ecx, ecx
+008A0A4C  66 8B 4D 0C                   mov cx, 12[ebp]
+008A0A50  3B C1                         cmp eax, ecx
+008A0A52  0F 9F C0                      setg al
+008A0A55  25 FF 00 00 00                and eax, 0FFh
+
+#8		{L:2}
+(-) BOOL
+008A0A5A  84 C0                         test al, al
+008A0A5C  90 74 11 90 90 90             je 008A0A70H
+
+#9
+#10
+#11
+#12
+#13		{L:3}
+(*) BOOL
+008A0A62  B8 00 00 00 00                mov eax, 0
+008A0A67  66 89 45 FC                   mov -4[ebp], ax
+
+#14
+(-) UINT
+008A0A6B  EB 12 90 90 90                jmp 008A0A7FH
+
+#15
+#16
+#17
+#18
+#19
+#20		{L:5}
+(*) UNDEF
+008A0A70  33 C0                         xor eax, eax
+008A0A72  66 8B 45 08                   mov ax, 8[ebp]
+
+#21		{L:5}
+(*) UINT
+008A0A76  05 01 00 00 00                add eax, 1
+
+#22		{L:5}
+(*) UINT
+008A0A7B  66 89 45 FC                   mov -4[ebp], ax
+
+008A0A7F  33 C0                         xor eax, eax
+008A0A81  66 8B 45 FC                   mov ax, -4[ebp]
+008A0A85  8B E5                         mov esp, ebp
+008A0A87  5D                            pop ebp
+
+008A0A88  C3                            ret
+
+END_FUNCTION
+**************************************************
+	List function block: SHOWALARM
+**************************************************
+
+FUNCTION_BLOCK SHOWALARM
+
+	VAR_INPUT
+	ALARM : UINT; 
+	END_VAR
+
+	VAR_OUTPUT
+	SHOW : BOOL; 
+	END_VAR
+
+	VAR_EXTERNAL
+	TEMPERATURE_PROBE_ERROR : USINT; 
+	END_VAR
+
+END_FUNCTION_BLOCK
+
+008A0A89  55                            push ebp
+008A0A8A  8B EB                         mov ebp, ebx
+
+#0		{SRC:SHOWALARM}
+#1
+#2
+#3
+#4
+#5
+#6
+#7		{L:4}
+(*) UNDEF
+008A0A8C  33 C0                         xor eax, eax
+008A0A8E  66 8B 45 00                   mov ax, [ebp]
+
+#8		{L:4}
+(*) UINT
+008A0A92  3D 00 00 00 00                cmp eax, 0
+008A0A97  0F 94 C0                      sete al
+008A0A9A  25 FF 00 00 00                and eax, 0FFh
+
+#9
+(-) BOOL
+008A0A9F  84 C0                         test al, al
+008A0AA1  90 75 08 90 90 90             jne 008A0AACH
+
+#10
+(-) BOOL
+008A0AA7  EB 1E 90 90 90                jmp 008A0AC7H
+
+#11
+#12
+#13
+#14
+#15
+#16		{L:5}
+(*) UNDEF
+008A0AAC  33 C0                         xor eax, eax
+008A0AAE  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+11
+
+#17		{L:5}
+(*) USINT
+008A0AB4  3D 00 00 00 00                cmp eax, 0
+008A0AB9  0F 95 C0                      setne al
+008A0ABC  25 FF 00 00 00                and eax, 0FFh
+
+#18		{L:5}
+(*) BOOL
+008A0AC1  84 C0                         test al, al
+008A0AC3  0F 95 45 02                   setne 2[ebp]
+
+008A0AC7  5D                            pop ebp
+
+008A0AC8  C3                            ret
+
+
+Frame allocation:
+
+	0000       : VAR ALARM
+	0002 bit  0: VAR SHOW
+
+END_FUNCTION_BLOCK
+**************************************************
+	List function block: ALARMMENU
+**************************************************
+
+FUNCTION_BLOCK ALARMMENU
+
+	VAR_EXTERNAL
+	$$WARNINGSKILLER : BOOL; 
+	$$KEYLOG : USINT; 
+	$$ADDRESS : UINT; 
+	$$TYPE : USINT; 
+	$$MIN : REAL; 
+	$$MAX : REAL; 
+	$$SCALE : REAL; 
+	$$OFFSET : REAL; 
+	$$DP : SINT; 
+	$$MODE : USINT; 
+	$$UM : SINT; 
+	TEMPERATURE_PROBE_ERROR : USINT; 
+	END_VAR
+
+	VAR
+	CURRENTALARM : UINT; 
+	TEMPCURRENTALARM : UINT; 
+	SHOWAL : SHOWALARM; 
+	TEMPDINT : DINT; 
+	END_VAR
+
+END_FUNCTION_BLOCK
+
+008A0AC9  55                            push ebp
+008A0ACA  8B EB                         mov ebp, ebx
+
+#0		{SRC:ALARMMENU}
+#1
+#2
+#3
+#4		{L:3}
+(*) BOOL
+008A0ACC  B8 00 00 00 00                mov eax, 0
+008A0AD1  66 89 45 00                   mov [ebp], ax
+
+#5
+#6
+#7
+#8		{L:5}
+(*) UNDEF
+008A0AD5  33 C0                         xor eax, eax
+008A0AD7  66 8B 45 00                   mov ax, [ebp]
+
+#9		{L:5}
+(*) UINT
+008A0ADB  3D 00 00 00 00                cmp eax, 0
+008A0AE0  0F 9C C0                      setl al
+008A0AE3  25 FF 00 00 00                and eax, 0FFh
+
+#10		{L:5}
+(-) BOOL
+008A0AE8  84 C0                         test al, al
+008A0AEA  90 74 4E 90 90 90             je 008A0B3BH
+
+#11
+#12
+#13
+#14		{L:6}
+(*) BOOL
+008A0AF0  33 C0                         xor eax, eax
+008A0AF2  66 8B 45 00                   mov ax, [ebp]
+008A0AF6  66 89 45 04                   mov 4[ebp], ax
+
+#15		{L:6}
+(*) UINT
+008A0AFA  50                            push eax
+008A0AFB  8B DD                         mov ebx, ebp
+008A0AFD  81 C3 04 00 00 00             add ebx, 4
+008A0B03  E8 81 FF FF FF                call 008A0A89H
+008A0B08  58                            pop eax
+
+#16
+#17
+#18
+#19		{L:7}
+(*) UNDEF
+008A0B09  33 C0                         xor eax, eax
+008A0B0B  8A 45 06                      mov al, 6[ebp]
+
+#20		{L:7}
+(-) BOOL
+008A0B0E  84 C0                         test al, al
+008A0B10  90 74 08 90 90 90             je 008A0B1BH
+
+#21
+#22
+#23
+#24
+#25
+(-) BOOL
+008A0B16  EB 23 90 90 90                jmp 008A0B3BH
+
+#26
+#27
+#28
+#29
+#30
+#31		{L:11}
+(*) UNDEF
+008A0B1B  33 C0                         xor eax, eax
+008A0B1D  66 8B 45 00                   mov ax, [ebp]
+
+#32		{L:11}
+(-) UINT
+008A0B21  68 00 00 00 00                push 0
+008A0B26  50                            push eax
+008A0B27  E8 0A FF FF FF                call 008A0A36H
+008A0B2C  81 C4 08 00 00 00             add esp, 8
+
+#33		{L:11}
+(*) UINT
+008A0B32  66 89 45 00                   mov [ebp], ax
+
+#34
+(-) UINT
+008A0B36  EB 9D 90 90 90                jmp 008A0AD5H
+
+#35
+#36
+#37
+#38
+#39
+#40		{L:15}
+(*) UINT
+008A0B3B  33 C0                         xor eax, eax
+008A0B3D  66 8B 45 00                   mov ax, [ebp]
+008A0B41  66 89 45 04                   mov 4[ebp], ax
+
+#41		{L:15}
+(*) UINT
+008A0B45  50                            push eax
+008A0B46  8B DD                         mov ebx, ebp
+008A0B48  81 C3 04 00 00 00             add ebx, 4
+008A0B4E  E8 36 FF FF FF                call 008A0A89H
+008A0B53  58                            pop eax
+
+#42
+#43
+#44
+#45		{L:16}
+(*) UNDEF
+008A0B54  33 C0                         xor eax, eax
+008A0B56  8A 45 06                      mov al, 6[ebp]
+
+#46		{L:16}
+(-) BOOL
+008A0B59  84 C0                         test al, al
+008A0B5B  0F 84 6D 03 00 00             je 008A0ECEH
+
+#47
+#48
+#49
+#50
+#51		{L:18}
+(*) UNDEF
+008A0B61  33 C0                         xor eax, eax
+008A0B63  66 8B 45 00                   mov ax, [ebp]
+
+#52		{L:18}
+(-) UINT
+008A0B67  50                            push eax
+008A0B68  E8 07 FB FF FF                call 008A0674H
+008A0B6D  81 C4 04 00 00 00             add esp, 4
+
+#53		{L:18}
+(*) BOOL
+008A0B73  84 C0                         test al, al
+008A0B75  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#54
+#55
+#56
+#57		{L:21}
+(*) UNDEF
+008A0B7C  B8 01 00 00 00                mov eax, 1
+
+#58		{L:21}
+(-) BOOL
+008A0B81  84 C0                         test al, al
+008A0B83  0F 84 45 03 00 00             je 008A0ECEH
+
+#59
+#60
+#61
+#62		{L:23}
+(*) UNDEF
+008A0B89  B8 00 00 00 00                mov eax, 0
+
+#63		{L:23}
+(-) USINT
+008A0B8E  50                            push eax
+008A0B8F  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; KEYLOG_OUT
+008A0B94  FF D1                         call ecx
+008A0B96  81 C4 04 00 00 00             add esp, 4
+
+#64		{L:23}
+(*) USINT
+008A0B9C  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+43
+
+#65
+#66
+#67
+#68
+#69
+#70		{L:27}
+(*) UNDEF
+008A0BA2  33 C0                         xor eax, eax
+008A0BA4  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#71		{L:27}
+(*) USINT
+008A0BAA  3D 0E 00 00 00                cmp eax, 14
+008A0BAF  0F 94 C0                      sete al
+008A0BB2  25 FF 00 00 00                and eax, 0FFh
+
+#72		{L:27}
+(*) BOOL
+008A0BB7  50                            push eax
+008A0BB8  33 C0                         xor eax, eax
+008A0BBA  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#73		{L:27}
+(*) USINT
+008A0BC0  3D 03 00 00 00                cmp eax, 3
+008A0BC5  0F 94 C0                      sete al
+008A0BC8  25 FF 00 00 00                and eax, 0FFh
+
+#74		{L:27}
+(*) BOOL
+008A0BCD  8B C8                         mov ecx, eax
+008A0BCF  58                            pop eax
+008A0BD0  0B C1                         or eax, ecx
+
+#75
+(-) BOOL
+008A0BD2  84 C0                         test al, al
+008A0BD4  90 75 5F 90 90 90             jne 008A0C36H
+
+#76
+#77
+#78		{L:32}
+(*) UNDEF
+008A0BDA  33 C0                         xor eax, eax
+008A0BDC  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#79		{L:32}
+(*) USINT
+008A0BE2  3D 0A 00 00 00                cmp eax, 10
+008A0BE7  0F 94 C0                      sete al
+008A0BEA  25 FF 00 00 00                and eax, 0FFh
+
+#80
+(-) BOOL
+008A0BEF  84 C0                         test al, al
+008A0BF1  90 75 4C 90 90 90             jne 008A0C40H
+
+#81
+#82
+#83		{L:51}
+(*) UNDEF
+008A0BF7  33 C0                         xor eax, eax
+008A0BF9  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#84		{L:51}
+(*) USINT
+008A0BFF  3D 07 00 00 00                cmp eax, 7
+008A0C04  0F 94 C0                      sete al
+008A0C07  25 FF 00 00 00                and eax, 0FFh
+
+#85
+(-) BOOL
+008A0C0C  84 C0                         test al, al
+008A0C0E  0F 85 05 01 00 00             jne 008A0D19H
+
+#86
+#87
+#88		{L:70}
+(*) UNDEF
+008A0C14  33 C0                         xor eax, eax
+008A0C16  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#89		{L:70}
+(*) USINT
+008A0C1C  3D 05 00 00 00                cmp eax, 5
+008A0C21  0F 94 C0                      sete al
+008A0C24  25 FF 00 00 00                and eax, 0FFh
+
+#90
+(-) BOOL
+008A0C29  84 C0                         test al, al
+008A0C2B  0F 85 C1 01 00 00             jne 008A0DF2H
+
+#91
+(-) BOOL
+008A0C31  E9 93 02 00 00                jmp 008A0EC9H
+
+#92
+#93
+#94
+#95
+#96
+#97
+(-) BOOL
+008A0C36  E9 93 02 00 00                jmp 008A0ECEH
+
+#98
+(-) BOOL
+008A0C3B  E9 89 02 00 00                jmp 008A0EC9H
+
+#99
+#100
+#101
+#102		{L:34}
+(*) UNDEF
+008A0C40  33 C0                         xor eax, eax
+008A0C42  66 8B 45 00                   mov ax, [ebp]
+
+#103		{L:34}
+(-) UINT
+008A0C46  68 00 00 00 00                push 0
+008A0C4B  50                            push eax
+008A0C4C  E8 99 FD FF FF                call 008A09EAH
+008A0C51  81 C4 08 00 00 00             add esp, 8
+
+#104		{L:34}
+(*) UINT
+008A0C57  66 89 45 02                   mov 2[ebp], ax
+
+#105
+#106
+#107		{L:35}
+(*) UINT
+008A0C5B  33 C0                         xor eax, eax
+008A0C5D  66 8B 45 02                   mov ax, 2[ebp]
+008A0C61  66 89 45 04                   mov 4[ebp], ax
+
+#108		{L:35}
+(*) UINT
+008A0C65  50                            push eax
+008A0C66  8B DD                         mov ebx, ebp
+008A0C68  81 C3 04 00 00 00             add ebx, 4
+008A0C6E  E8 16 FE FF FF                call 008A0A89H
+008A0C73  58                            pop eax
+
+#109
+#110
+#111
+#112		{L:36}
+(*) UNDEF
+008A0C74  33 C0                         xor eax, eax
+008A0C76  8A 45 06                      mov al, 6[ebp]
+
+#113		{L:36}
+(*) BOOL
+008A0C79  84 C0                         test al, al
+008A0C7B  0F 94 C0                      sete al
+
+#114		{L:36}
+(-) BOOL
+008A0C7E  84 C0                         test al, al
+008A0C80  90 74 5F 90 90 90             je 008A0CE2H
+
+#115
+#116
+#117
+#118		{L:37}
+(*) UNDEF
+008A0C86  33 C0                         xor eax, eax
+008A0C88  66 8B 45 02                   mov ax, 2[ebp]
+
+#119		{L:37}
+(-) UINT
+008A0C8C  68 00 00 00 00                push 0
+008A0C91  50                            push eax
+008A0C92  E8 53 FD FF FF                call 008A09EAH
+008A0C97  81 C4 08 00 00 00             add esp, 8
+
+#120		{L:37}
+(*) UINT
+008A0C9D  66 89 45 02                   mov 2[ebp], ax
+
+#121
+#122
+#123
+#124		{L:38}
+(*) UNDEF
+008A0CA1  33 C0                         xor eax, eax
+008A0CA3  66 8B 45 02                   mov ax, 2[ebp]
+
+#125		{L:38}
+(*) UINT
+008A0CA7  33 C9                         xor ecx, ecx
+008A0CA9  66 8B 4D 00                   mov cx, [ebp]
+008A0CAD  3B C1                         cmp eax, ecx
+008A0CAF  0F 94 C0                      sete al
+008A0CB2  25 FF 00 00 00                and eax, 0FFh
+
+#126		{L:38}
+(-) BOOL
+008A0CB7  84 C0                         test al, al
+008A0CB9  90 74 08 90 90 90             je 008A0CC4H
+
+#127
+#128
+#129
+#130
+#131
+(-) BOOL
+008A0CBF  EB 21 90 90 90                jmp 008A0CE2H
+
+#132
+#133
+#134
+#135
+#136
+#137		{L:41}
+(*) BOOL
+008A0CC4  33 C0                         xor eax, eax
+008A0CC6  66 8B 45 02                   mov ax, 2[ebp]
+008A0CCA  66 89 45 04                   mov 4[ebp], ax
+
+#138		{L:41}
+(*) UINT
+008A0CCE  50                            push eax
+008A0CCF  8B DD                         mov ebx, ebp
+008A0CD1  81 C3 04 00 00 00             add ebx, 4
+008A0CD7  E8 AD FD FF FF                call 008A0A89H
+008A0CDC  58                            pop eax
+
+#139
+(-) UINT
+008A0CDD  EB 95 90 90 90                jmp 008A0C74H
+
+#140
+#141
+#142
+#143
+#144
+#145
+#146		{L:45}
+(*) UNDEF
+008A0CE2  33 C0                         xor eax, eax
+008A0CE4  8A 45 06                      mov al, 6[ebp]
+
+#147		{L:45}
+(-) BOOL
+008A0CE7  84 C0                         test al, al
+008A0CE9  90 74 28 90 90 90             je 008A0D14H
+
+#148
+#149
+#150
+#151
+#152		{L:46}
+(*) BOOL
+008A0CEF  33 C0                         xor eax, eax
+008A0CF1  66 8B 45 02                   mov ax, 2[ebp]
+008A0CF5  66 89 45 00                   mov [ebp], ax
+
+#153
+#154
+#155		{L:47}
+(*) UNDEF
+008A0CF9  33 C0                         xor eax, eax
+008A0CFB  66 8B 45 00                   mov ax, [ebp]
+
+#156		{L:47}
+(-) UINT
+008A0CFF  50                            push eax
+008A0D00  E8 6F F9 FF FF                call 008A0674H
+008A0D05  81 C4 04 00 00 00             add esp, 4
+
+#157		{L:47}
+(*) BOOL
+008A0D0B  84 C0                         test al, al
+008A0D0D  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#158
+#159
+#160
+#161
+(-) BOOL
+008A0D14  E9 B0 01 00 00                jmp 008A0EC9H
+
+#162
+#163
+#164
+#165		{L:53}
+(*) UNDEF
+008A0D19  33 C0                         xor eax, eax
+008A0D1B  66 8B 45 00                   mov ax, [ebp]
+
+#166		{L:53}
+(-) UINT
+008A0D1F  68 00 00 00 00                push 0
+008A0D24  50                            push eax
+008A0D25  E8 0C FD FF FF                call 008A0A36H
+008A0D2A  81 C4 08 00 00 00             add esp, 8
+
+#167		{L:53}
+(*) UINT
+008A0D30  66 89 45 02                   mov 2[ebp], ax
+
+#168
+#169
+#170		{L:54}
+(*) UINT
+008A0D34  33 C0                         xor eax, eax
+008A0D36  66 8B 45 02                   mov ax, 2[ebp]
+008A0D3A  66 89 45 04                   mov 4[ebp], ax
+
+#171		{L:54}
+(*) UINT
+008A0D3E  50                            push eax
+008A0D3F  8B DD                         mov ebx, ebp
+008A0D41  81 C3 04 00 00 00             add ebx, 4
+008A0D47  E8 3D FD FF FF                call 008A0A89H
+008A0D4C  58                            pop eax
+
+#172
+#173
+#174
+#175		{L:55}
+(*) UNDEF
+008A0D4D  33 C0                         xor eax, eax
+008A0D4F  8A 45 06                      mov al, 6[ebp]
+
+#176		{L:55}
+(*) BOOL
+008A0D52  84 C0                         test al, al
+008A0D54  0F 94 C0                      sete al
+
+#177		{L:55}
+(-) BOOL
+008A0D57  84 C0                         test al, al
+008A0D59  90 74 5F 90 90 90             je 008A0DBBH
+
+#178
+#179
+#180
+#181		{L:56}
+(*) UNDEF
+008A0D5F  33 C0                         xor eax, eax
+008A0D61  66 8B 45 02                   mov ax, 2[ebp]
+
+#182		{L:56}
+(-) UINT
+008A0D65  68 00 00 00 00                push 0
+008A0D6A  50                            push eax
+008A0D6B  E8 C6 FC FF FF                call 008A0A36H
+008A0D70  81 C4 08 00 00 00             add esp, 8
+
+#183		{L:56}
+(*) UINT
+008A0D76  66 89 45 02                   mov 2[ebp], ax
+
+#184
+#185
+#186
+#187		{L:57}
+(*) UNDEF
+008A0D7A  33 C0                         xor eax, eax
+008A0D7C  66 8B 45 02                   mov ax, 2[ebp]
+
+#188		{L:57}
+(*) UINT
+008A0D80  33 C9                         xor ecx, ecx
+008A0D82  66 8B 4D 00                   mov cx, [ebp]
+008A0D86  3B C1                         cmp eax, ecx
+008A0D88  0F 94 C0                      sete al
+008A0D8B  25 FF 00 00 00                and eax, 0FFh
+
+#189		{L:57}
+(-) BOOL
+008A0D90  84 C0                         test al, al
+008A0D92  90 74 08 90 90 90             je 008A0D9DH
+
+#190
+#191
+#192
+#193
+#194
+(-) BOOL
+008A0D98  EB 21 90 90 90                jmp 008A0DBBH
+
+#195
+#196
+#197
+#198
+#199
+#200		{L:60}
+(*) BOOL
+008A0D9D  33 C0                         xor eax, eax
+008A0D9F  66 8B 45 02                   mov ax, 2[ebp]
+008A0DA3  66 89 45 04                   mov 4[ebp], ax
+
+#201		{L:60}
+(*) UINT
+008A0DA7  50                            push eax
+008A0DA8  8B DD                         mov ebx, ebp
+008A0DAA  81 C3 04 00 00 00             add ebx, 4
+008A0DB0  E8 D4 FC FF FF                call 008A0A89H
+008A0DB5  58                            pop eax
+
+#202
+(-) UINT
+008A0DB6  EB 95 90 90 90                jmp 008A0D4DH
+
+#203
+#204
+#205
+#206
+#207
+#208
+#209		{L:64}
+(*) UNDEF
+008A0DBB  33 C0                         xor eax, eax
+008A0DBD  8A 45 06                      mov al, 6[ebp]
+
+#210		{L:64}
+(-) BOOL
+008A0DC0  84 C0                         test al, al
+008A0DC2  90 74 28 90 90 90             je 008A0DEDH
+
+#211
+#212
+#213
+#214
+#215		{L:65}
+(*) BOOL
+008A0DC8  33 C0                         xor eax, eax
+008A0DCA  66 8B 45 02                   mov ax, 2[ebp]
+008A0DCE  66 89 45 00                   mov [ebp], ax
+
+#216
+#217
+#218		{L:66}
+(*) UNDEF
+008A0DD2  33 C0                         xor eax, eax
+008A0DD4  66 8B 45 00                   mov ax, [ebp]
+
+#219		{L:66}
+(-) UINT
+008A0DD8  50                            push eax
+008A0DD9  E8 96 F8 FF FF                call 008A0674H
+008A0DDE  81 C4 04 00 00 00             add esp, 4
+
+#220		{L:66}
+(*) BOOL
+008A0DE4  84 C0                         test al, al
+008A0DE6  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#221
+#222
+#223
+#224
+(-) BOOL
+008A0DED  E9 D7 00 00 00                jmp 008A0EC9H
+
+#225
+#226
+#227
+#228
+#229
+#230
+#231		{L:73}
+(*) UNDEF
+008A0DF2  33 C0                         xor eax, eax
+008A0DF4  66 8B 45 00                   mov ax, [ebp]
+
+#232		{L:73}
+(*) UINT
+008A0DF8  3D 00 00 00 00                cmp eax, 0
+008A0DFD  0F 94 C0                      sete al
+008A0E00  25 FF 00 00 00                and eax, 0FFh
+
+#233
+(-) BOOL
+008A0E05  84 C0                         test al, al
+008A0E07  90 75 08 90 90 90             jne 008A0E12H
+
+#234
+(-) BOOL
+008A0E0D  EB 0E 90 90 90                jmp 008A0E1DH
+
+#235
+#236
+#237
+#238
+#239
+#240		{L:74}
+(*) UNDEF
+008A0E12  33 C0                         xor eax, eax
+008A0E14  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+11
+
+#241		{L:74}
+(*) USINT
+#242		{L:74}
+(*) DINT
+008A0E1A  89 45 07                      mov 7[ebp], eax
+
+#243
+#244
+#245
+#246
+#247
+#248
+#249		{L:77}
+(*) UNDEF
+008A0E1D  8B 45 07                      mov eax, 7[ebp]
+
+#250		{L:77}
+(-) DINT
+008A0E20  68 00 00 00 00                push 0
+008A0E25  68 00 00 00 00                push 0
+008A0E2A  50                            push eax
+008A0E2B  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; WRITENUMLOCALDISPLAY
+008A0E30  FF D1                         call ecx
+008A0E32  81 C4 0C 00 00 00             add esp, 12
+
+#251		{L:77}
+(*) BOOL
+008A0E38  84 C0                         test al, al
+008A0E3A  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#252
+#253
+#254
+#255		{L:79}
+(*) UNDEF
+008A0E41  B8 01 00 00 00                mov eax, 1
+
+#256		{L:79}
+(-) BOOL
+008A0E46  84 C0                         test al, al
+008A0E48  90 74 63 90 90 90             je 008A0EAEH
+
+#257
+#258
+#259
+#260		{L:80}
+(*) UNDEF
+008A0E4E  B8 00 00 00 00                mov eax, 0
+
+#261		{L:80}
+(-) USINT
+008A0E53  50                            push eax
+008A0E54  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; KEYLOG_OUT
+008A0E59  FF D1                         call ecx
+008A0E5B  81 C4 04 00 00 00             add esp, 4
+
+#262		{L:80}
+(*) USINT
+008A0E61  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+43
+
+#263
+#264
+#265
+#266
+#267
+#268		{L:82}
+(*) UNDEF
+008A0E67  33 C0                         xor eax, eax
+008A0E69  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#269		{L:82}
+(*) USINT
+008A0E6F  3D 0E 00 00 00                cmp eax, 14
+008A0E74  0F 94 C0                      sete al
+008A0E77  25 FF 00 00 00                and eax, 0FFh
+
+#270		{L:82}
+(*) BOOL
+008A0E7C  50                            push eax
+008A0E7D  33 C0                         xor eax, eax
+008A0E7F  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#271		{L:82}
+(*) USINT
+008A0E85  3D 03 00 00 00                cmp eax, 3
+008A0E8A  0F 94 C0                      sete al
+008A0E8D  25 FF 00 00 00                and eax, 0FFh
+
+#272		{L:82}
+(*) BOOL
+008A0E92  8B C8                         mov ecx, eax
+008A0E94  58                            pop eax
+008A0E95  0B C1                         or eax, ecx
+
+#273
+(-) BOOL
+008A0E97  84 C0                         test al, al
+008A0E99  90 75 08 90 90 90             jne 008A0EA4H
+
+#274
+(-) BOOL
+008A0E9F  EB 08 90 90 90                jmp 008A0EA9H
+
+#275
+#276
+#277
+#278
+#279
+#280
+(-) BOOL
+008A0EA4  EB 08 90 90 90                jmp 008A0EAEH
+
+#281
+#282
+#283
+#284
+#285
+(-) BOOL
+008A0EA9  EB 96 90 90 90                jmp 008A0E41H
+
+#286
+#287
+#288
+#289
+#290
+#291		{L:88}
+(*) UNDEF
+008A0EAE  33 C0                         xor eax, eax
+008A0EB0  66 8B 45 00                   mov ax, [ebp]
+
+#292		{L:88}
+(-) UINT
+008A0EB4  50                            push eax
+008A0EB5  E8 BA F7 FF FF                call 008A0674H
+008A0EBA  81 C4 04 00 00 00             add esp, 4
+
+#293		{L:88}
+(*) BOOL
+008A0EC0  84 C0                         test al, al
+008A0EC2  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#294
+#295
+#296
+#297
+#298
+(-) BOOL
+008A0EC9  E9 AE FC FF FF                jmp 008A0B7CH
+
+008A0ECE  5D                            pop ebp
+
+008A0ECF  C3                            ret
+
+
+Frame allocation:
+
+	0000       : VAR CURRENTALARM
+	0002       : VAR TEMPCURRENTALARM
+	0004       : FB SHOWAL
+	0007       : VAR TEMPDINT
+
+END_FUNCTION_BLOCK
+**************************************************
+	List function block: MENULIST
+**************************************************
+
+FUNCTION_BLOCK MENULIST
+
+	VAR_INPUT
+	STATES : BOOL; 
+	ALARMS : ALARMMENU; 
+	END_VAR
+
+	VAR_EXTERNAL
+	SYSDISPLAYMODE AT %MB21.0 : ARRAY[ 0..1 ] OF USINT; 	{ DE:"Display mode. It affects the key return code. [0]=Local [1]=LCD. See also KeyLogOutDisplays function " }
+	SYSPWLEVEL AT %MB22.0 : USINT; 	{ DE:" Password Level. 0=User 1=Installer 3=Manufacturer " }
+	$$WARNINGSKILLER : BOOL; 
+	$$KEYLOG : USINT; 
+	$$ADDRESS : UINT; 
+	$$TYPE : USINT; 
+	$$MIN : REAL; 
+	$$MAX : REAL; 
+	$$SCALE : REAL; 
+	$$OFFSET : REAL; 
+	$$DP : SINT; 
+	$$MODE : USINT; 
+	$$UM : SINT; 
+	SETPOINT AT %MW101.0 : INT; 
+	DIFFERENTIATION AT %MW101.1 : INT; 
+	AMBIENT_TEMP AT %MW110.0 : INT; 
+	END_VAR
+
+	VAR
+	CURRENTACCESSLEVEL : USINT; 
+	CURRENTMENU : UINT; 
+	TEMPCURRENTMENU : UINT; 
+	CURRENTPARAMETER : UINT; 
+	TEMPCURRENTPARAMETER : UINT; 
+	END_VAR
+
+END_FUNCTION_BLOCK
+
+008A0ED0  55                            push ebp
+008A0ED1  8B EB                         mov ebp, ebx
+
+#0		{SRC:MENULIST}
+#1
+#2
+#3
+#4
+#5
+#6
+#7		{L:4}
+(*) UNDEF
+008A0ED3  33 C0                         xor eax, eax
+008A0ED5  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; %M22+0
+
+#8		{L:4}
+(*) USINT
+008A0EDB  3D 01 00 00 00                cmp eax, 1
+008A0EE0  0F 94 C0                      sete al
+008A0EE3  25 FF 00 00 00                and eax, 0FFh
+
+#9
+(-) BOOL
+008A0EE8  84 C0                         test al, al
+008A0EEA  90 75 25 90 90 90             jne 008A0F12H
+
+#10
+#11
+#12		{L:7}
+(*) UNDEF
+008A0EF0  33 C0                         xor eax, eax
+008A0EF2  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; %M22+0
+
+#13		{L:7}
+(*) USINT
+008A0EF8  3D 03 00 00 00                cmp eax, 3
+008A0EFD  0F 94 C0                      sete al
+008A0F00  25 FF 00 00 00                and eax, 0FFh
+
+#14
+(-) BOOL
+008A0F05  84 C0                         test al, al
+008A0F07  90 75 15 90 90 90             jne 008A0F1FH
+
+#15
+#16
+#17
+(-) BOOL
+008A0F0D  EB 1D 90 90 90                jmp 008A0F2CH
+
+#18
+#19
+#20
+#21
+#22
+#23		{L:5}
+(*) BOOL
+008A0F12  B8 01 00 00 00                mov eax, 1
+008A0F17  88 45 00                      mov [ebp], al
+
+#24
+(-) USINT
+008A0F1A  EB 18 90 90 90                jmp 008A0F34H
+
+#25
+#26
+#27
+#28		{L:8}
+(*) USINT
+008A0F1F  B8 02 00 00 00                mov eax, 2
+008A0F24  88 45 00                      mov [ebp], al
+
+#29
+(-) USINT
+008A0F27  EB 0B 90 90 90                jmp 008A0F34H
+
+#30
+#31
+#32
+#33		{L:11}
+(*) USINT
+008A0F2C  B8 00 00 00 00                mov eax, 0
+008A0F31  88 45 00                      mov [ebp], al
+
+#34
+#35
+#36
+#37
+#38
+#39
+#40		{L:16}
+(*) USINT
+008A0F34  B8 02 00 00 00                mov eax, 2
+008A0F39  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; %M21+0
+
+#41
+#42
+#43		{L:19}
+(*) USINT
+008A0F3F  B8 00 00 00 00                mov eax, 0
+008A0F44  66 89 45 01                   mov 1[ebp], ax
+
+#44
+#45
+#46
+#47		{L:21}
+(*) UNDEF
+008A0F48  33 C0                         xor eax, eax
+008A0F4A  8A 45 09                      mov al, 9[ebp]
+
+#48		{L:21}
+(-) BOOL
+008A0F4D  84 C0                         test al, al
+008A0F4F  0F 84 43 09 00 00             je 008A1898H
+
+#49
+#50
+#51
+#52
+#53
+#54		{L:23}
+(*) UNDEF
+008A0F55  33 C0                         xor eax, eax
+008A0F57  66 8B 45 01                   mov ax, 1[ebp]
+
+#55		{L:23}
+(*) UINT
+008A0F5B  3D 01 00 00 00                cmp eax, 1
+008A0F60  0F 9C C0                      setl al
+008A0F63  25 FF 00 00 00                and eax, 0FFh
+
+#56		{L:23}
+(-) BOOL
+008A0F68  84 C0                         test al, al
+008A0F6A  90 74 4B 90 90 90             je 008A0FB8H
+
+#57
+#58
+#59
+#60
+#61		{L:24}
+(*) UNDEF
+008A0F70  33 C0                         xor eax, eax
+008A0F72  8A 45 09                      mov al, 9[ebp]
+
+#62		{L:24}
+(-) BOOL
+008A0F75  0F B6 4D 00                   movzx ecx, byte ptr [ebp]
+008A0F79  51                            push ecx
+008A0F7A  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A0F7E  51                            push ecx
+008A0F7F  50                            push eax
+008A0F80  E8 1F F6 FF FF                call 008A05A4H
+008A0F85  81 C4 0C 00 00 00             add esp, 12
+
+#63		{L:24}
+(-) BOOL
+008A0F8B  84 C0                         test al, al
+008A0F8D  90 74 08 90 90 90             je 008A0F98H
+
+#64
+#65
+#66
+#67
+#68
+(-) BOOL
+008A0F93  EB 23 90 90 90                jmp 008A0FB8H
+
+#69
+#70
+#71
+#72
+#73
+#74		{L:28}
+(*) UNDEF
+008A0F98  33 C0                         xor eax, eax
+008A0F9A  66 8B 45 01                   mov ax, 1[ebp]
+
+#75		{L:28}
+(-) UINT
+008A0F9E  68 01 00 00 00                push 1
+008A0FA3  50                            push eax
+008A0FA4  E8 8D FA FF FF                call 008A0A36H
+008A0FA9  81 C4 08 00 00 00             add esp, 8
+
+#76		{L:28}
+(*) UINT
+008A0FAF  66 89 45 01                   mov 1[ebp], ax
+
+#77
+(-) UINT
+008A0FB3  EB A0 90 90 90                jmp 008A0F55H
+
+#78
+#79
+#80
+#81
+#82
+#83
+#84		{L:32}
+(*) UNDEF
+008A0FB8  33 C0                         xor eax, eax
+008A0FBA  66 8B 45 01                   mov ax, 1[ebp]
+
+#85		{L:32}
+(*) UINT
+008A0FBE  3D 01 00 00 00                cmp eax, 1
+008A0FC3  0F 94 C0                      sete al
+008A0FC6  25 FF 00 00 00                and eax, 0FFh
+
+#86		{L:32}
+(-) BOOL
+008A0FCB  84 C0                         test al, al
+008A0FCD  90 74 30 90 90 90             je 008A1000H
+
+#87
+#88
+#89
+#90
+#91
+#92		{L:33}
+(*) UNDEF
+008A0FD3  33 C0                         xor eax, eax
+008A0FD5  8A 45 09                      mov al, 9[ebp]
+
+#93		{L:33}
+(-) BOOL
+008A0FD8  0F B6 4D 00                   movzx ecx, byte ptr [ebp]
+008A0FDC  51                            push ecx
+008A0FDD  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A0FE1  51                            push ecx
+008A0FE2  50                            push eax
+008A0FE3  E8 BC F5 FF FF                call 008A05A4H
+008A0FE8  81 C4 0C 00 00 00             add esp, 12
+
+#94		{L:33}
+(*) BOOL
+008A0FEE  84 C0                         test al, al
+008A0FF0  0F 94 C0                      sete al
+
+#95		{L:33}
+(-) BOOL
+008A0FF3  84 C0                         test al, al
+008A0FF5  90 74 08 90 90 90             je 008A1000H
+
+#96
+#97
+#98
+#99
+#100
+(-) BOOL
+008A0FFB  E9 13 11 00 00                jmp 008A2113H
+
+#101
+#102
+#103
+#104
+#105
+#106
+#107
+#108
+#109		{L:39}
+(*) UNDEF
+008A1000  33 C0                         xor eax, eax
+008A1002  8A 45 09                      mov al, 9[ebp]
+
+#110		{L:39}
+(-) BOOL
+008A1005  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A1009  51                            push ecx
+008A100A  50                            push eax
+008A100B  E8 C2 F8 FF FF                call 008A08D2H
+008A1010  81 C4 08 00 00 00             add esp, 8
+
+#111		{L:39}
+(*) BOOL
+008A1016  84 C0                         test al, al
+008A1018  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#112
+#113
+#114
+#115		{L:42}
+(*) UNDEF
+008A101F  B8 01 00 00 00                mov eax, 1
+
+#116		{L:42}
+(-) BOOL
+008A1024  84 C0                         test al, al
+008A1026  0F 84 67 08 00 00             je 008A1893H
+
+#117
+#118
+#119
+#120		{L:45}
+(*) UNDEF
+008A102C  B8 00 00 00 00                mov eax, 0
+
+#121		{L:45}
+(-) USINT
+008A1031  50                            push eax
+008A1032  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; KEYLOG_OUT
+008A1037  FF D1                         call ecx
+008A1039  81 C4 04 00 00 00             add esp, 4
+
+#122		{L:45}
+(*) USINT
+008A103F  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+43
+
+#123
+#124
+#125
+#126
+#127
+#128		{L:49}
+(*) UNDEF
+008A1045  33 C0                         xor eax, eax
+008A1047  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#129		{L:49}
+(*) USINT
+008A104D  3D 0E 00 00 00                cmp eax, 14
+008A1052  0F 94 C0                      sete al
+008A1055  25 FF 00 00 00                and eax, 0FFh
+
+#130		{L:49}
+(*) BOOL
+008A105A  50                            push eax
+008A105B  33 C0                         xor eax, eax
+008A105D  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#131		{L:49}
+(*) USINT
+008A1063  3D 03 00 00 00                cmp eax, 3
+008A1068  0F 94 C0                      sete al
+008A106B  25 FF 00 00 00                and eax, 0FFh
+
+#132		{L:49}
+(*) BOOL
+008A1070  8B C8                         mov ecx, eax
+008A1072  58                            pop eax
+008A1073  0B C1                         or eax, ecx
+
+#133
+(-) BOOL
+008A1075  84 C0                         test al, al
+008A1077  90 75 5F 90 90 90             jne 008A10D9H
+
+#134
+#135
+#136		{L:54}
+(*) UNDEF
+008A107D  33 C0                         xor eax, eax
+008A107F  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#137		{L:54}
+(*) USINT
+008A1085  3D 0A 00 00 00                cmp eax, 10
+008A108A  0F 94 C0                      sete al
+008A108D  25 FF 00 00 00                and eax, 0FFh
+
+#138
+(-) BOOL
+008A1092  84 C0                         test al, al
+008A1094  90 75 4C 90 90 90             jne 008A10E3H
+
+#139
+#140
+#141		{L:71}
+(*) UNDEF
+008A109A  33 C0                         xor eax, eax
+008A109C  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#142		{L:71}
+(*) USINT
+008A10A2  3D 07 00 00 00                cmp eax, 7
+008A10A7  0F 94 C0                      sete al
+008A10AA  25 FF 00 00 00                and eax, 0FFh
+
+#143
+(-) BOOL
+008A10AF  84 C0                         test al, al
+008A10B1  0F 85 03 01 00 00             jne 008A11BAH
+
+#144
+#145
+#146		{L:88}
+(*) UNDEF
+008A10B7  33 C0                         xor eax, eax
+008A10B9  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#147		{L:88}
+(*) USINT
+008A10BF  3D 05 00 00 00                cmp eax, 5
+008A10C4  0F 94 C0                      sete al
+008A10C7  25 FF 00 00 00                and eax, 0FFh
+
+#148
+(-) BOOL
+008A10CC  84 C0                         test al, al
+008A10CE  0F 85 BD 01 00 00             jne 008A1291H
+
+#149
+(-) BOOL
+008A10D4  E9 B5 07 00 00                jmp 008A188EH
+
+#150
+#151
+#152
+#153
+#154
+#155
+(-) BOOL
+008A10D9  E9 35 10 00 00                jmp 008A2113H
+
+#156
+(-) BOOL
+008A10DE  E9 AB 07 00 00                jmp 008A188EH
+
+#157
+#158
+#159
+#160		{L:56}
+(*) UNDEF
+008A10E3  33 C0                         xor eax, eax
+008A10E5  66 8B 45 01                   mov ax, 1[ebp]
+
+#161		{L:56}
+(-) UINT
+008A10E9  68 01 00 00 00                push 1
+008A10EE  50                            push eax
+008A10EF  E8 F6 F8 FF FF                call 008A09EAH
+008A10F4  81 C4 08 00 00 00             add esp, 8
+
+#162		{L:56}
+(*) UINT
+008A10FA  66 89 45 03                   mov 3[ebp], ax
+
+#163
+#164
+#165
+#166		{L:57}
+(*) UNDEF
+008A10FE  33 C0                         xor eax, eax
+008A1100  8A 45 09                      mov al, 9[ebp]
+
+#167		{L:57}
+(-) BOOL
+008A1103  0F B6 4D 00                   movzx ecx, byte ptr [ebp]
+008A1107  51                            push ecx
+008A1108  0F B7 4D 03                   movzx ecx, word ptr 3[ebp]
+008A110C  51                            push ecx
+008A110D  50                            push eax
+008A110E  E8 91 F4 FF FF                call 008A05A4H
+008A1113  81 C4 0C 00 00 00             add esp, 12
+
+#168		{L:57}
+(*) BOOL
+008A1119  84 C0                         test al, al
+008A111B  0F 94 C0                      sete al
+
+#169		{L:57}
+(-) BOOL
+008A111E  84 C0                         test al, al
+008A1120  90 74 46 90 90 90             je 008A1169H
+
+#170
+#171
+#172
+#173		{L:58}
+(*) UNDEF
+008A1126  33 C0                         xor eax, eax
+008A1128  66 8B 45 03                   mov ax, 3[ebp]
+
+#174		{L:58}
+(-) UINT
+008A112C  68 01 00 00 00                push 1
+008A1131  50                            push eax
+008A1132  E8 B3 F8 FF FF                call 008A09EAH
+008A1137  81 C4 08 00 00 00             add esp, 8
+
+#175		{L:58}
+(*) UINT
+008A113D  66 89 45 03                   mov 3[ebp], ax
+
+#176
+#177
+#178
+#179		{L:59}
+(*) UNDEF
+008A1141  33 C0                         xor eax, eax
+008A1143  66 8B 45 03                   mov ax, 3[ebp]
+
+#180		{L:59}
+(*) UINT
+008A1147  33 C9                         xor ecx, ecx
+008A1149  66 8B 4D 01                   mov cx, 1[ebp]
+008A114D  3B C1                         cmp eax, ecx
+008A114F  0F 94 C0                      sete al
+008A1152  25 FF 00 00 00                and eax, 0FFh
+
+#181		{L:59}
+(-) BOOL
+008A1157  84 C0                         test al, al
+008A1159  90 74 08 90 90 90             je 008A1164H
+
+#182
+#183
+#184
+#185
+#186
+(-) BOOL
+008A115F  EB 08 90 90 90                jmp 008A1169H
+
+#187
+#188
+#189
+#190
+(-) BOOL
+008A1164  EB 98 90 90 90                jmp 008A10FEH
+
+#191
+#192
+#193
+#194
+#195
+#196
+#197		{L:65}
+(*) UNDEF
+008A1169  33 C0                         xor eax, eax
+008A116B  8A 45 09                      mov al, 9[ebp]
+
+#198		{L:65}
+(-) BOOL
+008A116E  0F B6 4D 00                   movzx ecx, byte ptr [ebp]
+008A1172  51                            push ecx
+008A1173  0F B7 4D 03                   movzx ecx, word ptr 3[ebp]
+008A1177  51                            push ecx
+008A1178  50                            push eax
+008A1179  E8 26 F4 FF FF                call 008A05A4H
+008A117E  81 C4 0C 00 00 00             add esp, 12
+
+#199		{L:65}
+(-) BOOL
+008A1184  84 C0                         test al, al
+008A1186  90 74 2C 90 90 90             je 008A11B5H
+
+#200
+#201
+#202
+#203
+#204		{L:66}
+(*) BOOL
+008A118C  33 C0                         xor eax, eax
+008A118E  66 8B 45 03                   mov ax, 3[ebp]
+008A1192  66 89 45 01                   mov 1[ebp], ax
+
+#205
+#206
+#207		{L:67}
+(*) UNDEF
+008A1196  33 C0                         xor eax, eax
+008A1198  8A 45 09                      mov al, 9[ebp]
+
+#208		{L:67}
+(-) BOOL
+008A119B  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A119F  51                            push ecx
+008A11A0  50                            push eax
+008A11A1  E8 2C F7 FF FF                call 008A08D2H
+008A11A6  81 C4 08 00 00 00             add esp, 8
+
+#209		{L:67}
+(*) BOOL
+008A11AC  84 C0                         test al, al
+008A11AE  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#210
+#211
+#212
+#213
+(-) BOOL
+008A11B5  E9 D4 06 00 00                jmp 008A188EH
+
+#214
+#215
+#216
+#217		{L:73}
+(*) UNDEF
+008A11BA  33 C0                         xor eax, eax
+008A11BC  66 8B 45 01                   mov ax, 1[ebp]
+
+#218		{L:73}
+(-) UINT
+008A11C0  68 01 00 00 00                push 1
+008A11C5  50                            push eax
+008A11C6  E8 6B F8 FF FF                call 008A0A36H
+008A11CB  81 C4 08 00 00 00             add esp, 8
+
+#219		{L:73}
+(*) UINT
+008A11D1  66 89 45 03                   mov 3[ebp], ax
+
+#220
+#221
+#222
+#223		{L:74}
+(*) UNDEF
+008A11D5  33 C0                         xor eax, eax
+008A11D7  8A 45 09                      mov al, 9[ebp]
+
+#224		{L:74}
+(-) BOOL
+008A11DA  0F B6 4D 00                   movzx ecx, byte ptr [ebp]
+008A11DE  51                            push ecx
+008A11DF  0F B7 4D 03                   movzx ecx, word ptr 3[ebp]
+008A11E3  51                            push ecx
+008A11E4  50                            push eax
+008A11E5  E8 BA F3 FF FF                call 008A05A4H
+008A11EA  81 C4 0C 00 00 00             add esp, 12
+
+#225		{L:74}
+(*) BOOL
+008A11F0  84 C0                         test al, al
+008A11F2  0F 94 C0                      sete al
+
+#226		{L:74}
+(-) BOOL
+008A11F5  84 C0                         test al, al
+008A11F7  90 74 46 90 90 90             je 008A1240H
+
+#227
+#228
+#229
+#230		{L:75}
+(*) UNDEF
+008A11FD  33 C0                         xor eax, eax
+008A11FF  66 8B 45 03                   mov ax, 3[ebp]
+
+#231		{L:75}
+(-) UINT
+008A1203  68 01 00 00 00                push 1
+008A1208  50                            push eax
+008A1209  E8 28 F8 FF FF                call 008A0A36H
+008A120E  81 C4 08 00 00 00             add esp, 8
+
+#232		{L:75}
+(*) UINT
+008A1214  66 89 45 03                   mov 3[ebp], ax
+
+#233
+#234
+#235
+#236		{L:76}
+(*) UNDEF
+008A1218  33 C0                         xor eax, eax
+008A121A  66 8B 45 03                   mov ax, 3[ebp]
+
+#237		{L:76}
+(*) UINT
+008A121E  33 C9                         xor ecx, ecx
+008A1220  66 8B 4D 01                   mov cx, 1[ebp]
+008A1224  3B C1                         cmp eax, ecx
+008A1226  0F 94 C0                      sete al
+008A1229  25 FF 00 00 00                and eax, 0FFh
+
+#238		{L:76}
+(-) BOOL
+008A122E  84 C0                         test al, al
+008A1230  90 74 08 90 90 90             je 008A123BH
+
+#239
+#240
+#241
+#242
+#243
+(-) BOOL
+008A1236  EB 08 90 90 90                jmp 008A1240H
+
+#244
+#245
+#246
+#247
+(-) BOOL
+008A123B  EB 98 90 90 90                jmp 008A11D5H
+
+#248
+#249
+#250
+#251
+#252
+#253
+#254		{L:82}
+(*) UNDEF
+008A1240  33 C0                         xor eax, eax
+008A1242  8A 45 09                      mov al, 9[ebp]
+
+#255		{L:82}
+(-) BOOL
+008A1245  0F B6 4D 00                   movzx ecx, byte ptr [ebp]
+008A1249  51                            push ecx
+008A124A  0F B7 4D 03                   movzx ecx, word ptr 3[ebp]
+008A124E  51                            push ecx
+008A124F  50                            push eax
+008A1250  E8 4F F3 FF FF                call 008A05A4H
+008A1255  81 C4 0C 00 00 00             add esp, 12
+
+#256		{L:82}
+(-) BOOL
+008A125B  84 C0                         test al, al
+008A125D  90 74 2C 90 90 90             je 008A128CH
+
+#257
+#258
+#259
+#260
+#261		{L:83}
+(*) BOOL
+008A1263  33 C0                         xor eax, eax
+008A1265  66 8B 45 03                   mov ax, 3[ebp]
+008A1269  66 89 45 01                   mov 1[ebp], ax
+
+#262
+#263
+#264		{L:84}
+(*) UNDEF
+008A126D  33 C0                         xor eax, eax
+008A126F  8A 45 09                      mov al, 9[ebp]
+
+#265		{L:84}
+(-) BOOL
+008A1272  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A1276  51                            push ecx
+008A1277  50                            push eax
+008A1278  E8 55 F6 FF FF                call 008A08D2H
+008A127D  81 C4 08 00 00 00             add esp, 8
+
+#266		{L:84}
+(*) BOOL
+008A1283  84 C0                         test al, al
+008A1285  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#267
+#268
+#269
+#270
+(-) BOOL
+008A128C  E9 FD 05 00 00                jmp 008A188EH
+
+#271
+#272
+#273
+#274
+#275
+#276
+#277		{L:92}
+(*) UNDEF
+008A1291  33 C0                         xor eax, eax
+008A1293  66 8B 45 01                   mov ax, 1[ebp]
+
+#278		{L:92}
+(*) UINT
+008A1297  3D 00 00 00 00                cmp eax, 0
+008A129C  0F 94 C0                      sete al
+008A129F  25 FF 00 00 00                and eax, 0FFh
+
+#279
+(-) BOOL
+008A12A4  84 C0                         test al, al
+008A12A6  90 75 23 90 90 90             jne 008A12CCH
+
+#280
+#281
+#282		{L:207}
+(*) UNDEF
+008A12AC  33 C0                         xor eax, eax
+008A12AE  66 8B 45 01                   mov ax, 1[ebp]
+
+#283		{L:207}
+(*) UINT
+008A12B2  3D 01 00 00 00                cmp eax, 1
+008A12B7  0F 94 C0                      sete al
+008A12BA  25 FF 00 00 00                and eax, 0FFh
+
+#284
+(-) BOOL
+008A12BF  84 C0                         test al, al
+008A12C1  0F 85 99 05 00 00             jne 008A1860H
+
+#285
+(-) BOOL
+008A12C7  E9 A3 05 00 00                jmp 008A186FH
+
+#286
+#287
+#288
+#289
+#290
+#291		{L:94}
+(*) BOOL
+008A12CC  B8 00 00 00 00                mov eax, 0
+008A12D1  66 89 45 05                   mov 5[ebp], ax
+
+#292
+#293
+#294
+#295		{L:96}
+(*) UNDEF
+008A12D5  33 C0                         xor eax, eax
+008A12D7  66 8B 45 05                   mov ax, 5[ebp]
+
+#296		{L:96}
+(*) UINT
+008A12DB  3D 02 00 00 00                cmp eax, 2
+008A12E0  0F 9C C0                      setl al
+008A12E3  25 FF 00 00 00                and eax, 0FFh
+
+#297		{L:96}
+(-) BOOL
+008A12E8  84 C0                         test al, al
+008A12EA  90 74 50 90 90 90             je 008A133DH
+
+#298
+#299
+#300
+#301
+#302		{L:97}
+(*) UNDEF
+008A12F0  33 C0                         xor eax, eax
+008A12F2  8A 45 09                      mov al, 9[ebp]
+
+#303		{L:97}
+(-) BOOL
+008A12F5  0F B6 4D 00                   movzx ecx, byte ptr [ebp]
+008A12F9  51                            push ecx
+008A12FA  0F B7 4D 05                   movzx ecx, word ptr 5[ebp]
+008A12FE  51                            push ecx
+008A12FF  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A1303  51                            push ecx
+008A1304  50                            push eax
+008A1305  E8 96 F1 FF FF                call 008A04A0H
+008A130A  81 C4 10 00 00 00             add esp, 16
+
+#304		{L:97}
+(-) BOOL
+008A1310  84 C0                         test al, al
+008A1312  90 74 08 90 90 90             je 008A131DH
+
+#305
+#306
+#307
+#308
+#309
+(-) BOOL
+008A1318  EB 23 90 90 90                jmp 008A133DH
+
+#310
+#311
+#312
+#313
+#314
+#315		{L:101}
+(*) UNDEF
+008A131D  33 C0                         xor eax, eax
+008A131F  66 8B 45 05                   mov ax, 5[ebp]
+
+#316		{L:101}
+(-) UINT
+008A1323  68 02 00 00 00                push 2
+008A1328  50                            push eax
+008A1329  E8 08 F7 FF FF                call 008A0A36H
+008A132E  81 C4 08 00 00 00             add esp, 8
+
+#317		{L:101}
+(*) UINT
+008A1334  66 89 45 05                   mov 5[ebp], ax
+
+#318
+(-) UINT
+008A1338  EB 9B 90 90 90                jmp 008A12D5H
+
+#319
+#320
+#321
+#322
+#323
+#324
+#325		{L:105}
+(*) UNDEF
+008A133D  33 C0                         xor eax, eax
+008A133F  8A 45 09                      mov al, 9[ebp]
+
+#326		{L:105}
+(-) BOOL
+008A1342  0F B6 4D 00                   movzx ecx, byte ptr [ebp]
+008A1346  51                            push ecx
+008A1347  0F B7 4D 05                   movzx ecx, word ptr 5[ebp]
+008A134B  51                            push ecx
+008A134C  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A1350  51                            push ecx
+008A1351  50                            push eax
+008A1352  E8 49 F1 FF FF                call 008A04A0H
+008A1357  81 C4 10 00 00 00             add esp, 16
+
+#327		{L:105}
+(-) BOOL
+008A135D  84 C0                         test al, al
+008A135F  0F 84 F6 04 00 00             je 008A185BH
+
+#328
+#329
+#330
+#331
+#332		{L:107}
+(*) UNDEF
+008A1365  33 C0                         xor eax, eax
+008A1367  8A 45 09                      mov al, 9[ebp]
+
+#333		{L:107}
+(-) BOOL
+008A136A  0F B7 4D 05                   movzx ecx, word ptr 5[ebp]
+008A136E  51                            push ecx
+008A136F  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A1373  51                            push ecx
+008A1374  50                            push eax
+008A1375  E8 7A F3 FF FF                call 008A06F4H
+008A137A  81 C4 0C 00 00 00             add esp, 12
+
+#334		{L:107}
+(*) BOOL
+008A1380  84 C0                         test al, al
+008A1382  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#335
+#336
+#337
+#338		{L:110}
+(*) UNDEF
+008A1389  B8 01 00 00 00                mov eax, 1
+
+#339		{L:110}
+(-) BOOL
+008A138E  84 C0                         test al, al
+008A1390  0F 84 C5 04 00 00             je 008A185BH
+
+#340
+#341
+#342
+#343		{L:112}
+(*) UNDEF
+008A1396  B8 00 00 00 00                mov eax, 0
+
+#344		{L:112}
+(-) USINT
+008A139B  50                            push eax
+008A139C  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; KEYLOG_OUT
+008A13A1  FF D1                         call ecx
+008A13A3  81 C4 04 00 00 00             add esp, 4
+
+#345		{L:112}
+(*) USINT
+008A13A9  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+43
+
+#346
+#347
+#348
+#349
+#350
+#351		{L:116}
+(*) UNDEF
+008A13AF  33 C0                         xor eax, eax
+008A13B1  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#352		{L:116}
+(*) USINT
+008A13B7  3D 0E 00 00 00                cmp eax, 14
+008A13BC  0F 94 C0                      sete al
+008A13BF  25 FF 00 00 00                and eax, 0FFh
+
+#353		{L:116}
+(*) BOOL
+008A13C4  50                            push eax
+008A13C5  33 C0                         xor eax, eax
+008A13C7  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#354		{L:116}
+(*) USINT
+008A13CD  3D 03 00 00 00                cmp eax, 3
+008A13D2  0F 94 C0                      sete al
+008A13D5  25 FF 00 00 00                and eax, 0FFh
+
+#355		{L:116}
+(*) BOOL
+008A13DA  8B C8                         mov ecx, eax
+008A13DC  58                            pop eax
+008A13DD  0B C1                         or eax, ecx
+
+#356
+(-) BOOL
+008A13DF  84 C0                         test al, al
+008A13E1  90 75 5F 90 90 90             jne 008A1443H
+
+#357
+#358
+#359		{L:121}
+(*) UNDEF
+008A13E7  33 C0                         xor eax, eax
+008A13E9  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#360		{L:121}
+(*) USINT
+008A13EF  3D 0A 00 00 00                cmp eax, 10
+008A13F4  0F 94 C0                      sete al
+008A13F7  25 FF 00 00 00                and eax, 0FFh
+
+#361
+(-) BOOL
+008A13FC  84 C0                         test al, al
+008A13FE  90 75 4C 90 90 90             jne 008A144DH
+
+#362
+#363
+#364		{L:138}
+(*) UNDEF
+008A1404  33 C0                         xor eax, eax
+008A1406  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#365		{L:138}
+(*) USINT
+008A140C  3D 07 00 00 00                cmp eax, 7
+008A1411  0F 94 C0                      sete al
+008A1414  25 FF 00 00 00                and eax, 0FFh
+
+#366
+(-) BOOL
+008A1419  84 C0                         test al, al
+008A141B  0F 85 12 01 00 00             jne 008A1533H
+
+#367
+#368
+#369		{L:155}
+(*) UNDEF
+008A1421  33 C0                         xor eax, eax
+008A1423  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#370		{L:155}
+(*) USINT
+008A1429  3D 05 00 00 00                cmp eax, 5
+008A142E  0F 94 C0                      sete al
+008A1431  25 FF 00 00 00                and eax, 0FFh
+
+#371
+(-) BOOL
+008A1436  84 C0                         test al, al
+008A1438  0F 85 DB 01 00 00             jne 008A1619H
+
+#372
+(-) BOOL
+008A143E  E9 13 04 00 00                jmp 008A1856H
+
+#373
+#374
+#375
+#376
+#377
+#378
+(-) BOOL
+008A1443  E9 13 04 00 00                jmp 008A185BH
+
+#379
+(-) BOOL
+008A1448  E9 09 04 00 00                jmp 008A1856H
+
+#380
+#381
+#382
+#383		{L:123}
+(*) UNDEF
+008A144D  33 C0                         xor eax, eax
+008A144F  66 8B 45 05                   mov ax, 5[ebp]
+
+#384		{L:123}
+(-) UINT
+008A1453  68 02 00 00 00                push 2
+008A1458  50                            push eax
+008A1459  E8 8C F5 FF FF                call 008A09EAH
+008A145E  81 C4 08 00 00 00             add esp, 8
+
+#385		{L:123}
+(*) UINT
+008A1464  66 89 45 07                   mov 7[ebp], ax
+
+#386
+#387
+#388
+#389		{L:124}
+(*) UNDEF
+008A1468  33 C0                         xor eax, eax
+008A146A  8A 45 09                      mov al, 9[ebp]
+
+#390		{L:124}
+(-) BOOL
+008A146D  0F B6 4D 00                   movzx ecx, byte ptr [ebp]
+008A1471  51                            push ecx
+008A1472  0F B7 4D 07                   movzx ecx, word ptr 7[ebp]
+008A1476  51                            push ecx
+008A1477  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A147B  51                            push ecx
+008A147C  50                            push eax
+008A147D  E8 1E F0 FF FF                call 008A04A0H
+008A1482  81 C4 10 00 00 00             add esp, 16
+
+#391		{L:124}
+(*) BOOL
+008A1488  84 C0                         test al, al
+008A148A  0F 94 C0                      sete al
+
+#392		{L:124}
+(-) BOOL
+008A148D  84 C0                         test al, al
+008A148F  90 74 46 90 90 90             je 008A14D8H
+
+#393
+#394
+#395
+#396		{L:125}
+(*) UNDEF
+008A1495  33 C0                         xor eax, eax
+008A1497  66 8B 45 07                   mov ax, 7[ebp]
+
+#397		{L:125}
+(-) UINT
+008A149B  68 02 00 00 00                push 2
+008A14A0  50                            push eax
+008A14A1  E8 44 F5 FF FF                call 008A09EAH
+008A14A6  81 C4 08 00 00 00             add esp, 8
+
+#398		{L:125}
+(*) UINT
+008A14AC  66 89 45 07                   mov 7[ebp], ax
+
+#399
+#400
+#401
+#402		{L:126}
+(*) UNDEF
+008A14B0  33 C0                         xor eax, eax
+008A14B2  66 8B 45 07                   mov ax, 7[ebp]
+
+#403		{L:126}
+(*) UINT
+008A14B6  33 C9                         xor ecx, ecx
+008A14B8  66 8B 4D 05                   mov cx, 5[ebp]
+008A14BC  3B C1                         cmp eax, ecx
+008A14BE  0F 94 C0                      sete al
+008A14C1  25 FF 00 00 00                and eax, 0FFh
+
+#404		{L:126}
+(-) BOOL
+008A14C6  84 C0                         test al, al
+008A14C8  90 74 08 90 90 90             je 008A14D3H
+
+#405
+#406
+#407
+#408
+#409
+(-) BOOL
+008A14CE  EB 08 90 90 90                jmp 008A14D8H
+
+#410
+#411
+#412
+#413
+(-) BOOL
+008A14D3  EB 93 90 90 90                jmp 008A1468H
+
+#414
+#415
+#416
+#417
+#418
+#419
+#420		{L:132}
+(*) UNDEF
+008A14D8  33 C0                         xor eax, eax
+008A14DA  8A 45 09                      mov al, 9[ebp]
+
+#421		{L:132}
+(-) BOOL
+008A14DD  0F B6 4D 00                   movzx ecx, byte ptr [ebp]
+008A14E1  51                            push ecx
+008A14E2  0F B7 4D 07                   movzx ecx, word ptr 7[ebp]
+008A14E6  51                            push ecx
+008A14E7  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A14EB  51                            push ecx
+008A14EC  50                            push eax
+008A14ED  E8 AE EF FF FF                call 008A04A0H
+008A14F2  81 C4 10 00 00 00             add esp, 16
+
+#422		{L:132}
+(-) BOOL
+008A14F8  84 C0                         test al, al
+008A14FA  90 74 31 90 90 90             je 008A152EH
+
+#423
+#424
+#425
+#426
+#427		{L:133}
+(*) BOOL
+008A1500  33 C0                         xor eax, eax
+008A1502  66 8B 45 07                   mov ax, 7[ebp]
+008A1506  66 89 45 05                   mov 5[ebp], ax
+
+#428
+#429
+#430		{L:134}
+(*) UNDEF
+008A150A  33 C0                         xor eax, eax
+008A150C  8A 45 09                      mov al, 9[ebp]
+
+#431		{L:134}
+(-) BOOL
+008A150F  0F B7 4D 05                   movzx ecx, word ptr 5[ebp]
+008A1513  51                            push ecx
+008A1514  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A1518  51                            push ecx
+008A1519  50                            push eax
+008A151A  E8 D5 F1 FF FF                call 008A06F4H
+008A151F  81 C4 0C 00 00 00             add esp, 12
+
+#432		{L:134}
+(*) BOOL
+008A1525  84 C0                         test al, al
+008A1527  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#433
+#434
+#435
+#436
+(-) BOOL
+008A152E  E9 23 03 00 00                jmp 008A1856H
+
+#437
+#438
+#439
+#440		{L:140}
+(*) UNDEF
+008A1533  33 C0                         xor eax, eax
+008A1535  66 8B 45 05                   mov ax, 5[ebp]
+
+#441		{L:140}
+(-) UINT
+008A1539  68 02 00 00 00                push 2
+008A153E  50                            push eax
+008A153F  E8 F2 F4 FF FF                call 008A0A36H
+008A1544  81 C4 08 00 00 00             add esp, 8
+
+#442		{L:140}
+(*) UINT
+008A154A  66 89 45 07                   mov 7[ebp], ax
+
+#443
+#444
+#445
+#446		{L:141}
+(*) UNDEF
+008A154E  33 C0                         xor eax, eax
+008A1550  8A 45 09                      mov al, 9[ebp]
+
+#447		{L:141}
+(-) BOOL
+008A1553  0F B6 4D 00                   movzx ecx, byte ptr [ebp]
+008A1557  51                            push ecx
+008A1558  0F B7 4D 07                   movzx ecx, word ptr 7[ebp]
+008A155C  51                            push ecx
+008A155D  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A1561  51                            push ecx
+008A1562  50                            push eax
+008A1563  E8 38 EF FF FF                call 008A04A0H
+008A1568  81 C4 10 00 00 00             add esp, 16
+
+#448		{L:141}
+(*) BOOL
+008A156E  84 C0                         test al, al
+008A1570  0F 94 C0                      sete al
+
+#449		{L:141}
+(-) BOOL
+008A1573  84 C0                         test al, al
+008A1575  90 74 46 90 90 90             je 008A15BEH
+
+#450
+#451
+#452
+#453		{L:142}
+(*) UNDEF
+008A157B  33 C0                         xor eax, eax
+008A157D  66 8B 45 07                   mov ax, 7[ebp]
+
+#454		{L:142}
+(-) UINT
+008A1581  68 02 00 00 00                push 2
+008A1586  50                            push eax
+008A1587  E8 AA F4 FF FF                call 008A0A36H
+008A158C  81 C4 08 00 00 00             add esp, 8
+
+#455		{L:142}
+(*) UINT
+008A1592  66 89 45 07                   mov 7[ebp], ax
+
+#456
+#457
+#458
+#459		{L:143}
+(*) UNDEF
+008A1596  33 C0                         xor eax, eax
+008A1598  66 8B 45 07                   mov ax, 7[ebp]
+
+#460		{L:143}
+(*) UINT
+008A159C  33 C9                         xor ecx, ecx
+008A159E  66 8B 4D 05                   mov cx, 5[ebp]
+008A15A2  3B C1                         cmp eax, ecx
+008A15A4  0F 94 C0                      sete al
+008A15A7  25 FF 00 00 00                and eax, 0FFh
+
+#461		{L:143}
+(-) BOOL
+008A15AC  84 C0                         test al, al
+008A15AE  90 74 08 90 90 90             je 008A15B9H
+
+#462
+#463
+#464
+#465
+#466
+(-) BOOL
+008A15B4  EB 08 90 90 90                jmp 008A15BEH
+
+#467
+#468
+#469
+#470
+(-) BOOL
+008A15B9  EB 93 90 90 90                jmp 008A154EH
+
+#471
+#472
+#473
+#474
+#475
+#476
+#477		{L:149}
+(*) UNDEF
+008A15BE  33 C0                         xor eax, eax
+008A15C0  8A 45 09                      mov al, 9[ebp]
+
+#478		{L:149}
+(-) BOOL
+008A15C3  0F B6 4D 00                   movzx ecx, byte ptr [ebp]
+008A15C7  51                            push ecx
+008A15C8  0F B7 4D 07                   movzx ecx, word ptr 7[ebp]
+008A15CC  51                            push ecx
+008A15CD  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A15D1  51                            push ecx
+008A15D2  50                            push eax
+008A15D3  E8 C8 EE FF FF                call 008A04A0H
+008A15D8  81 C4 10 00 00 00             add esp, 16
+
+#479		{L:149}
+(-) BOOL
+008A15DE  84 C0                         test al, al
+008A15E0  90 74 31 90 90 90             je 008A1614H
+
+#480
+#481
+#482
+#483
+#484		{L:150}
+(*) BOOL
+008A15E6  33 C0                         xor eax, eax
+008A15E8  66 8B 45 07                   mov ax, 7[ebp]
+008A15EC  66 89 45 05                   mov 5[ebp], ax
+
+#485
+#486
+#487		{L:151}
+(*) UNDEF
+008A15F0  33 C0                         xor eax, eax
+008A15F2  8A 45 09                      mov al, 9[ebp]
+
+#488		{L:151}
+(-) BOOL
+008A15F5  0F B7 4D 05                   movzx ecx, word ptr 5[ebp]
+008A15F9  51                            push ecx
+008A15FA  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A15FE  51                            push ecx
+008A15FF  50                            push eax
+008A1600  E8 EF F0 FF FF                call 008A06F4H
+008A1605  81 C4 0C 00 00 00             add esp, 12
+
+#489		{L:151}
+(*) BOOL
+008A160B  84 C0                         test al, al
+008A160D  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#490
+#491
+#492
+#493
+(-) BOOL
+008A1614  E9 3D 02 00 00                jmp 008A1856H
+
+#494
+#495
+#496
+#497
+#498
+#499
+#500		{L:159}
+(*) UNDEF
+008A1619  33 C0                         xor eax, eax
+008A161B  66 8B 45 05                   mov ax, 5[ebp]
+
+#501		{L:159}
+(*) UINT
+008A161F  3D 00 00 00 00                cmp eax, 0
+008A1624  0F 94 C0                      sete al
+008A1627  25 FF 00 00 00                and eax, 0FFh
+
+#502
+(-) BOOL
+008A162C  84 C0                         test al, al
+008A162E  90 75 3E 90 90 90             jne 008A166FH
+
+#503
+#504
+#505		{L:171}
+(*) UNDEF
+008A1634  33 C0                         xor eax, eax
+008A1636  66 8B 45 05                   mov ax, 5[ebp]
+
+#506		{L:171}
+(*) UINT
+008A163A  3D 01 00 00 00                cmp eax, 1
+008A163F  0F 94 C0                      sete al
+008A1642  25 FF 00 00 00                and eax, 0FFh
+
+#507
+(-) BOOL
+008A1647  84 C0                         test al, al
+008A1649  0F 85 99 00 00 00             jne 008A16E8H
+
+#508
+#509
+#510		{L:183}
+(*) UNDEF
+008A164F  33 C0                         xor eax, eax
+008A1651  66 8B 45 05                   mov ax, 5[ebp]
+
+#511		{L:183}
+(*) UINT
+008A1655  3D 02 00 00 00                cmp eax, 2
+008A165A  0F 94 C0                      sete al
+008A165D  25 FF 00 00 00                and eax, 0FFh
+
+#512
+(-) BOOL
+008A1662  84 C0                         test al, al
+008A1664  0F 85 F7 00 00 00             jne 008A1761H
+
+#513
+(-) BOOL
+008A166A  E9 66 01 00 00                jmp 008A17D5H
+
+#514
+#515
+#516
+#517
+#518
+#519		{L:161}
+(*) BOOL
+008A166F  B8 00 40 00 00                mov eax, 16384
+008A1674  66 89 05 CC CC CC CC          mov [CCCCCCCCH], ax ; $$DATA$$+44
+
+#520
+#521
+#522		{L:162}
+(*) UINT
+008A167B  B8 00 00 00 00                mov eax, 0
+008A1680  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+46
+
+#523
+#524
+#525		{L:163}
+(*) USINT
+008A1686  D9 05 CC CC CC CC             fld [CCCCCCCCH] ; $$CODE$$+282
+008A168C  D9 15 CC CC CC CC             fst [CCCCCCCCH] ; $$DATA$$+48
+
+#526
+#527
+#528		{L:164}
+(*) REAL
+008A1692  DD C0                         ffree
+008A1694  D9 F7                         fincstp
+008A1696  D9 05 CC CC CC CC             fld [CCCCCCCCH] ; $$CODE$$+286
+008A169C  D9 15 CC CC CC CC             fst [CCCCCCCCH] ; $$DATA$$+52
+
+#529
+#530
+#531		{L:165}
+(*) REAL
+008A16A2  DD C0                         ffree
+008A16A4  D9 F7                         fincstp
+008A16A6  D9 05 CC CC CC CC             fld [CCCCCCCCH] ; $$CODE$$+290
+008A16AC  D9 15 CC CC CC CC             fst [CCCCCCCCH] ; $$DATA$$+56
+
+#532
+#533
+#534		{L:166}
+(*) REAL
+008A16B2  DD C0                         ffree
+008A16B4  D9 F7                         fincstp
+008A16B6  D9 EE                         fldz
+008A16B8  D9 15 CC CC CC CC             fst [CCCCCCCCH] ; $$DATA$$+60
+
+#535
+#536
+#537		{L:167}
+(*) REAL
+008A16BE  DD C0                         ffree
+008A16C0  D9 F7                         fincstp
+008A16C2  B8 01 00 00 00                mov eax, 1
+008A16C7  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+47
+
+#538
+#539
+#540		{L:168}
+(*) SINT
+008A16CD  B8 00 00 00 00                mov eax, 0
+008A16D2  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+64
+
+#541
+#542
+#543		{L:169}
+(*) USINT
+008A16D8  B8 00 00 00 00                mov eax, 0
+008A16DD  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+65
+
+#544
+(-) SINT
+008A16E3  E9 ED 00 00 00                jmp 008A17D5H
+
+#545
+#546
+#547
+#548		{L:173}
+(*) SINT
+008A16E8  B8 01 40 00 00                mov eax, 16385
+008A16ED  66 89 05 CC CC CC CC          mov [CCCCCCCCH], ax ; $$DATA$$+44
+
+#549
+#550
+#551		{L:174}
+(*) UINT
+008A16F4  B8 00 00 00 00                mov eax, 0
+008A16F9  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+46
+
+#552
+#553
+#554		{L:175}
+(*) USINT
+008A16FF  D9 05 CC CC CC CC             fld [CCCCCCCCH] ; $$CODE$$+282
+008A1705  D9 15 CC CC CC CC             fst [CCCCCCCCH] ; $$DATA$$+48
+
+#555
+#556
+#557		{L:176}
+(*) REAL
+008A170B  DD C0                         ffree
+008A170D  D9 F7                         fincstp
+008A170F  D9 05 CC CC CC CC             fld [CCCCCCCCH] ; $$CODE$$+286
+008A1715  D9 15 CC CC CC CC             fst [CCCCCCCCH] ; $$DATA$$+52
+
+#558
+#559
+#560		{L:177}
+(*) REAL
+008A171B  DD C0                         ffree
+008A171D  D9 F7                         fincstp
+008A171F  D9 05 CC CC CC CC             fld [CCCCCCCCH] ; $$CODE$$+290
+008A1725  D9 15 CC CC CC CC             fst [CCCCCCCCH] ; $$DATA$$+56
+
+#561
+#562
+#563		{L:178}
+(*) REAL
+008A172B  DD C0                         ffree
+008A172D  D9 F7                         fincstp
+008A172F  D9 EE                         fldz
+008A1731  D9 15 CC CC CC CC             fst [CCCCCCCCH] ; $$DATA$$+60
+
+#564
+#565
+#566		{L:179}
+(*) REAL
+008A1737  DD C0                         ffree
+008A1739  D9 F7                         fincstp
+008A173B  B8 01 00 00 00                mov eax, 1
+008A1740  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+47
+
+#567
+#568
+#569		{L:180}
+(*) SINT
+008A1746  B8 00 00 00 00                mov eax, 0
+008A174B  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+64
+
+#570
+#571
+#572		{L:181}
+(*) USINT
+008A1751  B8 00 00 00 00                mov eax, 0
+008A1756  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+65
+
+#573
+(-) SINT
+008A175C  EB 77 90 90 90                jmp 008A17D5H
+
+#574
+#575
+#576
+#577		{L:185}
+(*) SINT
+008A1761  B8 00 23 00 00                mov eax, 8960
+008A1766  66 89 05 CC CC CC CC          mov [CCCCCCCCH], ax ; $$DATA$$+44
+
+#578
+#579
+#580		{L:186}
+(*) UINT
+008A176D  B8 00 00 00 00                mov eax, 0
+008A1772  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+46
+
+#581
+#582
+#583		{L:187}
+(*) USINT
+008A1778  D9 05 CC CC CC CC             fld [CCCCCCCCH] ; $$CODE$$+282
+008A177E  D9 15 CC CC CC CC             fst [CCCCCCCCH] ; $$DATA$$+48
+
+#584
+#585
+#586		{L:188}
+(*) REAL
+008A1784  DD C0                         ffree
+008A1786  D9 F7                         fincstp
+008A1788  D9 05 CC CC CC CC             fld [CCCCCCCCH] ; $$CODE$$+286
+008A178E  D9 15 CC CC CC CC             fst [CCCCCCCCH] ; $$DATA$$+52
+
+#587
+#588
+#589		{L:189}
+(*) REAL
+008A1794  DD C0                         ffree
+008A1796  D9 F7                         fincstp
+008A1798  D9 05 CC CC CC CC             fld [CCCCCCCCH] ; $$CODE$$+290
+008A179E  D9 15 CC CC CC CC             fst [CCCCCCCCH] ; $$DATA$$+56
+
+#590
+#591
+#592		{L:190}
+(*) REAL
+008A17A4  DD C0                         ffree
+008A17A6  D9 F7                         fincstp
+008A17A8  D9 EE                         fldz
+008A17AA  D9 15 CC CC CC CC             fst [CCCCCCCCH] ; $$DATA$$+60
+
+#593
+#594
+#595		{L:191}
+(*) REAL
+008A17B0  DD C0                         ffree
+008A17B2  D9 F7                         fincstp
+008A17B4  B8 01 00 00 00                mov eax, 1
+008A17B9  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+47
+
+#596
+#597
+#598		{L:192}
+(*) SINT
+008A17BF  B8 01 00 00 00                mov eax, 1
+008A17C4  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+64
+
+#599
+#600
+#601		{L:193}
+(*) USINT
+008A17CA  B8 00 00 00 00                mov eax, 0
+008A17CF  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+65
+
+#602
+#603
+#604
+#605
+#606
+#607
+#608		{L:197}
+(*) UNDEF
+008A17D5  33 C0                         xor eax, eax
+008A17D7  66 8B 05 CC CC CC CC          mov ax, [CCCCCCCCH] ; $$DATA$$+44
+
+#609		{L:197}
+(-) UINT
+008A17DE  0F BE 0D CC CC CC CC          movsx ecx, byte ptr [CCCCCCCCh] ; $$DATA$$+65
+008A17E5  51                            push ecx
+008A17E6  0F B6 0D CC CC CC CC          movzx ecx, byte ptr [CCCCCCCCh] ; $$DATA$$+64
+008A17ED  51                            push ecx
+008A17EE  0F BE 0D CC CC CC CC          movsx ecx, byte ptr [CCCCCCCCh] ; $$DATA$$+47
+008A17F5  51                            push ecx
+008A17F6  FF 35 CC CC CC CC             push [-858993460] ; $$DATA$$+60
+008A17FC  FF 35 CC CC CC CC             push [-858993460] ; $$DATA$$+56
+008A1802  FF 35 CC CC CC CC             push [-858993460] ; $$DATA$$+52
+008A1808  FF 35 CC CC CC CC             push [-858993460] ; $$DATA$$+48
+008A180E  0F B6 0D CC CC CC CC          movzx ecx, byte ptr [CCCCCCCCh] ; $$DATA$$+46
+008A1815  51                            push ecx
+008A1816  50                            push eax
+008A1817  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; PLC_CTRMENU
+008A181C  FF D1                         call ecx
+008A181E  81 C4 24 00 00 00             add esp, 36
+
+#610		{L:197}
+(*) USINT
+008A1824  84 C0                         test al, al
+008A1826  0F 95 C0                      setne al
+
+#611		{L:197}
+(*) BOOL
+008A1829  84 C0                         test al, al
+008A182B  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#612
+#613
+#614		{L:199}
+(*) UNDEF
+008A1832  33 C0                         xor eax, eax
+008A1834  8A 45 09                      mov al, 9[ebp]
+
+#615		{L:199}
+(-) BOOL
+008A1837  0F B7 4D 05                   movzx ecx, word ptr 5[ebp]
+008A183B  51                            push ecx
+008A183C  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A1840  51                            push ecx
+008A1841  50                            push eax
+008A1842  E8 AD EE FF FF                call 008A06F4H
+008A1847  81 C4 0C 00 00 00             add esp, 12
+
+#616		{L:199}
+(*) BOOL
+008A184D  84 C0                         test al, al
+008A184F  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#617
+#618
+#619
+#620
+#621
+(-) BOOL
+008A1856  E9 2E FB FF FF                jmp 008A1389H
+
+#622
+#623
+#624
+#625
+#626
+#627
+#628
+(-) BOOL
+008A185B  EB 12 90 90 90                jmp 008A186FH
+
+#629
+#630
+#631
+#632		{L:208}
+(*) BOOL
+008A1860  50                            push eax
+008A1861  8B DD                         mov ebx, ebp
+008A1863  81 C3 0A 00 00 00             add ebx, 10
+008A1869  E8 5B F2 FF FF                call 008A0AC9H
+008A186E  58                            pop eax
+
+#633
+#634
+#635
+#636
+#637
+#638
+#639		{L:212}
+(*) UNDEF
+008A186F  33 C0                         xor eax, eax
+008A1871  8A 45 09                      mov al, 9[ebp]
+
+#640		{L:212}
+(-) BOOL
+008A1874  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A1878  51                            push ecx
+008A1879  50                            push eax
+008A187A  E8 53 F0 FF FF                call 008A08D2H
+008A187F  81 C4 08 00 00 00             add esp, 8
+
+#641		{L:212}
+(*) BOOL
+008A1885  84 C0                         test al, al
+008A1887  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#642
+#643
+#644
+#645
+#646
+(-) BOOL
+008A188E  E9 8C F7 FF FF                jmp 008A101FH
+
+#647
+#648
+#649
+#650
+(-) BOOL
+008A1893  E9 7B 08 00 00                jmp 008A2113H
+
+#651
+#652
+#653
+#654
+#655
+#656
+#657		{L:219}
+(*) UNDEF
+008A1898  33 C0                         xor eax, eax
+008A189A  66 8B 45 01                   mov ax, 1[ebp]
+
+#658		{L:219}
+(*) UINT
+008A189E  3D 00 00 00 00                cmp eax, 0
+008A18A3  0F 9C C0                      setl al
+008A18A6  25 FF 00 00 00                and eax, 0FFh
+
+#659		{L:219}
+(-) BOOL
+008A18AB  84 C0                         test al, al
+008A18AD  90 74 4B 90 90 90             je 008A18FBH
+
+#660
+#661
+#662
+#663
+#664		{L:220}
+(*) UNDEF
+008A18B3  33 C0                         xor eax, eax
+008A18B5  8A 45 09                      mov al, 9[ebp]
+
+#665		{L:220}
+(-) BOOL
+008A18B8  0F B6 4D 00                   movzx ecx, byte ptr [ebp]
+008A18BC  51                            push ecx
+008A18BD  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A18C1  51                            push ecx
+008A18C2  50                            push eax
+008A18C3  E8 DC EC FF FF                call 008A05A4H
+008A18C8  81 C4 0C 00 00 00             add esp, 12
+
+#666		{L:220}
+(-) BOOL
+008A18CE  84 C0                         test al, al
+008A18D0  90 74 08 90 90 90             je 008A18DBH
+
+#667
+#668
+#669
+#670
+#671
+(-) BOOL
+008A18D6  EB 23 90 90 90                jmp 008A18FBH
+
+#672
+#673
+#674
+#675
+#676
+#677		{L:224}
+(*) UNDEF
+008A18DB  33 C0                         xor eax, eax
+008A18DD  66 8B 45 01                   mov ax, 1[ebp]
+
+#678		{L:224}
+(-) UINT
+008A18E1  68 00 00 00 00                push 0
+008A18E6  50                            push eax
+008A18E7  E8 4A F1 FF FF                call 008A0A36H
+008A18EC  81 C4 08 00 00 00             add esp, 8
+
+#679		{L:224}
+(*) UINT
+008A18F2  66 89 45 01                   mov 1[ebp], ax
+
+#680
+(-) UINT
+008A18F6  EB A0 90 90 90                jmp 008A1898H
+
+#681
+#682
+#683
+#684
+#685
+#686
+#687		{L:228}
+(*) UNDEF
+008A18FB  33 C0                         xor eax, eax
+008A18FD  66 8B 45 01                   mov ax, 1[ebp]
+
+#688		{L:228}
+(*) UINT
+008A1901  3D 00 00 00 00                cmp eax, 0
+008A1906  0F 94 C0                      sete al
+008A1909  25 FF 00 00 00                and eax, 0FFh
+
+#689		{L:228}
+(-) BOOL
+008A190E  84 C0                         test al, al
+008A1910  90 74 30 90 90 90             je 008A1943H
+
+#690
+#691
+#692
+#693
+#694
+#695		{L:229}
+(*) UNDEF
+008A1916  33 C0                         xor eax, eax
+008A1918  8A 45 09                      mov al, 9[ebp]
+
+#696		{L:229}
+(-) BOOL
+008A191B  0F B6 4D 00                   movzx ecx, byte ptr [ebp]
+008A191F  51                            push ecx
+008A1920  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A1924  51                            push ecx
+008A1925  50                            push eax
+008A1926  E8 79 EC FF FF                call 008A05A4H
+008A192B  81 C4 0C 00 00 00             add esp, 12
+
+#697		{L:229}
+(*) BOOL
+008A1931  84 C0                         test al, al
+008A1933  0F 94 C0                      sete al
+
+#698		{L:229}
+(-) BOOL
+008A1936  84 C0                         test al, al
+008A1938  90 74 08 90 90 90             je 008A1943H
+
+#699
+#700
+#701
+#702
+#703
+(-) BOOL
+008A193E  E9 D0 07 00 00                jmp 008A2113H
+
+#704
+#705
+#706
+#707
+#708
+#709
+#710
+#711
+#712		{L:235}
+(*) UNDEF
+008A1943  33 C0                         xor eax, eax
+008A1945  8A 45 09                      mov al, 9[ebp]
+
+#713		{L:235}
+(-) BOOL
+008A1948  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A194C  51                            push ecx
+008A194D  50                            push eax
+008A194E  E8 7F EF FF FF                call 008A08D2H
+008A1953  81 C4 08 00 00 00             add esp, 8
+
+#714		{L:235}
+(*) BOOL
+008A1959  84 C0                         test al, al
+008A195B  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#715
+#716
+#717
+#718		{L:238}
+(*) UNDEF
+008A1962  B8 01 00 00 00                mov eax, 1
+
+#719		{L:238}
+(-) BOOL
+008A1967  84 C0                         test al, al
+008A1969  0F 84 A4 07 00 00             je 008A2113H
+
+#720
+#721
+#722
+#723		{L:241}
+(*) UNDEF
+008A196F  B8 00 00 00 00                mov eax, 0
+
+#724		{L:241}
+(-) USINT
+008A1974  50                            push eax
+008A1975  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; KEYLOG_OUT
+008A197A  FF D1                         call ecx
+008A197C  81 C4 04 00 00 00             add esp, 4
+
+#725		{L:241}
+(*) USINT
+008A1982  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+43
+
+#726
+#727
+#728
+#729
+#730
+#731		{L:245}
+(*) UNDEF
+008A1988  33 C0                         xor eax, eax
+008A198A  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#732		{L:245}
+(*) USINT
+008A1990  3D 0E 00 00 00                cmp eax, 14
+008A1995  0F 94 C0                      sete al
+008A1998  25 FF 00 00 00                and eax, 0FFh
+
+#733		{L:245}
+(*) BOOL
+008A199D  50                            push eax
+008A199E  33 C0                         xor eax, eax
+008A19A0  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#734		{L:245}
+(*) USINT
+008A19A6  3D 03 00 00 00                cmp eax, 3
+008A19AB  0F 94 C0                      sete al
+008A19AE  25 FF 00 00 00                and eax, 0FFh
+
+#735		{L:245}
+(*) BOOL
+008A19B3  8B C8                         mov ecx, eax
+008A19B5  58                            pop eax
+008A19B6  0B C1                         or eax, ecx
+
+#736
+(-) BOOL
+008A19B8  84 C0                         test al, al
+008A19BA  90 75 5F 90 90 90             jne 008A1A1CH
+
+#737
+#738
+#739		{L:250}
+(*) UNDEF
+008A19C0  33 C0                         xor eax, eax
+008A19C2  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#740		{L:250}
+(*) USINT
+008A19C8  3D 0A 00 00 00                cmp eax, 10
+008A19CD  0F 94 C0                      sete al
+008A19D0  25 FF 00 00 00                and eax, 0FFh
+
+#741
+(-) BOOL
+008A19D5  84 C0                         test al, al
+008A19D7  90 75 4C 90 90 90             jne 008A1A26H
+
+#742
+#743
+#744		{L:267}
+(*) UNDEF
+008A19DD  33 C0                         xor eax, eax
+008A19DF  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#745		{L:267}
+(*) USINT
+008A19E5  3D 07 00 00 00                cmp eax, 7
+008A19EA  0F 94 C0                      sete al
+008A19ED  25 FF 00 00 00                and eax, 0FFh
+
+#746
+(-) BOOL
+008A19F2  84 C0                         test al, al
+008A19F4  0F 85 03 01 00 00             jne 008A1AFDH
+
+#747
+#748
+#749		{L:284}
+(*) UNDEF
+008A19FA  33 C0                         xor eax, eax
+008A19FC  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#750		{L:284}
+(*) USINT
+008A1A02  3D 05 00 00 00                cmp eax, 5
+008A1A07  0F 94 C0                      sete al
+008A1A0A  25 FF 00 00 00                and eax, 0FFh
+
+#751
+(-) BOOL
+008A1A0F  84 C0                         test al, al
+008A1A11  0F 85 BD 01 00 00             jne 008A1BD4H
+
+#752
+(-) BOOL
+008A1A17  E9 F2 06 00 00                jmp 008A210EH
+
+#753
+#754
+#755
+#756
+#757
+#758
+(-) BOOL
+008A1A1C  E9 F2 06 00 00                jmp 008A2113H
+
+#759
+(-) BOOL
+008A1A21  E9 E8 06 00 00                jmp 008A210EH
+
+#760
+#761
+#762
+#763		{L:252}
+(*) UNDEF
+008A1A26  33 C0                         xor eax, eax
+008A1A28  66 8B 45 01                   mov ax, 1[ebp]
+
+#764		{L:252}
+(-) UINT
+008A1A2C  68 00 00 00 00                push 0
+008A1A31  50                            push eax
+008A1A32  E8 B3 EF FF FF                call 008A09EAH
+008A1A37  81 C4 08 00 00 00             add esp, 8
+
+#765		{L:252}
+(*) UINT
+008A1A3D  66 89 45 03                   mov 3[ebp], ax
+
+#766
+#767
+#768
+#769		{L:253}
+(*) UNDEF
+008A1A41  33 C0                         xor eax, eax
+008A1A43  8A 45 09                      mov al, 9[ebp]
+
+#770		{L:253}
+(-) BOOL
+008A1A46  0F B6 4D 00                   movzx ecx, byte ptr [ebp]
+008A1A4A  51                            push ecx
+008A1A4B  0F B7 4D 03                   movzx ecx, word ptr 3[ebp]
+008A1A4F  51                            push ecx
+008A1A50  50                            push eax
+008A1A51  E8 4E EB FF FF                call 008A05A4H
+008A1A56  81 C4 0C 00 00 00             add esp, 12
+
+#771		{L:253}
+(*) BOOL
+008A1A5C  84 C0                         test al, al
+008A1A5E  0F 94 C0                      sete al
+
+#772		{L:253}
+(-) BOOL
+008A1A61  84 C0                         test al, al
+008A1A63  90 74 46 90 90 90             je 008A1AACH
+
+#773
+#774
+#775
+#776		{L:254}
+(*) UNDEF
+008A1A69  33 C0                         xor eax, eax
+008A1A6B  66 8B 45 03                   mov ax, 3[ebp]
+
+#777		{L:254}
+(-) UINT
+008A1A6F  68 00 00 00 00                push 0
+008A1A74  50                            push eax
+008A1A75  E8 70 EF FF FF                call 008A09EAH
+008A1A7A  81 C4 08 00 00 00             add esp, 8
+
+#778		{L:254}
+(*) UINT
+008A1A80  66 89 45 03                   mov 3[ebp], ax
+
+#779
+#780
+#781
+#782		{L:255}
+(*) UNDEF
+008A1A84  33 C0                         xor eax, eax
+008A1A86  66 8B 45 03                   mov ax, 3[ebp]
+
+#783		{L:255}
+(*) UINT
+008A1A8A  33 C9                         xor ecx, ecx
+008A1A8C  66 8B 4D 01                   mov cx, 1[ebp]
+008A1A90  3B C1                         cmp eax, ecx
+008A1A92  0F 94 C0                      sete al
+008A1A95  25 FF 00 00 00                and eax, 0FFh
+
+#784		{L:255}
+(-) BOOL
+008A1A9A  84 C0                         test al, al
+008A1A9C  90 74 08 90 90 90             je 008A1AA7H
+
+#785
+#786
+#787
+#788
+#789
+(-) BOOL
+008A1AA2  EB 08 90 90 90                jmp 008A1AACH
+
+#790
+#791
+#792
+#793
+(-) BOOL
+008A1AA7  EB 98 90 90 90                jmp 008A1A41H
+
+#794
+#795
+#796
+#797
+#798
+#799
+#800		{L:261}
+(*) UNDEF
+008A1AAC  33 C0                         xor eax, eax
+008A1AAE  8A 45 09                      mov al, 9[ebp]
+
+#801		{L:261}
+(-) BOOL
+008A1AB1  0F B6 4D 00                   movzx ecx, byte ptr [ebp]
+008A1AB5  51                            push ecx
+008A1AB6  0F B7 4D 03                   movzx ecx, word ptr 3[ebp]
+008A1ABA  51                            push ecx
+008A1ABB  50                            push eax
+008A1ABC  E8 E3 EA FF FF                call 008A05A4H
+008A1AC1  81 C4 0C 00 00 00             add esp, 12
+
+#802		{L:261}
+(-) BOOL
+008A1AC7  84 C0                         test al, al
+008A1AC9  90 74 2C 90 90 90             je 008A1AF8H
+
+#803
+#804
+#805
+#806
+#807		{L:262}
+(*) BOOL
+008A1ACF  33 C0                         xor eax, eax
+008A1AD1  66 8B 45 03                   mov ax, 3[ebp]
+008A1AD5  66 89 45 01                   mov 1[ebp], ax
+
+#808
+#809
+#810		{L:263}
+(*) UNDEF
+008A1AD9  33 C0                         xor eax, eax
+008A1ADB  8A 45 09                      mov al, 9[ebp]
+
+#811		{L:263}
+(-) BOOL
+008A1ADE  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A1AE2  51                            push ecx
+008A1AE3  50                            push eax
+008A1AE4  E8 E9 ED FF FF                call 008A08D2H
+008A1AE9  81 C4 08 00 00 00             add esp, 8
+
+#812		{L:263}
+(*) BOOL
+008A1AEF  84 C0                         test al, al
+008A1AF1  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#813
+#814
+#815
+#816
+(-) BOOL
+008A1AF8  E9 11 06 00 00                jmp 008A210EH
+
+#817
+#818
+#819
+#820		{L:269}
+(*) UNDEF
+008A1AFD  33 C0                         xor eax, eax
+008A1AFF  66 8B 45 01                   mov ax, 1[ebp]
+
+#821		{L:269}
+(-) UINT
+008A1B03  68 00 00 00 00                push 0
+008A1B08  50                            push eax
+008A1B09  E8 28 EF FF FF                call 008A0A36H
+008A1B0E  81 C4 08 00 00 00             add esp, 8
+
+#822		{L:269}
+(*) UINT
+008A1B14  66 89 45 03                   mov 3[ebp], ax
+
+#823
+#824
+#825
+#826		{L:270}
+(*) UNDEF
+008A1B18  33 C0                         xor eax, eax
+008A1B1A  8A 45 09                      mov al, 9[ebp]
+
+#827		{L:270}
+(-) BOOL
+008A1B1D  0F B6 4D 00                   movzx ecx, byte ptr [ebp]
+008A1B21  51                            push ecx
+008A1B22  0F B7 4D 03                   movzx ecx, word ptr 3[ebp]
+008A1B26  51                            push ecx
+008A1B27  50                            push eax
+008A1B28  E8 77 EA FF FF                call 008A05A4H
+008A1B2D  81 C4 0C 00 00 00             add esp, 12
+
+#828		{L:270}
+(*) BOOL
+008A1B33  84 C0                         test al, al
+008A1B35  0F 94 C0                      sete al
+
+#829		{L:270}
+(-) BOOL
+008A1B38  84 C0                         test al, al
+008A1B3A  90 74 46 90 90 90             je 008A1B83H
+
+#830
+#831
+#832
+#833		{L:271}
+(*) UNDEF
+008A1B40  33 C0                         xor eax, eax
+008A1B42  66 8B 45 03                   mov ax, 3[ebp]
+
+#834		{L:271}
+(-) UINT
+008A1B46  68 00 00 00 00                push 0
+008A1B4B  50                            push eax
+008A1B4C  E8 E5 EE FF FF                call 008A0A36H
+008A1B51  81 C4 08 00 00 00             add esp, 8
+
+#835		{L:271}
+(*) UINT
+008A1B57  66 89 45 03                   mov 3[ebp], ax
+
+#836
+#837
+#838
+#839		{L:272}
+(*) UNDEF
+008A1B5B  33 C0                         xor eax, eax
+008A1B5D  66 8B 45 03                   mov ax, 3[ebp]
+
+#840		{L:272}
+(*) UINT
+008A1B61  33 C9                         xor ecx, ecx
+008A1B63  66 8B 4D 01                   mov cx, 1[ebp]
+008A1B67  3B C1                         cmp eax, ecx
+008A1B69  0F 94 C0                      sete al
+008A1B6C  25 FF 00 00 00                and eax, 0FFh
+
+#841		{L:272}
+(-) BOOL
+008A1B71  84 C0                         test al, al
+008A1B73  90 74 08 90 90 90             je 008A1B7EH
+
+#842
+#843
+#844
+#845
+#846
+(-) BOOL
+008A1B79  EB 08 90 90 90                jmp 008A1B83H
+
+#847
+#848
+#849
+#850
+(-) BOOL
+008A1B7E  EB 98 90 90 90                jmp 008A1B18H
+
+#851
+#852
+#853
+#854
+#855
+#856
+#857		{L:278}
+(*) UNDEF
+008A1B83  33 C0                         xor eax, eax
+008A1B85  8A 45 09                      mov al, 9[ebp]
+
+#858		{L:278}
+(-) BOOL
+008A1B88  0F B6 4D 00                   movzx ecx, byte ptr [ebp]
+008A1B8C  51                            push ecx
+008A1B8D  0F B7 4D 03                   movzx ecx, word ptr 3[ebp]
+008A1B91  51                            push ecx
+008A1B92  50                            push eax
+008A1B93  E8 0C EA FF FF                call 008A05A4H
+008A1B98  81 C4 0C 00 00 00             add esp, 12
+
+#859		{L:278}
+(-) BOOL
+008A1B9E  84 C0                         test al, al
+008A1BA0  90 74 2C 90 90 90             je 008A1BCFH
+
+#860
+#861
+#862
+#863
+#864		{L:279}
+(*) BOOL
+008A1BA6  33 C0                         xor eax, eax
+008A1BA8  66 8B 45 03                   mov ax, 3[ebp]
+008A1BAC  66 89 45 01                   mov 1[ebp], ax
+
+#865
+#866
+#867		{L:280}
+(*) UNDEF
+008A1BB0  33 C0                         xor eax, eax
+008A1BB2  8A 45 09                      mov al, 9[ebp]
+
+#868		{L:280}
+(-) BOOL
+008A1BB5  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A1BB9  51                            push ecx
+008A1BBA  50                            push eax
+008A1BBB  E8 12 ED FF FF                call 008A08D2H
+008A1BC0  81 C4 08 00 00 00             add esp, 8
+
+#869		{L:280}
+(*) BOOL
+008A1BC6  84 C0                         test al, al
+008A1BC8  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#870
+#871
+#872
+#873
+(-) BOOL
+008A1BCF  E9 3A 05 00 00                jmp 008A210EH
+
+#874
+#875
+#876
+#877
+#878
+#879
+#880		{L:288}
+(*) UNDEF
+008A1BD4  33 C0                         xor eax, eax
+008A1BD6  66 8B 45 01                   mov ax, 1[ebp]
+
+#881		{L:288}
+(*) UINT
+008A1BDA  3D 00 00 00 00                cmp eax, 0
+008A1BDF  0F 94 C0                      sete al
+008A1BE2  25 FF 00 00 00                and eax, 0FFh
+
+#882
+(-) BOOL
+008A1BE7  84 C0                         test al, al
+008A1BE9  90 75 08 90 90 90             jne 008A1BF4H
+
+#883
+(-) BOOL
+008A1BEF  E9 FB 04 00 00                jmp 008A20EFH
+
+#884
+#885
+#886
+#887
+#888
+#889		{L:290}
+(*) BOOL
+008A1BF4  B8 00 00 00 00                mov eax, 0
+008A1BF9  66 89 45 05                   mov 5[ebp], ax
+
+#890
+#891
+#892
+#893		{L:292}
+(*) UNDEF
+008A1BFD  33 C0                         xor eax, eax
+008A1BFF  66 8B 45 05                   mov ax, 5[ebp]
+
+#894		{L:292}
+(*) UINT
+008A1C03  3D 01 00 00 00                cmp eax, 1
+008A1C08  0F 9C C0                      setl al
+008A1C0B  25 FF 00 00 00                and eax, 0FFh
+
+#895		{L:292}
+(-) BOOL
+008A1C10  84 C0                         test al, al
+008A1C12  90 74 50 90 90 90             je 008A1C65H
+
+#896
+#897
+#898
+#899
+#900		{L:293}
+(*) UNDEF
+008A1C18  33 C0                         xor eax, eax
+008A1C1A  8A 45 09                      mov al, 9[ebp]
+
+#901		{L:293}
+(-) BOOL
+008A1C1D  0F B6 4D 00                   movzx ecx, byte ptr [ebp]
+008A1C21  51                            push ecx
+008A1C22  0F B7 4D 05                   movzx ecx, word ptr 5[ebp]
+008A1C26  51                            push ecx
+008A1C27  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A1C2B  51                            push ecx
+008A1C2C  50                            push eax
+008A1C2D  E8 6E E8 FF FF                call 008A04A0H
+008A1C32  81 C4 10 00 00 00             add esp, 16
+
+#902		{L:293}
+(-) BOOL
+008A1C38  84 C0                         test al, al
+008A1C3A  90 74 08 90 90 90             je 008A1C45H
+
+#903
+#904
+#905
+#906
+#907
+(-) BOOL
+008A1C40  EB 23 90 90 90                jmp 008A1C65H
+
+#908
+#909
+#910
+#911
+#912
+#913		{L:297}
+(*) UNDEF
+008A1C45  33 C0                         xor eax, eax
+008A1C47  66 8B 45 05                   mov ax, 5[ebp]
+
+#914		{L:297}
+(-) UINT
+008A1C4B  68 01 00 00 00                push 1
+008A1C50  50                            push eax
+008A1C51  E8 E0 ED FF FF                call 008A0A36H
+008A1C56  81 C4 08 00 00 00             add esp, 8
+
+#915		{L:297}
+(*) UINT
+008A1C5C  66 89 45 05                   mov 5[ebp], ax
+
+#916
+(-) UINT
+008A1C60  EB 9B 90 90 90                jmp 008A1BFDH
+
+#917
+#918
+#919
+#920
+#921
+#922
+#923		{L:301}
+(*) UNDEF
+008A1C65  33 C0                         xor eax, eax
+008A1C67  8A 45 09                      mov al, 9[ebp]
+
+#924		{L:301}
+(-) BOOL
+008A1C6A  0F B6 4D 00                   movzx ecx, byte ptr [ebp]
+008A1C6E  51                            push ecx
+008A1C6F  0F B7 4D 05                   movzx ecx, word ptr 5[ebp]
+008A1C73  51                            push ecx
+008A1C74  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A1C78  51                            push ecx
+008A1C79  50                            push eax
+008A1C7A  E8 21 E8 FF FF                call 008A04A0H
+008A1C7F  81 C4 10 00 00 00             add esp, 16
+
+#925		{L:301}
+(-) BOOL
+008A1C85  84 C0                         test al, al
+008A1C87  0F 84 62 04 00 00             je 008A20EFH
+
+#926
+#927
+#928
+#929
+#930		{L:303}
+(*) UNDEF
+008A1C8D  33 C0                         xor eax, eax
+008A1C8F  8A 45 09                      mov al, 9[ebp]
+
+#931		{L:303}
+(-) BOOL
+008A1C92  0F B7 4D 05                   movzx ecx, word ptr 5[ebp]
+008A1C96  51                            push ecx
+008A1C97  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A1C9B  51                            push ecx
+008A1C9C  50                            push eax
+008A1C9D  E8 52 EA FF FF                call 008A06F4H
+008A1CA2  81 C4 0C 00 00 00             add esp, 12
+
+#932		{L:303}
+(*) BOOL
+008A1CA8  84 C0                         test al, al
+008A1CAA  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#933
+#934
+#935
+#936		{L:306}
+(*) UNDEF
+008A1CB1  B8 01 00 00 00                mov eax, 1
+
+#937		{L:306}
+(-) BOOL
+008A1CB6  84 C0                         test al, al
+008A1CB8  0F 84 31 04 00 00             je 008A20EFH
+
+#938
+#939
+#940
+#941		{L:308}
+(*) UNDEF
+008A1CBE  B8 00 00 00 00                mov eax, 0
+
+#942		{L:308}
+(-) USINT
+008A1CC3  50                            push eax
+008A1CC4  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; KEYLOG_OUT
+008A1CC9  FF D1                         call ecx
+008A1CCB  81 C4 04 00 00 00             add esp, 4
+
+#943		{L:308}
+(*) USINT
+008A1CD1  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+43
+
+#944
+#945
+#946
+#947
+#948
+#949		{L:312}
+(*) UNDEF
+008A1CD7  33 C0                         xor eax, eax
+008A1CD9  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#950		{L:312}
+(*) USINT
+008A1CDF  3D 0E 00 00 00                cmp eax, 14
+008A1CE4  0F 94 C0                      sete al
+008A1CE7  25 FF 00 00 00                and eax, 0FFh
+
+#951		{L:312}
+(*) BOOL
+008A1CEC  50                            push eax
+008A1CED  33 C0                         xor eax, eax
+008A1CEF  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#952		{L:312}
+(*) USINT
+008A1CF5  3D 03 00 00 00                cmp eax, 3
+008A1CFA  0F 94 C0                      sete al
+008A1CFD  25 FF 00 00 00                and eax, 0FFh
+
+#953		{L:312}
+(*) BOOL
+008A1D02  8B C8                         mov ecx, eax
+008A1D04  58                            pop eax
+008A1D05  0B C1                         or eax, ecx
+
+#954
+(-) BOOL
+008A1D07  84 C0                         test al, al
+008A1D09  90 75 5F 90 90 90             jne 008A1D6BH
+
+#955
+#956
+#957		{L:317}
+(*) UNDEF
+008A1D0F  33 C0                         xor eax, eax
+008A1D11  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#958		{L:317}
+(*) USINT
+008A1D17  3D 0A 00 00 00                cmp eax, 10
+008A1D1C  0F 94 C0                      sete al
+008A1D1F  25 FF 00 00 00                and eax, 0FFh
+
+#959
+(-) BOOL
+008A1D24  84 C0                         test al, al
+008A1D26  90 75 4C 90 90 90             jne 008A1D75H
+
+#960
+#961
+#962		{L:334}
+(*) UNDEF
+008A1D2C  33 C0                         xor eax, eax
+008A1D2E  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#963		{L:334}
+(*) USINT
+008A1D34  3D 07 00 00 00                cmp eax, 7
+008A1D39  0F 94 C0                      sete al
+008A1D3C  25 FF 00 00 00                and eax, 0FFh
+
+#964
+(-) BOOL
+008A1D41  84 C0                         test al, al
+008A1D43  0F 85 12 01 00 00             jne 008A1E5BH
+
+#965
+#966
+#967		{L:351}
+(*) UNDEF
+008A1D49  33 C0                         xor eax, eax
+008A1D4B  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#968		{L:351}
+(*) USINT
+008A1D51  3D 05 00 00 00                cmp eax, 5
+008A1D56  0F 94 C0                      sete al
+008A1D59  25 FF 00 00 00                and eax, 0FFh
+
+#969
+(-) BOOL
+008A1D5E  84 C0                         test al, al
+008A1D60  0F 85 DB 01 00 00             jne 008A1F41H
+
+#970
+(-) BOOL
+008A1D66  E9 7F 03 00 00                jmp 008A20EAH
+
+#971
+#972
+#973
+#974
+#975
+#976
+(-) BOOL
+008A1D6B  E9 7F 03 00 00                jmp 008A20EFH
+
+#977
+(-) BOOL
+008A1D70  E9 75 03 00 00                jmp 008A20EAH
+
+#978
+#979
+#980
+#981		{L:319}
+(*) UNDEF
+008A1D75  33 C0                         xor eax, eax
+008A1D77  66 8B 45 05                   mov ax, 5[ebp]
+
+#982		{L:319}
+(-) UINT
+008A1D7B  68 01 00 00 00                push 1
+008A1D80  50                            push eax
+008A1D81  E8 64 EC FF FF                call 008A09EAH
+008A1D86  81 C4 08 00 00 00             add esp, 8
+
+#983		{L:319}
+(*) UINT
+008A1D8C  66 89 45 07                   mov 7[ebp], ax
+
+#984
+#985
+#986
+#987		{L:320}
+(*) UNDEF
+008A1D90  33 C0                         xor eax, eax
+008A1D92  8A 45 09                      mov al, 9[ebp]
+
+#988		{L:320}
+(-) BOOL
+008A1D95  0F B6 4D 00                   movzx ecx, byte ptr [ebp]
+008A1D99  51                            push ecx
+008A1D9A  0F B7 4D 07                   movzx ecx, word ptr 7[ebp]
+008A1D9E  51                            push ecx
+008A1D9F  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A1DA3  51                            push ecx
+008A1DA4  50                            push eax
+008A1DA5  E8 F6 E6 FF FF                call 008A04A0H
+008A1DAA  81 C4 10 00 00 00             add esp, 16
+
+#989		{L:320}
+(*) BOOL
+008A1DB0  84 C0                         test al, al
+008A1DB2  0F 94 C0                      sete al
+
+#990		{L:320}
+(-) BOOL
+008A1DB5  84 C0                         test al, al
+008A1DB7  90 74 46 90 90 90             je 008A1E00H
+
+#991
+#992
+#993
+#994		{L:321}
+(*) UNDEF
+008A1DBD  33 C0                         xor eax, eax
+008A1DBF  66 8B 45 07                   mov ax, 7[ebp]
+
+#995		{L:321}
+(-) UINT
+008A1DC3  68 01 00 00 00                push 1
+008A1DC8  50                            push eax
+008A1DC9  E8 1C EC FF FF                call 008A09EAH
+008A1DCE  81 C4 08 00 00 00             add esp, 8
+
+#996		{L:321}
+(*) UINT
+008A1DD4  66 89 45 07                   mov 7[ebp], ax
+
+#997
+#998
+#999
+#1000		{L:322}
+(*) UNDEF
+008A1DD8  33 C0                         xor eax, eax
+008A1DDA  66 8B 45 07                   mov ax, 7[ebp]
+
+#1001		{L:322}
+(*) UINT
+008A1DDE  33 C9                         xor ecx, ecx
+008A1DE0  66 8B 4D 05                   mov cx, 5[ebp]
+008A1DE4  3B C1                         cmp eax, ecx
+008A1DE6  0F 94 C0                      sete al
+008A1DE9  25 FF 00 00 00                and eax, 0FFh
+
+#1002		{L:322}
+(-) BOOL
+008A1DEE  84 C0                         test al, al
+008A1DF0  90 74 08 90 90 90             je 008A1DFBH
+
+#1003
+#1004
+#1005
+#1006
+#1007
+(-) BOOL
+008A1DF6  EB 08 90 90 90                jmp 008A1E00H
+
+#1008
+#1009
+#1010
+#1011
+(-) BOOL
+008A1DFB  EB 93 90 90 90                jmp 008A1D90H
+
+#1012
+#1013
+#1014
+#1015
+#1016
+#1017
+#1018		{L:328}
+(*) UNDEF
+008A1E00  33 C0                         xor eax, eax
+008A1E02  8A 45 09                      mov al, 9[ebp]
+
+#1019		{L:328}
+(-) BOOL
+008A1E05  0F B6 4D 00                   movzx ecx, byte ptr [ebp]
+008A1E09  51                            push ecx
+008A1E0A  0F B7 4D 07                   movzx ecx, word ptr 7[ebp]
+008A1E0E  51                            push ecx
+008A1E0F  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A1E13  51                            push ecx
+008A1E14  50                            push eax
+008A1E15  E8 86 E6 FF FF                call 008A04A0H
+008A1E1A  81 C4 10 00 00 00             add esp, 16
+
+#1020		{L:328}
+(-) BOOL
+008A1E20  84 C0                         test al, al
+008A1E22  90 74 31 90 90 90             je 008A1E56H
+
+#1021
+#1022
+#1023
+#1024
+#1025		{L:329}
+(*) BOOL
+008A1E28  33 C0                         xor eax, eax
+008A1E2A  66 8B 45 07                   mov ax, 7[ebp]
+008A1E2E  66 89 45 05                   mov 5[ebp], ax
+
+#1026
+#1027
+#1028		{L:330}
+(*) UNDEF
+008A1E32  33 C0                         xor eax, eax
+008A1E34  8A 45 09                      mov al, 9[ebp]
+
+#1029		{L:330}
+(-) BOOL
+008A1E37  0F B7 4D 05                   movzx ecx, word ptr 5[ebp]
+008A1E3B  51                            push ecx
+008A1E3C  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A1E40  51                            push ecx
+008A1E41  50                            push eax
+008A1E42  E8 AD E8 FF FF                call 008A06F4H
+008A1E47  81 C4 0C 00 00 00             add esp, 12
+
+#1030		{L:330}
+(*) BOOL
+008A1E4D  84 C0                         test al, al
+008A1E4F  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#1031
+#1032
+#1033
+#1034
+(-) BOOL
+008A1E56  E9 8F 02 00 00                jmp 008A20EAH
+
+#1035
+#1036
+#1037
+#1038		{L:336}
+(*) UNDEF
+008A1E5B  33 C0                         xor eax, eax
+008A1E5D  66 8B 45 05                   mov ax, 5[ebp]
+
+#1039		{L:336}
+(-) UINT
+008A1E61  68 01 00 00 00                push 1
+008A1E66  50                            push eax
+008A1E67  E8 CA EB FF FF                call 008A0A36H
+008A1E6C  81 C4 08 00 00 00             add esp, 8
+
+#1040		{L:336}
+(*) UINT
+008A1E72  66 89 45 07                   mov 7[ebp], ax
+
+#1041
+#1042
+#1043
+#1044		{L:337}
+(*) UNDEF
+008A1E76  33 C0                         xor eax, eax
+008A1E78  8A 45 09                      mov al, 9[ebp]
+
+#1045		{L:337}
+(-) BOOL
+008A1E7B  0F B6 4D 00                   movzx ecx, byte ptr [ebp]
+008A1E7F  51                            push ecx
+008A1E80  0F B7 4D 07                   movzx ecx, word ptr 7[ebp]
+008A1E84  51                            push ecx
+008A1E85  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A1E89  51                            push ecx
+008A1E8A  50                            push eax
+008A1E8B  E8 10 E6 FF FF                call 008A04A0H
+008A1E90  81 C4 10 00 00 00             add esp, 16
+
+#1046		{L:337}
+(*) BOOL
+008A1E96  84 C0                         test al, al
+008A1E98  0F 94 C0                      sete al
+
+#1047		{L:337}
+(-) BOOL
+008A1E9B  84 C0                         test al, al
+008A1E9D  90 74 46 90 90 90             je 008A1EE6H
+
+#1048
+#1049
+#1050
+#1051		{L:338}
+(*) UNDEF
+008A1EA3  33 C0                         xor eax, eax
+008A1EA5  66 8B 45 07                   mov ax, 7[ebp]
+
+#1052		{L:338}
+(-) UINT
+008A1EA9  68 01 00 00 00                push 1
+008A1EAE  50                            push eax
+008A1EAF  E8 82 EB FF FF                call 008A0A36H
+008A1EB4  81 C4 08 00 00 00             add esp, 8
+
+#1053		{L:338}
+(*) UINT
+008A1EBA  66 89 45 07                   mov 7[ebp], ax
+
+#1054
+#1055
+#1056
+#1057		{L:339}
+(*) UNDEF
+008A1EBE  33 C0                         xor eax, eax
+008A1EC0  66 8B 45 07                   mov ax, 7[ebp]
+
+#1058		{L:339}
+(*) UINT
+008A1EC4  33 C9                         xor ecx, ecx
+008A1EC6  66 8B 4D 05                   mov cx, 5[ebp]
+008A1ECA  3B C1                         cmp eax, ecx
+008A1ECC  0F 94 C0                      sete al
+008A1ECF  25 FF 00 00 00                and eax, 0FFh
+
+#1059		{L:339}
+(-) BOOL
+008A1ED4  84 C0                         test al, al
+008A1ED6  90 74 08 90 90 90             je 008A1EE1H
+
+#1060
+#1061
+#1062
+#1063
+#1064
+(-) BOOL
+008A1EDC  EB 08 90 90 90                jmp 008A1EE6H
+
+#1065
+#1066
+#1067
+#1068
+(-) BOOL
+008A1EE1  EB 93 90 90 90                jmp 008A1E76H
+
+#1069
+#1070
+#1071
+#1072
+#1073
+#1074
+#1075		{L:345}
+(*) UNDEF
+008A1EE6  33 C0                         xor eax, eax
+008A1EE8  8A 45 09                      mov al, 9[ebp]
+
+#1076		{L:345}
+(-) BOOL
+008A1EEB  0F B6 4D 00                   movzx ecx, byte ptr [ebp]
+008A1EEF  51                            push ecx
+008A1EF0  0F B7 4D 07                   movzx ecx, word ptr 7[ebp]
+008A1EF4  51                            push ecx
+008A1EF5  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A1EF9  51                            push ecx
+008A1EFA  50                            push eax
+008A1EFB  E8 A0 E5 FF FF                call 008A04A0H
+008A1F00  81 C4 10 00 00 00             add esp, 16
+
+#1077		{L:345}
+(-) BOOL
+008A1F06  84 C0                         test al, al
+008A1F08  90 74 31 90 90 90             je 008A1F3CH
+
+#1078
+#1079
+#1080
+#1081
+#1082		{L:346}
+(*) BOOL
+008A1F0E  33 C0                         xor eax, eax
+008A1F10  66 8B 45 07                   mov ax, 7[ebp]
+008A1F14  66 89 45 05                   mov 5[ebp], ax
+
+#1083
+#1084
+#1085		{L:347}
+(*) UNDEF
+008A1F18  33 C0                         xor eax, eax
+008A1F1A  8A 45 09                      mov al, 9[ebp]
+
+#1086		{L:347}
+(-) BOOL
+008A1F1D  0F B7 4D 05                   movzx ecx, word ptr 5[ebp]
+008A1F21  51                            push ecx
+008A1F22  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A1F26  51                            push ecx
+008A1F27  50                            push eax
+008A1F28  E8 C7 E7 FF FF                call 008A06F4H
+008A1F2D  81 C4 0C 00 00 00             add esp, 12
+
+#1087		{L:347}
+(*) BOOL
+008A1F33  84 C0                         test al, al
+008A1F35  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#1088
+#1089
+#1090
+#1091
+(-) BOOL
+008A1F3C  E9 A9 01 00 00                jmp 008A20EAH
+
+#1092
+#1093
+#1094
+#1095
+#1096
+#1097
+#1098		{L:355}
+(*) UNDEF
+008A1F41  33 C0                         xor eax, eax
+008A1F43  66 8B 45 05                   mov ax, 5[ebp]
+
+#1099		{L:355}
+(*) UINT
+008A1F47  3D 00 00 00 00                cmp eax, 0
+008A1F4C  0F 94 C0                      sete al
+008A1F4F  25 FF 00 00 00                and eax, 0FFh
+
+#1100
+(-) BOOL
+008A1F54  84 C0                         test al, al
+008A1F56  90 75 23 90 90 90             jne 008A1F7CH
+
+#1101
+#1102
+#1103		{L:367}
+(*) UNDEF
+008A1F5C  33 C0                         xor eax, eax
+008A1F5E  66 8B 45 05                   mov ax, 5[ebp]
+
+#1104		{L:367}
+(*) UINT
+008A1F62  3D 01 00 00 00                cmp eax, 1
+008A1F67  0F 94 C0                      sete al
+008A1F6A  25 FF 00 00 00                and eax, 0FFh
+
+#1105
+(-) BOOL
+008A1F6F  84 C0                         test al, al
+008A1F71  0F 85 7E 00 00 00             jne 008A1FF5H
+
+#1106
+(-) BOOL
+008A1F77  E9 ED 00 00 00                jmp 008A2069H
+
+#1107
+#1108
+#1109
+#1110
+#1111
+#1112		{L:357}
+(*) BOOL
+008A1F7C  B8 00 40 00 00                mov eax, 16384
+008A1F81  66 89 05 CC CC CC CC          mov [CCCCCCCCH], ax ; $$DATA$$+44
+
+#1113
+#1114
+#1115		{L:358}
+(*) UINT
+008A1F88  B8 00 00 00 00                mov eax, 0
+008A1F8D  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+46
+
+#1116
+#1117
+#1118		{L:359}
+(*) USINT
+008A1F93  D9 05 CC CC CC CC             fld [CCCCCCCCH] ; $$CODE$$+282
+008A1F99  D9 15 CC CC CC CC             fst [CCCCCCCCH] ; $$DATA$$+48
+
+#1119
+#1120
+#1121		{L:360}
+(*) REAL
+008A1F9F  DD C0                         ffree
+008A1FA1  D9 F7                         fincstp
+008A1FA3  D9 05 CC CC CC CC             fld [CCCCCCCCH] ; $$CODE$$+286
+008A1FA9  D9 15 CC CC CC CC             fst [CCCCCCCCH] ; $$DATA$$+52
+
+#1122
+#1123
+#1124		{L:361}
+(*) REAL
+008A1FAF  DD C0                         ffree
+008A1FB1  D9 F7                         fincstp
+008A1FB3  D9 05 CC CC CC CC             fld [CCCCCCCCH] ; $$CODE$$+290
+008A1FB9  D9 15 CC CC CC CC             fst [CCCCCCCCH] ; $$DATA$$+56
+
+#1125
+#1126
+#1127		{L:362}
+(*) REAL
+008A1FBF  DD C0                         ffree
+008A1FC1  D9 F7                         fincstp
+008A1FC3  D9 EE                         fldz
+008A1FC5  D9 15 CC CC CC CC             fst [CCCCCCCCH] ; $$DATA$$+60
+
+#1128
+#1129
+#1130		{L:363}
+(*) REAL
+008A1FCB  DD C0                         ffree
+008A1FCD  D9 F7                         fincstp
+008A1FCF  B8 01 00 00 00                mov eax, 1
+008A1FD4  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+47
+
+#1131
+#1132
+#1133		{L:364}
+(*) SINT
+008A1FDA  B8 00 00 00 00                mov eax, 0
+008A1FDF  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+64
+
+#1134
+#1135
+#1136		{L:365}
+(*) USINT
+008A1FE5  B8 00 00 00 00                mov eax, 0
+008A1FEA  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+65
+
+#1137
+(-) SINT
+008A1FF0  EB 77 90 90 90                jmp 008A2069H
+
+#1138
+#1139
+#1140
+#1141		{L:369}
+(*) SINT
+008A1FF5  B8 01 40 00 00                mov eax, 16385
+008A1FFA  66 89 05 CC CC CC CC          mov [CCCCCCCCH], ax ; $$DATA$$+44
+
+#1142
+#1143
+#1144		{L:370}
+(*) UINT
+008A2001  B8 00 00 00 00                mov eax, 0
+008A2006  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+46
+
+#1145
+#1146
+#1147		{L:371}
+(*) USINT
+008A200C  D9 05 CC CC CC CC             fld [CCCCCCCCH] ; $$CODE$$+282
+008A2012  D9 15 CC CC CC CC             fst [CCCCCCCCH] ; $$DATA$$+48
+
+#1148
+#1149
+#1150		{L:372}
+(*) REAL
+008A2018  DD C0                         ffree
+008A201A  D9 F7                         fincstp
+008A201C  D9 05 CC CC CC CC             fld [CCCCCCCCH] ; $$CODE$$+286
+008A2022  D9 15 CC CC CC CC             fst [CCCCCCCCH] ; $$DATA$$+52
+
+#1151
+#1152
+#1153		{L:373}
+(*) REAL
+008A2028  DD C0                         ffree
+008A202A  D9 F7                         fincstp
+008A202C  D9 05 CC CC CC CC             fld [CCCCCCCCH] ; $$CODE$$+290
+008A2032  D9 15 CC CC CC CC             fst [CCCCCCCCH] ; $$DATA$$+56
+
+#1154
+#1155
+#1156		{L:374}
+(*) REAL
+008A2038  DD C0                         ffree
+008A203A  D9 F7                         fincstp
+008A203C  D9 EE                         fldz
+008A203E  D9 15 CC CC CC CC             fst [CCCCCCCCH] ; $$DATA$$+60
+
+#1157
+#1158
+#1159		{L:375}
+(*) REAL
+008A2044  DD C0                         ffree
+008A2046  D9 F7                         fincstp
+008A2048  B8 01 00 00 00                mov eax, 1
+008A204D  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+47
+
+#1160
+#1161
+#1162		{L:376}
+(*) SINT
+008A2053  B8 00 00 00 00                mov eax, 0
+008A2058  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+64
+
+#1163
+#1164
+#1165		{L:377}
+(*) USINT
+008A205E  B8 00 00 00 00                mov eax, 0
+008A2063  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+65
+
+#1166
+#1167
+#1168
+#1169
+#1170
+#1171
+#1172		{L:381}
+(*) UNDEF
+008A2069  33 C0                         xor eax, eax
+008A206B  66 8B 05 CC CC CC CC          mov ax, [CCCCCCCCH] ; $$DATA$$+44
+
+#1173		{L:381}
+(-) UINT
+008A2072  0F BE 0D CC CC CC CC          movsx ecx, byte ptr [CCCCCCCCh] ; $$DATA$$+65
+008A2079  51                            push ecx
+008A207A  0F B6 0D CC CC CC CC          movzx ecx, byte ptr [CCCCCCCCh] ; $$DATA$$+64
+008A2081  51                            push ecx
+008A2082  0F BE 0D CC CC CC CC          movsx ecx, byte ptr [CCCCCCCCh] ; $$DATA$$+47
+008A2089  51                            push ecx
+008A208A  FF 35 CC CC CC CC             push [-858993460] ; $$DATA$$+60
+008A2090  FF 35 CC CC CC CC             push [-858993460] ; $$DATA$$+56
+008A2096  FF 35 CC CC CC CC             push [-858993460] ; $$DATA$$+52
+008A209C  FF 35 CC CC CC CC             push [-858993460] ; $$DATA$$+48
+008A20A2  0F B6 0D CC CC CC CC          movzx ecx, byte ptr [CCCCCCCCh] ; $$DATA$$+46
+008A20A9  51                            push ecx
+008A20AA  50                            push eax
+008A20AB  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; PLC_CTRMENU
+008A20B0  FF D1                         call ecx
+008A20B2  81 C4 24 00 00 00             add esp, 36
+
+#1174		{L:381}
+(*) USINT
+008A20B8  84 C0                         test al, al
+008A20BA  0F 95 C0                      setne al
+
+#1175		{L:381}
+(*) BOOL
+008A20BD  84 C0                         test al, al
+008A20BF  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#1176
+#1177
+#1178		{L:383}
+(*) UNDEF
+008A20C6  33 C0                         xor eax, eax
+008A20C8  8A 45 09                      mov al, 9[ebp]
+
+#1179		{L:383}
+(-) BOOL
+008A20CB  0F B7 4D 05                   movzx ecx, word ptr 5[ebp]
+008A20CF  51                            push ecx
+008A20D0  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A20D4  51                            push ecx
+008A20D5  50                            push eax
+008A20D6  E8 19 E6 FF FF                call 008A06F4H
+008A20DB  81 C4 0C 00 00 00             add esp, 12
+
+#1180		{L:383}
+(*) BOOL
+008A20E1  84 C0                         test al, al
+008A20E3  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#1181
+#1182
+#1183
+#1184
+#1185
+(-) BOOL
+008A20EA  E9 C2 FB FF FF                jmp 008A1CB1H
+
+#1186
+#1187
+#1188
+#1189
+#1190
+#1191
+#1192
+#1193
+#1194
+#1195
+#1196
+#1197
+#1198		{L:392}
+(*) UNDEF
+008A20EF  33 C0                         xor eax, eax
+008A20F1  8A 45 09                      mov al, 9[ebp]
+
+#1199		{L:392}
+(-) BOOL
+008A20F4  0F B7 4D 01                   movzx ecx, word ptr 1[ebp]
+008A20F8  51                            push ecx
+008A20F9  50                            push eax
+008A20FA  E8 D3 E7 FF FF                call 008A08D2H
+008A20FF  81 C4 08 00 00 00             add esp, 8
+
+#1200		{L:392}
+(*) BOOL
+008A2105  84 C0                         test al, al
+008A2107  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#1201
+#1202
+#1203
+#1204
+#1205
+(-) BOOL
+008A210E  E9 4F F8 FF FF                jmp 008A1962H
+
+008A2113  5D                            pop ebp
+
+008A2114  C3                            ret
+
+
+Frame allocation:
+
+	0009 bit  0: VAR STATES
+	000A       : FB ALARMS
+	0000       : VAR CURRENTACCESSLEVEL
+	0001       : VAR CURRENTMENU
+	0003       : VAR TEMPCURRENTMENU
+	0005       : VAR CURRENTPARAMETER
+	0007       : VAR TEMPCURRENTPARAMETER
+
+END_FUNCTION_BLOCK
+**************************************************
+	List function block: MAINMENU
+**************************************************
+
+FUNCTION_BLOCK MAINMENU
+
+	VAR_EXTERNAL
+	SYSDISPLAYMODE AT %MB21.0 : ARRAY[ 0..1 ] OF USINT; 	{ DE:"Display mode. It affects the key return code. [0]=Local [1]=LCD. See also KeyLogOutDisplays function " }
+	SYSKEYFUNCTIONS AT %MB23.0 : ARRAY[ 0..5 ] OF BOOL; 	{ DE:"Key press functions: 
+[0]=Long F1
+[1]=Long F2
+[2]=Long F3
+[3]=Long F4
+[4]=Short Up
+[5]=Short Down.
+
+When a key is released the related flag is not automatically reset. " }
+	SYSLOCALKEYS AT %MX20.0 : ARRAY[ 0..3 ] OF BOOL; 	{ IO:"Local Keys Current Status: [0]=UP [1]=Esc [2]=Down [3]=Set" }
+	$$WARNINGSKILLER : BOOL; 
+	$$KEYLOG : USINT; 
+	$$ADDRESS : UINT; 
+	$$TYPE : USINT; 
+	$$MIN : REAL; 
+	$$MAX : REAL; 
+	$$SCALE : REAL; 
+	$$OFFSET : REAL; 
+	$$DP : SINT; 
+	$$MODE : USINT; 
+	$$UM : SINT; 
+	END_VAR
+
+	VAR
+	MENUS : MENULIST; 
+	POS : BOOL; 
+	END_VAR
+
+END_FUNCTION_BLOCK
+
+008A2115  55                            push ebp
+008A2116  8B EB                         mov ebp, ebx
+
+#0		{SRC:MAINMENU}
+#1
+#2
+#3
+#4		{L:3}
+(*) BOOL
+008A2118  B8 00 00 00 00                mov eax, 0
+008A211D  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; %M21+0
+
+#5
+#6
+#7
+#8		{L:6}
+(*) UNDEF
+008A2123  B8 01 00 00 00                mov eax, 1
+
+#9		{L:6}
+(-) BOOL
+008A2128  84 C0                         test al, al
+008A212A  0F 84 31 04 00 00             je 008A2561H
+
+#10
+#11
+#12
+#13		{L:10}
+(*) BOOL
+008A2130  B8 00 23 00 00                mov eax, 8960
+008A2135  66 89 05 CC CC CC CC          mov [CCCCCCCCH], ax ; $$DATA$$+44
+
+#14
+#15
+#16		{L:11}
+(*) UINT
+008A213C  B8 00 00 00 00                mov eax, 0
+008A2141  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+46
+
+#17
+#18
+#19		{L:12}
+(*) USINT
+008A2147  D9 05 CC CC CC CC             fld [CCCCCCCCH] ; $$CODE$$+282
+008A214D  D9 15 CC CC CC CC             fst [CCCCCCCCH] ; $$DATA$$+48
+
+#20
+#21
+#22		{L:13}
+(*) REAL
+008A2153  DD C0                         ffree
+008A2155  D9 F7                         fincstp
+008A2157  D9 05 CC CC CC CC             fld [CCCCCCCCH] ; $$CODE$$+286
+008A215D  D9 15 CC CC CC CC             fst [CCCCCCCCH] ; $$DATA$$+52
+
+#23
+#24
+#25		{L:14}
+(*) REAL
+008A2163  DD C0                         ffree
+008A2165  D9 F7                         fincstp
+008A2167  D9 05 CC CC CC CC             fld [CCCCCCCCH] ; $$CODE$$+290
+008A216D  D9 15 CC CC CC CC             fst [CCCCCCCCH] ; $$DATA$$+56
+
+#26
+#27
+#28		{L:15}
+(*) REAL
+008A2173  DD C0                         ffree
+008A2175  D9 F7                         fincstp
+008A2177  D9 EE                         fldz
+008A2179  D9 15 CC CC CC CC             fst [CCCCCCCCH] ; $$DATA$$+60
+
+#29
+#30
+#31		{L:16}
+(*) REAL
+008A217F  DD C0                         ffree
+008A2181  D9 F7                         fincstp
+008A2183  B8 01 00 00 00                mov eax, 1
+008A2188  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+47
+
+#32
+#33
+#34		{L:17}
+(*) SINT
+008A218E  B8 02 00 00 00                mov eax, 2
+008A2193  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+64
+
+#35
+#36
+#37		{L:18}
+(*) USINT
+008A2199  B8 00 00 00 00                mov eax, 0
+008A219E  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+65
+
+#38
+#39
+#40		{L:22}
+(*) UNDEF
+008A21A4  33 C0                         xor eax, eax
+008A21A6  66 8B 05 CC CC CC CC          mov ax, [CCCCCCCCH] ; $$DATA$$+44
+
+#41		{L:22}
+(-) UINT
+008A21AD  0F BE 0D CC CC CC CC          movsx ecx, byte ptr [CCCCCCCCh] ; $$DATA$$+65
+008A21B4  51                            push ecx
+008A21B5  0F B6 0D CC CC CC CC          movzx ecx, byte ptr [CCCCCCCCh] ; $$DATA$$+64
+008A21BC  51                            push ecx
+008A21BD  0F BE 0D CC CC CC CC          movsx ecx, byte ptr [CCCCCCCCh] ; $$DATA$$+47
+008A21C4  51                            push ecx
+008A21C5  FF 35 CC CC CC CC             push [-858993460] ; $$DATA$$+60
+008A21CB  FF 35 CC CC CC CC             push [-858993460] ; $$DATA$$+56
+008A21D1  FF 35 CC CC CC CC             push [-858993460] ; $$DATA$$+52
+008A21D7  FF 35 CC CC CC CC             push [-858993460] ; $$DATA$$+48
+008A21DD  0F B6 0D CC CC CC CC          movzx ecx, byte ptr [CCCCCCCCh] ; $$DATA$$+46
+008A21E4  51                            push ecx
+008A21E5  50                            push eax
+008A21E6  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; PLC_CTRMENU
+008A21EB  FF D1                         call ecx
+008A21ED  81 C4 24 00 00 00             add esp, 36
+
+#42		{L:22}
+(*) USINT
+008A21F3  84 C0                         test al, al
+008A21F5  0F 95 C0                      setne al
+
+#43		{L:22}
+(*) BOOL
+008A21F8  84 C0                         test al, al
+008A21FA  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#44
+#45
+#46		{L:25}
+(*) UNDEF
+008A2201  B8 00 00 00 00                mov eax, 0
+
+#47		{L:25}
+(-) USINT
+008A2206  50                            push eax
+008A2207  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; KEYLOG_OUT
+008A220C  FF D1                         call ecx
+008A220E  81 C4 04 00 00 00             add esp, 4
+
+#48		{L:25}
+(*) USINT
+008A2214  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+43
+
+#49
+#50
+#51
+#52
+#53
+#54		{L:29}
+(*) UNDEF
+008A221A  33 C0                         xor eax, eax
+008A221C  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#55		{L:29}
+(*) USINT
+008A2222  3D 0D 00 00 00                cmp eax, 13
+008A2227  0F 94 C0                      sete al
+008A222A  25 FF 00 00 00                and eax, 0FFh
+
+#56
+(-) BOOL
+008A222F  84 C0                         test al, al
+008A2231  0F 85 ED 00 00 00             jne 008A2324H
+
+#57
+#58
+#59		{L:34}
+(*) UNDEF
+008A2237  33 C0                         xor eax, eax
+008A2239  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#60		{L:34}
+(*) USINT
+008A223F  3D 05 00 00 00                cmp eax, 5
+008A2244  0F 94 C0                      sete al
+008A2247  25 FF 00 00 00                and eax, 0FFh
+
+#61
+(-) BOOL
+008A224C  84 C0                         test al, al
+008A224E  0F 85 DA 00 00 00             jne 008A232EH
+
+#62
+#63
+#64		{L:42}
+(*) UNDEF
+008A2254  33 C0                         xor eax, eax
+008A2256  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#65		{L:42}
+(*) USINT
+008A225C  3D 0C 00 00 00                cmp eax, 12
+008A2261  0F 94 C0                      sete al
+008A2264  25 FF 00 00 00                and eax, 0FFh
+
+#66
+(-) BOOL
+008A2269  84 C0                         test al, al
+008A226B  0F 85 E1 00 00 00             jne 008A2352H
+
+#67
+#68
+#69		{L:85}
+(*) UNDEF
+008A2271  33 C0                         xor eax, eax
+008A2273  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#70		{L:85}
+(*) USINT
+008A2279  3D 06 00 00 00                cmp eax, 6
+008A227E  0F 94 C0                      sete al
+008A2281  25 FF 00 00 00                and eax, 0FFh
+
+#71
+(-) BOOL
+008A2286  84 C0                         test al, al
+008A2288  0F 85 61 02 00 00             jne 008A24EFH
+
+#72
+#73
+#74		{L:90}
+(*) UNDEF
+008A228E  33 C0                         xor eax, eax
+008A2290  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#75		{L:90}
+(*) USINT
+008A2296  3D 02 00 00 00                cmp eax, 2
+008A229B  0F 94 C0                      sete al
+008A229E  25 FF 00 00 00                and eax, 0FFh
+
+#76
+(-) BOOL
+008A22A3  84 C0                         test al, al
+008A22A5  0F 85 57 02 00 00             jne 008A2502H
+
+#77
+#78
+#79		{L:95}
+(*) UNDEF
+008A22AB  33 C0                         xor eax, eax
+008A22AD  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#80		{L:95}
+(*) USINT
+008A22B3  3D 09 00 00 00                cmp eax, 9
+008A22B8  0F 94 C0                      sete al
+008A22BB  25 FF 00 00 00                and eax, 0FFh
+
+#81
+(-) BOOL
+008A22C0  84 C0                         test al, al
+008A22C2  0F 85 4D 02 00 00             jne 008A2515H
+
+#82
+#83
+#84		{L:100}
+(*) UNDEF
+008A22C8  33 C0                         xor eax, eax
+008A22CA  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#85		{L:100}
+(*) USINT
+008A22D0  3D 04 00 00 00                cmp eax, 4
+008A22D5  0F 94 C0                      sete al
+008A22D8  25 FF 00 00 00                and eax, 0FFh
+
+#86
+(-) BOOL
+008A22DD  84 C0                         test al, al
+008A22DF  0F 85 43 02 00 00             jne 008A2528H
+
+#87
+#88
+#89		{L:105}
+(*) UNDEF
+008A22E5  33 C0                         xor eax, eax
+008A22E7  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#90		{L:105}
+(*) USINT
+008A22ED  3D 08 00 00 00                cmp eax, 8
+008A22F2  0F 94 C0                      sete al
+008A22F5  25 FF 00 00 00                and eax, 0FFh
+
+#91
+(-) BOOL
+008A22FA  84 C0                         test al, al
+008A22FC  0F 85 39 02 00 00             jne 008A253BH
+
+#92
+#93
+#94		{L:110}
+(*) UNDEF
+008A2302  33 C0                         xor eax, eax
+008A2304  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#95		{L:110}
+(*) USINT
+008A230A  3D 0B 00 00 00                cmp eax, 11
+008A230F  0F 94 C0                      sete al
+008A2312  25 FF 00 00 00                and eax, 0FFh
+
+#96
+(-) BOOL
+008A2317  84 C0                         test al, al
+008A2319  0F 85 2F 02 00 00             jne 008A254EH
+
+#97
+(-) BOOL
+008A231F  E9 38 02 00 00                jmp 008A255CH
+
+#98
+#99
+#100
+#101
+#102
+#103
+(-) BOOL
+008A2324  E9 38 02 00 00                jmp 008A2561H
+
+#104
+(-) BOOL
+008A2329  E9 2E 02 00 00                jmp 008A255CH
+
+#105
+#106
+#107
+#108		{L:36}
+(*) BOOL
+008A232E  B8 01 00 00 00                mov eax, 1
+008A2333  84 C0                         test al, al
+008A2335  0F 95 45 09                   setne 9[ebp]
+
+#109		{L:36}
+(*) BOOL
+008A2339  50                            push eax
+008A233A  8B DD                         mov ebx, ebp
+008A233C  E8 8F EB FF FF                call 008A0ED0H
+008A2341  58                            pop eax
+
+#110
+#111
+#112		{L:39}
+(*) BOOL
+008A2342  B8 00 00 00 00                mov eax, 0
+008A2347  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; %M21+0
+
+#113
+(-) USINT
+008A234D  E9 0A 02 00 00                jmp 008A255CH
+
+#114
+#115
+#116
+#117		{L:44}
+(*) USINT
+008A2352  B8 02 00 00 00                mov eax, 2
+008A2357  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; %M21+0
+
+#118
+#119
+#120		{L:47}
+(*) USINT
+008A235D  B8 01 00 00 00                mov eax, 1
+008A2362  84 C0                         test al, al
+008A2364  0F 95 45 15                   setne 21[ebp]
+
+#121
+#122
+#123
+#124		{L:49}
+(*) UNDEF
+008A2368  B8 01 00 00 00                mov eax, 1
+
+#125		{L:49}
+(-) BOOL
+008A236D  84 C0                         test al, al
+008A236F  0F 84 6A 01 00 00             je 008A24DFH
+
+#126
+#127
+#128
+#129
+#130		{L:52}
+(*) UNDEF
+008A2375  33 C0                         xor eax, eax
+008A2377  8A 45 15                      mov al, 21[ebp]
+
+#131		{L:52}
+(-) BOOL
+008A237A  84 C0                         test al, al
+008A237C  90 74 29 90 90 90             je 008A23A8H
+
+#132
+#133
+#134
+#135
+#136		{L:53}
+(*) UNDEF
+008A2382  B8 CC CC CC CC                mov eax, CCCCCCCCH ; $$CODE$$+298
+
+#137		{L:53}
+(-) STRING
+008A2387  68 00 00 00 00                push 0
+008A238C  50                            push eax
+008A238D  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; WRITESTRLOCALDISPLAY
+008A2392  FF D1                         call ecx
+008A2394  81 C4 08 00 00 00             add esp, 8
+
+#138		{L:53}
+(*) BOOL
+008A239A  84 C0                         test al, al
+008A239C  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#139
+(-) BOOL
+008A23A3  EB 24 90 90 90                jmp 008A23C9H
+
+#140
+#141
+#142
+#143
+#144
+#145		{L:55}
+(*) UNDEF
+008A23A8  B8 CC CC CC CC                mov eax, CCCCCCCCH ; $$CODE$$+302
+
+#146		{L:55}
+(-) STRING
+008A23AD  68 00 00 00 00                push 0
+008A23B2  50                            push eax
+008A23B3  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; WRITESTRLOCALDISPLAY
+008A23B8  FF D1                         call ecx
+008A23BA  81 C4 08 00 00 00             add esp, 8
+
+#147		{L:55}
+(*) BOOL
+008A23C0  84 C0                         test al, al
+008A23C2  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#148
+#149
+#150
+#151
+#152
+#153		{L:59}
+(*) UNDEF
+008A23C9  B8 00 00 00 00                mov eax, 0
+
+#154		{L:59}
+(-) USINT
+008A23CE  50                            push eax
+008A23CF  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; KEYLOG_OUT
+008A23D4  FF D1                         call ecx
+008A23D6  81 C4 04 00 00 00             add esp, 4
+
+#155		{L:59}
+(*) USINT
+008A23DC  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+43
+
+#156
+#157
+#158
+#159
+#160
+#161		{L:62}
+(*) UNDEF
+008A23E2  33 C0                         xor eax, eax
+008A23E4  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#162		{L:62}
+(*) USINT
+008A23EA  3D 0E 00 00 00                cmp eax, 14
+008A23EF  0F 94 C0                      sete al
+008A23F2  25 FF 00 00 00                and eax, 0FFh
+
+#163		{L:62}
+(*) BOOL
+008A23F7  50                            push eax
+008A23F8  33 C0                         xor eax, eax
+008A23FA  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#164		{L:62}
+(*) USINT
+008A2400  3D 03 00 00 00                cmp eax, 3
+008A2405  0F 94 C0                      sete al
+008A2408  25 FF 00 00 00                and eax, 0FFh
+
+#165		{L:62}
+(*) BOOL
+008A240D  8B C8                         mov ecx, eax
+008A240F  58                            pop eax
+008A2410  0B C1                         or eax, ecx
+
+#166
+(-) BOOL
+008A2412  84 C0                         test al, al
+008A2414  90 75 5D 90 90 90             jne 008A2474H
+
+#167
+#168
+#169		{L:65}
+(*) UNDEF
+008A241A  33 C0                         xor eax, eax
+008A241C  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#170		{L:65}
+(*) USINT
+008A2422  3D 07 00 00 00                cmp eax, 7
+008A2427  0F 94 C0                      sete al
+008A242A  25 FF 00 00 00                and eax, 0FFh
+
+#171		{L:65}
+(*) BOOL
+008A242F  50                            push eax
+008A2430  33 C0                         xor eax, eax
+008A2432  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#172		{L:65}
+(*) USINT
+008A2438  3D 0A 00 00 00                cmp eax, 10
+008A243D  0F 94 C0                      sete al
+008A2440  25 FF 00 00 00                and eax, 0FFh
+
+#173		{L:65}
+(*) BOOL
+008A2445  8B C8                         mov ecx, eax
+008A2447  58                            pop eax
+008A2448  0B C1                         or eax, ecx
+
+#174
+(-) BOOL
+008A244A  84 C0                         test al, al
+008A244C  90 75 2F 90 90 90             jne 008A247EH
+
+#175
+#176
+#177		{L:68}
+(*) UNDEF
+008A2452  33 C0                         xor eax, eax
+008A2454  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+43
+
+#178		{L:68}
+(*) USINT
+008A245A  3D 05 00 00 00                cmp eax, 5
+008A245F  0F 94 C0                      sete al
+008A2462  25 FF 00 00 00                and eax, 0FFh
+
+#179
+(-) BOOL
+008A2467  84 C0                         test al, al
+008A2469  90 75 27 90 90 90             jne 008A2493H
+
+#180
+(-) BOOL
+008A246F  EB 69 90 90 90                jmp 008A24DAH
+
+#181
+#182
+#183
+#184
+#185
+#186
+(-) BOOL
+008A2474  EB 69 90 90 90                jmp 008A24DFH
+
+#187
+(-) BOOL
+008A2479  EB 5F 90 90 90                jmp 008A24DAH
+
+#188
+#189
+#190
+#191		{L:66}
+(*) UNDEF
+008A247E  33 C0                         xor eax, eax
+008A2480  8A 45 15                      mov al, 21[ebp]
+
+#192		{L:66}
+(*) BOOL
+008A2483  84 C0                         test al, al
+008A2485  0F 94 C0                      sete al
+
+#193		{L:66}
+(*) BOOL
+008A2488  84 C0                         test al, al
+008A248A  0F 95 45 15                   setne 21[ebp]
+
+#194
+(-) BOOL
+008A248E  EB 4A 90 90 90                jmp 008A24DAH
+
+#195
+#196
+#197
+#198
+#199		{L:69}
+(*) UNDEF
+008A2493  33 C0                         xor eax, eax
+008A2495  8A 45 15                      mov al, 21[ebp]
+
+#200		{L:69}
+(-) BOOL
+008A2498  84 C0                         test al, al
+008A249A  90 74 1C 90 90 90             je 008A24B9H
+
+#201
+#202
+#203
+#204
+#205		{L:71}
+(*) BOOL
+008A24A0  B8 00 00 00 00                mov eax, 0
+008A24A5  84 C0                         test al, al
+008A24A7  0F 95 45 09                   setne 9[ebp]
+
+#206		{L:71}
+(*) BOOL
+008A24AB  50                            push eax
+008A24AC  8B DD                         mov ebx, ebp
+008A24AE  E8 1D EA FF FF                call 008A0ED0H
+008A24B3  58                            pop eax
+
+#207
+(-) BOOL
+008A24B4  EB 24 90 90 90                jmp 008A24DAH
+
+#208
+#209
+#210
+#211
+#212
+#213		{L:74}
+(*) UNDEF
+008A24B9  B8 00 00 00 00                mov eax, 0
+
+#214		{L:74}
+(-) USINT
+008A24BE  50                            push eax
+008A24BF  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; PLC_CTRMENUPW
+008A24C4  FF D1                         call ecx
+008A24C6  81 C4 04 00 00 00             add esp, 4
+
+#215		{L:74}
+(*) USINT
+008A24CC  84 C0                         test al, al
+008A24CE  0F 95 C0                      setne al
+
+#216		{L:74}
+(*) BOOL
+008A24D1  84 C0                         test al, al
+008A24D3  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#217
+#218
+#219
+#220
+#221
+#222
+#223
+#224
+(-) BOOL
+008A24DA  E9 89 FE FF FF                jmp 008A2368H
+
+#225
+#226
+#227
+#228
+#229
+#230		{L:82}
+(*) BOOL
+008A24DF  B8 00 00 00 00                mov eax, 0
+008A24E4  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; %M21+0
+
+#231
+(-) USINT
+008A24EA  EB 70 90 90 90                jmp 008A255CH
+
+#232
+#233
+#234
+#235		{L:87}
+(*) USINT
+008A24EF  B8 01 00 00 00                mov eax, 1
+008A24F4  84 C0                         test al, al
+008A24F6  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; %M23+0
+
+#236
+(-) BOOL
+008A24FD  EB 5D 90 90 90                jmp 008A255CH
+
+#237
+#238
+#239
+#240		{L:92}
+(*) BOOL
+008A2502  B8 01 00 00 00                mov eax, 1
+008A2507  84 C0                         test al, al
+008A2509  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; %M23+1
+
+#241
+(-) BOOL
+008A2510  EB 4A 90 90 90                jmp 008A255CH
+
+#242
+#243
+#244
+#245		{L:97}
+(*) BOOL
+008A2515  B8 01 00 00 00                mov eax, 1
+008A251A  84 C0                         test al, al
+008A251C  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; %M23+2
+
+#246
+(-) BOOL
+008A2523  EB 37 90 90 90                jmp 008A255CH
+
+#247
+#248
+#249
+#250		{L:102}
+(*) BOOL
+008A2528  B8 01 00 00 00                mov eax, 1
+008A252D  84 C0                         test al, al
+008A252F  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; %M23+3
+
+#251
+(-) BOOL
+008A2536  EB 24 90 90 90                jmp 008A255CH
+
+#252
+#253
+#254
+#255		{L:107}
+(*) BOOL
+008A253B  B8 01 00 00 00                mov eax, 1
+008A2540  84 C0                         test al, al
+008A2542  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; %M23+4
+
+#256
+(-) BOOL
+008A2549  EB 11 90 90 90                jmp 008A255CH
+
+#257
+#258
+#259
+#260		{L:112}
+(*) BOOL
+008A254E  B8 01 00 00 00                mov eax, 1
+008A2553  84 C0                         test al, al
+008A2555  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; %M23+5
+
+#261
+#262
+#263
+#264
+#265
+(-) BOOL
+008A255C  E9 C2 FB FF FF                jmp 008A2123H
+
+008A2561  5D                            pop ebp
+
+008A2562  C3                            ret
+
+
+Frame allocation:
+
+	0000       : FB MENUS
+	0015 bit  0: VAR POS
+
+END_FUNCTION_BLOCK
+**************************************************
+	List function block: HYSTERESIS
+**************************************************
+
+FUNCTION_BLOCK HYSTERESIS
+
+	VAR_INPUT
+	TEMPERATURE : INT; 	{ DE:"Analogue Input 1" }
+	SETPOINT : INT; 	{ DE:"Set point" }
+	DIFFERENTIATION : INT; 	{ DE:"Delta" }
+	END_VAR
+
+	VAR_OUTPUT
+	ALARM : BOOL; 	{ DE:"Probe Alarm" }
+	OUTPUT : BOOL; 	{ DE:"Actuator" }
+	END_VAR
+
+END_FUNCTION_BLOCK
+
+008A2563  55                            push ebp
+008A2564  8B EB                         mov ebp, ebx
+
+#0		{SRC:HYSTERESIS}
+#1
+#2
+#3
+#4
+#5		{L:2}
+(*) UNDEF
+008A2566  0F BF 45 00                   movsx eax, word ptr [ebp]
+
+#6		{L:2}
+(*) INT
+008A256A  50                            push eax
+008A256B  0F BF 45 02                   movsx eax, word ptr 2[ebp]
+
+#7		{L:2}
+(*) INT
+008A256F  0F BF 4D 04                   movsx ecx, word ptr 4[ebp]
+008A2573  03 C1                         add eax, ecx
+
+#8		{L:2}
+(*) INT
+008A2575  8B C8                         mov ecx, eax
+008A2577  58                            pop eax
+008A2578  3B C1                         cmp eax, ecx
+008A257A  0F 9D C0                      setge al
+008A257D  25 FF 00 00 00                and eax, 0FFh
+
+#9		{L:2}
+(-) BOOL
+008A2582  84 C0                         test al, al
+008A2584  90 74 0E 90 90 90             je 008A2595H
+
+#10
+#11
+#12
+#13
+#14		{L:3}
+(*) BOOL
+008A258A  B8 01 00 00 00                mov eax, 1
+008A258F  84 C0                         test al, al
+008A2591  0F 95 45 07                   setne 7[ebp]
+
+#15
+#16
+#17
+#18
+#19
+#20
+#21		{L:6}
+(*) UNDEF
+008A2595  0F BF 45 00                   movsx eax, word ptr [ebp]
+
+#22		{L:6}
+(*) INT
+008A2599  0F BF 4D 02                   movsx ecx, word ptr 2[ebp]
+008A259D  3B C1                         cmp eax, ecx
+008A259F  0F 9C C0                      setl al
+008A25A2  25 FF 00 00 00                and eax, 0FFh
+
+#23		{L:6}
+(-) BOOL
+008A25A7  84 C0                         test al, al
+008A25A9  90 74 0E 90 90 90             je 008A25BAH
+
+#24
+#25
+#26
+#27
+#28		{L:7}
+(*) BOOL
+008A25AF  B8 00 00 00 00                mov eax, 0
+008A25B4  84 C0                         test al, al
+008A25B6  0F 95 45 07                   setne 7[ebp]
+
+#29
+#30
+#31
+#32
+#33
+#34
+#35		{L:11}
+(*) UNDEF
+008A25BA  0F BF 45 00                   movsx eax, word ptr [ebp]
+
+#36		{L:11}
+(*) INT
+008A25BE  3D 00 80 FF FF                cmp eax, -32768
+008A25C3  0F 94 C0                      sete al
+008A25C6  25 FF 00 00 00                and eax, 0FFh
+
+#37		{L:11}
+(-) BOOL
+008A25CB  84 C0                         test al, al
+008A25CD  90 74 13 90 90 90             je 008A25E3H
+
+#38
+#39
+#40
+#41
+#42		{L:12}
+(*) BOOL
+008A25D3  B8 01 00 00 00                mov eax, 1
+008A25D8  84 C0                         test al, al
+008A25DA  0F 95 45 06                   setne 6[ebp]
+
+#43
+(-) BOOL
+008A25DE  EB 0E 90 90 90                jmp 008A25EEH
+
+#44
+#45
+#46
+#47
+#48
+#49		{L:13}
+(*) BOOL
+008A25E3  B8 00 00 00 00                mov eax, 0
+008A25E8  84 C0                         test al, al
+008A25EA  0F 95 45 06                   setne 6[ebp]
+
+008A25EE  5D                            pop ebp
+
+008A25EF  C3                            ret
+
+
+Frame allocation:
+
+	0000       : VAR TEMPERATURE
+	0002       : VAR SETPOINT
+	0004       : VAR DIFFERENTIATION
+	0006 bit  0: VAR ALARM
+	0007 bit  0: VAR OUTPUT
+
+END_FUNCTION_BLOCK
+**************************************************
+	List program: THERMOSTAT
+**************************************************
+
+PROGRAM THERMOSTAT
+
+	VAR
+	HYSTERSIS_00 : HYSTERESIS; 
+	INPUT_TEMP : INT; 
+	INPUT_SETPOINT : INT; 
+	INPUT_DIFFERENTIATION : INT; 
+	OUTPUT_ALARM : BOOL; 
+	OUTPUT_OUTPUT : BOOL; 
+	END_VAR
+
+END_PROGRAM
+
+008A25F0  55                            push ebp
+008A25F1  8B EC                         mov ebp, esp
+008A25F3  60                            pushad
+
+#0		{SRC:THERMOSTAT}
+#1
+#2
+#3
+#4
+#5
+#6
+#7		{R:"1$FB:HYSTERSIS_00"}
+(*) UDINT
+008A25F4  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; $$DATA$$+8
+008A25FB  66 89 05 CC CC CC CC          mov [CCCCCCCCH], ax ; $$DATA$$+12
+
+#8		{R:"1$FB:HYSTERSIS_00"}
+(*) INT
+008A2602  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; %M101+0
+008A2609  66 89 05 CC CC CC CC          mov [CCCCCCCCH], ax ; $$DATA$$+14
+
+#9		{R:"1$FB:HYSTERSIS_00"}
+(*) INT
+008A2610  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; %M101+2
+008A2617  66 89 05 CC CC CC CC          mov [CCCCCCCCH], ax ; $$DATA$$+16
+
+#10		{R:"1$FB:HYSTERSIS_00"}
+(*) INT
+008A261E  50                            push eax
+008A261F  BB CC CC CC CC                mov ebx, CCCCCCCCH ; $$DATA$$+12
+008A2624  E8 3A FF FF FF                call 008A2563H
+008A2629  58                            pop eax
+
+#11		{R:"1$FB:HYSTERSIS_00"}
+(*) INT
+008A262A  33 C0                         xor eax, eax
+008A262C  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+18
+008A2632  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; %Q2+10
+
+#12		{R:"1$FB:HYSTERSIS_00"}
+(*) BOOL
+008A2638  33 C0                         xor eax, eax
+008A263A  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+18
+008A2640  84 C0                         test al, al
+008A2642  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; %Q1+1
+
+#13		{R:"1$FB:HYSTERSIS_00"}
+(*) BOOL
+008A2649  33 C0                         xor eax, eax
+008A264B  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+19
+008A2651  84 C0                         test al, al
+008A2653  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; %Q1+0
+
+#14		{R:"1$FB:HYSTERSIS_00"}
+(*) BOOL
+008A265A  33 C0                         xor eax, eax
+008A265C  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+19
+008A2662  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; %Q2+9
+
+#15		{R:"1$FB:HYSTERSIS_00"}
+(*) BOOL
+008A2668  33 C0                         xor eax, eax
+008A266A  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+19
+008A2670  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; %Q2+6
+
+#16
+#17
+#18
+#19
+#20
+#21
+#22		{R:"2$O:1"}
+(*) BOOL
+008A2676  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; $$DATA$$+8
+008A267D  66 89 05 CC CC CC CC          mov [CCCCCCCCH], ax ; %M110+0
+
+#23
+#24
+#25
+#26
+#27
+#28
+#29		{R:"3$O:1"}
+(*) INT
+008A2684  33 C0                         xor eax, eax
+008A2686  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; %Q1+1
+008A268C  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+11
+
+END_PROGRAM
+**************************************************
+	List program: DISPLAYALARMLED
+**************************************************
+
+PROGRAM DISPLAYALARMLED
+
+END_PROGRAM
+
+#0		{SRC:DISPLAYALARMLED}
+#1
+#2
+#3
+#4
+#5		{L:2}
+(*) UNDEF
+008A2692  33 C0                         xor eax, eax
+008A2694  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+11
+
+#6		{L:2}
+(*) USINT
+008A269A  3D 01 00 00 00                cmp eax, 1
+008A269F  0F 94 C0                      sete al
+008A26A2  25 FF 00 00 00                and eax, 0FFh
+
+#7		{L:2}
+(-) BOOL
+008A26A7  84 C0                         test al, al
+008A26A9  90 74 13 90 90 90             je 008A26BFH
+
+#8
+#9
+#10
+#11
+#12		{L:3}
+(*) BOOL
+008A26AF  B8 01 00 00 00                mov eax, 1
+008A26B4  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; %Q2+16
+
+#13
+(-) USINT
+008A26BA  EB 3B 90 90 90                jmp 008A26F7H
+
+#14
+#15
+#16
+#17		{L:4}
+(*) UNDEF
+008A26BF  33 C0                         xor eax, eax
+008A26C1  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+11
+
+#18		{L:4}
+(*) USINT
+008A26C7  3D 02 00 00 00                cmp eax, 2
+008A26CC  0F 94 C0                      sete al
+008A26CF  25 FF 00 00 00                and eax, 0FFh
+
+#19		{L:4}
+(-) BOOL
+008A26D4  84 C0                         test al, al
+008A26D6  90 74 13 90 90 90             je 008A26ECH
+
+#20
+#21
+#22
+#23
+#24		{L:5}
+(*) BOOL
+008A26DC  B8 02 00 00 00                mov eax, 2
+008A26E1  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; %Q2+16
+
+#25
+(-) USINT
+008A26E7  EB 0E 90 90 90                jmp 008A26F7H
+
+#26
+#27
+#28
+#29
+#30
+#31		{L:8}
+(*) USINT
+008A26EC  B8 00 00 00 00                mov eax, 0
+008A26F1  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; %Q2+16
+
+008A26F7  61                            popad
+008A26F8  5D                            pop ebp
+
+008A26F9  C3                            ret
+
+END_PROGRAM
+
+
+**************************************************
+	Target variable image generation
+**************************************************
+
+
+*** INPUT:
+008A26FA  66 8B 0D CC CC CC CC          mov cx, [CCCCCCCCH] ; %I1+0
+008A2701  66 89 0D CC CC CC CC          mov [CCCCCCCCH], cx ; $$DATA$$+8
+
+008A2708  C3                            ret
+
+
+*** OUTPUT:
+008A2709  C3                            ret
+
+
+
+**************************************************
+	Task BACKGROUND init code
+**************************************************
+
+008A270A  55                            push ebp
+008A270B  8B EC                         mov ebp, esp
+
+008A270D  8B E5                         mov esp, ebp
+008A270F  5D                            pop ebp
+
+008A2710  C3                            ret
+
+**************************************************
+	List program: MBMRTU_INIT
+**************************************************
+
+PROGRAM MBMRTU_INIT
+
+	VAR
+	BRET : BOOL; 
+	END_VAR
+
+END_PROGRAM
+
+008A2720  55                            push ebp
+008A2721  8B EC                         mov ebp, esp
+008A2723  60                            pushad
+
+#0		{SRC:MBMRTU_INIT}
+#1
+#2
+#3
+#4		{L:2}
+(*) UNDEF
+008A2724  B8 00 00 00 00                mov eax, 0
+
+#5		{L:2}
+(-) BOOL
+008A2729  50                            push eax
+008A272A  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; SYSMBMRTU_ENABLE
+008A272F  FF D1                         call ecx
+008A2731  81 C4 04 00 00 00             add esp, 4
+
+#6		{L:2}
+(*) BOOL
+008A2737  84 C0                         test al, al
+008A2739  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+10
+
+008A2740  61                            popad
+008A2741  5D                            pop ebp
+
+008A2742  C3                            ret
+
+END_PROGRAM
+
+
+**************************************************
+	Target variable image generation
+**************************************************
+
+
+*** INPUT:
+008A2743  C3                            ret
+
+
+*** OUTPUT:
+008A2744  C3                            ret
+
+
+
+**************************************************
+	Task INIT init code
+**************************************************
+
+008A2745  55                            push ebp
+008A2746  8B EC                         mov ebp, esp
+
+008A2748  8B E5                         mov esp, ebp
+008A274A  5D                            pop ebp
+
+008A274B  C3                            ret
+
+**************************************************
+	List program: APPLICATIONMENU
+**************************************************
+
+PROGRAM APPLICATIONMENU
+
+	VAR
+	MAIN : MAINMENU; 
+	END_VAR
+
+END_PROGRAM
+
+008A2760  55                            push ebp
+008A2761  8B EC                         mov ebp, esp
+008A2763  60                            pushad
+
+#0		{SRC:APPLICATIONMENU}
+#1
+#2
+#3
+#4		{L:2}
+(*) UDINT
+008A2764  50                            push eax
+008A2765  BB CC CC CC CC                mov ebx, CCCCCCCCH ; $$DATA$$+20
+008A276A  E8 A6 F9 FF FF                call 008A2115H
+008A276F  58                            pop eax
+
+008A2770  61                            popad
+008A2771  5D                            pop ebp
+
+008A2772  C3                            ret
+
+END_PROGRAM
+
+
+**************************************************
+	Target variable image generation
+**************************************************
+
+
+*** INPUT:
+008A2773  C3                            ret
+
+
+*** OUTPUT:
+008A2774  C3                            ret
+
+
+
+**************************************************
+	Task MENU init code
+**************************************************
+
+008A2775  55                            push ebp
+008A2776  8B EC                         mov ebp, esp
+
+008A2778  8B E5                         mov esp, ebp
+008A277A  5D                            pop ebp
+
+008A277B  C3                            ret
+
+
+
+**************************************************
+	Global init code
+**************************************************
+
+008A2790  55                            push ebp
+008A2791  8B EC                         mov ebp, esp
+
+008A2793  8B E5                         mov esp, ebp
+008A2795  5D                            pop ebp
+
+008A2796  C3                            ret
+
+
+
+**************************************************
+	Global RETAIN init code
+**************************************************
+
+008A2797  55                            push ebp
+008A2798  8B EC                         mov ebp, esp
+
+008A279A  8B E5                         mov esp, ebp
+008A279C  5D                            pop ebp
+
+008A279D  C3                            ret
+
+
+
+********************************************
+MEMORY MAP
+********************************************
+
+Start code area:			  89FAC0h
+End code area:				  8A27A0h
+Code size:					    2CE0h
+
+Start local data area:		  88E5F0h
+End local data area:		  88E632h
+Local data size:			      42h
+
+Start retentive data area:	       0h
+End retentive data area:	       0h
+Retentive data size:		       0h
+
+Start bit data area:		       0h
+End bit data area:			       0h
+Bit data size:				       0h
+
+
+
+********************************************
+CODE ID:                                0A7E05DD
+DEBUG MEMO ID:                          00005CFF
+FULL MEMO ID:                           0000FDAD
+RELOCATION ADDR:                        0089FAC0
+********************************************

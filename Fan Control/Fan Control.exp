@@ -1,0 +1,20 @@
+﻿	(******************************)
+	(*                            *)
+	(*     EXPORTED VARIABLES     *)
+	(*                            *)
+	(******************************)
+
+	VAR_GLOBAL
+	{G:"Mappings"}
+	NTC_Probe AT %IW1.0 : INT; 	{ DE:"AIL1 analogue input" }
+	Potentiometer_AI3P AT %IW1.2 : INT; 	{ DE:"AIL3 analogue input" }
+	Fan_Start_Stop AT %IX0.0 : BOOL; 	{ DE:"DIL1 digital input" }
+	Output_Cooling AT %QX1.0 : BOOL; 	{ DE:"DOL1 digital output" }
+	Alarm AT %QX1.1 : BOOL; 	{ DE:"DOL2 digital output" }
+	Fan_Alarm AT %QX1.2 : BOOL; 	{ DE:"DOL3 digital output" }
+	Fan1 AT %QX1.3 : BOOL; 	{ DE:"DOL4 digital output" }
+	Fan2 AT %QX1.4 : BOOL; 	{ DE:"DOL5 digital output" }
+	Fan3 AT %QX1.5 : BOOL; 	{ DE:"DOL6 digital output" }
+	Guage_AO1P AT %QW0.0 : INT; 	{ DE:"AOL1 analogue output" }
+	END_VAR
+

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- #DEFINE PREFIX HVAC_Attempt_2 -->
+<devicetemplate>
+	<deviceinfo caption="HVAC_Attempt_2" name="HVAC_Attempt_2" version="0.0" icon="img\application.ico" deviceid="HVAC_Attempt_2" devicetype="application" PLCApplicationID="HVAC_Attem">
+		<description>HVAC_Attempt_2 Application</description>
+		<protocols><protocol>M171Opt_542p4_app</protocol></protocols>
+	</deviceinfo>
+	<deviceconfig>
+		<hmi>
+			<tree name="tree1">
+				<node name="PREFIX" caption="HVAC_Attempt_2" icon="%CATALOG%\Applications\img\application.ico" menu="freeSmartPLCMenu" datalink="PREFIX" captionedit="false"><node name="PREFIX_menu1000" caption="Cfg" icon="%CATALOG%\Applications\img\grid_close.ico" iconselect="%CATALOG%\Applications\img\grid_open.ico" data="../../config/values" window="maingrid"/><node name="PREFIX_menu1001" caption="Setting Menu" icon="%CATALOG%\Applications\img\grid_close.ico" iconselect="%CATALOG%\Applications\img\grid_open.ico" data="../../config/values" window="maingrid"/></node>
+			</tree>
+		</hmi>
+		<templatedata>
+			<PREFIX/>
+		</templatedata>
+		<extensions>
+			<eventhandler event="OnLoadTemplate">configurator.OnLoadDeviceTemplate</eventhandler>
+		</extensions>
+		<datadef version="1.0">
+			<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+				<xs:element name="PREFIX">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="insertableDevice">
+								<xs:sequence>
+								</xs:sequence>
+								<xs:attribute name="oncreatenode" type="xs:string" fixed="configurator.OnCreateDeviceChild"/>
+								<xs:attribute name="onloadnode" type="xs:string" fixed="configurator.OnLoadDeviceChild"/>
+								<xs:attribute name="ondeletenode" type="xs:string" fixed="configurator.OnDeleteDeviceChild"/>
+								<xs:attribute name="PLCProject" type="xs:string" fixed="HVAC_Attempt_2.RSM"/>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+			</xs:schema>
+		</datadef>
+		<parameters><par ipa="0" name="Setpoint" descr="" typetarg="short" typepar="short" scale="1" onValueToText="EWDevice.ValueToText_1dec" onTextToValue="EWDevice.TextToValue_1dec" form="%.1d" offs="0" um="°C" readonly="false" defval="180" accesslevel="3"><protocol name="Modbus" commaddr="16384" commsubindex="0"/><menu id="1000" order="0"/><menu id="1001" order="0"/><protocol name="EwDMI" commaddr="16384" commsubindex="0"/></par><par ipa="1" name="Differentiation" descr="" typetarg="short" typepar="short" scale="1" onValueToText="EWDevice.ValueToText_1dec" onTextToValue="EWDevice.TextToValue_1dec" form="%.1d" offs="0" um="°C" readonly="false" defval="20" accesslevel="3"><protocol name="Modbus" commaddr="16385" commsubindex="0"/><menu id="1000" order="1"/><menu id="1001" order="1"/><protocol name="EwDMI" commaddr="16385" commsubindex="0"/></par><par ipa="5000" name="Ambient_Temp" descr="" typetarg="short" typepar="short" scale="1" onValueToText="EWDevice.ValueToText_1dec" onTextToValue="EWDevice.TextToValue_1dec" form="%.1d" offs="0" um="°C" readonly="true" defval="" accesslevel="3"><protocol name="Modbus" commaddr="8960" commsubindex="0"/><menu id="1001" order="2"/><protocol name="EwDMI" commaddr="8960" commsubindex="0"/></par></parameters>
+		<enums/>
+		<redefPars><redefPar ipa="10009" defval="2"/></redefPars>
+	</deviceconfig>
+</devicetemplate>

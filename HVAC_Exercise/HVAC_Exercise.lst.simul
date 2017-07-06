@@ -1,0 +1,433 @@
+***********************************************************************
+*
+*	CODE GENERATION LISTING FOR: HVAC_Exercise
+*	COMPILER VERSION: 2.1.0
+*
+***********************************************************************
+
+***********************************************************************
+UNUSED FUNCTIONS:
+
+	BITTOWORD
+	BITTOBYTE
+	BYTETOWORD
+***********************************************************************
+
+***********************************************************************
+UNUSED FUNCTION BLOCKS:
+
+	PULSE
+	FF_D
+	BYTETOBIT
+	WORDTOBIT
+	WORDTOBYTE
+	CTD
+	CTD_DINT
+	CTD_UDINT
+	CTU
+	CTU_DINT
+	CTU_UDINT
+	CTUD
+	CTUD_DINT
+	CTUD_UDINT
+	TOF
+	TON
+	TP
+	SR
+	RS
+	R_TRIG
+	F_TRIG
+	DAYLIGHTSAVING
+	OPERATINGHOURS
+	PIDADVANCED
+	PIDAUTOTUNING
+	STEPCONTROLLERANALOG
+	THREEPOINTACTUATOR
+	AHUPLANTMODESTRATEGY
+	AHUTEMPCNTRLSTRATEGY
+	PSYCHROMETRIC
+	COPCALCULATION
+	COUNTER2ENERGY
+	PULSE2COUNTER
+	THERMALPOWERCALCULATION
+	COMPALARMMGMT
+	COMPAPPLIMIT
+	COMPCNTRL_ONOFF
+	COMPCNTRL_SLIDER
+	COMPCNTRL_VS
+	COMPMGMT
+	DOUBLEINTERPO_5X8
+	FANMGMT
+	FLOATINGHIGHPRESCNTRL
+	FLUID_DENSITY
+	FLUID_ENTHALPY
+	THERMALPOWER_ENTHALPY
+	PRESS2TEMP
+	TEMP2PRESS
+	REDUNDANTPUMPCNTRL
+	ATV12MODBUSCOM
+	ATV212MODBUSCOM
+	ATV21MODBUSCOM
+	ATV312MODBUSCOM
+	ATV31MODBUSCOM
+	ATV32MODBUSCOM
+	ATV61MODBUSCOM
+	ATV71MODBUSCOM
+	AUXPUMPCTRL
+	CAVTPROT
+	COMPSP
+	COMPSPFLOW
+	DEVSWCPUMPCTRL
+	FSPUMPCTRL
+	OPINTAUXPUMP
+	OPINTPUMP
+	OPPRTY
+	PID_PARA_CHECK
+	PIPEFILL
+	PUMPAVAI
+	PUMPFBCKMAPP
+	PUMPPID
+	PUMPPIDSTAG
+	VSDAVAI
+	VSDCTRL
+	VSDNU
+	VSPUMPCTRL
+***********************************************************************
+
+**************************************************
+	List function block: HYSTERESIS
+**************************************************
+
+FUNCTION_BLOCK HYSTERESIS
+
+	VAR_INPUT
+	TEMPERATURE : INT; 	{ DE:"Analogue Input 1" }
+	SETPOINT : INT; 	{ DE:"Set point" }
+	DIFFERENTIATION : INT; 	{ DE:"Delta" }
+	END_VAR
+
+	VAR_OUTPUT
+	ALARM : BOOL; 	{ DE:"Probe Alarm" }
+	OUTPUT : BOOL; 	{ DE:"Actuator" }
+	END_VAR
+
+END_FUNCTION_BLOCK
+
+06240990  55                            push ebp
+06240991  8B EB                         mov ebp, ebx
+
+#0		{SRC:HYSTERESIS}
+#1
+#2
+#3
+#4
+#5		{L:2}
+(*) UNDEF
+06240993  0F BF 45 00                   movsx eax, word ptr [ebp]
+
+#6		{L:2}
+(*) INT
+06240997  50                            push eax
+06240998  0F BF 45 02                   movsx eax, word ptr 2[ebp]
+
+#7		{L:2}
+(*) INT
+0624099C  0F BF 4D 04                   movsx ecx, word ptr 4[ebp]
+062409A0  03 C1                         add eax, ecx
+
+#8		{L:2}
+(*) INT
+062409A2  8B C8                         mov ecx, eax
+062409A4  58                            pop eax
+062409A5  3B C1                         cmp eax, ecx
+062409A7  0F 9D C0                      setge al
+062409AA  25 FF 00 00 00                and eax, 0FFh
+
+#9		{L:2}
+(-) BOOL
+062409AF  84 C0                         test al, al
+062409B1  90 74 0E 90 90 90             je 062409C2H
+
+#10
+#11
+#12
+#13
+#14		{L:3}
+(*) BOOL
+062409B7  B8 01 00 00 00                mov eax, 1
+062409BC  84 C0                         test al, al
+062409BE  0F 95 45 07                   setne 7[ebp]
+
+#15
+#16
+#17
+#18
+#19
+#20
+#21		{L:6}
+(*) UNDEF
+062409C2  0F BF 45 00                   movsx eax, word ptr [ebp]
+
+#22		{L:6}
+(*) INT
+062409C6  0F BF 4D 02                   movsx ecx, word ptr 2[ebp]
+062409CA  3B C1                         cmp eax, ecx
+062409CC  0F 9C C0                      setl al
+062409CF  25 FF 00 00 00                and eax, 0FFh
+
+#23		{L:6}
+(-) BOOL
+062409D4  84 C0                         test al, al
+062409D6  90 74 0E 90 90 90             je 062409E7H
+
+#24
+#25
+#26
+#27
+#28		{L:7}
+(*) BOOL
+062409DC  B8 00 00 00 00                mov eax, 0
+062409E1  84 C0                         test al, al
+062409E3  0F 95 45 07                   setne 7[ebp]
+
+#29
+#30
+#31
+#32
+#33
+#34
+#35		{L:11}
+(*) UNDEF
+062409E7  0F BF 45 00                   movsx eax, word ptr [ebp]
+
+#36		{L:11}
+(*) INT
+062409EB  3D 00 80 FF FF                cmp eax, -32768
+062409F0  0F 94 C0                      sete al
+062409F3  25 FF 00 00 00                and eax, 0FFh
+
+#37		{L:11}
+(-) BOOL
+062409F8  84 C0                         test al, al
+062409FA  90 74 13 90 90 90             je 06240A10H
+
+#38
+#39
+#40
+#41
+#42		{L:12}
+(*) BOOL
+06240A00  B8 01 00 00 00                mov eax, 1
+06240A05  84 C0                         test al, al
+06240A07  0F 95 45 06                   setne 6[ebp]
+
+#43
+(-) BOOL
+06240A0B  EB 0E 90 90 90                jmp 06240A1BH
+
+#44
+#45
+#46
+#47
+#48
+#49		{L:13}
+(*) BOOL
+06240A10  B8 00 00 00 00                mov eax, 0
+06240A15  84 C0                         test al, al
+06240A17  0F 95 45 06                   setne 6[ebp]
+
+06240A1B  5D                            pop ebp
+
+06240A1C  C3                            ret
+
+
+Frame allocation:
+
+	0000       : VAR TEMPERATURE
+	0002       : VAR SETPOINT
+	0004       : VAR DIFFERENTIATION
+	0006 bit  0: VAR ALARM
+	0007 bit  0: VAR OUTPUT
+
+END_FUNCTION_BLOCK
+**************************************************
+	List program: MAIN
+**************************************************
+
+PROGRAM MAIN
+
+END_PROGRAM
+
+06240A20  55                            push ebp
+06240A21  8B EC                         mov ebp, esp
+06240A23  60                            pushad
+
+#0		{SRC:MAIN}
+#1
+#2
+#3
+#4		{L:2}
+(*) UNDEF
+06240A24  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; $$DATA$$+8
+
+#5		{L:2}
+(*) INT
+06240A2B  05 01 00 00 00                add eax, 1
+
+#6		{L:2}
+(*) INT
+06240A30  66 89 05 CC CC CC CC          mov [CCCCCCCCH], ax ; $$DATA$$+8
+
+END_PROGRAM
+**************************************************
+	List program: THERMOSTAT
+**************************************************
+
+PROGRAM THERMOSTAT
+
+	VAR
+	HYSTERSIS_00 : HYSTERESIS; 
+	INPUT_TEMP : INT; 
+	INPUT_SETPOINT : INT; 
+	INPUT_DIFFERENTIATION : INT; 
+	OUTPUT_ALARM : BOOL; 
+	OUTPUT_OUTPUT : BOOL; 
+	END_VAR
+
+END_PROGRAM
+
+#0		{SRC:THERMOSTAT}
+#1
+#2
+#3
+#4
+#5
+#6
+#7		{R:"1$FB:HYSTERSIS_00"}
+(*) UDINT
+06240A37  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; $$DATA$$+10
+06240A3E  66 89 05 CC CC CC CC          mov [CCCCCCCCH], ax ; $$DATA$$+12
+
+#8		{R:"1$FB:HYSTERSIS_00"}
+(*) INT
+06240A45  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; $$DATA$$+20
+06240A4C  66 89 05 CC CC CC CC          mov [CCCCCCCCH], ax ; $$DATA$$+14
+
+#9		{R:"1$FB:HYSTERSIS_00"}
+(*) INT
+06240A53  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; $$DATA$$+22
+06240A5A  66 89 05 CC CC CC CC          mov [CCCCCCCCH], ax ; $$DATA$$+16
+
+#10		{R:"1$FB:HYSTERSIS_00"}
+(*) INT
+06240A61  50                            push eax
+06240A62  BB CC CC CC CC                mov ebx, CCCCCCCCH ; $$DATA$$+12
+06240A67  E8 24 FF FF FF                call 06240990H
+06240A6C  58                            pop eax
+
+#11		{R:"1$FB:HYSTERSIS_00"}
+(*) INT
+06240A6D  33 C0                         xor eax, eax
+06240A6F  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+18
+06240A75  84 C0                         test al, al
+06240A77  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+24
+
+#12		{R:"1$FB:HYSTERSIS_00"}
+(*) BOOL
+06240A7E  33 C0                         xor eax, eax
+06240A80  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+19
+06240A86  84 C0                         test al, al
+06240A88  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+25
+
+06240A8F  61                            popad
+06240A90  5D                            pop ebp
+
+06240A91  C3                            ret
+
+END_PROGRAM
+
+
+**************************************************
+	Target variable image generation
+**************************************************
+
+
+*** INPUT:
+06240A92  C3                            ret
+
+
+*** OUTPUT:
+06240A93  C3                            ret
+
+
+
+**************************************************
+	Task BACKGROUND init code
+**************************************************
+
+06240A94  55                            push ebp
+06240A95  8B EC                         mov ebp, esp
+
+06240A97  8B E5                         mov esp, ebp
+06240A99  5D                            pop ebp
+
+06240A9A  C3                            ret
+
+
+
+**************************************************
+	Global init code
+**************************************************
+
+06240AB0  55                            push ebp
+06240AB1  8B EC                         mov ebp, esp
+
+06240AB3  8B E5                         mov esp, ebp
+06240AB5  5D                            pop ebp
+
+06240AB6  C3                            ret
+
+
+
+**************************************************
+	Global RETAIN init code
+**************************************************
+
+06240AB7  55                            push ebp
+06240AB8  8B EC                         mov ebp, esp
+
+06240ABA  8B E5                         mov esp, ebp
+06240ABC  5D                            pop ebp
+
+06240ABD  C3                            ret
+
+
+
+********************************************
+MEMORY MAP
+********************************************
+
+Start code area:			 6240020h
+End code area:				 6240AC0h
+Code size:					     AA0h
+
+Start local data area:		 28C0020h
+End local data area:		 28C003Ah
+Local data size:			      1Ah
+
+Start retentive data area:	       0h
+End retentive data area:	       0h
+Retentive data size:		       0h
+
+Start bit data area:		       0h
+End bit data area:			       0h
+Bit data size:				       0h
+
+
+
+********************************************
+CODE ID:                                08753F22
+DEBUG MEMO ID:                          00008EF6
+FULL MEMO ID:                           000066D0
+RELOCATION ADDR:                        06240020
+********************************************
