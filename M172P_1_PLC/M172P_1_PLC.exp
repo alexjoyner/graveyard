@@ -1,0 +1,103 @@
+﻿	(******************************)
+	(*                            *)
+	(*     EXPORTED VARIABLES     *)
+	(*                            *)
+	(******************************)
+
+	VAR_GLOBAL
+	{G:"Variables"}
+	AIL1_AP AT %MW110.0 : WORD; 
+	AIL2_AP AT %MW110.1 : WORD; 
+	AIL3_AP AT %MW110.2 : WORD; 
+	AIL4_AP AT %MW110.3 : WORD; 
+	AIL5_AP AT %MW110.4 : WORD; 
+	AIL6_AP AT %MW110.5 : WORD; 
+	AIL7_AP AT %MW110.6 : WORD; 
+	AIL8_AP AT %MW110.7 : WORD; 
+	AIL9_AP AT %MW110.8 : WORD; 
+	AIL10_AP AT %MW110.9 : WORD; 
+	AIL11_AP AT %MW110.10 : WORD; 
+	AIL12_AP AT %MW110.11 : WORD; 
+	DIL1_AP AT %MW110.12 : WORD; 
+	DIL2_AP AT %MW110.13 : WORD; 
+	DIL3_AP AT %MW110.14 : WORD; 
+	DIL4_AP AT %MW110.15 : WORD; 
+	DIL5_AP AT %MW110.16 : WORD; 
+	DIL6_AP AT %MW110.17 : WORD; 
+	DIL7_AP AT %MW110.18 : WORD; 
+	DIL8_AP AT %MW110.19 : WORD; 
+	DIL9_AP AT %MW110.20 : WORD; 
+	DIL10_AP AT %MW110.21 : WORD; 
+	DIL11_AP AT %MW110.22 : WORD; 
+	DIL12_AP AT %MW110.23 : WORD; 
+	AOL1_AP AT %MW110.24 : WORD; 
+	AOL2_AP AT %MW110.25 : WORD; 
+	AOL3_AP AT %MW110.26 : WORD; 
+	AOL4_AP AT %MW110.27 : WORD; 
+	AOL5_AP AT %MW110.28 : WORD; 
+	AOL6_AP AT %MW110.29 : WORD; 
+	DOL1_AP AT %MW110.30 : WORD; 
+	DOL2_AP AT %MW110.31 : WORD; 
+	DOL3_AP AT %MW110.32 : WORD; 
+	DOL4_AP AT %MW110.33 : WORD; 
+	DOL5_AP AT %MW110.34 : WORD; 
+	DOL6_AP AT %MW110.35 : WORD; 
+	DOL7_AP AT %MW110.36 : WORD; 
+	DOL8_AP AT %MW110.37 : WORD; 
+	DOL9_AP AT %MW110.38 : WORD; 
+	DOL10_AP AT %MW110.39 : WORD; 
+	DOL11_AP AT %MW110.40 : WORD; 
+	DOL12_AP AT %MW110.41 : WORD; 
+	{G:"Mappings"}
+	AI1 AT %IW1.0 : INT; 	{ DE:"AIL1 analogue input" }
+	AI2 AT %IW1.1 : INT; 	{ DE:"AIL2 analogue input" }
+	AI3 AT %IW1.2 : INT; 	{ DE:"AIL3 analogue input" }
+	AI4 AT %IW1.3 : INT; 	{ DE:"AIL4 analogue input" }
+	AI5 AT %IW1.4 : INT; 	{ DE:"AIL5 analogue input" }
+	AI6 AT %IW1.5 : INT; 	{ DE:"AIL6 analogue input" }
+	AI7 AT %IW1.6 : INT; 	{ DE:"AIL7 analogue input" }
+	AI8 AT %IW1.7 : INT; 	{ DE:"AIL8 analogue input" }
+	AI9 AT %IW1.8 : INT; 	{ DE:"AI9 analogue input" }
+	AI10 AT %IW1.9 : INT; 	{ DE:"AIL10 analogue input" }
+	AI11 AT %IW1.10 : INT; 	{ DE:"AIL11 analogue input" }
+	AI12 AT %IW1.11 : INT; 	{ DE:"AIL12 analogue input" }
+	DI1 AT %IX0.0 : BOOL; 	{ DE:"DIL1 digital input" }
+	DI2 AT %IX0.1 : BOOL; 	{ DE:"DIL2 digital input" }
+	DI3 AT %IX0.2 : BOOL; 	{ DE:"DIL3 digital input" }
+	DI4 AT %IX0.3 : BOOL; 	{ DE:"DIL4 digital input" }
+	DI5 AT %IX0.4 : BOOL; 	{ DE:"DIL5 digital input" }
+	DI6 AT %IX0.5 : BOOL; 	{ DE:"DIL6 digital input" }
+	DI7 AT %IX0.6 : BOOL; 	{ DE:"DIL7 digital input" }
+	DI8 AT %IX0.7 : BOOL; 	{ DE:"DIL8 digital input" }
+	DI9 AT %IX0.8 : BOOL; 	{ DE:"DIL9 digital input" }
+	DI10 AT %IX0.9 : BOOL; 	{ DE:"DIL10 digital input" }
+	DI11 AT %IX0.10 : BOOL; 	{ DE:"DIL11 digital input" }
+	DI12 AT %IX0.11 : BOOL; 	{ DE:"DIL12 digital input" }
+	DO1 AT %QX1.0 : BOOL; 	{ DE:"DOL1 digital output" }
+	DO2 AT %QX1.1 : BOOL; 	{ DE:"DOL2 digital output" }
+	DO3 AT %QX1.2 : BOOL; 	{ DE:"DOL3 digital output" }
+	DO4 AT %QX1.3 : BOOL; 	{ DE:"DOL4 digital output" }
+	DO5 AT %QX1.4 : BOOL; 	{ DE:"DOL5 digital output" }
+	DO6 AT %QX1.5 : BOOL; 	{ DE:"DOL6 digital output" }
+	DO7 AT %QX1.6 : BOOL; 	{ DE:"DOL7 digital output" }
+	DO8 AT %QX1.7 : BOOL; 	{ DE:"DOL8 digital output" }
+	DO9 AT %QX1.8 : BOOL; 	{ DE:"DOL9 digital output" }
+	DO10 AT %QX1.9 : BOOL; 	{ DE:"DOL10 digital output" }
+	DO11 AT %QX1.10 : BOOL; 	{ DE:"DOL11 digital output" }
+	DO12 AT %QX1.11 : BOOL; 	{ DE:"DOL12 digital output" }
+	AO1 AT %QW0.0 : INT; 	{ DE:"AOL1 analogue output" }
+	AO2 AT %QW0.1 : INT; 	{ DE:"AOL2 analogue output" }
+	AO3 AT %QW0.2 : INT; 	{ DE:"AOL3 analogue output" }
+	AO4 AT %QW0.3 : INT; 	{ DE:"AOL4 analogue output" }
+	AO5 AT %QW0.4 : INT; 	{ DE:"AOL5 analogue output" }
+	AO6 AT %QW0.5 : INT; 	{ DE:"AOL6 analogue output" }
+	FD1_C AT %MB5.0 : UDINT; 	{ DE:"FDI1 Input counter" }
+	FD1_F AT %MB5.1 : UDINT; 	{ DE:"FDI1 Input frequency" }
+	FD2_C AT %MB500.0 : UDINT; 	{ DE:"FDI2 Input counter" }
+	FD2_F AT %MB500.1 : UDINT; 	{ DE:"FDI2 Input frequency" }
+	FD1_V AT %IX5.0 : BOOL; 	{ DE:"FDI1 Input value" }
+	FD2_V AT %IX500.0 : BOOL; 	{ DE:"FDI2 Input value" }
+	FD1_R AT %MX50.0 : BOOL; 	{ DE:"FDI1 reset input counter value" }
+	FD2_R AT %MX550.0 : BOOL; 	{ DE:"FDI2 reset input counter value" }
+	END_VAR
+
