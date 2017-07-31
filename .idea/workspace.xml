@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b9453c0-3568-4ac7-a14d-948399a6a6f1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/email/confirmation/text.swig" afterPath="$PROJECT_DIR$/server/email/confirmation/text.swig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/views/index.html" afterPath="$PROJECT_DIR$/server/views/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/email/confirmation/html.swig" afterPath="$PROJECT_DIR$/server/email/confirmation/html.swig" />
     </list>
     <ignored path="voicir.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,23 +24,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/views/index.html">
+      <file leaf-file-name="text.swig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/email/confirmation/text.swig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-26">
-              <caret line="18" column="68" lean-forward="false" selection-start-line="18" selection-start-column="68" selection-end-line="18" selection-end-column="68" />
-              <folding>
-                <element signature="n#style#0;n#p#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="47" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="text.swig" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/server/email/confirmation/text.swig">
+      <file leaf-file-name="html.swig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/email/confirmation/html.swig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+            <state relative-caret-position="51">
+              <caret line="27" column="67" lean-forward="false" selection-start-line="27" selection-start-column="67" selection-end-line="27" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -60,6 +57,7 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/server/views/index.html" />
         <option value="$PROJECT_DIR$/server/email/confirmation/text.swig" />
+        <option value="$PROJECT_DIR$/server/email/confirmation/html.swig" />
       </list>
     </option>
   </component>
@@ -197,12 +195,12 @@
       <option name="presentableId" value="Default" />
       <updated>1490704353458</updated>
       <workItem from="1490704355284" duration="1357000" />
-      <workItem from="1501446819871" duration="2622000" />
+      <workItem from="1501446819871" duration="2696000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3979000" />
+    <option name="totallyTimeSpent" value="4053000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -375,14 +373,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/email/confirmation/html.swig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/email/campaign/html.swig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="736">
@@ -443,8 +433,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/email/confirmation/text.swig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/email/confirmation/html.swig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="27" column="67" lean-forward="false" selection-start-line="27" selection-start-column="67" selection-end-line="27" selection-end-column="67" />
           <folding />
         </state>
       </provider>

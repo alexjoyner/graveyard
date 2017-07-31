@@ -25,7 +25,7 @@
                 </tr>
                 <tr>
                   <td class="content-block">
-                    We may need to send you critical information about our service and it is important that we have an accurate email address.
+                    Thank you for signing up for updates on Voicir.
                   </td>
                 </tr>
                 <tr>
