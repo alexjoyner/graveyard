@@ -651,7 +651,7 @@
         </Rungs>
       </ProgramOrganizationUnits>
       <ProgramOrganizationUnits>
-        <Name>Section1-Strip Machine</Name>
+        <Name>Strip Machine</Name>
         <SectionNumber>2</SectionNumber>
         <Comment />
         <Rungs>
@@ -670,7 +670,7 @@
                 <ElementType>Coil</ElementType>
                 <Descriptor>%M1</Descriptor>
                 <Comment />
-                <Symbol>SECT1_RUN_STRIP_PULL</Symbol>
+                <Symbol>RUN_STRIP_PULL</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -721,7 +721,7 @@
                 <ElementType>NegatedContact</ElementType>
                 <Descriptor>%I0.4</Descriptor>
                 <Comment />
-                <Symbol>SECT1_FILTER_AVAILABLE</Symbol>
+                <Symbol>FILTER_AVAILABLE</Symbol>
                 <Row>0</Row>
                 <Column>4</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -730,7 +730,7 @@
                 <ElementType>NegatedContact</ElementType>
                 <Descriptor>%I0.5</Descriptor>
                 <Comment />
-                <Symbol>SECT1_TAMPER_RET</Symbol>
+                <Symbol>TAMPER_RET</Symbol>
                 <Row>0</Row>
                 <Column>2</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -765,7 +765,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%M1</Descriptor>
                 <Comment />
-                <Symbol>SECT1_RUN_STRIP_PULL</Symbol>
+                <Symbol>RUN_STRIP_PULL</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -774,7 +774,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%I0.7</Descriptor>
                 <Comment />
-                <Symbol>SECT1_VAC_CLAMP_RET</Symbol>
+                <Symbol>VAC_CLAMP_RET</Symbol>
                 <Row>0</Row>
                 <Column>2</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -825,7 +825,7 @@
                 <ElementType>SetCoil</ElementType>
                 <Descriptor>%M2</Descriptor>
                 <Comment />
-                <Symbol>SECT1_EXTEND_CLAMP</Symbol>
+                <Symbol>EXTEND_CLAMP</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -862,7 +862,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%M1</Descriptor>
                 <Comment />
-                <Symbol>SECT1_RUN_STRIP_PULL</Symbol>
+                <Symbol>RUN_STRIP_PULL</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -919,7 +919,7 @@
                 <ElementType>ResetCoil</ElementType>
                 <Descriptor>%M2</Descriptor>
                 <Comment />
-                <Symbol>SECT1_EXTEND_CLAMP</Symbol>
+                <Symbol>EXTEND_CLAMP</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -928,7 +928,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%I1.0</Descriptor>
                 <Comment />
-                <Symbol>SECT1_VAC_CLAMP_EXT</Symbol>
+                <Symbol>VAC_CLAMP_EXT</Symbol>
                 <Row>0</Row>
                 <Column>2</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -959,7 +959,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%M1</Descriptor>
                 <Comment />
-                <Symbol>SECT1_RUN_STRIP_PULL</Symbol>
+                <Symbol>RUN_STRIP_PULL</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -968,7 +968,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%M2</Descriptor>
                 <Comment />
-                <Symbol>SECT1_EXTEND_CLAMP</Symbol>
+                <Symbol>EXTEND_CLAMP</Symbol>
                 <Row>0</Row>
                 <Column>2</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -977,7 +977,7 @@
                 <ElementType>Coil</ElementType>
                 <Descriptor>%Q0.5</Descriptor>
                 <Comment />
-                <Symbol>SECT1_VAC_CLAMP</Symbol>
+                <Symbol>VAC_CLAMP</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -1056,7 +1056,7 @@
                 <ElementType>Coil</ElementType>
                 <Descriptor>%Q0.6</Descriptor>
                 <Comment />
-                <Symbol>SECT1_VACUUM</Symbol>
+                <Symbol>VACUUM</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -1113,7 +1113,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%M1</Descriptor>
                 <Comment />
-                <Symbol>SECT1_RUN_STRIP_PULL</Symbol>
+                <Symbol>RUN_STRIP_PULL</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -1122,7 +1122,7 @@
                 <ElementType>NegatedContact</ElementType>
                 <Descriptor>%I1.0</Descriptor>
                 <Comment />
-                <Symbol>SECT1_VAC_CLAMP_EXT</Symbol>
+                <Symbol>VAC_CLAMP_EXT</Symbol>
                 <Row>0</Row>
                 <Column>2</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -1162,7 +1162,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%I0.4</Descriptor>
                 <Comment />
-                <Symbol>SECT1_FILTER_AVAILABLE</Symbol>
+                <Symbol>FILTER_AVAILABLE</Symbol>
                 <Row>0</Row>
                 <Column>1</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -1171,7 +1171,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%I1.3</Descriptor>
                 <Comment />
-                <Symbol>SECT1_STRIP_AVAILABLE</Symbol>
+                <Symbol>STRIP_AVAILABLE</Symbol>
                 <Row>0</Row>
                 <Column>2</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -1180,7 +1180,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%I1.1</Descriptor>
                 <Comment />
-                <Symbol>SECT1_TAMP_MANUAL</Symbol>
+                <Symbol>TAMP_MANUAL</Symbol>
                 <Row>1</Row>
                 <Column>2</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -1189,7 +1189,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%I0.7</Descriptor>
                 <Comment />
-                <Symbol>SECT1_VAC_CLAMP_RET</Symbol>
+                <Symbol>VAC_CLAMP_RET</Symbol>
                 <Row>1</Row>
                 <Column>3</Column>
                 <ChosenConnection>Up, Left</ChosenConnection>
@@ -1198,7 +1198,7 @@
                 <ElementType>NegatedContact</ElementType>
                 <Descriptor>%M1</Descriptor>
                 <Comment />
-                <Symbol>SECT1_RUN_STRIP_PULL</Symbol>
+                <Symbol>RUN_STRIP_PULL</Symbol>
                 <Row>0</Row>
                 <Column>3</Column>
                 <ChosenConnection>Down, Left, Right</ChosenConnection>
@@ -1207,7 +1207,7 @@
                 <ElementType>Coil</ElementType>
                 <Descriptor>%Q0.7</Descriptor>
                 <Comment />
-                <Symbol>SECT1_TAMPER</Symbol>
+                <Symbol>TAMPER</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -1319,7 +1319,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%I0.4</Descriptor>
                 <Comment />
-                <Symbol>SECT1_FILTER_AVAILABLE</Symbol>
+                <Symbol>FILTER_AVAILABLE</Symbol>
                 <Row>0</Row>
                 <Column>1</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -1328,7 +1328,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%I0.6</Descriptor>
                 <Comment />
-                <Symbol>SECT1_TAMPER_EXT</Symbol>
+                <Symbol>TAMPER_EXT</Symbol>
                 <Row>0</Row>
                 <Column>2</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -1337,7 +1337,7 @@
                 <ElementType>Coil</ElementType>
                 <Descriptor>%Q2.0</Descriptor>
                 <Comment />
-                <Symbol>SECT1_STRIP_GUIDE</Symbol>
+                <Symbol>STRIP_GUIDE</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -1411,7 +1411,7 @@
         </Rungs>
       </ProgramOrganizationUnits>
       <ProgramOrganizationUnits>
-        <Name>Sections1-Glue Machine</Name>
+        <Name>Glue Machine</Name>
         <SectionNumber>3</SectionNumber>
         <Rungs>
           <RungEntity>
@@ -1429,7 +1429,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%I1.2</Descriptor>
                 <Comment />
-                <Symbol>SECT1_GLUE_EYE</Symbol>
+                <Symbol>GLUE_EYE</Symbol>
                 <Row>0</Row>
                 <Column>1</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -1483,10 +1483,16 @@
                 <ElementType>Coil</ElementType>
                 <Descriptor>%M3</Descriptor>
                 <Comment />
-                <Symbol>SECT1_GLUE_TIMER_DN</Symbol>
+                <Symbol>GLUE_TIMER_DN</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>None</ElementType>
+                <Row>1</Row>
+                <Column>0</Column>
+                <ChosenConnection>None</ChosenConnection>
               </LadderEntity>
             </LadderElements>
             <InstructionLines>
@@ -1534,7 +1540,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%M3</Descriptor>
                 <Comment />
-                <Symbol>SECT1_GLUE_TIMER_DN</Symbol>
+                <Symbol>GLUE_TIMER_DN</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -1543,7 +1549,7 @@
                 <ElementType>Coil</ElementType>
                 <Descriptor>%Q2.1</Descriptor>
                 <Comment />
-                <Symbol>SECT1_BOTTOM_STRIP_GLUE</Symbol>
+                <Symbol>BOTTOM_STRIP_GLUE</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -1606,7 +1612,7 @@
                 <ElementType>Coil</ElementType>
                 <Descriptor>%Q2.2</Descriptor>
                 <Comment />
-                <Symbol>SECT1_TOP_STRIP_GLUE</Symbol>
+                <Symbol>TOP_STRIP_GLUE</Symbol>
                 <Row>1</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -1671,17 +1677,17 @@
       <MemoryBit>
         <Address>%M1</Address>
         <Index>1</Index>
-        <Symbol>SECT1_RUN_STRIP_PULL</Symbol>
+        <Symbol>RUN_STRIP_PULL</Symbol>
       </MemoryBit>
       <MemoryBit>
         <Address>%M2</Address>
         <Index>2</Index>
-        <Symbol>SECT1_EXTEND_CLAMP</Symbol>
+        <Symbol>EXTEND_CLAMP</Symbol>
       </MemoryBit>
       <MemoryBit>
         <Address>%M3</Address>
         <Index>3</Index>
-        <Symbol>SECT1_GLUE_TIMER_DN</Symbol>
+        <Symbol>GLUE_TIMER_DN</Symbol>
       </MemoryBit>
     </MemoryBits>
     <SystemBits>
@@ -2042,6 +2048,42 @@
         <Comment>Shows execution time of shortest controller scan cycle since the last cold start (in ms). If the scan time is 2,250 ms, %SW32 = 2 and %SW72 = 250</Comment>
       </MemoryWord>
       <MemoryWord>
+        <Address>%SW33</Address>
+        <Index>33</Index>
+        <Symbol>SW_IP1ADDRESS</Symbol>
+        <Comment>For IP address AA.BB.CC.DD: %SW33 = CC.DD and %SW34 = AA.BB (1st word)</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW34</Address>
+        <Index>34</Index>
+        <Symbol>SW_IP2ADDRESS</Symbol>
+        <Comment>For IP address AA.BB.CC.DD: %SW33 = CC.DD and %SW34 = AA.BB (2° word)</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW35</Address>
+        <Index>35</Index>
+        <Symbol>SW_SUBNET1</Symbol>
+        <Comment>For Sub-network mask AA.BB.CC.DD: %SW35 = CC.DD and %SW36 = AA.BB (1st word)</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW36</Address>
+        <Index>36</Index>
+        <Symbol>SW_SUBNET2</Symbol>
+        <Comment>For Sub-network mask AA.BB.CC.DD: %SW35 = CC.DD and %SW36 = AA.BB (2° word)</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW37</Address>
+        <Index>37</Index>
+        <Symbol>SW_GATEWAY1</Symbol>
+        <Comment>For Gateway address AA.BB.CC.DD: %SW37 = CC.DD and %SW38 = AA.BB (1st word)</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW38</Address>
+        <Index>38</Index>
+        <Symbol>SW_GATEWAY2</Symbol>
+        <Comment>For Gateway address AA.BB.CC.DD: %SW37 = CC.DD and %SW38 = AA.BB (2° word)</Comment>
+      </MemoryWord>
+      <MemoryWord>
         <Address>%SW39</Address>
         <Index>39</Index>
         <Symbol>SW_PERTIME</Symbol>
@@ -2168,6 +2210,12 @@
         <Comment>Contains two sets of 8 bits to adjust current date.The operation is always performed on rising edge of the bit. This word is enabled by bit %S59</Comment>
       </MemoryWord>
       <MemoryWord>
+        <Address>%SW62</Address>
+        <Index>62</Index>
+        <Symbol>SW_ETHERROR</Symbol>
+        <Comment>Shows the Ethernet error code (0 No error, 1 Duplicate IP, 2 DHCP in Progress, 3 BOOTP in Progress, 4 Invalid parameters, 5 Fixed IP in progress, 6 Ethernet com in Fail)</Comment>
+      </MemoryWord>
+      <MemoryWord>
         <Address>%SW63</Address>
         <Index>63</Index>
         <Symbol>SW_EXCH1ERROR</Symbol>
@@ -2178,6 +2226,12 @@
         <Index>64</Index>
         <Symbol>SW_EXCH2ERROR</Symbol>
         <Comment>Contains EXCH2 error code, see online help for details</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW65</Address>
+        <Index>65</Index>
+        <Symbol>SW_EXCH3ERROR</Symbol>
+        <Comment>Contains EXCH3 error code for Ethernet controllers, see online help for details</Comment>
       </MemoryWord>
       <MemoryWord>
         <Address>%SW67</Address>
@@ -2270,6 +2324,12 @@
         <Comment>Post configuration status of Serial Line 2. The bits are set to 1 when the post configuration was applied for the parameter</Comment>
       </MemoryWord>
       <MemoryWord>
+        <Address>%SW100</Address>
+        <Index>100</Index>
+        <Symbol>SW_ETHPOSTST</Symbol>
+        <Comment>Post configuration status of Ethernet port. The bits are set to 1 when the post configuration was applied for the parameter</Comment>
+      </MemoryWord>
+      <MemoryWord>
         <Address>%SW101</Address>
         <Index>101</Index>
         <Symbol>SW_SL1ADDRESS</Symbol>
@@ -2304,6 +2364,24 @@
         <Index>106</Index>
         <Symbol>SW_SL2CONF2</Symbol>
         <Comment>Configuration for use of the ASCII protocol of port 2 when bit %S104 (refer F1 help for details)</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW107</Address>
+        <Index>107</Index>
+        <Symbol>SW_MACAD1</Symbol>
+        <Comment>For MAC address AA:BB:CC:DD:EE:FF %SW107 = AA:BB (1st word)</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW108</Address>
+        <Index>108</Index>
+        <Symbol>SW_MACAD2</Symbol>
+        <Comment>For MAC address AA:BB:CC:DD:EE:FF %SW108 = CC:DD (2° word)</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW109</Address>
+        <Index>109</Index>
+        <Symbol>SW_MACAD3</Symbol>
+        <Comment>For MAC address AA:BB:CC:DD:EE:FF %SW108 = EE:FF (3° word)</Comment>
       </MemoryWord>
       <MemoryWord>
         <Address>%SW114</Address>
@@ -2534,6 +2612,12 @@
         <Comment>Describes the answer of the modem to the last init command</Comment>
       </MemoryWord>
       <MemoryWord>
+        <Address>%SW168</Address>
+        <Index>168</Index>
+        <Symbol>SW_NBETHCON</Symbol>
+        <Comment>Shows the number of Ethernet Modbus TCP server connections in use</Comment>
+      </MemoryWord>
+      <MemoryWord>
         <Address>%SW170</Address>
         <Index>170</Index>
         <Symbol>SW_NBSL1FRAMES</Symbol>
@@ -2550,6 +2634,12 @@
         <Index>172</Index>
         <Symbol>SW_NBUSBFRAMES</Symbol>
         <Comment>Counts the number of frames transmitted by the USB channel</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW173</Address>
+        <Index>173</Index>
+        <Symbol>SW_NBTCPFRAMES</Symbol>
+        <Comment>Counts the number of frames transmitted by Modbus TCP on Ethernet</Comment>
       </MemoryWord>
       <MemoryWord>
         <Address>%SW174</Address>
@@ -2570,6 +2660,12 @@
         <Comment>Counts the number of frames correctly received by the USB channel</Comment>
       </MemoryWord>
       <MemoryWord>
+        <Address>%SW177</Address>
+        <Index>177</Index>
+        <Symbol>SW_NBTCPOK</Symbol>
+        <Comment>Counts the number of frames correctly received by Modbus TCP on Ethernet</Comment>
+      </MemoryWord>
+      <MemoryWord>
         <Address>%SW178</Address>
         <Index>178</Index>
         <Symbol>SW_NBSL1ERROR</Symbol>
@@ -2586,6 +2682,12 @@
         <Index>180</Index>
         <Symbol>SW_NBUSBERROR</Symbol>
         <Comment>Counts the number of frames received in error by the USB channel</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW181</Address>
+        <Index>181</Index>
+        <Symbol>SW_NBTCPERROR</Symbol>
+        <Comment>Counts the number of frames received in error by Modbus TCP on Ethernet</Comment>
       </MemoryWord>
       <MemoryWord>
         <Address>%SW182</Address>
@@ -2610,6 +2712,126 @@
         <Index>185</Index>
         <Symbol>SW_DSPVERSION</Symbol>
         <Comment>Contains the version of the Remote Graphic Display</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW188</Address>
+        <Index>188</Index>
+        <Symbol>SW_MAPTRFRAMES</Symbol>
+        <Comment>Counts the number of frames transmitted by the Modbus mapping table</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW189</Address>
+        <Index>189</Index>
+        <Symbol>SW_MAPRECFRAMES</Symbol>
+        <Comment>Counts the number of frames correctly received by the Modbus mapping table</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW190</Address>
+        <Index>190</Index>
+        <Symbol>SW_NBIPTRA1</Symbol>
+        <Comment>Counts the number of frames transmitted on Ethernet IP (1st word)</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW191</Address>
+        <Index>191</Index>
+        <Symbol>SW_NBIPTRA2</Symbol>
+        <Comment>Counts the number of frames transmitted on Ethernet IP (2nd word)</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW192</Address>
+        <Index>192</Index>
+        <Symbol>SW_NBIPREC1</Symbol>
+        <Comment>Counts the number of frames received on Ethernet IP (1st word)</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW193</Address>
+        <Index>193</Index>
+        <Symbol>SW_NBIPREC2</Symbol>
+        <Comment>Counts the number of frames received on Ethernet IP (2nd word)</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW194</Address>
+        <Index>194</Index>
+        <Symbol>SW_NBIP_UCCM_MES1</Symbol>
+        <Comment>Counts the number of unconnected messages received on Ethernet IP (1st word)</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW195</Address>
+        <Index>195</Index>
+        <Symbol>SW_NBIP_UCCM_MES2</Symbol>
+        <Comment>Counts the number of unconnected messages received on Ethernet IP (2nd word)</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW196</Address>
+        <Index>196</Index>
+        <Symbol>SW_NBIP_UCCM_INV1</Symbol>
+        <Comment>Counts the number of invalid unconnected messages received on Ethernet IP (1st word)</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW197</Address>
+        <Index>197</Index>
+        <Symbol>SW_NBIP_UCCM_INV2</Symbol>
+        <Comment>Counts the number of invalid unconnected messages received on Ethernet IP (2nd word)</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW198</Address>
+        <Index>198</Index>
+        <Symbol>SW_NBIPC3REQ1</Symbol>
+        <Comment>Counts the number of class 3 requests received on Ethernet IP (1st word)</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW199</Address>
+        <Index>199</Index>
+        <Symbol>SW_NBIPC3REQ2</Symbol>
+        <Comment>Counts the number of class 3 requests received on Ethernet IP (2nd word)</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW200</Address>
+        <Index>200</Index>
+        <Symbol>SW_NBIPC3INV1</Symbol>
+        <Comment>Counts the number of invalid class 3 requests received on Ethernet IP (1st word)</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW201</Address>
+        <Index>201</Index>
+        <Symbol>SW_NBIPC3INV2</Symbol>
+        <Comment>Counts the number of invalid class 3 requests received on Ethernet IP (2nd word)</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW202</Address>
+        <Index>202</Index>
+        <Symbol>SW_IPININST</Symbol>
+        <Comment>Reads the input Assembly Instance Number</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW203</Address>
+        <Index>203</Index>
+        <Symbol>SW_IPINSIZE</Symbol>
+        <Comment>Reads the input Assembly Instance Size</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW204</Address>
+        <Index>204</Index>
+        <Symbol>SW_IPOUTINST</Symbol>
+        <Comment>Reads the output Assembly Instance Number</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW205</Address>
+        <Index>205</Index>
+        <Symbol>SW_IPOUTSIZE</Symbol>
+        <Comment>Reads the output Assembly Instance Size</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW206</Address>
+        <Index>206</Index>
+        <Symbol>SW_IPNBTIMEOUT</Symbol>
+        <Comment>Counts the number of connection timeouts on Ethernet IP</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW207</Address>
+        <Index>207</Index>
+        <Symbol>SW_IPFLAGIDLE</Symbol>
+        <Comment>Reads the Ethernet IP flag from last I/O packet: Idle (value=0), Run (value=1), Error (value=2)</Comment>
       </MemoryWord>
     </SystemWords>
     <GrafcetSteps />
@@ -2651,9 +2873,9 @@
         <OutputPort>Serial1</OutputPort>
       </MessageBlock>
       <MessageBlock>
-        <Address>%MSG2</Address>
-        <Index>1</Index>
-        <OutputPort>Serial2</OutputPort>
+        <Address>%MSG3</Address>
+        <Index>2</Index>
+        <OutputPort>Ethernet</OutputPort>
       </MessageBlock>
     </MessageBlocks>
     <FunctionBlocks />
@@ -2680,10 +2902,10 @@
         <InputNb>0</InputNb>
         <OutputNb>0</OutputNb>
         <Kind>0</Kind>
-        <Reference>TM221M16R/G</Reference>
+        <Reference>TM221CE24R</Reference>
         <Name>MyController</Name>
         <Consumption5V>520</Consumption5V>
-        <Consumption24V>460</Consumption24V>
+        <Consumption24V>160</Consumption24V>
         <TechnicalConfiguration>
           <PtoConfiguration>
             <McPowerPtoMax>0</McPowerPtoMax>
@@ -2722,7 +2944,7 @@
           <LfRegistersMax>4</LfRegistersMax>
           <MemoryConstantWordsMax>512</MemoryConstantWordsMax>
           <MemoryWordsMax>8000</MemoryWordsMax>
-          <NumRelays>8</NumRelays>
+          <NumRelays>10</NumRelays>
           <NumRelaysMax>9999</NumRelaysMax>
           <NumTransistors>0</NumTransistors>
           <NumTransistorsMax>9999</NumTransistorsMax>
@@ -2776,22 +2998,46 @@
           <DiscretInput>
             <Address>%I0.4</Address>
             <Index>4</Index>
-            <Symbol>SECT1_FILTER_AVAILABLE</Symbol>
+            <Symbol>FILTER_AVAILABLE</Symbol>
           </DiscretInput>
           <DiscretInput>
             <Address>%I0.5</Address>
             <Index>5</Index>
-            <Symbol>SECT1_TAMPER_RET</Symbol>
+            <Symbol>TAMPER_RET</Symbol>
           </DiscretInput>
           <DiscretInput>
             <Address>%I0.6</Address>
             <Index>6</Index>
-            <Symbol>SECT1_TAMPER_EXT</Symbol>
+            <Symbol>TAMPER_EXT</Symbol>
           </DiscretInput>
           <DiscretInput>
             <Address>%I0.7</Address>
             <Index>7</Index>
-            <Symbol>SECT1_VAC_CLAMP_RET</Symbol>
+            <Symbol>VAC_CLAMP_RET</Symbol>
+          </DiscretInput>
+          <DiscretInput>
+            <Address>%I0.8</Address>
+            <Index>8</Index>
+          </DiscretInput>
+          <DiscretInput>
+            <Address>%I0.9</Address>
+            <Index>9</Index>
+          </DiscretInput>
+          <DiscretInput>
+            <Address>%I0.10</Address>
+            <Index>10</Index>
+          </DiscretInput>
+          <DiscretInput>
+            <Address>%I0.11</Address>
+            <Index>11</Index>
+          </DiscretInput>
+          <DiscretInput>
+            <Address>%I0.12</Address>
+            <Index>12</Index>
+          </DiscretInput>
+          <DiscretInput>
+            <Address>%I0.13</Address>
+            <Index>13</Index>
           </DiscretInput>
         </DigitalInputs>
         <DigitalOutputs>
@@ -2823,17 +3069,25 @@
           <DiscretOutput>
             <Address>%Q0.5</Address>
             <Index>5</Index>
-            <Symbol>SECT1_VAC_CLAMP</Symbol>
+            <Symbol>VAC_CLAMP</Symbol>
           </DiscretOutput>
           <DiscretOutput>
             <Address>%Q0.6</Address>
             <Index>6</Index>
-            <Symbol>SECT1_VACUUM</Symbol>
+            <Symbol>VACUUM</Symbol>
           </DiscretOutput>
           <DiscretOutput>
             <Address>%Q0.7</Address>
             <Index>7</Index>
-            <Symbol>SECT1_TAMPER</Symbol>
+            <Symbol>TAMPER</Symbol>
+          </DiscretOutput>
+          <DiscretOutput>
+            <Address>%Q0.8</Address>
+            <Index>8</Index>
+          </DiscretOutput>
+          <DiscretOutput>
+            <Address>%Q0.9</Address>
+            <Index>9</Index>
           </DiscretOutput>
         </DigitalOutputs>
         <AnalogInputs>
@@ -3096,7 +3350,7 @@
           </HighSpeedCounter>
         </HighSpeedCounters>
         <PulseTrainOutputs />
-        <HardwareId>1920</HardwareId>
+        <HardwareId>1931</HardwareId>
         <IsExpander>false</IsExpander>
         <EthernetConfiguration>
           <NetworkName>M221</NetworkName>
@@ -3129,56 +3383,13 @@
           <ModbusServerEnabled>true</ModbusServerEnabled>
           <AutoDiscoveryProtocolEnabled>true</AutoDiscoveryProtocolEnabled>
         </EthernetConfiguration>
-        <AdditionalSerialLineConfiguration>
-          <Baud>Baud19200</Baud>
-          <ModemReference>No Modem</ModemReference>
-          <Parity>ParityEven</Parity>
-          <DataBits>DataBits8</DataBits>
-          <StopBits>StopBits1</StopBits>
-          <TimeBetweenFrames>10</TimeBetweenFrames>
-          <ResponseTime>10</ResponseTime>
-          <StartCharacterEnabled>false</StartCharacterEnabled>
-          <FirstEndCharacterEnabled>true</FirstEndCharacterEnabled>
-          <SecondEndCharacterEnabled>false</SecondEndCharacterEnabled>
-          <FrameLengthReceivedAvailable>false</FrameLengthReceivedAvailable>
-          <FrameReceivedTimeoutAvailable>false</FrameReceivedTimeoutAvailable>
-          <InitCommand />
-          <SendFrameCharacter>false</SendFrameCharacter>
-          <StartCharacter>0</StartCharacter>
-          <FirstEndCharacter>10</FirstEndCharacter>
-          <FrameLengthReceived>0</FrameLengthReceived>
-          <FrameReceivedTimeout>0</FrameReceivedTimeout>
-          <SecondEndCharacter>0</SecondEndCharacter>
-          <PhysicalMedium>PhysicalMediumRs485</PhysicalMedium>
-          <TransmissionMode>TransmissionModeModbusRtu</TransmissionMode>
-          <SlaveId>1</SlaveId>
-          <Addressing>SlaveAddressing</Addressing>
-          <Polarization>
-            <Value>0</Value>
-            <Name>No</Name>
-          </Polarization>
-        </AdditionalSerialLineConfiguration>
-        <AdditionalSerialLineModbusConfiguration />
-        <AdditionalSerialLineAsciiConfiguration />
-        <AdditionalSerialLineDisplayConfiguration />
-        <AdditionalSerialLineIoScannerConfiguration>
-          <TransmissionMode>TransmissionModeRtu</TransmissionMode>
-          <Devices />
-          <DigitalInputsIoScanner />
-          <DigitalOutputsIoScanner />
-          <RegisterInputsIoScanner />
-          <RegisterOutputsIoScanner />
-          <RegisterDeviceStatusIoScanner />
-          <RegisterInputsStatusIoScanner />
-          <Drives />
-        </AdditionalSerialLineIoScannerConfiguration>
-        <MaxCartridge>0</MaxCartridge>
-        <C1TranslationX>0</C1TranslationX>
-        <C1TranslationY>0</C1TranslationY>
+        <MaxCartridge>1</MaxCartridge>
+        <C1TranslationX>170</C1TranslationX>
+        <C1TranslationY>110</C1TranslationY>
         <C2TranslationX>0</C2TranslationX>
         <C2TranslationY>0</C2TranslationY>
-        <C1SizeX>0</C1SizeX>
-        <C1SizeY>0</C1SizeY>
+        <C1SizeX>155</C1SizeX>
+        <C1SizeY>190</C1SizeY>
         <C2SizeX>0</C2SizeX>
         <C2SizeY>0</C2SizeY>
         <InputAssemblys />
@@ -3267,22 +3478,22 @@
             <DiscretInput>
               <Address>%I1.0</Address>
               <Index>0</Index>
-              <Symbol>SECT1_VAC_CLAMP_EXT</Symbol>
+              <Symbol>VAC_CLAMP_EXT</Symbol>
             </DiscretInput>
             <DiscretInput>
               <Address>%I1.1</Address>
               <Index>1</Index>
-              <Symbol>SECT1_TAMP_MANUAL</Symbol>
+              <Symbol>TAMP_MANUAL</Symbol>
             </DiscretInput>
             <DiscretInput>
               <Address>%I1.2</Address>
               <Index>2</Index>
-              <Symbol>SECT1_GLUE_EYE</Symbol>
+              <Symbol>GLUE_EYE</Symbol>
             </DiscretInput>
             <DiscretInput>
               <Address>%I1.3</Address>
               <Index>3</Index>
-              <Symbol>SECT1_STRIP_AVAILABLE</Symbol>
+              <Symbol>STRIP_AVAILABLE</Symbol>
             </DiscretInput>
             <DiscretInput>
               <Address>%I1.4</Address>
@@ -3489,17 +3700,17 @@
             <DiscretOutput>
               <Address>%Q2.0</Address>
               <Index>0</Index>
-              <Symbol>SECT1_STRIP_GUIDE</Symbol>
+              <Symbol>STRIP_GUIDE</Symbol>
             </DiscretOutput>
             <DiscretOutput>
               <Address>%Q2.1</Address>
               <Index>1</Index>
-              <Symbol>SECT1_BOTTOM_STRIP_GLUE</Symbol>
+              <Symbol>BOTTOM_STRIP_GLUE</Symbol>
             </DiscretOutput>
             <DiscretOutput>
               <Address>%Q2.2</Address>
               <Index>2</Index>
-              <Symbol>SECT1_TOP_STRIP_GLUE</Symbol>
+              <Symbol>TOP_STRIP_GLUE</Symbol>
             </DiscretOutput>
             <DiscretOutput>
               <Address>%Q2.3</Address>
