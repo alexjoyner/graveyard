@@ -1,0 +1,240 @@
+<?xml version="1.0"?>
+<ComFileGenerator>
+<ArrayInfo>
+	<StructureName>DriverInfo</StructureName>
+	<Count>3</Count>
+</ArrayInfo>
+<DriverInfo>
+	<DriverConfig></DriverConfig>
+	<SectionName>Driver_0</SectionName>
+	<DLMFileName>C:\Program Files (x86)\Schneider Electric\Vijeo-Designer 6.2\Vijeo-Runtime\Public\Bin\Modbus.DLM</DLMFileName>
+	<DriverName>ModbusTCPIP01</DriverName>
+	<StringFormat>0</StringFormat>
+	<UseStringFormat>0</UseStringFormat>
+</DriverInfo>
+<DriverInfo>
+	<DriverConfig></DriverConfig>
+	<SectionName>Driver_1</SectionName>
+	<DLMFileName>DSServer.dlm</DLMFileName>
+	<DriverName>DSServer</DriverName>
+	<StringFormat>0</StringFormat>
+	<UseStringFormat>0</UseStringFormat>
+</DriverInfo>
+<DriverInfo>
+	<DriverConfig>[1]T:502:0:1:10:255</DriverConfig>
+	<SectionName>Driver_2</SectionName>
+	<DLMFileName>C:\Program Files (x86)\Schneider Electric\Vijeo-Designer 6.2\Vijeo-Runtime\Public\Bin\ModbusPlc.dlm</DLMFileName>
+	<DriverName></DriverName>
+	<StringFormat>0</StringFormat>
+	<UseStringFormat>0</UseStringFormat>
+</DriverInfo>
+<ArrayInfo>
+	<StructureName>PLCInfo</StructureName>
+	<Count>2</Count>
+</ArrayInfo>
+<PLCInfo>
+	<PLCName>ModbusEquipment01</PLCName>
+	<PLCAddress>[4]T:0:127.0.0.1:502:255:0:0.0.0.0:120:1:4:3:1:0</PLCAddress>
+	<StringFormat>0</StringFormat>
+	<DriverId>0</DriverId>
+	<PLCModel>3</PLCModel>
+	<UseStringFormat>0</UseStringFormat>
+	<DisableFilter>0</DisableFilter>
+</PLCInfo>
+<PLCInfo>
+	<PLCName>ModbusSlaveTcpIPAuto99</PLCName>
+	<PLCAddress>[1]T:502:0:1:10:255</PLCAddress>
+	<StringFormat>0</StringFormat>
+	<DriverId>2</DriverId>
+	<PLCModel>0</PLCModel>
+	<UseStringFormat>0</UseStringFormat>
+	<DisableFilter>0</DisableFilter>
+</PLCInfo>
+<ArrayInfo>
+	<StructureName>AccessGroupInfo</StructureName>
+	<Count>1</Count>
+</ArrayInfo>
+<AccessGroupInfo>
+	<ScanRate>250</ScanRate>
+	<PLCIndex>0</PLCIndex>
+	<DisableFilter>0</DisableFilter>
+</AccessGroupInfo>
+<ArrayInfo>
+	<StructureName>VariableInfo</StructureName>
+	<Count>6</Count>
+</ArrayInfo>
+<VariableInfo>
+	<VariableName>PLC_ModbusEquipment01.Green_light</VariableName>
+	<VariableExternalName>Green_light</VariableExternalName>
+	<VarAddress>%Q0.0.1</VarAddress>
+	<OffsetName></OffsetName>
+	<InitString></InitString>
+	<InitInteger>0</InitInteger>
+	<InitFloat>0.000000</InitFloat>
+	<DataFormat>0</DataFormat>
+	<SignedFormat>2</SignedFormat>
+	<StringFormat>0</StringFormat>
+	<AGIndex>0</AGIndex>
+	<DataLength>2</DataLength>
+	<ArraySize>1</ArraySize>
+	<BitWidth>1</BitWidth>
+	<BitOffset>0</BitOffset>
+	<TagType>3</TagType>
+	<DisableFilter>0</DisableFilter>
+	<InternalVariable>0</InternalVariable>
+	<IndirectVariable>0</IndirectVariable>
+	<ReadOnly>0</ReadOnly>
+	<SystemTag>0</SystemTag>
+	<InvisibleTag>0</InvisibleTag>
+	<StatsVariable>0</StatsVariable>
+	<SharingMode>0</SharingMode>
+	<IntegerDataType>0</IntegerDataType>
+	<VarId>44</VarId>
+	<TagId>43</TagId>
+</VariableInfo>
+<VariableInfo>
+	<VariableName>PLC_ModbusEquipment01.Red_light</VariableName>
+	<VariableExternalName>Red_light</VariableExternalName>
+	<VarAddress>%Q0.0.3</VarAddress>
+	<OffsetName></OffsetName>
+	<InitString></InitString>
+	<InitInteger>0</InitInteger>
+	<InitFloat>0.000000</InitFloat>
+	<DataFormat>0</DataFormat>
+	<SignedFormat>2</SignedFormat>
+	<StringFormat>0</StringFormat>
+	<AGIndex>0</AGIndex>
+	<DataLength>2</DataLength>
+	<ArraySize>1</ArraySize>
+	<BitWidth>1</BitWidth>
+	<BitOffset>0</BitOffset>
+	<TagType>3</TagType>
+	<DisableFilter>0</DisableFilter>
+	<InternalVariable>0</InternalVariable>
+	<IndirectVariable>0</IndirectVariable>
+	<ReadOnly>0</ReadOnly>
+	<SystemTag>0</SystemTag>
+	<InvisibleTag>0</InvisibleTag>
+	<StatsVariable>0</StatsVariable>
+	<SharingMode>0</SharingMode>
+	<IntegerDataType>0</IntegerDataType>
+	<VarId>46</VarId>
+	<TagId>44</TagId>
+</VariableInfo>
+<VariableInfo>
+	<VariableName>PLC_ModbusEquipment01.Sys_reset</VariableName>
+	<VariableExternalName>Sys_reset</VariableExternalName>
+	<VarAddress>%I0.0.1</VarAddress>
+	<OffsetName></OffsetName>
+	<InitString></InitString>
+	<InitInteger>0</InitInteger>
+	<InitFloat>0.000000</InitFloat>
+	<DataFormat>0</DataFormat>
+	<SignedFormat>2</SignedFormat>
+	<StringFormat>0</StringFormat>
+	<AGIndex>0</AGIndex>
+	<DataLength>2</DataLength>
+	<ArraySize>1</ArraySize>
+	<BitWidth>1</BitWidth>
+	<BitOffset>0</BitOffset>
+	<TagType>3</TagType>
+	<DisableFilter>0</DisableFilter>
+	<InternalVariable>0</InternalVariable>
+	<IndirectVariable>0</IndirectVariable>
+	<ReadOnly>1</ReadOnly>
+	<SystemTag>0</SystemTag>
+	<InvisibleTag>0</InvisibleTag>
+	<StatsVariable>0</StatsVariable>
+	<SharingMode>0</SharingMode>
+	<IntegerDataType>0</IntegerDataType>
+	<VarId>48</VarId>
+	<TagId>45</TagId>
+</VariableInfo>
+<VariableInfo>
+	<VariableName>PLC_ModbusEquipment01.Sys_start</VariableName>
+	<VariableExternalName>Sys_start</VariableExternalName>
+	<VarAddress>%I0.0.0</VarAddress>
+	<OffsetName></OffsetName>
+	<InitString></InitString>
+	<InitInteger>0</InitInteger>
+	<InitFloat>0.000000</InitFloat>
+	<DataFormat>0</DataFormat>
+	<SignedFormat>2</SignedFormat>
+	<StringFormat>0</StringFormat>
+	<AGIndex>0</AGIndex>
+	<DataLength>2</DataLength>
+	<ArraySize>1</ArraySize>
+	<BitWidth>1</BitWidth>
+	<BitOffset>0</BitOffset>
+	<TagType>3</TagType>
+	<DisableFilter>0</DisableFilter>
+	<InternalVariable>0</InternalVariable>
+	<IndirectVariable>0</IndirectVariable>
+	<ReadOnly>1</ReadOnly>
+	<SystemTag>0</SystemTag>
+	<InvisibleTag>0</InvisibleTag>
+	<StatsVariable>0</StatsVariable>
+	<SharingMode>0</SharingMode>
+	<IntegerDataType>0</IntegerDataType>
+	<VarId>47</VarId>
+	<TagId>46</TagId>
+</VariableInfo>
+<VariableInfo>
+	<VariableName>PLC_ModbusEquipment01.Sys_stop</VariableName>
+	<VariableExternalName>Sys_stop</VariableExternalName>
+	<VarAddress>%I0.0.2</VarAddress>
+	<OffsetName></OffsetName>
+	<InitString></InitString>
+	<InitInteger>0</InitInteger>
+	<InitFloat>0.000000</InitFloat>
+	<DataFormat>0</DataFormat>
+	<SignedFormat>2</SignedFormat>
+	<StringFormat>0</StringFormat>
+	<AGIndex>0</AGIndex>
+	<DataLength>2</DataLength>
+	<ArraySize>1</ArraySize>
+	<BitWidth>1</BitWidth>
+	<BitOffset>0</BitOffset>
+	<TagType>3</TagType>
+	<DisableFilter>0</DisableFilter>
+	<InternalVariable>0</InternalVariable>
+	<IndirectVariable>0</IndirectVariable>
+	<ReadOnly>1</ReadOnly>
+	<SystemTag>0</SystemTag>
+	<InvisibleTag>0</InvisibleTag>
+	<StatsVariable>0</StatsVariable>
+	<SharingMode>0</SharingMode>
+	<IntegerDataType>0</IntegerDataType>
+	<VarId>49</VarId>
+	<TagId>47</TagId>
+</VariableInfo>
+<VariableInfo>
+	<VariableName>PLC_ModbusEquipment01.Yellow_light</VariableName>
+	<VariableExternalName>Yellow_light</VariableExternalName>
+	<VarAddress>%Q0.0.2</VarAddress>
+	<OffsetName></OffsetName>
+	<InitString></InitString>
+	<InitInteger>0</InitInteger>
+	<InitFloat>0.000000</InitFloat>
+	<DataFormat>0</DataFormat>
+	<SignedFormat>2</SignedFormat>
+	<StringFormat>0</StringFormat>
+	<AGIndex>0</AGIndex>
+	<DataLength>2</DataLength>
+	<ArraySize>1</ArraySize>
+	<BitWidth>1</BitWidth>
+	<BitOffset>0</BitOffset>
+	<TagType>3</TagType>
+	<DisableFilter>0</DisableFilter>
+	<InternalVariable>0</InternalVariable>
+	<IndirectVariable>0</IndirectVariable>
+	<ReadOnly>0</ReadOnly>
+	<SystemTag>0</SystemTag>
+	<InvisibleTag>0</InvisibleTag>
+	<StatsVariable>0</StatsVariable>
+	<SharingMode>0</SharingMode>
+	<IntegerDataType>0</IntegerDataType>
+	<VarId>45</VarId>
+	<TagId>48</TagId>
+</VariableInfo>
+</ComFileGenerator>
