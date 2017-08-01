@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <plcProject caseSensitive="false" useCustomWorkspace="true" debugMode="false" extcheck="true" SFCControl="false" strictPointerCheck="false" copyWarningThreshold="200" version="2.2" useLD2="true" useFBMethods="false">
 	<image>Oklahoma_HMI.imgx</image>
-	<commSettings>Modbus:1,1000,M#COM:6,38400,E,8,1,H</commSettings>
+	<commSettings>ModbusTCP:255,10000,M#TCPIP:192.168.1.6/502,5000</commSettings>
 	<sources>
 		<main>
 			<resources/>
 			<tasks>
 				<task name="Background">
-					<program>Alarm_Calculation</program>
-					<program>Alarm_Latches</program>
+					<program>Reset_Alarms</program>
+					<program>Silence_Alarms</program>
+					<program>Audible_Alarm_Ctrl</program>
+					<program>HighRtd</program>
+					<program>VibrationAlarmCalc</program>
+					<program>HighFloatDetect</program>
+					<program>SealFailDetect</program>
+					<program>windingTempDetect</program>
+					<program>EnableAudibleAlarm</program>
 				</task>
 			</tasks>
 			<globalVars>
 				<group name="Ungrouped_vars">
 					<var name="cnt" type="INT"/>
+					<var name="audibleAlarmEnable" type="BOOL"/>
 				</group>
 			</globalVars>
 			<retainVars>
@@ -25,43 +33,377 @@
 			<functions/>
 			<functionBlocks/>
 			<programs>
-				<program name="Alarm_Calculation" version="1.0.0">
+				<program name="Reset_Alarms" version="1.0.0">
 					<vars/>
+					<iecDeclaration valid="TRUE">
+						<![CDATA[]]>
+					</iecDeclaration>
+					<sourceCode type="ST">
+						<![CDATA[if resetAlarms then
+	windingTempAlarm := FALSE;
+	sealFailAlarm := FALSE;
+	highFloatAlarm := FALSE;
+	vibrationAlarm := FALSE;
+	highRtdAlarm := FALSE;
+end_if;
+]]>
+					</sourceCode>
+				</program>
+				<program name="Silence_Alarms" version="1.0.0">
+					<vars/>
+					<iecDeclaration valid="TRUE">
+						<![CDATA[]]>
+					</iecDeclaration>
+					<sourceCode type="ST">
+						<![CDATA[if silenceAlarms then
+	audibleAlarm := 0;
+end_if;
+]]>
+					</sourceCode>
+				</program>
+				<program name="Audible_Alarm_Ctrl" version="1.0.0">
+					<vars>
+						<localVars>
+							<var name="oneShot" type="R_TRIG"/>
+						</localVars>
+					</vars>
+					<iecDeclaration valid="TRUE">
+						<![CDATA[]]>
+					</iecDeclaration>
+					<sourceCode type="ST">
+						<![CDATA[/** Alarm should only be enabled once every time
+a new alarm occurs. **/
+oneShot (CLK := audibleAlarmEnable);
+if OneShot.Q then
+	audibleAlarm := 1;
+end_if;
+]]>
+					</sourceCode>
+				</program>
+				<program name="HighRtd" version="1.0.0">
+					<vars>
+						<localVars>
+							<var name="HighRtdTimer" type="TON"/>
+							<var name="highRtdTimerVal" type="UDINT"/>
+						</localVars>
+					</vars>
 					<iecDeclaration valid="TRUE">
 						<![CDATA[]]>
 					</iecDeclaration>
 					<sourceCode type="FBD">
 						<FBD>
-							<network order="N:1" width="200" height="12" error="false"/>
+							<network order="N:1" width="200" height="22" error="false">
+								<conn id="C:0" error="false">
+									<segment xStart="40" yStart="11" xEnd="40" yEnd="5"/>
+									<startPin>V:2</startPin>
+									<endPin>FB:HighRtdTimer.PT</endPin>
+								</conn>
+								<conn id="C:1" error="false">
+									<segment xStart="13" yStart="10" xEnd="16" yEnd="10"/>
+									<startPin>V:1</startPin>
+									<endPin>O:7.0</endPin>
+								</conn>
+								<conn id="C:2" error="false">
+									<segment xStart="15" yStart="11" xEnd="16" yEnd="11"/>
+									<startPin>V:3</startPin>
+									<endPin>O:7.1</endPin>
+								</conn>
+								<conn id="C:3" error="false">
+									<segment xStart="44" yStart="4" xEnd="46" yEnd="4"/>
+									<startPin>FB:HighRtdTimer.Q</startPin>
+									<endPin>V:4</endPin>
+								</conn>
+								<conn id="C:4" error="false">
+									<segment xStart="20" yStart="10" xEnd="26" yEnd="10"/>
+									<segment xEnd="26" yEnd="5"/>
+									<segment xEnd="27" yEnd="5"/>
+									<startPin>O:7.2</startPin>
+									<endPin>O:9.1</endPin>
+								</conn>
+								<conn id="C:5" error="false">
+									<segment xStart="26" yStart="4" xEnd="27" yEnd="4"/>
+									<startPin>O:8.2</startPin>
+									<endPin>O:9.0</endPin>
+								</conn>
+								<conn id="C:6" error="false">
+									<segment xStart="15" yStart="3" xEnd="16" yEnd="3"/>
+									<startPin>V:13</startPin>
+									<endPin>O:17.1</endPin>
+								</conn>
+								<conn id="C:7" error="false">
+									<segment xStart="15" yStart="7" xEnd="16" yEnd="7"/>
+									<startPin>V:11</startPin>
+									<endPin>O:15.1</endPin>
+								</conn>
+								<conn id="C:8" error="false">
+									<segment xStart="13" yStart="6" xEnd="16" yEnd="6"/>
+									<startPin>V:5</startPin>
+									<endPin>O:15.0</endPin>
+								</conn>
+								<conn id="C:9" error="false">
+									<segment xStart="13" yStart="2" xEnd="16" yEnd="2"/>
+									<startPin>V:6</startPin>
+									<endPin>O:17.0</endPin>
+								</conn>
+								<conn id="C:10" error="false">
+									<segment xStart="20" yStart="2" xEnd="20" yEnd="4"/>
+									<segment xEnd="22" yEnd="4"/>
+									<startPin>O:17.2</startPin>
+									<endPin>O:8.0</endPin>
+								</conn>
+								<conn id="C:11" error="false">
+									<segment xStart="20" yStart="6" xEnd="20" yEnd="5"/>
+									<segment xEnd="22" yEnd="5"/>
+									<startPin>O:15.2</startPin>
+									<endPin>O:8.1</endPin>
+								</conn>
+								<conn id="C:12" error="false">
+									<segment xStart="31" yStart="4" xEnd="33" yEnd="4"/>
+									<startPin>O:9.2</startPin>
+									<endPin>O:19.0</endPin>
+								</conn>
+								<conn id="C:13" error="false">
+									<segment xStart="37" yStart="4" xEnd="40" yEnd="4"/>
+									<startPin>O:19.2</startPin>
+									<endPin>FB:HighRtdTimer.IN</endPin>
+								</conn>
+								<conn id="C:14" error="false">
+									<segment xStart="14" yStart="14" xEnd="16" yEnd="14"/>
+									<startPin>V:23</startPin>
+									<endPin>O:21.0</endPin>
+								</conn>
+								<conn id="C:15" error="false">
+									<segment xStart="15" yStart="15" xEnd="16" yEnd="15"/>
+									<startPin>V:24</startPin>
+									<endPin>O:21.1</endPin>
+								</conn>
+								<conn id="C:16" error="false">
+									<segment xStart="20" yStart="14" xEnd="31" yEnd="14"/>
+									<segment xEnd="31" yEnd="5"/>
+									<segment xEnd="33" yEnd="5"/>
+									<startPin>O:21.2</startPin>
+									<endPin>O:19.1</endPin>
+								</conn>
+								<var id="V:1" error="false" type="Input" name="motor3_Temp" x="13" y="10">
+									<pin>C:1</pin>
+								</var>
+								<var id="V:2" error="false" type="Input" name="pumpRtdAlarmTimer" x="40" y="11">
+									<pin>C:0</pin>
+								</var>
+								<var id="V:3" error="false" type="Input" name="motor3_Temp_Setpoint" x="15" y="11">
+									<pin>C:2</pin>
+								</var>
+								<var id="V:4" error="false" type="Output" name="highRtdAlarm" x="46" y="4">
+									<pin>C:3</pin>
+								</var>
+								<var id="V:5" error="false" type="Input" name="motor2_Temp" x="13" y="6">
+									<pin>C:8</pin>
+								</var>
+								<var id="V:6" error="false" type="Input" name="motor1_Temp" x="13" y="2">
+									<pin>C:9</pin>
+								</var>
+								<var id="V:11" error="false" type="Input" name="motor2_Temp_Setpoint" x="15" y="7">
+									<pin>C:7</pin>
+								</var>
+								<var id="V:13" error="false" type="Input" name="motor1_Temp_Setpoint" x="15" y="3">
+									<pin>C:6</pin>
+								</var>
+								<var id="V:23" error="false" type="Input" name="bottomBearingTemp" x="14" y="14">
+									<pin>C:14</pin>
+								</var>
+								<var id="V:24" error="false" type="Input" name="bottomBearingSetpoint" x="15" y="15">
+									<pin>C:15</pin>
+								</var>
+								<op id="O:7" error="false" width="4" name="GE" x="16" y="10">
+									<inputPin name="0" negated="false">C:1</inputPin>
+									<inputPin name="1" negated="false">C:2</inputPin>
+									<outputPin name="2" negated="false">C:4</outputPin>
+								</op>
+								<op id="O:8" error="false" width="4" name="OR" x="22" y="4">
+									<inputPin name="0" negated="false">C:10</inputPin>
+									<inputPin name="1" negated="false">C:11</inputPin>
+									<outputPin name="2" negated="false">C:5</outputPin>
+								</op>
+								<op id="O:9" error="false" width="4" name="OR" x="27" y="4">
+									<inputPin name="0" negated="false">C:5</inputPin>
+									<inputPin name="1" negated="false">C:4</inputPin>
+									<outputPin name="2" negated="false">C:12</outputPin>
+								</op>
+								<op id="O:15" error="false" width="4" name="GE" x="16" y="6">
+									<inputPin name="0" negated="false">C:8</inputPin>
+									<inputPin name="1" negated="false">C:7</inputPin>
+									<outputPin name="2" negated="false">C:11</outputPin>
+								</op>
+								<op id="O:17" error="false" width="4" name="GE" x="16" y="2">
+									<inputPin name="0" negated="false">C:9</inputPin>
+									<inputPin name="1" negated="false">C:6</inputPin>
+									<outputPin name="2" negated="false">C:10</outputPin>
+								</op>
+								<op id="O:19" error="false" width="4" name="OR" x="33" y="4">
+									<inputPin name="0" negated="false">C:12</inputPin>
+									<inputPin name="1" negated="false">C:16</inputPin>
+									<outputPin name="2" negated="false">C:13</outputPin>
+								</op>
+								<op id="O:21" error="false" width="4" name="GE" x="16" y="14">
+									<inputPin name="0" negated="false">C:14</inputPin>
+									<inputPin name="1" negated="false">C:15</inputPin>
+									<outputPin name="2" negated="false">C:16</outputPin>
+								</op>
+								<funBlock id="FB:HighRtdTimer" error="false" width="4" name="TON" x="40" y="4">
+									<inputPin name="IN" negated="false">C:13</inputPin>
+									<inputPin name="PT" negated="false">C:0</inputPin>
+									<outputPin name="Q" negated="false">C:3</outputPin>
+									<outputPin name="ET" negated="false"/>
+								</funBlock>
+							</network>
 						</FBD>
 					</sourceCode>
 				</program>
-				<program name="Alarm_Latches" version="1.0.0">
+				<program name="VibrationAlarmCalc" version="1.0.0">
+					<vars>
+						<localVars>
+							<var name="VibrationAlarm_0" type="TON"/>
+						</localVars>
+					</vars>
+					<iecDeclaration valid="TRUE">
+						<![CDATA[]]>
+					</iecDeclaration>
+					<sourceCode type="FBD">
+						<FBD>
+							<network order="N:1" width="200" height="12" error="false">
+								<conn id="C:1" error="false">
+									<segment xStart="5" yStart="5" xEnd="10" yEnd="5"/>
+									<startPin>V:3</startPin>
+									<endPin>O:7.0</endPin>
+								</conn>
+								<conn id="C:2" error="false">
+									<segment xStart="9" yStart="6" xEnd="10" yEnd="6"/>
+									<startPin>V:4</startPin>
+									<endPin>O:7.1</endPin>
+								</conn>
+								<conn id="C:3" error="false">
+									<segment xStart="14" yStart="5" xEnd="20" yEnd="5"/>
+									<startPin>O:7.2</startPin>
+									<endPin>FB:VibrationAlarm_0.IN</endPin>
+								</conn>
+								<conn id="C:4" error="false">
+									<segment xStart="18" yStart="8" xEnd="20" yEnd="8"/>
+									<segment xEnd="20" yEnd="6"/>
+									<startPin>V:5</startPin>
+									<endPin>FB:VibrationAlarm_0.PT</endPin>
+								</conn>
+								<conn id="C:5" error="false">
+									<segment xStart="24" yStart="5" xEnd="29" yEnd="5"/>
+									<startPin>FB:VibrationAlarm_0.Q</startPin>
+									<endPin>V:6</endPin>
+								</conn>
+								<var id="V:3" error="false" type="Input" name="vibration" x="5" y="5">
+									<pin>C:1</pin>
+								</var>
+								<var id="V:4" error="false" type="Input" name="vibration_Limit_Setpoint" x="9" y="6">
+									<pin>C:2</pin>
+								</var>
+								<var id="V:5" error="false" type="Input" name="vibrationAlarmTimer" x="18" y="8">
+									<pin>C:4</pin>
+								</var>
+								<var id="V:6" error="false" type="Output" name="vibrationAlarm" x="29" y="5">
+									<pin>C:5</pin>
+								</var>
+								<op id="O:7" error="false" width="4" name="GE" x="10" y="5">
+									<inputPin name="0" negated="false">C:1</inputPin>
+									<inputPin name="1" negated="false">C:2</inputPin>
+									<outputPin name="2" negated="false">C:3</outputPin>
+								</op>
+								<funBlock id="FB:VibrationAlarm_0" error="false" width="4" name="TON" x="20" y="5">
+									<inputPin name="IN" negated="false">C:3</inputPin>
+									<inputPin name="PT" negated="false">C:4</inputPin>
+									<outputPin name="Q" negated="false">C:5</outputPin>
+									<outputPin name="ET" negated="false"/>
+								</funBlock>
+							</network>
+						</FBD>
+					</sourceCode>
+				</program>
+				<program name="HighFloatDetect" version="1.0.0">
 					<vars/>
 					<iecDeclaration valid="TRUE">
-						<![CDATA[PROGRAM Alarm_Latches
-
-]]>
+						<![CDATA[]]>
 					</iecDeclaration>
 					<sourceCode type="LD2">
 						<LD2 version="1">
-							<network label="" id="1" nextID="3" comment="">
+							<network label="" id="1" nextID="2" comment="">
 								<assignment fromTmpVar="">
 									<input>
-										<contact name="TestBool" type="Normal" id="0"/>
+										<contact name="highFloat" type="Normal" id="0"/>
 									</input>
 									<outputs>
-										<coil name="WindingTempAlarm" type="Set" id="2"/>
+										<coil name="highFloatAlarm" type="Set" id="1"/>
 									</outputs>
 								</assignment>
 							</network>
-							<network label="" id="2" nextID="2" comment="">
+						</LD2>
+					</sourceCode>
+				</program>
+				<program name="SealFailDetect" version="1.0.0">
+					<vars/>
+					<iecDeclaration valid="TRUE">
+						<![CDATA[]]>
+					</iecDeclaration>
+					<sourceCode type="LD2">
+						<LD2 version="1">
+							<network label="" id="1" nextID="2" comment="">
 								<assignment fromTmpVar="">
 									<input>
-										<contact name="ResetAlarms" type="Normal" id="0"/>
+										<contact name="sealFail" type="Normal" id="0"/>
 									</input>
 									<outputs>
-										<coil name="WindingTempAlarm" type="Reset" id="1"/>
+										<coil name="sealFailAlarm" type="Set" id="1"/>
+									</outputs>
+								</assignment>
+							</network>
+						</LD2>
+					</sourceCode>
+				</program>
+				<program name="windingTempDetect" version="1.0.0">
+					<vars/>
+					<iecDeclaration valid="TRUE">
+						<![CDATA[]]>
+					</iecDeclaration>
+					<sourceCode type="LD2">
+						<LD2 version="1">
+							<network label="" id="1" nextID="2" comment="">
+								<assignment fromTmpVar="">
+									<input>
+										<contact name="WindingTemp" type="Normal" id="0"/>
+									</input>
+									<outputs>
+										<coil name="windingTempAlarm" type="Set" id="1"/>
+									</outputs>
+								</assignment>
+							</network>
+						</LD2>
+					</sourceCode>
+				</program>
+				<program name="EnableAudibleAlarm" version="1.0.0">
+					<vars/>
+					<iecDeclaration valid="TRUE">
+						<![CDATA[]]>
+					</iecDeclaration>
+					<sourceCode type="LD2">
+						<LD2 version="1">
+							<network label="" id="1" nextID="10" comment="">
+								<assignment fromTmpVar="">
+									<input>
+										<or id="6">
+											<contact name="windingTempAlarm" type="Normal" id="0"/>
+											<contact name="sealFailAlarm" type="Normal" id="5"/>
+											<contact name="highFloatAlarm" type="Normal" id="7"/>
+											<contact name="highRtdAlarm" type="Normal" id="8"/>
+											<contact name="vibrationAlarm" type="Normal" id="9"/>
+										</or>
+									</input>
+									<outputs>
+										<coil name="audibleAlarmEnable" type="Normal" id="1"/>
 									</outputs>
 								</assignment>
 							</network>
@@ -38069,36 +38411,52 @@ END_TYPE
 			<src fullXml="false" name="Global shared.plc" order="0" hidden="false">
 				<![CDATA[(* Automatically generated by Applications, do not edit! *)
 	VAR_GLOBAL
-		{G:"Parameters"}
-	TestBool AT %MW101.0 : BOOL;
-		{G:"Parameters"}
-	ResetAlarms AT %MW101.1 : BOOL;
 		{G:"Variables"}
-	WindingTempAlarm AT %MW110.0 : BOOL;
+	windingTempAlarm AT %MW110.0 : BOOL;
 		{G:"Variables"}
-	SealFailAlarm AT %MW110.1 : BOOL;
+	sealFailAlarm AT %MW110.1 : BOOL;
 		{G:"Variables"}
-	HighFloatAlarm AT %MW110.2 : BOOL;
+	highFloatAlarm AT %MW110.2 : BOOL;
 		{G:"Variables"}
-	VibrationAlarm AT %MW110.3 : BOOL;
+	vibrationAlarm AT %MW110.3 : BOOL;
 		{G:"Variables"}
-	HighRtdAlarm AT %MW110.4 : BOOL;
+	highRtdAlarm AT %MW110.4 : BOOL;
+		{G:"Variables"}
+	resetAlarms AT %MW110.5 : BOOL;
+		{G:"Variables"}
+	silenceAlarms AT %MW110.6 : BOOL;
+		{G:"Variables"}
+	bottomBearingSetpoint AT %MW110.7 : INT;
+		{G:"Variables"}
+	motor1_Temp_Setpoint AT %MW110.8 : INT;
+		{G:"Variables"}
+	motor2_Temp_Setpoint AT %MW110.9 : INT;
+		{G:"Variables"}
+	vibration_Limit_Setpoint AT %MW110.10 : INT;
+		{G:"Variables"}
+	pumpRtdAlarmTimer AT %MW110.11 : INT;
+		{G:"Variables"}
+	vibrationAlarmTimer AT %MW110.12 : INT;
+		{G:"Variables"}
+	motor3_Temp_Setpoint AT %MW110.13 : INT;
 		{G:"Mappings"}
-	MotorPhase1Temp AT %IW1.0 : INT;  {DE:"AIL1 analogue input"}
+	motor1_Temp AT %IW1.0 : INT;  {DE:"AIL1 analogue input"}
 		{G:"Mappings"}
-	MotorPhase2Temp AT %IW1.1 : INT;  {DE:"AIL2 analogue input"}
+	motor2_Temp AT %IW1.1 : INT;  {DE:"AIL2 analogue input"}
 		{G:"Mappings"}
-	MotorPhase3Temp AT %IW1.2 : INT;  {DE:"AIL3 analogue input"}
+	motor3_Temp AT %IW1.2 : INT;  {DE:"AIL3 analogue input"}
 		{G:"Mappings"}
-	BottomBearingTemp AT %IW1.3 : INT;  {DE:"AIL4 analogue input"}
+	bottomBearingTemp AT %IW1.3 : INT;  {DE:"AIL4 analogue input"}
 		{G:"Mappings"}
-	Vibration AT %IW1.4 : INT;  {DE:"AIL5 analogue input"}
+	vibration AT %IW1.4 : INT;  {DE:"AIL5 analogue input"}
 		{G:"Mappings"}
 	WindingTemp AT %IX0.0 : BOOL;  {DE:"DIL1 digital input"}
 		{G:"Mappings"}
-	SealFail AT %IX0.1 : BOOL;  {DE:"DIL2 digital input"}
+	sealFail AT %IX0.1 : BOOL;  {DE:"DIL2 digital input"}
 		{G:"Mappings"}
-	HighFloat AT %IX0.2 : BOOL;  {DE:"DIL3 digital input"}
+	highFloat AT %IX0.2 : BOOL;  {DE:"DIL3 digital input"}
+		{G:"Mappings"}
+	audibleAlarm AT %QX1.0 : BOOL;  {DE:"DOL1 digital output"}
 	END_VAR
 ]]>
 			</src>
@@ -38106,8 +38464,8 @@ END_TYPE
 				<![CDATA[(* Automatically generated, do not edit! *)
 
 VAR_GLOBAL CONSTANT
-$$ParDB : ARRAY[ 0..251 ] OF USINT; { HIDDEN:ON } { INIT:"Oklahoma_HMI.PLK+0" }
-$$ParDBLength  : DWORD := 7; { HIDDEN:ON }
+$$ParDB : ARRAY[ 0..503 ] OF USINT; { HIDDEN:ON } { INIT:"Oklahoma_HMI.PLK+0" }
+$$ParDBLength  : DWORD := 14; { HIDDEN:ON }
 END_VAR
 
 PROGRAM InitParDB WITH Serv;
@@ -38120,7 +38478,7 @@ PROGRAM InitParDB
 		dummyCrc32: UDINT;
 	END_VAR
 
-	dummyCrc32 := 1633705584;
+	dummyCrc32 := 3374785882;
 
 	warningsKiller := sysDBase_SetExtTable( ADR( $$ParDB ), $$ParDBLength );
 
@@ -38132,16 +38490,37 @@ END_PROGRAM
 			<src fullXml="false" name="ExecTime.plc" order="0" hidden="false">
 				<![CDATA[(* Automatically generated, do not edit! *)
 
+PROGRAM ParCheck WITH Init;
+
+PROGRAM ParCheck
+	{ HIDDEN:ON }
+	{ CODE:ST }
+	IF (Par_POLI AND 16#fc00) <> 2048 THEN
+		WHILE TRUE DO
+			(* do nothing and loop forever *)
+		END_WHILE;
+	END_IF;
+END_PROGRAM
+
 ]]>
 			</src>
 		</aux>
 		<workspace>
-			<root name="Oklahoma_HMI" nextID="41">
+			<root name="Oklahoma_HMI" nextID="80">
 				<GlobalVars name="Global vars" id="11"/>
 				<GlobalVars name="Ungrouped_vars" id="14"/>
 				<folder name="Programs" id="16">
-					<Pou name="Alarm_Calculation" id="19"/>
-					<Pou name="Alarm_Latches" id="38"/>
+					<Pou name="Reset_Alarms" id="43"/>
+					<Pou name="Silence_Alarms" id="44"/>
+					<Pou name="Audible_Alarm_Ctrl" id="45"/>
+					<folder name="Alarm_Calculations" id="57">
+						<Pou name="HighRtd" id="51"/>
+						<Pou name="VibrationAlarmCalc" id="66"/>
+						<Pou name="HighFloatDetect" id="71"/>
+						<Pou name="SealFailDetect" id="72"/>
+						<Pou name="windingTempDetect" id="73"/>
+					</folder>
+					<Pou name="EnableAudibleAlarm" id="74"/>
 				</folder>
 			</root>
 		</workspace>
@@ -38176,67 +38555,12 @@ END_PROGRAM
 				</project_config>
 				<M172P_596p4 template="FreeAdvance\M172P_596p4.pct" version="11" name="M172P" caption="M172P">
 					<devConfig>
-						<params>
-							<param>
-								<ipa>0</ipa>
-								<address>16384</address>
-								<name>TestBool</name>
-								<typepar>5</typepar>
-								<typetarg>BOOL</typetarg>
-								<value>0</value>
-								<min/>
-								<max/>
-								<ipamin/>
-								<ipamax/>
-								<scale>1</scale>
-								<offs>0</offs>
-								<um/>
-								<description/>
-								<note/>
-								<form/>
-								<accesslevel>3</accesslevel>
-								<readonly>0</readonly>
-								<shortname/>
-								<size>31</size>
-								<dataBlock>MW101.0</dataBlock>
-								<label/>
-								<translation/>
-								<visibility>0</visibility>
-								<clientType>0</clientType>
-							</param>
-							<param>
-								<ipa>1</ipa>
-								<address>16385</address>
-								<name>ResetAlarms</name>
-								<typepar>5</typepar>
-								<typetarg>BOOL</typetarg>
-								<value>0</value>
-								<min/>
-								<max/>
-								<ipamin/>
-								<ipamax/>
-								<scale>1</scale>
-								<offs>0</offs>
-								<um/>
-								<description/>
-								<note/>
-								<form/>
-								<accesslevel>3</accesslevel>
-								<readonly>0</readonly>
-								<shortname/>
-								<size>31</size>
-								<dataBlock>MW101.1</dataBlock>
-								<label/>
-								<translation/>
-								<visibility>0</visibility>
-								<clientType>0</clientType>
-							</param>
-						</params>
+						<params/>
 						<paramsRO>
 							<param>
 								<ipa>5000</ipa>
 								<address>8960</address>
-								<name>WindingTempAlarm</name>
+								<name>windingTempAlarm</name>
 								<typepar>5</typepar>
 								<typetarg>BOOL</typetarg>
 								<value/>
@@ -38263,7 +38587,7 @@ END_PROGRAM
 							<param>
 								<ipa>5001</ipa>
 								<address>8961</address>
-								<name>SealFailAlarm</name>
+								<name>sealFailAlarm</name>
 								<typepar>5</typepar>
 								<typetarg>BOOL</typetarg>
 								<value/>
@@ -38290,7 +38614,7 @@ END_PROGRAM
 							<param>
 								<ipa>5002</ipa>
 								<address>8962</address>
-								<name>HighFloatAlarm</name>
+								<name>highFloatAlarm</name>
 								<typepar>5</typepar>
 								<typetarg>BOOL</typetarg>
 								<value/>
@@ -38317,7 +38641,7 @@ END_PROGRAM
 							<param>
 								<ipa>5003</ipa>
 								<address>8963</address>
-								<name>VibrationAlarm</name>
+								<name>vibrationAlarm</name>
 								<typepar>5</typepar>
 								<typetarg>BOOL</typetarg>
 								<value/>
@@ -38344,7 +38668,7 @@ END_PROGRAM
 							<param>
 								<ipa>5004</ipa>
 								<address>8964</address>
-								<name>HighRtdAlarm</name>
+								<name>highRtdAlarm</name>
 								<typepar>5</typepar>
 								<typetarg>BOOL</typetarg>
 								<value/>
@@ -38368,6 +38692,249 @@ END_PROGRAM
 								<visibility>0</visibility>
 								<clientType>0</clientType>
 							</param>
+							<param>
+								<ipa>5005</ipa>
+								<address>8965</address>
+								<name>resetAlarms</name>
+								<typepar>5</typepar>
+								<typetarg>BOOL</typetarg>
+								<value/>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW110.5</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+							</param>
+							<param>
+								<ipa>5006</ipa>
+								<address>8966</address>
+								<name>silenceAlarms</name>
+								<typepar>5</typepar>
+								<typetarg>BOOL</typetarg>
+								<value/>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW110.6</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+							</param>
+							<param>
+								<ipa>5007</ipa>
+								<address>8967</address>
+								<name>bottomBearingSetpoint</name>
+								<typepar>0</typepar>
+								<typetarg>INT</typetarg>
+								<value/>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW110.7</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+							</param>
+							<param>
+								<ipa>5008</ipa>
+								<address>8968</address>
+								<name>motor1_Temp_Setpoint</name>
+								<typepar>0</typepar>
+								<typetarg>INT</typetarg>
+								<value/>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW110.8</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+							</param>
+							<param>
+								<ipa>5009</ipa>
+								<address>8969</address>
+								<name>motor2_Temp_Setpoint</name>
+								<typepar>0</typepar>
+								<typetarg>INT</typetarg>
+								<value/>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW110.9</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+							</param>
+							<param>
+								<ipa>5010</ipa>
+								<address>8970</address>
+								<name>vibration_Limit_Setpoint</name>
+								<typepar>0</typepar>
+								<typetarg>INT</typetarg>
+								<value/>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW110.10</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+							</param>
+							<param>
+								<ipa>5011</ipa>
+								<address>8971</address>
+								<name>pumpRtdAlarmTimer</name>
+								<typepar>0</typepar>
+								<typetarg>INT</typetarg>
+								<value/>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW110.11</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+							</param>
+							<param>
+								<ipa>5012</ipa>
+								<address>8972</address>
+								<name>vibrationAlarmTimer</name>
+								<typepar>0</typepar>
+								<typetarg>INT</typetarg>
+								<value/>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW110.12</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+							</param>
+							<param>
+								<ipa>5013</ipa>
+								<address>8973</address>
+								<name>motor3_Temp_Setpoint</name>
+								<typepar>0</typepar>
+								<typetarg>INT</typetarg>
+								<value/>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>1</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW110.13</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+							</param>
 						</paramsRO>
 						<enums nextID="0"/>
 						<menus/>
@@ -38376,31 +38943,31 @@ END_PROGRAM
 								<ioMapping inout="in" idx="0">
 									<name>AIL1</name>
 									<description>AIL1 analogue input</description>
-									<variable>MotorPhase1Temp</variable>
+									<variable>motor1_Temp</variable>
 									<type>INT</type>
 								</ioMapping>
 								<ioMapping inout="in" idx="1">
 									<name>AIL2</name>
 									<description>AIL2 analogue input</description>
-									<variable>MotorPhase2Temp</variable>
+									<variable>motor2_Temp</variable>
 									<type>INT</type>
 								</ioMapping>
 								<ioMapping inout="in" idx="2">
 									<name>AIL3</name>
 									<description>AIL3 analogue input</description>
-									<variable>MotorPhase3Temp</variable>
+									<variable>motor3_Temp</variable>
 									<type>INT</type>
 								</ioMapping>
 								<ioMapping inout="in" idx="3">
 									<name>AIL4</name>
 									<description>AIL4 analogue input</description>
-									<variable>BottomBearingTemp</variable>
+									<variable>bottomBearingTemp</variable>
 									<type>INT</type>
 								</ioMapping>
 								<ioMapping inout="in" idx="4">
 									<name>AIL5</name>
 									<description>AIL5 analogue input</description>
-									<variable>Vibration</variable>
+									<variable>vibration</variable>
 									<type>INT</type>
 								</ioMapping>
 								<ioMapping inout="in" idx="5">
@@ -38454,13 +39021,13 @@ END_PROGRAM
 								<ioMapping inout="in" idx="1">
 									<name>DIL2</name>
 									<description>DIL2 digital input</description>
-									<variable>SealFail</variable>
+									<variable>sealFail</variable>
 									<type>BOOL</type>
 								</ioMapping>
 								<ioMapping inout="in" idx="2">
 									<name>DIL3</name>
 									<description>DIL3 digital input</description>
-									<variable>HighFloat</variable>
+									<variable>highFloat</variable>
 									<type>BOOL</type>
 								</ioMapping>
 								<ioMapping inout="in" idx="3">
@@ -38520,7 +39087,7 @@ END_PROGRAM
 								<ioMapping inout="out" idx="0">
 									<name>DOL1</name>
 									<description>DOL1 digital output</description>
-									<variable/>
+									<variable>audibleAlarm</variable>
 									<type>BOOL</type>
 								</ioMapping>
 								<ioMapping inout="out" idx="1">
@@ -38688,15 +39255,51 @@ END_PROGRAM
 							</biosParam>
 							<biosParam>
 								<ipa>10046</ipa>
-								<defval>0</defval>
+								<defval>1</defval>
 							</biosParam>
 							<biosParam>
 								<ipa>10047</ipa>
+								<defval>6</defval>
+							</biosParam>
+							<biosParam>
+								<ipa>10004</ipa>
+								<defval>3</defval>
+							</biosParam>
+							<biosParam>
+								<ipa>10005</ipa>
+								<defval>3</defval>
+							</biosParam>
+							<biosParam>
+								<ipa>10006</ipa>
+								<defval>3</defval>
+							</biosParam>
+							<biosParam>
+								<ipa>10007</ipa>
+								<defval>3</defval>
+							</biosParam>
+							<biosParam>
+								<ipa>10008</ipa>
 								<defval>11</defval>
+							</biosParam>
+							<biosParam>
+								<ipa>10009</ipa>
+								<defval>11</defval>
+							</biosParam>
+							<biosParam>
+								<ipa>10042</ipa>
+								<defval>0</defval>
+							</biosParam>
+							<biosParam>
+								<ipa>10043</ipa>
+								<defval>502</defval>
 							</biosParam>
 						</biosParams>
 						<executionTime custom="0">20</executionTime>
-						<webmenus/>
+						<webmenus>
+							<webmenu caption="Home" title="Home Page" filename="" sitetemplate="FreeAdvance\WebSiteTemplates\Base\base.sitetempl" refresh="1000" password="" enabled="1">
+								<webmenuItems/>
+							</webmenu>
+						</webmenus>
 						<BACnetObjects>
 							<BACnetAnalogs/>
 							<BACnetBinaries/>
