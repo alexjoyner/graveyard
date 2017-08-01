@@ -1,0 +1,3 @@
+[submodule "HMI"]
+	path = HMI
+	url = https://github.com/EvansElectric/Flanders_HVL_HMI
