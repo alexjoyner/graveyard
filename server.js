@@ -14,5 +14,7 @@ server.get('/', function (req, res) {
         title: 'Hello World from the server'
     }));
 });
-server.listen(8080);
+server.listen(8080, function () {
+    console.log('App started on port 8080');
+});
 //# sourceMappingURL=server.js.map

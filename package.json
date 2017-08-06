@@ -8,9 +8,7 @@
   },
   "scripts": {
     "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --watch",
-    "prod": "webpack -p"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Alex Joyner <alex@voicir.com>",
   "license": "ISC",
@@ -19,14 +17,10 @@
     "@types/react": "^15.0.38",
     "@types/react-dom": "^15.5.1",
     "chai": "^4.1.0",
-    "loglevel": "^1.4.1",
-    "mocha": "^3.4.2",
-    "ts-node": "^3.2.1",
-    "typescript": "^2.4.2",
-    "webpack": "^3.3.0",
-    "webpack-dev-server": "^2.6.0"
+    "mocha": "^3.4.2"
   },
   "dependencies": {
+    "@types/node": "^8.0.19",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "morgan": "^1.8.2",
