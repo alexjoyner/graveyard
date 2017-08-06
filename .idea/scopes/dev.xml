@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="dev" pattern="!file[ts-boilerplate]:.idea//*&amp;&amp;!file[ts-boilerplate]:dist//*&amp;&amp;!file:package-lock.json&amp;&amp;!file:package.json&amp;&amp;!file:webpack.config.js&amp;&amp;!file:**/*.js.map&amp;&amp;!file:**/*.js" />
+</component>
