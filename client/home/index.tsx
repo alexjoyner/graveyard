@@ -1,10 +1,12 @@
 import * as React from 'react';
-import {Component} from 'react';
+import {Component, ReactElement} from 'react';
 
 export default class App extends Component {
-    render ():any{
+    render ():ReactElement<any> {
         return (
-            <div></div>
+            <div>
+                <h1>Hello World</h1>
+            </div>
         )
     }
 }
