@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = ({ body, title }) => {
-    // language=HTML
     return `
     <!DOCTYPE html>
     <html>

@@ -1,6 +1,5 @@
 
 export default ({ body, title }) => {
-    // language=HTML
     return `
     <!DOCTYPE html>
     <html>
