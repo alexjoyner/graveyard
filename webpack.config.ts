@@ -1,6 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const path = require("path");
+import * as path from "path";
+
 module.exports = {
     entry: {
         app: ["./client/clientDevTarget.js"]
@@ -11,4 +10,3 @@ module.exports = {
         filename: "bundle.js"
     }
 };
-//# sourceMappingURL=webpack.config.js.map

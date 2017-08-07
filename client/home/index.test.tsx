@@ -10,7 +10,7 @@ describe('Home Index', () => {
         component = shallow(<App/>);
     });
 
-    xit('Should contain hello world', () => {
-        expect(component).to.contain('Hello World');
+    it('Should contain hello world', () => {
+        expect(component).to.contain('Hello Worlds');
     })
 });

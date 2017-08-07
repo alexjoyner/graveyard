@@ -10,8 +10,8 @@ describe('Home Index', () => {
     beforeEach(() => {
         component = enzyme_1.shallow(React.createElement(index_1.default, null));
     });
-    xit('Should contain hello world', () => {
-        chai_1.expect(component).to.contain('Hello World');
+    it('Should contain hello world', () => {
+        chai_1.expect(component).to.contain('Hello Worlds');
     });
 });
 //# sourceMappingURL=index.test.js.map
