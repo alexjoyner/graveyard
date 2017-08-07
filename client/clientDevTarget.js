@@ -1,13 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+require("react-hot-loader/patch");
 const React = require("react");
 const react_dom_1 = require("react-dom");
 const index_1 = require("./home/index");
-react_dom_1.render(React.createElement(index_1.default, null), document.getElementById('ro-app'));
+const renderApp = Component => {
+    react_dom_1.render(React.createElement(index_1.default, null,
+        React.createElement(Component, null)), document.getElementById('ro-root'));
+};
+renderApp(index_1.default);
 if (module.hot) {
     module.hot.accept('./home/index', () => {
         const Next = require('./home/index').default;
-        react_dom_1.render(React.createElement(Next, null), document.getElementById('ro-root'));
+        renderApp(Next);
     });
 }
 //# sourceMappingURL=clientDevTarget.js.map
