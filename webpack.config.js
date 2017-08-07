@@ -11,10 +11,13 @@ module.exports = {
         filename: "bundle.js"
     },
     module: {
-        loaders: [{
+        rules: [{
                 test: /\.js$/,
-                loaders: ['react-hot-loader/webpack'],
+                use: ['react-hot-loader/webpack'],
                 include: path.join(__dirname, 'client')
+            }, {
+                test: /\.sass/,
+                use: ['style-loader', 'css-loader', 'sass-loader']
             }]
     }
 };
