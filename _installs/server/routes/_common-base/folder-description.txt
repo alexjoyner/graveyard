@@ -1,1 +1,0 @@
-this folder contains a layout that can be used to make a new route function quickly

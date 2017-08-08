@@ -1,3 +1,0 @@
-describe('RENAME_THIS', () => {
-
-});

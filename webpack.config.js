@@ -1,17 +1,24 @@
-var ENV = process.env.NODE_ENV || "dev";
-// Look in ./_config folder for webpack.dev.js
-switch (ENV) {
-  // case 'prod':
-  // case 'production':
-  //   module.exports = require('./_config/webpack-prod.js');
-  //   break;
-  // case 'test':
-  // case 'testing':
-  //   module.exports = require('./_config/webpack.test');
-  //   break;
-  case 'dev':
-  case 'development':
-  default:
-    console.log('RUNNING DEV MODE WEBPACK');
-    module.exports = require('./_config/webpack-dev.js');
-}
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const path = require("path");
+module.exports = {
+    entry: {
+        app: ["./client/clientDevTarget.js"]
+    },
+    output: {
+        path: path.resolve(__dirname, "build"),
+        publicPath: "/assets/",
+        filename: "bundle.js"
+    },
+    module: {
+        rules: [{
+                test: /\.js$/,
+                use: ['react-hot-loader/webpack'],
+                include: path.join(__dirname, 'client')
+            }, {
+                test: /\.sass/,
+                use: ['style-loader', 'css-loader', 'sass-loader']
+            }]
+    }
+};
+//# sourceMappingURL=webpack.config.js.map

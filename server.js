@@ -1,31 +1,20 @@
-import express from 'express';
-import http from 'http';
-import morgan from 'morgan';
-import bodyParser from 'body-parser';
-import path from 'path';
-import {router} from './server/routes';
-import {renderIndex} from './utils';
-import {
-	setAccessHeaderMiddleware,
-	APP_CONFIG_SETTINGS} from './server/config';
-let app = express();
-let express_http = http.Server(app);
-
-app.use(setAccessHeaderMiddleware);
-app.use(bodyParser.json());
-app.use(morgan('dev'));
-
-app.use('/', router);
-
-if (APP_CONFIG_SETTINGS.env === 'production') {
-	app.use(express.static(path.resolve(__dirname, './dist_client')));
-	app.use('/client', express.static(path.resolve(__dirname, './dist_client/client')));
-	app.get('*', renderIndex);
-}
-
-var port = (process.env.PORT || 8080);
-
-express_http.listen(port, function(err) {
-    if (err) throw err;
-    console.log('App running on port ' + port);
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express = require("express");
+const React = require("react");
+const server_1 = require("react-dom/server");
+const index_1 = require("./client/home/index");
+const template_1 = require("./server/template");
+const server = express();
+server.use('/assets', express.static('assets'));
+server.get('/', (req, res) => {
+    const appString = server_1.renderToString(React.createElement(index_1.default));
+    res.send(template_1.default({
+        body: appString,
+        title: 'Hello World from the server'
+    }));
 });
+server.listen(8080, () => {
+    console.log('App started on port 8080');
+});
+//# sourceMappingURL=server.js.map
