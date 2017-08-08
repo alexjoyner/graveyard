@@ -3,20 +3,20 @@
   <ProjectVersion>1.8.0.0</ProjectVersion>
   <ManagementLevel>FunctLevelMan8_0</ManagementLevel>
   <Name>FlandersHVL</Name>
-  <FullName>C:\Users\Admin\Documents\Flanders_HVL\SoMachine\FlandersHVL.smbp</FullName>
+  <FullName>C:\Users\Admin\Documents\GitHub_Projects\Flanders_HVL\Program\FlandersHVL.smbp</FullName>
   <SoftwareConfiguration>
     <Pous>
       <ProgramOrganizationUnits>
-        <Name>Sstem Signals</Name>
+        <Name>Sytem Signals</Name>
         <SectionNumber>1</SectionNumber>
         <Rungs>
           <RungEntity>
             <LadderElements>
               <LadderEntity>
                 <ElementType>Coil</ElementType>
-                <Descriptor>%Q0.0</Descriptor>
-                <Comment />
-                <Symbol>FAULT</Symbol>
+                <Descriptor>%Q0.3</Descriptor>
+                <Comment>System_Faulted</Comment>
+                <Symbol>RED_LIGHT</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -102,6 +102,12 @@
                 <Column>1</Column>
                 <ChosenConnection>Down, Left, Right</ChosenConnection>
               </LadderEntity>
+              <LadderEntity>
+                <ElementType>None</ElementType>
+                <Row>2</Row>
+                <Column>6</Column>
+                <ChosenConnection>None</ChosenConnection>
+              </LadderEntity>
             </LadderElements>
             <InstructionLines>
               <InstructionLineEntity>
@@ -121,11 +127,11 @@
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
-                <InstructionLine>ST %Q0.0</InstructionLine>
+                <InstructionLine>ST %Q0.3</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
             </InstructionLines>
-            <Name>FAULT</Name>
+            <Name>Red_Light</Name>
             <MainComment />
             <Label />
             <IsLadderSelected>true</IsLadderSelected>
@@ -153,7 +159,7 @@
               <LadderEntity>
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%Q0.1</Descriptor>
-                <Comment />
+                <Comment>System_On</Comment>
                 <Symbol>GREEN_LIGHT</Symbol>
                 <Row>1</Row>
                 <Column>3</Column>
@@ -168,7 +174,7 @@
               <LadderEntity>
                 <ElementType>Coil</ElementType>
                 <Descriptor>%Q0.1</Descriptor>
-                <Comment />
+                <Comment>System_On</Comment>
                 <Symbol>GREEN_LIGHT</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
@@ -219,7 +225,7 @@
               <LadderEntity>
                 <ElementType>NegatedContact</ElementType>
                 <Descriptor>%Q0.3</Descriptor>
-                <Comment />
+                <Comment>System_Faulted</Comment>
                 <Symbol>RED_LIGHT</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
@@ -262,7 +268,7 @@
               <LadderEntity>
                 <ElementType>NegatedContact</ElementType>
                 <Descriptor>%Q0.3</Descriptor>
-                <Comment />
+                <Comment>System_Faulted</Comment>
                 <Symbol>RED_LIGHT</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
@@ -271,7 +277,7 @@
               <LadderEntity>
                 <ElementType>NegatedContact</ElementType>
                 <Descriptor>%Q0.1</Descriptor>
-                <Comment />
+                <Comment>System_On</Comment>
                 <Symbol>GREEN_LIGHT</Symbol>
                 <Row>0</Row>
                 <Column>1</Column>
@@ -280,7 +286,7 @@
               <LadderEntity>
                 <ElementType>Coil</ElementType>
                 <Descriptor>%Q0.2</Descriptor>
-                <Comment />
+                <Comment>System_Idle</Comment>
                 <Symbol>YELLOW_LIGHT</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
@@ -358,98 +364,8 @@
             <LadderElements>
               <LadderEntity>
                 <ElementType>NormalContact</ElementType>
-                <Descriptor>%Q0.0</Descriptor>
-                <Comment />
-                <Symbol>FAULT</Symbol>
-                <Row>0</Row>
-                <Column>0</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Coil</ElementType>
                 <Descriptor>%Q0.3</Descriptor>
-                <Comment />
-                <Symbol>RED_LIGHT</Symbol>
-                <Row>0</Row>
-                <Column>10</Column>
-                <ChosenConnection>Left</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>9</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>8</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>7</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>6</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>5</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>4</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>3</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>2</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>1</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-            </LadderElements>
-            <InstructionLines>
-              <InstructionLineEntity>
-                <InstructionLine>LD  %Q0.0</InstructionLine>
-                <Comment />
-              </InstructionLineEntity>
-              <InstructionLineEntity>
-                <InstructionLine>ST %Q0.3</InstructionLine>
-                <Comment />
-              </InstructionLineEntity>
-            </InstructionLines>
-            <Name>Red Light</Name>
-            <MainComment />
-            <Label />
-            <IsLadderSelected>true</IsLadderSelected>
-          </RungEntity>
-          <RungEntity>
-            <LadderElements>
-              <LadderEntity>
-                <ElementType>NormalContact</ElementType>
-                <Descriptor>%Q0.3</Descriptor>
-                <Comment />
+                <Comment>System_Faulted</Comment>
                 <Symbol>RED_LIGHT</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
@@ -556,7 +472,7 @@
               <LadderEntity>
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%Q0.3</Descriptor>
-                <Comment />
+                <Comment>System_Faulted</Comment>
                 <Symbol>RED_LIGHT</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
@@ -660,10 +576,75 @@
               <LadderEntity>
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%Q0.1</Descriptor>
-                <Comment />
+                <Comment>System_On</Comment>
                 <Symbol>GREEN_LIGHT</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>NegatedContact</ElementType>
+                <Descriptor>%I0.4</Descriptor>
+                <Comment />
+                <Symbol>FILTER_AVAILABLE</Symbol>
+                <Row>0</Row>
+                <Column>1</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Descriptor />
+                <Row>0</Row>
+                <Column>2</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Descriptor />
+                <Row>0</Row>
+                <Column>3</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Descriptor />
+                <Row>0</Row>
+                <Column>4</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Descriptor />
+                <Row>0</Row>
+                <Column>5</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Descriptor />
+                <Row>0</Row>
+                <Column>6</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Descriptor />
+                <Row>0</Row>
+                <Column>7</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Descriptor />
+                <Row>0</Row>
+                <Column>8</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Descriptor />
+                <Row>0</Row>
+                <Column>9</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
               </LadderEntity>
               <LadderEntity>
@@ -675,74 +656,10 @@
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
               </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>9</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>8</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>7</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>6</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>5</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>3</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>1</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>NegatedContact</ElementType>
-                <Descriptor>%I0.4</Descriptor>
-                <Comment />
-                <Symbol>FILTER_AVAILABLE</Symbol>
-                <Row>0</Row>
-                <Column>4</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>NegatedContact</ElementType>
-                <Descriptor>%I0.5</Descriptor>
-                <Comment />
-                <Symbol>TAMPER_RET</Symbol>
-                <Row>0</Row>
-                <Column>2</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
             </LadderElements>
             <InstructionLines>
               <InstructionLineEntity>
                 <InstructionLine>LD  %Q0.1</InstructionLine>
-                <Comment />
-              </InstructionLineEntity>
-              <InstructionLineEntity>
-                <InstructionLine>ANDN %I0.5</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
@@ -776,49 +693,63 @@
                 <Comment />
                 <Symbol>VAC_CLAMP_RET</Symbol>
                 <Row>0</Row>
+                <Column>1</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Descriptor />
+                <Row>0</Row>
                 <Column>2</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
               </LadderEntity>
               <LadderEntity>
                 <ElementType>Line</ElementType>
+                <Descriptor />
                 <Row>0</Row>
-                <Column>9</Column>
+                <Column>3</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
               </LadderEntity>
               <LadderEntity>
                 <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>8</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>7</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>6</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>5</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
+                <Descriptor />
                 <Row>0</Row>
                 <Column>4</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
               </LadderEntity>
               <LadderEntity>
                 <ElementType>Line</ElementType>
+                <Descriptor />
                 <Row>0</Row>
-                <Column>1</Column>
+                <Column>5</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Descriptor />
+                <Row>0</Row>
+                <Column>6</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Descriptor />
+                <Row>0</Row>
+                <Column>7</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Descriptor />
+                <Row>0</Row>
+                <Column>8</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Descriptor />
+                <Row>0</Row>
+                <Column>9</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
               </LadderEntity>
               <LadderEntity>
@@ -829,12 +760,6 @@
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>3</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
               </LadderEntity>
             </LadderElements>
             <InstructionLines>
@@ -1152,164 +1077,7 @@
               <LadderEntity>
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%Q0.1</Descriptor>
-                <Comment />
-                <Symbol>GREEN_LIGHT</Symbol>
-                <Row>0</Row>
-                <Column>0</Column>
-                <ChosenConnection>Down, Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>NormalContact</ElementType>
-                <Descriptor>%I0.4</Descriptor>
-                <Comment />
-                <Symbol>FILTER_AVAILABLE</Symbol>
-                <Row>0</Row>
-                <Column>1</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>NormalContact</ElementType>
-                <Descriptor>%I1.3</Descriptor>
-                <Comment />
-                <Symbol>STRIP_AVAILABLE</Symbol>
-                <Row>0</Row>
-                <Column>2</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>NormalContact</ElementType>
-                <Descriptor>%I1.1</Descriptor>
-                <Comment />
-                <Symbol>TAMP_MANUAL</Symbol>
-                <Row>1</Row>
-                <Column>2</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>NormalContact</ElementType>
-                <Descriptor>%I0.7</Descriptor>
-                <Comment />
-                <Symbol>VAC_CLAMP_RET</Symbol>
-                <Row>1</Row>
-                <Column>3</Column>
-                <ChosenConnection>Up, Left</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>NegatedContact</ElementType>
-                <Descriptor>%M1</Descriptor>
-                <Comment />
-                <Symbol>RUN_STRIP_PULL</Symbol>
-                <Row>0</Row>
-                <Column>3</Column>
-                <ChosenConnection>Down, Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Coil</ElementType>
-                <Descriptor>%Q0.7</Descriptor>
-                <Comment />
-                <Symbol>TAMPER</Symbol>
-                <Row>0</Row>
-                <Column>10</Column>
-                <ChosenConnection>Left</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>9</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>8</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>7</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>6</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>5</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>4</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>1</Row>
-                <Column>1</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>VerticalLine</ElementType>
-                <Row>1</Row>
-                <Column>0</Column>
-                <ChosenConnection>Up, Right</ChosenConnection>
-              </LadderEntity>
-            </LadderElements>
-            <InstructionLines>
-              <InstructionLineEntity>
-                <InstructionLine>LD  %Q0.1</InstructionLine>
-                <Comment />
-              </InstructionLineEntity>
-              <InstructionLineEntity>
-                <InstructionLine>AND( %I0.4</InstructionLine>
-                <Comment />
-              </InstructionLineEntity>
-              <InstructionLineEntity>
-                <InstructionLine>AND %I1.3</InstructionLine>
-                <Comment />
-              </InstructionLineEntity>
-              <InstructionLineEntity>
-                <InstructionLine>ANDN %M1</InstructionLine>
-                <Comment />
-              </InstructionLineEntity>
-              <InstructionLineEntity>
-                <InstructionLine>OR( %I1.1</InstructionLine>
-                <Comment />
-              </InstructionLineEntity>
-              <InstructionLineEntity>
-                <InstructionLine>AND %I0.7</InstructionLine>
-                <Comment />
-              </InstructionLineEntity>
-              <InstructionLineEntity>
-                <InstructionLine>)</InstructionLine>
-                <Comment />
-              </InstructionLineEntity>
-              <InstructionLineEntity>
-                <InstructionLine>)</InstructionLine>
-                <Comment />
-              </InstructionLineEntity>
-              <InstructionLineEntity>
-                <InstructionLine>ST %Q0.7</InstructionLine>
-                <Comment />
-              </InstructionLineEntity>
-            </InstructionLines>
-            <Name>Tamper</Name>
-            <MainComment />
-            <Label />
-            <IsLadderSelected>true</IsLadderSelected>
-          </RungEntity>
-          <RungEntity>
-            <LadderElements>
-              <LadderEntity>
-                <ElementType>NormalContact</ElementType>
-                <Descriptor>%Q0.1</Descriptor>
-                <Comment />
+                <Comment>System_On</Comment>
                 <Symbol>GREEN_LIGHT</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
@@ -1325,19 +1093,10 @@
                 <ChosenConnection>Left, Right</ChosenConnection>
               </LadderEntity>
               <LadderEntity>
-                <ElementType>NormalContact</ElementType>
-                <Descriptor>%I0.6</Descriptor>
-                <Comment />
-                <Symbol>TAMPER_EXT</Symbol>
-                <Row>0</Row>
-                <Column>2</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
                 <ElementType>Coil</ElementType>
-                <Descriptor>%Q2.0</Descriptor>
+                <Descriptor>%Q3.0</Descriptor>
                 <Comment />
-                <Symbol>STRIP_GUIDE</Symbol>
+                <Symbol />
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -1382,6 +1141,12 @@
                 <ElementType>Line</ElementType>
                 <Row>0</Row>
                 <Column>3</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>2</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
               </LadderEntity>
             </LadderElements>
@@ -1395,11 +1160,7 @@
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
-                <InstructionLine>AND %I0.6</InstructionLine>
-                <Comment />
-              </InstructionLineEntity>
-              <InstructionLineEntity>
-                <InstructionLine>ST %Q2.0</InstructionLine>
+                <InstructionLine>ST %Q3.0</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
             </InstructionLines>
@@ -1419,7 +1180,7 @@
               <LadderEntity>
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%Q0.1</Descriptor>
-                <Comment />
+                <Comment>System_On</Comment>
                 <Symbol>GREEN_LIGHT</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
@@ -1488,12 +1249,6 @@
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
               </LadderEntity>
-              <LadderEntity>
-                <ElementType>None</ElementType>
-                <Row>1</Row>
-                <Column>0</Column>
-                <ChosenConnection>None</ChosenConnection>
-              </LadderEntity>
             </LadderElements>
             <InstructionLines>
               <InstructionLineEntity>
@@ -1547,9 +1302,9 @@
               </LadderEntity>
               <LadderEntity>
                 <ElementType>Coil</ElementType>
-                <Descriptor>%Q2.1</Descriptor>
+                <Descriptor>%Q3.1</Descriptor>
                 <Comment />
-                <Symbol>BOTTOM_STRIP_GLUE</Symbol>
+                <Symbol />
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -1610,9 +1365,9 @@
               </LadderEntity>
               <LadderEntity>
                 <ElementType>Coil</ElementType>
-                <Descriptor>%Q2.2</Descriptor>
+                <Descriptor>%Q3.2</Descriptor>
                 <Comment />
-                <Symbol>TOP_STRIP_GLUE</Symbol>
+                <Symbol />
                 <Row>1</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -1630,11 +1385,11 @@
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
-                <InstructionLine>ST %Q2.1</InstructionLine>
+                <InstructionLine>ST %Q3.1</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
-                <InstructionLine>ST %Q2.2</InstructionLine>
+                <InstructionLine>ST %Q3.2</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
             </InstructionLines>
@@ -3050,16 +2805,19 @@
             <Address>%Q0.1</Address>
             <Index>1</Index>
             <Symbol>GREEN_LIGHT</Symbol>
+            <Comment>System_On</Comment>
           </DiscretOutput>
           <DiscretOutput>
             <Address>%Q0.2</Address>
             <Index>2</Index>
             <Symbol>YELLOW_LIGHT</Symbol>
+            <Comment>System_Idle</Comment>
           </DiscretOutput>
           <DiscretOutput>
             <Address>%Q0.3</Address>
             <Index>3</Index>
             <Symbol>RED_LIGHT</Symbol>
+            <Comment>System_Faulted</Comment>
           </DiscretOutput>
           <DiscretOutput>
             <Address>%Q0.4</Address>
@@ -3403,8 +3161,8 @@
           <InputNb>0</InputNb>
           <OutputNb>0</OutputNb>
           <Kind>0</Kind>
-          <Reference>TM2DDI32DK</Reference>
-          <Consumption5V>65</Consumption5V>
+          <Reference>TM3DI16/G</Reference>
+          <Consumption5V>34</Consumption5V>
           <Consumption24V>0</Consumption24V>
           <TechnicalConfiguration>
             <PtoConfiguration>
@@ -3543,70 +3301,6 @@
               <Address>%I1.15</Address>
               <Index>15</Index>
             </DiscretInput>
-            <DiscretInput>
-              <Address>%I1.16</Address>
-              <Index>16</Index>
-            </DiscretInput>
-            <DiscretInput>
-              <Address>%I1.17</Address>
-              <Index>17</Index>
-            </DiscretInput>
-            <DiscretInput>
-              <Address>%I1.18</Address>
-              <Index>18</Index>
-            </DiscretInput>
-            <DiscretInput>
-              <Address>%I1.19</Address>
-              <Index>19</Index>
-            </DiscretInput>
-            <DiscretInput>
-              <Address>%I1.20</Address>
-              <Index>20</Index>
-            </DiscretInput>
-            <DiscretInput>
-              <Address>%I1.21</Address>
-              <Index>21</Index>
-            </DiscretInput>
-            <DiscretInput>
-              <Address>%I1.22</Address>
-              <Index>22</Index>
-            </DiscretInput>
-            <DiscretInput>
-              <Address>%I1.23</Address>
-              <Index>23</Index>
-            </DiscretInput>
-            <DiscretInput>
-              <Address>%I1.24</Address>
-              <Index>24</Index>
-            </DiscretInput>
-            <DiscretInput>
-              <Address>%I1.25</Address>
-              <Index>25</Index>
-            </DiscretInput>
-            <DiscretInput>
-              <Address>%I1.26</Address>
-              <Index>26</Index>
-            </DiscretInput>
-            <DiscretInput>
-              <Address>%I1.27</Address>
-              <Index>27</Index>
-            </DiscretInput>
-            <DiscretInput>
-              <Address>%I1.28</Address>
-              <Index>28</Index>
-            </DiscretInput>
-            <DiscretInput>
-              <Address>%I1.29</Address>
-              <Index>29</Index>
-            </DiscretInput>
-            <DiscretInput>
-              <Address>%I1.30</Address>
-              <Index>30</Index>
-            </DiscretInput>
-            <DiscretInput>
-              <Address>%I1.31</Address>
-              <Index>31</Index>
-            </DiscretInput>
           </DigitalInputs>
           <DigitalOutputs />
           <AnalogInputs />
@@ -3615,7 +3309,7 @@
           <AnalogOutputsStatus />
           <HighSpeedCounters />
           <PulseTrainOutputs />
-          <HardwareId>512</HardwareId>
+          <HardwareId>128</HardwareId>
           <IsExpander>false</IsExpander>
           <IsOptionnal>false</IsOptionnal>
         </ModuleExtensionObject>
@@ -3624,9 +3318,9 @@
           <InputNb>0</InputNb>
           <OutputNb>0</OutputNb>
           <Kind>0</Kind>
-          <Reference>TM2DDO32TK</Reference>
-          <Consumption5V>25</Consumption5V>
-          <Consumption24V>40</Consumption24V>
+          <Reference>TM3AQ4/G</Reference>
+          <Consumption5V>60</Consumption5V>
+          <Consumption24V>0</Consumption24V>
           <TechnicalConfiguration>
             <PtoConfiguration>
               <McPowerPtoMax>0</McPowerPtoMax>
@@ -3667,7 +3361,217 @@
             <MemoryWordsMax>0</MemoryWordsMax>
             <NumRelays>0</NumRelays>
             <NumRelaysMax>0</NumRelaysMax>
-            <NumTransistors>32</NumTransistors>
+            <NumTransistors>0</NumTransistors>
+            <NumTransistorsMax>0</NumTransistorsMax>
+            <PidAmountMax>0</PidAmountMax>
+            <PlcNumberSysBits>0</PlcNumberSysBits>
+            <PlcNumberSysWords>0</PlcNumberSysWords>
+            <PlcStartAddrSysBits>0</PlcStartAddrSysBits>
+            <PlcType>0</PlcType>
+            <TimersMax>0</TimersMax>
+            <AnalogInputPrecision>0</AnalogInputPrecision>
+            <AnalogOutputPrecision>0</AnalogOutputPrecision>
+            <StepCountersMax>0</StepCountersMax>
+            <CountersMax>0</CountersMax>
+            <DrumsMax>0</DrumsMax>
+            <ExternalRamSize>0</ExternalRamSize>
+            <ExternalRamSizeWithDisplay>0</ExternalRamSizeWithDisplay>
+            <ExternalRamStart>0</ExternalRamStart>
+            <InternalRamAppStart>0</InternalRamAppStart>
+            <InternalRamSize>0</InternalRamSize>
+            <InternalBitsMax>0</InternalBitsMax>
+            <InternalEepromSize>0</InternalEepromSize>
+            <ScheduleBlocksMax>0</ScheduleBlocksMax>
+            <ShiftBitRegistersMax>0</ShiftBitRegistersMax>
+            <SubroutinesMax>0</SubroutinesMax>
+            <SupportDoubleWord>false</SupportDoubleWord>
+            <SupportEvents>false</SupportEvents>
+            <SupportFloatingPoint>false</SupportFloatingPoint>
+            <NumberOf1MsTimerBase>0</NumberOf1MsTimerBase>
+          </TechnicalConfiguration>
+          <DigitalInputs />
+          <DigitalOutputs />
+          <AnalogInputs />
+          <AnalogInputsStatus />
+          <AnalogOutputs>
+            <AnalogIO>
+              <Address>%QW2.0</Address>
+              <Index>0</Index>
+              <Type>
+                <Value>15</Value>
+                <Name>Type_NotUsed</Name>
+              </Type>
+              <Scope>
+                <Value>32</Value>
+                <Name>Scope_NotUsed</Name>
+              </Scope>
+              <Minimum>0</Minimum>
+              <Maximum>0</Maximum>
+              <IsInput>false</IsInput>
+              <R>1</R>
+              <B>1</B>
+              <T>1</T>
+              <Activation>3100</Activation>
+              <Reactivation>1500</Reactivation>
+              <InputFilter>0</InputFilter>
+              <R1>8700</R1>
+              <R2>200</R2>
+              <T1>234.15</T1>
+              <T2>311.15</T2>
+              <ChartCalculation>false</ChartCalculation>
+            </AnalogIO>
+            <AnalogIO>
+              <Address>%QW2.1</Address>
+              <Index>1</Index>
+              <Type>
+                <Value>15</Value>
+                <Name>Type_NotUsed</Name>
+              </Type>
+              <Scope>
+                <Value>32</Value>
+                <Name>Scope_NotUsed</Name>
+              </Scope>
+              <Minimum>0</Minimum>
+              <Maximum>0</Maximum>
+              <IsInput>false</IsInput>
+              <R>1</R>
+              <B>1</B>
+              <T>1</T>
+              <Activation>3100</Activation>
+              <Reactivation>1500</Reactivation>
+              <InputFilter>0</InputFilter>
+              <R1>8700</R1>
+              <R2>200</R2>
+              <T1>234.15</T1>
+              <T2>311.15</T2>
+              <ChartCalculation>false</ChartCalculation>
+            </AnalogIO>
+            <AnalogIO>
+              <Address>%QW2.2</Address>
+              <Index>2</Index>
+              <Type>
+                <Value>15</Value>
+                <Name>Type_NotUsed</Name>
+              </Type>
+              <Scope>
+                <Value>32</Value>
+                <Name>Scope_NotUsed</Name>
+              </Scope>
+              <Minimum>0</Minimum>
+              <Maximum>0</Maximum>
+              <IsInput>false</IsInput>
+              <R>1</R>
+              <B>1</B>
+              <T>1</T>
+              <Activation>3100</Activation>
+              <Reactivation>1500</Reactivation>
+              <InputFilter>0</InputFilter>
+              <R1>8700</R1>
+              <R2>200</R2>
+              <T1>234.15</T1>
+              <T2>311.15</T2>
+              <ChartCalculation>false</ChartCalculation>
+            </AnalogIO>
+            <AnalogIO>
+              <Address>%QW2.3</Address>
+              <Index>3</Index>
+              <Type>
+                <Value>15</Value>
+                <Name>Type_NotUsed</Name>
+              </Type>
+              <Scope>
+                <Value>32</Value>
+                <Name>Scope_NotUsed</Name>
+              </Scope>
+              <Minimum>0</Minimum>
+              <Maximum>0</Maximum>
+              <IsInput>false</IsInput>
+              <R>1</R>
+              <B>1</B>
+              <T>1</T>
+              <Activation>3100</Activation>
+              <Reactivation>1500</Reactivation>
+              <InputFilter>0</InputFilter>
+              <R1>8700</R1>
+              <R2>200</R2>
+              <T1>234.15</T1>
+              <T2>311.15</T2>
+              <ChartCalculation>false</ChartCalculation>
+            </AnalogIO>
+          </AnalogOutputs>
+          <AnalogOutputsStatus>
+            <AnalogIoStatus>
+              <Address>%QWS2.0</Address>
+              <Index>0</Index>
+            </AnalogIoStatus>
+            <AnalogIoStatus>
+              <Address>%QWS2.1</Address>
+              <Index>1</Index>
+            </AnalogIoStatus>
+            <AnalogIoStatus>
+              <Address>%QWS2.2</Address>
+              <Index>2</Index>
+            </AnalogIoStatus>
+            <AnalogIoStatus>
+              <Address>%QWS2.3</Address>
+              <Index>3</Index>
+            </AnalogIoStatus>
+          </AnalogOutputsStatus>
+          <HighSpeedCounters />
+          <PulseTrainOutputs />
+          <HardwareId>196</HardwareId>
+          <IsExpander>false</IsExpander>
+          <IsOptionnal>false</IsOptionnal>
+        </ModuleExtensionObject>
+        <ModuleExtensionObject>
+          <Index>2</Index>
+          <InputNb>0</InputNb>
+          <OutputNb>0</OutputNb>
+          <Kind>0</Kind>
+          <Reference>TM2DDO8TT</Reference>
+          <Consumption5V>10</Consumption5V>
+          <Consumption24V>20</Consumption24V>
+          <TechnicalConfiguration>
+            <PtoConfiguration>
+              <McPowerPtoMax>0</McPowerPtoMax>
+              <McMoveVelPtoMax>0</McMoveVelPtoMax>
+              <McMoveRelPtoMax>0</McMoveRelPtoMax>
+              <McMoveAbsPtoMax>0</McMoveAbsPtoMax>
+              <McHomePtoMax>0</McHomePtoMax>
+              <McSetPosPtoMax>0</McSetPosPtoMax>
+              <McStopPtoMax>0</McStopPtoMax>
+              <McHaltPtoMax>0</McHaltPtoMax>
+              <McReadActVelPtoMax>0</McReadActVelPtoMax>
+              <McReadActPosPtoMax>0</McReadActPosPtoMax>
+              <McReadStsPtoMax>0</McReadStsPtoMax>
+              <McReadMotionStatePtoMax>0</McReadMotionStatePtoMax>
+              <McReadAxisErrorPtoMax>0</McReadAxisErrorPtoMax>
+              <McResetPtoMax>0</McResetPtoMax>
+              <McTouchProbePtoMax>0</McTouchProbePtoMax>
+              <McAbortTriggerPtoMax>0</McAbortTriggerPtoMax>
+              <McReadParPtoMax>0</McReadParPtoMax>
+              <McWriteParPtoMax>0</McWriteParPtoMax>
+              <McMotionTaskPtoMax>0</McMotionTaskPtoMax>
+            </PtoConfiguration>
+            <ComConfiguration>
+              <ReadVarBasicMax>0</ReadVarBasicMax>
+              <WriteVarBasicMax>0</WriteVarBasicMax>
+              <WriteReadVarBasicMax>0</WriteReadVarBasicMax>
+              <SendRecvMsgBasicMax>0</SendRecvMsgBasicMax>
+              <SendRecvSmsMax>0</SendRecvSmsMax>
+            </ComConfiguration>
+            <Compatibility>0</Compatibility>
+            <FastCounterMax>0</FastCounterMax>
+            <FourInputsEventTask>0</FourInputsEventTask>
+            <GrafcetBitsMax>0</GrafcetBitsMax>
+            <InternalRamStart>0</InternalRamStart>
+            <LabelsMax>0</LabelsMax>
+            <LfRegistersMax>0</LfRegistersMax>
+            <MemoryConstantWordsMax>0</MemoryConstantWordsMax>
+            <MemoryWordsMax>0</MemoryWordsMax>
+            <NumRelays>0</NumRelays>
+            <NumRelaysMax>0</NumRelaysMax>
+            <NumTransistors>8</NumTransistors>
             <NumTransistorsMax>0</NumTransistorsMax>
             <PidAmountMax>0</PidAmountMax>
             <PlcNumberSysBits>0</PlcNumberSysBits>
@@ -3698,136 +3602,36 @@
           <DigitalInputs />
           <DigitalOutputs>
             <DiscretOutput>
-              <Address>%Q2.0</Address>
+              <Address>%Q3.0</Address>
               <Index>0</Index>
-              <Symbol>STRIP_GUIDE</Symbol>
             </DiscretOutput>
             <DiscretOutput>
-              <Address>%Q2.1</Address>
+              <Address>%Q3.1</Address>
               <Index>1</Index>
-              <Symbol>BOTTOM_STRIP_GLUE</Symbol>
             </DiscretOutput>
             <DiscretOutput>
-              <Address>%Q2.2</Address>
+              <Address>%Q3.2</Address>
               <Index>2</Index>
-              <Symbol>TOP_STRIP_GLUE</Symbol>
             </DiscretOutput>
             <DiscretOutput>
-              <Address>%Q2.3</Address>
+              <Address>%Q3.3</Address>
               <Index>3</Index>
-              <Symbol>PUSH_ROLLERS</Symbol>
             </DiscretOutput>
             <DiscretOutput>
-              <Address>%Q2.4</Address>
+              <Address>%Q3.4</Address>
               <Index>4</Index>
             </DiscretOutput>
             <DiscretOutput>
-              <Address>%Q2.5</Address>
+              <Address>%Q3.5</Address>
               <Index>5</Index>
             </DiscretOutput>
             <DiscretOutput>
-              <Address>%Q2.6</Address>
+              <Address>%Q3.6</Address>
               <Index>6</Index>
             </DiscretOutput>
             <DiscretOutput>
-              <Address>%Q2.7</Address>
+              <Address>%Q3.7</Address>
               <Index>7</Index>
-            </DiscretOutput>
-            <DiscretOutput>
-              <Address>%Q2.8</Address>
-              <Index>8</Index>
-            </DiscretOutput>
-            <DiscretOutput>
-              <Address>%Q2.9</Address>
-              <Index>9</Index>
-            </DiscretOutput>
-            <DiscretOutput>
-              <Address>%Q2.10</Address>
-              <Index>10</Index>
-            </DiscretOutput>
-            <DiscretOutput>
-              <Address>%Q2.11</Address>
-              <Index>11</Index>
-            </DiscretOutput>
-            <DiscretOutput>
-              <Address>%Q2.12</Address>
-              <Index>12</Index>
-            </DiscretOutput>
-            <DiscretOutput>
-              <Address>%Q2.13</Address>
-              <Index>13</Index>
-            </DiscretOutput>
-            <DiscretOutput>
-              <Address>%Q2.14</Address>
-              <Index>14</Index>
-            </DiscretOutput>
-            <DiscretOutput>
-              <Address>%Q2.15</Address>
-              <Index>15</Index>
-            </DiscretOutput>
-            <DiscretOutput>
-              <Address>%Q2.16</Address>
-              <Index>16</Index>
-            </DiscretOutput>
-            <DiscretOutput>
-              <Address>%Q2.17</Address>
-              <Index>17</Index>
-            </DiscretOutput>
-            <DiscretOutput>
-              <Address>%Q2.18</Address>
-              <Index>18</Index>
-            </DiscretOutput>
-            <DiscretOutput>
-              <Address>%Q2.19</Address>
-              <Index>19</Index>
-            </DiscretOutput>
-            <DiscretOutput>
-              <Address>%Q2.20</Address>
-              <Index>20</Index>
-            </DiscretOutput>
-            <DiscretOutput>
-              <Address>%Q2.21</Address>
-              <Index>21</Index>
-            </DiscretOutput>
-            <DiscretOutput>
-              <Address>%Q2.22</Address>
-              <Index>22</Index>
-            </DiscretOutput>
-            <DiscretOutput>
-              <Address>%Q2.23</Address>
-              <Index>23</Index>
-            </DiscretOutput>
-            <DiscretOutput>
-              <Address>%Q2.24</Address>
-              <Index>24</Index>
-            </DiscretOutput>
-            <DiscretOutput>
-              <Address>%Q2.25</Address>
-              <Index>25</Index>
-            </DiscretOutput>
-            <DiscretOutput>
-              <Address>%Q2.26</Address>
-              <Index>26</Index>
-            </DiscretOutput>
-            <DiscretOutput>
-              <Address>%Q2.27</Address>
-              <Index>27</Index>
-            </DiscretOutput>
-            <DiscretOutput>
-              <Address>%Q2.28</Address>
-              <Index>28</Index>
-            </DiscretOutput>
-            <DiscretOutput>
-              <Address>%Q2.29</Address>
-              <Index>29</Index>
-            </DiscretOutput>
-            <DiscretOutput>
-              <Address>%Q2.30</Address>
-              <Index>30</Index>
-            </DiscretOutput>
-            <DiscretOutput>
-              <Address>%Q2.31</Address>
-              <Index>31</Index>
             </DiscretOutput>
           </DigitalOutputs>
           <AnalogInputs />
@@ -3836,7 +3640,7 @@
           <AnalogOutputsStatus />
           <HighSpeedCounters />
           <PulseTrainOutputs />
-          <HardwareId>769</HardwareId>
+          <HardwareId>5</HardwareId>
           <IsExpander>false</IsExpander>
           <IsOptionnal>false</IsOptionnal>
         </ModuleExtensionObject>
