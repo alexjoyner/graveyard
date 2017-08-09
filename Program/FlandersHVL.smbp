@@ -106,7 +106,7 @@
                 <ElementType>Coil</ElementType>
                 <Descriptor>%M6</Descriptor>
                 <Comment />
-                <Symbol>SYSTEM_FAULTED</Symbol>
+                <Symbol>MCR</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -229,7 +229,7 @@
                 <ElementType>NegatedContact</ElementType>
                 <Descriptor>%M6</Descriptor>
                 <Comment />
-                <Symbol>SYSTEM_FAULTED</Symbol>
+                <Symbol>MCR</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -272,7 +272,7 @@
                 <ElementType>NegatedContact</ElementType>
                 <Descriptor>%M6</Descriptor>
                 <Comment />
-                <Symbol>SYSTEM_FAULTED</Symbol>
+                <Symbol>MCR</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -369,7 +369,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%M6</Descriptor>
                 <Comment />
-                <Symbol>SYSTEM_FAULTED</Symbol>
+                <Symbol>MCR</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -476,7 +476,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%M6</Descriptor>
                 <Comment />
-                <Symbol>SYSTEM_FAULTED</Symbol>
+                <Symbol>MCR</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -1736,7 +1736,7 @@
       <MemoryBit>
         <Address>%M6</Address>
         <Index>6</Index>
-        <Symbol>SYSTEM_FAULTED</Symbol>
+        <Symbol>MCR</Symbol>
       </MemoryBit>
       <MemoryBit>
         <Address>%M7</Address>
@@ -3011,8 +3011,6 @@
       <AutoSaveRamOnEeprom>true</AutoSaveRamOnEeprom>
       <WatchdogPeriod>250</WatchdogPeriod>
     </CpuBehavior>
-    <InstListBufferSize>20301</InstListBufferSize>
-    <ProgramBufferSize>162390</ProgramBufferSize>
     <TraceTimeBase>Time5Sec</TraceTimeBase>
   </SoftwareConfiguration>
   <HardwareConfiguration>
