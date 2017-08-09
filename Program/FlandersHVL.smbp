@@ -13,89 +13,24 @@
           <RungEntity>
             <LadderElements>
               <LadderEntity>
-                <ElementType>Coil</ElementType>
-                <Descriptor>%Q0.3</Descriptor>
-                <Comment>System_Faulted</Comment>
-                <Symbol>RED_LIGHT</Symbol>
-                <Row>0</Row>
-                <Column>10</Column>
-                <ChosenConnection>Left</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
                 <ElementType>NegatedContact</ElementType>
-                <Descriptor>%I0.1</Descriptor>
+                <Descriptor>%M0</Descriptor>
                 <Comment />
-                <Symbol>SYS_RESET</Symbol>
+                <Symbol>RESET</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Down, Left, Right</ChosenConnection>
               </LadderEntity>
               <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>2</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>3</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>4</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>5</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>6</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>7</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>8</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Row>0</Row>
-                <Column>9</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
-                <ElementType>NormalContact</ElementType>
-                <Descriptor>%Q0.0</Descriptor>
-                <Comment />
-                <Symbol>FAULT</Symbol>
-                <Row>1</Row>
-                <Column>1</Column>
-                <ChosenConnection>Up, Left</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
                 <ElementType>VerticalLine</ElementType>
+                <Descriptor />
                 <Row>1</Row>
                 <Column>0</Column>
                 <ChosenConnection>Up, Right</ChosenConnection>
               </LadderEntity>
               <LadderEntity>
                 <ElementType>NormalContact</ElementType>
-                <Descriptor>%I0.3</Descriptor>
+                <Descriptor>%I0.9</Descriptor>
                 <Comment />
                 <Symbol>SAFETY</Symbol>
                 <Row>0</Row>
@@ -103,19 +38,87 @@
                 <ChosenConnection>Down, Left, Right</ChosenConnection>
               </LadderEntity>
               <LadderEntity>
-                <ElementType>None</ElementType>
-                <Row>2</Row>
+                <ElementType>NormalContact</ElementType>
+                <Descriptor>%Q0.0</Descriptor>
+                <Comment />
+                <Symbol>VAC_A</Symbol>
+                <Row>1</Row>
+                <Column>1</Column>
+                <ChosenConnection>Up, Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Descriptor />
+                <Row>0</Row>
+                <Column>2</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Descriptor />
+                <Row>0</Row>
+                <Column>3</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Descriptor />
+                <Row>0</Row>
+                <Column>4</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Descriptor />
+                <Row>0</Row>
+                <Column>5</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Descriptor />
+                <Row>0</Row>
                 <Column>6</Column>
-                <ChosenConnection>None</ChosenConnection>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Descriptor />
+                <Row>0</Row>
+                <Column>7</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Descriptor />
+                <Row>0</Row>
+                <Column>8</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Descriptor />
+                <Row>0</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Coil</ElementType>
+                <Descriptor>%M6</Descriptor>
+                <Comment />
+                <Symbol>SYSTEM_FAULTED</Symbol>
+                <Row>0</Row>
+                <Column>10</Column>
+                <ChosenConnection>Left</ChosenConnection>
               </LadderEntity>
             </LadderElements>
             <InstructionLines>
               <InstructionLineEntity>
-                <InstructionLine>LDN %I0.1</InstructionLine>
+                <InstructionLine>LDN %M0</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
-                <InstructionLine>AND( %I0.3</InstructionLine>
+                <InstructionLine>AND( %I0.9</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
@@ -127,7 +130,7 @@
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
-                <InstructionLine>ST %Q0.3</InstructionLine>
+                <InstructionLine>ST %M6</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
             </InstructionLines>
@@ -140,27 +143,27 @@
             <LadderElements>
               <LadderEntity>
                 <ElementType>NegatedContact</ElementType>
-                <Descriptor>%I0.2</Descriptor>
+                <Descriptor>%I0.10</Descriptor>
                 <Comment />
-                <Symbol>SYS_STOP</Symbol>
+                <Symbol>HARD_STOP</Symbol>
                 <Row>0</Row>
                 <Column>1</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
               </LadderEntity>
               <LadderEntity>
                 <ElementType>NormalContact</ElementType>
-                <Descriptor>%I0.0</Descriptor>
+                <Descriptor>%M8</Descriptor>
                 <Comment />
-                <Symbol>SYS_START</Symbol>
+                <Symbol>SYSTEM_START</Symbol>
                 <Row>0</Row>
                 <Column>3</Column>
                 <ChosenConnection>Down, Left, Right</ChosenConnection>
               </LadderEntity>
               <LadderEntity>
                 <ElementType>NormalContact</ElementType>
-                <Descriptor>%Q0.1</Descriptor>
-                <Comment>System_On</Comment>
-                <Symbol>GREEN_LIGHT</Symbol>
+                <Descriptor>%M5</Descriptor>
+                <Comment />
+                <Symbol>SYSTEM_ON</Symbol>
                 <Row>1</Row>
                 <Column>3</Column>
                 <ChosenConnection>Up, Left</ChosenConnection>
@@ -173,9 +176,9 @@
               </LadderEntity>
               <LadderEntity>
                 <ElementType>Coil</ElementType>
-                <Descriptor>%Q0.1</Descriptor>
-                <Comment>System_On</Comment>
-                <Symbol>GREEN_LIGHT</Symbol>
+                <Descriptor>%M5</Descriptor>
+                <Comment />
+                <Symbol>SYSTEM_ON</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -224,9 +227,9 @@
               </LadderEntity>
               <LadderEntity>
                 <ElementType>NegatedContact</ElementType>
-                <Descriptor>%Q0.3</Descriptor>
-                <Comment>System_Faulted</Comment>
-                <Symbol>RED_LIGHT</Symbol>
+                <Descriptor>%M6</Descriptor>
+                <Comment />
+                <Symbol>SYSTEM_FAULTED</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -234,19 +237,19 @@
             </LadderElements>
             <InstructionLines>
               <InstructionLineEntity>
-                <InstructionLine>LDN %Q0.3</InstructionLine>
+                <InstructionLine>LDN %M6</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
-                <InstructionLine>ANDN %I0.2</InstructionLine>
+                <InstructionLine>ANDN %I0.10</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
-                <InstructionLine>AND( %I0.0</InstructionLine>
+                <InstructionLine>AND( %M8</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
-                <InstructionLine>OR %Q0.1</InstructionLine>
+                <InstructionLine>OR %M5</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
@@ -254,7 +257,7 @@
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
-                <InstructionLine>ST %Q0.1</InstructionLine>
+                <InstructionLine>ST %M5</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
             </InstructionLines>
@@ -267,27 +270,27 @@
             <LadderElements>
               <LadderEntity>
                 <ElementType>NegatedContact</ElementType>
-                <Descriptor>%Q0.3</Descriptor>
-                <Comment>System_Faulted</Comment>
-                <Symbol>RED_LIGHT</Symbol>
+                <Descriptor>%M6</Descriptor>
+                <Comment />
+                <Symbol>SYSTEM_FAULTED</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
               </LadderEntity>
               <LadderEntity>
                 <ElementType>NegatedContact</ElementType>
-                <Descriptor>%Q0.1</Descriptor>
-                <Comment>System_On</Comment>
-                <Symbol>GREEN_LIGHT</Symbol>
+                <Descriptor>%M5</Descriptor>
+                <Comment />
+                <Symbol>SYSTEM_ON</Symbol>
                 <Row>0</Row>
                 <Column>1</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
               </LadderEntity>
               <LadderEntity>
                 <ElementType>Coil</ElementType>
-                <Descriptor>%Q0.2</Descriptor>
-                <Comment>System_Idle</Comment>
-                <Symbol>YELLOW_LIGHT</Symbol>
+                <Descriptor>%M7</Descriptor>
+                <Comment />
+                <Symbol>SYSTEM_IDLE</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -343,15 +346,15 @@
             </LadderElements>
             <InstructionLines>
               <InstructionLineEntity>
-                <InstructionLine>LDN %Q0.3</InstructionLine>
+                <InstructionLine>LDN %M6</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
-                <InstructionLine>ANDN %Q0.1</InstructionLine>
+                <InstructionLine>ANDN %M5</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
-                <InstructionLine>ST %Q0.2</InstructionLine>
+                <InstructionLine>ST %M7</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
             </InstructionLines>
@@ -364,9 +367,9 @@
             <LadderElements>
               <LadderEntity>
                 <ElementType>NormalContact</ElementType>
-                <Descriptor>%Q0.3</Descriptor>
-                <Comment>System_Faulted</Comment>
-                <Symbol>RED_LIGHT</Symbol>
+                <Descriptor>%M6</Descriptor>
+                <Comment />
+                <Symbol>SYSTEM_FAULTED</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -418,9 +421,9 @@
               </LadderEntity>
               <LadderEntity>
                 <ElementType>Coil</ElementType>
-                <Descriptor>%M0</Descriptor>
+                <Descriptor>%M9</Descriptor>
                 <Comment />
-                <Symbol>STOP_ALARM</Symbol>
+                <Symbol>PHYSICAL_ALARM_TIMEOUT</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -438,7 +441,7 @@
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
-                <InstructionLine>LD  %Q0.3</InstructionLine>
+                <InstructionLine>LD  %M6</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
@@ -454,7 +457,7 @@
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
-                <InstructionLine>ST %M0</InstructionLine>
+                <InstructionLine>ST %M9</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
@@ -471,27 +474,27 @@
             <LadderElements>
               <LadderEntity>
                 <ElementType>NormalContact</ElementType>
-                <Descriptor>%Q0.3</Descriptor>
-                <Comment>System_Faulted</Comment>
-                <Symbol>RED_LIGHT</Symbol>
+                <Descriptor>%M6</Descriptor>
+                <Comment />
+                <Symbol>SYSTEM_FAULTED</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
               </LadderEntity>
               <LadderEntity>
                 <ElementType>NegatedContact</ElementType>
-                <Descriptor>%M0</Descriptor>
+                <Descriptor>%M9</Descriptor>
                 <Comment />
-                <Symbol>STOP_ALARM</Symbol>
+                <Symbol>PHYSICAL_ALARM_TIMEOUT</Symbol>
                 <Row>0</Row>
                 <Column>1</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
               </LadderEntity>
               <LadderEntity>
                 <ElementType>Coil</ElementType>
-                <Descriptor>%Q0.4</Descriptor>
+                <Descriptor>%Q3.0</Descriptor>
                 <Comment />
-                <Symbol>ALARM</Symbol>
+                <Symbol>PHYSICAL_ALARM</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -547,15 +550,15 @@
             </LadderElements>
             <InstructionLines>
               <InstructionLineEntity>
-                <InstructionLine>LD  %Q0.3</InstructionLine>
+                <InstructionLine>LD  %M6</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
-                <InstructionLine>ANDN %M0</InstructionLine>
+                <InstructionLine>ANDN %M9</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
-                <InstructionLine>ST %Q0.4</InstructionLine>
+                <InstructionLine>ST %Q3.0</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
             </InstructionLines>
@@ -576,8 +579,8 @@
               <LadderEntity>
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%Q0.1</Descriptor>
-                <Comment>System_On</Comment>
-                <Symbol>GREEN_LIGHT</Symbol>
+                <Comment />
+                <Symbol>STRIP_A</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -586,7 +589,7 @@
                 <ElementType>NegatedContact</ElementType>
                 <Descriptor>%I0.4</Descriptor>
                 <Comment />
-                <Symbol>FILTER_AVAILABLE</Symbol>
+                <Symbol>VAC_CYL_B_OUT</Symbol>
                 <Row>0</Row>
                 <Column>1</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -651,7 +654,7 @@
                 <ElementType>Coil</ElementType>
                 <Descriptor>%M1</Descriptor>
                 <Comment />
-                <Symbol>RUN_STRIP_PULL</Symbol>
+                <Symbol>RUN_STRIP_PULL_CYCLE</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -682,7 +685,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%M1</Descriptor>
                 <Comment />
-                <Symbol>RUN_STRIP_PULL</Symbol>
+                <Symbol>RUN_STRIP_PULL_CYCLE</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -691,7 +694,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%I0.7</Descriptor>
                 <Comment />
-                <Symbol>VAC_CLAMP_RET</Symbol>
+                <Symbol>STRIP_DETECT_A</Symbol>
                 <Row>0</Row>
                 <Column>1</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -787,7 +790,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%M1</Descriptor>
                 <Comment />
-                <Symbol>RUN_STRIP_PULL</Symbol>
+                <Symbol>RUN_STRIP_PULL_CYCLE</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -853,7 +856,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%I1.0</Descriptor>
                 <Comment />
-                <Symbol>VAC_CLAMP_EXT</Symbol>
+                <Symbol />
                 <Row>0</Row>
                 <Column>2</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -884,7 +887,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%M1</Descriptor>
                 <Comment />
-                <Symbol>RUN_STRIP_PULL</Symbol>
+                <Symbol>RUN_STRIP_PULL_CYCLE</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -902,7 +905,7 @@
                 <ElementType>Coil</ElementType>
                 <Descriptor>%Q0.5</Descriptor>
                 <Comment />
-                <Symbol>VAC_CLAMP</Symbol>
+                <Symbol>PIN_B</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -981,7 +984,7 @@
                 <ElementType>Coil</ElementType>
                 <Descriptor>%Q0.6</Descriptor>
                 <Comment />
-                <Symbol>VACUUM</Symbol>
+                <Symbol>GLUE_HEAD_A_TOP</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -1038,7 +1041,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%M1</Descriptor>
                 <Comment />
-                <Symbol>RUN_STRIP_PULL</Symbol>
+                <Symbol>RUN_STRIP_PULL_CYCLE</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -1047,7 +1050,7 @@
                 <ElementType>NegatedContact</ElementType>
                 <Descriptor>%I1.0</Descriptor>
                 <Comment />
-                <Symbol>VAC_CLAMP_EXT</Symbol>
+                <Symbol />
                 <Row>0</Row>
                 <Column>2</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -1077,8 +1080,8 @@
               <LadderEntity>
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%Q0.1</Descriptor>
-                <Comment>System_On</Comment>
-                <Symbol>GREEN_LIGHT</Symbol>
+                <Comment />
+                <Symbol>STRIP_A</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -1087,7 +1090,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%I0.4</Descriptor>
                 <Comment />
-                <Symbol>FILTER_AVAILABLE</Symbol>
+                <Symbol>VAC_CYL_B_OUT</Symbol>
                 <Row>0</Row>
                 <Column>1</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -1096,7 +1099,7 @@
                 <ElementType>Coil</ElementType>
                 <Descriptor>%Q3.0</Descriptor>
                 <Comment />
-                <Symbol />
+                <Symbol>PHYSICAL_ALARM</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -1180,8 +1183,8 @@
               <LadderEntity>
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%Q0.1</Descriptor>
-                <Comment>System_On</Comment>
-                <Symbol>GREEN_LIGHT</Symbol>
+                <Comment />
+                <Symbol>STRIP_A</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -1190,7 +1193,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%I1.2</Descriptor>
                 <Comment />
-                <Symbol>GLUE_EYE</Symbol>
+                <Symbol />
                 <Row>0</Row>
                 <Column>1</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -1400,6 +1403,282 @@
           </RungEntity>
         </Rungs>
       </ProgramOrganizationUnits>
+      <ProgramOrganizationUnits>
+        <Name>Test</Name>
+        <SectionNumber>4</SectionNumber>
+        <Rungs>
+          <RungEntity>
+            <LadderElements>
+              <LadderEntity>
+                <ElementType>Coil</ElementType>
+                <Descriptor>%Q3.3</Descriptor>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>10</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>8</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>7</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>6</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>5</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>4</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>3</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>2</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>1</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>NormalContact</ElementType>
+                <Descriptor>%I0.0</Descriptor>
+                <Comment />
+                <Symbol>SPEED_DETECT</Symbol>
+                <Row>0</Row>
+                <Column>0</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+            </LadderElements>
+            <InstructionLines>
+              <InstructionLineEntity>
+                <InstructionLine>LD  %I0.0</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ST %Q3.3</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+            </InstructionLines>
+            <Name />
+            <MainComment />
+            <Label />
+            <IsLadderSelected>true</IsLadderSelected>
+          </RungEntity>
+          <RungEntity>
+            <LadderElements>
+              <LadderEntity>
+                <ElementType>NormalContact</ElementType>
+                <Descriptor>%M0</Descriptor>
+                <Comment />
+                <Symbol>RESET</Symbol>
+                <Row>0</Row>
+                <Column>0</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Coil</ElementType>
+                <Descriptor>%Q3.4</Descriptor>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>10</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>8</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>7</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>6</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>5</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>4</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>3</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>2</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>1</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+            </LadderElements>
+            <InstructionLines>
+              <InstructionLineEntity>
+                <InstructionLine>LD  %M0</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ST %Q3.4</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+            </InstructionLines>
+            <Name />
+            <MainComment />
+            <Label />
+            <IsLadderSelected>true</IsLadderSelected>
+          </RungEntity>
+          <RungEntity>
+            <LadderElements>
+              <LadderEntity>
+                <ElementType>NormalContact</ElementType>
+                <Descriptor>%M1</Descriptor>
+                <Comment />
+                <Symbol>RUN_STRIP_PULL_CYCLE</Symbol>
+                <Row>0</Row>
+                <Column>0</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Coil</ElementType>
+                <Descriptor>%Q3.5</Descriptor>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>10</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>8</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>7</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>6</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>5</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>4</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>3</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>2</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>1</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+            </LadderElements>
+            <InstructionLines>
+              <InstructionLineEntity>
+                <InstructionLine>LD  %M1</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ST %Q3.5</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+            </InstructionLines>
+            <Name />
+            <MainComment />
+            <Label />
+            <IsLadderSelected>true</IsLadderSelected>
+          </RungEntity>
+        </Rungs>
+      </ProgramOrganizationUnits>
     </Pous>
     <Subroutines />
     <WatchLists />
@@ -1427,12 +1706,12 @@
       <MemoryBit>
         <Address>%M0</Address>
         <Index>0</Index>
-        <Symbol>STOP_ALARM</Symbol>
+        <Symbol>RESET</Symbol>
       </MemoryBit>
       <MemoryBit>
         <Address>%M1</Address>
         <Index>1</Index>
-        <Symbol>RUN_STRIP_PULL</Symbol>
+        <Symbol>RUN_STRIP_PULL_CYCLE</Symbol>
       </MemoryBit>
       <MemoryBit>
         <Address>%M2</Address>
@@ -1443,6 +1722,36 @@
         <Address>%M3</Address>
         <Index>3</Index>
         <Symbol>GLUE_TIMER_DN</Symbol>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M4</Address>
+        <Index>4</Index>
+        <Symbol>RUN_GLUE_CYCLE</Symbol>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M5</Address>
+        <Index>5</Index>
+        <Symbol>SYSTEM_ON</Symbol>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M6</Address>
+        <Index>6</Index>
+        <Symbol>SYSTEM_FAULTED</Symbol>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M7</Address>
+        <Index>7</Index>
+        <Symbol>SYSTEM_IDLE</Symbol>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M8</Address>
+        <Index>8</Index>
+        <Symbol>SYSTEM_START</Symbol>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M9</Address>
+        <Index>9</Index>
+        <Symbol>PHYSICAL_ALARM_TIMEOUT</Symbol>
       </MemoryBit>
     </MemoryBits>
     <SystemBits>
@@ -1481,6 +1790,12 @@
         <Index>7</Index>
         <Symbol>SB_TB1MIN</Symbol>
         <Comment>Time base of 1 min generated by an internal clock</Comment>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%S9</Address>
+        <Index>9</Index>
+        <Symbol>SB_FALLBACKOUTPUT</Symbol>
+        <Comment>Set to 1 to apply fallbacks on digital and analog outputs</Comment>
       </MemoryBit>
       <MemoryBit>
         <Address>%S10</Address>
@@ -1654,7 +1969,7 @@
         <Address>%S93</Address>
         <Index>93</Index>
         <Symbol>SB_MWBACKUP</Symbol>
-        <Comment>User set this bit to 1 to store the %MW variable in the flash (up to 1000)</Comment>
+        <Comment>User set this bit to 1 to store the %MW variable in the flash (up to 2000)</Comment>
       </MemoryBit>
       <MemoryBit>
         <Address>%S94</Address>
@@ -1693,6 +2008,42 @@
         <Comment>Set to 1, this bit allows to initialize the modem, see also %SW167</Comment>
       </MemoryBit>
       <MemoryBit>
+        <Address>%S106</Address>
+        <Index>106</Index>
+        <Symbol>SB_IOBUSERRPASSIVE</Symbol>
+        <Comment>Default value is 0. Set to 1 changes the IO bus behavior by managing IO module exchanges even with a permanent error</Comment>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%S107</Address>
+        <Index>107</Index>
+        <Symbol>SB_IOBUSRESTART</Symbol>
+        <Comment>The rising edge on this bit allows to reconfigure and restart the IO bus</Comment>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%S110</Address>
+        <Index>110</Index>
+        <Symbol>SB_IOSCAN1RESET</Symbol>
+        <Comment>Set to 1 to reset the IOScanner on Serial Line 1</Comment>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%S111</Address>
+        <Index>111</Index>
+        <Symbol>SB_IOSCAN2RESET</Symbol>
+        <Comment>Set to 1 to reset the IOScanner on Serial Line 2</Comment>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%S113</Address>
+        <Index>113</Index>
+        <Symbol>SB_IOSCAN1SUSPEND</Symbol>
+        <Comment>Set to 1 to suspend the IOScanner on Serial Line 1</Comment>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%S114</Address>
+        <Index>114</Index>
+        <Symbol>SB_IOSCAN2SUSPEND</Symbol>
+        <Comment>Set to 1 to suspend the IOScanner on Serial Line 2</Comment>
+      </MemoryBit>
+      <MemoryBit>
         <Address>%S119</Address>
         <Index>119</Index>
         <Symbol>SB_IOERROR</Symbol>
@@ -1722,7 +2073,7 @@
         <Address>%SW1</Address>
         <Index>1</Index>
         <Symbol>SW_PERTASK</Symbol>
-        <Comment>Modifies the cycle time [2...255 ms] of the Periodic task</Comment>
+        <Comment>Modifies the cycle time of the Periodic task</Comment>
       </MemoryWord>
       <MemoryWord>
         <Address>%SW6</Address>
@@ -1764,7 +2115,7 @@
         <Address>%SW16</Address>
         <Index>16</Index>
         <Symbol>SW_FW2VERSION</Symbol>
-        <Comment>Contains the Firmware version of the controller (2° word)</Comment>
+        <Comment>Contains the Firmware version of the controller (2nd word)</Comment>
       </MemoryWord>
       <MemoryWord>
         <Address>%SW17</Address>
@@ -1782,7 +2133,7 @@
         <Address>%SW19</Address>
         <Index>19</Index>
         <Symbol>SW_TM2COUNTER</Symbol>
-        <Comment>Contains the absolute timer counter (2° word)</Comment>
+        <Comment>Contains the absolute timer counter (2nd word)</Comment>
       </MemoryWord>
       <MemoryWord>
         <Address>%SW30</Address>
@@ -1806,37 +2157,37 @@
         <Address>%SW33</Address>
         <Index>33</Index>
         <Symbol>SW_IP1ADDRESS</Symbol>
-        <Comment>For IP address AA.BB.CC.DD: %SW33 = CC.DD and %SW34 = AA.BB (1st word)</Comment>
+        <Comment>Contains 2nd part CC.DD of IP address AA.BB.CC.DD</Comment>
       </MemoryWord>
       <MemoryWord>
         <Address>%SW34</Address>
         <Index>34</Index>
         <Symbol>SW_IP2ADDRESS</Symbol>
-        <Comment>For IP address AA.BB.CC.DD: %SW33 = CC.DD and %SW34 = AA.BB (2° word)</Comment>
+        <Comment>Contains 1st part AA.BB of IP address AA.BB.CC.DD</Comment>
       </MemoryWord>
       <MemoryWord>
         <Address>%SW35</Address>
         <Index>35</Index>
         <Symbol>SW_SUBNET1</Symbol>
-        <Comment>For Sub-network mask AA.BB.CC.DD: %SW35 = CC.DD and %SW36 = AA.BB (1st word)</Comment>
+        <Comment>Contains 2nd part CC.DD of sub-network mask AA.BB.CC.DD</Comment>
       </MemoryWord>
       <MemoryWord>
         <Address>%SW36</Address>
         <Index>36</Index>
         <Symbol>SW_SUBNET2</Symbol>
-        <Comment>For Sub-network mask AA.BB.CC.DD: %SW35 = CC.DD and %SW36 = AA.BB (2° word)</Comment>
+        <Comment>Contains 1st part AA.BB of sub-network mask AA.BB.CC.DD</Comment>
       </MemoryWord>
       <MemoryWord>
         <Address>%SW37</Address>
         <Index>37</Index>
         <Symbol>SW_GATEWAY1</Symbol>
-        <Comment>For Gateway address AA.BB.CC.DD: %SW37 = CC.DD and %SW38 = AA.BB (1st word)</Comment>
+        <Comment>Contains 2nd part CC.DD of Gateway address AA.BB.CC.DD</Comment>
       </MemoryWord>
       <MemoryWord>
         <Address>%SW38</Address>
         <Index>38</Index>
         <Symbol>SW_GATEWAY2</Symbol>
-        <Comment>For Gateway address AA.BB.CC.DD: %SW37 = CC.DD and %SW38 = AA.BB (2° word)</Comment>
+        <Comment>Contains 1st part AA.BB of Gateway address AA.BB.CC.DD</Comment>
       </MemoryWord>
       <MemoryWord>
         <Address>%SW39</Address>
@@ -2124,19 +2475,19 @@
         <Address>%SW107</Address>
         <Index>107</Index>
         <Symbol>SW_MACAD1</Symbol>
-        <Comment>For MAC address AA:BB:CC:DD:EE:FF %SW107 = AA:BB (1st word)</Comment>
+        <Comment>Contains 1st part AA.BB of MAC address AA:BB:CC:DD:EE:FF</Comment>
       </MemoryWord>
       <MemoryWord>
         <Address>%SW108</Address>
         <Index>108</Index>
         <Symbol>SW_MACAD2</Symbol>
-        <Comment>For MAC address AA:BB:CC:DD:EE:FF %SW108 = CC:DD (2° word)</Comment>
+        <Comment>Contains 2nd part CC.DD of MAC address AA:BB:CC:DD:EE:FF</Comment>
       </MemoryWord>
       <MemoryWord>
         <Address>%SW109</Address>
         <Index>109</Index>
         <Symbol>SW_MACAD3</Symbol>
-        <Comment>For MAC address AA:BB:CC:DD:EE:FF %SW108 = EE:FF (3° word)</Comment>
+        <Comment>Contains 3rd part EE.FF of MAC address AA:BB:CC:DD:EE:FF</Comment>
       </MemoryWord>
       <MemoryWord>
         <Address>%SW114</Address>
@@ -2250,7 +2601,7 @@
         <Address>%SW148</Address>
         <Index>148</Index>
         <Symbol>SW_NBPERS</Symbol>
-        <Comment>Number of persistent variables (maximum 1,000)</Comment>
+        <Comment>Number of persistent variables (maximum 2000)</Comment>
       </MemoryWord>
       <MemoryWord>
         <Address>%SW149</Address>
@@ -2588,6 +2939,18 @@
         <Symbol>SW_IPFLAGIDLE</Symbol>
         <Comment>Reads the Ethernet IP flag from last I/O packet: Idle (value=0), Run (value=1), Error (value=2)</Comment>
       </MemoryWord>
+      <MemoryWord>
+        <Address>%SW210</Address>
+        <Index>210</Index>
+        <Symbol>SW_IOSCAN1STATUS</Symbol>
+        <Comment>Contains the IOScanner status of Serial Line 1</Comment>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%SW211</Address>
+        <Index>211</Index>
+        <Symbol>SW_IOSCAN2STATUS</Symbol>
+        <Comment>Contains the IOScanner status of Serial Line 2</Comment>
+      </MemoryWord>
     </SystemWords>
     <GrafcetSteps />
     <MemoryWords />
@@ -2648,6 +3011,8 @@
       <AutoSaveRamOnEeprom>true</AutoSaveRamOnEeprom>
       <WatchdogPeriod>250</WatchdogPeriod>
     </CpuBehavior>
+    <InstListBufferSize>20301</InstListBufferSize>
+    <ProgramBufferSize>162390</ProgramBufferSize>
     <TraceTimeBase>Time5Sec</TraceTimeBase>
   </SoftwareConfiguration>
   <HardwareConfiguration>
@@ -2733,54 +3098,57 @@
           <DiscretInput>
             <Address>%I0.0</Address>
             <Index>0</Index>
-            <Symbol>SYS_START</Symbol>
+            <Symbol>SPEED_DETECT</Symbol>
           </DiscretInput>
           <DiscretInput>
             <Address>%I0.1</Address>
             <Index>1</Index>
-            <Symbol>SYS_RESET</Symbol>
+            <Symbol>FLIGHT_DETECT</Symbol>
           </DiscretInput>
           <DiscretInput>
             <Address>%I0.2</Address>
             <Index>2</Index>
-            <Symbol>SYS_STOP</Symbol>
+            <Symbol>VAC_CYL_A_OUT</Symbol>
           </DiscretInput>
           <DiscretInput>
             <Address>%I0.3</Address>
             <Index>3</Index>
-            <Symbol>SAFETY</Symbol>
+            <Symbol>VAC_CYL_A_IN</Symbol>
           </DiscretInput>
           <DiscretInput>
             <Address>%I0.4</Address>
             <Index>4</Index>
-            <Symbol>FILTER_AVAILABLE</Symbol>
+            <Symbol>VAC_CYL_B_OUT</Symbol>
           </DiscretInput>
           <DiscretInput>
             <Address>%I0.5</Address>
             <Index>5</Index>
-            <Symbol>TAMPER_RET</Symbol>
+            <Symbol>VAC_CYL_B_IN</Symbol>
           </DiscretInput>
           <DiscretInput>
             <Address>%I0.6</Address>
             <Index>6</Index>
-            <Symbol>TAMPER_EXT</Symbol>
+            <Symbol>MEDIA_DETECT</Symbol>
           </DiscretInput>
           <DiscretInput>
             <Address>%I0.7</Address>
             <Index>7</Index>
-            <Symbol>VAC_CLAMP_RET</Symbol>
+            <Symbol>STRIP_DETECT_A</Symbol>
           </DiscretInput>
           <DiscretInput>
             <Address>%I0.8</Address>
             <Index>8</Index>
+            <Symbol>STRIP_DETECT_B</Symbol>
           </DiscretInput>
           <DiscretInput>
             <Address>%I0.9</Address>
             <Index>9</Index>
+            <Symbol>SAFETY</Symbol>
           </DiscretInput>
           <DiscretInput>
             <Address>%I0.10</Address>
             <Index>10</Index>
+            <Symbol>HARD_STOP</Symbol>
           </DiscretInput>
           <DiscretInput>
             <Address>%I0.11</Address>
@@ -2799,53 +3167,52 @@
           <DiscretOutput>
             <Address>%Q0.0</Address>
             <Index>0</Index>
-            <Symbol>FAULT</Symbol>
+            <Symbol>VAC_A</Symbol>
           </DiscretOutput>
           <DiscretOutput>
             <Address>%Q0.1</Address>
             <Index>1</Index>
-            <Symbol>GREEN_LIGHT</Symbol>
-            <Comment>System_On</Comment>
+            <Symbol>STRIP_A</Symbol>
           </DiscretOutput>
           <DiscretOutput>
             <Address>%Q0.2</Address>
             <Index>2</Index>
-            <Symbol>YELLOW_LIGHT</Symbol>
-            <Comment>System_Idle</Comment>
+            <Symbol>VAC_B</Symbol>
           </DiscretOutput>
           <DiscretOutput>
             <Address>%Q0.3</Address>
             <Index>3</Index>
-            <Symbol>RED_LIGHT</Symbol>
-            <Comment>System_Faulted</Comment>
+            <Symbol>STRIP_B</Symbol>
           </DiscretOutput>
           <DiscretOutput>
             <Address>%Q0.4</Address>
             <Index>4</Index>
-            <Symbol>ALARM</Symbol>
+            <Symbol>PIN_A</Symbol>
           </DiscretOutput>
           <DiscretOutput>
             <Address>%Q0.5</Address>
             <Index>5</Index>
-            <Symbol>VAC_CLAMP</Symbol>
+            <Symbol>PIN_B</Symbol>
           </DiscretOutput>
           <DiscretOutput>
             <Address>%Q0.6</Address>
             <Index>6</Index>
-            <Symbol>VACUUM</Symbol>
+            <Symbol>GLUE_HEAD_A_TOP</Symbol>
           </DiscretOutput>
           <DiscretOutput>
             <Address>%Q0.7</Address>
             <Index>7</Index>
-            <Symbol>TAMPER</Symbol>
+            <Symbol>GLUE_HEAD_A_BOT</Symbol>
           </DiscretOutput>
           <DiscretOutput>
             <Address>%Q0.8</Address>
             <Index>8</Index>
+            <Symbol>GLUE_HEAD_B_TOP</Symbol>
           </DiscretOutput>
           <DiscretOutput>
             <Address>%Q0.9</Address>
             <Index>9</Index>
+            <Symbol>GLUE_HEAD_B_BOT</Symbol>
           </DiscretOutput>
         </DigitalOutputs>
         <AnalogInputs>
@@ -3113,8 +3480,8 @@
         <EthernetConfiguration>
           <NetworkName>M221</NetworkName>
           <IpAllocationMode>FixedAddress</IpAllocationMode>
-          <IpAddress>0.0.0.0</IpAddress>
-          <SubnetMask>0.0.0.0</SubnetMask>
+          <IpAddress>192.168.1.12</IpAddress>
+          <SubnetMask>255.255.255.0</SubnetMask>
           <GatewayAddress>0.0.0.0</GatewayAddress>
           <TransfertRate>TransfertRateAuto</TransfertRate>
           <EthernetProtocol>ProtocolEthernet2</EthernetProtocol>
@@ -3123,11 +3490,18 @@
             <UseTimeout>true</UseTimeout>
             <Timeout>2</Timeout>
             <SlavePort>502</SlavePort>
-            <UnitId xsi:nil="true" />
-            <HoldingRegister>0</HoldingRegister>
-            <InputRegister>0</InputRegister>
-            <RemoteServers />
-            <ModbusServerEnabled>false</ModbusServerEnabled>
+            <UnitId>247</UnitId>
+            <HoldingRegister>10</HoldingRegister>
+            <InputRegister>10</InputRegister>
+            <RemoteServers>
+              <RemoteServer>
+                <Index>1</Index>
+                <Address>192.168.1.12</Address>
+                <UnitId>247</UnitId>
+                <Timeout>100</Timeout>
+              </RemoteServer>
+            </RemoteServers>
+            <ModbusServerEnabled>true</ModbusServerEnabled>
           </ModbusTcpSlave>
           <EthernetIpEntity>
             <EthernetIpEnabled>false</EthernetIpEnabled>
@@ -3152,8 +3526,90 @@
         <C2SizeY>0</C2SizeY>
         <InputAssemblys />
         <OutputAssemblys />
-        <InputRegisters />
-        <HoldingRegisters />
+        <InputRegisters>
+          <NetworkObject>
+            <Address>%QWM0</Address>
+            <Index>0</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%QWM1</Address>
+            <Index>1</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%QWM2</Address>
+            <Index>2</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%QWM3</Address>
+            <Index>3</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%QWM4</Address>
+            <Index>4</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%QWM5</Address>
+            <Index>5</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%QWM6</Address>
+            <Index>6</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%QWM7</Address>
+            <Index>7</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%QWM8</Address>
+            <Index>8</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%QWM9</Address>
+            <Index>9</Index>
+          </NetworkObject>
+        </InputRegisters>
+        <HoldingRegisters>
+          <NetworkObject>
+            <Address>%IWM0</Address>
+            <Index>0</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%IWM1</Address>
+            <Index>1</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%IWM2</Address>
+            <Index>2</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%IWM3</Address>
+            <Index>3</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%IWM4</Address>
+            <Index>4</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%IWM5</Address>
+            <Index>5</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%IWM6</Address>
+            <Index>6</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%IWM7</Address>
+            <Index>7</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%IWM8</Address>
+            <Index>8</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%IWM9</Address>
+            <Index>9</Index>
+          </NetworkObject>
+        </HoldingRegisters>
       </Cpu>
       <Extensions>
         <ModuleExtensionObject>
@@ -3236,22 +3692,18 @@
             <DiscretInput>
               <Address>%I1.0</Address>
               <Index>0</Index>
-              <Symbol>VAC_CLAMP_EXT</Symbol>
             </DiscretInput>
             <DiscretInput>
               <Address>%I1.1</Address>
               <Index>1</Index>
-              <Symbol>TAMP_MANUAL</Symbol>
             </DiscretInput>
             <DiscretInput>
               <Address>%I1.2</Address>
               <Index>2</Index>
-              <Symbol>GLUE_EYE</Symbol>
             </DiscretInput>
             <DiscretInput>
               <Address>%I1.3</Address>
               <Index>3</Index>
-              <Symbol>STRIP_AVAILABLE</Symbol>
             </DiscretInput>
             <DiscretInput>
               <Address>%I1.4</Address>
@@ -3397,6 +3849,7 @@
             <AnalogIO>
               <Address>%QW2.0</Address>
               <Index>0</Index>
+              <Symbol>DRIVE_MOTOR</Symbol>
               <Type>
                 <Value>15</Value>
                 <Name>Type_NotUsed</Name>
@@ -3604,6 +4057,7 @@
             <DiscretOutput>
               <Address>%Q3.0</Address>
               <Index>0</Index>
+              <Symbol>PHYSICAL_ALARM</Symbol>
             </DiscretOutput>
             <DiscretOutput>
               <Address>%Q3.1</Address>
@@ -3738,7 +4192,9 @@
       <Active>false</Active>
     </ApplicationProtection>
     <RemoteIpAddresses>
-      <IpAddresses />
+      <IpAddresses>
+        <string>192.168.1.12</string>
+      </IpAddresses>
     </RemoteIpAddresses>
     <ModemConfigurations>
       <ModemConfigurationEntities />
