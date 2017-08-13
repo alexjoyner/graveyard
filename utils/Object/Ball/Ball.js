@@ -16,14 +16,8 @@ var Ball = (function (_super) {
     function Ball(info) {
         return _super.call(this, info) || this;
     }
-    Ball.prototype.display = function (p5) {
-        p5.ellipse(this.physProps.position.x, this.physProps.position.y, this.physProps.height, this.physProps.width);
-    };
-    Ball.prototype.move = function (p5) {
-        this.physProps.position.add(this.physProps.velocity);
-        this.physProps.velocity.add(this.physProps.acceleration);
-        this.physProps.position.x = p5.constrain(this.physProps.position.x, 0, 400);
-        this.physProps.position.y = p5.constrain(this.physProps.position.y, 0, 400);
+    Ball.prototype.display = function () {
+        this.p5.ellipse(this.position.x, this.position.y, this.height, this.width);
     };
     return Ball;
 }(Phys_Object_1.Phys_Object));
