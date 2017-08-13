@@ -16,10 +16,10 @@ var Ball = (function (_super) {
     function Ball(info) {
         return _super.call(this, info) || this;
     }
-    Ball.prototype.draw = function (p5) {
+    Ball.prototype.display = function (p5) {
         p5.ellipse(this.physProps.position.x, this.physProps.position.y, this.physProps.height, this.physProps.width);
     };
-    Ball.prototype.update = function (p5) {
+    Ball.prototype.move = function (p5) {
         this.physProps.position.add(this.physProps.velocity);
         this.physProps.velocity.add(this.physProps.acceleration);
         this.physProps.position.x = p5.constrain(this.physProps.position.x, 0, 400);

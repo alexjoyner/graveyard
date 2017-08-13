@@ -6,19 +6,24 @@ const main = (p5) => {
 	p5.setup = function () {
 		p5.createCanvas(400, 400);
 		myBall = new Ball({
-			height: 100,
-			width: 100,
-			position: p5.createVector(200, 400),
-			velocity: p5.createVector(0, -0.1),
-			acceleration: p5.createVector(0, -0.001)
+			height: 10,
+			width: 10,
+			position: p5.createVector(200, 200),
+			velocity: p5.createVector(0, 0),
+			acceleration: p5.createVector(0, 0)
 		})
 	};
 
 	p5.draw = function () {
 		p5.background(bg_color);
-		myBall.draw(p5);
-        myBall.update(p5);
+		myBall.display(p5);
+		myBall.move(p5);
 	};
+
+	p5.mouseDragged = function(){
+		myBall.setX_pos(p5.mouseX);
+		myBall.setY_pos(p5.mouseY);
+	}
 };
 
 new P5(main);

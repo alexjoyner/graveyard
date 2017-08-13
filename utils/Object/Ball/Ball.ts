@@ -6,7 +6,7 @@ export class Ball extends Phys_Object{
     constructor(info: I_Physical){
         super(info);
     }
-    public draw(p5: any): void{
+    public display(p5: any): void{
         p5.ellipse(
             this.physProps.position.x,
             this.physProps.position.y,
@@ -14,7 +14,7 @@ export class Ball extends Phys_Object{
             this.physProps.width
         )
     }
-    public update(p5: any): void {
+    public move(p5: any): void {
         this.physProps.position.add(
             this.physProps.velocity
         );
