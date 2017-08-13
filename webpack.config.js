@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const path = require("path");
+var path = require("path");
 module.exports = {
     entry: {
         app: ["./client/clientDevTarget.js"]
@@ -21,4 +21,3 @@ module.exports = {
             }]
     }
 };
-//# sourceMappingURL=webpack.config.js.map
