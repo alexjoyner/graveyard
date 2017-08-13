@@ -10,7 +10,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var Phys_Object_1 = require("./Object/Phys_Object");
+var Phys_Object_1 = require("../Phys_Object");
 var Ball = (function (_super) {
     __extends(Ball, _super);
     function Ball(info) {
@@ -20,6 +20,10 @@ var Ball = (function (_super) {
         p5.ellipse(this.physProps.position.x, this.physProps.position.y, this.physProps.height, this.physProps.width);
     };
     Ball.prototype.update = function (p5) {
+        this.physProps.position.add(this.physProps.velocity);
+        this.physProps.velocity.add(this.physProps.acceleration);
+        this.physProps.position.x = p5.constrain(this.physProps.position.x, 0, 400);
+        this.physProps.position.y = p5.constrain(this.physProps.position.y, 0, 400);
     };
     return Ball;
 }(Phys_Object_1.Phys_Object));
