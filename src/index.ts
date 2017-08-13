@@ -1,5 +1,4 @@
 import * as P5 from 'p5';
-import {Circle} from "../utils/shapes/Circle";
 const main = (p5) => {
 	let gray = 150;
 
@@ -9,7 +8,6 @@ const main = (p5) => {
 
 	p5.draw = function () {
 		p5.background(gray);
-		new Circle.draw(p5);
 	};
 
 	p5.mousePressed = function () {
