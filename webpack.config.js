@@ -1,9 +1,9 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 var path = require("path");
+
 module.exports = {
     entry: {
-        app: ["./client/clientDevTarget.js"]
+        app: ["./src/index.js"]
     },
     output: {
         path: path.resolve(__dirname, "build"),
@@ -13,11 +13,8 @@ module.exports = {
     module: {
         rules: [{
                 test: /\.js$/,
-                use: ['react-hot-loader/webpack'],
+                use: ['babel-loader'],
                 include: path.join(__dirname, 'client')
-            }, {
-                test: /\.sass/,
-                use: ['style-loader', 'css-loader', 'sass-loader']
             }]
     }
 };
