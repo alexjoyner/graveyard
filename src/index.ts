@@ -1,18 +1,18 @@
 import * as P5 from 'p5';
+import {Circle} from "../utils/shapes/Circle";
+const main = (p5) => {
+	let gray = 150;
 
-const main = (p) => {
-	let gray = 0;
-
-	p.setup = function () {
-		p.createCanvas(400, 400)
+	p5.setup = function () {
+		p5.createCanvas(400, 400)
 	};
 
-	p.draw = function () {
-		p.background(gray);
-		p.rect(p.width/2 - 25, p.height/2 - 25, 50, 50)
+	p5.draw = function () {
+		p5.background(gray);
+		new Circle.draw(p5);
 	};
 
-	p.mousePressed = function () {
+	p5.mousePressed = function () {
 		gray = (gray + 16) % 256
 	}
 };

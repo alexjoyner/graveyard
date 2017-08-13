@@ -1,16 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var P5 = require("p5");
-var main = function (p) {
-    var gray = 0;
-    p.setup = function () {
-        p.createCanvas(400, 400);
+var Circle_1 = require("../utils/shapes/Circle");
+var main = function (p5) {
+    var gray = 150;
+    p5.setup = function () {
+        p5.createCanvas(400, 400);
     };
-    p.draw = function () {
-        p.background(gray);
-        p.rect(p.width / 2 - 25, p.height / 2 - 25, 50, 50);
+    p5.draw = function () {
+        p5.background(gray);
+        new Circle_1.Circle.draw(p5);
     };
-    p.mousePressed = function () {
+    p5.mousePressed = function () {
         gray = (gray + 16) % 256;
     };
 };
