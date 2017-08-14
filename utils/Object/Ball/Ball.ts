@@ -7,11 +7,13 @@ export class Ball extends Phys_Object {
     }
 
     public display(): void {
+        this.p5.stroke(10);
+        this.p5.fill(200);
         this.p5.ellipse(
             this.position.x,
             this.position.y,
-            this.height,
-            this.width
+            this.mass * 20,
+            this.mass * 20
         )
     }
 

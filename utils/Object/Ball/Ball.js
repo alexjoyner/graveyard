@@ -17,7 +17,9 @@ var Ball = (function (_super) {
         return _super.call(this, info) || this;
     }
     Ball.prototype.display = function () {
-        this.p5.ellipse(this.position.x, this.position.y, this.height, this.width);
+        this.p5.stroke(10);
+        this.p5.fill(200);
+        this.p5.ellipse(this.position.x, this.position.y, this.mass * 20, this.mass * 20);
     };
     return Ball;
 }(Phys_Object_1.Phys_Object));

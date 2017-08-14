@@ -2,37 +2,43 @@ import * as P5 from 'p5';
 import {Ball} from "../utils/Object/Ball/Ball";
 import {World} from "../utils/World";
 const main = (p5) => {
+    let bg_color = 255;
+    let myBalls = [];
 	let theWorld = new World({
         p5: p5,
         height: 400,
         width: 400,
-        position: p5.createVector(0, 0)
+        gravity: p5.createVector(0, 0.09)
     });
-	let bg_color = 255;
-	let myBall;
-	let gravity = p5.createVector(0, 0.09);
-	let wind = p5.createVector(1, 0);
 
 	p5.setup = function () {
 		theWorld.display();
-		myBall = new Ball({
-			p5: p5,
-			height: 10,
-			width: 10,
-			mass: 1,
-			position: p5.createVector(150, 200)
-		});
+		for(let i = 0; i < 1; i++){
+			myBalls.push(new Ball({
+				p5: p5,
+				height: null,
+				width: null,
+				mass: p5.random(5),
+				position: p5.createVector(p5.random(400), 100)
+			}))
+		}
+		console.log(myBalls);
 	};
 
 	p5.draw = function () {
-		p5.background(bg_color);
-        myBall.applyForce(gravity.mult(myBall.mass));
-		myBall.move(p5);
-		theWorld.checkBoundaryColision(myBall);
+        p5.background(bg_color);
+		for(let i = 0; i < myBalls.length; i++){
+            theWorld.applyEnvironmentEffects(myBalls[i]);
+            theWorld.checkBoundaryColision(myBalls[i]);
+            myBalls[i].move();
+		}
 	};
 
-	p5.mousePressed = function(){
-		myBall.applyForce(wind)
+	p5.mouseDragged = function(){
+        for(let i = 0; i < myBalls.length; i++){
+            myBalls[i].setX_pos(p5.mouseX);
+            myBalls[i].setY_pos(p5.mouseY);
+        }
 	}
 };
 

@@ -27,12 +27,13 @@ export abstract class Phys_Object{
         this.acceleration = info.acceleration || info.p5.createVector(0,0);
     }
     abstract display(): void;
-    public x_pos(): number{return this.position.x};
-    public y_pos(): number{return this.position.y};
-    public x_vel(): number{return this.velocity.x};
-    public y_vel(): number{return this.velocity.y};
-    public x_accel(): number{return this.acceleration.x};
-    public y_accel(): number{return this.acceleration.y};
+    public getX_pos(): number{return this.position.x};
+    public getY_pos(): number{return this.position.y};
+    public getX_vel(): number{return this.velocity.x};
+    public getY_vel(): number{return this.velocity.y};
+    public getX_accel(): number{return this.acceleration.x};
+    public getY_accel(): number{return this.acceleration.y};
+    public get_mass(): number{return this.mass};
     public setX_pos(newX: number): void{
         this.position.x = newX;
     }

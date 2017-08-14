@@ -1,11 +1,13 @@
 import * as p5 from 'p5';
-import {I_Physical, Phys_Object} from "./Object/Phys_Object";
+import {Phys_Object} from "./Object/Phys_Object";
 
 export class World{
+    private gravity;
     private engine;
     private height;
     private width;
-    constructor(info: I_Physical){
+    constructor(info: {gravity: p5.Vector, height: number, width: number, p5: p5}){
+        this.gravity = info.gravity;
         this.engine = info.p5;
         this.height = info.height;
         this.width = info.width;
@@ -13,20 +15,24 @@ export class World{
     display(){
         this.engine.createCanvas(this.height, this.width);
     }
+    public applyEnvironmentEffects(obj: Phys_Object){
+        let gravityEffect = p5.Vector.mult(this.gravity, obj.get_mass());
+        obj.applyForce(gravityEffect);
+    }
     public checkBoundaryColision(obj: Phys_Object){
-        if (obj.x_pos() > this.width) {
+        if (obj.getX_pos() > this.width) {
             obj.setX_pos(this.width);
-            obj.setX_vel(obj.x_vel() * -1)
-        } else if (obj.x_pos() < 0) {
-            obj.setX_vel(obj.x_vel() * -1);
+            obj.setX_vel(obj.getX_vel() * -0.5)
+        } else if (obj.getX_pos() < 0) {
+            obj.setX_vel(obj.getX_vel() * -0.5);
             obj.setX_pos(0)
         }
 
-        if (obj.y_pos() > this.height) {
-            obj.setY_vel(obj.y_vel() * -1);
+        if (obj.getY_pos() > this.height) {
+            obj.setY_vel(obj.getY_vel() * -0.5);
             obj.setY_pos(this.height);
-        }else if (obj.y_pos() < 0) {
-            obj.setY_vel(obj.y_vel() * -1);
+        }else if (obj.getY_pos() < 0) {
+            obj.setY_vel(obj.getY_vel() * -0.5);
             obj.setY_pos(0);
         }
     }

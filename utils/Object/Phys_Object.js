@@ -12,17 +12,19 @@ var Phys_Object = (function () {
         this.velocity = info.velocity || info.p5.createVector(0, 0);
         this.acceleration = info.acceleration || info.p5.createVector(0, 0);
     }
-    Phys_Object.prototype.x_pos = function () { return this.position.x; };
+    Phys_Object.prototype.getX_pos = function () { return this.position.x; };
     ;
-    Phys_Object.prototype.y_pos = function () { return this.position.y; };
+    Phys_Object.prototype.getY_pos = function () { return this.position.y; };
     ;
-    Phys_Object.prototype.x_vel = function () { return this.velocity.x; };
+    Phys_Object.prototype.getX_vel = function () { return this.velocity.x; };
     ;
-    Phys_Object.prototype.y_vel = function () { return this.velocity.y; };
+    Phys_Object.prototype.getY_vel = function () { return this.velocity.y; };
     ;
-    Phys_Object.prototype.x_accel = function () { return this.acceleration.x; };
+    Phys_Object.prototype.getX_accel = function () { return this.acceleration.x; };
     ;
-    Phys_Object.prototype.y_accel = function () { return this.acceleration.y; };
+    Phys_Object.prototype.getY_accel = function () { return this.acceleration.y; };
+    ;
+    Phys_Object.prototype.get_mass = function () { return this.mass; };
     ;
     Phys_Object.prototype.setX_pos = function (newX) {
         this.position.x = newX;
