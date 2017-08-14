@@ -13,6 +13,7 @@ var main = function (p5) {
         gravity: p5.createVector(0, 0.09)
     });
     p5.setup = function () {
+        console.log('Testing now!');
         theWorld.display();
         for (var i = 0; i < 1; i++) {
             myBalls.push(new Ball_1.Ball({

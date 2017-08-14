@@ -12,6 +12,7 @@ const main = (p5) => {
     });
 
 	p5.setup = function () {
+		console.log('Testing now!');
 		theWorld.display();
 		for(let i = 0; i < 1; i++){
 			myBalls.push(new Ball({
