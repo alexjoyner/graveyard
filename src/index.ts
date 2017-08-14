@@ -1,6 +1,6 @@
 import * as P5 from 'p5';
-import {Ball} from "../utils/Object/Ball/Ball";
-import {World} from "../utils/World";
+import {Ball} from "../utils/p5/Object/Ball/Ball";
+import {World} from "../utils/p5/World";
 const main = (p5) => {
     let bg_color = 255;
     let myBalls = [];

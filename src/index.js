@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var P5 = require("p5");
-var Ball_1 = require("../utils/Object/Ball/Ball");
-var World_1 = require("../utils/World");
+var Ball_1 = require("../utils/p5/Object/Ball/Ball");
+var World_1 = require("../utils/p5/World");
 var main = function (p5) {
     var bg_color = 255;
     var myBalls = [];
