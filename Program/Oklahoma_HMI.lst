@@ -110,16 +110,16 @@ UNUSED FUNCTION BLOCKS:
 **************************************************
 
 $$MOD:
-A1901F00  FB90 F3F1		sdiv r3, r0, r1
-A1901F04  4359     		mul r1, r1, r3
-A1901F06  EBC1 0000		rsb r0, r1, r0
-A1901F0A  4770     		bx lr
+A1901F10  FB90 F3F1		sdiv r3, r0, r1
+A1901F14  4359     		mul r1, r1, r3
+A1901F16  EBC1 0000		rsb r0, r1, r0
+A1901F1A  4770     		bx lr
 
 $$MOD_U:
-A1901F0C  FBB0 F3F1		udiv r3, r0, r1
-A1901F10  4359     		mul r1, r1, r3
-A1901F12  EBC1 0000		rsb r0, r1, r0
-A1901F16  4770     		bx lr
+A1901F1C  FBB0 F3F1		udiv r3, r0, r1
+A1901F20  4359     		mul r1, r1, r3
+A1901F22  EBC1 0000		rsb r0, r1, r0
+A1901F26  4770     		bx lr
 
 **************************************************
 	List function block: R_TRIG
@@ -143,45 +143,45 @@ M : BOOL := TRUE;
 
 END_FUNCTION_BLOCK
 
-A1901F18  E92D 4040		stmdb sp!, { r6, lr }
-A1901F1C  462E     		mov r6, r5
+A1901F28  E92D 4040		stmdb sp!, { r6, lr }
+A1901F2C  462E     		mov r6, r5
 
 #0		{SRC:R_TRIG}
 #1
 #2
 (*) UNDEF
-A1901F1E  F8DF 7028		ldr r7, [pc, #+40] ; 0x1
-A1901F22  5DF0     		ldrb r0, [r6, +r7]
+A1901F2E  F8DF 7028		ldr r7, [pc, #+40] ; 0x1
+A1901F32  5DF0     		ldrb r0, [r6, +r7]
 
 #3
 (*) BOOL
-A1901F24  7837     		ldrb r7, [r6]
-A1901F26  2F00     		cmp r7, #0
-A1901F28  BF08 2701		eqmov r7, #1
-A1901F2C  BF18 2700		nemov r7, #0
-A1901F30  4038     		and r0, r0, r7
+A1901F34  7837     		ldrb r7, [r6]
+A1901F36  2F00     		cmp r7, #0
+A1901F38  BF08 2701		eqmov r7, #1
+A1901F3C  BF18 2700		nemov r7, #0
+A1901F40  4038     		and r0, r0, r7
 
 #4
 (*) BOOL
-A1901F32  F8DF 7018		ldr r7, [pc, #+24] ; 0x2
-A1901F36  55F0     		strb r0, [r6, +r7]
+A1901F42  F8DF 7018		ldr r7, [pc, #+24] ; 0x2
+A1901F46  55F0     		strb r0, [r6, +r7]
 
 #5
 #6
 (*) UNDEF
-A1901F38  F8DF 700C		ldr r7, [pc, #+12] ; 0x1
-A1901F3C  5DF0     		ldrb r0, [r6, +r7]
+A1901F48  F8DF 700C		ldr r7, [pc, #+12] ; 0x1
+A1901F4C  5DF0     		ldrb r0, [r6, +r7]
 
 #7
 (-) BOOL
-A1901F3E  7030     		strb r0, [r6]
+A1901F4E  7030     		strb r0, [r6]
 
-A1901F40  E8BD 4040		ldmia sp!, { r6, lr }
+A1901F50  E8BD 4040		ldmia sp!, { r6, lr }
 
-A1901F44  4770     		bx lr
+A1901F54  4770     		bx lr
 
-A1901F48  00000001		; 0x00000001
-A1901F4C  00000002		; 0x00000002
+A1901F58  00000001		; 0x00000001
+A1901F5C  00000002		; 0x00000002
 
 
 Frame allocation:
@@ -220,8 +220,8 @@ TIMSTART : UDINT;	{ DE:"Time value at start of counting" }
 
 END_FUNCTION_BLOCK
 
-A1901F50  E92D 4040		stmdb sp!, { r6, lr }
-A1901F54  462E     		mov r6, r5
+A1901F60  E92D 4040		stmdb sp!, { r6, lr }
+A1901F64  462E     		mov r6, r5
 
 #0		{SRC:TON}
 #1
@@ -229,56 +229,56 @@ A1901F54  462E     		mov r6, r5
 #3
 #4
 (*) UNDEF
-A1901F56  F8DF 7084		ldr r7, [pc, #+132] ; 0x4
-A1901F5A  5DF0     		ldrb r0, [r6, +r7]
+A1901F66  F8DF 7084		ldr r7, [pc, #+132] ; 0x4
+A1901F6A  5DF0     		ldrb r0, [r6, +r7]
 
 #5
 (-) BOOL
-A1901F5C  2800     		cmp r0, #0
-A1901F5E  D031     		beq #98 ; 0xA1901FC4
+A1901F6C  2800     		cmp r0, #0
+A1901F6E  D031     		beq #98 ; 0xA1901FD4
 
 
 #6
 #7
 #8
 (*) UNDEF
-A1901F62  F8DF 7080		ldr r7, [pc, #+128] ; 0xC
-A1901F66  5DF0     		ldrb r0, [r6, +r7]
+A1901F72  F8DF 7080		ldr r7, [pc, #+128] ; 0xC
+A1901F76  5DF0     		ldrb r0, [r6, +r7]
 
 #9
 (-) BOOL
-A1901F68  2800     		cmp r0, #0
-A1901F6A  D129     		bne #82 ; 0xA1901FC0
+A1901F78  2800     		cmp r0, #0
+A1901F7A  D129     		bne #82 ; 0xA1901FD0
 
 
 #10
 #11
 #12
 (-) UNDEF
-A1901F6E  6830     		ldr r0, [r6]
+A1901F7E  6830     		ldr r0, [r6]
 
 #13
 (*) UDINT
-A1901F70  2800     		cmp r0, #0
-A1901F72  BF18 2000		nemov r0, #0
-A1901F76  BF08 2001		eqmov r0, #1
+A1901F80  2800     		cmp r0, #0
+A1901F82  BF18 2000		nemov r0, #0
+A1901F86  BF08 2001		eqmov r0, #1
 
 #14
 (-) BOOL
-A1901F7A  2800     		cmp r0, #0
-A1901F7C  D004     		beq #8 ; 0xA1901F88
+A1901F8A  2800     		cmp r0, #0
+A1901F8C  D004     		beq #8 ; 0xA1901F98
 
 
 #15
 #16
 #17
 (*) UNDEF
-A1901F80  F8DF 7068		ldr r7, [pc, #+104] ; 0x1000052C
-A1901F84  6838     		ldr r0, [r7]
+A1901F90  F8DF 7068		ldr r7, [pc, #+104] ; 0x1000052C
+A1901F94  6838     		ldr r0, [r7]
 
 #18
 (-) UDINT
-A1901F86  6030     		str r0, [r6]
+A1901F96  6030     		str r0, [r6]
 
 #19
 #20
@@ -286,49 +286,49 @@ A1901F86  6030     		str r0, [r6]
 #22
 #23
 (*) UNDEF
-A1901F88  F8DF 7060		ldr r7, [pc, #+96] ; 0x1000052C
-A1901F8C  6838     		ldr r0, [r7]
+A1901F98  F8DF 7060		ldr r7, [pc, #+96] ; 0x1000052C
+A1901F9C  6838     		ldr r0, [r7]
 
 #24
 (*) UDINT
-A1901F8E  6837     		ldr r7, [r6]
-A1901F90  1BC0     		sub r0, r0, r7
+A1901F9E  6837     		ldr r7, [r6]
+A1901FA0  1BC0     		sub r0, r0, r7
 
 #25
 (*) UDINT
-A1901F92  F8DF 7054		ldr r7, [pc, #+84] ; 0x10
-A1901F96  51F0     		str r0, [r6, +r7]
+A1901FA2  F8DF 7054		ldr r7, [pc, #+84] ; 0x10
+A1901FA6  51F0     		str r0, [r6, +r7]
 
 #26
 (*) UDINT
-A1901F98  F8DF 7044		ldr r7, [pc, #+68] ; 0x8
-A1901F9C  59F7     		ldr r7, [r6, +r7]
-A1901F9E  42B8     		cmp r0, r7
-A1901FA0  BF38 2000		lomov r0, #0
-A1901FA4  BF28 2001		hsmov r0, #1
+A1901FA8  F8DF 7044		ldr r7, [pc, #+68] ; 0x8
+A1901FAC  59F7     		ldr r7, [r6, +r7]
+A1901FAE  42B8     		cmp r0, r7
+A1901FB0  BF38 2000		lomov r0, #0
+A1901FB4  BF28 2001		hsmov r0, #1
 
 #27
 (*) BOOL
-A1901FA8  F8DF 7038		ldr r7, [pc, #+56] ; 0xC
-A1901FAC  55F0     		strb r0, [r6, +r7]
+A1901FB8  F8DF 7038		ldr r7, [pc, #+56] ; 0xC
+A1901FBC  55F0     		strb r0, [r6, +r7]
 
 #28
 (-) BOOL
-A1901FAE  2800     		cmp r0, #0
-A1901FB0  D006     		beq #12 ; 0xA1901FC0
+A1901FBE  2800     		cmp r0, #0
+A1901FC0  D006     		beq #12 ; 0xA1901FD0
 
 
 #29
 #30
 #31
 (*) UNDEF
-A1901FB4  F8DF 7028		ldr r7, [pc, #+40] ; 0x8
-A1901FB8  59F0     		ldr r0, [r6, +r7]
+A1901FC4  F8DF 7028		ldr r7, [pc, #+40] ; 0x8
+A1901FC8  59F0     		ldr r0, [r6, +r7]
 
 #32
 (*) UDINT
-A1901FBA  F8DF 702C		ldr r7, [pc, #+44] ; 0x10
-A1901FBE  51F0     		str r0, [r6, +r7]
+A1901FCA  F8DF 702C		ldr r7, [pc, #+44] ; 0x10
+A1901FCE  51F0     		str r0, [r6, +r7]
 
 #33
 #34
@@ -336,7 +336,7 @@ A1901FBE  51F0     		str r0, [r6, +r7]
 #36
 #37
 (-) UDINT
-A1901FC0  E009     		b #18 ; 0xA1901FD6
+A1901FD0  E009     		b #18 ; 0xA1901FE6
 
 
 #38
@@ -344,35 +344,35 @@ A1901FC0  E009     		b #18 ; 0xA1901FD6
 #40
 #41
 (-) UNDEF
-A1901FC4  2000     		mov r0, #0 ; 0
+A1901FD4  2000     		mov r0, #0 ; 0
 
 #42
 (*) USINT
-A1901FC6  F8DF 7020		ldr r7, [pc, #+32] ; 0x10
-A1901FCA  51F0     		str r0, [r6, +r7]
+A1901FD6  F8DF 7020		ldr r7, [pc, #+32] ; 0x10
+A1901FDA  51F0     		str r0, [r6, +r7]
 
 #43
 (-) UDINT
-A1901FCC  6030     		str r0, [r6]
+A1901FDC  6030     		str r0, [r6]
 
 #44
 (-) UNDEF
-A1901FCE  2000     		mov r0, #0 ; 0
+A1901FDE  2000     		mov r0, #0 ; 0
 
 #45
 (*) BOOL
-A1901FD0  F8DF 7010		ldr r7, [pc, #+16] ; 0xC
-A1901FD4  55F0     		strb r0, [r6, +r7]
+A1901FE0  F8DF 7010		ldr r7, [pc, #+16] ; 0xC
+A1901FE4  55F0     		strb r0, [r6, +r7]
 
-A1901FD6  E8BD 4040		ldmia sp!, { r6, lr }
+A1901FE6  E8BD 4040		ldmia sp!, { r6, lr }
 
-A1901FDA  4770     		bx lr
+A1901FEA  4770     		bx lr
 
-A1901FDC  00000004		; 0x00000004
-A1901FE0  00000008		; 0x00000008
-A1901FE4  0000000C		; 0x0000000C
-A1901FE8  00000010		; 0x00000010
-A1901FEC  FFFFFFFF		; 0x1000052C
+A1901FEC  00000004		; 0x00000004
+A1901FF0  00000008		; 0x00000008
+A1901FF4  0000000C		; 0x0000000C
+A1901FF8  00000010		; 0x00000010
+A1901FFC  FFFFFFFF		; 0x1000052C
 
 
 Frame allocation:
@@ -397,7 +397,7 @@ DUMMYCRC32 : UDINT;
 
 END_PROGRAM
 
-A1901FF0  E92D 4DF0		stmdb sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
+A1902000  E92D 4DF0		stmdb sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
 
 #0		{SRC:INITPARDB}
 #1
@@ -405,50 +405,50 @@ A1901FF0  E92D 4DF0		stmdb sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
 #3
 #4		{L:3}
 (*) UDINT
-A1901FF4  F8DF 7038		ldr r7, [pc, #+56] ; 0xA1901EFC
-A1901FF8  6838     		ldr r0, [r7]
-A1901FFA  F8DF 7038		ldr r7, [pc, #+56] ; 0xA1A0000C
-A1901FFE  6038     		str r0, [r7]
+A1902004  F8DF 7038		ldr r7, [pc, #+56] ; 0xA1901F00
+A1902008  6838     		ldr r0, [r7]
+A190200A  F8DF 7038		ldr r7, [pc, #+56] ; 0xA1A0000C
+A190200E  6038     		str r0, [r7]
 
 #5
 #6
 #7		{L:5}
 (*) UDINT
-A1902000  F8DF 0028		ldr r0, [pc, #+40] ; 0xA1901324
+A1902010  F8DF 0028		ldr r0, [pc, #+40] ; 0xA1901324
 
 #8		{L:5}
 (*) DWORD
-A1902004  F8DF 7034		ldr r7, [pc, #+52] ; 0xA1A00054
-A1902008  6038     		str r0, [r7]
+A1902014  F8DF 7034		ldr r7, [pc, #+52] ; 0xA1A00088
+A1902018  6038     		str r0, [r7]
 
 #9		{L:5}
 (*) UNDEF
-A190200A  F8DF 7030		ldr r7, [pc, #+48] ; 0xA1A00054
-A190200E  6838     		ldr r0, [r7]
+A190201A  F8DF 7030		ldr r7, [pc, #+48] ; 0xA1A00088
+A190201E  6838     		ldr r0, [r7]
 
 #10		{L:5}
 (-) @UNDEF
-A1902010  210E     		mov r1, #14 ; 14
-A1902012  4600     		mov r0, r0
-A1902014  F8DF 4028		ldr r4, [pc, #+40] ; 0x11A57
-A1902018  F044 0401		orr r4, r4, #1
-A190201C  47A0     		blx r4
+A1902020  210E     		mov r1, #14 ; 14
+A1902022  4600     		mov r0, r0
+A1902024  F8DF 4028		ldr r4, [pc, #+40] ; 0x12547
+A1902028  F044 0401		orr r4, r4, #1
+A190202C  47A0     		blx r4
 
 #11		{L:5}
 (*) USINT
-A190201E  F8DF 7018		ldr r7, [pc, #+24] ; 0xA1A00014
-A1902022  7038     		strb r0, [r7]
+A190202E  F8DF 7018		ldr r7, [pc, #+24] ; 0xA1A00014
+A1902032  7038     		strb r0, [r7]
 
-A1902024  E8BD 4DF0		ldmia sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
+A1902034  E8BD 4DF0		ldmia sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
 
-A1902028  4770     		bx lr
+A1902038  4770     		bx lr
 
-A190202C  A1901324		; 0xA1901324
-A1902030  A1901EFC		; 0xA1901EFC
-A1902034  A1A0000C		; 0xA1A0000C
-A1902038  A1A00014		; 0xA1A00014
-A190203C  A1A00054		; 0xA1A00054
-A1902040  FFFFFFFF		; 0x00011A57
+A190203C  A1901324		; 0xA1901324
+A1902040  A1901F00		; 0xA1901F00
+A1902044  A1A0000C		; 0xA1A0000C
+A1902048  A1A00014		; 0xA1A00014
+A190204C  A1A00088		; 0xA1A00088
+A1902050  FFFFFFFF		; 0x00012547
 
 END_PROGRAM
 
@@ -459,11 +459,11 @@ END_PROGRAM
 
 
 *** INPUT:
-A1902044  4770     		bx lr
+A1902054  4770     		bx lr
 
 
 *** OUTPUT:
-A1902046  4770     		bx lr
+A1902056  4770     		bx lr
 
 
 
@@ -471,11 +471,11 @@ A1902046  4770     		bx lr
 	Task SERV init code
 **************************************************
 
-A1902048  E92D 4DF0		stmdb sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
+A1902058  E92D 4DF0		stmdb sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
 
-A190204C  E8BD 4DF0		ldmia sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
+A190205C  E8BD 4DF0		ldmia sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
 
-A1902050  4770     		bx lr
+A1902060  4770     		bx lr
 
 **************************************************
 	List program: RESET_ALARMS
@@ -485,7 +485,7 @@ PROGRAM RESET_ALARMS
 
 END_PROGRAM
 
-A1902060  E92D 4DF0		stmdb sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
+A1902070  E92D 4DF0		stmdb sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
 
 #0		{SRC:RESET_ALARMS}
 #1
@@ -494,13 +494,13 @@ A1902060  E92D 4DF0		stmdb sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
 #4
 #5		{L:1}
 (*) UNDEF
-A1902064  F8DF 7048		ldr r7, [pc, #+72] ; 0xA0003E9A
-A1902068  7838     		ldrb r0, [r7]
+A1902074  F8DF 7050		ldr r7, [pc, #+80] ; 0xA0003EAE
+A1902078  7838     		ldrb r0, [r7]
 
 #6		{L:1}
 (-) BOOL
-A190206A  2800     		cmp r0, #0
-A190206C  D014     		beq #40 ; 0xA1902098
+A190207A  2800     		cmp r0, #0
+A190207C  D018     		beq #48 ; 0xA19020B0
 
 
 #7
@@ -509,50 +509,59 @@ A190206C  D014     		beq #40 ; 0xA1902098
 #10
 #11		{L:2}
 (*) BOOL
-A1902070  2000     		mov r0, #0 ; 0
-A1902072  F8DF 7028		ldr r7, [pc, #+40] ; 0xA0003E90
-A1902076  7038     		strb r0, [r7]
+A1902080  2000     		mov r0, #0 ; 0
+A1902082  F8DF 7030		ldr r7, [pc, #+48] ; 0xA0003EA4
+A1902086  7038     		strb r0, [r7]
 
 #12
 #13
 #14		{L:3}
 (*) BOOL
-A1902078  2000     		mov r0, #0 ; 0
-A190207A  F8DF 7024		ldr r7, [pc, #+36] ; 0xA0003E92
-A190207E  7038     		strb r0, [r7]
+A1902088  2000     		mov r0, #0 ; 0
+A190208A  F8DF 702C		ldr r7, [pc, #+44] ; 0xA0003EA6
+A190208E  7038     		strb r0, [r7]
 
 #15
 #16
 #17		{L:4}
 (*) BOOL
-A1902080  2000     		mov r0, #0 ; 0
-A1902082  F8DF 7020		ldr r7, [pc, #+32] ; 0xA0003E94
-A1902086  7038     		strb r0, [r7]
+A1902090  2000     		mov r0, #0 ; 0
+A1902092  F8DF 7028		ldr r7, [pc, #+40] ; 0xA0003EA8
+A1902096  7038     		strb r0, [r7]
 
 #18
 #19
 #20		{L:5}
 (*) BOOL
-A1902088  2000     		mov r0, #0 ; 0
-A190208A  F8DF 701C		ldr r7, [pc, #+28] ; 0xA0003E96
-A190208E  7038     		strb r0, [r7]
+A1902098  2000     		mov r0, #0 ; 0
+A190209A  F8DF 7024		ldr r7, [pc, #+36] ; 0xA0003EAA
+A190209E  7038     		strb r0, [r7]
 
 #21
 #22
 #23		{L:6}
 (*) BOOL
-A1902090  2000     		mov r0, #0 ; 0
-A1902092  F8DF 7018		ldr r7, [pc, #+24] ; 0xA0003E98
-A1902096  7038     		strb r0, [r7]
+A19020A0  2000     		mov r0, #0 ; 0
+A19020A2  F8DF 7020		ldr r7, [pc, #+32] ; 0xA0003EAC
+A19020A6  7038     		strb r0, [r7]
 
-A1902098  E00B     		b #22
+#24
+#25
+#26		{L:7}
+(*) BOOL
+A19020A8  2000     		mov r0, #0 ; 0
+A19020AA  F8DF 7020		ldr r7, [pc, #+32] ; 0x100004AC
+A19020AE  7038     		strb r0, [r7]
 
-A190209C  FFFFFFFF		; 0xA0003E90
-A19020A0  FFFFFFFF		; 0xA0003E92
-A19020A4  FFFFFFFF		; 0xA0003E94
-A19020A8  FFFFFFFF		; 0xA0003E96
-A19020AC  FFFFFFFF		; 0xA0003E98
-A19020B0  FFFFFFFF		; 0xA0003E9A
+A19020B0  E00D     		b #26
+
+A19020B4  FFFFFFFF		; 0xA0003EA4
+A19020B8  FFFFFFFF		; 0xA0003EA6
+A19020BC  FFFFFFFF		; 0xA0003EA8
+A19020C0  FFFFFFFF		; 0xA0003EAA
+A19020C4  FFFFFFFF		; 0xA0003EAC
+A19020C8  FFFFFFFF		; 0xA0003EAE
+A19020CC  FFFFFFFF		; 0x100004AC
 
 END_PROGRAM
 **************************************************
@@ -570,13 +579,13 @@ END_PROGRAM
 #4
 #5		{L:1}
 (*) UNDEF
-A19020B4  F8DF 7014		ldr r7, [pc, #+20] ; 0xA0003E9C
-A19020B8  7838     		ldrb r0, [r7]
+A19020D0  F8DF 7014		ldr r7, [pc, #+20] ; 0xA0003EB0
+A19020D4  7838     		ldrb r0, [r7]
 
 #6		{L:1}
 (-) BOOL
-A19020BA  2800     		cmp r0, #0
-A19020BC  D004     		beq #8 ; 0xA19020C8
+A19020D6  2800     		cmp r0, #0
+A19020D8  D004     		beq #8 ; 0xA19020E4
 
 
 #7
@@ -585,14 +594,14 @@ A19020BC  D004     		beq #8 ; 0xA19020C8
 #10
 #11		{L:2}
 (*) BOOL
-A19020C0  2000     		mov r0, #0 ; 0
-A19020C2  F8DF 700C		ldr r7, [pc, #+12] ; 0x100004AC
-A19020C6  7038     		strb r0, [r7]
+A19020DC  2000     		mov r0, #0 ; 0
+A19020DE  F8DF 700C		ldr r7, [pc, #+12] ; 0x100004AC
+A19020E2  7038     		strb r0, [r7]
 
-A19020C8  E003     		b #6
+A19020E4  E003     		b #6
 
-A19020CC  FFFFFFFF		; 0xA0003E9C
-A19020D0  FFFFFFFF		; 0x100004AC
+A19020E8  FFFFFFFF		; 0xA0003EB0
+A19020EC  FFFFFFFF		; 0x100004AC
 
 END_PROGRAM
 **************************************************
@@ -613,33 +622,33 @@ END_PROGRAM
 #3
 #4		{L:3}
 (*) UDINT
-A19020D4  F8DF 703C		ldr r7, [pc, #+60] ; 0xA1A00015
-A19020D8  7838     		ldrb r0, [r7]
-A19020DA  F8DF 7040		ldr r7, [pc, #+64] ; 0xA1A00019
-A19020DE  7038     		strb r0, [r7]
+A19020F0  F8DF 703C		ldr r7, [pc, #+60] ; 0xA1A00015
+A19020F4  7838     		ldrb r0, [r7]
+A19020F6  F8DF 7040		ldr r7, [pc, #+64] ; 0xA1A00019
+A19020FA  7038     		strb r0, [r7]
 
 #5		{L:3}
 (*) BOOL
-A19020E0  E92D 0021		stmdb sp!, { r0, r5 }
-A19020E4  F8DF 7030		ldr r7, [pc, #+48] ; 0xA1A00018
-A19020E8  463D     		mov r5, r7
-A19020EA  F8DF 4024		ldr r4, [pc, #+36] ; 0xA1901F18
-A19020EE  F044 0401		orr r4, r4, #1
-A19020F2  47A0     		blx r4
-A19020F4  E8BD 0021		ldmia sp!, { r0, r5 }
+A19020FC  E92D 0021		stmdb sp!, { r0, r5 }
+A1902100  F8DF 7030		ldr r7, [pc, #+48] ; 0xA1A00018
+A1902104  463D     		mov r5, r7
+A1902106  F8DF 4024		ldr r4, [pc, #+36] ; 0xA1901F28
+A190210A  F044 0401		orr r4, r4, #1
+A190210E  47A0     		blx r4
+A1902110  E8BD 0021		ldmia sp!, { r0, r5 }
 
 #6
 #7
 #8
 #9		{L:4}
 (*) UNDEF
-A19020F8  F8DF 7024		ldr r7, [pc, #+36] ; 0xA1A0001A
-A19020FC  7838     		ldrb r0, [r7]
+A1902114  F8DF 7024		ldr r7, [pc, #+36] ; 0xA1A0001A
+A1902118  7838     		ldrb r0, [r7]
 
 #10		{L:4}
 (-) BOOL
-A19020FE  2800     		cmp r0, #0
-A1902100  D004     		beq #8 ; 0xA190210C
+A190211A  2800     		cmp r0, #0
+A190211C  D004     		beq #8 ; 0xA1902128
 
 
 #11
@@ -648,18 +657,18 @@ A1902100  D004     		beq #8 ; 0xA190210C
 #14
 #15		{L:5}
 (*) BOOL
-A1902104  2001     		mov r0, #1 ; 1
-A1902106  F8DF 701C		ldr r7, [pc, #+28] ; 0x100004AC
-A190210A  7038     		strb r0, [r7]
+A1902120  2001     		mov r0, #1 ; 1
+A1902122  F8DF 701C		ldr r7, [pc, #+28] ; 0x100004AC
+A1902126  7038     		strb r0, [r7]
 
-A190210C  E00B     		b #22
+A1902128  E00B     		b #22
 
-A1902110  A1901F18		; 0xA1901F18
-A1902114  A1A00015		; 0xA1A00015
-A1902118  A1A00018		; 0xA1A00018
-A190211C  A1A00019		; 0xA1A00019
-A1902120  A1A0001A		; 0xA1A0001A
-A1902124  FFFFFFFF		; 0x100004AC
+A190212C  A1901F28		; 0xA1901F28
+A1902130  A1A00015		; 0xA1A00015
+A1902134  A1A00018		; 0xA1A00018
+A1902138  A1A00019		; 0xA1A00019
+A190213C  A1A0001A		; 0xA1A0001A
+A1902140  FFFFFFFF		; 0x100004AC
 
 END_PROGRAM
 **************************************************
@@ -671,6 +680,11 @@ PROGRAM HIGHRTD
         VAR
 HIGHRTDTIMER : TON;
 HIGHRTDTIMERVAL : UDINT;
+SENSORSDISCONNECT : BOOL;
+	END_VAR
+
+        VAR CONSTANT
+DISCONNECTVAL : INT := -32768;
 	END_VAR
 
 END_PROGRAM
@@ -681,159 +695,257 @@ END_PROGRAM
 #3
 #4
 #5
-#6		{R:"1$O:17"}
+#6		{R:"1$O:15"}
 (*) UNDEF
-A1902128  F8DF 70F0		ldr r7, [pc, #+240] ; 0xA1A00016
-A190212C  F9B7 0000		ldrsh r0, [r7]
+A1902144  F8DF 7178		ldr r7, [pc, #+376] ; 0xA1A00016
+A1902148  F9B7 0000		ldrsh r0, [r7]
 
-#7		{R:"1$O:17"}
+#7		{R:"1$O:15"}
 (*) INT
-A1902130  F8DF 70D4		ldr r7, [pc, #+212] ; 0xA0003EA0
-A1902134  F9B7 7000		ldrsh r7, [r7]
-A1902138  42B8     		cmp r0, r7
-A190213A  BFB8 2000		ltmov r0, #0
-A190213E  BFA8 2001		gemov r0, #1
+A190214C  F8DF 7158		ldr r7, [pc, #+344] ; 0xA0003EB4
+A1902150  F9B7 7000		ldrsh r7, [r7]
+A1902154  42B8     		cmp r0, r7
+A1902156  BFB8 2000		ltmov r0, #0
+A190215A  BFA8 2001		gemov r0, #1
 
 #8
-#9		{R:"1$O:17"}
+#9		{R:"1$O:15"}
 (*) BOOL
-A1902142  F8DF 70F8		ldr r7, [pc, #+248] ; 0xA1A00053
-A1902146  7038     		strb r0, [r7]
+A190215E  F8DF 7184		ldr r7, [pc, #+388] ; 0xA1A0008C
+A1902162  7038     		strb r0, [r7]
 
-#10		{R:"1$O:15"}
+#10		{R:"1$O:14"}
 (*) UNDEF
-A1902148  F8DF 70D4		ldr r7, [pc, #+212] ; 0xA1A0001E
-A190214C  F9B7 0000		ldrsh r0, [r7]
+A1902164  F8DF 715C		ldr r7, [pc, #+348] ; 0xA1A0001E
+A1902168  F9B7 0000		ldrsh r0, [r7]
 
-#11		{R:"1$O:15"}
+#11		{R:"1$O:14"}
 (*) INT
-A1902150  F8DF 70B8		ldr r7, [pc, #+184] ; 0xA0003EA2
-A1902154  F9B7 7000		ldrsh r7, [r7]
-A1902158  42B8     		cmp r0, r7
-A190215A  BFB8 2000		ltmov r0, #0
-A190215E  BFA8 2001		gemov r0, #1
+A190216C  F8DF 713C		ldr r7, [pc, #+316] ; 0xA0003EB6
+A1902170  F9B7 7000		ldrsh r7, [r7]
+A1902174  42B8     		cmp r0, r7
+A1902176  BFB8 2000		ltmov r0, #0
+A190217A  BFA8 2001		gemov r0, #1
 
 #12
-#13		{R:"1$O:15"}
+#13		{R:"1$O:14"}
 (*) BOOL
-A1902162  F8DF 70DC		ldr r7, [pc, #+220] ; 0xA1A00058
-A1902166  7038     		strb r0, [r7]
+A190217E  F8DF 7168		ldr r7, [pc, #+360] ; 0xA1A0008D
+A1902182  7038     		strb r0, [r7]
 
-#14		{R:"1$O:7"}
+#14		{R:"1$O:11"}
 (*) UNDEF
-A1902168  F8DF 70B8		ldr r7, [pc, #+184] ; 0xA1A00020
-A190216C  F9B7 0000		ldrsh r0, [r7]
+A1902184  F8DF 7140		ldr r7, [pc, #+320] ; 0xA1A00020
+A1902188  F9B7 0000		ldrsh r0, [r7]
 
-#15		{R:"1$O:7"}
+#15		{R:"1$O:11"}
 (*) INT
-A1902170  F8DF 70A0		ldr r7, [pc, #+160] ; 0xA0003EAA
-A1902174  F9B7 7000		ldrsh r7, [r7]
-A1902178  42B8     		cmp r0, r7
-A190217A  BFB8 2000		ltmov r0, #0
-A190217E  BFA8 2001		gemov r0, #1
+A190218C  F8DF 7124		ldr r7, [pc, #+292] ; 0xA0003EBE
+A1902190  F9B7 7000		ldrsh r7, [r7]
+A1902194  42B8     		cmp r0, r7
+A1902196  BFB8 2000		ltmov r0, #0
+A190219A  BFA8 2001		gemov r0, #1
 
 #16
-#17		{R:"1$O:7"}
+#17		{R:"1$O:11"}
 (*) BOOL
-A1902182  F8DF 70C0		ldr r7, [pc, #+192] ; 0xA1A00059
-A1902186  7038     		strb r0, [r7]
+A190219E  F8DF 714C		ldr r7, [pc, #+332] ; 0xA1A0008E
+A19021A2  7038     		strb r0, [r7]
 
-#18		{R:"1$O:21"}
+#18		{R:"1$O:17"}
 (*) UNDEF
-A1902188  F8DF 709C		ldr r7, [pc, #+156] ; 0xA1A00024
-A190218C  F9B7 0000		ldrsh r0, [r7]
+A19021A4  F8DF 7124		ldr r7, [pc, #+292] ; 0xA1A00024
+A19021A8  F9B7 0000		ldrsh r0, [r7]
 
-#19		{R:"1$O:21"}
+#19		{R:"1$O:17"}
 (*) INT
-A1902190  F8DF 7070		ldr r7, [pc, #+112] ; 0xA0003E9E
-A1902194  F9B7 7000		ldrsh r7, [r7]
-A1902198  42B8     		cmp r0, r7
-A190219A  BFB8 2000		ltmov r0, #0
-A190219E  BFA8 2001		gemov r0, #1
+A19021AC  F8DF 70F4		ldr r7, [pc, #+244] ; 0xA0003EB2
+A19021B0  F9B7 7000		ldrsh r7, [r7]
+A19021B4  42B8     		cmp r0, r7
+A19021B6  BFB8 2000		ltmov r0, #0
+A19021BA  BFA8 2001		gemov r0, #1
 
 #20
-#21		{R:"1$O:21"}
+#21		{R:"1$O:17"}
 (*) BOOL
-A19021A2  F8DF 70A4		ldr r7, [pc, #+164] ; 0xA1A0005A
-A19021A6  7038     		strb r0, [r7]
+A19021BE  F8DF 7130		ldr r7, [pc, #+304] ; 0xA1A0008F
+A19021C2  7038     		strb r0, [r7]
 
-#22		{R:"1$O:8"}
+#22		{R:"1$O:12"}
 (*) UNDEF
-A19021A8  F8DF 7090		ldr r7, [pc, #+144] ; 0xA1A00053
-A19021AC  7838     		ldrb r0, [r7]
+A19021C4  F8DF 711C		ldr r7, [pc, #+284] ; 0xA1A0008C
+A19021C8  7838     		ldrb r0, [r7]
 
-#23		{R:"1$O:8"}
+#23		{R:"1$O:12"}
 (*) BOOL
-A19021AE  F8DF 7090		ldr r7, [pc, #+144] ; 0xA1A00058
-A19021B2  783F     		ldrb r7, [r7]
-A19021B4  4338     		orr r0, r0, r7
+A19021CA  F8DF 711C		ldr r7, [pc, #+284] ; 0xA1A0008D
+A19021CE  783F     		ldrb r7, [r7]
+A19021D0  4338     		orr r0, r0, r7
 
 #24
-#25		{R:"1$O:9"}
+#25		{R:"1$O:13"}
 (*) BOOL
-A19021B6  F8DF 708C		ldr r7, [pc, #+140] ; 0xA1A00059
-A19021BA  783F     		ldrb r7, [r7]
-A19021BC  4338     		orr r0, r0, r7
+A19021D2  F8DF 7118		ldr r7, [pc, #+280] ; 0xA1A0008E
+A19021D6  783F     		ldrb r7, [r7]
+A19021D8  4338     		orr r0, r0, r7
 
 #26
-#27		{R:"1$O:19"}
+#27		{R:"1$O:16"}
 (*) BOOL
-A19021BE  F8DF 7088		ldr r7, [pc, #+136] ; 0xA1A0005A
-A19021C2  783F     		ldrb r7, [r7]
-A19021C4  4338     		orr r0, r0, r7
+A19021DA  F8DF 7114		ldr r7, [pc, #+276] ; 0xA1A0008F
+A19021DE  783F     		ldrb r7, [r7]
+A19021E0  4338     		orr r0, r0, r7
 
-#28		{R:"1$O:19"}
+#28
+#29		{R:"1$O:18"}
 (*) BOOL
-A19021C6  F8DF 7068		ldr r7, [pc, #+104] ; 0xA1A0002C
-A19021CA  7038     		strb r0, [r7]
+A19021E2  F8DF 70EC		ldr r7, [pc, #+236] ; 0xA1A00026
+A19021E6  783F     		ldrb r7, [r7]
+A19021E8  4338     		orr r0, r0, r7
 
-#29
-#30
-#31		{R:"1$FB:HIGHRTDTIMER"}
+#30		{R:"1$O:18"}
 (*) BOOL
-A19021CC  F8DF 7040		ldr r7, [pc, #+64] ; 0xA0003EA6
-A19021D0  F9B7 0000		ldrsh r0, [r7]
-A19021D4  F8DF 705C		ldr r7, [pc, #+92] ; 0xA1A00030
-A19021D8  6038     		str r0, [r7]
+A19021EA  F8DF 70EC		ldr r7, [pc, #+236] ; 0xA1A0002C
+A19021EE  7038     		strb r0, [r7]
 
-#32		{R:"1$FB:HIGHRTDTIMER"}
-(*) INT
-A19021DA  E92D 0021		stmdb sp!, { r0, r5 }
-A19021DE  F8DF 704C		ldr r7, [pc, #+76] ; 0xA1A00028
-A19021E2  463D     		mov r5, r7
-A19021E4  F8DF 4030		ldr r4, [pc, #+48] ; 0xA1901F50
-A19021E8  F044 0401		orr r4, r4, #1
-A19021EC  47A0     		blx r4
-A19021EE  E8BD 0021		ldmia sp!, { r0, r5 }
-
+#31
+#32
 #33		{R:"1$FB:HIGHRTDTIMER"}
+(*) BOOL
+A19021F0  F8DF 70BC		ldr r7, [pc, #+188] ; 0xA0003EBA
+A19021F4  F9B7 0000		ldrsh r0, [r7]
+A19021F8  F8DF 70E0		ldr r7, [pc, #+224] ; 0xA1A00030
+A19021FC  6038     		str r0, [r7]
+
+#34		{R:"1$FB:HIGHRTDTIMER"}
 (*) INT
-A19021F2  F8DF 7044		ldr r7, [pc, #+68] ; 0xA1A00034
-A19021F6  7838     		ldrb r0, [r7]
-A19021F8  F8DF 7004		ldr r7, [pc, #+4] ; 0xA0003E98
-A19021FC  7038     		strb r0, [r7]
+A19021FE  E92D 0021		stmdb sp!, { r0, r5 }
+A1902202  F8DF 70D0		ldr r7, [pc, #+208] ; 0xA1A00028
+A1902206  463D     		mov r5, r7
+A1902208  F8DF 40B0		ldr r4, [pc, #+176] ; 0xA1901F60
+A190220C  F044 0401		orr r4, r4, #1
+A1902210  47A0     		blx r4
+A1902212  E8BD 0021		ldmia sp!, { r0, r5 }
 
-A19021FE  E025     		b #74
+#35		{R:"1$FB:HIGHRTDTIMER"}
+(*) INT
+A1902216  F8DF 70C8		ldr r7, [pc, #+200] ; 0xA1A00034
+A190221A  7838     		ldrb r0, [r7]
+A190221C  F8DF 7080		ldr r7, [pc, #+128] ; 0xA0003EAC
+A1902220  7038     		strb r0, [r7]
 
-A1902200  FFFFFFFF		; 0xA0003E98
-A1902204  FFFFFFFF		; 0xA0003E9E
-A1902208  FFFFFFFF		; 0xA0003EA0
-A190220C  FFFFFFFF		; 0xA0003EA2
-A1902210  FFFFFFFF		; 0xA0003EA6
-A1902214  FFFFFFFF		; 0xA0003EAA
-A1902218  A1901F50		; 0xA1901F50
-A190221C  A1A00016		; 0xA1A00016
-A1902220  A1A0001E		; 0xA1A0001E
-A1902224  A1A00020		; 0xA1A00020
-A1902228  A1A00024		; 0xA1A00024
-A190222C  A1A00028		; 0xA1A00028
-A1902230  A1A0002C		; 0xA1A0002C
-A1902234  A1A00030		; 0xA1A00030
-A1902238  A1A00034		; 0xA1A00034
-A190223C  A1A00053		; 0xA1A00053
-A1902240  A1A00058		; 0xA1A00058
-A1902244  A1A00059		; 0xA1A00059
-A1902248  A1A0005A		; 0xA1A0005A
+#36
+#37
+#38
+#39
+#40
+#41
+#42		{R:"2$O:6"}
+(*) UNDEF
+A1902222  F8DF 709C		ldr r7, [pc, #+156] ; 0xA1A00016
+A1902226  F9B7 0000		ldrsh r0, [r7]
+
+#43		{R:"2$O:6"}
+(*) INT
+A190222A  F8DF 708C		ldr r7, [pc, #+140] ; 0xA1901524
+A190222E  F9B7 7000		ldrsh r7, [r7]
+A1902232  42B8     		cmp r0, r7
+A1902234  BF18 2000		nemov r0, #0
+A1902238  BF08 2001		eqmov r0, #1
+
+#44
+#45		{R:"2$O:6"}
+(*) BOOL
+A190223C  F8DF 70B4		ldr r7, [pc, #+180] ; 0xA1A00090
+A1902240  7038     		strb r0, [r7]
+
+#46		{R:"2$O:7"}
+(*) UNDEF
+A1902242  F8DF 7080		ldr r7, [pc, #+128] ; 0xA1A0001E
+A1902246  F9B7 0000		ldrsh r0, [r7]
+
+#47		{R:"2$O:7"}
+(*) INT
+A190224A  F8DF 706C		ldr r7, [pc, #+108] ; 0xA1901524
+A190224E  F9B7 7000		ldrsh r7, [r7]
+A1902252  42B8     		cmp r0, r7
+A1902254  BF18 2000		nemov r0, #0
+A1902258  BF08 2001		eqmov r0, #1
+
+#48
+#49		{R:"2$O:7"}
+(*) BOOL
+A190225C  F8DF 7098		ldr r7, [pc, #+152] ; 0xA1A00091
+A1902260  7038     		strb r0, [r7]
+
+#50		{R:"2$O:8"}
+(*) UNDEF
+A1902262  F8DF 7064		ldr r7, [pc, #+100] ; 0xA1A00020
+A1902266  F9B7 0000		ldrsh r0, [r7]
+
+#51		{R:"2$O:8"}
+(*) INT
+A190226A  F8DF 704C		ldr r7, [pc, #+76] ; 0xA1901524
+A190226E  F9B7 7000		ldrsh r7, [r7]
+A1902272  42B8     		cmp r0, r7
+A1902274  BF18 2000		nemov r0, #0
+A1902278  BF08 2001		eqmov r0, #1
+
+#52
+#53		{R:"2$O:8"}
+(*) BOOL
+A190227C  F8DF 707C		ldr r7, [pc, #+124] ; 0xA1A00092
+A1902280  7038     		strb r0, [r7]
+
+#54		{R:"2$O:5"}
+(*) UNDEF
+A1902282  F8DF 7070		ldr r7, [pc, #+112] ; 0xA1A00090
+A1902286  7838     		ldrb r0, [r7]
+
+#55		{R:"2$O:5"}
+(*) BOOL
+A1902288  F8DF 706C		ldr r7, [pc, #+108] ; 0xA1A00091
+A190228C  783F     		ldrb r7, [r7]
+A190228E  4338     		orr r0, r0, r7
+
+#56
+#57		{R:"2$O:11"}
+(*) BOOL
+A1902290  F8DF 7068		ldr r7, [pc, #+104] ; 0xA1A00092
+A1902294  783F     		ldrb r7, [r7]
+A1902296  4338     		orr r0, r0, r7
+
+#58		{R:"2$O:11"}
+(*) BOOL
+A1902298  F8DF 7034		ldr r7, [pc, #+52] ; 0xA1A00026
+A190229C  7038     		strb r0, [r7]
+
+A190229E  E02F     		b #94
+
+A19022A0  FFFFFFFF		; 0xA0003EAC
+A19022A4  FFFFFFFF		; 0xA0003EB2
+A19022A8  FFFFFFFF		; 0xA0003EB4
+A19022AC  FFFFFFFF		; 0xA0003EB6
+A19022B0  FFFFFFFF		; 0xA0003EBA
+A19022B4  FFFFFFFF		; 0xA0003EBE
+A19022B8  A1901524		; 0xA1901524
+A19022BC  A1901F60		; 0xA1901F60
+A19022C0  A1A00016		; 0xA1A00016
+A19022C4  A1A0001E		; 0xA1A0001E
+A19022C8  A1A00020		; 0xA1A00020
+A19022CC  A1A00024		; 0xA1A00024
+A19022D0  A1A00026		; 0xA1A00026
+A19022D4  A1A00028		; 0xA1A00028
+A19022D8  A1A0002C		; 0xA1A0002C
+A19022DC  A1A00030		; 0xA1A00030
+A19022E0  A1A00034		; 0xA1A00034
+A19022E4  A1A0008C		; 0xA1A0008C
+A19022E8  A1A0008D		; 0xA1A0008D
+A19022EC  A1A0008E		; 0xA1A0008E
+A19022F0  A1A0008F		; 0xA1A0008F
+A19022F4  A1A00090		; 0xA1A00090
+A19022F8  A1A00091		; 0xA1A00091
+A19022FC  A1A00092		; 0xA1A00092
 
 END_PROGRAM
 **************************************************
@@ -856,59 +968,59 @@ END_PROGRAM
 #5
 #6		{R:"1$O:7"}
 (*) UNDEF
-A190224C  F8DF 7060		ldr r7, [pc, #+96] ; 0xA1A00026
-A1902250  F9B7 0000		ldrsh r0, [r7]
+A1902300  F8DF 7060		ldr r7, [pc, #+96] ; 0xA1A0003E
+A1902304  F9B7 0000		ldrsh r0, [r7]
 
 #7		{R:"1$O:7"}
 (*) INT
-A1902254  F8DF 704C		ldr r7, [pc, #+76] ; 0xA0003EA4
-A1902258  F9B7 7000		ldrsh r7, [r7]
-A190225C  42B8     		cmp r0, r7
-A190225E  BFB8 2000		ltmov r0, #0
-A1902262  BFA8 2001		gemov r0, #1
+A1902308  F8DF 704C		ldr r7, [pc, #+76] ; 0xA0003EB8
+A190230C  F9B7 7000		ldrsh r7, [r7]
+A1902310  42B8     		cmp r0, r7
+A1902312  BFB8 2000		ltmov r0, #0
+A1902316  BFA8 2001		gemov r0, #1
 
 #8		{R:"1$O:7"}
 (*) BOOL
-A1902266  F8DF 7050		ldr r7, [pc, #+80] ; 0xA1A00040
-A190226A  7038     		strb r0, [r7]
+A190231A  F8DF 7050		ldr r7, [pc, #+80] ; 0xA1A00044
+A190231E  7038     		strb r0, [r7]
 
 #9
 #10
 #11		{R:"1$FB:VIBRATIONALARM_0"}
 (*) BOOL
-A190226C  F8DF 7038		ldr r7, [pc, #+56] ; 0xA0003EA8
-A1902270  F9B7 0000		ldrsh r0, [r7]
-A1902274  F8DF 7044		ldr r7, [pc, #+68] ; 0xA1A00044
-A1902278  6038     		str r0, [r7]
+A1902320  F8DF 7038		ldr r7, [pc, #+56] ; 0xA0003EBC
+A1902324  F9B7 0000		ldrsh r0, [r7]
+A1902328  F8DF 7044		ldr r7, [pc, #+68] ; 0xA1A00048
+A190232C  6038     		str r0, [r7]
 
 #12		{R:"1$FB:VIBRATIONALARM_0"}
 (*) INT
-A190227A  E92D 0021		stmdb sp!, { r0, r5 }
-A190227E  F8DF 7034		ldr r7, [pc, #+52] ; 0xA1A0003C
-A1902282  463D     		mov r5, r7
-A1902284  F8DF 4024		ldr r4, [pc, #+36] ; 0xA1901F50
-A1902288  F044 0401		orr r4, r4, #1
-A190228C  47A0     		blx r4
-A190228E  E8BD 0021		ldmia sp!, { r0, r5 }
+A190232E  E92D 0021		stmdb sp!, { r0, r5 }
+A1902332  F8DF 7034		ldr r7, [pc, #+52] ; 0xA1A00040
+A1902336  463D     		mov r5, r7
+A1902338  F8DF 4024		ldr r4, [pc, #+36] ; 0xA1901F60
+A190233C  F044 0401		orr r4, r4, #1
+A1902340  47A0     		blx r4
+A1902342  E8BD 0021		ldmia sp!, { r0, r5 }
 
 #13		{R:"1$FB:VIBRATIONALARM_0"}
 (*) INT
-A1902292  F8DF 702C		ldr r7, [pc, #+44] ; 0xA1A00048
-A1902296  7838     		ldrb r0, [r7]
-A1902298  F8DF 7004		ldr r7, [pc, #+4] ; 0xA0003E96
-A190229C  7038     		strb r0, [r7]
+A1902346  F8DF 702C		ldr r7, [pc, #+44] ; 0xA1A0004C
+A190234A  7838     		ldrb r0, [r7]
+A190234C  F8DF 7004		ldr r7, [pc, #+4] ; 0xA0003EAA
+A1902350  7038     		strb r0, [r7]
 
-A190229E  E011     		b #34
+A1902352  E011     		b #34
 
-A19022A0  FFFFFFFF		; 0xA0003E96
-A19022A4  FFFFFFFF		; 0xA0003EA4
-A19022A8  FFFFFFFF		; 0xA0003EA8
-A19022AC  A1901F50		; 0xA1901F50
-A19022B0  A1A00026		; 0xA1A00026
-A19022B4  A1A0003C		; 0xA1A0003C
-A19022B8  A1A00040		; 0xA1A00040
-A19022BC  A1A00044		; 0xA1A00044
-A19022C0  A1A00048		; 0xA1A00048
+A1902354  FFFFFFFF		; 0xA0003EAA
+A1902358  FFFFFFFF		; 0xA0003EB8
+A190235C  FFFFFFFF		; 0xA0003EBC
+A1902360  A1901F60		; 0xA1901F60
+A1902364  A1A0003E		; 0xA1A0003E
+A1902368  A1A00040		; 0xA1A00040
+A190236C  A1A00044		; 0xA1A00044
+A1902370  A1A00048		; 0xA1A00048
+A1902374  A1A0004C		; 0xA1A0004C
 
 END_PROGRAM
 **************************************************
@@ -925,25 +1037,18 @@ END_PROGRAM
 #3
 #4		{R:1$0}
 (*) UNDEF
-A19022C4  F8DF 7020		ldr r7, [pc, #+32] ; 0xA1A00050
-A19022C8  7838     		ldrb r0, [r7]
+A1902378  F8DF 7010		ldr r7, [pc, #+16] ; 0xA1A00054
+A190237C  7838     		ldrb r0, [r7]
 
 #5		{R:1$1}
 (*) BOOL
-A19022CA  2800     		cmp r0, #0
-A19022CC  D009     		beq #0x000012
-A19022CE  B082     		sub sp, sp, #8
-A19022D0  F8CD 0000		str r0, [sp]
-A19022D4  2001     		mov r0, #1
-A19022D6  F8DF 700C		ldr r7, [pc, #+12] ; 0xA0003E94
-A19022DA  7038     		strb r0, [r7]
-A19022DC  F8DD 0000		ldr r0, [sp]
-A19022E0  B002     		add sp, sp, #8
+A190237E  F8DF 7008		ldr r7, [pc, #+8] ; 0xA0003EA8
+A1902382  7038     		strb r0, [r7]
 
-A19022E2  E003     		b #6
+A1902384  E003     		b #6
 
-A19022E4  FFFFFFFF		; 0xA0003E94
-A19022E8  A1A00050		; 0xA1A00050
+A1902388  FFFFFFFF		; 0xA0003EA8
+A190238C  A1A00054		; 0xA1A00054
 
 END_PROGRAM
 **************************************************
@@ -960,60 +1065,21 @@ END_PROGRAM
 #3
 #4		{R:1$0}
 (*) UNDEF
-A19022EC  F8DF 7020		ldr r7, [pc, #+32] ; 0xA1A00051
-A19022F0  7838     		ldrb r0, [r7]
+A1902390  F8DF 7018		ldr r7, [pc, #+24] ; 0xA1A00055
+A1902394  7838     		ldrb r0, [r7]
+A1902396  2800     		cmp r0, #0
+A1902398  BF08 2001		eqmov r0, #1
+A190239C  BF18 2000		nemov r0, #0
 
 #5		{R:1$1}
 (*) BOOL
-A19022F2  2800     		cmp r0, #0
-A19022F4  D009     		beq #0x000012
-A19022F6  B082     		sub sp, sp, #8
-A19022F8  F8CD 0000		str r0, [sp]
-A19022FC  2001     		mov r0, #1
-A19022FE  F8DF 700C		ldr r7, [pc, #+12] ; 0xA0003E92
-A1902302  7038     		strb r0, [r7]
-A1902304  F8DD 0000		ldr r0, [sp]
-A1902308  B002     		add sp, sp, #8
+A19023A0  F8DF 7004		ldr r7, [pc, #+4] ; 0xA0003EA6
+A19023A4  7038     		strb r0, [r7]
 
-A190230A  E003     		b #6
+A19023A6  E003     		b #6
 
-A190230C  FFFFFFFF		; 0xA0003E92
-A1902310  A1A00051		; 0xA1A00051
-
-END_PROGRAM
-**************************************************
-	List program: WINDINGTEMPDETECT
-**************************************************
-
-PROGRAM WINDINGTEMPDETECT
-
-END_PROGRAM
-
-#0		{SRC:WINDINGTEMPDETECT}
-#1
-#2
-#3
-#4		{R:1$0}
-(*) UNDEF
-A1902314  F8DF 7020		ldr r7, [pc, #+32] ; 0xA1A00052
-A1902318  7838     		ldrb r0, [r7]
-
-#5		{R:1$1}
-(*) BOOL
-A190231A  2800     		cmp r0, #0
-A190231C  D009     		beq #0x000012
-A190231E  B082     		sub sp, sp, #8
-A1902320  F8CD 0000		str r0, [sp]
-A1902324  2001     		mov r0, #1
-A1902326  F8DF 700C		ldr r7, [pc, #+12] ; 0xA0003E90
-A190232A  7038     		strb r0, [r7]
-A190232C  F8DD 0000		ldr r0, [sp]
-A1902330  B002     		add sp, sp, #8
-
-A1902332  E003     		b #6
-
-A1902334  FFFFFFFF		; 0xA0003E90
-A1902338  A1A00052		; 0xA1A00052
+A19023A8  FFFFFFFF		; 0xA0003EA6
+A19023AC  A1A00055		; 0xA1A00055
 
 END_PROGRAM
 **************************************************
@@ -1030,48 +1096,160 @@ END_PROGRAM
 #3
 #4		{R:1$0}
 (*) UNDEF
-A190233C  F8DF 7030		ldr r7, [pc, #+48] ; 0xA0003E90
-A1902340  7838     		ldrb r0, [r7]
+A19023B0  F8DF 702C		ldr r7, [pc, #+44] ; 0xA0003EA4
+A19023B4  7838     		ldrb r0, [r7]
 
 #5		{R:1$5}
 (*) BOOL
-A1902342  F8DF 7030		ldr r7, [pc, #+48] ; 0xA0003E92
-A1902346  783F     		ldrb r7, [r7]
-A1902348  4338     		orr r0, r0, r7
+A19023B6  F8DF 702C		ldr r7, [pc, #+44] ; 0xA0003EA6
+A19023BA  783F     		ldrb r7, [r7]
+A19023BC  4338     		orr r0, r0, r7
 
 #6		{R:1$7}
 (*) BOOL
-A190234A  F8DF 702C		ldr r7, [pc, #+44] ; 0xA0003E94
-A190234E  783F     		ldrb r7, [r7]
-A1902350  4338     		orr r0, r0, r7
+A19023BE  F8DF 7028		ldr r7, [pc, #+40] ; 0xA0003EA8
+A19023C2  783F     		ldrb r7, [r7]
+A19023C4  4338     		orr r0, r0, r7
 
 #7		{R:1$8}
 (*) BOOL
-A1902352  F8DF 702C		ldr r7, [pc, #+44] ; 0xA0003E98
-A1902356  783F     		ldrb r7, [r7]
-A1902358  4338     		orr r0, r0, r7
+A19023C6  F8DF 7028		ldr r7, [pc, #+40] ; 0xA0003EAC
+A19023CA  783F     		ldrb r7, [r7]
+A19023CC  4338     		orr r0, r0, r7
 
 #8		{R:1$9}
 (*) BOOL
-A190235A  F8DF 7020		ldr r7, [pc, #+32] ; 0xA0003E96
-A190235E  783F     		ldrb r7, [r7]
-A1902360  4338     		orr r0, r0, r7
+A19023CE  F8DF 701C		ldr r7, [pc, #+28] ; 0xA0003EAA
+A19023D2  783F     		ldrb r7, [r7]
+A19023D4  4338     		orr r0, r0, r7
 
 #9		{R:1$1}
 (*) BOOL
-A1902362  F8DF 7020		ldr r7, [pc, #+32] ; 0xA1A00015
-A1902366  7038     		strb r0, [r7]
+A19023D6  F8DF 701C		ldr r7, [pc, #+28] ; 0xA1A00015
+A19023DA  7038     		strb r0, [r7]
 
-A1902368  E8BD 4DF0		ldmia sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
+A19023DC  E00B     		b #22
 
-A190236C  4770     		bx lr
+A19023E0  FFFFFFFF		; 0xA0003EA4
+A19023E4  FFFFFFFF		; 0xA0003EA6
+A19023E8  FFFFFFFF		; 0xA0003EA8
+A19023EC  FFFFFFFF		; 0xA0003EAA
+A19023F0  FFFFFFFF		; 0xA0003EAC
+A19023F4  A1A00015		; 0xA1A00015
 
-A1902370  FFFFFFFF		; 0xA0003E90
-A1902374  FFFFFFFF		; 0xA0003E92
-A1902378  FFFFFFFF		; 0xA0003E94
-A190237C  FFFFFFFF		; 0xA0003E96
-A1902380  FFFFFFFF		; 0xA0003E98
-A1902384  A1A00015		; 0xA1A00015
+END_PROGRAM
+**************************************************
+	List program: PUMP_ENABLE
+**************************************************
+
+PROGRAM PUMP_ENABLE
+
+END_PROGRAM
+
+#0		{SRC:PUMP_ENABLE}
+#1
+#2
+#3
+#4		{R:1$0}
+(*) UNDEF
+A19023F8  F8DF 7014		ldr r7, [pc, #+20] ; 0xA1A00015
+A19023FC  7838     		ldrb r0, [r7]
+A19023FE  2800     		cmp r0, #0
+A1902400  BF08 2001		eqmov r0, #1
+A1902404  BF18 2000		nemov r0, #0
+
+#5		{R:1$1}
+(*) BOOL
+A1902408  F8DF 7008		ldr r7, [pc, #+8] ; 0x100004AD
+A190240C  7038     		strb r0, [r7]
+
+A190240E  E003     		b #6
+
+A1902410  A1A00015		; 0xA1A00015
+A1902414  FFFFFFFF		; 0x100004AD
+
+END_PROGRAM
+**************************************************
+	List program: WINDINGTEMPDETECT
+**************************************************
+
+PROGRAM WINDINGTEMPDETECT
+
+        VAR CONSTANT
+WINDINGTEMPCUTOFF : INT := 402;
+WINDINGTEMPDISCONNECT : INT := -32768;
+	END_VAR
+
+END_PROGRAM
+
+#0		{SRC:WINDINGTEMPDETECT}
+#1
+#2
+#3
+#4
+#5
+#6		{R:"1$O:3"}
+(*) UNDEF
+A1902418  F8DF 705C		ldr r7, [pc, #+92] ; 0xA1A00078
+A190241C  F9B7 0000		ldrsh r0, [r7]
+
+#7		{R:"1$O:3"}
+(*) INT
+A1902420  F44F 77C9		mov r7, #402 ; 402
+A1902424  42B8     		cmp r0, r7
+A1902426  BFB8 2000		ltmov r0, #0
+A190242A  BFA8 2001		gemov r0, #1
+
+#8
+#9		{R:"1$O:3"}
+(*) BOOL
+A190242E  F8DF 704C		ldr r7, [pc, #+76] ; 0xA1A00093
+A1902432  7038     		strb r0, [r7]
+
+#10		{R:"1$O:7"}
+(*) UNDEF
+A1902434  F8DF 7040		ldr r7, [pc, #+64] ; 0xA1A00078
+A1902438  F9B7 0000		ldrsh r0, [r7]
+
+#11		{R:"1$O:7"}
+(*) INT
+A190243C  F8DF 7034		ldr r7, [pc, #+52] ; 0xA1901526
+A1902440  F9B7 7000		ldrsh r7, [r7]
+A1902444  42B8     		cmp r0, r7
+A1902446  BF18 2000		nemov r0, #0
+A190244A  BF08 2001		eqmov r0, #1
+
+#12
+#13		{R:"1$O:7"}
+(*) BOOL
+A190244E  F8DF 7030		ldr r7, [pc, #+48] ; 0xA1A00094
+A1902452  7038     		strb r0, [r7]
+
+#14		{R:"1$O:8"}
+(*) UNDEF
+A1902454  F8DF 7024		ldr r7, [pc, #+36] ; 0xA1A00093
+A1902458  7838     		ldrb r0, [r7]
+
+#15		{R:"1$O:8"}
+(*) BOOL
+A190245A  F8DF 7024		ldr r7, [pc, #+36] ; 0xA1A00094
+A190245E  783F     		ldrb r7, [r7]
+A1902460  4338     		orr r0, r0, r7
+
+#16		{R:"1$O:8"}
+(*) BOOL
+A1902462  F8DF 700C		ldr r7, [pc, #+12] ; 0xA0003EA4
+A1902466  7038     		strb r0, [r7]
+
+A1902468  E8BD 4DF0		ldmia sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
+
+A190246C  4770     		bx lr
+
+A1902470  FFFFFFFF		; 0xA0003EA4
+A1902474  A1901526		; 0xA1901526
+A1902478  A1A00078		; 0xA1A00078
+A190247C  A1A00093		; 0xA1A00093
+A1902480  A1A00094		; 0xA1A00094
 
 END_PROGRAM
 
@@ -1082,68 +1260,68 @@ END_PROGRAM
 
 
 *** INPUT:
-A1902388  F8DF 708C		ldr r7, [pc, #+140] ; 0x10000442
-A190238C  8838     		ldrh r0, [r7]
-A190238E  F8DF 705C		ldr r7, [pc, #+92] ; 0xA1A00016
-A1902392  8038     		strh r0, [r7]
+A1902484  F8DF 7088		ldr r7, [pc, #+136] ; 0x10000442
+A1902488  8838     		ldrh r0, [r7]
+A190248A  F8DF 705C		ldr r7, [pc, #+92] ; 0xA1A00016
+A190248E  8038     		strh r0, [r7]
 
-A1902394  F8DF 7084		ldr r7, [pc, #+132] ; 0x10000444
-A1902398  8838     		ldrh r0, [r7]
-A190239A  F8DF 7054		ldr r7, [pc, #+84] ; 0xA1A0001E
-A190239E  8038     		strh r0, [r7]
+A1902490  F8DF 7080		ldr r7, [pc, #+128] ; 0x10000444
+A1902494  8838     		ldrh r0, [r7]
+A1902496  F8DF 7054		ldr r7, [pc, #+84] ; 0xA1A0001E
+A190249A  8038     		strh r0, [r7]
 
-A19023A0  F8DF 707C		ldr r7, [pc, #+124] ; 0x10000446
-A19023A4  8838     		ldrh r0, [r7]
-A19023A6  F8DF 704C		ldr r7, [pc, #+76] ; 0xA1A00020
-A19023AA  8038     		strh r0, [r7]
+A190249C  F8DF 7078		ldr r7, [pc, #+120] ; 0x10000446
+A19024A0  8838     		ldrh r0, [r7]
+A19024A2  F8DF 704C		ldr r7, [pc, #+76] ; 0xA1A00020
+A19024A6  8038     		strh r0, [r7]
 
-A19023AC  F8DF 7074		ldr r7, [pc, #+116] ; 0x10000448
-A19023B0  8838     		ldrh r0, [r7]
-A19023B2  F8DF 7044		ldr r7, [pc, #+68] ; 0xA1A00024
-A19023B6  8038     		strh r0, [r7]
+A19024A8  F8DF 7070		ldr r7, [pc, #+112] ; 0x10000448
+A19024AC  8838     		ldrh r0, [r7]
+A19024AE  F8DF 7044		ldr r7, [pc, #+68] ; 0xA1A00024
+A19024B2  8038     		strh r0, [r7]
 
-A19023B8  F8DF 706C		ldr r7, [pc, #+108] ; 0x1000044A
-A19023BC  8838     		ldrh r0, [r7]
-A19023BE  F8DF 703C		ldr r7, [pc, #+60] ; 0xA1A00026
-A19023C2  8038     		strh r0, [r7]
+A19024B4  F8DF 706C		ldr r7, [pc, #+108] ; 0x1000044E
+A19024B8  8838     		ldrh r0, [r7]
+A19024BA  F8DF 703C		ldr r7, [pc, #+60] ; 0xA1A0003E
+A19024BE  8038     		strh r0, [r7]
 
-A19023C4  F8DF 704C		ldr r7, [pc, #+76] ; 0x10000422
-A19023C8  7838     		ldrb r0, [r7]
-A19023CA  F8DF 7034		ldr r7, [pc, #+52] ; 0xA1A00050
-A19023CE  7038     		strb r0, [r7]
+A19024C0  F8DF 7048		ldr r7, [pc, #+72] ; 0x10000421
+A19024C4  7838     		ldrb r0, [r7]
+A19024C6  F8DF 7034		ldr r7, [pc, #+52] ; 0xA1A00054
+A19024CA  7038     		strb r0, [r7]
 
-A19023D0  F8DF 703C		ldr r7, [pc, #+60] ; 0x10000421
-A19023D4  7838     		ldrb r0, [r7]
-A19023D6  F8DF 702C		ldr r7, [pc, #+44] ; 0xA1A00051
-A19023DA  7038     		strb r0, [r7]
+A19024CC  F8DF 7038		ldr r7, [pc, #+56] ; 0x10000420
+A19024D0  7838     		ldrb r0, [r7]
+A19024D2  F8DF 702C		ldr r7, [pc, #+44] ; 0xA1A00055
+A19024D6  7038     		strb r0, [r7]
 
-A19023DC  F8DF 702C		ldr r7, [pc, #+44] ; 0x10000420
-A19023E0  7838     		ldrb r0, [r7]
-A19023E2  F8DF 7024		ldr r7, [pc, #+36] ; 0xA1A00052
-A19023E6  7038     		strb r0, [r7]
+A19024D8  F8DF 7044		ldr r7, [pc, #+68] ; 0x1000044A
+A19024DC  8838     		ldrh r0, [r7]
+A19024DE  F8DF 7024		ldr r7, [pc, #+36] ; 0xA1A00078
+A19024E2  8038     		strh r0, [r7]
 
-A19023E8  4770     		bx lr
+A19024E4  4770     		bx lr
 
-A19023EC  A1A00016		; 0xA1A00016
-A19023F0  A1A0001E		; 0xA1A0001E
-A19023F4  A1A00020		; 0xA1A00020
-A19023F8  A1A00024		; 0xA1A00024
-A19023FC  A1A00026		; 0xA1A00026
-A1902400  A1A00050		; 0xA1A00050
-A1902404  A1A00051		; 0xA1A00051
-A1902408  A1A00052		; 0xA1A00052
-A190240C  FFFFFFFF		; 0x10000420
-A1902410  FFFFFFFF		; 0x10000421
-A1902414  FFFFFFFF		; 0x10000422
-A1902418  FFFFFFFF		; 0x10000442
-A190241C  FFFFFFFF		; 0x10000444
-A1902420  FFFFFFFF		; 0x10000446
-A1902424  FFFFFFFF		; 0x10000448
-A1902428  FFFFFFFF		; 0x1000044A
+A19024E8  A1A00016		; 0xA1A00016
+A19024EC  A1A0001E		; 0xA1A0001E
+A19024F0  A1A00020		; 0xA1A00020
+A19024F4  A1A00024		; 0xA1A00024
+A19024F8  A1A0003E		; 0xA1A0003E
+A19024FC  A1A00054		; 0xA1A00054
+A1902500  A1A00055		; 0xA1A00055
+A1902504  A1A00078		; 0xA1A00078
+A1902508  FFFFFFFF		; 0x10000420
+A190250C  FFFFFFFF		; 0x10000421
+A1902510  FFFFFFFF		; 0x10000442
+A1902514  FFFFFFFF		; 0x10000444
+A1902518  FFFFFFFF		; 0x10000446
+A190251C  FFFFFFFF		; 0x10000448
+A1902520  FFFFFFFF		; 0x1000044A
+A1902524  FFFFFFFF		; 0x1000044E
 
 
 *** OUTPUT:
-A190242C  4770     		bx lr
+A1902528  4770     		bx lr
 
 
 
@@ -1151,17 +1329,17 @@ A190242C  4770     		bx lr
 	Task BACKGROUND init code
 **************************************************
 
-A190242E  E92D 4DF0		stmdb sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
+A190252A  E92D 4DF0		stmdb sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
 
-A1902432  F8DF 700C		ldr r7, [pc, #+12] ; 0xA1A00018
-A1902436  2001     		mov r0, #0x01
-A1902438  7038     		strb r0, [r7]
+A190252E  F8DF 700C		ldr r7, [pc, #+12] ; 0xA1A00018
+A1902532  2001     		mov r0, #0x01
+A1902534  7038     		strb r0, [r7]
 
-A190243A  E8BD 4DF0		ldmia sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
+A1902536  E8BD 4DF0		ldmia sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
 
-A190243E  4770     		bx lr
+A190253A  4770     		bx lr
 
-A1902440  A1A00018		; 0xA1A00018
+A190253C  A1A00018		; 0xA1A00018
 
 **************************************************
 	List program: PARCHECK
@@ -1171,7 +1349,7 @@ PROGRAM PARCHECK
 
 END_PROGRAM
 
-A1902460  E92D 4DF0		stmdb sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
+A1902550  E92D 4DF0		stmdb sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
 
 #0		{SRC:PARCHECK}
 #1
@@ -1180,25 +1358,25 @@ A1902460  E92D 4DF0		stmdb sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
 #4
 #5		{L:2}
 (*) UNDEF
-A1902464  F8DF 702C		ldr r7, [pc, #+44] ; 0x10000182
-A1902468  8838     		ldrh r0, [r7]
+A1902554  F8DF 702C		ldr r7, [pc, #+44] ; 0x10000182
+A1902558  8838     		ldrh r0, [r7]
 
 #6		{L:2}
 (*) UINT
-A190246A  F44F 477C		mov r7, #64512 ; 64512
-A190246E  4038     		and r0, r0, r7
+A190255A  F44F 477C		mov r7, #64512 ; 64512
+A190255E  4038     		and r0, r0, r7
 
 #7		{L:2}
 (*) UINT
-A1902470  F44F 6700		mov r7, #2048 ; 2048
-A1902474  42B8     		cmp r0, r7
-A1902476  BF08 2000		eqmov r0, #0
-A190247A  BF18 2001		nemov r0, #1
+A1902560  F44F 6700		mov r7, #2048 ; 2048
+A1902564  42B8     		cmp r0, r7
+A1902566  BF08 2000		eqmov r0, #0
+A190256A  BF18 2001		nemov r0, #1
 
 #8		{L:2}
 (-) BOOL
-A190247E  2800     		cmp r0, #0
-A1902480  D005     		beq #10 ; 0xA190248E
+A190256E  2800     		cmp r0, #0
+A1902570  D005     		beq #10 ; 0xA190257E
 
 
 #9
@@ -1208,25 +1386,25 @@ A1902480  D005     		beq #10 ; 0xA190248E
 #13
 #14		{L:3}
 (-) UNDEF
-A1902484  2001     		mov r0, #1 ; 1
+A1902574  2001     		mov r0, #1 ; 1
 
 #15		{L:3}
 (-) BOOL
-A1902486  2800     		cmp r0, #0
-A1902488  D001     		beq #2 ; 0xA190248E
+A1902576  2800     		cmp r0, #0
+A1902578  D001     		beq #2 ; 0xA190257E
 
 
 #16
 #17
 #18
 (-) BOOL
-A190248C  E7FA     		b #-12 ; 0xA1902484
+A190257C  E7FA     		b #-12 ; 0xA1902574
 
-A190248E  E8BD 4DF0		ldmia sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
+A190257E  E8BD 4DF0		ldmia sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
 
-A1902492  4770     		bx lr
+A1902582  4770     		bx lr
 
-A1902494  FFFFFFFF		; 0x10000182
+A1902584  FFFFFFFF		; 0x10000182
 
 END_PROGRAM
 
@@ -1237,11 +1415,11 @@ END_PROGRAM
 
 
 *** INPUT:
-A1902498  4770     		bx lr
+A1902588  4770     		bx lr
 
 
 *** OUTPUT:
-A190249A  4770     		bx lr
+A190258A  4770     		bx lr
 
 
 
@@ -1249,11 +1427,11 @@ A190249A  4770     		bx lr
 	Task INIT init code
 **************************************************
 
-A190249C  E92D 4DF0		stmdb sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
+A190258C  E92D 4DF0		stmdb sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
 
-A19024A0  E8BD 4DF0		ldmia sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
+A1902590  E8BD 4DF0		ldmia sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
 
-A19024A4  4770     		bx lr
+A1902594  4770     		bx lr
 
 
 **************************************************
@@ -1268,11 +1446,11 @@ VIRTUAL TABLES INDEXES
 	Global init code
 **************************************************
 
-A19024B0  E92D 4DF0		stmdb sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
+A19025A0  E92D 4DF0		stmdb sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
 
-A19024B4  E8BD 4DF0		ldmia sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
+A19025A4  E8BD 4DF0		ldmia sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
 
-A19024B8  4770     		bx lr
+A19025A8  4770     		bx lr
 
 
 
@@ -1280,11 +1458,11 @@ A19024B8  4770     		bx lr
 	Global RETAIN init code
 **************************************************
 
-A19024BA  E92D 4DF0		stmdb sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
+A19025AA  E92D 4DF0		stmdb sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
 
-A19024BE  E8BD 4DF0		ldmia sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
+A19025AE  E8BD 4DF0		ldmia sp!, { r4, r5, r6, r7, r8, r10, fp, lr }
 
-A19024C2  4770     		bx lr
+A19025B2  4770     		bx lr
 
 
 
@@ -1294,12 +1472,12 @@ MEMORY MAP
 
 Code area type:			main code
 Start code area:		A1900000h
-End code area:			A19024D0h
-Code size:			    24D0h
+End code area:			A19025C0h
+Code size:			    25C0h
 
 Start local data area:		A1A00000h
-End local data area:		A1A0005Bh
-Local data size:		      5Bh
+End local data area:		A1A00095h
+Local data size:		      95h
 
 Start retentive data area:	       0h
 End retentive data area:	       0h
@@ -1312,7 +1490,7 @@ Bit data size:			       0h
 
 
 ********************************************
-CODE ID:                                88388EC5
+CODE ID:                                2640FC52
 DEBUG MEMO ID:                          A190B976
-FULL MEMO ID:                           0000FC8A
+FULL MEMO ID:                           0000789C
 ********************************************

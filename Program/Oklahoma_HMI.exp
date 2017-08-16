@@ -25,10 +25,11 @@ motor1_Temp AT %IW1.0 : INT;	{ DE:"AIL1 analogue input" }
 motor2_Temp AT %IW1.1 : INT;	{ DE:"AIL2 analogue input" }
 motor3_Temp AT %IW1.2 : INT;	{ DE:"AIL3 analogue input" }
 bottomBearingTemp AT %IW1.3 : INT;	{ DE:"AIL4 analogue input" }
-vibration AT %IW1.4 : INT;	{ DE:"AIL5 analogue input" }
-WindingTemp AT %IX0.0 : BOOL;	{ DE:"DIL1 digital input" }
-sealFail AT %IX0.1 : BOOL;	{ DE:"DIL2 digital input" }
-highFloat AT %IX0.2 : BOOL;	{ DE:"DIL3 digital input" }
+windingTemp AT %IW1.4 : INT;	{ DE:"AIL5 analogue input" }
+vibration AT %IW1.6 : INT;	{ DE:"AIL7 analogue input" }
+sealFail AT %IX0.0 : BOOL;	{ DE:"DIL1 digital input" }
+highFloat AT %IX0.1 : BOOL;	{ DE:"DIL2 digital input" }
 audibleAlarm AT %QX1.0 : BOOL;	{ DE:"DOL1 digital output" }
+pumpEnable AT %QX1.1 : BOOL;	{ DE:"DOL2 digital output" }
 	END_VAR
 
