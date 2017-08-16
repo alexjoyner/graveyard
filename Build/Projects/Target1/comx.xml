@@ -26,10 +26,10 @@
 </ArrayInfo>
 <PLCInfo>
 	<PLCName>Pump1</PLCName>
-	<PLCAddress>[4]T:0:127.0.0.1:502:255:0:0.0.0.0:120:1:4:3:1:0</PLCAddress>
+	<PLCAddress>[4]T:0:192.168.1.6:502:255:0:0.0.0.0:120:1:4:3:1:0</PLCAddress>
 	<StringFormat>0</StringFormat>
 	<DriverId>0</DriverId>
-	<PLCModel>3</PLCModel>
+	<PLCModel>4</PLCModel>
 	<UseStringFormat>0</UseStringFormat>
 	<DisableFilter>0</DisableFilter>
 </PLCInfo>
@@ -53,7 +53,7 @@
 </AccessGroupInfo>
 <ArrayInfo>
 	<StructureName>VariableInfo</StructureName>
-	<Count>26</Count>
+	<Count>27</Count>
 </ArrayInfo>
 <VariableInfo>
 	<VariableName>Authorization01.UserName</VariableName>
@@ -259,6 +259,35 @@
 	<TagId>68</TagId>
 </VariableInfo>
 <VariableInfo>
+	<VariableName>_IPAddressStatus</VariableName>
+	<VariableExternalName></VariableExternalName>
+	<VarAddress></VarAddress>
+	<OffsetName></OffsetName>
+	<InitString></InitString>
+	<InitInteger>0</InitInteger>
+	<InitFloat>0.000000</InitFloat>
+	<DataFormat>0</DataFormat>
+	<SignedFormat>2</SignedFormat>
+	<StringFormat>6</StringFormat>
+	<AGIndex>65535</AGIndex>
+	<DataLength>1</DataLength>
+	<ArraySize>1</ArraySize>
+	<BitWidth>1</BitWidth>
+	<BitOffset>0</BitOffset>
+	<TagType>3</TagType>
+	<DisableFilter>0</DisableFilter>
+	<InternalVariable>1</InternalVariable>
+	<IndirectVariable>0</IndirectVariable>
+	<ReadOnly>0</ReadOnly>
+	<SystemTag>0</SystemTag>
+	<InvisibleTag>0</InvisibleTag>
+	<StatsVariable>0</StatsVariable>
+	<SharingMode>0</SharingMode>
+	<IntegerDataType>0</IntegerDataType>
+	<VarId>51</VarId>
+	<TagId>69</TagId>
+</VariableInfo>
+<VariableInfo>
 	<VariableName>Vars_Pump1.Alarms.WindingTemp</VariableName>
 	<VariableExternalName></VariableExternalName>
 	<VarAddress>%MW8960</VarAddress>
@@ -406,7 +435,7 @@
 <VariableInfo>
 	<VariableName>System_Vars.ResetAlarms</VariableName>
 	<VariableExternalName></VariableExternalName>
-	<VarAddress>%MW8965</VarAddress>
+	<VarAddress>%MW8966</VarAddress>
 	<OffsetName></OffsetName>
 	<InitString></InitString>
 	<InitInteger>0</InitInteger>
@@ -435,7 +464,7 @@
 <VariableInfo>
 	<VariableName>System_Vars.SilenceAlarms</VariableName>
 	<VariableExternalName></VariableExternalName>
-	<VarAddress>%MW8966</VarAddress>
+	<VarAddress>%MW8967</VarAddress>
 	<OffsetName></OffsetName>
 	<InitString></InitString>
 	<InitInteger>0</InitInteger>
@@ -487,7 +516,7 @@
 	<StatsVariable>0</StatsVariable>
 	<SharingMode>0</SharingMode>
 	<IntegerDataType>0</IntegerDataType>
-	<VarId>68</VarId>
+	<VarId>66</VarId>
 	<TagId>55</TagId>
 </VariableInfo>
 <VariableInfo>
@@ -516,13 +545,13 @@
 	<StatsVariable>0</StatsVariable>
 	<SharingMode>0</SharingMode>
 	<IntegerDataType>0</IntegerDataType>
-	<VarId>67</VarId>
+	<VarId>65</VarId>
 	<TagId>56</TagId>
 </VariableInfo>
 <VariableInfo>
 	<VariableName>Vars_Pump1.CurrentTemps.Vibration</VariableName>
 	<VariableExternalName></VariableExternalName>
-	<VarAddress>%MW8340</VarAddress>
+	<VarAddress>%MW8342</VarAddress>
 	<OffsetName></OffsetName>
 	<InitString></InitString>
 	<InitInteger>0</InitInteger>
@@ -690,13 +719,13 @@
 	<StatsVariable>0</StatsVariable>
 	<SharingMode>0</SharingMode>
 	<IntegerDataType>0</IntegerDataType>
-	<VarId>66</VarId>
+	<VarId>64</VarId>
 	<TagId>63</TagId>
 </VariableInfo>
 <VariableInfo>
 	<VariableName>Vars_Pump1.SetPoints.Motor_1_Temp</VariableName>
 	<VariableExternalName></VariableExternalName>
-	<VarAddress>%MW8968</VarAddress>
+	<VarAddress>%MW9002</VarAddress>
 	<OffsetName></OffsetName>
 	<InitString></InitString>
 	<InitInteger>0</InitInteger>
@@ -719,13 +748,13 @@
 	<StatsVariable>0</StatsVariable>
 	<SharingMode>0</SharingMode>
 	<IntegerDataType>0</IntegerDataType>
-	<VarId>64</VarId>
+	<VarId>69</VarId>
 	<TagId>64</TagId>
 </VariableInfo>
 <VariableInfo>
 	<VariableName>Vars_Pump1.SetPoints.Motor_2_Temp</VariableName>
 	<VariableExternalName></VariableExternalName>
-	<VarAddress>%MW8969</VarAddress>
+	<VarAddress>%MW9004</VarAddress>
 	<OffsetName></OffsetName>
 	<InitString></InitString>
 	<InitInteger>0</InitInteger>
@@ -748,7 +777,7 @@
 	<StatsVariable>0</StatsVariable>
 	<SharingMode>0</SharingMode>
 	<IntegerDataType>0</IntegerDataType>
-	<VarId>65</VarId>
+	<VarId>70</VarId>
 	<TagId>65</TagId>
 </VariableInfo>
 <VariableInfo>
@@ -777,13 +806,13 @@
 	<StatsVariable>0</StatsVariable>
 	<SharingMode>0</SharingMode>
 	<IntegerDataType>0</IntegerDataType>
-	<VarId>69</VarId>
+	<VarId>67</VarId>
 	<TagId>66</TagId>
 </VariableInfo>
 <VariableInfo>
 	<VariableName>Vars_Pump1.SetPoints.Bottom_Bearing_Temp</VariableName>
 	<VariableExternalName></VariableExternalName>
-	<VarAddress>%MW0</VarAddress>
+	<VarAddress>%MW9000</VarAddress>
 	<OffsetName></OffsetName>
 	<InitString></InitString>
 	<InitInteger>0</InitInteger>
@@ -806,7 +835,7 @@
 	<StatsVariable>0</StatsVariable>
 	<SharingMode>0</SharingMode>
 	<IntegerDataType>0</IntegerDataType>
-	<VarId>51</VarId>
+	<VarId>68</VarId>
 	<TagId>67</TagId>
 </VariableInfo>
 </ComFileGenerator>
