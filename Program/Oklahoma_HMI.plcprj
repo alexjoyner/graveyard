@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <plcProject caseSensitive="false" useCustomWorkspace="true" debugMode="false" extcheck="true" SFCControl="false" strictPointerCheck="false" copyWarningThreshold="200" version="2.2" useLD2="true" useFBMethods="false">
 	<image>Oklahoma_HMI.imgx</image>
-	<commSettings>ModbusTCP:255,10000,M#TCPIP:192.168.1.6/502,5000</commSettings>
+	<commSettings>ModbusTCP:255,10000,M#TCPIP:192.168.1.16/502,5000</commSettings>
 	<sources>
 		<main>
 			<resources/>
@@ -14,22 +14,32 @@
 					<program>VibrationAlarmCalc</program>
 					<program>HighFloatDetect</program>
 					<program>SealFailDetect</program>
-					<program>EnableAudibleAlarm</program>
+					<program>pumpRunConditions</program>
 					<program>Pump_Enable</program>
-					<program>windingTempDetect</program>
+					<program>bearingTempDetect</program>
+					<program>setTimedAlarms</program>
+				</task>
+				<task name="Init">
+					<program>setDefaults</program>
 				</task>
 			</tasks>
 			<globalVars>
 				<group name="Ungrouped_vars">
-					<var name="cnt" type="INT"/>
-					<var name="audibleAlarmEnable" type="BOOL"/>
+					<var name="DONT_RUN_PUMP" type="BOOL"/>
+					<var name="setWindingTempAlarm" type="BOOL"/>
+					<var name="setHighRtdAlarm" type="BOOL"/>
+					<var name="setVibrationAlarm" type="BOOL"/>
 				</group>
 			</globalVars>
 			<retainVars>
 				<group name="Ungrouped_vars"/>
 			</retainVars>
 			<constantVars>
-				<group name="Ungrouped_vars"/>
+				<group name="Ungrouped_vars">
+					<const name="timerMsToSecConst" type="INT">
+						<initValue>10</initValue>
+					</const>
+				</group>
 			</constantVars>
 			<functions/>
 			<functionBlocks/>
@@ -75,7 +85,7 @@ end_if;
 					<sourceCode type="ST">
 						<![CDATA[/** Alarm should only be enabled once every time
 a new alarm occurs. **/
-oneShot (CLK := audibleAlarmEnable);
+oneShot (CLK := DONT_RUN_PUMP);
 if OneShot.Q then
 	audibleAlarm := 1;
 end_if;
@@ -93,6 +103,9 @@ end_if;
 							<const name="disconnectVal" type="INT">
 								<initValue>-32768</initValue>
 							</const>
+							<const name="windingTempCutoff" type="INT">
+								<initValue>402</initValue>
+							</const>
 						</localConsts>
 					</vars>
 					<iecDeclaration valid="TRUE">
@@ -100,247 +113,288 @@ end_if;
 					</iecDeclaration>
 					<sourceCode type="FBD">
 						<FBD>
-							<network order="N:1" width="200" height="22" error="false">
+							<network order="N:1" width="200" height="25" error="false">
 								<conn id="C:0" error="false">
-									<segment xStart="45" yStart="11" xEnd="45" yEnd="5"/>
-									<startPin>V:2</startPin>
-									<endPin>FB:HighRtdTimer.PT</endPin>
-								</conn>
-								<conn id="C:1" error="false">
 									<segment xStart="13" yStart="10" xEnd="16" yEnd="10"/>
 									<startPin>V:1</startPin>
-									<endPin>O:11.0</endPin>
+									<endPin>O:12.0</endPin>
 								</conn>
-								<conn id="C:2" error="false">
+								<conn id="C:1" error="false">
 									<segment xStart="15" yStart="11" xEnd="16" yEnd="11"/>
 									<startPin>V:3</startPin>
-									<endPin>O:11.1</endPin>
+									<endPin>O:12.1</endPin>
 								</conn>
-								<conn id="C:3" error="false">
+								<conn id="C:2" error="false">
 									<segment xStart="49" yStart="4" xEnd="49" yEnd="4"/>
 									<startPin>FB:HighRtdTimer.Q</startPin>
 									<endPin>V:4</endPin>
 								</conn>
-								<conn id="C:4" error="false">
+								<conn id="C:3" error="false">
 									<segment xStart="20" yStart="10" xEnd="26" yEnd="10"/>
 									<segment xEnd="26" yEnd="5"/>
 									<segment xEnd="27" yEnd="5"/>
-									<startPin>O:11.2</startPin>
-									<endPin>O:13.1</endPin>
+									<startPin>O:12.2</startPin>
+									<endPin>O:14.1</endPin>
+								</conn>
+								<conn id="C:4" error="false">
+									<segment xStart="26" yStart="4" xEnd="27" yEnd="4"/>
+									<startPin>O:13.2</startPin>
+									<endPin>O:14.0</endPin>
 								</conn>
 								<conn id="C:5" error="false">
-									<segment xStart="26" yStart="4" xEnd="27" yEnd="4"/>
-									<startPin>O:12.2</startPin>
-									<endPin>O:13.0</endPin>
-								</conn>
-								<conn id="C:6" error="false">
 									<segment xStart="15" yStart="3" xEnd="16" yEnd="3"/>
 									<startPin>V:8</startPin>
+									<endPin>O:16.1</endPin>
+								</conn>
+								<conn id="C:6" error="false">
+									<segment xStart="15" yStart="7" xEnd="16" yEnd="7"/>
+									<startPin>V:7</startPin>
 									<endPin>O:15.1</endPin>
 								</conn>
 								<conn id="C:7" error="false">
-									<segment xStart="15" yStart="7" xEnd="16" yEnd="7"/>
-									<startPin>V:7</startPin>
-									<endPin>O:14.1</endPin>
-								</conn>
-								<conn id="C:8" error="false">
 									<segment xStart="13" yStart="6" xEnd="16" yEnd="6"/>
 									<startPin>V:5</startPin>
-									<endPin>O:14.0</endPin>
-								</conn>
-								<conn id="C:9" error="false">
-									<segment xStart="13" yStart="2" xEnd="16" yEnd="2"/>
-									<startPin>V:6</startPin>
 									<endPin>O:15.0</endPin>
 								</conn>
-								<conn id="C:10" error="false">
-									<segment xStart="20" yStart="2" xEnd="20" yEnd="4"/>
-									<segment xEnd="22" yEnd="4"/>
-									<startPin>O:15.2</startPin>
-									<endPin>O:12.0</endPin>
-								</conn>
-								<conn id="C:11" error="false">
-									<segment xStart="20" yStart="6" xEnd="20" yEnd="5"/>
-									<segment xEnd="22" yEnd="5"/>
-									<startPin>O:14.2</startPin>
-									<endPin>O:12.1</endPin>
-								</conn>
-								<conn id="C:12" error="false">
-									<segment xStart="31" yStart="4" xEnd="33" yEnd="4"/>
-									<startPin>O:13.2</startPin>
+								<conn id="C:8" error="false">
+									<segment xStart="13" yStart="2" xEnd="16" yEnd="2"/>
+									<startPin>V:6</startPin>
 									<endPin>O:16.0</endPin>
 								</conn>
-								<conn id="C:13" error="false">
-									<segment xStart="14" yStart="14" xEnd="16" yEnd="14"/>
-									<startPin>V:9</startPin>
+								<conn id="C:9" error="false">
+									<segment xStart="20" yStart="2" xEnd="20" yEnd="4"/>
+									<segment xEnd="22" yEnd="4"/>
+									<startPin>O:16.2</startPin>
+									<endPin>O:13.0</endPin>
+								</conn>
+								<conn id="C:10" error="false">
+									<segment xStart="20" yStart="6" xEnd="20" yEnd="5"/>
+									<segment xEnd="22" yEnd="5"/>
+									<startPin>O:15.2</startPin>
+									<endPin>O:13.1</endPin>
+								</conn>
+								<conn id="C:11" error="false">
+									<segment xStart="31" yStart="4" xEnd="33" yEnd="4"/>
+									<startPin>O:14.2</startPin>
 									<endPin>O:17.0</endPin>
 								</conn>
-								<conn id="C:14" error="false">
-									<segment xStart="15" yStart="15" xEnd="16" yEnd="15"/>
-									<startPin>V:10</startPin>
-									<endPin>O:17.1</endPin>
+								<conn id="C:12" error="false">
+									<segment xStart="13" yStart="14" xEnd="16" yEnd="14"/>
+									<startPin>V:9</startPin>
+									<endPin>O:18.0</endPin>
 								</conn>
-								<conn id="C:15" error="false">
+								<conn id="C:13" error="false">
+									<segment xStart="14" yStart="15" xEnd="16" yEnd="15"/>
+									<startPin>V:10</startPin>
+									<endPin>O:18.1</endPin>
+								</conn>
+								<conn id="C:14" error="false">
 									<segment xStart="20" yStart="14" xEnd="31" yEnd="14"/>
 									<segment xEnd="31" yEnd="5"/>
 									<segment xEnd="33" yEnd="5"/>
-									<startPin>O:17.2</startPin>
-									<endPin>O:16.1</endPin>
-								</conn>
-								<conn id="C:16" error="false">
-									<segment xStart="43" yStart="4" xEnd="45" yEnd="4"/>
 									<startPin>O:18.2</startPin>
+									<endPin>O:17.1</endPin>
+								</conn>
+								<conn id="C:15" error="false">
+									<segment xStart="43" yStart="4" xEnd="45" yEnd="4"/>
+									<startPin>O:19.2</startPin>
 									<endPin>FB:HighRtdTimer.IN</endPin>
 								</conn>
-								<conn id="C:17" error="false">
+								<conn id="C:16" error="false">
 									<segment xStart="37" yStart="4" xEnd="39" yEnd="4"/>
-									<startPin>O:16.2</startPin>
-									<endPin>O:18.0</endPin>
+									<startPin>O:17.2</startPin>
+									<endPin>O:19.0</endPin>
 								</conn>
-								<conn id="C:18" error="false">
+								<conn id="C:17" error="false">
 									<segment xStart="14" yStart="18" xEnd="37" yEnd="18"/>
 									<segment xEnd="37" yEnd="5"/>
 									<segment xEnd="39" yEnd="5"/>
-									<startPin>V:19</startPin>
-									<endPin>O:18.1</endPin>
+									<startPin>V:11</startPin>
+									<endPin>O:19.1</endPin>
+								</conn>
+								<conn id="C:18" error="false">
+									<segment xStart="27" yStart="21" xEnd="34" yEnd="21"/>
+									<startPin>V:2</startPin>
+									<endPin>O:20.0</endPin>
+								</conn>
+								<conn id="C:19" error="false">
+									<segment xStart="27" yStart="22" xEnd="34" yEnd="22"/>
+									<startPin>V:21</startPin>
+									<endPin>O:20.1</endPin>
+								</conn>
+								<conn id="C:20" error="false">
+									<segment xStart="39" yStart="21" xEnd="39" yEnd="9"/>
+									<segment xEnd="45" yEnd="9"/>
+									<segment xEnd="45" yEnd="5"/>
+									<startPin>O:20.2</startPin>
+									<endPin>FB:HighRtdTimer.PT</endPin>
 								</conn>
 								<var id="V:1" error="false" type="Input" name="motor3_Temp" x="13" y="10">
-									<pin>C:1</pin>
-								</var>
-								<var id="V:2" error="false" type="Input" name="pumpRtdAlarmTimer" x="45" y="11">
 									<pin>C:0</pin>
 								</var>
-								<var id="V:3" error="false" type="Input" name="motor3_Temp_Setpoint" x="15" y="11">
-									<pin>C:2</pin>
-								</var>
-								<var id="V:4" error="false" type="Output" name="highRtdAlarm" x="49" y="4">
-									<pin>C:3</pin>
-								</var>
-								<var id="V:5" error="false" type="Input" name="motor2_Temp" x="13" y="6">
-									<pin>C:8</pin>
-								</var>
-								<var id="V:6" error="false" type="Input" name="motor1_Temp" x="13" y="2">
-									<pin>C:9</pin>
-								</var>
-								<var id="V:7" error="false" type="Input" name="motor2_Temp_Setpoint" x="15" y="7">
-									<pin>C:7</pin>
-								</var>
-								<var id="V:8" error="false" type="Input" name="motor1_Temp_Setpoint" x="15" y="3">
-									<pin>C:6</pin>
-								</var>
-								<var id="V:9" error="false" type="Input" name="bottomBearingTemp" x="14" y="14">
-									<pin>C:13</pin>
-								</var>
-								<var id="V:10" error="false" type="Input" name="bottomBearingSetpoint" x="15" y="15">
-									<pin>C:14</pin>
-								</var>
-								<var id="V:19" error="false" type="Input" name="SensorsDisconnect" x="14" y="18">
+								<var id="V:2" error="false" type="Input" name="pumpRtdAlarmTimer" x="27" y="21">
 									<pin>C:18</pin>
 								</var>
-								<op id="O:11" error="false" width="4" name="GE" x="16" y="10">
-									<inputPin name="0" negated="false">C:1</inputPin>
-									<inputPin name="1" negated="false">C:2</inputPin>
+								<var id="V:3" error="false" type="Input" name="motor3_Temp_Setpoint" x="15" y="11">
+									<pin>C:1</pin>
+								</var>
+								<var id="V:4" error="false" type="Output" name="setWindingTempAlarm" x="49" y="4">
+									<pin>C:2</pin>
+								</var>
+								<var id="V:5" error="false" type="Input" name="motor2_Temp" x="13" y="6">
+									<pin>C:7</pin>
+								</var>
+								<var id="V:6" error="false" type="Input" name="motor1_Temp" x="13" y="2">
+									<pin>C:8</pin>
+								</var>
+								<var id="V:7" error="false" type="Input" name="motor2_Temp_Setpoint" x="15" y="7">
+									<pin>C:6</pin>
+								</var>
+								<var id="V:8" error="false" type="Input" name="motor1_Temp_Setpoint" x="15" y="3">
+									<pin>C:5</pin>
+								</var>
+								<var id="V:9" error="false" type="Input" name="windingTemp" x="13" y="14">
+									<pin>C:12</pin>
+								</var>
+								<var id="V:10" error="false" type="Input" name="windingTempCutoff" x="14" y="15">
+									<pin>C:13</pin>
+								</var>
+								<var id="V:11" error="false" type="Input" name="SensorsDisconnect" x="14" y="18">
+									<pin>C:17</pin>
+								</var>
+								<var id="V:21" error="false" type="Input" name="timerMsToSecConst" x="27" y="22">
+									<pin>C:19</pin>
+								</var>
+								<op id="O:12" error="false" width="4" name="GE" x="16" y="10">
+									<inputPin name="0" negated="false">C:0</inputPin>
+									<inputPin name="1" negated="false">C:1</inputPin>
+									<outputPin name="2" negated="false">C:3</outputPin>
+								</op>
+								<op id="O:13" error="false" width="4" name="OR" x="22" y="4">
+									<inputPin name="0" negated="false">C:9</inputPin>
+									<inputPin name="1" negated="false">C:10</inputPin>
 									<outputPin name="2" negated="false">C:4</outputPin>
 								</op>
-								<op id="O:12" error="false" width="4" name="OR" x="22" y="4">
-									<inputPin name="0" negated="false">C:10</inputPin>
-									<inputPin name="1" negated="false">C:11</inputPin>
-									<outputPin name="2" negated="false">C:5</outputPin>
-								</op>
-								<op id="O:13" error="false" width="4" name="OR" x="27" y="4">
-									<inputPin name="0" negated="false">C:5</inputPin>
-									<inputPin name="1" negated="false">C:4</inputPin>
-									<outputPin name="2" negated="false">C:12</outputPin>
-								</op>
-								<op id="O:14" error="false" width="4" name="GE" x="16" y="6">
-									<inputPin name="0" negated="false">C:8</inputPin>
-									<inputPin name="1" negated="false">C:7</inputPin>
+								<op id="O:14" error="false" width="4" name="OR" x="27" y="4">
+									<inputPin name="0" negated="false">C:4</inputPin>
+									<inputPin name="1" negated="false">C:3</inputPin>
 									<outputPin name="2" negated="false">C:11</outputPin>
 								</op>
-								<op id="O:15" error="false" width="4" name="GE" x="16" y="2">
-									<inputPin name="0" negated="false">C:9</inputPin>
+								<op id="O:15" error="false" width="4" name="GE" x="16" y="6">
+									<inputPin name="0" negated="false">C:7</inputPin>
 									<inputPin name="1" negated="false">C:6</inputPin>
 									<outputPin name="2" negated="false">C:10</outputPin>
 								</op>
-								<op id="O:16" error="false" width="4" name="OR" x="33" y="4">
-									<inputPin name="0" negated="false">C:12</inputPin>
-									<inputPin name="1" negated="false">C:15</inputPin>
-									<outputPin name="2" negated="false">C:17</outputPin>
+								<op id="O:16" error="false" width="4" name="GE" x="16" y="2">
+									<inputPin name="0" negated="false">C:8</inputPin>
+									<inputPin name="1" negated="false">C:5</inputPin>
+									<outputPin name="2" negated="false">C:9</outputPin>
 								</op>
-								<op id="O:17" error="false" width="4" name="GE" x="16" y="14">
-									<inputPin name="0" negated="false">C:13</inputPin>
+								<op id="O:17" error="false" width="4" name="OR" x="33" y="4">
+									<inputPin name="0" negated="false">C:11</inputPin>
 									<inputPin name="1" negated="false">C:14</inputPin>
-									<outputPin name="2" negated="false">C:15</outputPin>
-								</op>
-								<op id="O:18" error="false" width="4" name="OR" x="39" y="4">
-									<inputPin name="0" negated="false">C:17</inputPin>
-									<inputPin name="1" negated="false">C:18</inputPin>
 									<outputPin name="2" negated="false">C:16</outputPin>
 								</op>
+								<op id="O:18" error="false" width="4" name="GE" x="16" y="14">
+									<inputPin name="0" negated="false">C:12</inputPin>
+									<inputPin name="1" negated="false">C:13</inputPin>
+									<outputPin name="2" negated="false">C:14</outputPin>
+								</op>
+								<op id="O:19" error="false" width="4" name="OR" x="39" y="4">
+									<inputPin name="0" negated="false">C:16</inputPin>
+									<inputPin name="1" negated="false">C:17</inputPin>
+									<outputPin name="2" negated="false">C:15</outputPin>
+								</op>
+								<op id="O:20" error="false" width="5" name="MUL" x="34" y="21">
+									<inputPin name="0" negated="false">C:18</inputPin>
+									<inputPin name="1" negated="false">C:19</inputPin>
+									<outputPin name="2" negated="false">C:20</outputPin>
+								</op>
 								<funBlock id="FB:HighRtdTimer" error="false" width="4" name="TON" x="45" y="4">
-									<inputPin name="IN" negated="false">C:16</inputPin>
-									<inputPin name="PT" negated="false">C:0</inputPin>
-									<outputPin name="Q" negated="false">C:3</outputPin>
+									<inputPin name="IN" negated="false">C:15</inputPin>
+									<inputPin name="PT" negated="false">C:20</inputPin>
+									<outputPin name="Q" negated="false">C:2</outputPin>
 									<outputPin name="ET" negated="false"/>
 								</funBlock>
 							</network>
-							<network order="N:2" width="0" height="15" error="false">
+							<network order="N:2" width="200" height="19" error="false">
 								<conn id="C:0" error="false">
 									<segment xStart="13" yStart="3" xEnd="15" yEnd="3"/>
 									<startPin>V:1</startPin>
-									<endPin>O:6.0</endPin>
+									<endPin>O:9.0</endPin>
 								</conn>
 								<conn id="C:1" error="false">
 									<segment xStart="13" yStart="4" xEnd="15" yEnd="4"/>
 									<startPin>V:4</startPin>
-									<endPin>O:6.1</endPin>
+									<endPin>O:9.1</endPin>
 								</conn>
 								<conn id="C:2" error="false">
 									<segment xStart="13" yStart="7" xEnd="15" yEnd="7"/>
 									<startPin>V:2</startPin>
-									<endPin>O:7.0</endPin>
+									<endPin>O:10.0</endPin>
 								</conn>
 								<conn id="C:3" error="false">
 									<segment xStart="13" yStart="11" xEnd="15" yEnd="11"/>
 									<startPin>V:3</startPin>
-									<endPin>O:8.0</endPin>
+									<endPin>O:11.0</endPin>
 								</conn>
 								<conn id="C:4" error="false">
 									<segment xStart="13" yStart="8" xEnd="15" yEnd="8"/>
-									<startPin>V:9</startPin>
-									<endPin>O:7.1</endPin>
+									<startPin>V:5</startPin>
+									<endPin>O:10.1</endPin>
 								</conn>
 								<conn id="C:5" error="false">
 									<segment xStart="13" yStart="12" xEnd="15" yEnd="12"/>
-									<startPin>V:10</startPin>
-									<endPin>O:8.1</endPin>
+									<startPin>V:6</startPin>
+									<endPin>O:11.1</endPin>
 								</conn>
 								<conn id="C:6" error="false">
 									<segment xStart="19" yStart="3" xEnd="22" yEnd="3"/>
-									<startPin>O:6.2</startPin>
-									<endPin>O:5.0</endPin>
+									<startPin>O:9.2</startPin>
+									<endPin>O:8.0</endPin>
 								</conn>
 								<conn id="C:7" error="false">
 									<segment xStart="19" yStart="7" xEnd="22" yEnd="7"/>
 									<segment xEnd="22" yEnd="4"/>
-									<startPin>O:7.2</startPin>
-									<endPin>O:5.1</endPin>
+									<startPin>O:10.2</startPin>
+									<endPin>O:8.1</endPin>
 								</conn>
 								<conn id="C:8" error="false">
 									<segment xStart="19" yStart="11" xEnd="29" yEnd="11"/>
 									<segment xEnd="29" yEnd="4"/>
-									<startPin>O:8.2</startPin>
-									<endPin>O:11.1</endPin>
+									<startPin>O:11.2</startPin>
+									<endPin>O:12.1</endPin>
 								</conn>
 								<conn id="C:9" error="false">
 									<segment xStart="26" yStart="3" xEnd="29" yEnd="3"/>
-									<startPin>O:5.2</startPin>
-									<endPin>O:11.0</endPin>
+									<startPin>O:8.2</startPin>
+									<endPin>O:12.0</endPin>
 								</conn>
 								<conn id="C:10" error="false">
-									<segment xStart="33" yStart="3" xEnd="36" yEnd="3"/>
-									<startPin>O:11.2</startPin>
-									<endPin>V:12</endPin>
+									<segment xStart="33" yStart="3" xEnd="35" yEnd="3"/>
+									<startPin>O:12.2</startPin>
+									<endPin>O:13.0</endPin>
+								</conn>
+								<conn id="C:11" error="false">
+									<segment xStart="39" yStart="3" xEnd="41" yEnd="3"/>
+									<startPin>O:13.2</startPin>
+									<endPin>V:7</endPin>
+								</conn>
+								<conn id="C:12" error="false">
+									<segment xStart="19" yStart="15" xEnd="35" yEnd="15"/>
+									<segment xEnd="35" yEnd="4"/>
+									<startPin>O:14.2</startPin>
+									<endPin>O:13.1</endPin>
+								</conn>
+								<conn id="C:13" error="false">
+									<segment xStart="13" yStart="15" xEnd="15" yEnd="15"/>
+									<startPin>V:15</startPin>
+									<endPin>O:14.0</endPin>
+								</conn>
+								<conn id="C:14" error="false">
+									<segment xStart="13" yStart="16" xEnd="15" yEnd="16"/>
+									<startPin>V:17</startPin>
+									<endPin>O:14.1</endPin>
 								</conn>
 								<var id="V:1" error="false" type="Input" name="motor1_Temp" x="13" y="3">
 									<pin>C:0</pin>
@@ -354,39 +408,55 @@ end_if;
 								<var id="V:4" error="false" type="Input" name="disconnectVal" x="13" y="4">
 									<pin>C:1</pin>
 								</var>
-								<var id="V:9" error="false" type="Input" name="disconnectVal" x="13" y="8">
+								<var id="V:5" error="false" type="Input" name="disconnectVal" x="13" y="8">
 									<pin>C:4</pin>
 								</var>
-								<var id="V:10" error="false" type="Input" name="disconnectVal" x="13" y="12">
+								<var id="V:6" error="false" type="Input" name="disconnectVal" x="13" y="12">
 									<pin>C:5</pin>
 								</var>
-								<var id="V:12" error="false" type="Output" name="SensorsDisconnect" x="36" y="3">
-									<pin>C:10</pin>
+								<var id="V:7" error="false" type="Output" name="SensorsDisconnect" x="41" y="3">
+									<pin>C:11</pin>
 								</var>
-								<op id="O:5" error="false" width="4" name="OR" x="22" y="3">
+								<var id="V:15" error="false" type="Input" name="windingTemp" x="13" y="15">
+									<pin>C:13</pin>
+								</var>
+								<var id="V:17" error="false" type="Input" name="disconnectVal" x="13" y="16">
+									<pin>C:14</pin>
+								</var>
+								<op id="O:8" error="false" width="4" name="OR" x="22" y="3">
 									<inputPin name="0" negated="false">C:6</inputPin>
 									<inputPin name="1" negated="false">C:7</inputPin>
 									<outputPin name="2" negated="false">C:9</outputPin>
 								</op>
-								<op id="O:6" error="false" width="4" name="EQ" x="15" y="3">
+								<op id="O:9" error="false" width="4" name="EQ" x="15" y="3">
 									<inputPin name="0" negated="false">C:0</inputPin>
 									<inputPin name="1" negated="false">C:1</inputPin>
 									<outputPin name="2" negated="false">C:6</outputPin>
 								</op>
-								<op id="O:7" error="false" width="4" name="EQ" x="15" y="7">
+								<op id="O:10" error="false" width="4" name="EQ" x="15" y="7">
 									<inputPin name="0" negated="false">C:2</inputPin>
 									<inputPin name="1" negated="false">C:4</inputPin>
 									<outputPin name="2" negated="false">C:7</outputPin>
 								</op>
-								<op id="O:8" error="false" width="4" name="EQ" x="15" y="11">
+								<op id="O:11" error="false" width="4" name="EQ" x="15" y="11">
 									<inputPin name="0" negated="false">C:3</inputPin>
 									<inputPin name="1" negated="false">C:5</inputPin>
 									<outputPin name="2" negated="false">C:8</outputPin>
 								</op>
-								<op id="O:11" error="false" width="4" name="OR" x="29" y="3">
+								<op id="O:12" error="false" width="4" name="OR" x="29" y="3">
 									<inputPin name="0" negated="false">C:9</inputPin>
 									<inputPin name="1" negated="false">C:8</inputPin>
 									<outputPin name="2" negated="false">C:10</outputPin>
+								</op>
+								<op id="O:13" error="false" width="4" name="OR" x="35" y="3">
+									<inputPin name="0" negated="false">C:10</inputPin>
+									<inputPin name="1" negated="false">C:12</inputPin>
+									<outputPin name="2" negated="false">C:11</outputPin>
+								</op>
+								<op id="O:14" error="false" width="4" name="EQ" x="15" y="15">
+									<inputPin name="0" negated="false">C:13</inputPin>
+									<inputPin name="1" negated="false">C:14</inputPin>
+									<outputPin name="2" negated="false">C:12</outputPin>
 								</op>
 							</network>
 						</FBD>
@@ -397,60 +467,120 @@ end_if;
 						<localVars>
 							<var name="VibrationAlarm_0" type="TON"/>
 						</localVars>
+						<localConsts>
+							<const name="disconnect" type="INT">
+								<initValue>-32768</initValue>
+							</const>
+						</localConsts>
 					</vars>
 					<iecDeclaration valid="TRUE">
 						<![CDATA[]]>
 					</iecDeclaration>
 					<sourceCode type="FBD">
 						<FBD>
-							<network order="N:1" width="200" height="12" error="false">
-								<conn id="C:1" error="false">
+							<network order="N:1" width="0" height="18" error="false">
+								<conn id="C:0" error="false">
 									<segment xStart="5" yStart="5" xEnd="10" yEnd="5"/>
-									<startPin>V:3</startPin>
+									<startPin>V:1</startPin>
 									<endPin>O:7.0</endPin>
 								</conn>
-								<conn id="C:2" error="false">
+								<conn id="C:1" error="false">
 									<segment xStart="9" yStart="6" xEnd="10" yEnd="6"/>
-									<startPin>V:4</startPin>
+									<startPin>V:2</startPin>
 									<endPin>O:7.1</endPin>
 								</conn>
+								<conn id="C:2" error="false">
+									<segment xStart="25" yStart="5" xEnd="29" yEnd="5"/>
+									<startPin>FB:VibrationAlarm_0.Q</startPin>
+									<endPin>V:4</endPin>
+								</conn>
 								<conn id="C:3" error="false">
-									<segment xStart="14" yStart="5" xEnd="20" yEnd="5"/>
-									<startPin>O:7.2</startPin>
-									<endPin>FB:VibrationAlarm_0.IN</endPin>
+									<segment xStart="5" yStart="9" xEnd="10" yEnd="9"/>
+									<startPin>V:5</startPin>
+									<endPin>O:8.0</endPin>
 								</conn>
 								<conn id="C:4" error="false">
-									<segment xStart="18" yStart="8" xEnd="20" yEnd="8"/>
-									<segment xEnd="20" yEnd="6"/>
-									<startPin>V:5</startPin>
-									<endPin>FB:VibrationAlarm_0.PT</endPin>
+									<segment xStart="6" yStart="10" xEnd="10" yEnd="10"/>
+									<startPin>V:6</startPin>
+									<endPin>O:8.1</endPin>
 								</conn>
 								<conn id="C:5" error="false">
-									<segment xStart="24" yStart="5" xEnd="29" yEnd="5"/>
-									<startPin>FB:VibrationAlarm_0.Q</startPin>
-									<endPin>V:6</endPin>
+									<segment xStart="20" yStart="5" xEnd="21" yEnd="5"/>
+									<startPin>O:9.2</startPin>
+									<endPin>FB:VibrationAlarm_0.IN</endPin>
 								</conn>
-								<var id="V:3" error="false" type="Input" name="vibration" x="5" y="5">
+								<conn id="C:6" error="false">
+									<segment xStart="14" yStart="5" xEnd="16" yEnd="5"/>
+									<startPin>O:7.2</startPin>
+									<endPin>O:9.0</endPin>
+								</conn>
+								<conn id="C:7" error="false">
+									<segment xStart="14" yStart="9" xEnd="16" yEnd="9"/>
+									<segment xEnd="16" yEnd="6"/>
+									<startPin>O:8.2</startPin>
+									<endPin>O:9.1</endPin>
+								</conn>
+								<conn id="C:8" error="false">
+									<segment xStart="20" yStart="14" xEnd="20" yEnd="6"/>
+									<segment xEnd="21" yEnd="6"/>
+									<startPin>O:11.2</startPin>
+									<endPin>FB:VibrationAlarm_0.PT</endPin>
+								</conn>
+								<conn id="C:9" error="false">
+									<segment xStart="13" yStart="14" xEnd="15" yEnd="14"/>
+									<startPin>V:3</startPin>
+									<endPin>O:11.0</endPin>
+								</conn>
+								<conn id="C:10" error="false">
+									<segment xStart="13" yStart="15" xEnd="15" yEnd="15"/>
+									<startPin>V:10</startPin>
+									<endPin>O:11.1</endPin>
+								</conn>
+								<var id="V:1" error="false" type="Input" name="vibration" x="5" y="5">
+									<pin>C:0</pin>
+								</var>
+								<var id="V:2" error="false" type="Input" name="vibration_Limit_Setpoint" x="9" y="6">
 									<pin>C:1</pin>
 								</var>
-								<var id="V:4" error="false" type="Input" name="vibration_Limit_Setpoint" x="9" y="6">
+								<var id="V:3" error="false" type="Input" name="vibrationAlarmTimer" x="13" y="14">
+									<pin>C:9</pin>
+								</var>
+								<var id="V:4" error="false" type="Output" name="setVibrationAlarm" x="29" y="5">
 									<pin>C:2</pin>
 								</var>
-								<var id="V:5" error="false" type="Input" name="vibrationAlarmTimer" x="18" y="8">
+								<var id="V:5" error="false" type="Input" name="vibration" x="5" y="9">
+									<pin>C:3</pin>
+								</var>
+								<var id="V:6" error="false" type="Input" name="disconnect" x="6" y="10">
 									<pin>C:4</pin>
 								</var>
-								<var id="V:6" error="false" type="Output" name="vibrationAlarm" x="29" y="5">
-									<pin>C:5</pin>
+								<var id="V:10" error="false" type="Input" name="timerMsToSecConst" x="13" y="15">
+									<pin>C:10</pin>
 								</var>
 								<op id="O:7" error="false" width="4" name="GE" x="10" y="5">
-									<inputPin name="0" negated="false">C:1</inputPin>
-									<inputPin name="1" negated="false">C:2</inputPin>
-									<outputPin name="2" negated="false">C:3</outputPin>
+									<inputPin name="0" negated="false">C:0</inputPin>
+									<inputPin name="1" negated="false">C:1</inputPin>
+									<outputPin name="2" negated="false">C:6</outputPin>
 								</op>
-								<funBlock id="FB:VibrationAlarm_0" error="false" width="4" name="TON" x="20" y="5">
-									<inputPin name="IN" negated="false">C:3</inputPin>
-									<inputPin name="PT" negated="false">C:4</inputPin>
-									<outputPin name="Q" negated="false">C:5</outputPin>
+								<op id="O:8" error="false" width="4" name="EQ" x="10" y="9">
+									<inputPin name="0" negated="false">C:3</inputPin>
+									<inputPin name="1" negated="false">C:4</inputPin>
+									<outputPin name="2" negated="false">C:7</outputPin>
+								</op>
+								<op id="O:9" error="false" width="4" name="OR" x="16" y="5">
+									<inputPin name="0" negated="false">C:6</inputPin>
+									<inputPin name="1" negated="false">C:7</inputPin>
+									<outputPin name="2" negated="false">C:5</outputPin>
+								</op>
+								<op id="O:11" error="false" width="5" name="MUL" x="15" y="14">
+									<inputPin name="0" negated="false">C:9</inputPin>
+									<inputPin name="1" negated="false">C:10</inputPin>
+									<outputPin name="2" negated="false">C:8</outputPin>
+								</op>
+								<funBlock id="FB:VibrationAlarm_0" error="false" width="4" name="TON" x="21" y="5">
+									<inputPin name="IN" negated="false">C:5</inputPin>
+									<inputPin name="PT" negated="false">C:8</inputPin>
+									<outputPin name="Q" negated="false">C:2</outputPin>
 									<outputPin name="ET" negated="false"/>
 								</funBlock>
 							</network>
@@ -470,7 +600,7 @@ end_if;
 										<contact name="highFloat" type="Normal" id="0"/>
 									</input>
 									<outputs>
-										<coil name="highFloatAlarm" type="Normal" id="1"/>
+										<coil name="highFloatAlarm" type="Set" id="1"/>
 									</outputs>
 								</assignment>
 							</network>
@@ -490,14 +620,14 @@ end_if;
 										<contact name="sealFail" type="Closed" id="0"/>
 									</input>
 									<outputs>
-										<coil name="sealFailAlarm" type="Normal" id="1"/>
+										<coil name="sealFailAlarm" type="Set" id="1"/>
 									</outputs>
 								</assignment>
 							</network>
 						</LD2>
 					</sourceCode>
 				</program>
-				<program name="EnableAudibleAlarm" version="1.0.0">
+				<program name="pumpRunConditions" version="1.0.0">
 					<vars/>
 					<iecDeclaration valid="TRUE">
 						<![CDATA[]]>
@@ -516,7 +646,7 @@ end_if;
 										</or>
 									</input>
 									<outputs>
-										<coil name="audibleAlarmEnable" type="Normal" id="1"/>
+										<coil name="DONT_RUN_PUMP" type="Normal" id="1"/>
 									</outputs>
 								</assignment>
 							</network>
@@ -533,7 +663,7 @@ end_if;
 							<network label="" id="1" nextID="2" comment="">
 								<assignment fromTmpVar="">
 									<input>
-										<contact name="audibleAlarmEnable" type="Closed" id="0"/>
+										<contact name="DONT_RUN_PUMP" type="Closed" id="0"/>
 									</input>
 									<outputs>
 										<coil name="pumpEnable" type="Normal" id="1"/>
@@ -543,13 +673,16 @@ end_if;
 						</LD2>
 					</sourceCode>
 				</program>
-				<program name="windingTempDetect" version="1.0.0">
+				<program name="bearingTempDetect" version="1.0.0">
 					<vars>
+						<localVars>
+							<var name="HighRtdTimer_0" type="TON"/>
+						</localVars>
 						<localConsts>
 							<const name="windingTempCutoff" type="INT">
 								<initValue>402</initValue>
 							</const>
-							<const name="windingTempDisconnect" type="INT">
+							<const name="disconnectVal" type="INT">
 								<initValue>-32768</initValue>
 							</const>
 						</localConsts>
@@ -559,76 +692,151 @@ end_if;
 					</iecDeclaration>
 					<sourceCode type="FBD">
 						<FBD>
-							<network order="N:1" width="200" height="12" error="false">
+							<network order="N:1" width="0" height="20" error="false">
 								<conn id="C:0" error="false">
-									<segment xStart="13" yStart="4" xEnd="16" yEnd="4"/>
+									<segment xStart="12" yStart="6" xEnd="16" yEnd="6"/>
 									<startPin>V:2</startPin>
-									<endPin>O:3.1</endPin>
-								</conn>
-								<conn id="C:1" error="false">
-									<segment xStart="12" yStart="3" xEnd="16" yEnd="3"/>
-									<startPin>V:1</startPin>
-									<endPin>O:3.0</endPin>
-								</conn>
-								<conn id="C:2" error="false">
-									<segment xStart="15" yStart="9" xEnd="16" yEnd="9"/>
-									<startPin>V:6</startPin>
 									<endPin>O:7.1</endPin>
 								</conn>
+								<conn id="C:1" error="false">
+									<segment xStart="11" yStart="5" xEnd="16" yEnd="5"/>
+									<startPin>V:1</startPin>
+									<endPin>O:7.0</endPin>
+								</conn>
+								<conn id="C:2" error="false">
+									<segment xStart="33" yStart="5" xEnd="36" yEnd="5"/>
+									<startPin>FB:HighRtdTimer_0.Q</startPin>
+									<endPin>V:3</endPin>
+								</conn>
 								<conn id="C:3" error="false">
-									<segment xStart="16" yStart="8" xEnd="12" yEnd="8"/>
-									<startPin>O:7.0</startPin>
-									<endPin>V:5</endPin>
+									<segment xStart="11" yStart="10" xEnd="16" yEnd="10"/>
+									<startPin>V:5</startPin>
+									<endPin>O:8.0</endPin>
 								</conn>
 								<conn id="C:4" error="false">
-									<segment xStart="20" yStart="8" xEnd="23" yEnd="8"/>
-									<segment xEnd="23" yEnd="6"/>
-									<startPin>O:7.2</startPin>
+									<segment xStart="10" yStart="11" xEnd="16" yEnd="11"/>
+									<startPin>V:6</startPin>
 									<endPin>O:8.1</endPin>
 								</conn>
 								<conn id="C:5" error="false">
-									<segment xStart="20" yStart="3" xEnd="23" yEnd="3"/>
-									<segment xEnd="23" yEnd="5"/>
-									<startPin>O:3.2</startPin>
-									<endPin>O:8.0</endPin>
+									<segment xStart="27" yStart="5" xEnd="29" yEnd="5"/>
+									<startPin>O:9.2</startPin>
+									<endPin>FB:HighRtdTimer_0.IN</endPin>
 								</conn>
 								<conn id="C:6" error="false">
-									<segment xStart="27" yStart="5" xEnd="29" yEnd="5"/>
-									<startPin>O:8.2</startPin>
-									<endPin>V:4</endPin>
+									<segment xStart="20" yStart="5" xEnd="23" yEnd="5"/>
+									<startPin>O:7.2</startPin>
+									<endPin>O:9.0</endPin>
 								</conn>
-								<var id="V:1" error="false" type="Input" name="windingTemp" x="12" y="3">
+								<conn id="C:7" error="false">
+									<segment xStart="20" yStart="10" xEnd="23" yEnd="10"/>
+									<segment xEnd="23" yEnd="6"/>
+									<startPin>O:8.2</startPin>
+									<endPin>O:9.1</endPin>
+								</conn>
+								<conn id="C:8" error="false">
+									<segment xStart="28" yStart="16" xEnd="28" yEnd="6"/>
+									<segment xEnd="29" yEnd="6"/>
+									<startPin>O:11.2</startPin>
+									<endPin>FB:HighRtdTimer_0.PT</endPin>
+								</conn>
+								<conn id="C:9" error="false">
+									<segment xStart="21" yStart="16" xEnd="23" yEnd="16"/>
+									<startPin>V:4</startPin>
+									<endPin>O:11.0</endPin>
+								</conn>
+								<conn id="C:10" error="false">
+									<segment xStart="21" yStart="17" xEnd="23" yEnd="17"/>
+									<startPin>V:10</startPin>
+									<endPin>O:11.1</endPin>
+								</conn>
+								<var id="V:1" error="false" type="Input" name="bottomBearingTemp" x="11" y="5">
 									<pin>C:1</pin>
 								</var>
-								<var id="V:2" error="false" type="Input" name="windingTempCutoff" x="13" y="4">
+								<var id="V:2" error="false" type="Input" name="bottomBearingSetpoint" x="12" y="6">
 									<pin>C:0</pin>
 								</var>
-								<var id="V:4" error="false" type="Output" name="windingTempAlarm" x="29" y="5">
-									<pin>C:6</pin>
-								</var>
-								<var id="V:5" error="false" type="Input" name="windingTemp" x="12" y="8">
-									<pin>C:3</pin>
-								</var>
-								<var id="V:6" error="false" type="Input" name="windingTempDisconnect" x="15" y="9">
+								<var id="V:3" error="false" type="Output" name="setHighRtdAlarm" x="36" y="5">
 									<pin>C:2</pin>
 								</var>
-								<op id="O:3" error="false" width="4" name="GE" x="16" y="3">
+								<var id="V:4" error="false" type="Input" name="pumpRtdAlarmTimer" x="21" y="16">
+									<pin>C:9</pin>
+								</var>
+								<var id="V:5" error="false" type="Input" name="bottomBearingTemp" x="11" y="10">
+									<pin>C:3</pin>
+								</var>
+								<var id="V:6" error="false" type="Input" name="disconnectVal" x="10" y="11">
+									<pin>C:4</pin>
+								</var>
+								<var id="V:10" error="false" type="Input" name="timerMsToSecConst" x="21" y="17">
+									<pin>C:10</pin>
+								</var>
+								<op id="O:7" error="false" width="4" name="GE" x="16" y="5">
 									<inputPin name="0" negated="false">C:1</inputPin>
 									<inputPin name="1" negated="false">C:0</inputPin>
-									<outputPin name="2" negated="false">C:5</outputPin>
-								</op>
-								<op id="O:7" error="false" width="4" name="EQ" x="16" y="8">
-									<inputPin name="0" negated="false">C:3</inputPin>
-									<inputPin name="1" negated="false">C:2</inputPin>
-									<outputPin name="2" negated="false">C:4</outputPin>
-								</op>
-								<op id="O:8" error="false" width="4" name="OR" x="23" y="5">
-									<inputPin name="0" negated="false">C:5</inputPin>
-									<inputPin name="1" negated="false">C:4</inputPin>
 									<outputPin name="2" negated="false">C:6</outputPin>
 								</op>
+								<op id="O:8" error="false" width="4" name="EQ" x="16" y="10">
+									<inputPin name="0" negated="false">C:3</inputPin>
+									<inputPin name="1" negated="false">C:4</inputPin>
+									<outputPin name="2" negated="false">C:7</outputPin>
+								</op>
+								<op id="O:9" error="false" width="4" name="OR" x="23" y="5">
+									<inputPin name="0" negated="false">C:6</inputPin>
+									<inputPin name="1" negated="false">C:7</inputPin>
+									<outputPin name="2" negated="false">C:5</outputPin>
+								</op>
+								<op id="O:11" error="false" width="5" name="MUL" x="23" y="16">
+									<inputPin name="0" negated="false">C:9</inputPin>
+									<inputPin name="1" negated="false">C:10</inputPin>
+									<outputPin name="2" negated="false">C:8</outputPin>
+								</op>
+								<funBlock id="FB:HighRtdTimer_0" error="false" width="4" name="TON" x="29" y="5">
+									<inputPin name="IN" negated="false">C:5</inputPin>
+									<inputPin name="PT" negated="false">C:8</inputPin>
+									<outputPin name="Q" negated="false">C:2</outputPin>
+									<outputPin name="ET" negated="false"/>
+								</funBlock>
 							</network>
 						</FBD>
+					</sourceCode>
+				</program>
+				<program name="setTimedAlarms" version="1.0.0">
+					<vars/>
+					<iecDeclaration valid="TRUE">
+						<![CDATA[]]>
+					</iecDeclaration>
+					<sourceCode type="ST">
+						<![CDATA[if setWindingTempAlarm then
+	windingTempAlarm := TRUE;
+end_if;
+
+if setVibrationAlarm then
+	vibrationAlarm := TRUE;
+end_if;
+
+if setHighRtdAlarm then
+	highRtdAlarm := TRUE;
+end_if;
+]]>
+					</sourceCode>
+				</program>
+				<program name="setDefaults" version="1.0.0">
+					<vars/>
+					<iecDeclaration valid="TRUE">
+						<![CDATA[]]>
+					</iecDeclaration>
+					<sourceCode type="ST">
+						<![CDATA[vibrationAlarmTimer := 10;
+pumpRtdAlarmTimer := 10;
+
+
+bottomBearingSetpoint := 302;
+vibration_Limit_Setpoint := 62;
+motor1_Temp_Setpoint := 312;
+motor2_Temp_Setpoint := 312;
+motor3_Temp_Setpoint := 312;
+]]>
 					</sourceCode>
 				</program>
 			</programs>
@@ -38729,7 +38937,7 @@ END_PROGRAM
 			</src>
 		</aux>
 		<workspace>
-			<root name="Oklahoma_HMI" nextID="112">
+			<root name="Oklahoma_HMI" nextID="163">
 				<GlobalVars name="Global vars" id="11"/>
 				<GlobalVars name="Ungrouped_vars" id="14"/>
 				<folder name="Programs" id="16">
@@ -38741,10 +38949,12 @@ END_PROGRAM
 						<Pou name="VibrationAlarmCalc" id="66"/>
 						<Pou name="HighFloatDetect" id="71"/>
 						<Pou name="SealFailDetect" id="72"/>
-						<Pou name="windingTempDetect" id="101"/>
+						<Pou name="bearingTempDetect" id="101"/>
+						<Pou name="setTimedAlarms" id="131"/>
 					</folder>
-					<Pou name="EnableAudibleAlarm" id="74"/>
+					<Pou name="pumpRunConditions" id="74"/>
 					<Pou name="Pump_Enable" id="93"/>
+					<Pou name="setDefaults" id="139"/>
 				</folder>
 			</root>
 		</workspace>
@@ -39483,7 +39693,7 @@ END_PROGRAM
 							</biosParam>
 							<biosParam>
 								<ipa>10047</ipa>
-								<defval>6</defval>
+								<defval>16</defval>
 							</biosParam>
 							<biosParam>
 								<ipa>10004</ipa>
