@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BSCX MasterID="2" FormatID="1" DocumentVersion="14">
+    <Project>
+        <Property Type="ConfigurationName" Value="HVL_Safety" />
+        <Property Type="ProjectName" Value="Flanders_HVL_Safety" />
+        <Property Type="Author" Value="Alex Joyner" />
+        <Property Type="Note" Value="" />
+        <Property Type="CreationDate" Year="2017" Month="8" Day="22" Hour="15" Minute="32" Second="32" />
+        <Property Type="ProjectDate" Year="2017" Month="8" Day="22" Hour="15" Minute="32" Second="32" />
+    </Project>
+    <Controller>
+        <Property Type="HasDisplay" Value="True" />
+        <Property Type="HasEthernet" Value="True" />
+        <Property Type="IsExpandable" Value="True" />
+    </Controller>
+    <Ethernet>
+        <Property Type="EthernetSettings" EthernetEnabled="True" IPAddress="192.168.0.128" SubnetMask="255.255.255.0" GatewayAddress="0.0.0.0" LinkOption="AutoNegotiate" />
+        <Property Type="ModbusSettings" SwapCharacterBytes="False" NumericalFormat32Bit="SendLSWThenMSW" />
+        <Property Type="EIPPCCCSettings" SwapCharacterBytes="False" NumericalFormat32Bit="SendLSWThenMSW" StringLengthType="Length32Bit" />
+    </Ethernet>
+    <BitIndexer RequiredSizeBytes="32" OffsetToInputs="0" OffsetToFunctionBlocks="192" OffsetToSafetyOutputs="8" MaximumBitIndex="255" />
+    <AddOnModules Count="0" />
+    <Inputs Count="1">
+        <Entry Type="RopePull" Module="0" BitIndex="1">
+            <Property Type="Name" Value="RP1" />
+            <Property Type="ModuleSelection" Value="0" />
+            <Property Type="Circuit" CircuitType="DualChannel4Terminal" TerminalCount="4">
+                <Terminal Value="IO1" />
+                <Terminal Value="IN1" />
+                <Terminal Value="IO2" />
+                <Terminal Value="IN2" />
+            </Property>
+            <Property Type="Simulteneity" Value="Simultaneous" />
+            <Property Type="DebounceClosedToOpenTimeLimit" Value="6" />
+            <Property Type="DebounceOpenToClosedTimeLimit" Value="50" />
+            <Property Type="EnableStartupTest" Value="False" />
+            <Property Type="OutputNode:Primary" Count="1" />
+            <Property Type="MasterLocation" Page="0" Row="0" Column="0" />
+        </Entry>
+    </Inputs>
+    <FunctionBlocks Count="0" />
+    <SafetyOutputs Count="4">
+        <Entry Type="SolidState" Module="0" BitIndex="8" Enabled="False">
+            <Property Type="Name" Value="SO1A" />
+            <Property Type="ModuleSelection" Value="0" />
+            <Property Type="Circuit" CircuitType="SSO1A" TerminalCount="1">
+                <Terminal Value="SO1a" />
+            </Property>
+            <Property Type="SafetyOutputDelay" DelayType="None" DelayTime="100" OffDelayCancelType="DoNotCancel" OffDelayEndLogicType="TurnOff" />
+            <Property Type="LinkToSafetyOutputSelection" Value="NotUsed" BitIndex="0" />
+            <Property Type="PowerUpMode" Value="Normal" />
+            <Property Type="InputNode:Primary" Count="0" EnabledSources="1">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
+            </Property>
+            <Property Type="InputNode:EDM" Count="0" EnabledSources="1" Visibility="Collapsed">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
+            </Property>
+            <Property Type="InputNode:AVM" Count="0" EnabledSources="1" Visibility="Collapsed">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" MonitoringTimeLimit="50" />
+            </Property>
+            <Property Type="InputNode:ResetEnable" Count="0" EnabledSources="1" Visibility="Collapsed">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
+            </Property>
+            <Property Type="InputNode:CancelDelay" Count="0" EnabledSources="1" Visibility="Collapsed">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
+            </Property>
+            <Property Type="InputNode:LatchReset" Count="0" EnabledSources="1" Visibility="Collapsed">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
+            </Property>
+            <Property Type="InputNode:FaultReset" Count="0" EnabledSources="1" Visibility="Collapsed">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
+            </Property>
+            <Property Type="OutputNode:Primary" Count="0" />
+            <Property Type="MasterLocation" Page="0" Row="0" Column="6" />
+        </Entry>
+        <Entry Type="SolidState" Module="0" BitIndex="9" Enabled="False">
+            <Property Type="Name" Value="SO1B" />
+            <Property Type="ModuleSelection" Value="0" />
+            <Property Type="Circuit" CircuitType="SSO1B" TerminalCount="1">
+                <Terminal Value="SO1b" />
+            </Property>
+            <Property Type="SafetyOutputDelay" DelayType="None" DelayTime="100" OffDelayCancelType="DoNotCancel" OffDelayEndLogicType="TurnOff" />
+            <Property Type="LinkToSafetyOutputSelection" Value="NotUsed" BitIndex="0" />
+            <Property Type="PowerUpMode" Value="Normal" />
+            <Property Type="InputNode:Primary" Count="0" EnabledSources="1">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
+            </Property>
+            <Property Type="InputNode:EDM" Count="0" EnabledSources="1" Visibility="Collapsed">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
+            </Property>
+            <Property Type="InputNode:AVM" Count="0" EnabledSources="1" Visibility="Collapsed">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" MonitoringTimeLimit="50" />
+            </Property>
+            <Property Type="InputNode:ResetEnable" Count="0" EnabledSources="1" Visibility="Collapsed">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
+            </Property>
+            <Property Type="InputNode:CancelDelay" Count="0" EnabledSources="1" Visibility="Collapsed">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
+            </Property>
+            <Property Type="InputNode:LatchReset" Count="0" EnabledSources="1" Visibility="Collapsed">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
+            </Property>
+            <Property Type="InputNode:FaultReset" Count="0" EnabledSources="1" Visibility="Collapsed">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
+            </Property>
+            <Property Type="OutputNode:Primary" Count="0" />
+            <Property Type="MasterLocation" Page="0" Row="4" Column="6" />
+        </Entry>
+        <Entry Type="SolidState" Module="0" BitIndex="10" Enabled="True">
+            <Property Type="Name" Value="SO2A" />
+            <Property Type="ModuleSelection" Value="0" />
+            <Property Type="Circuit" CircuitType="SSO2A" TerminalCount="1">
+                <Terminal Value="SO2a" />
+            </Property>
+            <Property Type="SafetyOutputDelay" DelayType="None" DelayTime="100" OffDelayCancelType="DoNotCancel" OffDelayEndLogicType="TurnOff" />
+            <Property Type="LinkToSafetyOutputSelection" Value="NotUsed" BitIndex="0" />
+            <Property Type="PowerUpMode" Value="Normal" />
+            <Property Type="InputNode:Primary" Count="1" EnabledSources="1">
+                <Node Value="RP1" Type="OutputNode:Primary" BitIndex="1" SourceIndex="0" />
+            </Property>
+            <Property Type="InputNode:EDM" Count="0" EnabledSources="1" Visibility="Collapsed">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
+            </Property>
+            <Property Type="InputNode:AVM" Count="0" EnabledSources="1" Visibility="Collapsed">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" MonitoringTimeLimit="50" />
+            </Property>
+            <Property Type="InputNode:ResetEnable" Count="0" EnabledSources="1" Visibility="Collapsed">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
+            </Property>
+            <Property Type="InputNode:CancelDelay" Count="0" EnabledSources="1" Visibility="Collapsed">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
+            </Property>
+            <Property Type="InputNode:LatchReset" Count="0" EnabledSources="1" Visibility="Collapsed">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
+            </Property>
+            <Property Type="InputNode:FaultReset" Count="0" EnabledSources="1" Visibility="Collapsed">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
+            </Property>
+            <Property Type="OutputNode:Primary" Count="0" />
+            <Property Type="MasterLocation" Page="0" Row="8" Column="6" />
+        </Entry>
+        <Entry Type="SolidState" Module="0" BitIndex="11" Enabled="False">
+            <Property Type="Name" Value="SO2B" />
+            <Property Type="ModuleSelection" Value="0" />
+            <Property Type="Circuit" CircuitType="SSO2B" TerminalCount="1">
+                <Terminal Value="SO2b" />
+            </Property>
+            <Property Type="SafetyOutputDelay" DelayType="None" DelayTime="100" OffDelayCancelType="DoNotCancel" OffDelayEndLogicType="TurnOff" />
+            <Property Type="LinkToSafetyOutputSelection" Value="NotUsed" BitIndex="0" />
+            <Property Type="PowerUpMode" Value="Normal" />
+            <Property Type="InputNode:Primary" Count="0" EnabledSources="1">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
+            </Property>
+            <Property Type="InputNode:EDM" Count="0" EnabledSources="1" Visibility="Collapsed">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
+            </Property>
+            <Property Type="InputNode:AVM" Count="0" EnabledSources="1" Visibility="Collapsed">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" MonitoringTimeLimit="50" />
+            </Property>
+            <Property Type="InputNode:ResetEnable" Count="0" EnabledSources="1" Visibility="Collapsed">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
+            </Property>
+            <Property Type="InputNode:CancelDelay" Count="0" EnabledSources="1" Visibility="Collapsed">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
+            </Property>
+            <Property Type="InputNode:LatchReset" Count="0" EnabledSources="1" Visibility="Collapsed">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
+            </Property>
+            <Property Type="InputNode:FaultReset" Count="0" EnabledSources="1" Visibility="Collapsed">
+                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
+            </Property>
+            <Property Type="OutputNode:Primary" Count="0" />
+            <Property Type="MasterLocation" Page="0" Row="12" Column="6" />
+        </Entry>
+    </SafetyOutputs>
+    <StatusOutputs Count="0" />
+    <VirtualStatusOutputs Count="0" />
+    <VirtualStatusOutputColumns Count="0" />
+    <ExecutionGroups Count="1">
+        <Group Count="1">
+            <Entry BitIndex="10" Name="M0:SO2A" />
+        </Group>
+    </ExecutionGroups>
+    <FunctionalPages Count="1">
+        <Page Number="0" Entries="5">
+            <Entry Type="Master" Row="0" Column="0" BitIndex="1" Value="RP1" />
+            <Entry Type="Master" Row="0" Column="6" BitIndex="8" Value="SO1A" />
+            <Entry Type="Master" Row="4" Column="6" BitIndex="9" Value="SO1B" />
+            <Entry Type="Master" Row="8" Column="6" BitIndex="10" Value="SO2A" />
+            <Entry Type="Master" Row="12" Column="6" BitIndex="11" Value="SO2B" />
+        </Page>
+    </FunctionalPages>
+    <Diagnostics>
+        <BitIndexer>
+            <Entry BitIndex="1" Name="RP1" />
+            <Entry BitIndex="8" Name="SO1A" />
+            <Entry BitIndex="9" Name="SO1B" />
+            <Entry BitIndex="10" Name="SO2A" />
+            <Entry BitIndex="11" Name="SO2B" />
+        </BitIndexer>
+    </Diagnostics>
+</BSCX>
