@@ -1619,7 +1619,7 @@
                 <ElementType>Coil</ElementType>
                 <Descriptor>%Q0.2</Descriptor>
                 <Comment />
-                <Symbol>STRIP_A</Symbol>
+                <Symbol>STRIP_ARM_A</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -1682,7 +1682,7 @@
                 <ElementType>Coil</ElementType>
                 <Descriptor>%Q0.3</Descriptor>
                 <Comment />
-                <Symbol>STRIP_B</Symbol>
+                <Symbol>STRIP_ARM_B</Symbol>
                 <Row>1</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -5878,12 +5878,12 @@
           <DiscretOutput>
             <Address>%Q0.2</Address>
             <Index>2</Index>
-            <Symbol>STRIP_A</Symbol>
+            <Symbol>STRIP_ARM_A</Symbol>
           </DiscretOutput>
           <DiscretOutput>
             <Address>%Q0.3</Address>
             <Index>3</Index>
-            <Symbol>STRIP_B</Symbol>
+            <Symbol>STRIP_ARM_B</Symbol>
           </DiscretOutput>
           <DiscretOutput>
             <Address>%Q0.4</Address>
