@@ -3235,15 +3235,6 @@
           <RungEntity>
             <LadderElements>
               <LadderEntity>
-                <ElementType>NegatedContact</ElementType>
-                <Descriptor>%M0</Descriptor>
-                <Comment />
-                <Symbol>RESET</Symbol>
-                <Row>0</Row>
-                <Column>0</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
                 <ElementType>Line</ElementType>
                 <Descriptor />
                 <Comment />
@@ -3330,17 +3321,19 @@
                 <Comment />
                 <Symbol>SAFETY</Symbol>
                 <Row>0</Row>
+                <Column>0</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
                 <Column>1</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
               </LadderEntity>
             </LadderElements>
             <InstructionLines>
               <InstructionLineEntity>
-                <InstructionLine>LDN %M0</InstructionLine>
-                <Comment />
-              </InstructionLineEntity>
-              <InstructionLineEntity>
-                <InstructionLine>ANDN %I0.10</InstructionLine>
+                <InstructionLine>LDN %I0.10</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
@@ -3355,15 +3348,6 @@
           </RungEntity>
           <RungEntity>
             <LadderElements>
-              <LadderEntity>
-                <ElementType>NegatedContact</ElementType>
-                <Descriptor>%I0.10</Descriptor>
-                <Comment />
-                <Symbol>SAFETY</Symbol>
-                <Row>0</Row>
-                <Column>1</Column>
-                <ChosenConnection>Left, Right</ChosenConnection>
-              </LadderEntity>
               <LadderEntity>
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%M8</Descriptor>
@@ -3448,30 +3432,37 @@
                 <ChosenConnection>Left, Right</ChosenConnection>
               </LadderEntity>
               <LadderEntity>
-                <ElementType>Line</ElementType>
-                <Comment />
-                <Symbol />
-                <Row>0</Row>
-                <Column>2</Column>
-                <ChosenConnection>Down, Left, Right</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%M6</Descriptor>
                 <Comment>Master Control Relay</Comment>
                 <Symbol>MCR</Symbol>
                 <Row>0</Row>
+                <Column>1</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>NegatedContact</ElementType>
+                <Descriptor>%M0</Descriptor>
+                <Comment />
+                <Symbol>STOP</Symbol>
+                <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>2</Column>
+                <ChosenConnection>Down, Left, Right</ChosenConnection>
               </LadderEntity>
             </LadderElements>
             <InstructionLines>
               <InstructionLineEntity>
-                <InstructionLine>LD  %M6</InstructionLine>
+                <InstructionLine>LDN %M0</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
-                <InstructionLine>ANDN %I0.10</InstructionLine>
+                <InstructionLine>AND %M6</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
@@ -4195,7 +4186,7 @@
       <MemoryBit>
         <Address>%M0</Address>
         <Index>0</Index>
-        <Symbol>RESET</Symbol>
+        <Symbol>STOP</Symbol>
       </MemoryBit>
       <MemoryBit>
         <Address>%M1</Address>
