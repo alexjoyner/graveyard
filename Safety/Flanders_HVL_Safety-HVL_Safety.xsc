@@ -20,7 +20,7 @@
     </Ethernet>
     <BitIndexer RequiredSizeBytes="32" OffsetToInputs="0" OffsetToFunctionBlocks="192" OffsetToSafetyOutputs="8" MaximumBitIndex="255" />
     <AddOnModules Count="0" />
-    <Inputs Count="1">
+    <Inputs Count="2">
         <Entry Type="RopePull" Module="0" BitIndex="1">
             <Property Type="Name" Value="RP1" />
             <Property Type="ModuleSelection" Value="0" />
@@ -37,20 +37,47 @@
             <Property Type="OutputNode:Primary" Count="1" />
             <Property Type="MasterLocation" Page="0" Row="0" Column="0" />
         </Entry>
-    </Inputs>
-    <FunctionBlocks Count="0" />
-    <SafetyOutputs Count="4">
-        <Entry Type="SolidState" Module="0" BitIndex="8" Enabled="False">
-            <Property Type="Name" Value="SO1A" />
+        <Entry Type="RopePull" Module="0" BitIndex="2">
+            <Property Type="Name" Value="RP2" />
             <Property Type="ModuleSelection" Value="0" />
-            <Property Type="Circuit" CircuitType="SSO1A" TerminalCount="1">
+            <Property Type="Circuit" CircuitType="DualChannel4Terminal" TerminalCount="4">
+                <Terminal Value="IO3" />
+                <Terminal Value="IN3" />
+                <Terminal Value="IO4" />
+                <Terminal Value="IN4" />
+            </Property>
+            <Property Type="Simulteneity" Value="Simultaneous" />
+            <Property Type="DebounceClosedToOpenTimeLimit" Value="6" />
+            <Property Type="DebounceOpenToClosedTimeLimit" Value="50" />
+            <Property Type="EnableStartupTest" Value="False" />
+            <Property Type="OutputNode:Primary" Count="1" />
+            <Property Type="MasterLocation" Page="0" Row="1" Column="0" />
+        </Entry>
+    </Inputs>
+    <FunctionBlocks Count="1">
+        <Entry Type="And" BitIndex="192">
+            <Property Type="Name" Value="A1" />
+            <Property Type="InputNode:Primary" Count="2" EnabledSources="2">
+                <Node Value="RP1" Type="OutputNode:Primary" BitIndex="1" SourceIndex="0" Polarity="Normal" />
+                <Node Value="RP2" Type="OutputNode:Primary" BitIndex="2" SourceIndex="1" Polarity="Normal" />
+            </Property>
+            <Property Type="OutputNode:Primary" Count="2" Polarity="Normal" />
+            <Property Type="MasterLocation" Page="0" Row="0" Column="3" />
+        </Entry>
+    </FunctionBlocks>
+    <SafetyOutputs Count="2">
+        <Entry Type="SolidState" Module="0" BitIndex="8" Enabled="True">
+            <Property Type="Name" Value="SO1" />
+            <Property Type="ModuleSelection" Value="0" />
+            <Property Type="Circuit" CircuitType="SSO1AB" TerminalCount="2">
                 <Terminal Value="SO1a" />
+                <Terminal Value="SO1b" />
             </Property>
             <Property Type="SafetyOutputDelay" DelayType="None" DelayTime="100" OffDelayCancelType="DoNotCancel" OffDelayEndLogicType="TurnOff" />
             <Property Type="LinkToSafetyOutputSelection" Value="NotUsed" BitIndex="0" />
             <Property Type="PowerUpMode" Value="Normal" />
-            <Property Type="InputNode:Primary" Count="0" EnabledSources="1">
-                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
+            <Property Type="InputNode:Primary" Count="1" EnabledSources="1">
+                <Node Value="A1" Type="OutputNode:Primary" BitIndex="192" SourceIndex="0" />
             </Property>
             <Property Type="InputNode:EDM" Count="0" EnabledSources="1" Visibility="Collapsed">
                 <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
@@ -73,50 +100,18 @@
             <Property Type="OutputNode:Primary" Count="0" />
             <Property Type="MasterLocation" Page="0" Row="0" Column="6" />
         </Entry>
-        <Entry Type="SolidState" Module="0" BitIndex="9" Enabled="False">
-            <Property Type="Name" Value="SO1B" />
+        <Entry Type="SolidState" Module="0" BitIndex="9" Enabled="True">
+            <Property Type="Name" Value="SO2" />
             <Property Type="ModuleSelection" Value="0" />
-            <Property Type="Circuit" CircuitType="SSO1B" TerminalCount="1">
-                <Terminal Value="SO1b" />
-            </Property>
-            <Property Type="SafetyOutputDelay" DelayType="None" DelayTime="100" OffDelayCancelType="DoNotCancel" OffDelayEndLogicType="TurnOff" />
-            <Property Type="LinkToSafetyOutputSelection" Value="NotUsed" BitIndex="0" />
-            <Property Type="PowerUpMode" Value="Normal" />
-            <Property Type="InputNode:Primary" Count="0" EnabledSources="1">
-                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
-            </Property>
-            <Property Type="InputNode:EDM" Count="0" EnabledSources="1" Visibility="Collapsed">
-                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
-            </Property>
-            <Property Type="InputNode:AVM" Count="0" EnabledSources="1" Visibility="Collapsed">
-                <Node Value="" Type="" BitIndex="1" SourceIndex="0" MonitoringTimeLimit="50" />
-            </Property>
-            <Property Type="InputNode:ResetEnable" Count="0" EnabledSources="1" Visibility="Collapsed">
-                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
-            </Property>
-            <Property Type="InputNode:CancelDelay" Count="0" EnabledSources="1" Visibility="Collapsed">
-                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
-            </Property>
-            <Property Type="InputNode:LatchReset" Count="0" EnabledSources="1" Visibility="Collapsed">
-                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
-            </Property>
-            <Property Type="InputNode:FaultReset" Count="0" EnabledSources="1" Visibility="Collapsed">
-                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
-            </Property>
-            <Property Type="OutputNode:Primary" Count="0" />
-            <Property Type="MasterLocation" Page="0" Row="4" Column="6" />
-        </Entry>
-        <Entry Type="SolidState" Module="0" BitIndex="10" Enabled="True">
-            <Property Type="Name" Value="SO2A" />
-            <Property Type="ModuleSelection" Value="0" />
-            <Property Type="Circuit" CircuitType="SSO2A" TerminalCount="1">
+            <Property Type="Circuit" CircuitType="SSO2AB" TerminalCount="2">
                 <Terminal Value="SO2a" />
+                <Terminal Value="SO2b" />
             </Property>
             <Property Type="SafetyOutputDelay" DelayType="None" DelayTime="100" OffDelayCancelType="DoNotCancel" OffDelayEndLogicType="TurnOff" />
             <Property Type="LinkToSafetyOutputSelection" Value="NotUsed" BitIndex="0" />
             <Property Type="PowerUpMode" Value="Normal" />
             <Property Type="InputNode:Primary" Count="1" EnabledSources="1">
-                <Node Value="RP1" Type="OutputNode:Primary" BitIndex="1" SourceIndex="0" />
+                <Node Value="A1" Type="OutputNode:Primary" BitIndex="192" SourceIndex="0" />
             </Property>
             <Property Type="InputNode:EDM" Count="0" EnabledSources="1" Visibility="Collapsed">
                 <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
@@ -139,64 +134,33 @@
             <Property Type="OutputNode:Primary" Count="0" />
             <Property Type="MasterLocation" Page="0" Row="8" Column="6" />
         </Entry>
-        <Entry Type="SolidState" Module="0" BitIndex="11" Enabled="False">
-            <Property Type="Name" Value="SO2B" />
-            <Property Type="ModuleSelection" Value="0" />
-            <Property Type="Circuit" CircuitType="SSO2B" TerminalCount="1">
-                <Terminal Value="SO2b" />
-            </Property>
-            <Property Type="SafetyOutputDelay" DelayType="None" DelayTime="100" OffDelayCancelType="DoNotCancel" OffDelayEndLogicType="TurnOff" />
-            <Property Type="LinkToSafetyOutputSelection" Value="NotUsed" BitIndex="0" />
-            <Property Type="PowerUpMode" Value="Normal" />
-            <Property Type="InputNode:Primary" Count="0" EnabledSources="1">
-                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
-            </Property>
-            <Property Type="InputNode:EDM" Count="0" EnabledSources="1" Visibility="Collapsed">
-                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
-            </Property>
-            <Property Type="InputNode:AVM" Count="0" EnabledSources="1" Visibility="Collapsed">
-                <Node Value="" Type="" BitIndex="1" SourceIndex="0" MonitoringTimeLimit="50" />
-            </Property>
-            <Property Type="InputNode:ResetEnable" Count="0" EnabledSources="1" Visibility="Collapsed">
-                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
-            </Property>
-            <Property Type="InputNode:CancelDelay" Count="0" EnabledSources="1" Visibility="Collapsed">
-                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
-            </Property>
-            <Property Type="InputNode:LatchReset" Count="0" EnabledSources="1" Visibility="Collapsed">
-                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
-            </Property>
-            <Property Type="InputNode:FaultReset" Count="0" EnabledSources="1" Visibility="Collapsed">
-                <Node Value="" Type="" BitIndex="1" SourceIndex="0" />
-            </Property>
-            <Property Type="OutputNode:Primary" Count="0" />
-            <Property Type="MasterLocation" Page="0" Row="12" Column="6" />
-        </Entry>
     </SafetyOutputs>
     <StatusOutputs Count="0" />
     <VirtualStatusOutputs Count="0" />
     <VirtualStatusOutputColumns Count="0" />
     <ExecutionGroups Count="1">
-        <Group Count="1">
-            <Entry BitIndex="10" Name="M0:SO2A" />
+        <Group Count="3">
+            <Entry BitIndex="192" Name="A1" />
+            <Entry BitIndex="8" Name="M0:SO1" />
+            <Entry BitIndex="9" Name="M0:SO2" />
         </Group>
     </ExecutionGroups>
     <FunctionalPages Count="1">
         <Page Number="0" Entries="5">
             <Entry Type="Master" Row="0" Column="0" BitIndex="1" Value="RP1" />
-            <Entry Type="Master" Row="0" Column="6" BitIndex="8" Value="SO1A" />
-            <Entry Type="Master" Row="4" Column="6" BitIndex="9" Value="SO1B" />
-            <Entry Type="Master" Row="8" Column="6" BitIndex="10" Value="SO2A" />
-            <Entry Type="Master" Row="12" Column="6" BitIndex="11" Value="SO2B" />
+            <Entry Type="Master" Row="0" Column="3" BitIndex="192" Value="A1" />
+            <Entry Type="Master" Row="0" Column="6" BitIndex="8" Value="SO1" />
+            <Entry Type="Master" Row="1" Column="0" BitIndex="2" Value="RP2" />
+            <Entry Type="Master" Row="8" Column="6" BitIndex="9" Value="SO2" />
         </Page>
     </FunctionalPages>
     <Diagnostics>
         <BitIndexer>
             <Entry BitIndex="1" Name="RP1" />
-            <Entry BitIndex="8" Name="SO1A" />
-            <Entry BitIndex="9" Name="SO1B" />
-            <Entry BitIndex="10" Name="SO2A" />
-            <Entry BitIndex="11" Name="SO2B" />
+            <Entry BitIndex="2" Name="RP2" />
+            <Entry BitIndex="8" Name="SO1" />
+            <Entry BitIndex="9" Name="SO2" />
+            <Entry BitIndex="192" Name="A1" />
         </BitIndexer>
     </Diagnostics>
 </BSCX>
