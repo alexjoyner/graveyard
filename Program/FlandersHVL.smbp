@@ -2,8 +2,8 @@
 <ProjectDescriptor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectVersion>1.8.0.0</ProjectVersion>
   <ManagementLevel>FunctLevelMan9_0</ManagementLevel>
-  <Name>FlandersHVL_V2</Name>
-  <FullName>C:\Users\Admin\Desktop\FlandersHVL_V2.smbp</FullName>
+  <Name>FlandersHVL</Name>
+  <FullName>C:\Users\Admin\Documents\GitHub_Projects\Flanders_HVL\Program\FlandersHVL.smbp</FullName>
   <SoftwareConfiguration>
     <Pous>
       <ProgramOrganizationUnits>
@@ -62,16 +62,16 @@
                 <ChosenConnection>Left, Right</ChosenConnection>
               </LadderEntity>
               <LadderEntity>
-                <ElementType>Line</ElementType>
+                <ElementType>NormalContact</ElementType>
+                <Descriptor>%M5</Descriptor>
+                <Comment />
+                <Symbol>SYSTEM_RUNNING</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
               </LadderEntity>
               <LadderEntity>
-                <ElementType>NormalContact</ElementType>
-                <Descriptor>%M5</Descriptor>
-                <Comment />
-                <Symbol>SYSTEM_RUNNING</Symbol>
+                <ElementType>Line</ElementType>
                 <Row>0</Row>
                 <Column>2</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -6558,6 +6558,127 @@
               <Address>%Q2.7</Address>
               <Index>7</Index>
               <Symbol>DRIVE_MOTOR_RUN</Symbol>
+            </DiscretOutput>
+          </DigitalOutputs>
+          <AnalogInputs />
+          <AnalogInputsStatus />
+          <AnalogOutputs />
+          <AnalogOutputsStatus />
+          <HighSpeedCounters />
+          <PulseTrainOutputs />
+          <HardwareId>5</HardwareId>
+          <IsExpander>false</IsExpander>
+          <IsOptionnal>false</IsOptionnal>
+        </ModuleExtensionObject>
+        <ModuleExtensionObject>
+          <Index>2</Index>
+          <InputNb>0</InputNb>
+          <OutputNb>0</OutputNb>
+          <Kind>0</Kind>
+          <Reference>TM2DDO8TT</Reference>
+          <Consumption5V>10</Consumption5V>
+          <Consumption24V>20</Consumption24V>
+          <TechnicalConfiguration>
+            <PtoConfiguration>
+              <McPowerPtoMax>0</McPowerPtoMax>
+              <McMoveVelPtoMax>0</McMoveVelPtoMax>
+              <McMoveRelPtoMax>0</McMoveRelPtoMax>
+              <McMoveAbsPtoMax>0</McMoveAbsPtoMax>
+              <McHomePtoMax>0</McHomePtoMax>
+              <McSetPosPtoMax>0</McSetPosPtoMax>
+              <McStopPtoMax>0</McStopPtoMax>
+              <McHaltPtoMax>0</McHaltPtoMax>
+              <McReadActVelPtoMax>0</McReadActVelPtoMax>
+              <McReadActPosPtoMax>0</McReadActPosPtoMax>
+              <McReadStsPtoMax>0</McReadStsPtoMax>
+              <McReadMotionStatePtoMax>0</McReadMotionStatePtoMax>
+              <McReadAxisErrorPtoMax>0</McReadAxisErrorPtoMax>
+              <McResetPtoMax>0</McResetPtoMax>
+              <McTouchProbePtoMax>0</McTouchProbePtoMax>
+              <McAbortTriggerPtoMax>0</McAbortTriggerPtoMax>
+              <McReadParPtoMax>0</McReadParPtoMax>
+              <McWriteParPtoMax>0</McWriteParPtoMax>
+              <McMotionTaskPtoMax>0</McMotionTaskPtoMax>
+            </PtoConfiguration>
+            <ComConfiguration>
+              <ReadVarBasicMax>0</ReadVarBasicMax>
+              <WriteVarBasicMax>0</WriteVarBasicMax>
+              <WriteReadVarBasicMax>0</WriteReadVarBasicMax>
+              <SendRecvMsgBasicMax>0</SendRecvMsgBasicMax>
+              <SendRecvSmsMax>0</SendRecvSmsMax>
+            </ComConfiguration>
+            <Compatibility>0</Compatibility>
+            <FastCounterMax>0</FastCounterMax>
+            <FourInputsEventTask>0</FourInputsEventTask>
+            <GrafcetBitsMax>0</GrafcetBitsMax>
+            <InternalRamStart>0</InternalRamStart>
+            <LabelsMax>0</LabelsMax>
+            <LfRegistersMax>0</LfRegistersMax>
+            <MemoryConstantWordsMax>0</MemoryConstantWordsMax>
+            <MemoryWordsMax>0</MemoryWordsMax>
+            <NumRelays>0</NumRelays>
+            <NumRelaysMax>0</NumRelaysMax>
+            <NumTransistors>8</NumTransistors>
+            <NumTransistorsMax>0</NumTransistorsMax>
+            <PidAmountMax>0</PidAmountMax>
+            <PlcNumberSysBits>0</PlcNumberSysBits>
+            <PlcNumberSysWords>0</PlcNumberSysWords>
+            <PlcStartAddrSysBits>0</PlcStartAddrSysBits>
+            <PlcType>0</PlcType>
+            <TimersMax>0</TimersMax>
+            <AnalogInputPrecision>0</AnalogInputPrecision>
+            <AnalogOutputPrecision>0</AnalogOutputPrecision>
+            <StepCountersMax>0</StepCountersMax>
+            <CountersMax>0</CountersMax>
+            <DrumsMax>0</DrumsMax>
+            <ExternalRamSize>0</ExternalRamSize>
+            <ExternalRamSizeWithDisplay>0</ExternalRamSizeWithDisplay>
+            <ExternalRamStart>0</ExternalRamStart>
+            <InternalRamAppStart>0</InternalRamAppStart>
+            <InternalRamSize>0</InternalRamSize>
+            <InternalBitsMax>0</InternalBitsMax>
+            <InternalEepromSize>0</InternalEepromSize>
+            <ScheduleBlocksMax>0</ScheduleBlocksMax>
+            <ShiftBitRegistersMax>0</ShiftBitRegistersMax>
+            <SubroutinesMax>0</SubroutinesMax>
+            <SupportDoubleWord>false</SupportDoubleWord>
+            <SupportEvents>false</SupportEvents>
+            <SupportFloatingPoint>false</SupportFloatingPoint>
+            <NumberOf1MsTimerBase>0</NumberOf1MsTimerBase>
+          </TechnicalConfiguration>
+          <DigitalInputs />
+          <DigitalOutputs>
+            <DiscretOutput>
+              <Address>%Q3.0</Address>
+              <Index>0</Index>
+            </DiscretOutput>
+            <DiscretOutput>
+              <Address>%Q3.1</Address>
+              <Index>1</Index>
+            </DiscretOutput>
+            <DiscretOutput>
+              <Address>%Q3.2</Address>
+              <Index>2</Index>
+            </DiscretOutput>
+            <DiscretOutput>
+              <Address>%Q3.3</Address>
+              <Index>3</Index>
+            </DiscretOutput>
+            <DiscretOutput>
+              <Address>%Q3.4</Address>
+              <Index>4</Index>
+            </DiscretOutput>
+            <DiscretOutput>
+              <Address>%Q3.5</Address>
+              <Index>5</Index>
+            </DiscretOutput>
+            <DiscretOutput>
+              <Address>%Q3.6</Address>
+              <Index>6</Index>
+            </DiscretOutput>
+            <DiscretOutput>
+              <Address>%Q3.7</Address>
+              <Index>7</Index>
             </DiscretOutput>
           </DigitalOutputs>
           <AnalogInputs />
