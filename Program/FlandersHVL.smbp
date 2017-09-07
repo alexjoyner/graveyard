@@ -2177,7 +2177,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%I0.2</Descriptor>
                 <Comment />
-                <Symbol>VAC_CYL_A_OUT</Symbol>
+                <Symbol>STRIP_CYL_A_OUT</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -2243,7 +2243,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%I0.4</Descriptor>
                 <Comment />
-                <Symbol>VAC_CYL_B_OUT</Symbol>
+                <Symbol>STRIP_CYL_B_OUT</Symbol>
                 <Row>0</Row>
                 <Column>1</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -2274,7 +2274,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%I0.3</Descriptor>
                 <Comment />
-                <Symbol>VAC_CYL_A_IN</Symbol>
+                <Symbol>STRIP_CYL_A_IN</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -2283,7 +2283,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%I0.5</Descriptor>
                 <Comment />
-                <Symbol>VAC_CYL_B_IN</Symbol>
+                <Symbol>STRIP_CYL_B_IN</Symbol>
                 <Row>0</Row>
                 <Column>1</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -5809,22 +5809,22 @@
           <DiscretInput>
             <Address>%I0.2</Address>
             <Index>2</Index>
-            <Symbol>VAC_CYL_A_OUT</Symbol>
+            <Symbol>STRIP_CYL_A_OUT</Symbol>
           </DiscretInput>
           <DiscretInput>
             <Address>%I0.3</Address>
             <Index>3</Index>
-            <Symbol>VAC_CYL_A_IN</Symbol>
+            <Symbol>STRIP_CYL_A_IN</Symbol>
           </DiscretInput>
           <DiscretInput>
             <Address>%I0.4</Address>
             <Index>4</Index>
-            <Symbol>VAC_CYL_B_OUT</Symbol>
+            <Symbol>STRIP_CYL_B_OUT</Symbol>
           </DiscretInput>
           <DiscretInput>
             <Address>%I0.5</Address>
             <Index>5</Index>
-            <Symbol>VAC_CYL_B_IN</Symbol>
+            <Symbol>STRIP_CYL_B_IN</Symbol>
           </DiscretInput>
           <DiscretInput>
             <Address>%I0.6</Address>
