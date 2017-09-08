@@ -7076,22 +7076,42 @@
       <MemoryWord>
         <Address>%MW17</Address>
         <Index>17</Index>
-        <Symbol>GLUE_A_TOP_SETPOINT_OFFESET</Symbol>
+        <Symbol>GLUE_A_TOP_ON_SETPOINT_OFFSET</Symbol>
       </MemoryWord>
       <MemoryWord>
         <Address>%MW18</Address>
         <Index>18</Index>
-        <Symbol>GLUE_A_BOT_SETPOINT_OFFSET</Symbol>
+        <Symbol>GLUE_A_BOT_ON_SETPOINT_OFFSET</Symbol>
       </MemoryWord>
       <MemoryWord>
         <Address>%MW19</Address>
         <Index>19</Index>
-        <Symbol>GLUE_B_TOP_SETPOINT_OFFSET</Symbol>
+        <Symbol>GLUE_B_TOP_ON_SETPOINT_OFFSET</Symbol>
       </MemoryWord>
       <MemoryWord>
         <Address>%MW20</Address>
         <Index>20</Index>
-        <Symbol>GLUE_B_BOT_SETPOINT_OFFSET</Symbol>
+        <Symbol>GLUE_B_BOT_ON_SETPOINT_OFFSET</Symbol>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%MW21</Address>
+        <Index>21</Index>
+        <Symbol>GLUE_A_TOP_OFF_SETPOINT_OFFSET</Symbol>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%MW22</Address>
+        <Index>22</Index>
+        <Symbol>GLUE_A_BOT_OFF_SETPOINT_OFFSET</Symbol>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%MW23</Address>
+        <Index>23</Index>
+        <Symbol>GLUE_B_TOP_OFF_SETPOINT_OFFSET</Symbol>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%MW24</Address>
+        <Index>24</Index>
+        <Symbol>GLUE_B_BOT_OFF_SETPOINT_OFFSET</Symbol>
       </MemoryWord>
     </MemoryWords>
     <MemoryDoubleWords />
