@@ -2951,39 +2951,39 @@
             </LadderElements>
             <InstructionLines>
               <InstructionLineEntity>
-                <InstructionLine>LD 1</InstructionLine>
+                <InstructionLine>LD  1</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
-                <InstructionLine>[%TM0.P := %MW6 / 10]</InstructionLine>
+                <InstructionLine>[ %TM0.P := %MW6 / 10 ]</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
-                <InstructionLine>[%TM1.P := %MW10 / 10]</InstructionLine>
+                <InstructionLine>[ %TM1.P := %MW10 / 10 ]</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
-                <InstructionLine>[%TM7.P := %MW11 / 10]</InstructionLine>
+                <InstructionLine>[ %TM7.P := %MW11 / 10 ]</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
-                <InstructionLine>[%TM8.P := %MW12 / 10]</InstructionLine>
+                <InstructionLine>[ %TM8.P := %MW12 / 10 ]</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
-                <InstructionLine>[%TM9.P := %MW13 / 10]</InstructionLine>
+                <InstructionLine>[ %TM9.P := %MW13 / 10 ]</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
-                <InstructionLine>[%TM10.P := %MW14 / 10]</InstructionLine>
+                <InstructionLine>[ %TM10.P := %MW14 / 10 ]</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
-                <InstructionLine>[%TM11.P := %MW15 / 10]</InstructionLine>
+                <InstructionLine>[ %TM11.P := %MW15 / 10 ]</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
               <InstructionLineEntity>
-                <InstructionLine>[%TM12.P := %MW16 / 10]</InstructionLine>
+                <InstructionLine>[ %TM12.P := %MW16 / 10 ]</InstructionLine>
                 <Comment />
               </InstructionLineEntity>
             </InstructionLines>
@@ -7072,6 +7072,26 @@
         <Address>%MW16</Address>
         <Index>16</Index>
         <Symbol>GLUE_B_BOT_OFF_DELAY_SETPOINT</Symbol>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%MW17</Address>
+        <Index>17</Index>
+        <Symbol>GLUE_A_TOP_SETPOINT_OFFESET</Symbol>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%MW18</Address>
+        <Index>18</Index>
+        <Symbol>GLUE_A_BOT_SETPOINT_OFFSET</Symbol>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%MW19</Address>
+        <Index>19</Index>
+        <Symbol>GLUE_B_TOP_SETPOINT_OFFSET</Symbol>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%MW20</Address>
+        <Index>20</Index>
+        <Symbol>GLUE_B_BOT_SETPOINT_OFFSET</Symbol>
       </MemoryWord>
     </MemoryWords>
     <MemoryDoubleWords />
