@@ -5,6 +5,12 @@
 	(******************************)
 
         VAR_GLOBAL
+	{G:"Parameters"}
+bottomBearingSetpoint AT %MW101.0 : INT;
+motor1_Temp_Setpoint AT %MW101.1 : INT;
+motor2_Temp_Setpoint AT %MW101.2 : INT;
+motor3_Temp_Setpoint AT %MW101.3 : INT;
+vibration_Limit_Setpoint AT %MW101.4 : INT;
 	{G:"Variables"}
 windingTempAlarm AT %MW110.0 : BOOL;
 sealFailAlarm AT %MW110.1 : BOOL;
@@ -13,13 +19,8 @@ vibrationAlarm AT %MW110.3 : BOOL;
 highRtdAlarm AT %MW110.4 : BOOL;
 resetAlarms AT %MW110.5 : BOOL;
 silenceAlarms AT %MW110.6 : BOOL;
-bottomBearingSetpoint AT %MW110.7 : INT;
-motor1_Temp_Setpoint AT %MW110.8 : INT;
-motor2_Temp_Setpoint AT %MW110.9 : INT;
-vibration_Limit_Setpoint AT %MW110.10 : INT;
-pumpRtdAlarmTimer AT %MW110.11 : INT;
-vibrationAlarmTimer AT %MW110.12 : INT;
-motor3_Temp_Setpoint AT %MW110.13 : INT;
+pumpRtdAlarmTimer AT %MW110.7 : INT;
+vibrationAlarmTimer AT %MW110.8 : INT;
 	{G:"Mappings"}
 motor1_Temp AT %IW1.0 : INT;	{ DE:"AIL1 analogue input" }
 motor2_Temp AT %IW1.1 : INT;	{ DE:"AIL2 analogue input" }
