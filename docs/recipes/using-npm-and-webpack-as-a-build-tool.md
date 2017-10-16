@@ -1,4 +1,4 @@
-## Using Yarn and Webpack as a Build Tool
+ ## Using Yarn and Webpack as a Build Tool
 
 The [Yarn](https://yarnpkg.com/) command line utility that comes with Node.js
 allows you to run arbitrary scripts and [Node.js modules](https://www.npmjs.com/)
