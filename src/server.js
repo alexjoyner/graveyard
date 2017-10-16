@@ -21,10 +21,10 @@ import Html from './components/Html';
 import { ErrorPageWithoutStyle } from './routes/error/ErrorPage';
 import errorPageStyle from './routes/error/ErrorPage.css';
 import createFetch from './createFetch';
-// This assets file is only in build. It will be ignored by es-lint
-import assets from './assets.json'; // eslint-disable-line import/no-unresolved
 import router from './router';
 import config from './config';
+import assets from './assets.json'; // eslint-disable-line import/no-unresolved
+// ^^^^ This assets file is only in build. It will be ignored by es-lint for imports. Don't delete comment!
 
 const app = express();
 

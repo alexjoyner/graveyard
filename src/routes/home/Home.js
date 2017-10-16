@@ -10,20 +10,31 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Home.css';
-import Guage from '../../components/Charts/Guage/Guage';
+import Guage from '../../components/Charts/SensorChartSet/SensorChartSet';
 
 const chartData = {
-  columns: [['data', 91.4]],
-  type: 'gauge',
+  data: {
+    type: 'gauge',
+    columns: [['data', 90.4]],
+  },
+  specs: {
+    label: {
+      format: value => value,
+      show: true, // to turn off the min/max labels.
+    },
+    units: 'F',
+  },
 };
+
 class Home extends React.Component {
   static propTypes = {};
+
   render() {
     return (
       <div className={s.root}>
         <div className={s.container}>
           <h1>Ambient Temperature</h1>
-          <Guage data={chartData} />
+          <Guage initData={chartData} />
         </div>
       </div>
     );
