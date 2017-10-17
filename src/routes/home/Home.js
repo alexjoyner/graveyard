@@ -32,10 +32,12 @@ class Home extends React.Component {
         newStateInfo.GuageChartData.data.columns[0][1] = data;
         const date = new Date();
         newStateInfo.LineChartData.data.columns[0].push(date);
-        newStateInfo.LineChartData.data.columns[1].push(Math.floor(data));
+        newStateInfo.LineChartData.data.columns[1].push(
+          Math.round(data * 10) / 10,
+        );
         this.setState(newStateInfo);
       });
-    }, 8000);
+    }, 4000);
   }
   render() {
     return (
