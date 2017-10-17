@@ -27,7 +27,7 @@ class Guage extends React.Component {
           size={{ height: 180 }}
           color={this.state.color}
           axis={this.state.axis}
-          unloadBeforeLoad
+          transition={this.state.transition}
         />
       </div>
     );

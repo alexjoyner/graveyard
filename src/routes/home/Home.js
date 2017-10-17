@@ -8,6 +8,7 @@
  */
 
 import React from 'react';
+import axios from 'axios';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Home.css';
 import Guage from '../../components/Charts/Guage/Guage';
@@ -23,14 +24,18 @@ class Home extends React.Component {
       LineChartData,
     };
   }
-  componentWillMount() {
+  componentDidMount() {
     setInterval(() => {
-      const newStateInfo = this.state;
-      newStateInfo.GuageChartData.data.columns[0][1] = Math.floor(
-        Math.random() * 100,
-      );
-      this.setState(newStateInfo);
-    }, 2000);
+      axios.get('http://localhost:4000/ai1').then(res => {
+        const data = res.request.response;
+        const newStateInfo = this.state;
+        newStateInfo.GuageChartData.data.columns[0][1] = data;
+        const date = new Date();
+        newStateInfo.LineChartData.data.columns[0].push(date);
+        newStateInfo.LineChartData.data.columns[1].push(Math.floor(data));
+        this.setState(newStateInfo);
+      });
+    }, 8000);
   }
   render() {
     return (

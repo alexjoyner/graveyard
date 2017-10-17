@@ -1,5 +1,6 @@
 export default {
   data: {
+    unload: true,
     type: 'gauge',
     columns: [['data', 40]],
   },

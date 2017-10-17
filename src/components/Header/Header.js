@@ -35,7 +35,6 @@ class Header extends React.Component {
     return (
       <div className={s.root}>
         <div className={s.container}>
-          <button onClick={this.openSideBar}>?</button>
           <Link className={s.brand} to="/">
             <span className={s.brandTxt}>EES Data Logger Demo </span>
           </Link>
