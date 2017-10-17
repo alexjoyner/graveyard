@@ -13,20 +13,42 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
 // external-global styles must be imported in your JS.
 import normalizeCss from 'normalize.css';
+import Sidebar from 'react-sidebar';
 import s from './Layout.css';
 import Header from '../Header';
+import SideBarStylesJS from './SideBarStyles';
 
 class Layout extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      sidebarOpen: true,
+    };
+
+    this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
+  }
+
+  onSetSidebarOpen(open) {
+    this.setState({ sidebarOpen: open });
+  }
+
   render() {
+    const sidebarContent = <b>Sidebar content</b>;
     return (
-      <div>
+      <Sidebar
+        styles={SideBarStylesJS}
+        sidebar={sidebarContent}
+        open={this.state.sidebarOpen}
+        onSetOpen={this.onSetSidebarOpen}
+      >
         <Header />
         {this.props.children}
-      </div>
+      </Sidebar>
     );
   }
 }

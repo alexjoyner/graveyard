@@ -5,19 +5,9 @@ import PropTypes from 'prop-types';
 import s from 'c3/c3.css';
 
 class Guage extends React.Component {
-  static get displayName() {
-    return 'DynamicChart';
-  }
-
   static get propTypes() {
     return {
       initData: PropTypes.object.isRequired,
-      newData: PropTypes.object,
-    };
-  }
-  static get defaultProps() {
-    return {
-      newData: {},
     };
   }
   constructor(props) {
@@ -25,15 +15,7 @@ class Guage extends React.Component {
     this.state = props.initData;
   }
 
-  componentDidMount() {
-    if (this.props.newData) {
-      setInterval(() => {
-        const newState = this.state;
-        newState.data.columns[0][1] += 10;
-        this.setState(newState);
-      }, 1000);
-    }
-  }
+  componentDidMount() {}
 
   render() {
     return (
