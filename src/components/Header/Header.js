@@ -8,15 +8,34 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Header.css';
 import Link from '../Link';
 
 class Header extends React.Component {
+  static get propTypes() {
+    return {
+      openSideBar: PropTypes.func,
+    };
+  }
+  static get defaultProps() {
+    return {
+      openSideBar: null,
+    };
+  }
+  constructor(props) {
+    super(props);
+    this.openSideBar = this.openSideBar.bind(this);
+  }
+  openSideBar = () => {
+    this.props.openSideBar();
+  };
   render() {
     return (
       <div className={s.root}>
         <div className={s.container}>
+          <button onClick={this.openSideBar}>?</button>
           <Link className={s.brand} to="/">
             <span className={s.brandTxt}>EES Data Logger Demo </span>
           </Link>

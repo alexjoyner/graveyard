@@ -38,7 +38,7 @@ class Layout extends React.Component {
   }
 
   render() {
-    const sidebarContent = <b>Sidebar content</b>;
+    const sidebarContent = <h1>Hello World</h1>;
     return (
       <Sidebar
         styles={SideBarStylesJS}
@@ -46,7 +46,7 @@ class Layout extends React.Component {
         open={this.state.sidebarOpen}
         onSetOpen={this.onSetSidebarOpen}
       >
-        <Header />
+        <Header openSideBar={() => this.onSetSidebarOpen(true)} />
         {this.props.children}
       </Sidebar>
     );

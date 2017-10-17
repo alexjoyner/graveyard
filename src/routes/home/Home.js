@@ -16,7 +16,22 @@ import LineChartData from './Charts/LineChartOptions';
 
 class Home extends React.Component {
   static propTypes = {};
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      GuageChartData,
+      LineChartData,
+    };
+  }
+  componentWillMount() {
+    setInterval(() => {
+      const newStateInfo = this.state;
+      newStateInfo.GuageChartData.data.columns[0][1] = Math.floor(
+        Math.random() * 100,
+      );
+      this.setState(newStateInfo);
+    }, 2000);
+  }
   render() {
     return (
       <div className={s.root}>

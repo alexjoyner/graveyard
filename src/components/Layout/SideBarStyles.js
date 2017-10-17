@@ -9,13 +9,15 @@ export default {
   sidebar: {
     zIndex: 2,
     position: 'absolute',
+    width: '35%',
+    minWidth: '300px',
     top: 0,
     bottom: 0,
     transition: 'transform .3s ease-out',
     WebkitTransition: '-webkit-transform .3s ease-out',
     willChange: 'transform',
     overflowY: 'auto',
-    backgroundColor: 'blue',
+    backgroundColor: '#f5f5f5',
   },
   content: {
     position: 'absolute',
