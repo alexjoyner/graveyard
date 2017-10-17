@@ -14,14 +14,14 @@ var ModbusClient = (function () {
         this.client.connect();
         this.client.on('connect', function () {
             success(_this.client);
-            _this.client.readCoils(0, 99).then(function (resp) {
-                console.log('Response: ', resp);
+            _this.client.readHoldingRegisters(15797, 4).then(function (resp) {
+                console.log(resp.register[0]);
             }, function (err) {
                 console.log('Err: ', err);
             });
         });
-        this.client.on('error', function () {
-            error();
+        this.client.on('error', function (err) {
+            error(err);
         });
     };
     return ModbusClient;
