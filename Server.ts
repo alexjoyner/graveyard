@@ -1,5 +1,4 @@
 import express = require('express');
-import {HttpPlcConnectionTest} from "./HttpPlcConnectionTest";
 import {ModbusClient} from "./ModbusClient";
 let app = express();
 let client = new ModbusClient({
