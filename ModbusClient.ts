@@ -10,30 +10,27 @@ export interface ModbusConnectionInfo {
 }
 
 export class ModbusClient {
-    private connectInfo;
     private client;
 
     constructor(connectInfo: ModbusConnectionInfo) {
-        this.connectInfo = connectInfo;
-        this.getClient();
+        this.prepareClient(connectInfo)
     }
 
-    private getClient(): void {
-        this.client = client.tcp.complete(this.connectInfo)
+    private prepareClient(connectInfo: ModbusConnectionInfo): void {
+        this.client = client.tcp.complete(connectInfo)
     }
 
-    public GetConnection(success: (client) => void, error: (err) => any) {
-        this.client.connect();
-        this.client.on('connect', () => {
-            success(this.client);
-            this.client.readHoldingRegisters(15797, 4).then((resp) => {
-                console.log(resp.register[0]);
-            }, (err) => {
-                console.log('Err: ', err);
-            });
-        });
-        this.client.on('error', (err) => {
-            error(err);
-        });
+    public getAi = async (startingAddress: number, numAddressesAfterStart: number): Promise<any> => {
+        try{
+            const client = await this.client.connect();
+            const rawReturnedData = await client.readHoldingRegisters(startingAddress, numAddressesAfterStart);
+            const aiData = rawReturnedData.register;
+            client.close();
+            return aiData;
+
+        }
+        catch (e){
+            console.error('Error get ai: ', e);
+        }
     }
 }

@@ -1,10 +1,15 @@
 import {HttpPlcConnection} from "./HttpPlcConnection";
 
 export class HttpPlcConnectionTest{
+    public testConnection;
     constructor(){
-        let testConnection = new HttpPlcConnection({
+        this.testConnection = new HttpPlcConnection({
             host: '192.168.1.7'
         });
-        testConnection.ping();
+    }
+    public getData(response){
+        this.testConnection.ping((data) => {
+            response(data);
+        });
     }
 }

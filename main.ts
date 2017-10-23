@@ -2,8 +2,9 @@ import {HttpPlcConnectionTest} from "./HttpPlcConnectionTest";
 import {ModbusClient} from "./ModbusClient";
 
 class Main {
+    public test;
     constructor() {
-        let test = new ModbusClient({
+        this.test = new ModbusClient({
             host            : '192.168.1.7',
             port            : 502,
             autoReconnect   : false,
@@ -11,11 +12,16 @@ class Main {
             timeout         : 1000,
             unitId          : 255
         });
-        test.GetConnection(() => {
-            console.log('Success getting connection');
-        }, (err) => {
-            console.log('Error: ', err);
-        });
     };
+    public getData = async (): Promise<any> => {
+        try {
+            let client = await this.test.getData();
+            return client;
+        }
+        catch (err){
+            console.error(err);
+        }
+    }
 }
-new Main();
+let newConnection = new Main();
+

@@ -8,12 +8,12 @@ export class HttpPlcConnection {
     constructor(connectInfo: HttpConnectionInfo){
         this.connectionInfo = connectInfo;
     }
-    ping(){
+    ping(success) {
         // let DigitalInputRequest = new XMLHttpRequest();
         // DigitalInputRequest.open("GET", `${this.connectionInfo.host}/evodi.cgx`, true);
         let options = {
             hostname: this.connectionInfo.host,
-            path: '/evodo.cgx',
+            path: '/evoai.cgx',
             headers: {
                 Authorization: 'Basic YWRtaW5pc3RyYXRvcjpwYXNzd29yZA=='
             }
@@ -26,7 +26,8 @@ export class HttpPlcConnection {
             });
             res.on('end', () => {
                 parseString(rawData, (err, result) => {
-                    console.log(result.form.select);
+                    console.log(result.form.text[0].value[0]);
+                    success(result.form.text[0].value[0]);
                 });
             });
         }).on('error', (e) => {
