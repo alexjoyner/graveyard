@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <plcProject caseSensitive="false" useCustomWorkspace="true" debugMode="false" extcheck="true" SFCControl="false" strictPointerCheck="false" copyWarningThreshold="200" version="2.2" useLD2="true" useFBMethods="false">
 	<image>Oklahoma_HMI.imgx</image>
-	<commSettings>ModbusTCP:255,10000,M#TCPIP:192.168.1.11/502,5000</commSettings>
+	<commSettings>ModbusTCP:255,10000,M#TCPIP:192.168.1.6/502,5000</commSettings>
 	<sources>
 		<main>
 			<resources/>
@@ -39273,7 +39273,7 @@ END_PROGRAM
 			</src>
 		</aux>
 		<workspace>
-			<root name="Oklahoma_HMI" nextID="240">
+			<root name="Oklahoma_HMI" nextID="247">
 				<GlobalVars name="Global vars" id="11"/>
 				<GlobalVars name="Ungrouped_vars" id="14"/>
 				<folder name="Programs" id="16">
