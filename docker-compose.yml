@@ -1,0 +1,7 @@
+version: '3'
+services:
+  hello-name:
+    build:
+      ./hello-name
+    ports:
+      - "3002:3000"

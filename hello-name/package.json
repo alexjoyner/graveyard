@@ -1,5 +1,5 @@
 {
-  "name": "docker_microservices_example",
+  "name": "hello-name",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
