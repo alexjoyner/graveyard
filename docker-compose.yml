@@ -4,4 +4,11 @@ services:
     build:
       ./hello-name
     ports:
-      - "3002:3000"
+      - "3010:80"
+  web-api:
+    build:
+      ./api
+    ports:
+      - "3002:80"
+    depends_on:
+      - hello-name
