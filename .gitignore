@@ -34,6 +34,7 @@ build/Release
 
 # Dependency directories
 hello-name/node_modules
+api/node_modules
 jspm_packages/
 
 # Typescript v1 declaration files
