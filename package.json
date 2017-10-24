@@ -2,7 +2,8 @@
   "name": "modbus-connect",
   "version": "0.0.1",
   "scripts": {
-    "start": "nodemon Server.js"
+    "start": "nodemon server.js",
+    "prod": "node server.js"
   },
   "dependencies": {
     "express": "^4.16.2",
