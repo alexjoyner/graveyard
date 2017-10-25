@@ -74,4 +74,4 @@ app.get('/ai1', function (req, res) { return __awaiter(_this, void 0, void 0, fu
 app.listen(4000, function () {
     console.log('App listening on port 4000');
 });
-//# sourceMappingURL=Server.js.map
+//# sourceMappingURL=server.js.map

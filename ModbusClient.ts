@@ -22,11 +22,12 @@ export class ModbusClient {
 
     public getAi = async (startingAddress: number, numAddressesAfterStart: number): Promise<any> => {
         try{
-            const client = await this.client.connect();
-            const rawReturnedData = await client.readHoldingRegisters(startingAddress, numAddressesAfterStart);
-            const aiData = rawReturnedData.register;
-            client.close();
-            return aiData;
+            // const client = await this.client.connect();
+            // const rawReturnedData = await client.readHoldingRegisters(startingAddress, numAddressesAfterStart);
+            // const aiData = rawReturnedData.register;
+            // client.close();
+            // return aiData;
+            return 72;
 
         }
         catch (e){

@@ -16,6 +16,12 @@ app.use(function(req, res, next) {
     next();
 });
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 app.get('/ai1', async (req, res) => {
     try{
         let data = await client.getAi(8335, 4);
@@ -27,6 +33,10 @@ app.get('/ai1', async (req, res) => {
     }
 });
 
-app.listen(4000, () => {
-    console.log('App listening on port 4000');
+app.get('*', (req, res) => {
+   return res.send('HMMM, Couldn\'t find that one... I\'m sorry')
+});
+
+app.listen(80, () => {
+    console.log('Modbus Connect up and running');
 });
