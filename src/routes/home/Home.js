@@ -26,7 +26,7 @@ class Home extends React.Component {
   }
   componentDidMount() {
     setInterval(() => {
-      axios.get('http://localhost:4000/ai1').then(res => {
+      axios.get('http://modbus-service/ai1').then(res => {
         const data = res.request.response;
         const newStateInfo = this.state;
         newStateInfo.GuageChartData.data.columns[0][1] = data;
