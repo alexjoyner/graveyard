@@ -37,5 +37,10 @@
     "webpack-dev-server": "2.8.2",
     "webpack-merge": "4.1.0",
     "webpack-node-externals": "1.6.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": ["eslint --fix", "git add"],
+    "*.{json,graphql}": ["prettier --write", "git add"],
+    "*.{css,less,styl,scss,sass,sss}": ["stylelint --fix", "git add"]
   }
 }
