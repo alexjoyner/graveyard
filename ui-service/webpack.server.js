@@ -1,27 +1,15 @@
 const path = require('path');
+const merge = require('webpack-merge');
+const baseConfig = require('./webpack.base');
 
-module.exports = {
+const config = {
     // Tell webpack we're building for node
     target: 'node',
     entry: './src/server.js',
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: 'bundle.js'
-    },
-    module: {
-        rules: [
-            {
-                test: /\.js?$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/,
-                options: {
-                    presets: [
-                        'react',
-                        'stage-0',
-                        ['env', {targets: {browsers: ['last 2 versions']}}]
-                    ]
-                }
-            }
-        ]
     }
 };
+
+module.exports = merge(baseConfig, config);
