@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "postcss-nested": "^2.1.2"
+  },
+  "dependencies": {
+    "isomorphic-style-loader": "^4.0.0"
+  }
+}

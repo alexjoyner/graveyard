@@ -10,8 +10,29 @@ module.exports = {
                         'react',
                         'stage-0',
                         ['env', {targets: {browsers: ['last 2 versions']}}]
-                    ]
+                    ],
+                    plugins: ["transform-class-properties"]
                 }
+            },
+            {
+                test: /\.pcss$/,
+                use: [
+                    'isomorphic-style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 1
+                        }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins:[
+                                require('postcss-nested')
+                            ]
+                        }
+                    }
+                ]
             }
         ]
     }
