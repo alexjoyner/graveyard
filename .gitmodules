@@ -1,6 +1,0 @@
-[submodule "ui-service"]
-	path = ui-service
-	url = https://github.com/voicir/EES_DataLogger_UI.git
-[submodule "modbus-service"]
-	path = modbus-service
-	url = https://github.com/EvansElectric/Modbus_Connect.git
