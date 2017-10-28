@@ -12,7 +12,7 @@ module.exports = {
         rules: [
             {
                 test: /\.js?$/,
-                loader: 'bebel-loader',
+                loader: 'babel-loader',
                 exclude: /node_modules/,
                 options: {
                     presets: [

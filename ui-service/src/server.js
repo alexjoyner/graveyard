@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const React = require('react');
 const renderToString = require('react-dom/server').renderToString;
 const Home = require('./pages/Home/Home').default;
 
