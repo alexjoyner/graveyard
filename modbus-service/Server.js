@@ -40,12 +40,17 @@ var express = require("express");
 var ModbusClient_1 = require("./ModbusClient");
 var app = express();
 var client = new ModbusClient_1.ModbusClient({
-    host: '192.168.1.7',
+    host: '192.168.0.106',
     port: 502,
     autoReconnect: false,
     reconnectTimeout: 10000,
     timeout: 5000,
     unitId: 255
+});
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
 });
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -61,7 +66,9 @@ app.get('/ai1', function (req, res) { return __awaiter(_this, void 0, void 0, fu
                 return [4 /*yield*/, client.getAi(8335, 4)];
             case 1:
                 data = _a.sent();
-                res.send(data);
+                res.send({
+                    data: data
+                });
                 return [2 /*return*/];
             case 2:
                 e_1 = _a.sent();
@@ -71,7 +78,10 @@ app.get('/ai1', function (req, res) { return __awaiter(_this, void 0, void 0, fu
         }
     });
 }); });
-app.listen(4000, function () {
-    console.log('App listening on port 4000');
+app.get('*', function (req, res) {
+    return res.send('HMMM, Couldn\'t find that one... I\'m sorry');
 });
-//# sourceMappingURL=server.js.map
+app.listen(80, function () {
+    console.log('Modbus Connect up and running');
+});
+//# sourceMappingURL=Server.js.map

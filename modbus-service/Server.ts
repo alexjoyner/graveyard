@@ -2,7 +2,7 @@ import express = require('express');
 import {ModbusClient} from "./ModbusClient";
 let app = express();
 let client = new ModbusClient({
-    host: '192.168.1.7',
+    host: '192.168.0.106',
     port: 502,
     autoReconnect: false,
     reconnectTimeout: 10000,
@@ -25,7 +25,9 @@ app.use(function(req, res, next) {
 app.get('/ai1', async (req, res) => {
     try{
         let data = await client.getAi(8335, 4);
-        res.send(data);
+        res.send({
+            data: data
+        });
         return;
     }
     catch (e){
