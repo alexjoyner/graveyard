@@ -27,23 +27,26 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    setInterval(() => {
-      axios.get('http://192.168.0.46:3000/ai1').then(res => {
-        const data = JSON.parse(res.request.response).data[2] / 10;
-        const newStateInfo = this.state;
-        // newStateInfo.GuageChartData.data.columns[0][1] = data;
-        const date = new Date();
-        // newStateInfo.LineChartData.data.columns[0].push(date);
-        // newStateInfo.LineChartData.data.columns[1].push(
-        //   Math.round(data * 10) / 10,
-        // );
-        newStateInfo.currentAnalogTemp = data;
-        newStateInfo.tempHistoryData[0].push(date);
-        newStateInfo.tempHistoryData[1].push(data);
-        this.setState(newStateInfo);
-      });
-    }, 1500);
+    this.fetchAiData();
   }
+
+  fetchAiData = () => {
+    axios.get('http://192.168.1.139:3000/ai1').then(res => {
+      let rawData = JSON.parse(res.request.response).data[2] / 10;
+      const newStateInfo = this.state;
+      const date = new Date();
+      const finalData = Math.round(rawData * 10) / 10;
+      newStateInfo.currentAnalogTemp = finalData;
+      newStateInfo.tempHistoryData[0].push(date);
+      newStateInfo.tempHistoryData[1].push(finalData);
+      this.setState(newStateInfo);
+      const next_poll_time_in_secs = 5;
+      console.log(`Success request, polling again in ${next_poll_time_in_secs}sec`);
+      setTimeout(() => {
+        this.fetchAiData();
+      }, next_poll_time_in_secs * 1000)
+    });
+  };
 
   render() {
     return (
