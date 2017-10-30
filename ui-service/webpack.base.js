@@ -15,7 +15,7 @@ module.exports = {
                 }
             },
             {
-                test: /\.pcss$/,
+                test: /\.(css|pcss|scss|sss)$/,
                 use: [
                     'isomorphic-style-loader',
                     {

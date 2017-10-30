@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -76,7 +76,133 @@ module.exports = require("react");
 "use strict";
 
 
-var _express = __webpack_require__(2);
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _withStyles = __webpack_require__(2);
+
+var _withStyles2 = _interopRequireDefault(_withStyles);
+
+var _ = __webpack_require__(7);
+
+var _2 = _interopRequireDefault(_);
+
+var _Chart = __webpack_require__(13);
+
+var _Chart2 = _interopRequireDefault(_Chart);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Home = function (_Component) {
+    _inherits(Home, _Component);
+
+    function Home(props) {
+        _classCallCheck(this, Home);
+
+        var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this, props));
+
+        _this.state = {
+            currentAnalogTemp: 20,
+            tempHistoryData: [['x'], ['Analog Temp']]
+        };
+        return _this;
+    }
+
+    _createClass(Home, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            setInterval(function () {
+                axios.get('http://192.168.0.46:3000/ai1').then(function (res) {
+                    var data = JSON.parse(res.request.response).data[2] / 10;
+                    var newStateInfo = _this2.state;
+                    // newStateInfo.GuageChartData.data.columns[0][1] = data;
+                    var date = new Date();
+                    // newStateInfo.LineChartData.data.columns[0].push(date);
+                    // newStateInfo.LineChartData.data.columns[1].push(
+                    //   Math.round(data * 10) / 10,
+                    // );
+                    newStateInfo.currentAnalogTemp = data;
+                    newStateInfo.tempHistoryData[0].push(date);
+                    newStateInfo.tempHistoryData[1].push(data);
+                    _this2.setState(newStateInfo);
+                });
+            }, 1500);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: _2.default.root },
+                _react2.default.createElement(
+                    'div',
+                    { className: _2.default.container },
+                    _react2.default.createElement(
+                        'h1',
+                        null,
+                        'Ambient Temperature'
+                    ),
+                    _react2.default.createElement(_Chart2.default, {
+                        chartID: 'chart1',
+                        chartOpts: {
+                            data: {
+                                columns: [['Data', this.state.currentAnalogTemp]],
+                                type: 'gauge'
+                            },
+                            gauge: {
+                                label: {
+                                    format: function format(value) {
+                                        return value + '\xB0F';
+                                    }
+                                }
+                            },
+                            color: {
+                                pattern: ['#50bcef', '#F6C600', '#4eac5b', '#FF0000'], // the three color levels for the percentage values.
+                                threshold: {
+                                    values: [30, 70, 78, 100]
+                                }
+                            }
+                        }
+                    })
+                )
+            );
+        }
+    }]);
+
+    return Home;
+}(_react.Component);
+
+exports.default = (0, _withStyles2.default)(_2.default)(Home);
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+module.exports = require("isomorphic-style-loader/lib/withStyles");
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _express = __webpack_require__(4);
 
 var _express2 = _interopRequireDefault(_express);
 
@@ -84,7 +210,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _renderer = __webpack_require__(3);
+var _renderer = __webpack_require__(5);
 
 var _renderer2 = _interopRequireDefault(_renderer);
 
@@ -102,13 +228,13 @@ app.listen(3000, function () {
 });
 
 /***/ }),
-/* 2 */
+/* 4 */
 /***/ (function(module, exports) {
 
 module.exports = require("express");
 
 /***/ }),
-/* 3 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -122,13 +248,13 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _server = __webpack_require__(5);
+var _server = __webpack_require__(6);
 
-var _Home = __webpack_require__(6);
+var _Home = __webpack_require__(1);
 
 var _Home2 = _interopRequireDefault(_Home);
 
-var _ContextProvider = __webpack_require__(14);
+var _ContextProvider = __webpack_require__(17);
 
 var _ContextProvider2 = _interopRequireDefault(_ContextProvider);
 
@@ -157,76 +283,18 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-module.exports = require("prop-types");
-
-/***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _withStyles = __webpack_require__(7);
-
-var _withStyles2 = _interopRequireDefault(_withStyles);
-
-var _ = __webpack_require__(8);
-
-var _2 = _interopRequireDefault(_);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Home = function Home() {
-  return _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(
-      'div',
-      { className: 'home' },
-      'I\'m the home component'
-    ),
-    _react2.default.createElement(
-      'button',
-      { onClick: function onClick() {
-          return console.log('Hello');
-        } },
-      'Press Me!'
-    )
-  );
-};
-
-exports.default = (0, _withStyles2.default)(_2.default)(Home);
-
-/***/ }),
 /* 7 */
-/***/ (function(module, exports) {
-
-module.exports = require("isomorphic-style-loader/lib/withStyles");
-
-/***/ }),
-/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-    var content = __webpack_require__(9);
-    var insertCss = __webpack_require__(11);
+    var content = __webpack_require__(8);
+    var insertCss = __webpack_require__(10);
 
     if (typeof content === 'string') {
       content = [[module.i, content, '']];
@@ -256,21 +324,21 @@ module.exports = require("isomorphic-style-loader/lib/withStyles");
   
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(10)(undefined);
+exports = module.exports = __webpack_require__(9)(undefined);
 // imports
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "/**\r\n * React Starter Kit (https://www.reactstarterkit.com/)\r\n *\r\n * Copyright © 2014-present Kriasoft, LLC. All rights reserved.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE.txt file in the root directory of this source tree.\r\n */\r\n\r\n.root {\r\n  padding-left: 20px;\r\n  padding-right: 20px;\r\n}\r\n\r\n.container {\r\n  margin: 0 auto;\r\n  max-width: var(--max-content-width);\r\n}\r\n\r\n.analogGauge {\r\n  float: left;\r\n}\r\n\r\n.lineChart {\r\n  float: right;\r\n}", ""]);
 
 // exports
 
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports) {
 
 /*
@@ -352,17 +420,17 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _stringify = __webpack_require__(12);
+var _stringify = __webpack_require__(11);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
-var _slicedToArray2 = __webpack_require__(13);
+var _slicedToArray2 = __webpack_require__(12);
 
 var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
 
@@ -482,19 +550,127 @@ function insertCss(styles) {
 module.exports = insertCss;
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports) {
 
 module.exports = require("babel-runtime/core-js/json/stringify");
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports) {
 
 module.exports = require("babel-runtime/helpers/slicedToArray");
 
 /***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _withStyles = __webpack_require__(2);
+
+var _withStyles2 = _interopRequireDefault(_withStyles);
+
+var _c = __webpack_require__(14);
+
+var _c2 = _interopRequireDefault(_c);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var c3 = void 0;
+if (typeof window !== 'undefined') {
+  __webpack_require__(15);
+  c3 = __webpack_require__(16);
+}
+
+var Chart = function (_Component) {
+  _inherits(Chart, _Component);
+
+  function Chart(props) {
+    _classCallCheck(this, Chart);
+
+    var _this = _possibleConstructorReturn(this, (Chart.__proto__ || Object.getPrototypeOf(Chart)).call(this, props));
+
+    _this.chart = {};
+    return _this;
+  }
+
+  _createClass(Chart, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.updateChart();
+    }
+  }, {
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextProps) {
+      this.chart.load({
+        columns: nextProps.chartOpts.data.columns
+      });
+      return false;
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      this.updateChart();
+    }
+  }, {
+    key: 'updateChart',
+    value: function updateChart() {
+      this.chart = c3.generate(_extends({
+        bindto: '#' + this.props.chartID
+      }, this.props.chartOpts));
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement('div', { style: _c2.default, id: this.props.chartID });
+    }
+  }]);
+
+  return Chart;
+}(_react.Component);
+
+exports.default = Chart;
+
+/***/ }),
 /* 14 */
+/***/ (function(module, exports) {
+
+module.exports = require("c3/c3.css");
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports) {
+
+module.exports = require("d3");
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports) {
+
+module.exports = require("c3");
+
+/***/ }),
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -512,11 +688,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(4);
+var _propTypes = __webpack_require__(18);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _Home = __webpack_require__(6);
+var _Home = __webpack_require__(1);
 
 var _Home2 = _interopRequireDefault(_Home);
 
@@ -556,6 +732,12 @@ ContextProvider.childContextTypes = {
     insertCss: _propTypes2.default.func
 };
 exports.default = ContextProvider;
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports) {
+
+module.exports = require("prop-types");
 
 /***/ })
 /******/ ]);

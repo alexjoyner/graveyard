@@ -1,14 +1,7 @@
 version: '3'
 services:
-  ui-service:
+  ui-service-master:
     build:
-      ./ui-service
+      ./ui-service-master
     ports:
-      - "3000:80"
-    depends_on:
-      - modbus-service
-  modbus-service:
-    build:
-      ./modbus-service
-    ports:
-      - "9000:80"
+      - "8080:80"
