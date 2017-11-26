@@ -57,3 +57,10 @@ typings/
 # dotenv environment variables file
 .env
 
+.idea/dbnavigator.xml
+.idea/digital-ocean-deployment-test.iml
+.idea/inspectionProfiles/
+.idea/modules.xml
+.idea/workspace.xml
+index.js
+package.json
