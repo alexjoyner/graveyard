@@ -17,6 +17,14 @@ module.exports = {
                 }),
             ];
         }
+
+        /* Since docker for windows does not currently communicate natively with
+        * the linux VM file events, we have to use polling in webpack*/
+        if(config.devServer){
+            config.devServer.watchOptions['poll'] = 1000;
+            config.devServer.watchOptions['aggregateTimeout'] = 300;
+            console.log('Config: ', config);
+        }
         return config;
     }
 };

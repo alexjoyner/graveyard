@@ -2,19 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f93a8bde-5ae7-474e-adf4-cd768480059b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui-service/src/features/layout/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui-service/src/features/layout/sidebar/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui-service/src/features/layout/sidebar/style.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ui-service/src/App.css" afterPath="$PROJECT_DIR$/ui-service/src/pages/_App/App.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ui-service/src/App.js" afterPath="$PROJECT_DIR$/ui-service/src/pages/_App/App.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ui-service/src/App.test.js" afterPath="$PROJECT_DIR$/ui-service/src/pages/_App/App.test.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ui-service/src/Home.css" afterPath="$PROJECT_DIR$/ui-service/src/pages/Home/Home.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ui-service/src/Home.js" afterPath="$PROJECT_DIR$/ui-service/src/pages/Home/Home.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ui-service/src/react.svg" afterPath="$PROJECT_DIR$/ui-service/src/assets/react.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui-service/Dockerfile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui-service/package.json" afterPath="$PROJECT_DIR$/ui-service/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui-service/src/client.js" afterPath="$PROJECT_DIR$/ui-service/src/client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui-service/src/server.js" afterPath="$PROJECT_DIR$/ui-service/src/server.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docker-compose.yml" afterPath="$PROJECT_DIR$/docker-compose.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui-service/razzle.config.js" afterPath="$PROJECT_DIR$/ui-service/razzle.config.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,31 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="App.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ui-service/src/pages/_App/App.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Home.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ui-service/src/pages/Home/Home.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Home.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ui-service/src/pages/Home/Home.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="154">
-              <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+              <caret line="7" column="16" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -60,32 +31,46 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ui-service/src/features/layout/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ui-service/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="0">
+                <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <folding>
+                  <marker date="1509730481094" expanded="true" signature="4589:4646" ph="{...}" />
+                  <marker date="1509730481094" expanded="true" signature="4604:4644" ph="[...]" />
+                  <marker date="1509730481094" expanded="true" signature="4836:4942" ph="{...}" />
+                  <marker date="1509730481094" expanded="true" signature="4884:4940" ph="{...}" />
+                </folding>
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ui-service/src/features/layout/sidebar/index.js">
+        <entry file="file://$PROJECT_DIR$/ui-service/src/features/layout/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="526">
+              <caret line="51" column="81" lean-forward="false" selection-start-line="51" selection-start-column="81" selection-end-line="51" selection-end-column="81" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ui-service/src/features/layout/sidebar/style.css">
+      <file leaf-file-name="styles.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ui-service/src/features/layout/styles.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="2" column="10" lean-forward="false" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ui-service/src/features/menu/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -94,26 +79,42 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="client.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ui-service/src/client.js">
+      <file leaf-file-name="docker-compose.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docker-compose.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="110">
+              <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ui-service/src/pages/_App/App.js">
+      <file leaf-file-name="Dockerfile" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ui-service/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="8" column="19" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="88">
+              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ui-service/src/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -128,18 +129,6 @@
                 <marker date="1509741807292" expanded="true" signature="701:1307" ph="..." />
                 <marker date="1509741807292" expanded="true" signature="712:1237" ph="..." />
                 <marker date="1509741807292" expanded="true" signature="1248:1299" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ui-service/src/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#27#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -171,7 +160,6 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/modbus-service/Dockerfile" />
-        <option value="$PROJECT_DIR$/ui-service/Dockerfile" />
         <option value="$PROJECT_DIR$/ui-service/src/routes/home/Home.js" />
         <option value="$PROJECT_DIR$/modbus-service/server.ts" />
         <option value="$PROJECT_DIR$/ui-service/docs/config_base_server_side_project.md" />
@@ -191,7 +179,6 @@
         <option value="$PROJECT_DIR$/ui-service/src/components/Charts/Chart.js" />
         <option value="$PROJECT_DIR$/ui-service/webpack.base.js" />
         <option value="$PROJECT_DIR$/ui-service-master/src/components/Charts/Chart.js" />
-        <option value="$PROJECT_DIR$/docker-compose.yml" />
         <option value="$PROJECT_DIR$/ui-service-master/src/server.js" />
         <option value="$PROJECT_DIR$/ui-service-master/package.json" />
         <option value="$PROJECT_DIR$/ui-service-master/src/routes/home/Home.js" />
@@ -203,15 +190,18 @@
         <option value="$PROJECT_DIR$/ui-service/src/pages/_App/client.js" />
         <option value="$PROJECT_DIR$/ui-service/src/features/layout/layout.js" />
         <option value="$PROJECT_DIR$/ui-service/src/pages/Home/Home.css" />
-        <option value="$PROJECT_DIR$/ui-service/src/features/layout/index.js" />
         <option value="$PROJECT_DIR$/ui-service/src/pages/Home/Home.js" />
         <option value="$PROJECT_DIR$/ui-service/src/features/layout/sidebar/index.js" />
+        <option value="$PROJECT_DIR$/ui-service/razzle.config.js" />
+        <option value="$PROJECT_DIR$/ui-service/Dockerfile" />
+        <option value="$PROJECT_DIR$/docker-compose.yml" />
+        <option value="$PROJECT_DIR$/ui-service/src/features/layout/index.js" />
+        <option value="$PROJECT_DIR$/ui-service/src/features/layout/styles.css" />
       </list>
     </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
-    <package-json value="$PROJECT_DIR$/ui-service-master/package.json" />
     <package-json value="$PROJECT_DIR$/ui-service/package.json" />
   </component>
   <component name="JsFlowSettings">
@@ -247,7 +237,7 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="Scope" currentSubView="ui-service-dev-focus" proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -261,7 +251,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -295,26 +284,11 @@
               <item name="features" type="462c0819:PsiDirectoryNode" />
               <item name="layout" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="ees-datalogger" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ees-datalogger" type="462c0819:PsiDirectoryNode" />
-              <item name="ui-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="features" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
-              <item name="sidebar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ees-datalogger" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ees-datalogger" type="462c0819:PsiDirectoryNode" />
-              <item name="ui-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="dev">
           <expand>
@@ -444,7 +418,7 @@
     <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
       <option name="cucumberJsArguments" value="" />
       <option name="executablePath" />
-      <option name="filePath" value="C:\Users\rosco\Documents\GitHub\ees-datalogger\ui-service\src\features" />
+      <option name="filePath" value="C:\Users\rosco\Documents\GitHub\ees-datalogger\ui-service\src\features\menu" />
     </configuration>
     <configuration name="build (1)" type="js.build_tools.npm" factoryName="npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/ui-service-master/package.json" />
@@ -538,31 +512,45 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41469000" />
+    <option name="totallyTimeSpent" value="43391000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5021075" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24604847" sideWeight="0.52589" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3347826" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32826087" sideWeight="0.49789253" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24604847" sideWeight="0.47411004" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5021075" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24604847" sideWeight="0.51941746" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3347826" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32826087" sideWeight="0.49789253" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24604847" sideWeight="0.48058254" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -584,101 +572,18 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ui-service/webpack.server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="11" lean-forward="false" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service/src/components/Link/Link.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json" />
-    <entry file="file://$PROJECT_DIR$/ui-service/src/components/Feedback/Feedback.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service/src/pages/Home/_.pcss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" column="17" lean-forward="true" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service/webpack.client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service/src/components/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-509">
-          <caret line="16" column="12" lean-forward="false" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service/src/components/variables.pcss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service/src/components/Html.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ui-service/webpack.client.js" />
+    <entry file="file://$PROJECT_DIR$/ui-service/src/components/App.js" />
+    <entry file="file://$PROJECT_DIR$/ui-service/src/components/variables.pcss" />
+    <entry file="file://$PROJECT_DIR$/ui-service/src/components/Html.js" />
     <entry file="file://$PROJECT_DIR$/ui-service/node_modules/c3/c3.js" />
-    <entry file="file://$PROJECT_DIR$/ui-service/webpack.base.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="24" column="25" lean-forward="false" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ui-service/webpack.base.js" />
     <entry file="file://$PROJECT_DIR$/ui-service-temp/node_modules/.yarn-integrity" />
     <entry file="file://$PROJECT_DIR$/ui-service/node_modules/c3/c3.css" />
-    <entry file="file://$PROJECT_DIR$/ui-service/public/bundle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service/src/components/Charts/Chart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="5" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service-master/src/components/Charts/Chart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="22" lean-forward="false" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service-master/.dockerignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ui-service/public/bundle.js" />
+    <entry file="file://$PROJECT_DIR$/ui-service/src/components/Charts/Chart.js" />
+    <entry file="file://$PROJECT_DIR$/ui-service-master/src/components/Charts/Chart.js" />
+    <entry file="file://$PROJECT_DIR$/ui-service-master/.dockerignore" />
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -689,162 +594,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service-master/jest.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service-master/src/history.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-compose.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service-master/tools/start.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service-master/tools/runServer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-792">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service-master/src/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="23" column="17" lean-forward="false" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service-master/src/router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service-master/src/createFetch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service-master/src/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service-master/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="10" lean-forward="false" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service-master/tools/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ui-service-master/jest.config.js" />
+    <entry file="file://$PROJECT_DIR$/ui-service-master/src/history.js" />
+    <entry file="file://$PROJECT_DIR$/ui-service-master/tools/start.js" />
+    <entry file="file://$PROJECT_DIR$/ui-service-master/tools/runServer.js" />
+    <entry file="file://$PROJECT_DIR$/ui-service-master/src/config.js" />
+    <entry file="file://$PROJECT_DIR$/ui-service-master/src/router.js" />
+    <entry file="file://$PROJECT_DIR$/ui-service-master/src/createFetch.js" />
+    <entry file="file://$PROJECT_DIR$/ui-service-master/src/routes/index.js" />
+    <entry file="file://$PROJECT_DIR$/ui-service-master/Dockerfile" />
+    <entry file="file://$PROJECT_DIR$/ui-service-master/tools/webpack.config.js" />
     <entry file="file://$PROJECT_DIR$/ui-service-master/build/server.js" />
-    <entry file="file://$PROJECT_DIR$/ui-service-master/src/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2178">
-          <caret line="122" column="2" lean-forward="false" selection-start-line="122" selection-start-column="2" selection-end-line="122" selection-end-column="2" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service-master/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service-master/.eslintrc.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service-master/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4004">
-          <caret line="182" column="14" lean-forward="false" selection-start-line="182" selection-start-column="14" selection-end-line="182" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service-master/src/routes/home/Home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="45" column="27" lean-forward="false" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <marker date="1509730479392" expanded="true" signature="611:2927" ph="{...}" />
-            <marker date="1509730479392" expanded="true" signature="864:1538" ph="{...}" />
-            <marker date="1509730479392" expanded="true" signature="1552:2925" ph="{...}" />
-            <marker date="1509730479392" expanded="true" signature="1573:2914" ph="&lt;div/&gt;" />
-            <marker date="1509730479392" expanded="true" signature="1606:2901" ph="&lt;div/&gt;" />
-            <marker date="1509730479392" expanded="true" signature="1685:2302" ph="&lt;Chart/&gt;" />
-            <marker date="1509730479392" expanded="true" signature="1746:2288" ph="{...}" />
-            <marker date="1509730479392" expanded="true" signature="1768:1883" ph="{&quot;type&quot;: 'gauge'...}" />
-            <marker date="1509730479392" expanded="true" signature="1906:2016" ph="{...}" />
-            <marker date="1509730479392" expanded="true" signature="1931:1999" ph="{...}" />
-            <marker date="1509730479392" expanded="true" signature="2039:2273" ph="{...}" />
-            <marker date="1509730479392" expanded="true" signature="2192:2256" ph="{...}" />
-            <marker date="1509730479392" expanded="true" signature="2313:2886" ph="&lt;Chart/&gt;" />
-            <marker date="1509730479392" expanded="true" signature="2374:2872" ph="{...}" />
-            <marker date="1509730479392" expanded="true" signature="2396:2584" ph="{&quot;x&quot;: 'x'...}" />
-            <marker date="1509730479392" expanded="true" signature="2606:2788" ph="{...}" />
-            <marker date="1509730479392" expanded="true" signature="2627:2771" ph="{&quot;type&quot;: 'timeseries'...}" />
-            <marker date="1509730479392" expanded="true" signature="2691:2752" ph="{&quot;format&quot;: '%Y-%m-%d'...}" />
-            <marker date="1509730479392" expanded="true" signature="2811:2857" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ui-service-master/src/server.js" />
+    <entry file="file://$PROJECT_DIR$/ui-service-master/.gitignore" />
+    <entry file="file://$PROJECT_DIR$/ui-service-master/.eslintrc.js" />
+    <entry file="file://$PROJECT_DIR$/ui-service-master/package.json" />
+    <entry file="file://$PROJECT_DIR$/ui-service-master/src/routes/home/Home.js" />
     <entry file="file://$PROJECT_DIR$/logger-service/server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -852,7 +621,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -868,7 +636,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -876,29 +643,76 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ui-service/src/client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+        <state relative-caret-position="154">
+          <caret line="10" column="2" lean-forward="false" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service/src/index.js">
+    <entry file="file://$PROJECT_DIR$/ui-service/src/pages/_App/App.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui-service/src/pages/_App/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="8" column="19" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
           <folding>
-            <element signature="e#0#27#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui-service/src/pages/Home/Home.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui-service/src/features/layout/sidebar/style.css" />
+    <entry file="file://$PROJECT_DIR$/ui-service/src/features/layout/sidebar/index.js" />
+    <entry file="file://$PROJECT_DIR$/ui-service/razzle.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="26" column="9" lean-forward="false" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui-service/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-compose.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -915,25 +729,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service/src/pages/_App/App.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service/src/pages/_App/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="19" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service/src/pages/Home/Home.css">
+    <entry file="file://$PROJECT_DIR$/ui-service/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -944,14 +740,30 @@
     <entry file="file://$PROJECT_DIR$/ui-service/src/pages/Home/Home.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
-          <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+          <caret line="7" column="16" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service/src/features/layout/sidebar/style.css">
+    <entry file="file://$PROJECT_DIR$/ui-service/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding>
+              <marker date="1509730481094" expanded="true" signature="4589:4646" ph="{...}" />
+              <marker date="1509730481094" expanded="true" signature="4604:4644" ph="[...]" />
+              <marker date="1509730481094" expanded="true" signature="4836:4942" ph="{...}" />
+              <marker date="1509730481094" expanded="true" signature="4884:4940" ph="{...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui-service/src/features/menu/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -959,23 +771,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service/src/features/layout/sidebar/index.js">
+    <entry file="file://$PROJECT_DIR$/ui-service/src/features/layout/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="526">
+          <caret line="51" column="81" lean-forward="false" selection-start-line="51" selection-start-column="81" selection-end-line="51" selection-end-column="81" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service/src/features/layout/index.js">
+    <entry file="file://$PROJECT_DIR$/ui-service/src/features/layout/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="44">
+          <caret line="2" column="10" lean-forward="false" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>
