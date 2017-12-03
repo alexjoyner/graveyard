@@ -1,12 +1,8 @@
-.ees-sidebar{
-  padding: 20px;
-  width: 300px;
-}
 .ees-heading{
   display: inline-block;
   background-color: #2d3e50;
   .ees-logo{
-    font-size: 2em;
+    font-size: 1.2em;
     color: white;
   }
 }
