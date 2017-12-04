@@ -6,7 +6,7 @@ import {Graph} from ".";
 describe('Features/Graph', () => {
     let component;
     beforeEach(() => {
-        component = shallow(<Graph />);
+        component = shallow(<Graph chartID={'test-chart'} chartOpts={{}}/>);
     });
     it('renders without exploding', () => {
         expect(component.length).toEqual(1);
