@@ -1,7 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {Layout} from '.';
-import {DashBody} from "../dash-body/index";
+import {GraphBlock} from "../graph-block/index";
 
 describe('layout feature', () => {
     let component;
@@ -15,6 +15,6 @@ describe('layout feature', () => {
         expect(component.find('.header').length).toEqual(1);
     });
     it('has a dash body', () => {
-        expect(component.find(DashBody).length).toEqual(1);
+        expect(component.find(GraphBlock).length).toEqual(1);
     });
 });

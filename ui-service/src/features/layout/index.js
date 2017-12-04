@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles.css';
-import {DashBody} from "../dash-body/index";
+import {GraphBlock} from "../graph-block/index";
 
 export class Layout extends React.Component {
     render() {
@@ -11,7 +11,7 @@ export class Layout extends React.Component {
                         <a className="ees-logo pure-menu-heading">EES Data Logger</a>
                     </div>
                 </div>
-                <DashBody></DashBody>
+                <GraphBlock></GraphBlock>
             </div>
         );
     }

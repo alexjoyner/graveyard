@@ -4,7 +4,7 @@ import 'purecss';
 import {Graph} from '../graph';
 import {HistoryTable} from "../historyTable/index";
 
-export class DashBody extends React.Component {
+export class GraphBlock extends React.Component {
 
     constructor(props) {
         super(props);
@@ -54,10 +54,7 @@ export class DashBody extends React.Component {
         return (
             <div className={'GraphBody'}>
                 <div className={'pure-g'}>
-                    <div className={'pure-u-1-2'}>
-                        <HistoryTable/>
-                    </div>
-                    <div className={'pure-u-1-2'}>
+                    <div className={'pure-u-1-1'}>
                         <Graph
                             chartID={'chart1'}
                             chartOpts={this.chartOptions}/>
