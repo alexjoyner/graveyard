@@ -3,11 +3,6 @@ import './styles.css';
 import {DashBody} from "../dash-body/index";
 
 export class Layout extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div>

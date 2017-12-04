@@ -1,5 +1,9 @@
 .GraphBody {
+  margin: 20px;
   padding: 20px;
-  background-color: #2d75ff;
-  height: 100vh;
+  min-width: 40%;
+  background-color: #e4e4e4;
+  border-radius: 5px;
+  display: inline-block;
+  float: left;
 }

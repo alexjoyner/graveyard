@@ -32,7 +32,7 @@ export class Graph extends React.Component {
     render() {
         return (
             <ErrorBoundary>
-                <div id={this.props.chartID} />
+                <div id={this.props.chartID} ></div>
             </ErrorBoundary>
         );
     }
