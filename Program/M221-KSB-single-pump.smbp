@@ -21,13 +21,51 @@
               <LadderEntity>
                 <ElementType>Line</ElementType>
                 <Row>0</Row>
-                <Column>7</Column>
+                <Column>2</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Coil</ElementType>
+                <Descriptor>%M4</Descriptor>
+                <Comment />
+                <Symbol>HIGH_RTD_ALARM</Symbol>
+                <Row>0</Row>
+                <Column>10</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Comparison</ElementType>
+                <ComparisonExpression>%IW1.3 &gt;= %MW3</ComparisonExpression>
+                <Row>0</Row>
+                <Column>0</Column>
+                <ChosenConnection>Down, Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Comparison</ElementType>
+                <ComparisonExpression>%IW1.3 = %KW0</ComparisonExpression>
+                <Row>1</Row>
+                <Column>0</Column>
+                <ChosenConnection>Up, Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Timer</ElementType>
+                <Descriptor>%TM0</Descriptor>
+                <Comment />
+                <Symbol>HIGH_BOT_BEARING_TMP_ALARM_DELAY</Symbol>
+                <Row>0</Row>
+                <Column>6</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
               </LadderEntity>
               <LadderEntity>
                 <ElementType>Line</ElementType>
                 <Row>0</Row>
-                <Column>6</Column>
+                <Column>4</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
               </LadderEntity>
               <LadderEntity>
@@ -37,9 +75,100 @@
                 <ChosenConnection>Left, Right</ChosenConnection>
               </LadderEntity>
               <LadderEntity>
+                <ElementType>NegatedContact</ElementType>
+                <Descriptor>%M11</Descriptor>
+                <Comment />
+                <Symbol>HIGH_RTD_ALARM_BYPASS</Symbol>
+                <Row>0</Row>
+                <Column>3</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+            </LadderElements>
+            <InstructionLines>
+              <InstructionLineEntity>
+                <InstructionLine>BLK %TM0</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>LD [ %IW1.3 &gt;= %MW3 ]</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>OR [ %IW1.3 = %KW0 ]</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ANDN %M11</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>IN</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>OUT_BLK</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>LD Q</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ST %M4</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>END_BLK</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+            </InstructionLines>
+            <Name>Bearing Temp Detect</Name>
+            <MainComment />
+            <Label />
+            <IsLadderSelected>true</IsLadderSelected>
+          </RungEntity>
+          <RungEntity>
+            <LadderElements>
+              <LadderEntity>
+                <ElementType>NormalContact</ElementType>
+                <Descriptor>%I0.1</Descriptor>
+                <Comment />
+                <Symbol>HIGH_FLOAT</Symbol>
+                <Row>0</Row>
+                <Column>0</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>NegatedContact</ElementType>
+                <Descriptor>%M9</Descriptor>
+                <Comment />
+                <Symbol>HIGH_FLOAT_ALARM_BYPASS</Symbol>
+                <Row>0</Row>
+                <Column>1</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Timer</ElementType>
+                <Descriptor>%TM1</Descriptor>
+                <Comment />
+                <Symbol>HIGH_FLOAT_ALARM_DELAY</Symbol>
+                <Row>0</Row>
+                <Column>6</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Coil</ElementType>
+                <Descriptor>%M2</Descriptor>
+                <Comment />
+                <Symbol>HIGH_FLOAT_ALARM</Symbol>
+                <Row>0</Row>
+                <Column>10</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
                 <ElementType>Line</ElementType>
                 <Row>0</Row>
-                <Column>4</Column>
+                <Column>8</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
               </LadderEntity>
               <LadderEntity>
@@ -57,18 +186,401 @@
               <LadderEntity>
                 <ElementType>Line</ElementType>
                 <Row>0</Row>
-                <Column>0</Column>
+                <Column>4</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
               </LadderEntity>
               <LadderEntity>
                 <ElementType>Line</ElementType>
                 <Row>0</Row>
-                <Column>1</Column>
+                <Column>5</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+            </LadderElements>
+            <InstructionLines>
+              <InstructionLineEntity>
+                <InstructionLine>BLK %TM1</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>LD  %I0.1</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ANDN %M9</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>IN</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>OUT_BLK</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>LD Q</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ST %M2</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>END_BLK</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+            </InstructionLines>
+            <Name>High Float Detect</Name>
+            <MainComment />
+            <Label />
+            <IsLadderSelected>true</IsLadderSelected>
+          </RungEntity>
+          <RungEntity>
+            <LadderElements>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>8</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>2</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
               </LadderEntity>
               <LadderEntity>
                 <ElementType>Coil</ElementType>
+                <Descriptor>%M0</Descriptor>
+                <Comment />
+                <Symbol>WINDING_TEMP_ALARM</Symbol>
+                <Row>0</Row>
+                <Column>10</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
                 <Symbol />
+                <Row>0</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Comparison</ElementType>
+                <Comment />
+                <Symbol />
+                <ComparisonExpression>%IW1.0 &gt;= %MW0</ComparisonExpression>
+                <Row>0</Row>
+                <Column>0</Column>
+                <ChosenConnection>Down, Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Comparison</ElementType>
+                <Comment />
+                <Symbol />
+                <ComparisonExpression>%IW1.0 = %KW0</ComparisonExpression>
+                <Row>1</Row>
+                <Column>0</Column>
+                <ChosenConnection>Up, Down, Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Timer</ElementType>
+                <Descriptor>%TM2</Descriptor>
+                <Comment />
+                <Symbol>HIGH_WINDING_TEMP_ALARM_DELAY</Symbol>
+                <Row>0</Row>
+                <Column>6</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>4</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>5</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>NegatedContact</ElementType>
+                <Descriptor>%M7</Descriptor>
+                <Comment />
+                <Symbol>WINDING_TEMP_ALARM_BYPASS</Symbol>
+                <Row>0</Row>
+                <Column>3</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Comparison</ElementType>
+                <ComparisonExpression>%IW1.1 &gt;= %MW1</ComparisonExpression>
+                <Row>3</Row>
+                <Column>0</Column>
+                <ChosenConnection>Up, Down, Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Comparison</ElementType>
+                <ComparisonExpression>%IW1.1 = %KW0</ComparisonExpression>
+                <Row>4</Row>
+                <Column>0</Column>
+                <ChosenConnection>Up, Down, Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Comparison</ElementType>
+                <ComparisonExpression>%IW1.2 &gt;= %MW2</ComparisonExpression>
+                <Row>6</Row>
+                <Column>0</Column>
+                <ChosenConnection>Up, Down, Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Comparison</ElementType>
+                <ComparisonExpression>%IW1.2 = %KW0</ComparisonExpression>
+                <Row>7</Row>
+                <Column>0</Column>
+                <ChosenConnection>Up, Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>VerticalLine</ElementType>
+                <Row>2</Row>
+                <Column>1</Column>
+                <ChosenConnection>Up, Down</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>VerticalLine</ElementType>
+                <Row>5</Row>
+                <Column>1</Column>
+                <ChosenConnection>Up, Down</ChosenConnection>
+              </LadderEntity>
+            </LadderElements>
+            <InstructionLines>
+              <InstructionLineEntity>
+                <InstructionLine>BLK %TM2</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>LD [ %IW1.0 &gt;= %MW0 ]</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>OR [ %IW1.0 = %KW0 ]</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>OR [ %IW1.1 &gt;= %MW1 ]</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>OR [ %IW1.1 = %KW0 ]</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>OR [ %IW1.2 &gt;= %MW2 ]</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>OR [ %IW1.2 = %KW0 ]</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ANDN %M7</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>IN</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>OUT_BLK</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>LD Q</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ST %M0</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>END_BLK</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+            </InstructionLines>
+            <Name>Winding Temp Detect</Name>
+            <MainComment />
+            <Label />
+            <IsLadderSelected>true</IsLadderSelected>
+          </RungEntity>
+          <RungEntity>
+            <LadderElements>
+              <LadderEntity>
+                <ElementType>NegatedContact</ElementType>
+                <Descriptor>%M8</Descriptor>
+                <Comment />
+                <Symbol>SEAL_FAIL_ALARM_BYPASS</Symbol>
+                <Row>0</Row>
+                <Column>1</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>NegatedContact</ElementType>
+                <Descriptor>%I0.0</Descriptor>
+                <Comment>Reversed Logic Sensor!!! Normally Closed. Seal failing breaks connection</Comment>
+                <Symbol>SEAL_FAIL</Symbol>
+                <Row>0</Row>
+                <Column>0</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Timer</ElementType>
+                <Descriptor>%TM3</Descriptor>
+                <Comment />
+                <Symbol>SEAL_FAIL_ALARM_DELAY</Symbol>
+                <Row>0</Row>
+                <Column>6</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>8</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Coil</ElementType>
+                <Descriptor>%M1</Descriptor>
+                <Comment />
+                <Symbol>SEAL_FAIL_ALARM</Symbol>
+                <Row>0</Row>
+                <Column>10</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>2</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>3</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>4</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>5</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+            </LadderElements>
+            <InstructionLines>
+              <InstructionLineEntity>
+                <InstructionLine>BLK %TM3</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>LDN %I0.0</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ANDN %M8</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>IN</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>OUT_BLK</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>LD Q</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ST %M1</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>END_BLK</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+            </InstructionLines>
+            <Name>Seal Fail Alarm Detect</Name>
+            <MainComment />
+            <Label />
+            <IsLadderSelected>true</IsLadderSelected>
+          </RungEntity>
+          <RungEntity>
+            <LadderElements>
+              <LadderEntity>
+                <ElementType>Comparison</ElementType>
+                <ComparisonExpression>%IW3.0 &gt;= %MW4</ComparisonExpression>
+                <Row>0</Row>
+                <Column>0</Column>
+                <ChosenConnection>Down, Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Comparison</ElementType>
+                <ComparisonExpression>%IW3.0 = %KW0</ComparisonExpression>
+                <Row>1</Row>
+                <Column>0</Column>
+                <ChosenConnection>Up, Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>NegatedContact</ElementType>
+                <Descriptor>%M10</Descriptor>
+                <Comment />
+                <Symbol>VIBRATION_ALARM_BYPASS</Symbol>
+                <Row>0</Row>
+                <Column>3</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Timer</ElementType>
+                <Descriptor>%TM4</Descriptor>
+                <Comment />
+                <Symbol>VIBRATION_ALARM_DELAY</Symbol>
+                <Row>0</Row>
+                <Column>6</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Coil</ElementType>
+                <Descriptor>%M3</Descriptor>
+                <Comment />
+                <Symbol>VIBRATION_ALARM</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -79,8 +591,69 @@
                 <Column>9</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
               </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>8</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>2</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>4</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>5</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
             </LadderElements>
-            <InstructionLines />
+            <InstructionLines>
+              <InstructionLineEntity>
+                <InstructionLine>BLK %TM4</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>LD [ %IW3.0 &gt;= %MW4 ]</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>OR [ %IW3.0 = %KW0 ]</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ANDN %M10</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>IN</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>OUT_BLK</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>LD Q</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ST %M3</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>END_BLK</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+            </InstructionLines>
             <Name />
             <MainComment />
             <Label />
@@ -1372,13 +1945,84 @@
       </MemoryWord>
     </SystemWords>
     <GrafcetSteps />
-    <MemoryWords />
+    <MemoryWords>
+      <MemoryWord>
+        <Address>%MW0</Address>
+        <Index>0</Index>
+        <Symbol>WINDING1_TEMP_SETPOINT</Symbol>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%MW1</Address>
+        <Index>1</Index>
+        <Symbol>WINDING2_TEMP_SETPOINT</Symbol>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%MW2</Address>
+        <Index>2</Index>
+        <Symbol>WINDING3_TEMP_SETPOINT</Symbol>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%MW3</Address>
+        <Index>3</Index>
+        <Symbol>BOTTOM_BEARING_SETPOINT</Symbol>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%MW4</Address>
+        <Index>4</Index>
+        <Symbol>VIBRATION_SETPOINT</Symbol>
+      </MemoryWord>
+    </MemoryWords>
     <MemoryDoubleWords />
     <MemoryFloats />
-    <ConstantWords />
-    <ConstantDoubleWords />
-    <ConstantMemoryFloats />
-    <Timers />
+    <ConstantWords>
+      <ConstantWord>
+        <Address>%KW0</Address>
+        <Index>0</Index>
+        <Symbol>DISCONNECTED_VALUE</Symbol>
+        <Value>-32768</Value>
+      </ConstantWord>
+    </ConstantWords>
+    <ConstantDoubleWords>
+      <ConstantDoubleWord>
+        <Address>%KD0</Address>
+        <Index>0</Index>
+        <Value>32768</Value>
+      </ConstantDoubleWord>
+    </ConstantDoubleWords>
+    <ConstantMemoryFloats>
+      <ConstantFloat>
+        <Address>%KF0</Address>
+        <Index>0</Index>
+        <Value>4.591775E-41</Value>
+      </ConstantFloat>
+    </ConstantMemoryFloats>
+    <Timers>
+      <TimerTM>
+        <Address>%TM0</Address>
+        <Index>0</Index>
+        <Symbol>HIGH_BOT_BEARING_TMP_ALARM_DELAY</Symbol>
+      </TimerTM>
+      <TimerTM>
+        <Address>%TM1</Address>
+        <Index>1</Index>
+        <Symbol>HIGH_FLOAT_ALARM_DELAY</Symbol>
+      </TimerTM>
+      <TimerTM>
+        <Address>%TM2</Address>
+        <Index>2</Index>
+        <Symbol>HIGH_WINDING_TEMP_ALARM_DELAY</Symbol>
+      </TimerTM>
+      <TimerTM>
+        <Address>%TM3</Address>
+        <Index>3</Index>
+        <Symbol>SEAL_FAIL_ALARM_DELAY</Symbol>
+      </TimerTM>
+      <TimerTM>
+        <Address>%TM4</Address>
+        <Index>4</Index>
+        <Symbol>VIBRATION_ALARM_DELAY</Symbol>
+      </TimerTM>
+    </Timers>
     <Counters />
     <FastCounters />
     <Registers />
@@ -1499,10 +2143,13 @@
           <DiscretInput>
             <Address>%I0.0</Address>
             <Index>0</Index>
+            <Symbol>SEAL_FAIL</Symbol>
+            <Comment>Reversed Logic Sensor!!! Normally Closed. Seal failing breaks connection</Comment>
           </DiscretInput>
           <DiscretInput>
             <Address>%I0.1</Address>
             <Index>1</Index>
+            <Symbol>HIGH_FLOAT</Symbol>
           </DiscretInput>
           <DiscretInput>
             <Address>%I0.2</Address>
@@ -1557,10 +2204,12 @@
           <DiscretOutput>
             <Address>%Q0.0</Address>
             <Index>0</Index>
+            <Symbol>PUMP_ENABLE</Symbol>
           </DiscretOutput>
           <DiscretOutput>
             <Address>%Q0.1</Address>
             <Index>1</Index>
+            <Symbol>AUDIBLE_ALARM</Symbol>
           </DiscretOutput>
           <DiscretOutput>
             <Address>%Q0.2</Address>
@@ -1985,7 +2634,7 @@
             <AnalogIO>
               <Address>%IW1.0</Address>
               <Index>0</Index>
-              <Symbol>MOTOR1_TEMP</Symbol>
+              <Symbol>WINDING1_TEMP</Symbol>
               <Type>
                 <Value>13</Value>
                 <Name>Type_PT100</Name>
@@ -2016,7 +2665,7 @@
             <AnalogIO>
               <Address>%IW1.1</Address>
               <Index>1</Index>
-              <Symbol>MOTOR2_TEMP</Symbol>
+              <Symbol>WINDING2_TEMP</Symbol>
               <Type>
                 <Value>13</Value>
                 <Name>Type_PT100</Name>
@@ -2047,7 +2696,7 @@
             <AnalogIO>
               <Address>%IW1.2</Address>
               <Index>2</Index>
-              <Symbol>MOTOR3_TEMP</Symbol>
+              <Symbol>WINDING3_TEMP</Symbol>
               <Type>
                 <Value>13</Value>
                 <Name>Type_PT100</Name>
