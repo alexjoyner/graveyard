@@ -8,7 +8,7 @@
     <Pous>
       <ProgramOrganizationUnits>
         <Name>Alarm Conditions</Name>
-        <SectionNumber>0</SectionNumber>
+        <SectionNumber>1</SectionNumber>
         <Rungs>
           <RungEntity>
             <LadderElements>
@@ -69,7 +69,7 @@
                 <ElementType>NegatedContact</ElementType>
                 <Descriptor>%M11</Descriptor>
                 <Comment />
-                <Symbol>HIGH_RTD_ALARM_BYPASS</Symbol>
+                <Symbol>HIGH_BOT_BEAR_TMP_ALARM_BYPASS</Symbol>
                 <Row>0</Row>
                 <Column>3</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
@@ -78,7 +78,7 @@
                 <ElementType>SetCoil</ElementType>
                 <Descriptor>%M4</Descriptor>
                 <Comment />
-                <Symbol>HIGH_RTD_ALARM</Symbol>
+                <Symbol>HIGH_BOTTOM_BEARING_TEMP_ALARM</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -363,7 +363,7 @@
                 <ElementType>SetCoil</ElementType>
                 <Descriptor>%M0</Descriptor>
                 <Comment />
-                <Symbol>WINDING_TEMP_ALARM</Symbol>
+                <Symbol>HIGH_WINDING_TEMP_ALARM</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -610,7 +610,7 @@
                 <ElementType>SetCoil</ElementType>
                 <Descriptor>%M3</Descriptor>
                 <Comment />
-                <Symbol>VIBRATION_ALARM</Symbol>
+                <Symbol>HIGH_VIBRATION_ALARM</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -663,7 +663,7 @@
       </ProgramOrganizationUnits>
       <ProgramOrganizationUnits>
         <Name>Pump Enable</Name>
-        <SectionNumber>0</SectionNumber>
+        <SectionNumber>2</SectionNumber>
         <Rungs>
           <RungEntity>
             <LadderElements>
@@ -671,7 +671,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%M4</Descriptor>
                 <Comment />
-                <Symbol>HIGH_RTD_ALARM</Symbol>
+                <Symbol>HIGH_BOTTOM_BEARING_TEMP_ALARM</Symbol>
                 <Row>0</Row>
                 <Column>0</Column>
                 <ChosenConnection>Down, Left, Right</ChosenConnection>
@@ -689,7 +689,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%M0</Descriptor>
                 <Comment />
-                <Symbol>WINDING_TEMP_ALARM</Symbol>
+                <Symbol>HIGH_WINDING_TEMP_ALARM</Symbol>
                 <Row>2</Row>
                 <Column>0</Column>
                 <ChosenConnection>Up, Down, Left</ChosenConnection>
@@ -770,7 +770,7 @@
                 <ElementType>NormalContact</ElementType>
                 <Descriptor>%M3</Descriptor>
                 <Comment />
-                <Symbol>VIBRATION_ALARM</Symbol>
+                <Symbol>HIGH_VIBRATION_ALARM</Symbol>
                 <Row>4</Row>
                 <Column>0</Column>
                 <ChosenConnection>Up, Left</ChosenConnection>
@@ -815,7 +815,7 @@
       </ProgramOrganizationUnits>
       <ProgramOrganizationUnits>
         <Name>Resets</Name>
-        <SectionNumber>0</SectionNumber>
+        <SectionNumber>3</SectionNumber>
         <Rungs>
           <RungEntity>
             <LadderElements>
@@ -832,7 +832,7 @@
                 <ElementType>ResetCoil</ElementType>
                 <Descriptor>%M4</Descriptor>
                 <Comment />
-                <Symbol>HIGH_RTD_ALARM</Symbol>
+                <Symbol>HIGH_BOTTOM_BEARING_TEMP_ALARM</Symbol>
                 <Row>0</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -904,7 +904,7 @@
                 <ElementType>ResetCoil</ElementType>
                 <Descriptor>%M0</Descriptor>
                 <Comment />
-                <Symbol>WINDING_TEMP_ALARM</Symbol>
+                <Symbol>HIGH_WINDING_TEMP_ALARM</Symbol>
                 <Row>2</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -922,7 +922,7 @@
                 <ElementType>ResetCoil</ElementType>
                 <Descriptor>%M3</Descriptor>
                 <Comment />
-                <Symbol>VIBRATION_ALARM</Symbol>
+                <Symbol>HIGH_VIBRATION_ALARM</Symbol>
                 <Row>4</Row>
                 <Column>10</Column>
                 <ChosenConnection>Left</ChosenConnection>
@@ -985,11 +985,169 @@
           </RungEntity>
         </Rungs>
       </ProgramOrganizationUnits>
+      <ProgramOrganizationUnits>
+        <Name>On Startup</Name>
+        <SectionNumber>0</SectionNumber>
+        <Rungs>
+          <RungEntity>
+            <LadderElements>
+              <LadderEntity>
+                <ElementType>NormalContact</ElementType>
+                <Descriptor>%S13</Descriptor>
+                <Comment>Indicates the first controller cycle in RUN mode</Comment>
+                <Symbol>SB_FIRSTRUN</Symbol>
+                <Row>0</Row>
+                <Column>0</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Operation</ElementType>
+                <OperationExpression>%MW3 := 500</OperationExpression>
+                <Row>0</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>8</Column>
+                <ChosenConnection>Down, Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>7</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>6</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>5</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>4</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>3</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>2</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>1</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Operation</ElementType>
+                <OperationExpression>%MW0 := 501</OperationExpression>
+                <Row>1</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Operation</ElementType>
+                <OperationExpression>%MW1 := 502</OperationExpression>
+                <Row>2</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Operation</ElementType>
+                <OperationExpression>%MW2 := 503</OperationExpression>
+                <Row>3</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Operation</ElementType>
+                <OperationExpression>%MW4 := 504</OperationExpression>
+                <Row>4</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>VerticalLine</ElementType>
+                <Row>4</Row>
+                <Column>8</Column>
+                <ChosenConnection>Up, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>VerticalLine</ElementType>
+                <Row>3</Row>
+                <Column>8</Column>
+                <ChosenConnection>Up, Down, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>VerticalLine</ElementType>
+                <Row>2</Row>
+                <Column>8</Column>
+                <ChosenConnection>Up, Down, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>VerticalLine</ElementType>
+                <Row>1</Row>
+                <Column>8</Column>
+                <ChosenConnection>Up, Down, Right</ChosenConnection>
+              </LadderEntity>
+            </LadderElements>
+            <InstructionLines>
+              <InstructionLineEntity>
+                <InstructionLine>LD  %S13</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>[ %MW3 := 500 ]</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>[ %MW0 := 501 ]</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>[ %MW1 := 502 ]</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>[ %MW2 := 503 ]</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>[ %MW4 := 504 ]</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+            </InstructionLines>
+            <Name>Set Default Alarm Setpoints</Name>
+            <MainComment />
+            <Label />
+            <IsLadderSelected>true</IsLadderSelected>
+          </RungEntity>
+        </Rungs>
+      </ProgramOrganizationUnits>
     </Pous>
     <Subroutines />
     <WatchLists />
     <CustomSymbols />
-    <ConstantWordsMemoryAllocation />
+    <ConstantWordsMemoryAllocation>
+      <ForcedCount>1</ForcedCount>
+    </ConstantWordsMemoryAllocation>
     <MemoryBitsMemoryAllocation>
       <Allocation>Manual</Allocation>
       <ForcedCount>512</ForcedCount>
@@ -998,7 +1156,9 @@
       <Allocation>Manual</Allocation>
       <ForcedCount>100</ForcedCount>
     </MemoryWordsMemoryAllocation>
-    <TimersMemoryAllocation />
+    <TimersMemoryAllocation>
+      <ForcedCount>5</ForcedCount>
+    </TimersMemoryAllocation>
     <CountersMemoryAllocation />
     <RegistersMemoryAllocation />
     <DrumsMemoryAllocation />
@@ -1012,7 +1172,7 @@
       <MemoryBit>
         <Address>%M0</Address>
         <Index>0</Index>
-        <Symbol>WINDING_TEMP_ALARM</Symbol>
+        <Symbol>HIGH_WINDING_TEMP_ALARM</Symbol>
       </MemoryBit>
       <MemoryBit>
         <Address>%M1</Address>
@@ -1027,12 +1187,12 @@
       <MemoryBit>
         <Address>%M3</Address>
         <Index>3</Index>
-        <Symbol>VIBRATION_ALARM</Symbol>
+        <Symbol>HIGH_VIBRATION_ALARM</Symbol>
       </MemoryBit>
       <MemoryBit>
         <Address>%M4</Address>
         <Index>4</Index>
-        <Symbol>HIGH_RTD_ALARM</Symbol>
+        <Symbol>HIGH_BOTTOM_BEARING_TEMP_ALARM</Symbol>
       </MemoryBit>
       <MemoryBit>
         <Address>%M5</Address>
@@ -1067,7 +1227,7 @@
       <MemoryBit>
         <Address>%M11</Address>
         <Index>11</Index>
-        <Symbol>HIGH_RTD_ALARM_BYPASS</Symbol>
+        <Symbol>HIGH_BOT_BEAR_TMP_ALARM_BYPASS</Symbol>
       </MemoryBit>
     </MemoryBits>
     <SystemBits>
