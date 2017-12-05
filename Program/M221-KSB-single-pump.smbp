@@ -13,13 +13,6 @@
           <RungEntity>
             <LadderElements>
               <LadderEntity>
-                <ElementType>Operation</ElementType>
-                <OperationExpression />
-                <Row>0</Row>
-                <Column>9</Column>
-                <ChosenConnection>Left</ChosenConnection>
-              </LadderEntity>
-              <LadderEntity>
                 <ElementType>Line</ElementType>
                 <Row>0</Row>
                 <Column>8</Column>
@@ -73,6 +66,19 @@
                 <Column>0</Column>
                 <ChosenConnection>Left, Right</ChosenConnection>
               </LadderEntity>
+              <LadderEntity>
+                <ElementType>Operation</ElementType>
+                <OperationExpression />
+                <Row>0</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>None</ElementType>
+                <Row>1</Row>
+                <Column>4</Column>
+                <ChosenConnection>None</ChosenConnection>
+              </LadderEntity>
             </LadderElements>
             <InstructionLines />
             <Name />
@@ -105,7 +111,68 @@
     <SchsMemoryAllocation />
     <HscsMemoryAllocation />
     <PtosMemoryAllocation />
-    <MemoryBits />
+    <MemoryBits>
+      <MemoryBit>
+        <Address>%M0</Address>
+        <Index>0</Index>
+        <Symbol>WINDING_TEMP_ALARM</Symbol>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M1</Address>
+        <Index>1</Index>
+        <Symbol>SEAL_FAIL_ALARM</Symbol>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M2</Address>
+        <Index>2</Index>
+        <Symbol>HIGH_FLOAT_ALARM</Symbol>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M3</Address>
+        <Index>3</Index>
+        <Symbol>VIBRATION_ALARM</Symbol>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M4</Address>
+        <Index>4</Index>
+        <Symbol>HIGH_RTD_ALARM</Symbol>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M5</Address>
+        <Index>5</Index>
+        <Symbol>RESET_ALARMS</Symbol>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M6</Address>
+        <Index>6</Index>
+        <Symbol>SILENCE_ALARMS</Symbol>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M7</Address>
+        <Index>7</Index>
+        <Symbol>WINDING_TEMP_ALARM_BYPASS</Symbol>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M8</Address>
+        <Index>8</Index>
+        <Symbol>SEAL_FAIL_ALARM_BYPASS</Symbol>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M9</Address>
+        <Index>9</Index>
+        <Symbol>HIGH_FLOAT_ALARM_BYPASS</Symbol>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M10</Address>
+        <Index>10</Index>
+        <Symbol>VIBRATION_ALARM_BYPASS</Symbol>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M11</Address>
+        <Index>11</Index>
+        <Symbol>HIGH_RTD_ALARM_BYPASS</Symbol>
+      </MemoryBit>
+    </MemoryBits>
     <SystemBits>
       <MemoryBit>
         <Address>%S0</Address>
