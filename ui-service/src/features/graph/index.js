@@ -1,8 +1,11 @@
 import React from 'react';
-import 'd3';
-import c3 from 'c3';
 import 'c3/c3.css';
 import {ErrorBoundary} from "../error-boundary/index";
+let c3;
+if(typeof window !== 'undefined'){
+    require('d3');
+    c3 = require('c3');
+}
 
 export class Graph extends React.Component {
     constructor(props) {

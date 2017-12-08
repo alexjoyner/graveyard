@@ -1,6 +1,8 @@
 FROM node:6
 
-EXPOSE 3000
+ENV PORT=80
+
+EXPOSE 80
 EXPOSE 3001
 
 WORKDIR /home/node/app
