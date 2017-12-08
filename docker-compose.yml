@@ -6,8 +6,12 @@ services:
     volumes:
       - ./ui-service:/home/node/app
     ports:
-      - "8080:3000"
-      - "3001:3001"
+      - "8080:80"
+      - "81:81"
+    networks:
+      - frontend
+    depends_on:
+      - panel-data-api
   panel-data-api:
     build:
       context: ./panel-data-api
@@ -19,10 +23,6 @@ services:
     # https://github.com/remy/nodemon#application-isnt-restarting
     #command: ../node_modules/.bin/nodemon --debug=0.0.0.0:5858
     command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229
-    ports:
-      - "80:80"
-      - "5858:5858"
-      - "9229:9229"
     volumes:
       - ./panel-data-api:/opt/app
       # this is a workaround to prevent host node_modules from accidently getting mounted in container
@@ -30,8 +30,15 @@ services:
       # this will overwrite the default node_modules dir in container so it won't conflict with our
       # /opt/node_modules location. Thanks to PR from @brnluiz
       - notused:/opt/app/node_modules
+    ports:
+      - "9000:80"
     environment:
       - NODE_ENV=development
+    networks:
+      - frontend
 
 volumes:
     notused:
+
+networks:
+  frontend:

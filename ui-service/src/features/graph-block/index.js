@@ -2,6 +2,7 @@ import React from 'react';
 import './styles.css';
 import 'purecss';
 import {Graph} from '../graph';
+import axios from 'axios';
 
 export class GraphBlock extends React.Component {
 
@@ -47,11 +48,20 @@ export class GraphBlock extends React.Component {
                 show: true
             }
         };
+        this.fetchTest = async () => {
+            try{
+                let data = await axios.get('http://localhost:9000');
+                console.log('Data: ', data);
+            }catch (e){
+            	console.log(e);
+            }
+        }
     }
 
     render() {
         return (
             <div className={'GraphBody'}>
+                <button onClick={() => this.fetchTest()}>Fetch Test</button>
                 <div className={'pure-g'}>
                     <div className={'pure-u-1-1'}>
                         <Graph
