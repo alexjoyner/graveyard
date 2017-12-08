@@ -1143,7 +1143,7 @@
       </ProgramOrganizationUnits>
       <ProgramOrganizationUnits>
         <Name>Timers</Name>
-        <SectionNumber>0</SectionNumber>
+        <SectionNumber>5</SectionNumber>
         <Rungs>
           <RungEntity>
             <LadderElements>
@@ -3169,11 +3169,11 @@
             <UseTimeout>true</UseTimeout>
             <Timeout>2</Timeout>
             <SlavePort>502</SlavePort>
-            <UnitId xsi:nil="true" />
-            <HoldingRegister>0</HoldingRegister>
-            <InputRegister>0</InputRegister>
+            <UnitId>200</UnitId>
+            <HoldingRegister>10</HoldingRegister>
+            <InputRegister>10</InputRegister>
             <RemoteServers />
-            <ModbusServerEnabled>false</ModbusServerEnabled>
+            <ModbusServerEnabled>true</ModbusServerEnabled>
           </ModbusTcpSlave>
           <EthernetIpEntity>
             <EthernetIpEnabled>false</EthernetIpEnabled>
@@ -3198,8 +3198,91 @@
         <C2SizeY>0</C2SizeY>
         <InputAssemblys />
         <OutputAssemblys />
-        <InputRegisters />
-        <HoldingRegisters />
+        <InputRegisters>
+          <NetworkObject>
+            <Address>%QWM0</Address>
+            <Index>0</Index>
+            <FallbackValue>400</FallbackValue>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%QWM1</Address>
+            <Index>1</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%QWM2</Address>
+            <Index>2</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%QWM3</Address>
+            <Index>3</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%QWM4</Address>
+            <Index>4</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%QWM5</Address>
+            <Index>5</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%QWM6</Address>
+            <Index>6</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%QWM7</Address>
+            <Index>7</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%QWM8</Address>
+            <Index>8</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%QWM9</Address>
+            <Index>9</Index>
+          </NetworkObject>
+        </InputRegisters>
+        <HoldingRegisters>
+          <NetworkObject>
+            <Address>%IWM0</Address>
+            <Index>0</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%IWM1</Address>
+            <Index>1</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%IWM2</Address>
+            <Index>2</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%IWM3</Address>
+            <Index>3</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%IWM4</Address>
+            <Index>4</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%IWM5</Address>
+            <Index>5</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%IWM6</Address>
+            <Index>6</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%IWM7</Address>
+            <Index>7</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%IWM8</Address>
+            <Index>8</Index>
+          </NetworkObject>
+          <NetworkObject>
+            <Address>%IWM9</Address>
+            <Index>9</Index>
+          </NetworkObject>
+        </HoldingRegisters>
       </Cpu>
       <Extensions>
         <ModuleExtensionObject>
