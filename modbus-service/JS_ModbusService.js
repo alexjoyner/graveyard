@@ -1,19 +1,20 @@
 var ModbusRTU = require('modbus-serial');
 var client = new ModbusRTU();
-client.connectTCP("192.168.0.106", {port: 502}, null);
-client.setID(255);
+client.connectTCP("localhost", {port: 502}, null);
+client.setID(200);
 client.setTimeout(1000);
 
 module.exports = {
     getAi: function(startingAddress, numAddressesAfterStart, callback){
         if(client.isOpen){
-            client.readHoldingRegisters(startingAddress, numAddressesAfterStart)
+            client.readInputRegisters(startingAddress, numAddressesAfterStart)
                 .then(function (rawData) {
-                    var formattedData = rawData.data;
-                    callback(null, formattedData)
+                    //var formattedData = rawData.data;
+                    console.log(JSON.stringify(rawData));
+                    callback('NOT SET YET', null)
                 })
                 .catch(function(err){
-                    callback(err, formattedData)
+                    callback(err, null)
                 });
         }else{
             // It's ok, the client just hasn't connected yet.

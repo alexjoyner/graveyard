@@ -37,8 +37,8 @@ var runEES_Logger = function () {
             runEES_Logger();
         }, 10000)
     })
-}
-runEES_Logger();
+};
+//runEES_Logger();
 
 app.get('/', function (req, res) {
     logNewPoint(function(err, data) {

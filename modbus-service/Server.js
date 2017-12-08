@@ -40,7 +40,7 @@ var express = require("express");
 var ModbusClient_1 = require("./ModbusClient");
 var app = express();
 var client = new ModbusClient_1.ModbusClient({
-    host: '192.168.0.106',
+    host: '127.0.0.1',
     port: 502,
     autoReconnect: false,
     reconnectTimeout: 10000,

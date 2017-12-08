@@ -2,7 +2,7 @@ import express = require('express');
 import {ModbusClient} from "./ModbusClient";
 let app = express();
 let client = new ModbusClient({
-    host: '192.168.0.106',
+    host: '127.0.0.1',
     port: 502,
     autoReconnect: false,
     reconnectTimeout: 10000,
