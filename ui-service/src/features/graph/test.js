@@ -2,7 +2,6 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {Graph} from ".";
 
-
 describe('Features/Graph', () => {
     let component;
     beforeEach(() => {

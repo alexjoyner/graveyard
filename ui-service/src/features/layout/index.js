@@ -11,7 +11,7 @@ export class Layout extends React.Component {
                         <a className="ees-logo pure-menu-heading">EES Data Logger</a>
                     </div>
                 </div>
-                <GraphBlock></GraphBlock>
+                <GraphBlock blockID={'1'}/>
             </div>
         );
     }

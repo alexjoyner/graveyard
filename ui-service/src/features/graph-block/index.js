@@ -2,7 +2,6 @@ import React from 'react';
 import './styles.css';
 import 'purecss';
 import {Graph} from '../graph';
-import {HistoryTable} from "../historyTable/index";
 
 export class GraphBlock extends React.Component {
 
@@ -56,7 +55,7 @@ export class GraphBlock extends React.Component {
                 <div className={'pure-g'}>
                     <div className={'pure-u-1-1'}>
                         <Graph
-                            chartID={'chart1'}
+                            chartID={'chart1-' + this.props.blockID}
                             chartOpts={this.chartOptions}/>
                     </div>
                 </div>
@@ -64,7 +63,7 @@ export class GraphBlock extends React.Component {
                     <div className={'pure-u-1-1'}>
                         <Graph
                             className={'lineChart'}
-                            chartID={'chart2'}
+                            chartID={'chart2' + this.props.blockID}
                             chartOpts={this.subLineChartOptions}/>
                     </div>
                 </div>
