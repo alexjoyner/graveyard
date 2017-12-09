@@ -8,7 +8,7 @@ let currentApp = app;
 server.listen(process.env.PORT || 3000, '0.0.0.0');
 
 if (module.hot) {
-  console.log('✅  Server-side HMR Enabled!');
+  console.log('✅  Server-side HMR Enabled!!');
 
   module.hot.accept('./server', () => {
     console.log('🔁  HMR Reloading `./server`...');

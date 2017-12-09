@@ -2,9 +2,17 @@ version: '3'
 services:
   ui-service:
     image: ui-service
-    build: ./ui-service
+    build:
+      context: ./ui-service
+      args:
+        - NODE_ENV=development
     volumes:
       - ./ui-service:/home/node/app
+      # this is a workaround to prevent host node_modules from accidently getting mounted in container
+      # in case you want to use node/npm both outside container for test/lint etc. and also inside container
+      # this will overwrite the default node_modules dir in container so it won't conflict with our
+      # /opt/node_modules location. Thanks to PR from @brnluiz
+      - ui-service-node-modules:/home/node/app/node_modules
     ports:
       - "8080:80"
       - "81:81"
@@ -39,6 +47,7 @@ services:
 
 volumes:
     notused:
+    ui-service-node-modules:
 
 networks:
   frontend:
