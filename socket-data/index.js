@@ -8,7 +8,7 @@ let app = express();
 let server = require('http').Server(app);
 let io = require('socket.io')(server);
 app.use(morgan('common'));
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
 
 // CORS
 app.use((req, res, next) => {
@@ -18,6 +18,7 @@ app.use((req, res, next) => {
 });
 
 app.post('/newlog', (req, res) => {
+    io.sockets.emit('add log', req.body);
     res.send(req.body).end();
 });
 

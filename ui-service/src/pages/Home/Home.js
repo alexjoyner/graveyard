@@ -8,6 +8,9 @@ let socket;
 if(typeof window !== 'undefined'){
     io = require('socket.io-client');
     socket = io('http://localhost:3000');
+    socket.on('add log', (log) => {
+        console.log('Adding Log: ', log);
+    })
 }
 
 
