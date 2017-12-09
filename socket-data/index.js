@@ -1,12 +1,14 @@
 let express = require('express');
 let morgan = require('morgan');
+let bodyParser = require('body-parser');
 const PORT = process.env.PORT || 8080;
 
-// Appi
+// App
 let app = express();
 let server = require('http').Server(app);
 let io = require('socket.io')(server);
 app.use(morgan('common'));
+app.use(bodyParser.urlencoded());
 
 // CORS
 app.use((req, res, next) => {
@@ -15,16 +17,18 @@ app.use((req, res, next) => {
 	next();
 });
 
-
-app.get('/',(req, res) => {
-    res.sendFile(__dirname + '/index.html');
+app.post('/newlog', (req, res) => {
+    res.send(req.body).end();
 });
 
 io.on('connection', function (socket) {
-    socket.emit('news', { hello: 'world' });
-    socket.on('my other event', function (data) {
-        console.log(data);
+    console.log(socket.id + ' New Connection');
+    socket.on('new log', (log) => {
+        socket.emit('logs', log);
     });
+    socket.on('disconnect', () => {
+        console.log(socket.id + ' Disconnected')
+    })
 });
 
 app.get('/healthz',(req, res) =>{

@@ -3,6 +3,14 @@ import './Home.css';
 import {Layout} from "../../features/layout";
 import 'purecss';
 
+let io;
+let socket;
+if(typeof window !== 'undefined'){
+    io = require('socket.io-client');
+    socket = io('http://localhost:3000');
+}
+
+
 class Home extends Component {
     render() {
         return (
