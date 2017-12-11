@@ -2,15 +2,14 @@
   "name": "modbus-connect",
   "version": "0.0.1",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "nodemon main.js",
     "prod": "node server.js"
   },
   "dependencies": {
     "express": "^4.16.2",
-    "http": "0.0.0",
-    "jsmodbus": "^2.1.2",
-    "libxmljs": "^0.18.7",
-    "modbus-serial": "^7.0.1",
-    "xml2js": "^0.4.17"
+    "modbus-serial": "^7.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }

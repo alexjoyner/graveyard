@@ -31,21 +31,6 @@ services:
       - NODE_ENV=development
     networks:
       - frontend
-  panel-data-api:
-    build:
-      context: ./panel-data-api
-      args:
-        - NODE_ENV=development
-    command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
-    volumes:
-      - ./panel-data-api:/opt/app
-      - panel-data-node_modules:/opt/app/node_modules
-    ports:
-      - "9000:80"
-    environment:
-      - NODE_ENV=development
-    networks:
-      - frontend
   socket-data:
     build:
       context: ./socket-data
