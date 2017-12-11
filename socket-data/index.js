@@ -41,7 +41,7 @@ app.get('/healthz',(req, res) =>{
   res.send('I am happy and healthy\n');
 });
 
-server.listen(PORT, '0.0.0.0', () => {
+server.listen(PORT, () => {
   console.log('Webserver is ready');
 });
 
