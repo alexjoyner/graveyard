@@ -1,6 +1,7 @@
 let express = require('express');
 let morgan = require('morgan');
 let bodyParser = require('body-parser');
+let axios = require('axios');
 const PORT = process.env.PORT || 8080;
 
 // App
@@ -19,6 +20,7 @@ app.use((req, res, next) => {
 
 app.post('/newlog', (req, res) => {
     io.sockets.emit('add log', req.body);
+    axios.post('http://panel-data-api/new/panel-data', req.body);
     res.send(req.body).end();
 });
 

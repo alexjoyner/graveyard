@@ -1,25 +1,8 @@
-// simple node web server that displays hello world
-// optimized for Docker image
-
-var express = require('express');
-// this example uses express web framework so we know what longer build times
-// do and how Dockerfile layer ordering matters. If you mess up Dockerfile ordering
-// you'll see long build times on every code change + build. If done correctly,
-// code changes should be only a few seconds to build locally due to build cache.
-
-var morgan = require('morgan');
-// morgan provides easy logging for express, and by default it logs to stdout
-// which is a best practice in Docker. Friends don't let friends code their apps to
-// do app logging to files in containers.
-
-// Constants
+let express = require('express');
+let morgan = require('morgan');
 const PORT = process.env.PORT || 8080;
-// if you're not using docker-compose for local development, this will default to 8080
-// to prevent non-root permission problems with 80. Dockerfile is set to make this 80
-// because containers don't have that issue :)
 
-// Appi
-var app = express();
+let app = express();
 
 app.use(function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
@@ -29,8 +12,8 @@ app.use(function(req, res, next) {
 
 app.use(morgan('common'));
 
-app.get('/', function (req, res) {
-  res.send('Hello Docker World\n');
+app.post('/new/panel-data', function (req, res) {
+  res.send('Saving panel data');
 });
 
 app.get('/healthz', function (req, res) {
@@ -40,7 +23,7 @@ app.get('/healthz', function (req, res) {
   res.send('I am happy and healthy\n');
 });
 
-var server = app.listen(PORT, '0.0.0.0', function () {
+let server = app.listen(PORT, '0.0.0.0', function () {
   console.log('Webserver is ready');
 });
 

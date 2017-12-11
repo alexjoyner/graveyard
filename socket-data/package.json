@@ -11,6 +11,7 @@
     "dev-host": "nodemon --debug=5858"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "body-parser": "^1.18.2",
     "express": "^4.14.1",
     "http": "0.0.0",
