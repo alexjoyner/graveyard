@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ProjectDescriptor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <ProjectVersion>1.8.0.0</ProjectVersion>
+  <ProjectVersion>1.9.0.0</ProjectVersion>
   <ManagementLevel>FunctLevelMan9_0</ManagementLevel>
   <Name>M221-KSB-single-pump</Name>
-  <FullName>C:\Users\Admin\Documents\GitHub\ksb-single-panel\Program\M221-KSB-single-pump.smbp</FullName>
+  <FullName>C:\Users\rosco\Documents\GitHub\ksb-single-panel\Program\M221-KSB-single-pump.smbp</FullName>
   <SoftwareConfiguration>
     <Pous>
       <ProgramOrganizationUnits>
@@ -1271,6 +1271,97 @@
               </InstructionLineEntity>
             </InstructionLines>
             <Name>Set timer delays</Name>
+            <MainComment />
+            <Label />
+            <IsLadderSelected>true</IsLadderSelected>
+          </RungEntity>
+        </Rungs>
+      </ProgramOrganizationUnits>
+      <ProgramOrganizationUnits>
+        <Name>Logging Variables</Name>
+        <SectionNumber>6</SectionNumber>
+        <Rungs>
+          <RungEntity>
+            <LadderElements>
+              <LadderEntity>
+                <ElementType>Operation</ElementType>
+                <OperationExpression>%MW9 := %IW1.0</OperationExpression>
+                <Row>0</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>8</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>7</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>6</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>5</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>4</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>3</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>2</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>1</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>0</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>None</ElementType>
+                <Row>1</Row>
+                <Column>6</Column>
+                <ChosenConnection>None</ChosenConnection>
+              </LadderEntity>
+            </LadderElements>
+            <InstructionLines>
+              <InstructionLineEntity>
+                <InstructionLine>LD  1</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>[ %MW9 := %IW1.0 ]</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+            </InstructionLines>
+            <Name>Set logging variables</Name>
             <MainComment />
             <Label />
             <IsLadderSelected>true</IsLadderSelected>
@@ -2610,6 +2701,36 @@
         <Address>%MW8</Address>
         <Index>8</Index>
         <Symbol>VIBRATION_ALARM_DELAY_PRESET</Symbol>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%MW9</Address>
+        <Index>9</Index>
+        <Symbol>WINDING1_TEMP_LOG</Symbol>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%MW10</Address>
+        <Index>10</Index>
+        <Symbol>WINDING2_TEMP_LOG</Symbol>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%MW11</Address>
+        <Index>11</Index>
+        <Symbol>WINDING3_TEMP_LOG</Symbol>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%MW12</Address>
+        <Index>12</Index>
+        <Symbol>BOTTOM_BEARING_TEMP_LOG</Symbol>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%MW13</Address>
+        <Index>13</Index>
+        <Symbol>WINDING_TEMP_LOG</Symbol>
+      </MemoryWord>
+      <MemoryWord>
+        <Address>%MW14</Address>
+        <Index>14</Index>
+        <Symbol>VIBRATION_LOG</Symbol>
       </MemoryWord>
     </MemoryWords>
     <MemoryDoubleWords />
@@ -4125,10 +4246,12 @@
     </ProjectInformations>
     <ProjectProtection>
       <Active>false</Active>
+      <Password />
       <CanView>true</CanView>
     </ProjectProtection>
     <ApplicationProtection>
       <Active>false</Active>
+      <Password />
     </ApplicationProtection>
     <RemoteIpAddresses>
       <IpAddresses />
