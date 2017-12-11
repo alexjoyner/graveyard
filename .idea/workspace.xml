@@ -2,19 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f93a8bde-5ae7-474e-adf4-cd768480059b" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/panel-data-api/.vscode/launch.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/socket-data/.vscode/launch.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/.idea/dbnavigator.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/.idea/ui-service.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/.idea/workspace.xml" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui-service/src/features/socket-connection/connection.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docker-compose.yml" afterPath="$PROJECT_DIR$/docker-compose.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/panel-data-api/index.js" afterPath="$PROJECT_DIR$/panel-data-api/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/socket-data/index.js" afterPath="$PROJECT_DIR$/socket-data/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/socket-data/package-lock.json" afterPath="$PROJECT_DIR$/socket-data/package-lock.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/socket-data/package.json" afterPath="$PROJECT_DIR$/socket-data/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui-service/src/features/graph-block/index.js" afterPath="$PROJECT_DIR$/ui-service/src/features/graph-block/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui-service/src/features/graph/index.js" afterPath="$PROJECT_DIR$/ui-service/src/features/graph/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui-service/src/pages/Home/Home.js" afterPath="$PROJECT_DIR$/ui-service/src/pages/Home/Home.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,16 +21,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/socket-data/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Dockerfile" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/panel-data-api/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
@@ -48,21 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/socket-data/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="15" column="44" lean-forward="false" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Home.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ui-service/src/pages/Home/Home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="66">
+              <caret line="3" column="17" lean-forward="false" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -70,54 +43,51 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package-lock.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/socket-data/package-lock.json">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ui-service/src/features/graph/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1512850843852" expanded="true" signature="8742:8750" ph="{&quot;version&quot;: &quot;2.0.3&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="8767:8931" ph="{&quot;version&quot;: &quot;2.0.1&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="8952:9124" ph="{&quot;version&quot;: &quot;0.3.0&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="9141:9307" ph="{&quot;version&quot;: &quot;1.30.0&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="9327:9556" ph="{&quot;version&quot;: &quot;2.1.17&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="9513:9550" ph="{&quot;mime-db&quot;: &quot;1.30.0&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="9568:9722" ph="{&quot;version&quot;: &quot;2.0.0&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="9742:9912" ph="{&quot;version&quot;: &quot;0.6.1&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="9938:10120" ph="{&quot;version&quot;: &quot;0.0.3&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="10141:10370" ph="{&quot;version&quot;: &quot;2.3.0&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="10327:10364" ph="{&quot;ee-first&quot;: &quot;1.1.1&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="10387:10613" ph="{&quot;version&quot;: &quot;0.0.5&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="10565:10607" ph="{&quot;better-assert&quot;: &quot;1.0.2&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="10631:10859" ph="{&quot;version&quot;: &quot;0.0.5&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="10811:10853" ph="{&quot;better-assert&quot;: &quot;1.0.2&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="10871:11087" ph="{&quot;version&quot;: &quot;6.5.1&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="11105:11416" ph="{&quot;version&quot;: &quot;2.3.2&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="11285:11410" ph="{&quot;bytes&quot;: &quot;3.0.0&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="11437:11671" ph="{&quot;version&quot;: &quot;5.1.1&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="11695:11873" ph="{&quot;version&quot;: &quot;1.0.3&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="11892:12256" ph="{&quot;version&quot;: &quot;2.0.4&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="12074:12250" ph="{&quot;debug&quot;: &quot;2.6.9&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="12283:12467" ph="{&quot;version&quot;: &quot;1.1.1&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="12493:13122" ph="{&quot;version&quot;: &quot;2.0.4&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="12689:13116" ph="{&quot;backo2&quot;: &quot;1.0.2&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="13148:13482" ph="{&quot;version&quot;: &quot;3.1.2&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="13344:13476" ph="{&quot;component-emitter&quot;: &quot;1.2.1&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="13500:13728" ph="{&quot;version&quot;: &quot;1.4.0&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="13746:13912" ph="{&quot;version&quot;: &quot;0.1.4&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="13929:14187" ph="{&quot;version&quot;: &quot;1.6.15&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="14109:14181" ph="{&quot;media-typer&quot;: &quot;0.3.0&quot;...}" />
-                <marker date="1512850843852" expanded="true" signature="14203:14427" ph="{&quot;version&quot;: &quot;1.1.1&quot;...}" />
-              </folding>
+            <state relative-caret-position="198">
+              <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Home.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ui-service/src/pages/Home/Home.css">
+      <file leaf-file-name="connection.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ui-service/src/features/socket-connection/connection.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="1" column="28" lean-forward="false" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
+            <state relative-caret-position="264">
+              <caret line="12" column="10" lean-forward="true" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ui-service/src/features/graph-block/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ui-service/src/features/graph/styles.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ui-service/src/features/graph/test.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="14" column="68" lean-forward="false" selection-start-line="14" selection-start-column="68" selection-end-line="14" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -133,31 +103,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/panel-data-api/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="18" column="26" lean-forward="false" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+            <state relative-caret-position="330">
+              <caret line="15" column="25" lean-forward="false" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/socket-data/.gitignore">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ui-service/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LICENSE" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/panel-data-api/LICENSE">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="330">
+              <caret line="16" column="16" lean-forward="false" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -186,8 +146,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/modbus-service/ModbusClient.ts" />
-        <option value="$PROJECT_DIR$/ui-service/src/pages/Home/_.pcss" />
         <option value="$PROJECT_DIR$/ui-service/src/components/Charts/Chart.js" />
         <option value="$PROJECT_DIR$/ui-service/webpack.base.js" />
         <option value="$PROJECT_DIR$/ui-service-master/src/components/Charts/Chart.js" />
@@ -212,7 +170,6 @@
         <option value="$PROJECT_DIR$/ui-service/src/features/graph/test.js" />
         <option value="$PROJECT_DIR$/ui-service/__mocks__/c3.js" />
         <option value="$PROJECT_DIR$/ui-service/src/pages/Home/Home.css" />
-        <option value="$PROJECT_DIR$/ui-service/src/features/graph/index.js" />
         <option value="$PROJECT_DIR$/ui-service/src/features/dash-body/styles.css" />
         <option value="$PROJECT_DIR$/ui-service/src/features/layout/index.js" />
         <option value="$PROJECT_DIR$/ui-service/src/setupTests.js" />
@@ -233,10 +190,13 @@
         <option value="$PROJECT_DIR$/panel-data-api/package.json" />
         <option value="$PROJECT_DIR$/socket-data/package.json" />
         <option value="$PROJECT_DIR$/socket-data/index.html" />
-        <option value="$PROJECT_DIR$/ui-service/src/pages/Home/Home.js" />
-        <option value="$PROJECT_DIR$/panel-data-api/index.js" />
         <option value="$PROJECT_DIR$/socket-data/index.js" />
         <option value="$PROJECT_DIR$/docker-compose.yml" />
+        <option value="$PROJECT_DIR$/panel-data-api/index.js" />
+        <option value="$PROJECT_DIR$/ui-service/src/features/socket-connection/connection.js" />
+        <option value="$PROJECT_DIR$/ui-service/src/pages/Home/Home.js" />
+        <option value="$PROJECT_DIR$/ui-service/src/features/graph-block/index.js" />
+        <option value="$PROJECT_DIR$/ui-service/src/features/graph/index.js" />
       </list>
     </option>
   </component>
@@ -385,6 +345,63 @@
               <item name="ees-datalogger" type="b2602c69:ProjectViewProjectNode" />
               <item name="ees-datalogger" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ees-datalogger" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ees-datalogger" type="462c0819:PsiDirectoryNode" />
+              <item name="ui-service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ees-datalogger" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ees-datalogger" type="462c0819:PsiDirectoryNode" />
+              <item name="ui-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ees-datalogger" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ees-datalogger" type="462c0819:PsiDirectoryNode" />
+              <item name="ui-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="features" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ees-datalogger" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ees-datalogger" type="462c0819:PsiDirectoryNode" />
+              <item name="ui-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="features" type="462c0819:PsiDirectoryNode" />
+              <item name="graph" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ees-datalogger" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ees-datalogger" type="462c0819:PsiDirectoryNode" />
+              <item name="ui-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="features" type="462c0819:PsiDirectoryNode" />
+              <item name="graph-block" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ees-datalogger" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ees-datalogger" type="462c0819:PsiDirectoryNode" />
+              <item name="ui-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="features" type="462c0819:PsiDirectoryNode" />
+              <item name="socket-connection" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ees-datalogger" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ees-datalogger" type="462c0819:PsiDirectoryNode" />
+              <item name="ui-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ees-datalogger" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ees-datalogger" type="462c0819:PsiDirectoryNode" />
+              <item name="ui-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="Home" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -435,7 +452,7 @@
     <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
       <option name="cucumberJsArguments" value="" />
       <option name="executablePath" />
-      <option name="filePath" value="C:\Users\rosco\Documents\GitHub\ees-datalogger\ui-service\src\features\dash-body" />
+      <option name="filePath" value="C:\Users\rosco\Documents\GitHub\ees-datalogger\ui-service\src\features\socket-connection" />
     </configuration>
     <configuration name="build (1)" type="js.build_tools.npm" factoryName="npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/ui-service-master/package.json" />
@@ -529,15 +546,16 @@
       <workItem from="1512326935929" duration="26464000" />
       <workItem from="1512743164040" duration="2921000" />
       <workItem from="1512752608377" duration="20000" />
-      <workItem from="1512788047239" duration="21942000" />
+      <workItem from="1512788047239" duration="24990000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105525000" />
+    <option name="totallyTimeSpent" value="108573000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -548,7 +566,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.3347826" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="3107" y="31" width="732" height="1008" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22391304" sideWeight="0.49789253" order="9" side_tool="false" content_ui="tabs" x="2473" y="31" width="1366" height="1008" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14646997" sideWeight="0.45652175" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14646997" sideWeight="0.45652175" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32826087" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -580,22 +598,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ui-service/src/features/graph-block/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="1" lean-forward="false" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service/src/features/layout/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ui-service/src/features/layout/test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
@@ -674,14 +676,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
           <caret line="16" column="20" lean-forward="false" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service/src/features/graph-block/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="23" column="22" lean-forward="false" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -881,34 +875,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="16" column="16" lean-forward="false" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ui-service/src/client.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="12" column="17" lean-forward="true" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service/src/features/graph/test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="14" column="68" lean-forward="false" selection-start-line="14" selection-start-column="68" selection-end-line="14" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service/src/features/graph/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="770">
-          <caret line="37" column="46" lean-forward="false" selection-start-line="37" selection-start-column="46" selection-end-line="37" selection-end-column="46" />
           <folding />
         </state>
       </provider>
@@ -958,16 +928,6 @@
             <marker date="1512850843852" expanded="true" signature="13929:14187" ph="{&quot;version&quot;: &quot;1.6.15&quot;...}" />
             <marker date="1512850843852" expanded="true" signature="14109:14181" ph="{&quot;media-typer&quot;: &quot;0.3.0&quot;...}" />
             <marker date="1512850843852" expanded="true" signature="14203:14427" ph="{&quot;version&quot;: &quot;1.1.1&quot;...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui-service/src/pages/Home/Home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1030,8 +990,66 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/panel-data-api/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="18" column="26" lean-forward="false" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+        <state relative-caret-position="330">
+          <caret line="15" column="25" lean-forward="false" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui-service/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="16" column="16" lean-forward="false" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui-service/src/features/graph/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui-service/src/features/graph/test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="14" column="68" lean-forward="false" selection-start-line="14" selection-start-column="68" selection-end-line="14" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui-service/src/pages/Home/Home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="17" lean-forward="false" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui-service/src/features/socket-connection/connection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="10" lean-forward="true" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui-service/src/features/graph-block/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui-service/src/features/graph/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
           <folding />
         </state>
       </provider>

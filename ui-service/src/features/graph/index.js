@@ -1,6 +1,7 @@
 import React from 'react';
 import 'c3/c3.css';
 import {ErrorBoundary} from "../error-boundary/index";
+import {connect} from "../socket-connection/connection";
 let c3;
 if(typeof window !== 'undefined'){
     require('d3');
@@ -11,23 +12,31 @@ export class Graph extends React.Component {
     constructor(props) {
         super(props);
         this.chart = {};
+        connect.getLogsSubscription((err, log) => {
+            console.log('log returned to feature/graph');
+            this.chart.load({
+                columns: [['Data', log.value]],
+            });
+        })
     }
     componentDidMount() {
-        this.updateChart();
+        this.initChart();
     }
     shouldComponentUpdate(nextProps) {
-        this.chart.load({
-            columns: nextProps.chartOpts.data.columns,
-        });
+
         return false;
     }
     componentDidUpdate() {
-        this.updateChart();
+        this.initChart();
     }
 
-    updateChart() {
+    initChart() {
         this.chart = c3.generate({
             bindto: `#${this.props.chartID}`,
+            data: {
+                type: 'gauge',
+                columns: [['Data', 76]],
+            },
             ...this.props.chartOpts,
         });
     }
@@ -35,7 +44,7 @@ export class Graph extends React.Component {
     render() {
         return (
             <ErrorBoundary>
-                <div id={this.props.chartID} ></div>
+                <div id={this.props.chartID} />
             </ErrorBoundary>
         );
     }

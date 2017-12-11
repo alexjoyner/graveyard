@@ -23,7 +23,7 @@ app.get('/healthz', function (req, res) {
   res.send('I am happy and healthy\n');
 });
 
-let server = app.listen(PORT, '0.0.0.0', function () {
+let server = app.listen(PORT, function () {
   console.log('Webserver is ready');
 });
 
