@@ -27,7 +27,7 @@ app.post('/newlog', (req, res) => {
 io.on('connection', function (socket) {
     console.log(socket.id + ' New Connection');
     socket.on('new log', (log) => {
-        socket.emit('logs', log);
+        io.sockets.emit('add log', log);
     });
     socket.on('disconnect', () => {
         console.log(socket.id + ' Disconnected')

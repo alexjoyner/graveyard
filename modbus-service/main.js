@@ -1,6 +1,13 @@
 let express = require('express'),
     app = express();
 let IO_DataService = require('./src/IO_DataService');
+let io = require('socket.io-client');
+let socket = io('http://localhost:3000');
+console.log('Starting Socket');
+socket.on('connect', function(){
+    console.log('Connected to socket.io');
+});
+
 
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -26,7 +33,7 @@ let logNewPoint = function (callback) {
         //     callback(null, data);
         // });
     });
-}
+};
 let runEES_Logger = function () {
     console.log('Logging');
     logNewPoint(function (err, data) {
@@ -42,6 +49,7 @@ runEES_Logger();
 app.get('/', function (req, res) {
     logNewPoint(function(err, data) {
         if (err) throw err;
+        socket.emit('new log', {value: data});
         res.send({"Data": data});
     });
 });
