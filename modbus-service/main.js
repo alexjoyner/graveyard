@@ -1,8 +1,13 @@
-var express = require('express'),
+let express = require('express'),
     app = express();
-var fs = require('fs');
-var dataService = require('./historicalDataService');
-var IO_DataService = require('./IO_DataService');
+let IO_DataService = require('./src/IO_DataService');
+let io = require('socket.io-client');
+let socket = io('http://localhost:3000');
+console.log('Starting Socket');
+socket.on('connect', function(){
+    console.log('Connected to socket.io');
+});
+
 
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -16,19 +21,20 @@ app.use(function (req, res, next) {
     next();
 });
 
-var logNewPoint = function (callback) {
+let logNewPoint = function (callback) {
     IO_DataService.fetchIO(function (err, data) {
         if (err) return callback(err);
-        dataService.saveNewDataSetToCurrentHistory({
-            'timestamp': new Date(),
-            'data': data
-        }, function (err, data) {
-            if (err) return callback(err);
-            callback(null, data);
-        });
+        callback(null, data);
+        // dataService.saveNewDataSetToCurrentHistory({
+        //     'timestamp': new Date(),
+        //     'data': data
+        // }, function (err, data) {
+        //     if (err) return callback(err);
+        //     callback(null, data);
+        // });
     });
-}
-var runEES_Logger = function () {
+};
+let runEES_Logger = function () {
     console.log('Logging');
     logNewPoint(function (err, data) {
         if(err && err !== 1) throw err;
@@ -38,14 +44,16 @@ var runEES_Logger = function () {
         }, 10000)
     })
 };
-//runEES_Logger();
+runEES_Logger();
 
 app.get('/', function (req, res) {
     logNewPoint(function(err, data) {
         if (err) throw err;
+        socket.emit('new log', {value: data});
+        res.send({"Data": data});
     });
 });
 
-app.listen(3000, function () {
-    console.log('Modbus Connect up and running');
+app.listen(80, function () {
+    console.log('Modbus Connect up and running: Port 80');
 });

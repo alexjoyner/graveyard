@@ -9,10 +9,6 @@ export class GraphBlock extends React.Component {
     constructor(props) {
         super(props);
         this.chartOptions = {
-            data: {
-                columns: [['Data', 76]],
-                type: 'gauge',
-            },
             gauge: {
                 label: {
                     format: value => `${value}°F`,
@@ -48,33 +44,16 @@ export class GraphBlock extends React.Component {
                 show: true
             }
         };
-        this.fetchTest = async () => {
-            try{
-                let data = await axios.get('http://localhost:9000');
-                console.log('Data: ', data);
-            }catch (e){
-            	console.log(e);
-            }
-        }
     }
 
     render() {
         return (
             <div className={'GraphBody'}>
-                <button onClick={() => this.fetchTest()}>Fetch Test</button>
                 <div className={'pure-g'}>
                     <div className={'pure-u-1-1'}>
                         <Graph
                             chartID={'chart1'}
                             chartOpts={this.chartOptions}/>
-                    </div>
-                </div>
-                <div className={'pure-g'}>
-                    <div className={'pure-u-1-1'}>
-                        <Graph
-                            className={'lineChart'}
-                            chartID={'chart2'}
-                            chartOpts={this.subLineChartOptions}/>
                     </div>
                 </div>
             </div>

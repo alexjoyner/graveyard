@@ -1,29 +1,47 @@
 let express = require('express');
 let morgan = require('morgan');
+let bodyParser = require('body-parser');
+let axios = require('axios');
 const PORT = process.env.PORT || 8080;
 
+// App
 let app = express();
+let server = require('http').Server(app);
+let io = require('socket.io')(server);
+app.use(morgan('common'));
+app.use(bodyParser.json());
 
-app.use(function(req, res, next) {
+// CORS
+app.use((req, res, next) => {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	next();
 });
 
-app.use(morgan('common'));
-
-app.post('/new/panel-data', function (req, res) {
-  res.send('Saving panel data');
+app.post('/newlog', (req, res) => {
+    io.sockets.emit('add log', req.body);
+    axios.post('http://panel-data-api/new/panel-data', req.body);
+    res.send(req.body).end();
 });
 
-app.get('/healthz', function (req, res) {
+io.on('connection', function (socket) {
+    console.log(socket.id + ' New Connection');
+    socket.on('new log', (log) => {
+        io.sockets.emit('add log', log);
+    });
+    socket.on('disconnect', () => {
+        console.log(socket.id + ' Disconnected')
+    })
+});
+
+app.get('/healthz',(req, res) =>{
 	// do app logic here to determine if app is truly healthy
 	// you should return 200 if healthy, and anything else will fail
 	// if you want, you should be able to restrict this to localhost (include ipv4 and ipv6)
   res.send('I am happy and healthy\n');
 });
 
-let server = app.listen(PORT, function () {
+server.listen(PORT, () => {
   console.log('Webserver is ready');
 });
 
