@@ -6,17 +6,15 @@ client.setTimeout(1000);
 
 module.exports = {
     getAi: function(startingAddress, numAddressesAfterStart, callback){
-        return callback(null, 58);
         if(client.isOpen){
-            // client.readInputRegisters(startingAddress, numAddressesAfterStart)
-            //     .then(function (rawData) {
-            //         //var formattedData = rawData.data;
-            //         console.log(JSON.stringify(rawData));
-            //         callback('NOT SET YET', null)
-            //     })
-            //     .catch(function(err){
-            //         callback(err, null)
-            //     });
+            client.readInputRegisters(startingAddress, numAddressesAfterStart)
+                .then(function (rawData) {
+                    let formattedData = rawData.data;
+                    callback(null, formattedData)
+                })
+                .catch(function(err){
+                    callback(err, null)
+                });
         }else{
             // It's ok, the client just hasn't connected yet.
             callback(1);

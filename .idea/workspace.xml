@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f93a8bde-5ae7-474e-adf4-cd768480059b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modbus-service/docker-compose.yml" afterPath="$PROJECT_DIR$/modbus-service/docker-compose.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/socket-data/index.js" afterPath="$PROJECT_DIR$/socket-data/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui-service/src/features/graph-block/index.js" afterPath="$PROJECT_DIR$/ui-service/src/features/graph-block/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modbus-service/main.js" afterPath="$PROJECT_DIR$/modbus-service/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modbus-service/src/IO_DataService.js" afterPath="$PROJECT_DIR$/modbus-service/src/IO_DataService.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modbus-service/src/JS_ModbusService.js" afterPath="$PROJECT_DIR$/modbus-service/src/JS_ModbusService.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,28 +21,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modbus-service/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="15" column="3" lean-forward="true" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ui-service/src/features/graph/test.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="14" column="68" lean-forward="false" selection-start-line="14" selection-start-column="68" selection-end-line="14" selection-end-column="68" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ui-service/src/features/graph/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+            <state relative-caret-position="220">
+              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -53,8 +32,17 @@
         <entry file="file://$PROJECT_DIR$/ui-service/src/features/graph-block/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="498">
-              <caret line="46" column="5" lean-forward="true" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
-              <folding />
+              <caret line="46" column="5" lean-forward="false" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+              <folding>
+                <marker date="1512969235074" expanded="true" signature="176:1879" ph="{...}" />
+                <marker date="1512969235074" expanded="true" signature="202:268" ph="{...}" />
+                <marker date="1512969235074" expanded="true" signature="254:268" ph="{...}" />
+                <marker date="1512969235074" expanded="true" signature="1777:1791" ph="&lt;Graph/&gt;" />
+                <marker date="1512969235074" expanded="true" signature="1777:1818" ph="&lt;div/&gt;" />
+                <marker date="1512969235074" expanded="true" signature="1777:1841" ph="&lt;div/&gt;" />
+                <marker date="1512969235074" expanded="true" signature="1777:1860" ph="&lt;div/&gt;" />
+                <marker date="1512969235074" expanded="true" signature="1777:1877" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -62,18 +50,38 @@
       <file leaf-file-name="Dockerfile" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modbus-service/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="8" column="22" lean-forward="false" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+            <state relative-caret-position="638">
+              <caret line="29" column="50" lean-forward="false" selection-start-line="29" selection-start-column="50" selection-end-line="29" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="docker-compose.yml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/modbus-service/docker-compose.yml">
+      <file leaf-file-name="IO_DataService.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modbus-service/src/IO_DataService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="27" column="19" lean-forward="false" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+            <state relative-caret-position="220">
+              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="historicalDataService.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modbus-service/src/historicalDataService.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="7" column="18" lean-forward="false" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JS_ModbusService.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/modbus-service/src/JS_ModbusService.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="506">
+              <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -83,8 +91,11 @@
         <entry file="file://$PROJECT_DIR$/modbus-service/package.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="352">
-              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-              <folding />
+              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding>
+                <marker date="1512969235031" expanded="true" signature="0:301" ph="{&quot;name&quot;: &quot;modbus-connect&quot;...}" />
+                <marker date="1512969235031" expanded="true" signature="294:299" ph="{&quot;nodemon&quot;: &quot;^1.11.0&quot;...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -189,15 +200,15 @@
         <option value="$PROJECT_DIR$/docker-compose.yml" />
         <option value="$PROJECT_DIR$/docker-compose-modbus.yml" />
         <option value="$PROJECT_DIR$/modbus-service/src/historicalDataService.js" />
-        <option value="$PROJECT_DIR$/modbus-service/src/IO_DataService.js" />
-        <option value="$PROJECT_DIR$/modbus-service/src/JS_ModbusService.js" />
         <option value="$PROJECT_DIR$/modbus-service/.gitignore" />
         <option value="$PROJECT_DIR$/modbus-service/package.json" />
-        <option value="$PROJECT_DIR$/modbus-service/main.js" />
         <option value="$PROJECT_DIR$/socket-data/index.js" />
         <option value="$PROJECT_DIR$/ui-service/src/features/graph-block/index.js" />
         <option value="$PROJECT_DIR$/modbus-service/Dockerfile" />
         <option value="$PROJECT_DIR$/modbus-service/docker-compose.yml" />
+        <option value="$PROJECT_DIR$/modbus-service/src/JS_ModbusService.js" />
+        <option value="$PROJECT_DIR$/modbus-service/src/IO_DataService.js" />
+        <option value="$PROJECT_DIR$/modbus-service/main.js" />
       </list>
     </option>
   </component>
@@ -352,6 +363,12 @@
               <item name="ees-datalogger" type="462c0819:PsiDirectoryNode" />
               <item name="modbus-service" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ees-datalogger" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ees-datalogger" type="462c0819:PsiDirectoryNode" />
+              <item name="modbus-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -372,18 +389,18 @@
     <property name="node.js.selected.package.standard" value="C:\Users\rosco\Documents\GitHub\EES_Logger\ui-service" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\rosco\Documents\GitHub\ees-datalogger\socket-service" />
-      <recent name="C:\Users\rosco\Documents\GitHub\ees-datalogger\ui-service" />
-      <recent name="C:\Users\rosco\Documents\GitHub\EES_Logger" />
-      <recent name="C:\Users\rosco\Documents\GitHub\EES_Logger\ui-service\src" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\rosco\Documents\GitHub\ees-datalogger\modbus-service" />
       <recent name="C:\Users\rosco\Documents\GitHub\ees-datalogger\modbus-service\src" />
       <recent name="C:\Users\rosco\Documents\GitHub\ees-datalogger\ui-service\src" />
       <recent name="C:\Users\rosco\Documents\GitHub\ees-datalogger\ui-service\src\pages\_App" />
       <recent name="C:\Users\rosco\Documents\GitHub\ees-datalogger\ui-service\src\assets" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\rosco\Documents\GitHub\ees-datalogger\socket-service" />
+      <recent name="C:\Users\rosco\Documents\GitHub\ees-datalogger\ui-service" />
+      <recent name="C:\Users\rosco\Documents\GitHub\EES_Logger" />
+      <recent name="C:\Users\rosco\Documents\GitHub\EES_Logger\ui-service\src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -501,7 +518,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116068000" />
+    <option name="totallyTimeSpent" value="118401000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -522,12 +539,48 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5021075" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14646997" sideWeight="0.54347825" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.3347826" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="3107" y="31" width="732" height="1008" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22391304" sideWeight="0.49789253" order="9" side_tool="false" content_ui="tabs" x="2473" y="31" width="1366" height="1008" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14646997" sideWeight="0.45652175" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32826087" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5021075" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24604847" sideWeight="0.5261438" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3347826" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32826087" sideWeight="0.49789253" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24604847" sideWeight="0.4738562" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -544,7 +597,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -552,7 +604,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -560,7 +611,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="484">
           <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -585,7 +635,6 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="0">
             <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding />
           </first_editor>
           <second_editor />
         </state>
@@ -595,7 +644,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -603,7 +651,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -611,26 +658,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/socket-service/package-lock.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-198">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/socket-data/.vscode/launch.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/socket-service/package-lock.json" />
+    <entry file="file://$PROJECT_DIR$/socket-data/.vscode/launch.json" />
     <entry file="file://$PROJECT_DIR$/ui-service/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -651,18 +683,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/socket-data/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="7" lean-forward="false" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/socket-data/index.html" />
     <entry file="file://$PROJECT_DIR$/ui-service/src/server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="388">
@@ -680,7 +704,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="15" column="6" lean-forward="false" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -688,7 +711,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="4" column="30" lean-forward="false" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -696,7 +718,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="12" column="17" lean-forward="true" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -704,7 +725,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
           <caret line="1" column="28" lean-forward="false" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -712,56 +732,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1512850843852" expanded="true" signature="8742:8750" ph="{&quot;version&quot;: &quot;2.0.3&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="8767:8931" ph="{&quot;version&quot;: &quot;2.0.1&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="8952:9124" ph="{&quot;version&quot;: &quot;0.3.0&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="9141:9307" ph="{&quot;version&quot;: &quot;1.30.0&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="9327:9556" ph="{&quot;version&quot;: &quot;2.1.17&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="9513:9550" ph="{&quot;mime-db&quot;: &quot;1.30.0&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="9568:9722" ph="{&quot;version&quot;: &quot;2.0.0&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="9742:9912" ph="{&quot;version&quot;: &quot;0.6.1&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="9938:10120" ph="{&quot;version&quot;: &quot;0.0.3&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="10141:10370" ph="{&quot;version&quot;: &quot;2.3.0&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="10327:10364" ph="{&quot;ee-first&quot;: &quot;1.1.1&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="10387:10613" ph="{&quot;version&quot;: &quot;0.0.5&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="10565:10607" ph="{&quot;better-assert&quot;: &quot;1.0.2&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="10631:10859" ph="{&quot;version&quot;: &quot;0.0.5&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="10811:10853" ph="{&quot;better-assert&quot;: &quot;1.0.2&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="10871:11087" ph="{&quot;version&quot;: &quot;6.5.1&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="11105:11416" ph="{&quot;version&quot;: &quot;2.3.2&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="11285:11410" ph="{&quot;bytes&quot;: &quot;3.0.0&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="11437:11671" ph="{&quot;version&quot;: &quot;5.1.1&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="11695:11873" ph="{&quot;version&quot;: &quot;1.0.3&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="11892:12256" ph="{&quot;version&quot;: &quot;2.0.4&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="12074:12250" ph="{&quot;debug&quot;: &quot;2.6.9&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="12283:12467" ph="{&quot;version&quot;: &quot;1.1.1&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="12493:13122" ph="{&quot;version&quot;: &quot;2.0.4&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="12689:13116" ph="{&quot;backo2&quot;: &quot;1.0.2&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="13148:13482" ph="{&quot;version&quot;: &quot;3.1.2&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="13344:13476" ph="{&quot;component-emitter&quot;: &quot;1.2.1&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="13500:13728" ph="{&quot;version&quot;: &quot;1.4.0&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="13746:13912" ph="{&quot;version&quot;: &quot;0.1.4&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="13929:14187" ph="{&quot;version&quot;: &quot;1.6.15&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="14109:14181" ph="{&quot;media-typer&quot;: &quot;0.3.0&quot;...}" />
-            <marker date="1512850843852" expanded="true" signature="14203:14427" ph="{&quot;version&quot;: &quot;1.1.1&quot;...}" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/panel-data-api/.vscode/launch.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/panel-data-api/.vscode/launch.json" />
     <entry file="file://$PROJECT_DIR$/panel-data-api/LICENSE">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -769,7 +747,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -777,7 +754,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -785,7 +761,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -809,7 +784,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -823,54 +797,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modbus-service/Server.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="20" column="20" lean-forward="true" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modbus-service/ModbusClient.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logger-service/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modbus-service/src/JS_ModbusService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="40" lean-forward="false" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modbus-service/src/IO_DataService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modbus-service/src/historicalDataService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="9" lean-forward="false" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/modbus-service/Server.ts" />
+    <entry file="file://$PROJECT_DIR$/modbus-service/ModbusClient.ts" />
+    <entry file="file://$PROJECT_DIR$/logger-service/server.js" />
     <entry file="file://$PROJECT_DIR$/modbus-service/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="455">
@@ -907,7 +836,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
           <caret line="14" column="1" lean-forward="false" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -915,7 +843,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -930,8 +857,11 @@
     <entry file="file://$PROJECT_DIR$/ui-service/src/features/graph/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
-          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding />
+          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding>
+            <marker date="1512969235076" expanded="true" signature="1140:1170" ph="&lt;ErrorBoundary/&gt;" />
+            <marker date="1512969235076" expanded="true" signature="1140:1187" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -948,8 +878,17 @@
     <entry file="file://$PROJECT_DIR$/ui-service/src/features/graph-block/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="498">
-          <caret line="46" column="5" lean-forward="true" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
-          <folding />
+          <caret line="46" column="5" lean-forward="false" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+          <folding>
+            <marker date="1512969235074" expanded="true" signature="176:1879" ph="{...}" />
+            <marker date="1512969235074" expanded="true" signature="202:268" ph="{...}" />
+            <marker date="1512969235074" expanded="true" signature="254:268" ph="{...}" />
+            <marker date="1512969235074" expanded="true" signature="1777:1791" ph="&lt;Graph/&gt;" />
+            <marker date="1512969235074" expanded="true" signature="1777:1818" ph="&lt;div/&gt;" />
+            <marker date="1512969235074" expanded="true" signature="1777:1841" ph="&lt;div/&gt;" />
+            <marker date="1512969235074" expanded="true" signature="1777:1860" ph="&lt;div/&gt;" />
+            <marker date="1512969235074" expanded="true" signature="1777:1877" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -975,23 +914,18 @@
     <entry file="file://$PROJECT_DIR$/modbus-service/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modbus-service/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" column="3" lean-forward="true" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
-          <folding />
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <marker date="1512969235031" expanded="true" signature="0:301" ph="{&quot;name&quot;: &quot;modbus-connect&quot;...}" />
+            <marker date="1512969235031" expanded="true" signature="294:299" ph="{&quot;nodemon&quot;: &quot;^1.11.0&quot;...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modbus-service/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="22" lean-forward="false" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+        <state relative-caret-position="638">
+          <caret line="29" column="50" lean-forward="false" selection-start-line="29" selection-start-column="50" selection-end-line="29" selection-end-column="50" />
           <folding />
         </state>
       </provider>
@@ -1000,6 +934,37 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="594">
           <caret line="27" column="19" lean-forward="false" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modbus-service/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modbus-service/src/IO_DataService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modbus-service/src/historicalDataService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="18" lean-forward="false" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modbus-service/src/JS_ModbusService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>

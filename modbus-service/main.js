@@ -38,10 +38,13 @@ let runEES_Logger = function () {
     console.log('Logging');
     logNewPoint(function (err, data) {
         if(err && err !== 1) throw err;
-        console.log('Logged Data: ' + JSON.stringify(data));
+        console.log(data);
+        if(data){
+            socket.emit('new log', {value: data[1]});
+        }
         setTimeout(function () {
             runEES_Logger();
-        }, 10000)
+        }, 3000)
     })
 };
 runEES_Logger();
@@ -49,7 +52,8 @@ runEES_Logger();
 app.get('/', function (req, res) {
     logNewPoint(function(err, data) {
         if (err) throw err;
-        socket.emit('new log', {value: data});
+        console.log(typeof data);
+        socket.emit('new log', {value: data[1]});
         res.send({"Data": data});
     });
 });
