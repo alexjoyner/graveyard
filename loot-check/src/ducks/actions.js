@@ -1,5 +1,4 @@
-import {DEPOSIT, SET_BALANCE, WITHDRAW} from "./constants";
-
+import {DEPOSIT, SET_BALANCE, WITHDRAW} from "./types";
 
 //actions
 export const setBalance = balance => {

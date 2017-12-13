@@ -1,4 +1,5 @@
-import {DEPOSIT, SET_BALANCE, WITHDRAW} from "../ducks/constants";
+import {WITHDRAW} from "./types";
+import {DEPOSIT, SET_BALANCE} from "./types";
 
 const balance = (state = 0, action) => {
     switch(action.type){
