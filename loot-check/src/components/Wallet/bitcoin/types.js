@@ -1,0 +1,1 @@
+export const FETCH_BITCOIN = 'FETCH_BITCOIN';
