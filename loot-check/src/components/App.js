@@ -1,9 +1,14 @@
 import React, {Component} from 'react';
+import Wallet from './Wallet';
 
 export default class App extends Component {
-    render(){
+    render() {
         return (
-            <div><h2>Loot Check</h2></div>
+            <div>
+                <h2>Loot Check</h2>
+                <hr/>
+                <Wallet/>
+            </div>
         )
     }
 }

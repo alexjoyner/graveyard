@@ -6,5 +6,8 @@ describe('App', () => {
    const component = shallow(<App/>);
    it('renders properly', () => {
        expect(component).toMatchSnapshot();
+   });
+   it('contains a connected wallet component', () => {
+       expect(component.find('Connect(Wallet)').exists()).toBe(true);
    })
 });
