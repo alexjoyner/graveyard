@@ -2,8 +2,8 @@ import * as actions from './actions';
 import {SET_BALANCE} from "./types";
 import {DEPOSIT} from "./types";
 import {WITHDRAW} from "./types";
-import balanceReducer from './reducer';
-import balanceReducer2 from './reducer';
+import {balance as balanceReducer} from './reducer';
+import {balance as balanceReducer2} from './reducer';
 
 describe('balance actions', () => {
     it('creates an action to set balance', () => {

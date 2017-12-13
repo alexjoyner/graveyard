@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Wallet from './Wallet/Wallet';
+import Wallet from '../Wallet/Wallet';
 
 export default class App extends Component {
     render() {
