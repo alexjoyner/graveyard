@@ -1,16 +1,24 @@
-import {WITHDRAW} from "./types";
-import {DEPOSIT, SET_BALANCE} from "./types";
+import {WITHDRAW, DEPOSIT, SET_BALANCE} from "./types";
+import {read_cookie, bake_cookie} from 'sfcookies';
+
+const BALANCE_COOKIE = 'BALANCE_COOKIE'
 
 const balance = (state = 0, action) => {
+    let balance;
     switch(action.type){
         case SET_BALANCE:
-            return action.balance;
+            balance = action.balance;
+            break;
         case DEPOSIT:
-            return state + action.deposit;
+            balance = state + action.deposit;
+            break;
         case WITHDRAW:
-            return state - action.withdrawal;
+            balance = state - action.withdrawal;
+            break;
         default:
-            return state
+            balance = parseInt(read_cookie(BALANCE_COOKIE), 10) || state;
     }
+    bake_cookie(BALANCE_COOKIE, balance);
+    return balance;
 };
 export default balance;

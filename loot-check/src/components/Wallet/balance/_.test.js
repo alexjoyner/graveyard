@@ -3,6 +3,7 @@ import {SET_BALANCE} from "./types";
 import {DEPOSIT} from "./types";
 import {WITHDRAW} from "./types";
 import balanceReducer from './reducer';
+import balanceReducer2 from './reducer';
 
 describe('balance actions', () => {
     it('creates an action to set balance', () => {
@@ -23,12 +24,19 @@ describe('balance actions', () => {
 });
 
 describe('balance reducer', () => {
-    it('sets a balance', () => {
+    describe('when initializing', () => {
         const balance = 10;
-        expect(balanceReducer(undefined, {
-            type: SET_BALANCE,
-            balance
-        })).toEqual(balance);
+        it('sets a balance', () => {
+            expect(balanceReducer(undefined, {
+                type: SET_BALANCE,
+                balance
+            })).toEqual(balance);
+        });
+        describe('if re-initializing', () => {
+            it('reads values from cookies', () => {
+                expect(balanceReducer2(undefined, {})).toEqual(balance);
+            })
+        })
     });
     it('deposits into balance', () => {
         const deposit = 10;
