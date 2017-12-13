@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import fetchMock from 'fetch-mock';
 import { FETCH_BITCOIN } from './types';
 import { fetchBitcoin } from './actions';
-import bitcoinReducer from './reducer';
+import {bitcoin as bitcoinReducer} from './reducer';
 
 describe('bitcoin actions', () => {
 

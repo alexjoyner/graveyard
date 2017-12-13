@@ -1,6 +1,6 @@
 import {FETCH_BITCOIN} from "./types";
 
-const bitcoin = (state = {}, action) => {
+export const bitcoin = (state = {}, action) => {
     switch(action.type){
         case FETCH_BITCOIN:
             return action.bitcoin;
@@ -8,6 +8,3 @@ const bitcoin = (state = {}, action) => {
             return state;
     }
 };
-
-
-export default bitcoin;

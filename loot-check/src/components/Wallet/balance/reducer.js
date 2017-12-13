@@ -1,7 +1,7 @@
 import {WITHDRAW, DEPOSIT, SET_BALANCE} from "./types";
 import {read_cookie, bake_cookie} from 'sfcookies';
 
-const BALANCE_COOKIE = 'BALANCE_COOKIE'
+const BALANCE_COOKIE = 'BALANCE_COOKIE';
 
 const balance = (state = 0, action) => {
     let balance;
