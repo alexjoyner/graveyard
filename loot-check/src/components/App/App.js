@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Wallet from '../Wallet/Wallet';
 import Loot from '../Loot/Loot';
 
