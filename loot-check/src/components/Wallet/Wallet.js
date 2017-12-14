@@ -25,4 +25,6 @@ export class Wallet extends Component {
     }
 }
 
-export default connect(state => {return {balance: state.balance}}, {deposit, withdraw})(Wallet);
+// Tested props here and tested that this component
+//  is properly connected in the App component, so we can ignore this as well tested
+export default connect(/* istanbul ignore next */state => {return {balance: state.balance}}, {deposit, withdraw})(Wallet);
