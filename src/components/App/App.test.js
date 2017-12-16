@@ -4,8 +4,14 @@ import App from './App';
 
 
 describe('App root component', () => {
-    it('should render without exploding', () => {
-        let component = shallow(<App />);
+    let component;
+    beforeEach(() => {
+        component = shallow(<App/>)
+    });
+    it('renders without exploding', () => {
         expect(component).toMatchSnapshot();
+    });
+    it('contains a knight component', () => {
+        expect(component.find('Knight').exists()).toBe(true);
     })
 });

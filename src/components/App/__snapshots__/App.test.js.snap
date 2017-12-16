@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App root component should render without exploding 1`] = `
+exports[`App root component renders without exploding 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
@@ -16,9 +16,37 @@ ShallowWrapper {
     "instance": null,
     "key": undefined,
     "nodeType": "host",
-    "props": Object {},
+    "props": Object {
+      "children": Array [
+        <h1>
+          Hello World
+        </h1>,
+        <Knight />,
+      ],
+    },
     "ref": null,
-    "rendered": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Hello World",
+        },
+        "ref": null,
+        "rendered": "Hello World",
+        "type": "h1",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
     "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
@@ -26,9 +54,37 @@ ShallowWrapper {
       "instance": null,
       "key": undefined,
       "nodeType": "host",
-      "props": Object {},
+      "props": Object {
+        "children": Array [
+          <h1>
+            Hello World
+          </h1>,
+          <Knight />,
+        ],
+      },
       "ref": null,
-      "rendered": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Hello World",
+          },
+          "ref": null,
+          "rendered": "Hello World",
+          "type": "h1",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
       "type": "div",
     },
   ],
