@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import App from './Board';
+import {Board} from './Board';
 
 
 describe('Board root component', () => {
     let component;
     beforeEach(() => {
-        component = shallow(<App knightPosition={[0,0]}/>)
+        component = shallow(<Board knightPosition={[0,0]}/>)
     });
     it('renders without exploding', () => {
         expect(component).toMatchSnapshot();

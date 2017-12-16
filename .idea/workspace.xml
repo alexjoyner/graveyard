@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="26749115-5cc5-4258-8f8a-9243d433d248" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/Square/Square.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/Square/Square.test.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/utils/moveKnight.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/App/App.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/App/App.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/App/__snapshots__/App.test.js.snap" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Knight/Knight.js" afterPath="$PROJECT_DIR$/src/components/Knight/Knight.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Knight/__snapshots__/Knight.test.js.snap" afterPath="$PROJECT_DIR$/src/components/Knight/__snapshots__/Knight.test.js.snap" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.js" afterPath="$PROJECT_DIR$/src/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Board/Board.js" afterPath="$PROJECT_DIR$/src/components/Board/Board.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Board/Board.test.js" afterPath="$PROJECT_DIR$/src/components/Board/Board.test.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -40,8 +30,8 @@
       <file leaf-file-name="Board.test.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Board/Board.test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="12" column="7" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+            <state relative-caret-position="176">
+              <caret line="8" column="34" lean-forward="false" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -83,7 +73,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="moveKnight.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="moveKnight.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utils/moveKnight.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -93,11 +83,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Board.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Board.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/Board/Board.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+            <state relative-caret-position="-575">
+              <caret line="8" column="7" lean-forward="false" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -144,13 +134,13 @@
         <option value="$PROJECT_DIR$/src/components/Square/Square.test.js" />
         <option value="$PROJECT_DIR$/src/components/App/App.test.js" />
         <option value="$PROJECT_DIR$/src/components/App/App.js" />
-        <option value="$PROJECT_DIR$/src/components/Board/Board.test.js" />
         <option value="$PROJECT_DIR$/src/utils/observe.js" />
         <option value="$PROJECT_DIR$/src/components/Knight/Knight.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/components/Square/Square.js" />
-        <option value="$PROJECT_DIR$/src/components/Board/Board.js" />
         <option value="$PROJECT_DIR$/src/utils/moveKnight.js" />
+        <option value="$PROJECT_DIR$/src/components/Board/Board.js" />
+        <option value="$PROJECT_DIR$/src/components/Board/Board.test.js" />
       </list>
     </option>
   </component>
@@ -333,12 +323,12 @@
       <workItem from="1513346530909" duration="51000" />
       <workItem from="1513441238988" duration="3362000" />
       <workItem from="1513444639315" duration="3147000" />
-      <workItem from="1513447802142" duration="3379000" />
+      <workItem from="1513447802142" duration="3627000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9939000" />
+    <option name="totallyTimeSpent" value="10187000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -585,16 +575,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Board/Board.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="7" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Square/Square.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -641,21 +621,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Board/Board.js">
+    <entry file="file://$PROJECT_DIR$/src/utils/moveKnight.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+        <state relative-caret-position="0">
+          <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Board/Board.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="34" lean-forward="false" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/moveKnight.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Board/Board.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
-          <folding />
+        <state relative-caret-position="-575">
+          <caret line="8" column="7" lean-forward="false" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
