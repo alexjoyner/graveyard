@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Knight} from "../Knight/Knight";
+import Knight from "../Knight/Knight";
 import {Square} from "../Square/Square";
 import {canMoveKnight, moveKnight} from "../../utils/moveKnight";
 import {DragDropContext} from 'react-dnd';
