@@ -10,5 +10,8 @@ describe('Menu', () => {
     });
     it('should render properly', () => {
         expect(component).toMatchSnapshot();
+    });
+    it('includes a box', () => {
+        expect(component.find('Box').length).toEqual(1);
     })
 });
