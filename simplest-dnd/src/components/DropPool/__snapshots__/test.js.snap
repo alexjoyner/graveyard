@@ -4,7 +4,9 @@ exports[`Drop Pool should render properly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <DropPool />,
+  Symbol(enzyme.__unrendered__): <DropPool
+    connectDropTarget={[Function]}
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -17,11 +19,31 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": "Drop Pool",
+      "children": Array [
+        "Drop Pool",
+        Array [
+          <h1>
+            Box
+          </h1>,
+        ],
+      ],
       "className": "drop-pool",
     },
     "ref": null,
-    "rendered": "Drop Pool",
+    "rendered": Array [
+      "Drop Pool",
+      Object {
+        "instance": null,
+        "key": "0",
+        "nodeType": "host",
+        "props": Object {
+          "children": "Box",
+        },
+        "ref": null,
+        "rendered": "Box",
+        "type": "h1",
+      },
+    ],
     "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
@@ -30,11 +52,31 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": "Drop Pool",
+        "children": Array [
+          "Drop Pool",
+          Array [
+            <h1>
+              Box
+            </h1>,
+          ],
+        ],
         "className": "drop-pool",
       },
       "ref": null,
-      "rendered": "Drop Pool",
+      "rendered": Array [
+        "Drop Pool",
+        Object {
+          "instance": null,
+          "key": "0",
+          "nodeType": "host",
+          "props": Object {
+            "children": "Box",
+          },
+          "ref": null,
+          "rendered": "Box",
+          "type": "h1",
+        },
+      ],
       "type": "div",
     },
   ],

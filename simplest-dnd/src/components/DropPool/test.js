@@ -6,7 +6,10 @@ import {DropPool} from '.';
 describe('Drop Pool', () => {
     let component;
     beforeEach(() => {
-        component = shallow(<DropPool/>);
+        const props = {
+            connectDropTarget: el => el
+        };
+        component = shallow(<DropPool {...props}/>);
     });
     it('should render properly', () => {
         expect(component).toMatchSnapshot();

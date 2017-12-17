@@ -20,7 +20,7 @@ ShallowWrapper {
       "backend": [Function],
       "children": <div>
         <Menu />
-        <DropPool />
+        <DropTarget(DropPool) />
       </div>,
       "window": undefined,
     },
@@ -32,7 +32,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <Menu />,
-          <DropPool />,
+          <DropTarget(DropPool) />,
         ],
       },
       "ref": null,
@@ -69,7 +69,7 @@ ShallowWrapper {
         "backend": [Function],
         "children": <div>
           <Menu />
-          <DropPool />
+          <DropTarget(DropPool) />
         </div>,
         "window": undefined,
       },
@@ -81,7 +81,7 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <Menu />,
-            <DropPool />,
+            <DropTarget(DropPool) />,
           ],
         },
         "ref": null,
