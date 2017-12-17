@@ -10,5 +10,6 @@ describe('Drop Pool', () => {
     });
     it('should render properly', () => {
         expect(component).toMatchSnapshot();
-    })
+    });
+
 });

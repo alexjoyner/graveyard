@@ -12,6 +12,6 @@ describe('Menu', () => {
         expect(component).toMatchSnapshot();
     });
     it('includes a box', () => {
-        expect(component.find('Box').length).toEqual(1);
+        expect(component.find('DragSource(Box)').length).toEqual(1);
     })
 });

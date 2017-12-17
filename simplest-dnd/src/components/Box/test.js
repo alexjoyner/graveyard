@@ -7,4 +7,4 @@ describe('Box', () => {
         let component = shallow(<Box/>);
         expect(component).toMatchSnapshot();
     })
-})
+});
