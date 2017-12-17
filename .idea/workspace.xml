@@ -2,34 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4311206c-0a24-4b0f-9064-8479feaeab94" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/.idea/dbnavigator.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/.idea/jsLibraryMappings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/.idea/simplest-dnd.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/public/favicon.ico" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/public/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/public/manifest.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/src/components/Box/__snapshots__/test.js.snap" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/src/components/Box/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/src/components/Box/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/src/components/Box/test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/src/components/Dash/__snapshots__/test.js.snap" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/src/components/Dash/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/src/components/Dash/test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/src/components/DropBox/__snapshots__/test.js.snap" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/src/components/DropBox/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/src/components/DropBox/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/src/components/DropBox/test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/src/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/src/setupTests.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/src/utils/dragAndDropUtils.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/src/utils/itemTypes.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simplest-dnd/yarn.lock" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -47,8 +20,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="6" column="22" lean-forward="true" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+            <state relative-caret-position="330">
+              <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -97,7 +70,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -109,7 +82,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -118,6 +91,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="add_unversioned_files" value="true" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -144,16 +118,16 @@
       <workItem from="1513462669208" duration="145000" />
       <workItem from="1513537257222" duration="13000" />
       <workItem from="1513537366152" duration="36000" />
-      <workItem from="1513537512359" duration="48000" />
+      <workItem from="1513537512359" duration="114000" />
+      <workItem from="1513537730803" duration="49000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="242000" />
+    <option name="totallyTimeSpent" value="357000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973656" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -162,7 +136,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -186,6 +160,14 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/nested-dnd/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -223,8 +205,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="22" lean-forward="true" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        <state relative-caret-position="330">
+          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
           <folding />
         </state>
       </provider>
