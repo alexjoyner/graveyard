@@ -20,28 +20,47 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        "Drop Pool",
+        <h3>
+          Drop Pool
+        </h3>,
         Array [
-          <h1>
-            Box
-          </h1>,
+          <PlainBox>
+            Box 
+            0
+          </PlainBox>,
         ],
       ],
       "className": "drop-pool",
     },
     "ref": null,
     "rendered": Array [
-      "Drop Pool",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Drop Pool",
+        },
+        "ref": null,
+        "rendered": "Drop Pool",
+        "type": "h3",
+      },
       Object {
         "instance": null,
         "key": "0",
-        "nodeType": "host",
+        "nodeType": "class",
         "props": Object {
-          "children": "Box",
+          "children": Array [
+            "Box ",
+            0,
+          ],
         },
         "ref": null,
-        "rendered": "Box",
-        "type": "h1",
+        "rendered": Array [
+          "Box ",
+          0,
+        ],
+        "type": [Function],
       },
     ],
     "type": "div",
@@ -53,28 +72,47 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          "Drop Pool",
+          <h3>
+            Drop Pool
+          </h3>,
           Array [
-            <h1>
-              Box
-            </h1>,
+            <PlainBox>
+              Box 
+              0
+            </PlainBox>,
           ],
         ],
         "className": "drop-pool",
       },
       "ref": null,
       "rendered": Array [
-        "Drop Pool",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Drop Pool",
+          },
+          "ref": null,
+          "rendered": "Drop Pool",
+          "type": "h3",
+        },
         Object {
           "instance": null,
           "key": "0",
-          "nodeType": "host",
+          "nodeType": "class",
           "props": Object {
-            "children": "Box",
+            "children": Array [
+              "Box ",
+              0,
+            ],
           },
           "ref": null,
-          "rendered": "Box",
-          "type": "h1",
+          "rendered": Array [
+            "Box ",
+            0,
+          ],
+          "type": [Function],
         },
       ],
       "type": "div",

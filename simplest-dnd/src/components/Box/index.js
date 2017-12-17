@@ -5,7 +5,9 @@ import {ItemTypes} from "../../utils/itemTypes";
 const styles = {
     height: '100px',
     width: '100px',
-    backgroundColor: 'red'
+    backgroundColor: 'red',
+    display: 'inline-block',
+    margin: '20px'
 };
 
 const boxSpec = {
@@ -19,7 +21,11 @@ const collect = (connect, monitor) =>{
         connectDragSource: connect.dragSource()
     }
 };
-
+export class PlainBox extends Component{
+    render(){
+        return <div style={{...styles}}>{this.props.children}</div>
+    }
+}
 export class Box extends Component{
     render(){
         const {connectDragSource} = this.props;

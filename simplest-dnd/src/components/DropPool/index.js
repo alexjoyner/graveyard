@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './style.css';
 import {DropTarget} from 'react-dnd';
 import {ItemTypes} from "../../utils/itemTypes";
-import {Box} from "../Box/index";
+import {PlainBox} from "../Box/index";
 import {Subject} from "../../utils/subjectObserver";
 
 const poolItems = new Subject();
@@ -41,9 +41,9 @@ export class DropPool extends Component{
         const {connectDropTarget} = this.props;
         return connectDropTarget(
             <div className={'drop-pool'}>
-                Drop Pool
+                <h3>Drop Pool</h3>
                 {this.state.poolItems.map((item, i) => {
-                    return <h1 key={i}>{item}</h1>
+                    return <PlainBox key={i} >Box {i}</PlainBox>
                 })}
             </div>
         )
