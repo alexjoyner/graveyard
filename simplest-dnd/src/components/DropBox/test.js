@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import {DropPool} from '.';
+import {DropArea} from '.';
 
 
 describe('Drop Pool', () => {
@@ -10,7 +10,7 @@ describe('Drop Pool', () => {
             connectDropTarget: el => el,
             items: []
         };
-        component = shallow(<DropPool {...props}/>);
+        component = shallow(<DropArea {...props}/>);
     });
     it('should render properly', () => {
         expect(component).toMatchSnapshot();

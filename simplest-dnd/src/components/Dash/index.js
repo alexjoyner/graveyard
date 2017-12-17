@@ -1,20 +1,19 @@
 import React, {Component} from 'react';
 import {DragDropContextProvider} from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
-import {Menu} from "../Menu/index";
-import DropPool from "../DropPool/index";
-import {PlainBox} from "../Box/index";
+import {DropBox} from "../DropBox/index";
+import {DraggableBox} from "../Box";
 
 export class Dash extends Component {
     constructor(){
         super();
         this.state = {
-            poolItems: []
+            poolItems: [],
+            selections: ['Temp', 'CFM']
         }
     }
     handleDrop =(data) => {
         let {poolItems} = this.state;
-        console.log(data);
         poolItems.push(data);
         this.setState({
             poolItems
@@ -24,12 +23,16 @@ export class Dash extends Component {
         return (
             <DragDropContextProvider backend={HTML5Backend}>
                 <div>
-                    <Menu/>
-                    <DropPool onDrop={this.handleDrop}>
-                        {this.state.poolItems.map((item, i) => {
-                            return <PlainBox key={i} >{item.type}</PlainBox>
+                    <div className={'Menu'}>
+                        {this.state.selections.map((item, i) => {
+                            return <DraggableBox key={i} type={item}/>
                         })}
-                    </DropPool>
+                    </div>
+                    <DropBox onDrop={this.handleDrop}>
+                        {this.state.poolItems.map((item, i) => {
+                            return <div key={i} >{item.type}</div>
+                        })}
+                    </DropBox>
                 </div>
             </DragDropContextProvider>
         )

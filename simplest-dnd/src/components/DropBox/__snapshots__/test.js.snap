@@ -4,7 +4,7 @@ exports[`Drop Pool should render properly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <DropPool
+  Symbol(enzyme.__unrendered__): <DropArea
     connectDropTarget={[Function]}
     items={Array []}
   />,

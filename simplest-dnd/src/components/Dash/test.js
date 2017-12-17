@@ -13,10 +13,10 @@ describe('Dash', () => {
     });
     describe('base components', () => {
         it('contains a menu', () => {
-            expect(component.find('Menu').length).toEqual(1);
+            expect(component.find('.Menu').length).toEqual(1);
         });
-        it('contains a drop pool', () => {
-            expect(component.find('DropTarget(DropPool)').length).toEqual(1);
+        it('contains a drop box', () => {
+            expect(component.find('DropTarget(DropArea)').length).toEqual(1);
         })
     });
     describe('drag drop components', () => {

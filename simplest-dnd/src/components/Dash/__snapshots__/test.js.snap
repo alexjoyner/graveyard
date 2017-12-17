@@ -19,8 +19,17 @@ ShallowWrapper {
     "props": Object {
       "backend": [Function],
       "children": <div>
-        <Menu />
-        <DropTarget(DropPool)
+        <div
+          className="Menu"
+        >
+          <DragSource(Box)
+            type="Temp"
+          />
+          <DragSource(Box)
+            type="CFM"
+          />
+        </div>
+        <DropTarget(DropArea)
           onDrop={[Function]}
         />
       </div>,
@@ -33,8 +42,17 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <Menu />,
-          <DropTarget(DropPool)
+          <div
+            className="Menu"
+          >
+            <DragSource(Box)
+              type="Temp"
+            />
+            <DragSource(Box)
+              type="CFM"
+            />
+          </div>,
+          <DropTarget(DropArea)
             onDrop={[Function]}
           />,
         ],
@@ -44,11 +62,44 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
-          "props": Object {},
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <DragSource(Box)
+                type="Temp"
+              />,
+              <DragSource(Box)
+                type="CFM"
+              />,
+            ],
+            "className": "Menu",
+          },
           "ref": null,
-          "rendered": null,
-          "type": [Function],
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": "0",
+              "nodeType": "class",
+              "props": Object {
+                "type": "Temp",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "1",
+              "nodeType": "class",
+              "props": Object {
+                "type": "CFM",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
         },
         Object {
           "instance": null,
@@ -75,8 +126,17 @@ ShallowWrapper {
       "props": Object {
         "backend": [Function],
         "children": <div>
-          <Menu />
-          <DropTarget(DropPool)
+          <div
+            className="Menu"
+          >
+            <DragSource(Box)
+              type="Temp"
+            />
+            <DragSource(Box)
+              type="CFM"
+            />
+          </div>
+          <DropTarget(DropArea)
             onDrop={[Function]}
           />
         </div>,
@@ -89,8 +149,17 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": Array [
-            <Menu />,
-            <DropTarget(DropPool)
+            <div
+              className="Menu"
+            >
+              <DragSource(Box)
+                type="Temp"
+              />
+              <DragSource(Box)
+                type="CFM"
+              />
+            </div>,
+            <DropTarget(DropArea)
               onDrop={[Function]}
             />,
           ],
@@ -100,11 +169,44 @@ ShallowWrapper {
           Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "class",
-            "props": Object {},
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <DragSource(Box)
+                  type="Temp"
+                />,
+                <DragSource(Box)
+                  type="CFM"
+                />,
+              ],
+              "className": "Menu",
+            },
             "ref": null,
-            "rendered": null,
-            "type": [Function],
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": "0",
+                "nodeType": "class",
+                "props": Object {
+                  "type": "Temp",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": "1",
+                "nodeType": "class",
+                "props": Object {
+                  "type": "CFM",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": "div",
           },
           Object {
             "instance": null,
