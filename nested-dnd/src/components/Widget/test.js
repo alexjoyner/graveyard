@@ -5,7 +5,10 @@ import { Widget } from '.';
 describe('`Widget`', () => {
     let component;
     beforeEach(() => {
-        component = shallow(<Widget />);
+        const props = {
+            connectDropTarget: jest.fn()
+        };
+        component = shallow(<Widget {...props}/>);
     });
     it('reanders without exploding', () => {
         expect(component).toMatchSnapshot();
