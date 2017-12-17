@@ -16,7 +16,7 @@ describe('Dash', () => {
             expect(component.find('.Menu').length).toEqual(1);
         });
         it('contains a drop box', () => {
-            expect(component.find('DropTarget(DropArea)').length).toEqual(1);
+            expect(component.find('DropTarget(Component)').length).toEqual(1);
         })
     });
     describe('drag drop components', () => {

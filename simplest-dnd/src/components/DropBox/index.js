@@ -1,23 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './style.css';
 import {DropTarget} from 'react-dnd';
 import {ItemTypes} from "../../utils/itemTypes";
+import {basicDropCollect, basicDropSpec} from "../../utils/dragAndDropUtils";
 
-export class DropArea extends Component{
-    render(){
-        const {connectDropTarget} = this.props;
-        return connectDropTarget(
-            <div className={'drop-pool'}>
-                {this.props.children}
-            </div>
-        )
-    }
-}
-const poolTargetSpec = {
-    drop(props, monitor){
-        props.onDrop(monitor.getItem());
-    }
-};
-const collect = (connect, monitor) => ({connectDropTarget: connect.dropTarget()});
-const DropBox = DropTarget(ItemTypes.BOX, poolTargetSpec, collect)(DropArea)
+export const DropArea = props => (props.connectDropTarget(<div className={'drop-area'}>{props.children}</div>));
+const DropBox = DropTarget(ItemTypes.BOX, basicDropSpec, basicDropCollect)(DropArea);
 export {DropBox} ;

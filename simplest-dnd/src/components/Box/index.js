@@ -1,24 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {DragSource} from 'react-dnd';
 import {ItemTypes} from "../../utils/itemTypes";
 import './style.css';
+import {basicDragCollect, basicDragSpec} from "../../utils/dragAndDropUtils";
 
 
-export class Box extends Component{
-    render(){
-        const {connectDragSource} = this.props;
-        return connectDragSource(
-            <div className={'box'}>
-                <h3>{this.props.type}</h3>
-            </div>
-        )
-    }
-}
-const boxSpec = {
-    beginDrag(props){
-        return {type: props.type};
-    }
-};
-const collect = (connect) => ({connectDragSource: connect.dragSource()});
-const DraggableBox = DragSource(ItemTypes.BOX, boxSpec, collect)(Box);
+export const Box = (props) => (props.connectDragSource(<div className={'box'}>{props.type}</div>));
+const DraggableBox = DragSource(ItemTypes.BOX, basicDragSpec, basicDragCollect)(Box);
 export {DraggableBox};

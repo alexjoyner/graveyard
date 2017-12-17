@@ -22,14 +22,14 @@ ShallowWrapper {
         <div
           className="Menu"
         >
-          <DragSource(Box)
+          <DragSource(Component)
             type="Temp"
           />
-          <DragSource(Box)
+          <DragSource(Component)
             type="CFM"
           />
         </div>
-        <DropTarget(DropArea)
+        <DropTarget(Component)
           onDrop={[Function]}
         />
       </div>,
@@ -45,14 +45,14 @@ ShallowWrapper {
           <div
             className="Menu"
           >
-            <DragSource(Box)
+            <DragSource(Component)
               type="Temp"
             />
-            <DragSource(Box)
+            <DragSource(Component)
               type="CFM"
             />
           </div>,
-          <DropTarget(DropArea)
+          <DropTarget(Component)
             onDrop={[Function]}
           />,
         ],
@@ -65,10 +65,10 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": Array [
-              <DragSource(Box)
+              <DragSource(Component)
                 type="Temp"
               />,
-              <DragSource(Box)
+              <DragSource(Component)
                 type="CFM"
               />,
             ],
@@ -129,14 +129,14 @@ ShallowWrapper {
           <div
             className="Menu"
           >
-            <DragSource(Box)
+            <DragSource(Component)
               type="Temp"
             />
-            <DragSource(Box)
+            <DragSource(Component)
               type="CFM"
             />
           </div>
-          <DropTarget(DropArea)
+          <DropTarget(Component)
             onDrop={[Function]}
           />
         </div>,
@@ -152,14 +152,14 @@ ShallowWrapper {
             <div
               className="Menu"
             >
-              <DragSource(Box)
+              <DragSource(Component)
                 type="Temp"
               />
-              <DragSource(Box)
+              <DragSource(Component)
                 type="CFM"
               />
             </div>,
-            <DropTarget(DropArea)
+            <DropTarget(Component)
               onDrop={[Function]}
             />,
           ],
@@ -172,10 +172,10 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": Array [
-                <DragSource(Box)
+                <DragSource(Component)
                   type="Temp"
                 />,
-                <DragSource(Box)
+                <DragSource(Component)
                   type="CFM"
                 />,
               ],

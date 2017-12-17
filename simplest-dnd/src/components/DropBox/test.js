@@ -7,8 +7,7 @@ describe('Drop Pool', () => {
     let component;
     beforeEach(() => {
         const props = {
-            connectDropTarget: el => el,
-            items: []
+            connectDropTarget: el => el
         };
         component = shallow(<DropArea {...props}/>);
     });
