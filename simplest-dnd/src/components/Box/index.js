@@ -1,36 +1,29 @@
 import React, {Component} from 'react';
 import {DragSource} from 'react-dnd';
 import {ItemTypes} from "../../utils/itemTypes";
-
-const styles = {
-    height: '100px',
-    width: '100px',
-    backgroundColor: 'red',
-    display: 'inline-block',
-    margin: '20px'
-};
+import './style.css';
 
 const boxSpec = {
     beginDrag(props){
-        return {};
+        return {type: props.type};
     }
 };
 
-const collect = (connect, monitor) =>{
-    return {
-        connectDragSource: connect.dragSource()
-    }
+const collect = (connect) => {
+    return {connectDragSource: connect.dragSource()};
 };
 export class PlainBox extends Component{
     render(){
-        return <div style={{...styles}}>{this.props.children}</div>
+        return <div className={'box'}>{this.props.children}</div>
     }
 }
 export class Box extends Component{
     render(){
         const {connectDragSource} = this.props;
         return connectDragSource(
-            <div style={{...styles}}></div>
+            <div className={'box'}>
+                <h3>{this.props.type}</h3>
+            </div>
         )
     }
 }

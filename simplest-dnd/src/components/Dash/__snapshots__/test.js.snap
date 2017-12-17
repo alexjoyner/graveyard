@@ -20,7 +20,9 @@ ShallowWrapper {
       "backend": [Function],
       "children": <div>
         <Menu />
-        <DropTarget(DropPool) />
+        <DropTarget(DropPool)
+          onDrop={[Function]}
+        />
       </div>,
       "window": undefined,
     },
@@ -32,7 +34,9 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <Menu />,
-          <DropTarget(DropPool) />,
+          <DropTarget(DropPool)
+            onDrop={[Function]}
+          />,
         ],
       },
       "ref": null,
@@ -50,9 +54,12 @@ ShallowWrapper {
           "instance": null,
           "key": undefined,
           "nodeType": "class",
-          "props": Object {},
+          "props": Object {
+            "children": Array [],
+            "onDrop": [Function],
+          },
           "ref": null,
-          "rendered": null,
+          "rendered": Array [],
           "type": [Function],
         },
       ],
@@ -69,7 +76,9 @@ ShallowWrapper {
         "backend": [Function],
         "children": <div>
           <Menu />
-          <DropTarget(DropPool) />
+          <DropTarget(DropPool)
+            onDrop={[Function]}
+          />
         </div>,
         "window": undefined,
       },
@@ -81,7 +90,9 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <Menu />,
-            <DropTarget(DropPool) />,
+            <DropTarget(DropPool)
+              onDrop={[Function]}
+            />,
           ],
         },
         "ref": null,
@@ -99,9 +110,12 @@ ShallowWrapper {
             "instance": null,
             "key": undefined,
             "nodeType": "class",
-            "props": Object {},
+            "props": Object {
+              "children": Array [],
+              "onDrop": [Function],
+            },
             "ref": null,
-            "rendered": null,
+            "rendered": Array [],
             "type": [Function],
           },
         ],
