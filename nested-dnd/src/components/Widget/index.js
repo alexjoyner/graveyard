@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import {DropTarget} from 'react-dnd';
 import {Box} from "../Box/index";
 import {ItemTypes} from "../../utils/itemTypes";
+import './style.css';
 
 export class Widget extends Component {
     render() {
         const {connectDropTarget} = this.props;
         return connectDropTarget(
-            <div>
-                <h1>Widget</h1>
+            <div className={'Widget'}>
+                <h1>Widget: {this.props.children}</h1>
             </div>
         );
     }
@@ -22,7 +23,7 @@ const spec = {
         console.log('Dropped');
     }
 };
-const collect = (collect, monitor) => {
+const collect = (connect, monitor) => {
   return {
       connectDropTarget: connect.dropTarget()
   }

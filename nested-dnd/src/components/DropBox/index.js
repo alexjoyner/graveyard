@@ -5,5 +5,17 @@ import {ItemTypes} from "../../utils/itemTypes";
 import {basicDropCollect, basicDropSpec} from "../../utils/dragAndDropUtils";
 
 export const DropArea = props => (props.connectDropTarget(<div className={'drop-area'}>{props.children}</div>));
-const DropBox = DropTarget(ItemTypes.BOX, basicDropSpec, basicDropCollect)(DropArea);
+
+
+const spec = {
+    drop(props, monitor){
+        const hasDroppedOnChild = monitor.didDrop();
+        if(hasDroppedOnChild){
+            return
+        }
+        props.onDrop(monitor.getItem());
+    }
+};
+
+const DropBox = DropTarget(ItemTypes.BOX, spec, basicDropCollect)(DropArea);
 export {DropBox};
