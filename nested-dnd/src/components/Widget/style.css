@@ -1,7 +1,7 @@
 .Widget{
   display: inline-block;
-  height: 100px;
-  width: 200px;
+  height: 200px;
+  width: 400px;
   background-color: dodgerblue;
   margin: 10px;
   border-radius: 10px;

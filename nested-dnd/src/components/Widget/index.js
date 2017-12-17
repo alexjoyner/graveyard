@@ -20,7 +20,7 @@ Widget.propTypes = {};
 
 const spec = {
     drop(props, monitor){
-        console.log('Dropped');
+        props.onDrop(monitor.getItem());
     }
 };
 const collect = (connect, monitor) => {

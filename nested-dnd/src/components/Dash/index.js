@@ -15,7 +15,14 @@ export class Dash extends Component {
     }
     handleDrop =(data) => {
         let {poolItems} = this.state;
-        poolItems.push(data);
+        poolItems.push([data]);
+        this.setState({
+            poolItems
+        })
+    };
+    addSensorToWidget = (itemIndex, item) => {
+        let {poolItems} = this.state;
+        poolItems[itemIndex].push(item);
         this.setState({
             poolItems
         })
@@ -30,8 +37,14 @@ export class Dash extends Component {
                         })}
                     </div>
                     <DropBox onDrop={this.handleDrop}>
-                        {this.state.poolItems.map((item, i) => {
-                            return <DropWidget key={i} >{item.type}</DropWidget>
+                        {this.state.poolItems.map((sensors, i) => {
+                            return (
+                                <DropWidget key={i} onDrop={(data) => this.addSensorToWidget(i, data)}>
+                                    {sensors.map(sensor => {
+                                        return sensor.type + ' '
+                                    })}
+                                </DropWidget>
+                            )
                         })}
                     </DropBox>
                 </div>
