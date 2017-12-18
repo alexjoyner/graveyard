@@ -9,7 +9,7 @@ describe('Features/Graph', () => {
         component = shallow(<Graph chartID={'test-chart'} chartOpts={{}}/>);
     });
     it('renders without exploding', () => {
-        expect(component.length).toEqual(1);
+        expect(component).toMatchSnapshot();
     });
     describe('analog gauge graph', () => {
         it('should render if called with analog gauge as prop type');
