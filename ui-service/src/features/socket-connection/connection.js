@@ -1,9 +1,5 @@
-let io;
-let socket;
-if(typeof window !== 'undefined'){
-    io = require('socket.io-client');
-    socket = io('http://localhost:3000');
-}
+let io = require('socket.io-client');
+let socket = io('http://localhost:3000');
 
 export class connect {
     static getLogsSubscription(cb){

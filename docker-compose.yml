@@ -24,7 +24,7 @@ services:
     command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
     volumes:
       - ./panel-data-api:/opt/app
-      - notused:/opt/app/node_modules
+      - panel-data-node_modules:/opt/app/node_modules
     ports:
       - "9000:80"
     environment:

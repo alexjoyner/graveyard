@@ -1,9 +1,10 @@
 import React from 'react';
 import 'c3/c3.css';
 import {ErrorBoundary} from "../error-boundary/index";
-import {connect} from "../socket-connection/connection";
+let connect;
 let c3;
 if(typeof window !== 'undefined'){
+    connect = require("../socket-connection/connection").connect;
     require('d3');
     c3 = require('c3');
 }
@@ -12,14 +13,14 @@ export class Graph extends React.Component {
     constructor(props) {
         super(props);
         this.chart = {};
+    }
+    componentDidMount() {
         connect.getLogsSubscription((err, log) => {
             console.log('log returned to feature/graph');
             this.chart.load({
                 columns: [['Data', log.value]],
             });
-        })
-    }
-    componentDidMount() {
+        });
         this.initChart();
     }
     shouldComponentUpdate(nextProps) {

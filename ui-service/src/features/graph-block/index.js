@@ -2,7 +2,6 @@ import React from 'react';
 import './styles.css';
 import 'purecss';
 import {Graph} from '../graph';
-import axios from 'axios';
 
 export class GraphBlock extends React.Component {
 
