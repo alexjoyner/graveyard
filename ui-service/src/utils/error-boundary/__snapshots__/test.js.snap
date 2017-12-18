@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`\`ErrorBoundary\` renders without exploding 1`] = `
+exports[`\`error-boundary\` renders without exploding 1`] = `
 ReactWrapper {
   "length": 1,
   Symbol(enzyme.__unrendered__): <ErrorBoundary>
@@ -240,7 +240,7 @@ ReactWrapper {
           "_debugIsCurrentlyTiming": false,
           "_debugOwner": null,
           "_debugSource": Object {
-            "fileName": "C:\\\\Users\\\\rosco\\\\Documents\\\\GitHub\\\\ees-datalogger\\\\ui-service\\\\src\\\\features\\\\error-boundary\\\\test.js",
+            "fileName": "C:\\\\Users\\\\rosco\\\\Documents\\\\GitHub\\\\ees-datalogger\\\\ui-service\\\\src\\\\utils\\\\error-boundary\\\\test.js",
             "lineNumber": 8,
           },
           "alternate": null,
@@ -772,7 +772,7 @@ ReactWrapper {
             "_debugIsCurrentlyTiming": false,
             "_debugOwner": null,
             "_debugSource": Object {
-              "fileName": "C:\\\\Users\\\\rosco\\\\Documents\\\\GitHub\\\\ees-datalogger\\\\ui-service\\\\src\\\\features\\\\error-boundary\\\\test.js",
+              "fileName": "C:\\\\Users\\\\rosco\\\\Documents\\\\GitHub\\\\ees-datalogger\\\\ui-service\\\\src\\\\utils\\\\error-boundary\\\\test.js",
               "lineNumber": 8,
             },
             "alternate": null,

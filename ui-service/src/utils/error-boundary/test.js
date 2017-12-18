@@ -2,7 +2,7 @@ import React from 'react';
 import {mount} from 'enzyme';
 import {ErrorBoundary} from '.';
 
-describe('`ErrorBoundary`', () => {
+describe('`error-boundary`', () => {
     let component;
     beforeEach(() => {
         component = mount(<ErrorBoundary><h4>Hello</h4></ErrorBoundary>);
