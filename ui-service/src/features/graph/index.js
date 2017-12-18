@@ -24,7 +24,6 @@ export class Graph extends React.Component {
         this.initChart();
     }
     shouldComponentUpdate(nextProps) {
-
         return false;
     }
     componentDidUpdate() {
