@@ -12,7 +12,9 @@ export class Home extends Component {
             <div>
                 <Header/>
                 <Menu/>
-                <GraphBlock />
+                <div className={'dash-wrapper'}>
+                    <GraphBlock />
+                </div>
             </div>
         );
     }
