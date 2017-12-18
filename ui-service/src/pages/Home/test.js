@@ -10,6 +10,9 @@ describe('layout feature', () => {
     it('renders without exploding', () => {
         expect(component).toMatchSnapshot();
     });
+    it('is a `DragDropContextProvider` at it\'s root', () => {
+       expect(component.find('DragDropContextProvider').length).toEqual(1);
+    });
     it('has a Header', () => {
         expect(component.find('Header').length).toEqual(1);
     });
