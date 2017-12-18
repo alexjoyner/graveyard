@@ -36,7 +36,7 @@ export class Graph extends React.Component {
             bindto: `#${this.props.chartID}`,
             data: {
                 type: 'gauge',
-                columns: [['Data', 76]],
+                columns: [['Data', 0]],
             },
             ...this.props.chartOpts,
         });
