@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`\`Home\` reanders without exploding 1`] = `
+exports[`layout feature renders without exploding 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
@@ -17,30 +17,72 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": <Layout />,
+      "children": Array [
+        <div
+          className="header"
+>
+          <div
+                    className="ees-heading pure-menu pure-menu-horizontal"
+          >
+                    <a
+                              className="ees-logo pure-menu-heading"
+                    >
+                              EES Data Logger
+                    </a>
+          </div>
+</div>,
+        <GraphBlock />,
+      ],
     },
     "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {},
-      "ref": null,
-      "rendered": null,
-      "type": [Function],
-    },
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": <Layout />,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <div
+            className="ees-heading pure-menu pure-menu-horizontal"
+>
+            <a
+                        className="ees-logo pure-menu-heading"
+            >
+                        EES Data Logger
+            </a>
+</div>,
+          "className": "header",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <a
+              className="ees-logo pure-menu-heading"
+>
+              EES Data Logger
+</a>,
+            "className": "ees-heading pure-menu pure-menu-horizontal",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "EES Data Logger",
+              "className": "ees-logo pure-menu-heading",
+            },
+            "ref": null,
+            "rendered": "EES Data Logger",
+            "type": "a",
+          },
+          "type": "div",
+        },
+        "type": "div",
       },
-      "ref": null,
-      "rendered": Object {
+      Object {
         "instance": null,
         "key": undefined,
         "nodeType": "class",
@@ -49,6 +91,90 @@ ShallowWrapper {
         "rendered": null,
         "type": [Function],
       },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="header"
+>
+            <div
+                        className="ees-heading pure-menu pure-menu-horizontal"
+            >
+                        <a
+                                    className="ees-logo pure-menu-heading"
+                        >
+                                    EES Data Logger
+                        </a>
+            </div>
+</div>,
+          <GraphBlock />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <div
+              className="ees-heading pure-menu pure-menu-horizontal"
+>
+              <a
+                            className="ees-logo pure-menu-heading"
+              >
+                            EES Data Logger
+              </a>
+</div>,
+            "className": "header",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <a
+                className="ees-logo pure-menu-heading"
+>
+                EES Data Logger
+</a>,
+              "className": "ees-heading pure-menu pure-menu-horizontal",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "EES Data Logger",
+                "className": "ees-logo pure-menu-heading",
+              },
+              "ref": null,
+              "rendered": "EES Data Logger",
+              "type": "a",
+            },
+            "type": "div",
+          },
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
       "type": "div",
     },
   ],

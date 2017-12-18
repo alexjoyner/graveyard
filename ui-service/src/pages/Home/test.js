@@ -1,13 +1,19 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { Home } from './Home';
+import {shallow} from 'enzyme';
+import {Home} from './Home';
 
-describe('`Home`', () => {
+describe('layout feature', () => {
     let component;
     beforeEach(() => {
-        component = shallow(<Home />);
+        component = shallow(<Home/>);
     });
-    it('reanders without exploding', () => {
+    it('renders without exploding', () => {
         expect(component).toMatchSnapshot();
+    });
+    it('has a header', () => {
+        expect(component.find('.header').length).toEqual(1);
+    });
+    it('has a dash body', () => {
+        expect(component.find('GraphBlock').length).toEqual(1);
     });
 });
