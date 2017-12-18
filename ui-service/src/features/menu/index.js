@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export class Menu extends Component {
     render() {
         return (
-            <div>
+            <div id={'Menu'}>
                 <h1>Menu</h1>
             </div>
         );

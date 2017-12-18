@@ -20,6 +20,7 @@ ShallowWrapper {
       "children": <h1>
         Menu
 </h1>,
+      "id": "Menu",
     },
     "ref": null,
     "rendered": Object {
@@ -44,6 +45,7 @@ ShallowWrapper {
         "children": <h1>
           Menu
 </h1>,
+        "id": "Menu",
       },
       "ref": null,
       "rendered": Object {

@@ -10,4 +10,7 @@ describe('`Menu`', () => {
     it('reanders without exploding', () => {
         expect(component).toMatchSnapshot();
     });
+    it('includes a div with id Menu', () => {
+        expect(component.find('#Menu').length).toEqual(1);
+    })
 });

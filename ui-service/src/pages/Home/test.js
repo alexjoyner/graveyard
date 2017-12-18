@@ -10,8 +10,11 @@ describe('layout feature', () => {
     it('renders without exploding', () => {
         expect(component).toMatchSnapshot();
     });
-    it('has a header', () => {
-        expect(component.find('.header').length).toEqual(1);
+    it('has a Header', () => {
+        expect(component.find('Header').length).toEqual(1);
+    });
+    it('has a Menu', () => {
+        expect(component.find('Menu').length).toEqual(1);
     });
     it('has a dash body', () => {
         expect(component.find('GraphBlock').length).toEqual(1);
