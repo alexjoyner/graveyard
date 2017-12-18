@@ -7,13 +7,13 @@ describe('Feature/GraphBlock', () => {
     beforeEach(() => {
         component = shallow(<GraphBlock />);
     });
+    it('renders without exploding', () => {
+        expect(component).toMatchSnapshot();
+    });
     describe('GraphBlock styles', () => {
        it('should have a class of .GraphBody', () => {
           expect(component.find('.GraphBody').length).toEqual(1);
        });
-    });
-    it('renders without exploding', () => {
-        expect(component.length).toEqual(1);
     });
     it('displays a history table', () => {
         expect(component.find(HistoryTable).length).toEqual(0);
