@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import 'purecss';
 import './styles.css';
+import MenuItem from "./menu-item/index";
 
 export class Menu extends Component {
     render() {
@@ -9,16 +10,16 @@ export class Menu extends Component {
             <div id={'Menu'}>
                 <h1>Menu</h1>
                 <ul>
-                    <li>Ambient Temp</li>
-                    <li>CFM</li>
-                    <li>PSI</li>
-                    <li>Discharge Temp</li>
+                    <MenuItem text={'Ambient Temp'} />
+                    <MenuItem text={'CFM'} />
+                    <MenuItem text={'PSI'} />
+                    <MenuItem text={'Discharge Temp'} />
                 </ul>
             </div>
         );
     }
 }
 
-Menu.propTypes = {};
+//Menu.propTypes = {};
 
 export default Menu;

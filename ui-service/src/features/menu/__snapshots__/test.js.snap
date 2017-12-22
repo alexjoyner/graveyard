@@ -22,18 +22,18 @@ ShallowWrapper {
           Menu
 </h1>,
         <ul>
-          <li>
-                    Ambient Temp
-          </li>
-          <li>
-                    CFM
-          </li>
-          <li>
-                    PSI
-          </li>
-          <li>
-                    Discharge Temp
-          </li>
+          <DragSource(MenuItem)
+                    text="Ambient Temp"
+          />
+          <DragSource(MenuItem)
+                    text="CFM"
+          />
+          <DragSource(MenuItem)
+                    text="PSI"
+          />
+          <DragSource(MenuItem)
+                    text="Discharge Temp"
+          />
 </ul>,
       ],
       "id": "Menu",
@@ -57,18 +57,18 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": Array [
-            <li>
-              Ambient Temp
-</li>,
-            <li>
-              CFM
-</li>,
-            <li>
-              PSI
-</li>,
-            <li>
-              Discharge Temp
-</li>,
+            <DragSource(MenuItem)
+              text="Ambient Temp"
+/>,
+            <DragSource(MenuItem)
+              text="CFM"
+/>,
+            <DragSource(MenuItem)
+              text="PSI"
+/>,
+            <DragSource(MenuItem)
+              text="Discharge Temp"
+/>,
           ],
         },
         "ref": null,
@@ -76,46 +76,46 @@ ShallowWrapper {
           Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "host",
+            "nodeType": "class",
             "props": Object {
-              "children": "Ambient Temp",
+              "text": "Ambient Temp",
             },
             "ref": null,
-            "rendered": "Ambient Temp",
-            "type": "li",
+            "rendered": null,
+            "type": [Function],
           },
           Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "host",
+            "nodeType": "class",
             "props": Object {
-              "children": "CFM",
+              "text": "CFM",
             },
             "ref": null,
-            "rendered": "CFM",
-            "type": "li",
+            "rendered": null,
+            "type": [Function],
           },
           Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "host",
+            "nodeType": "class",
             "props": Object {
-              "children": "PSI",
+              "text": "PSI",
             },
             "ref": null,
-            "rendered": "PSI",
-            "type": "li",
+            "rendered": null,
+            "type": [Function],
           },
           Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "host",
+            "nodeType": "class",
             "props": Object {
-              "children": "Discharge Temp",
+              "text": "Discharge Temp",
             },
             "ref": null,
-            "rendered": "Discharge Temp",
-            "type": "li",
+            "rendered": null,
+            "type": [Function],
           },
         ],
         "type": "ul",
@@ -134,18 +134,18 @@ ShallowWrapper {
             Menu
 </h1>,
           <ul>
-            <li>
-                        Ambient Temp
-            </li>
-            <li>
-                        CFM
-            </li>
-            <li>
-                        PSI
-            </li>
-            <li>
-                        Discharge Temp
-            </li>
+            <DragSource(MenuItem)
+                        text="Ambient Temp"
+            />
+            <DragSource(MenuItem)
+                        text="CFM"
+            />
+            <DragSource(MenuItem)
+                        text="PSI"
+            />
+            <DragSource(MenuItem)
+                        text="Discharge Temp"
+            />
 </ul>,
         ],
         "id": "Menu",
@@ -169,18 +169,18 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": Array [
-              <li>
-                Ambient Temp
-</li>,
-              <li>
-                CFM
-</li>,
-              <li>
-                PSI
-</li>,
-              <li>
-                Discharge Temp
-</li>,
+              <DragSource(MenuItem)
+                text="Ambient Temp"
+/>,
+              <DragSource(MenuItem)
+                text="CFM"
+/>,
+              <DragSource(MenuItem)
+                text="PSI"
+/>,
+              <DragSource(MenuItem)
+                text="Discharge Temp"
+/>,
             ],
           },
           "ref": null,
@@ -188,46 +188,46 @@ ShallowWrapper {
             Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "host",
+              "nodeType": "class",
               "props": Object {
-                "children": "Ambient Temp",
+                "text": "Ambient Temp",
               },
               "ref": null,
-              "rendered": "Ambient Temp",
-              "type": "li",
+              "rendered": null,
+              "type": [Function],
             },
             Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "host",
+              "nodeType": "class",
               "props": Object {
-                "children": "CFM",
+                "text": "CFM",
               },
               "ref": null,
-              "rendered": "CFM",
-              "type": "li",
+              "rendered": null,
+              "type": [Function],
             },
             Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "host",
+              "nodeType": "class",
               "props": Object {
-                "children": "PSI",
+                "text": "PSI",
               },
               "ref": null,
-              "rendered": "PSI",
-              "type": "li",
+              "rendered": null,
+              "type": [Function],
             },
             Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "host",
+              "nodeType": "class",
               "props": Object {
-                "children": "Discharge Temp",
+                "text": "Discharge Temp",
               },
               "ref": null,
-              "rendered": "Discharge Temp",
-              "type": "li",
+              "rendered": null,
+              "type": [Function],
             },
           ],
           "type": "ul",

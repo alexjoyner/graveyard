@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import './styles.css';
 
 export class Header extends Component {
@@ -14,6 +14,6 @@ export class Header extends Component {
     }
 }
 
-Header.propTypes = {};
+//Header.propTypes = {};
 
 export default Header;
