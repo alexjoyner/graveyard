@@ -10,7 +10,7 @@ app.use(function(req, res, next) {
 });
 
 app.get('/:name', function (req, res) {
-    res.send("Hello " + req.params.name + "!").end();
+    res.send("Hello there " + req.params.name + "!").end();
 });
 
 app.listen(80, function () {
