@@ -11,7 +11,7 @@ app.use(function(req, res, next) {
 });
 
 app.get('/greeting', function (req, res) {
-    request.get('http://hello-name/ronald', function (error, response, body) {
+    request.get('http://hello-name/DockerApiExample', function (error, response, body) {
         if (!error && response.statusCode === 200) {
             return res.send(body).end();
         }
