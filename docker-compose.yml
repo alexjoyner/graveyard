@@ -1,6 +1,7 @@
 version: '3'
 services:
   hello-name:
+    image: rosco9awj/example-hello-name
     build:
       ./hello-name
     ports:
