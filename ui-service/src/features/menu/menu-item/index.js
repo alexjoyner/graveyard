@@ -22,7 +22,9 @@ MenuItem.propTypes = {
 
 const ItemSource = {
     beginDrag(props){
-        return {}
+        return {
+            type: props.text
+        }
     }
 };
 

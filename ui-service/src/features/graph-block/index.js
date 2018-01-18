@@ -4,7 +4,6 @@ import 'purecss';
 import {Graph} from '../graph';
 
 export class GraphBlock extends React.Component {
-
     constructor(props) {
         super(props);
         this.chartOptions = {
@@ -25,10 +24,11 @@ export class GraphBlock extends React.Component {
     render() {
         return (
             <div className={'GraphBody'}>
+                <h5>{this.props.data.type}</h5>
                 <div className={'pure-g'}>
                     <div className={'pure-u-1-1'}>
                         <Graph
-                            chartID={'chart1'}
+                            chartID={'gauge-' + this.props.BlockID}
                             chartOpts={this.chartOptions}/>
                     </div>
                 </div>

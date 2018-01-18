@@ -4,23 +4,34 @@ import 'purecss';
 import {GraphBlock} from "../../features/graph-block/index";
 import Menu from "../../features/menu/index";
 import Header from "../../features/header/index";
-import {DragDropContextProvider} from 'react-dnd';
+import {DragDropContext} from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
+import Dash from "../../features/Dash/index";
 
 export class Home extends Component {
+    constructor(){
+        super();
+        this.state = {
+            graphs: []
+        }
+    }
+    handleDashDrop = (data) => {
+        let { graphs } = this.state;
+        graphs.push(data);
+        this.setState({graphs});
+    };
     render() {
         return (
-            <DragDropContextProvider backend={HTML5Backend}>
-                <div>
-                    <Header/>
-                    <Menu/>
-                    <div className={'dash-wrapper'}>
-                        <GraphBlock/>
-                    </div>
-                </div>
-            </DragDropContextProvider>
+            <div>
+                <Header/>
+                <Menu/>
+                <Dash onDrop={this.handleDashDrop}>
+                    {/*{this.state.graphs.map((data, i) => {*/}
+                        {/*return <GraphBlock key={i} BlockID={'Block' + i} data={data}/>*/}
+                    {/*})}*/}
+                </Dash>
+            </div>
         );
     }
 }
-
-export default Home;
+export default DragDropContext(HTML5Backend)(Home);
