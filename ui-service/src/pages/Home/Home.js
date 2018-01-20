@@ -26,9 +26,9 @@ export class Home extends Component {
                 <Header/>
                 <Menu/>
                 <Dash onDrop={this.handleDashDrop}>
-                    {/*{this.state.graphs.map((data, i) => {*/}
-                        {/*return <GraphBlock key={i} BlockID={'Block' + i} data={data}/>*/}
-                    {/*})}*/}
+                    {this.state.graphs.map((data, i) => {
+                        return <GraphBlock key={i} BlockID={'Block' + i} data={data}/>
+                    })}
                 </Dash>
             </div>
         );

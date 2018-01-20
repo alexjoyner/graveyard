@@ -7,15 +7,15 @@ import {DRAG_DROP_TYPES} from "../../utils/DragDropTypes";
 export class Dash extends Component {
     render() {
         const {connectDropTarget} = this.props;
-        return (
+        return connectDropTarget(
             <div className={'dash-wrapper'}>
-                {this.props.children} Hello
+                {this.props.children}
             </div>
         );
     }
 }
 
-//Dash.propTypes = {};
+Dash.propTypes = {};
 
 const collect = (connect, monitor) => ({connectDropTarget: connect.dropTarget()});
 const spec = {
