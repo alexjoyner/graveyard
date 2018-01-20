@@ -35,13 +35,13 @@ services:
       - frontend
   socket-data:
     build:
-      context: ./socket-data
+      context: ../socketio-databridge
       args:
         - NODE_ENV=development
     restart: always
     command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
     volumes:
-      - ./socket-data:/opt/app
+      - ../socketio-databridge:/opt/app
       - socket-data-node_modules:/opt/app/node_modules
     ports:
       - "3000:80"
