@@ -1,14 +1,13 @@
 version: '3'
 services:
   ui-service:
-    image: ui-service
     build:
-      context: ./ui-service
+      context: ../ees-datalogger-ui
       args:
         - NODE_ENV=development
     restart: always
     volumes:
-      - ./ui-service:/home/node/app
+      - ../ees-datalogger-ui:/home/node/app
       - ui-service-node-modules:/home/node/app/node_modules
     ports:
       - "8080:80"
@@ -19,13 +18,13 @@ services:
       - panel-data-api
   panel-data-api:
     build:
-      context: ./panel-data-api
+      context: ../panel-data-db-api
       args:
         - NODE_ENV=development
     restart: always
     command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
     volumes:
-      - ./panel-data-api:/opt/app
+      - ../panel-data-db-api:/opt/app
       - panel-data-node_modules:/opt/app/node_modules
     ports:
       - "9000:80"

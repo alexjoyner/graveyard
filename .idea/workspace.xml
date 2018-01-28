@@ -2,14 +2,70 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f93a8bde-5ae7-474e-adf4-cd768480059b" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/socket-data/.dockerignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/socket-data/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/socket-data/Dockerfile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/socket-data/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/socket-data/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/socket-data/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/socket-data/package-lock.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/socket-data/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/panel-data-api/.dockerignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/panel-data-api/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/panel-data-api/Dockerfile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/panel-data-api/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/panel-data-api/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/panel-data-api/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/panel-data-api/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/.dockerignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/.idea/dbnavigator.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/.idea/ui-service.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/Dockerfile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/__mocks__/c3.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/__mocks__/d3.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/package-lock.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/public/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/public/robots.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/razzle.config.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/App/App.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/App/App.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/App/App.test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/assets/react.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/client.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/features/Dash/__snapshots__/test.js.snap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/features/Dash/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/features/Dash/styles.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/features/Dash/test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/features/graph-block/__snapshots__/test.js.snap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/features/graph-block/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/features/graph-block/styles.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/features/graph-block/test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/features/graph/__snapshots__/test.js.snap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/features/graph/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/features/graph/styles.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/features/graph/test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/features/header/__snapshots__/test.js.snap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/features/header/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/features/header/styles.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/features/header/test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/features/menu/__snapshots__/test.js.snap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/features/menu/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/features/menu/menu-item/__snapshots__/test.js.snap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/features/menu/menu-item/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/features/menu/menu-item/styles.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/features/menu/menu-item/test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/features/menu/styles.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/features/menu/test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/features/socket-connection/connection.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/pages/Home/Home.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/pages/Home/Home.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/pages/Home/__snapshots__/test.js.snap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/pages/Home/test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/server.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/setupTests.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/utils/DragDropTypes.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/utils/error-boundary/__snapshots__/test.js.snap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/utils/error-boundary/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/src/utils/error-boundary/test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui-service/yarn.lock" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docker-compose.yml" afterPath="$PROJECT_DIR$/docker-compose.yml" />
     </list>
@@ -25,12 +81,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="docker-compose.yml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/docker-compose.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="45" column="10" lean-forward="false" selection-start-line="45" selection-start-column="10" selection-end-line="45" selection-end-column="10" />
-              <folding />
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="0">
+                <caret line="0" column="17" lean-forward="true" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
+                <folding />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -116,9 +175,7 @@
     </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
-    <package-json value="$PROJECT_DIR$/ui-service/package.json" />
-  </component>
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsFlowSettings">
     <service-enabled>false</service-enabled>
     <exe-path />
@@ -134,11 +191,6 @@
     <scope name="ui-service-dev" pattern="!file[EES_Logger]:.idea//*&amp;&amp;!file[EES_Logger]:modbus-service//*&amp;&amp;!file[EES_Logger]:logger-service//*&amp;&amp;!file[EES_Logger]:ui-service/build//*&amp;&amp;!file[EES_Logger]:ui-service/public//*&amp;&amp;!file:ui-service/.gitignore&amp;&amp;!file:ui-service/yarn.lock" />
     <scope name="dev" pattern="!file[EES_Logger]:ui-service/.idea/*&amp;&amp;!file[EES_Logger]:ui-service/build/*&amp;&amp;!file[EES_Logger]:ui-service/build//*&amp;&amp;!file[EES_Logger]:ui-service/.idea//*&amp;&amp;!file[EES_Logger]:ui-service/node_modules//*&amp;&amp;!file:ui-service/yarn.lock&amp;&amp;!file:ui-service/webpack.server.js&amp;&amp;!file:ui-service/webpack.client.js&amp;&amp;!file:ui-service/webpack.base.js&amp;&amp;!file:ui-service/.gitignore&amp;&amp;!file[EES_Logger]:ui-service/public//*&amp;&amp;!file[EES_Logger]:ui-service/docs//*&amp;&amp;!file[EES_Logger]:ui-service/src/helpers//*&amp;&amp;!file[EES_Logger]:.idea//*" />
     <scope name="ui-service-dev-focus" pattern="!file[EES_Logger]:.idea//*&amp;&amp;!file[EES_Logger]:modbus-service//*&amp;&amp;!file[EES_Logger]:logger-service//*&amp;&amp;!file[EES_Logger]:ui-service/build//*&amp;&amp;!file[EES_Logger]:ui-service/public//*&amp;&amp;!file:ui-service/.gitignore&amp;&amp;!file:ui-service/yarn.lock&amp;&amp;!file:ui-service/src/client.js&amp;&amp;!file:ui-service/src/index.js&amp;&amp;!file:ui-service/src/server.js&amp;&amp;!file:ui-service/src/setupTests.js&amp;&amp;!file:ui-service/package.json&amp;&amp;!file:ui-service/README.md&amp;&amp;!file[EES_Logger]:ui-service/src/pages/_App/*&amp;&amp;!file[EES_Logger]:ui-service/src/assets//*&amp;&amp;!file[EES_Logger]:ui-service-master//*&amp;&amp;!file:.gitignore&amp;&amp;!file:docker-compose.yml&amp;&amp;!file:README.md" />
-  </component>
-  <component name="NodeModulesDirectoryManager">
-    <handled-path value="$PROJECT_DIR$/panel-data-api/node_modules" />
-    <handled-path value="$PROJECT_DIR$/socket-data/node_modules" />
-    <handled-path value="$PROJECT_DIR$/ui-service/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="330" />
@@ -411,16 +463,15 @@
       <workItem from="1513575858046" duration="184000" />
       <workItem from="1516309880891" duration="3558000" />
       <workItem from="1516475891526" duration="599000" />
-      <workItem from="1516477080472" duration="634000" />
+      <workItem from="1516477080472" duration="5555000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132010000" />
+    <option name="totallyTimeSpent" value="136931000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14646997" sideWeight="0.4394099" order="0" side_tool="false" content_ui="combo" />
@@ -477,39 +528,8 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/panel-data-api/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/socket-data/index.html" />
-    <entry file="file://$PROJECT_DIR$/socket-data/package-lock.json" />
-    <entry file="file://$PROJECT_DIR$/panel-data-api/.vscode/launch.json" />
-    <entry file="file://$PROJECT_DIR$/panel-data-api/LICENSE">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/socket-data/.gitignore" />
     <entry file="file://$PROJECT_DIR$/socket-data/package.json" />
-    <entry file="file://$PROJECT_DIR$/panel-data-api/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/panel-data-api/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" column="25" lean-forward="false" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ui-service/src/features/graph/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -700,11 +720,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docker-compose.yml">
+    <entry file="file://$PROJECT_DIR$/panel-data-api/LICENSE">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/panel-data-api/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
-          <caret line="45" column="10" lean-forward="false" selection-start-line="45" selection-start-column="10" selection-end-line="45" selection-end-column="10" />
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui-service/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/panel-data-api/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/panel-data-api/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/panel-data-api/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="26" lean-forward="true" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-compose.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="17" lean-forward="true" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="17" lean-forward="true" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
