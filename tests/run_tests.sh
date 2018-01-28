@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-echo "Error: no tests specified"
-exit 1
+echo "no tests to run!!!"
+exit 0
