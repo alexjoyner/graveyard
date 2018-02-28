@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ProjectDescriptor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectVersion>2.0.0.0</ProjectVersion>
-  <ManagementLevel>FunctLevelMan9_0</ManagementLevel>
+  <ManagementLevel>FunctLevelMan11_0</ManagementLevel>
   <Name>M221-KSB-single-pump</Name>
   <FullName>C:\Users\Admin\Documents\GitHub\ksb-single-panel\Program\M221-KSB-single-pump.smbp</FullName>
   <CurrentCultureName>en-GB</CurrentCultureName>
@@ -130,6 +130,7 @@
               </InstructionLineEntity>
             </InstructionLines>
             <Name>Bearing Temp</Name>
+            <MainComment />
             <Label />
             <IsLadderSelected>true</IsLadderSelected>
           </RungEntity>
@@ -248,6 +249,7 @@
               </InstructionLineEntity>
             </InstructionLines>
             <Name>High Float</Name>
+            <MainComment />
             <Label />
             <IsLadderSelected>true</IsLadderSelected>
           </RungEntity>
@@ -435,6 +437,7 @@
               </InstructionLineEntity>
             </InstructionLines>
             <Name>Winding Temp</Name>
+            <MainComment />
             <Label />
             <IsLadderSelected>true</IsLadderSelected>
           </RungEntity>
@@ -554,6 +557,7 @@
               </InstructionLineEntity>
             </InstructionLines>
             <Name>Seal Fail</Name>
+            <MainComment />
             <Label />
             <IsLadderSelected>true</IsLadderSelected>
           </RungEntity>
@@ -675,6 +679,7 @@
               </InstructionLineEntity>
             </InstructionLines>
             <Name>Vibration</Name>
+            <MainComment />
             <Label />
             <IsLadderSelected>true</IsLadderSelected>
           </RungEntity>
@@ -835,6 +840,7 @@
               </InstructionLineEntity>
             </InstructionLines>
             <Name>main</Name>
+            <MainComment />
             <Label />
             <IsLadderSelected>true</IsLadderSelected>
           </RungEntity>
@@ -1019,6 +1025,7 @@
               </InstructionLineEntity>
             </InstructionLines>
             <Name>Reset Alarms</Name>
+            <MainComment />
             <Label />
             <IsLadderSelected>true</IsLadderSelected>
           </RungEntity>
@@ -1186,6 +1193,7 @@
               </InstructionLineEntity>
             </InstructionLines>
             <Name>Set Default Alarm Setpoints</Name>
+            <MainComment />
             <Label />
             <IsLadderSelected>true</IsLadderSelected>
           </RungEntity>
@@ -1329,6 +1337,7 @@
               </InstructionLineEntity>
             </InstructionLines>
             <Name>Set Default Timer Setpoints</Name>
+            <MainComment />
             <Label />
             <IsLadderSelected>true</IsLadderSelected>
           </RungEntity>
@@ -1476,6 +1485,7 @@
               </InstructionLineEntity>
             </InstructionLines>
             <Name>Set timer delays</Name>
+            <MainComment />
             <Label />
             <IsLadderSelected>true</IsLadderSelected>
           </RungEntity>
@@ -1569,14 +1579,1011 @@
               </InstructionLineEntity>
             </InstructionLines>
             <Name>Set logging variables</Name>
+            <MainComment />
+            <Label />
+            <IsLadderSelected>true</IsLadderSelected>
+          </RungEntity>
+        </Rungs>
+      </ProgramOrganizationUnits>
+      <ProgramOrganizationUnits>
+        <Name>DataLogger</Name>
+        <SectionNumber>7</SectionNumber>
+        <Rungs>
+          <RungEntity>
+            <LadderElements>
+              <LadderEntity>
+                <ElementType>NormalContact</ElementType>
+                <Descriptor>%M110</Descriptor>
+                <Comment />
+                <Symbol>LOGGING_DONE</Symbol>
+                <Row>0</Row>
+                <Column>0</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Timer</ElementType>
+                <Descriptor>%TM5</Descriptor>
+                <Comment />
+                <Symbol>NEXT_LOG_DELAY_TIMER</Symbol>
+                <Row>0</Row>
+                <Column>4</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Coil</ElementType>
+                <Descriptor>%M114</Descriptor>
+                <Comment />
+                <Symbol>LOG_NEXT</Symbol>
+                <Row>0</Row>
+                <Column>10</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>8</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>7</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>6</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>3</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>2</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>1</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+            </LadderElements>
+            <InstructionLines>
+              <InstructionLineEntity>
+                <InstructionLine>BLK   %TM5</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>LD    %M110</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>IN</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>OUT_BLK</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>LD    Q</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ST    %M114</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>END_BLK</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+            </InstructionLines>
+            <Name />
+            <MainComment />
+            <Label />
+            <IsLadderSelected>true</IsLadderSelected>
+          </RungEntity>
+          <RungEntity>
+            <LadderElements>
+              <LadderEntity>
+                <ElementType>DataLoggingBlock</ElementType>
+                <Descriptor>%DATALOG0</Descriptor>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>3</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>7</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>8</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>1</Row>
+                <Column>7</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>1</Row>
+                <Column>8</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>2</Row>
+                <Column>7</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>2</Row>
+                <Column>8</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>3</Row>
+                <Column>7</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>3</Row>
+                <Column>8</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Coil</ElementType>
+                <Descriptor>%M110</Descriptor>
+                <Comment />
+                <Symbol>LOGGING_DONE</Symbol>
+                <Row>0</Row>
+                <Column>10</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Coil</ElementType>
+                <Descriptor>%M111</Descriptor>
+                <Comment />
+                <Symbol>LOGGING_BUSY</Symbol>
+                <Row>1</Row>
+                <Column>10</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Coil</ElementType>
+                <Descriptor>%M112</Descriptor>
+                <Comment />
+                <Symbol>LOGGING_ERROR</Symbol>
+                <Row>2</Row>
+                <Column>10</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Coil</ElementType>
+                <Descriptor>%M113</Descriptor>
+                <Comment />
+                <Symbol>LOGGING_BAK</Symbol>
+                <Row>3</Row>
+                <Column>10</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>1</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>2</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>3</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>NegatedContact</ElementType>
+                <Descriptor>%Q0.0</Descriptor>
+                <Comment />
+                <Symbol>PUMP_ENABLE</Symbol>
+                <Row>0</Row>
+                <Column>0</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>NegatedContact</ElementType>
+                <Descriptor>%M114</Descriptor>
+                <Comment />
+                <Symbol>LOG_NEXT</Symbol>
+                <Row>0</Row>
+                <Column>1</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>NormalContact</ElementType>
+                <Descriptor>%M200</Descriptor>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>2</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+            </LadderElements>
+            <InstructionLines>
+              <InstructionLineEntity>
+                <InstructionLine>BLK   %DATALOG0</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>LDN   %Q0.0</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ANDN  %M114</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>AND   %M200</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>EXECUTE</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>OUT_BLK</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>LD    DONE</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ST    %M110</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>LD    BUSY</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ST    %M111</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>LD    ERROR</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ST    %M112</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>LD    BAK</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ST    %M113</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>END_BLK</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+            </InstructionLines>
+            <Name />
+            <MainComment />
+            <Label />
+            <IsLadderSelected>true</IsLadderSelected>
+          </RungEntity>
+        </Rungs>
+      </ProgramOrganizationUnits>
+      <ProgramOrganizationUnits>
+        <Name>DataLogger_Test</Name>
+        <SectionNumber>8</SectionNumber>
+        <Rungs>
+          <RungEntity>
+            <LadderElements>
+              <LadderEntity>
+                <ElementType>DataLoggingBlock</ElementType>
+                <Descriptor>%DATALOG1</Descriptor>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>3</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>2</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>2</Row>
+                <Column>8</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>2</Row>
+                <Column>7</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>3</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>3</Row>
+                <Column>8</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>3</Row>
+                <Column>7</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Coil</ElementType>
+                <Descriptor>%M123</Descriptor>
+                <Comment />
+                <Symbol />
+                <Row>2</Row>
+                <Column>10</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Coil</ElementType>
+                <Descriptor>%M124</Descriptor>
+                <Comment />
+                <Symbol />
+                <Row>3</Row>
+                <Column>10</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>NormalContact</ElementType>
+                <Descriptor>%S6</Descriptor>
+                <Comment>Time base of 1 s generated by an internal clock</Comment>
+                <Symbol>SB_TB1S</Symbol>
+                <Row>0</Row>
+                <Column>0</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Coil</ElementType>
+                <Descriptor>%M121</Descriptor>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>10</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>7</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>8</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>2</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Coil</ElementType>
+                <Descriptor>%M122</Descriptor>
+                <Comment />
+                <Symbol />
+                <Row>1</Row>
+                <Column>10</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>1</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>1</Row>
+                <Column>8</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>1</Row>
+                <Column>7</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>NormalContact</ElementType>
+                <Descriptor>%M125</Descriptor>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>1</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+            </LadderElements>
+            <InstructionLines>
+              <InstructionLineEntity>
+                <InstructionLine>BLK   %DATALOG1</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>LD    %S6</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>AND   %M125</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>EXECUTE</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>OUT_BLK</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>LD    DONE</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ST    %M121</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>LD    BUSY</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ST    %M122</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>LD    ERROR</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ST    %M123</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>LD    BAK</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ST    %M124</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>END_BLK</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+            </InstructionLines>
+            <Name />
+            <MainComment />
+            <Label />
+            <IsLadderSelected>true</IsLadderSelected>
+          </RungEntity>
+        </Rungs>
+      </ProgramOrganizationUnits>
+      <ProgramOrganizationUnits>
+        <Name>ModuleStatus</Name>
+        <SectionNumber>9</SectionNumber>
+        <Rungs>
+          <RungEntity>
+            <LadderElements>
+              <LadderEntity>
+                <ElementType>NormalContact</ElementType>
+                <Descriptor>%SW120:X1</Descriptor>
+                <Comment>Shows expansion I/O module status (refer F1 help for details)</Comment>
+                <Symbol>SW_IOSTATUS:X1</Symbol>
+                <Row>0</Row>
+                <Column>0</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Coil</ElementType>
+                <Descriptor>%M12</Descriptor>
+                <Comment />
+                <Symbol>MODULE_1_STATUS</Symbol>
+                <Row>0</Row>
+                <Column>10</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>8</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>7</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>6</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>5</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>4</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>3</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>2</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>1</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+            </LadderElements>
+            <InstructionLines>
+              <InstructionLineEntity>
+                <InstructionLine>LD    %SW120:X1</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ST    %M12</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+            </InstructionLines>
+            <Name />
+            <MainComment />
+            <Label />
+            <IsLadderSelected>true</IsLadderSelected>
+          </RungEntity>
+          <RungEntity>
+            <LadderElements>
+              <LadderEntity>
+                <ElementType>NormalContact</ElementType>
+                <Descriptor>%SW120:X2</Descriptor>
+                <Comment>Shows expansion I/O module status (refer F1 help for details)</Comment>
+                <Symbol>SW_IOSTATUS:X2</Symbol>
+                <Row>0</Row>
+                <Column>0</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>8</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>7</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>6</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>5</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>4</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>3</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>2</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>1</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Coil</ElementType>
+                <Descriptor>%M13</Descriptor>
+                <Comment />
+                <Symbol>MODULE_2_STATUS</Symbol>
+                <Row>0</Row>
+                <Column>10</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+            </LadderElements>
+            <InstructionLines>
+              <InstructionLineEntity>
+                <InstructionLine>LD    %SW120:X2</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ST    %M13</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+            </InstructionLines>
+            <Name />
+            <MainComment />
+            <Label />
+            <IsLadderSelected>true</IsLadderSelected>
+          </RungEntity>
+          <RungEntity>
+            <LadderElements>
+              <LadderEntity>
+                <ElementType>NormalContact</ElementType>
+                <Descriptor>%SW120:X3</Descriptor>
+                <Comment>Shows expansion I/O module status (refer F1 help for details)</Comment>
+                <Symbol>SW_IOSTATUS:X3</Symbol>
+                <Row>0</Row>
+                <Column>0</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>8</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>7</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>6</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>5</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>4</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>3</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>2</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Comment />
+                <Symbol />
+                <Row>0</Row>
+                <Column>1</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Coil</ElementType>
+                <Descriptor>%M14</Descriptor>
+                <Comment />
+                <Symbol>MODULE_3_STATUS</Symbol>
+                <Row>0</Row>
+                <Column>10</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+            </LadderElements>
+            <InstructionLines>
+              <InstructionLineEntity>
+                <InstructionLine>LD    %SW120:X3</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>ST    %M14</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+            </InstructionLines>
+            <Name />
+            <MainComment />
             <Label />
             <IsLadderSelected>true</IsLadderSelected>
           </RungEntity>
         </Rungs>
       </ProgramOrganizationUnits>
     </Pous>
-    <Subroutines />
-    <WatchLists />
+    <Subroutines>
+      <Subroutine>
+        <Name>Set_RTC</Name>
+        <SectionNumber>10</SectionNumber>
+        <Rungs>
+          <RungEntity>
+            <LadderElements>
+              <LadderEntity>
+                <ElementType>ResetCoil</ElementType>
+                <Descriptor>%S50</Descriptor>
+                <Comment>Set to 1, this bit allows to update the date and time</Comment>
+                <Symbol>SB_RTCUPDATE</Symbol>
+                <Row>0</Row>
+                <Column>10</Column>
+                <ChosenConnection>Left</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>9</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>8</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>7</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>6</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>5</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>4</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>3</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>2</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>1</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+              <LadderEntity>
+                <ElementType>Line</ElementType>
+                <Row>0</Row>
+                <Column>0</Column>
+                <ChosenConnection>Left, Right</ChosenConnection>
+              </LadderEntity>
+            </LadderElements>
+            <InstructionLines>
+              <InstructionLineEntity>
+                <InstructionLine>LD    1</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+              <InstructionLineEntity>
+                <InstructionLine>R     %S50</InstructionLine>
+                <Comment />
+              </InstructionLineEntity>
+            </InstructionLines>
+            <Name />
+            <MainComment>Reset RTC system bit</MainComment>
+            <Label />
+            <IsLadderSelected>true</IsLadderSelected>
+          </RungEntity>
+        </Rungs>
+        <Number>1</Number>
+      </Subroutine>
+    </Subroutines>
+    <WatchLists>
+      <WatchListEntity>
+        <Name>Animation table_0</Name>
+        <WatchListItemEntities>
+          <WatchListItemEntity>
+            <Address>%IW1.0</Address>
+            <IsTraced>true</IsTraced>
+            <ValueRepresentation>Decimal</ValueRepresentation>
+          </WatchListItemEntity>
+          <WatchListItemEntity>
+            <Address>%IW3.0</Address>
+            <IsTraced>false</IsTraced>
+            <ValueRepresentation>Decimal</ValueRepresentation>
+          </WatchListItemEntity>
+          <WatchListItemEntity>
+            <Address>%IW1.1</Address>
+            <IsTraced>true</IsTraced>
+            <ValueRepresentation>Decimal</ValueRepresentation>
+          </WatchListItemEntity>
+          <WatchListItemEntity>
+            <Address>%IW1.2</Address>
+            <IsTraced>true</IsTraced>
+            <ValueRepresentation>Decimal</ValueRepresentation>
+          </WatchListItemEntity>
+          <WatchListItemEntity>
+            <Address>%IW1.3</Address>
+            <IsTraced>true</IsTraced>
+            <ValueRepresentation>Decimal</ValueRepresentation>
+          </WatchListItemEntity>
+        </WatchListItemEntities>
+      </WatchListEntity>
+    </WatchLists>
     <CustomSymbols />
     <ConstantWordsMemoryAllocation>
       <ForcedCount>1</ForcedCount>
@@ -1590,7 +2597,7 @@
       <ForcedCount>100</ForcedCount>
     </MemoryWordsMemoryAllocation>
     <TimersMemoryAllocation>
-      <ForcedCount>5</ForcedCount>
+      <ForcedCount>6</ForcedCount>
     </TimersMemoryAllocation>
     <CountersMemoryAllocation />
     <RegistersMemoryAllocation />
@@ -1661,6 +2668,46 @@
         <Address>%M11</Address>
         <Index>11</Index>
         <Symbol>HIGH_BOT_BEAR_TMP_ALARM_BYPASS</Symbol>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M12</Address>
+        <Index>12</Index>
+        <Symbol>MODULE_1_STATUS</Symbol>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M13</Address>
+        <Index>13</Index>
+        <Symbol>MODULE_2_STATUS</Symbol>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M14</Address>
+        <Index>14</Index>
+        <Symbol>MODULE_3_STATUS</Symbol>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M110</Address>
+        <Index>110</Index>
+        <Symbol>LOGGING_DONE</Symbol>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M111</Address>
+        <Index>111</Index>
+        <Symbol>LOGGING_BUSY</Symbol>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M112</Address>
+        <Index>112</Index>
+        <Symbol>LOGGING_ERROR</Symbol>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M113</Address>
+        <Index>113</Index>
+        <Symbol>LOGGING_BAK</Symbol>
+      </MemoryBit>
+      <MemoryBit>
+        <Address>%M114</Address>
+        <Index>114</Index>
+        <Symbol>LOG_NEXT</Symbol>
       </MemoryBit>
     </MemoryBits>
     <SystemBits>
@@ -1866,7 +2913,7 @@
         <Address>%S91</Address>
         <Index>91</Index>
         <Symbol>SB_MWERASE</Symbol>
-        <Comment>User sets this bit to 1 to erase all %MW variables in the flash memory</Comment>
+        <Comment>Set this bit to 1 to erase all memory values in non-volatile memory</Comment>
       </MemoryBit>
       <MemoryBit>
         <Address>%S92</Address>
@@ -1878,7 +2925,7 @@
         <Address>%S93</Address>
         <Index>93</Index>
         <Symbol>SB_MWBACKUP</Symbol>
-        <Comment>User set this bit to 1 to store the %MW variable in the flash (up to 2000)</Comment>
+        <Comment>Set this bit to 1 to backup the memory values to non-volatile memory (%S90 = 0) or SD card (%S90 = 1)</Comment>
       </MemoryBit>
       <MemoryBit>
         <Address>%S94</Address>
@@ -2414,7 +3461,7 @@
         <Address>%SW119</Address>
         <Index>119</Index>
         <Symbol>SW_IOOPTION</Symbol>
-        <Comment>Shows optional expansion module configuration (refer F1 help for details)</Comment>
+        <Comment>Indicates the expansion modules configured as optional (see online help for details)</Comment>
       </MemoryWord>
       <MemoryWord>
         <Address>%SW120</Address>
@@ -2510,7 +3557,7 @@
         <Address>%SW148</Address>
         <Index>148</Index>
         <Symbol>SW_NBPERS</Symbol>
-        <Comment>Number of persistent variables (maximum 2000)</Comment>
+        <Comment>Number of memory values to backup/restore to/from non-volatile memory (%S90 = 0) or SD card (%S90 = 1)</Comment>
       </MemoryWord>
       <MemoryWord>
         <Address>%SW149</Address>
@@ -2999,6 +4046,37 @@
         <Preset>10</Preset>
         <Base>OneSecond</Base>
       </TimerTM>
+      <TimerTM>
+        <Address>%TM5</Address>
+        <Index>5</Index>
+        <Symbol>NEXT_LOG_DELAY_TIMER</Symbol>
+        <Preset>30</Preset>
+        <Base>OneSecond</Base>
+      </TimerTM>
+      <TimerTM>
+        <Address>%TM6</Address>
+        <Index>6</Index>
+        <Preset>5</Preset>
+        <Base>OneHundredMilliSeconds</Base>
+      </TimerTM>
+      <TimerTM>
+        <Address>%TM7</Address>
+        <Index>7</Index>
+        <Preset>5</Preset>
+        <Base>OneHundredMilliSeconds</Base>
+      </TimerTM>
+      <TimerTM>
+        <Address>%TM8</Address>
+        <Index>8</Index>
+        <Preset>2</Preset>
+        <Base>OneSecond</Base>
+      </TimerTM>
+      <TimerTM>
+        <Address>%TM9</Address>
+        <Index>9</Index>
+        <Preset>2</Preset>
+        <Base>OneSecond</Base>
+      </TimerTM>
     </Timers>
     <Counters />
     <FastCounters />
@@ -3020,7 +4098,58 @@
         <OutputPort>Ethernet</OutputPort>
       </MessageBlock>
     </MessageBlocks>
-    <FunctionBlocks />
+    <FunctionBlocks>
+      <IFunctionBlock Type="SchneiderElectric.Automation.SoMachineBasic.Entities.PLCObjects.FunctionBlocks.DataLogging.DataLoggingBlock, SchneiderElectric.SoMachineBasic.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5beddbc0114a5f07">
+        <Address>%DATALOG0</Address>
+        <Index>0</Index>
+        <Records>
+          <DataLoggingRecord>
+            <Index>0</Index>
+            <Value>%I0.0</Value>
+          </DataLoggingRecord>
+          <DataLoggingRecord>
+            <Index>1</Index>
+            <Value>%IW1.0</Value>
+          </DataLoggingRecord>
+          <DataLoggingRecord>
+            <Index>2</Index>
+            <Value>%IW1.1</Value>
+          </DataLoggingRecord>
+          <DataLoggingRecord>
+            <Index>3</Index>
+            <Value>%IW1.2</Value>
+          </DataLoggingRecord>
+          <DataLoggingRecord>
+            <Index>4</Index>
+            <Value>%IW1.3</Value>
+          </DataLoggingRecord>
+          <DataLoggingRecord>
+            <Index>5</Index>
+            <Value>%IW2.0</Value>
+          </DataLoggingRecord>
+          <DataLoggingRecord>
+            <Index>6</Index>
+            <Value>%IW3.0</Value>
+          </DataLoggingRecord>
+        </Records>
+        <AddDateTime>true</AddDateTime>
+        <DataLoggingType>HistoricalData</DataLoggingType>
+        <MaxFileSize>100</MaxFileSize>
+      </IFunctionBlock>
+      <IFunctionBlock Type="SchneiderElectric.Automation.SoMachineBasic.Entities.PLCObjects.FunctionBlocks.DataLogging.DataLoggingBlock, SchneiderElectric.SoMachineBasic.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5beddbc0114a5f07">
+        <Address>%DATALOG1</Address>
+        <Index>1</Index>
+        <Records>
+          <DataLoggingRecord>
+            <Index>0</Index>
+            <Value>%IW1.0</Value>
+          </DataLoggingRecord>
+        </Records>
+        <AddDateTime>true</AddDateTime>
+        <DataLoggingType>HistoricalData</DataLoggingType>
+        <MaxFileSize>500</MaxFileSize>
+      </IFunctionBlock>
+    </FunctionBlocks>
     <MotionTaskTables />
     <FastTask>
       <Period>255</Period>
@@ -3030,14 +4159,14 @@
       <PeriodScan>100</PeriodScan>
     </MastTask>
     <CpuBehavior>
-      <StartingMode>StartAsPreviousState</StartingMode>
+      <StartingMode>StartInRun</StartingMode>
       <RunStopAddress />
       <AutoSaveRamOnEeprom>true</AutoSaveRamOnEeprom>
       <WatchdogPeriod>250</WatchdogPeriod>
     </CpuBehavior>
-    <InstListBufferSize>20186</InstListBufferSize>
-    <ProgramBufferSize>161469</ProgramBufferSize>
-    <TraceTimeBase>Time5Sec</TraceTimeBase>
+    <InstListBufferSize>20125</InstListBufferSize>
+    <ProgramBufferSize>160981</ProgramBufferSize>
+    <TraceTimeBase>Time1Sec</TraceTimeBase>
     <UserFunctionPous />
     <UserFunctionBlockPous />
     <UserDefineFunctionBlocks />
@@ -3121,9 +4250,9 @@
           <SupportEvents>true</SupportEvents>
           <SupportFloatingPoint>true</SupportFloatingPoint>
           <NumberOf1MsTimerBase>6</NumberOf1MsTimerBase>
-          <UdfbInstanceMax>0</UdfbInstanceMax>
-          <UdfMax>0</UdfMax>
-          <UdfObjectsMax>0</UdfObjectsMax>
+          <UdfbInstanceMax>32</UdfbInstanceMax>
+          <UdfMax>64</UdfMax>
+          <UdfObjectsMax>4096</UdfObjectsMax>
         </TechnicalConfiguration>
         <DigitalInputs>
           <DiscretInput>
