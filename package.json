@@ -9,6 +9,8 @@
     "test:cover": "razzle test --env=jsdom --coverage",
     "start:prod": "NODE_ENV=production node build/server.js"
   },
+  "peerDependencies": {
+  },
   "dependencies": {
     "axios": "^0.17.1",
     "c3": "^0.4.18",
