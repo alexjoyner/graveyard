@@ -9,6 +9,7 @@ services:
     volumes:
       - ../ees-datalogger-ui:/home/node/app
       - ui-service-node-modules:/home/node/app/node_modules
+      - ../ro-component-library:/home/node/app/node_modules/ro-component-library
     ports:
       - "8080:80"
       - "81:81"
