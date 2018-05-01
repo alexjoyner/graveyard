@@ -1,0 +1,43 @@
+﻿	(******************************)
+	(*                            *)
+	(*     EXPORTED VARIABLES     *)
+	(*                            *)
+	(******************************)
+
+        VAR_GLOBAL
+	{G:"Parameters"}
+bottomBearingSetpoint AT %MW101.0 : INT;
+motor1_Temp_Setpoint AT %MW101.1 : INT;
+motor2_Temp_Setpoint AT %MW101.2 : INT;
+motor3_Temp_Setpoint AT %MW101.3 : INT;
+vibration_Limit_Setpoint AT %MW101.4 : INT;
+	{G:"Variables"}
+windingTempAlarm AT %MW110.0 : BOOL;
+sealFailAlarm AT %MW110.1 : BOOL;
+highFloatAlarm AT %MW110.2 : BOOL;
+vibrationAlarm AT %MW110.3 : BOOL;
+highRtdAlarm AT %MW110.4 : BOOL;
+resetAlarms AT %MW110.5 : BOOL;
+silenceAlarms AT %MW110.6 : BOOL;
+pumpRtdAlarmDelay AT %MW110.7 : INT;
+vibrationAlarmDelay AT %MW110.8 : INT;
+windingTempAlarmBypassed AT %MW110.9 : BOOL;
+sealFailAlarmBypassed AT %MW110.10 : BOOL;
+highFloatAlarmBypassed AT %MW110.11 : BOOL;
+vibrationAlarmBypassed AT %MW110.12 : BOOL;
+highRtdAlarmBypassed AT %MW110.13 : BOOL;
+highFloatAlarmDelay AT %MW110.14 : INT;
+sealFailAlarmDelay AT %MW110.15 : INT;
+	{G:"Mappings"}
+motor1_Temp AT %IW1.0 : INT;	{ DE:"AIL1 analogue input" }
+motor2_Temp AT %IW1.1 : INT;	{ DE:"AIL2 analogue input" }
+motor3_Temp AT %IW1.2 : INT;	{ DE:"AIL3 analogue input" }
+bottomBearingTemp AT %IW1.3 : INT;	{ DE:"AIL4 analogue input" }
+windingTemp AT %IW1.4 : INT;	{ DE:"AIL5 analogue input" }
+vibration AT %IW1.6 : INT;	{ DE:"AIL7 analogue input" }
+sealFail AT %IX0.0 : BOOL;	{ DE:"DIL1 digital input" }
+highFloat AT %IX0.1 : BOOL;	{ DE:"DIL2 digital input" }
+pumpEnable AT %QX1.0 : BOOL;	{ DE:"DOL1 digital output" }
+audibleAlarm AT %QX1.1 : BOOL;	{ DE:"DOL2 digital output" }
+	END_VAR
+
