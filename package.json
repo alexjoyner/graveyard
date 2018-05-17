@@ -2,7 +2,7 @@
   "name": "ees-simple-dash",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://alexjoyner.github.io/ees-simple-dash",
+  "homepage": "http://alexjoyner.github.io/",
   "dependencies": {
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
