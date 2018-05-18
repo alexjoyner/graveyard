@@ -10,6 +10,6 @@
         "**/build": true,
         "**/.gitignore": true,
         "**/yarn.lock": true,
-        "**/package.json": true
+        "**/package.json": false
     }
 }
