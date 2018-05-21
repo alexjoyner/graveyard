@@ -1,0 +1,8 @@
+{
+  "name": "eze-handler",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Alex Joyner <alex@voicir.com>",
+  "license": "MIT",
+  "private": true
+}
