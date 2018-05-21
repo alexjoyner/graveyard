@@ -4,5 +4,9 @@
   "main": "index.js",
   "author": "Alex Joyner <alex@voicir.com>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "express": "^4.16.3",
+    "request": "^2.87.0"
+  }
 }
