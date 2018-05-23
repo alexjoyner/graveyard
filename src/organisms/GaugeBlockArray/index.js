@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {GaugeBlock, CenteredContent} from 'ro-component-library';
-import {gaugeSettings} from "ro-component-library/lib/atoms/Graph/graph-settings/gauge";
+import {cfm, temp, amps, psi} from "./sensorOpts";
 
 class GaugeBlockArray extends Component{
     state = {
         inputs: {}
-    }
+    } 
     retreiveData(passCode, callback){
         let requestUrl = new Request('https://api.voicir.com');
         fetch(requestUrl)
@@ -16,25 +16,28 @@ class GaugeBlockArray extends Component{
             callback(myJson.inputs);
             setTimeout(() => {
             this.retreiveData(passCode, callback);
-            }, 5000);
+            }, 10000);
         });
     }
     componentDidMount(){
-        if(1){
-            this.retreiveData('', (data) => {
-                this.setState({
-                    'inputs': data
-                })
-                this.forceUpdate();
-            });
-        }
+        this.retreiveData('', (data) => {
+            this.setState({
+                'inputs': data
+            })
+            this.forceUpdate();
+        });
     }
     render(){
         return (
             <CenteredContent>
                 {Object.keys(this.state.inputs).map((key, i) => {
                     let input = this.state.inputs[key];
-                    return <GaugeBlock key={i} id={key} value={input.real} label={input.name} gaugeOpts={gaugeSettings}></GaugeBlock>
+                    let opts = null;
+                    if(input.unit === 'F') opts = temp;
+                    if(input.unit === 'CFM') opts = cfm;
+                    if(input.unit === 'A')  opts = amps;
+                    if(input.unit === 'PSI')  opts = psi;
+                    return <GaugeBlock key={i} id={key} value={input.real} label={input.name} gaugeOpts={opts}></GaugeBlock>
                 })}
             </CenteredContent>
         )
