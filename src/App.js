@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Header, colors} from 'ro-component-library';
+import {Header, colors, SideBar} from 'ro-component-library';
 import {GaugeBlockArray} from './organisms/GaugeBlockArray';
 
 
@@ -13,7 +13,19 @@ class App extends Component {
             fontSize={'25px'} 
             logoText={'Dashboard Demo'} 
             sticky />
-        <GaugeBlockArray></GaugeBlockArray>
+        <div className={'PageBody'}>
+          <GaugeBlockArray></GaugeBlockArray>
+        </div>
+        <SideBar>
+            <h2>Taco Stuff</h2>
+            <ul>
+                <li>Shells</li> 
+                <li>Beans</li>
+                <li>Tomatoes</li>
+                <li>Sour Cream</li>
+                <li>Cheese</li>
+            </ul> 
+        </SideBar>
       </div>
     ); 
   }
