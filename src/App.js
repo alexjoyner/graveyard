@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Header, colors} from 'ro-component-library';
+import {Header, colors, SideBar} from 'ro-component-library';
 import {GaugeBlockArray} from './organisms/GaugeBlockArray';
 import {AuthModal} from './organisms/AuthModal';
 
@@ -15,7 +15,8 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <div>
+        
         <Header 
             color={colors.primary} 
             height={'67px'} 
@@ -27,6 +28,16 @@ class App extends Component {
             <AuthModal successAuth={() => this.setAuthenticated()}></AuthModal>
           )}
         </div>
+        <SideBar>
+                <h2>Taco Stuff</h2>
+                <ul>
+                    <li>Shells</li>
+                    <li>Beans</li>
+                    <li>Tomatoes</li>
+                    <li>Sour Cream</li>
+                    <li>Cheese</li>
+                </ul>
+            </SideBar>
       </div>
     ); 
   }

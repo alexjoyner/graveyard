@@ -7,8 +7,7 @@ export class AuthModal extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            inputValue: '',
-            blurred: false
+            inputValue: ''
         }
     }
     getData(){
@@ -23,9 +22,14 @@ export class AuthModal extends Component{
             inputValue: value
         })
     }
+    handleSubmit(event) {
+        event.preventDefault();
+        this.getData();
+    }
     render(){
         return (
             <Modal>
+                <form onSubmit={(event) => this.handleSubmit(event)}>
                 <div style={{'width': '85%', 'float': 'left'}}>
                     <Input 
                         {...this.state}
@@ -36,11 +40,14 @@ export class AuthModal extends Component{
                         autofocus={true} 
                         /> 
                 </div>
-                <div style={{'width': '15%', 'right': '0', 'position': 'absolute', 'bottom': '0', 'padding': '10px'}}>
+                <div style={{'right': '0', 'position': 'absolute', 'bottom': '0', 'padding-bottom': '10px', 'text-align': 'center'}}>
+                    <span>
                     <Button type={'submit'} primary ghost small onClick={() => this.getData()}>
                         <TiTick size={'30px'} style={{'textAlign': 'center', 'color': `${colors.primary}`}}/> 
                     </Button>
+                    </span>
                 </div>
+                </form>
             </Modal>
         )
     }
