@@ -27,7 +27,7 @@ app.get('/api/status', (req, res) => {
         inputs: {
             1: {
                 name: 'Test Input',
-                real: 3
+                real: 4
             }
         }
     });
