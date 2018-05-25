@@ -1,16 +1,18 @@
+import { GAUGE_COLOR_LEVELS, TEMP_MAX } from "./_commonOpts";
+
 export const temp = {
 	gauge: {
 		label: {
 			format: value => `${value} °F`,
 		},
-        max: 100
+        max: TEMP_MAX
 	},
 	color: {
-		pattern: ['#50bcef', '#F6C600', '#4eac5b', '#FF0000'], // the three color levels for the percentage values.
+		pattern: GAUGE_COLOR_LEVELS, // the three color levels for the percentage values.
 		threshold: {
             unit: 'value',
-            values: [30, 70, 78, 100],
-            max: 100,
+            values: [30, 70, 78, TEMP_MAX],
+            max: TEMP_MAX,
 		},
 	}
 };

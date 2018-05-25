@@ -11,10 +11,7 @@ export class AuthModal extends Component{
         }
     }
     getData(){
-        console.log('Logging in with: ', this.state);
-        setTimeout(() => {
-            this.props.successAuth();
-        }, 2000);
+        this.props.successAuth();
     }
     handleInputChange(e){
         let value = e.target.value;
