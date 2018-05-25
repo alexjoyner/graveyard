@@ -3,4 +3,7 @@ services:
   eze-handler:
     build: .
     ports:
-      - "8080:8080"
+      - "8080:80"
+    command: nodemon index.js
+    volumes:
+      - ./index.js:/usr/src/app/index.js

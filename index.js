@@ -13,15 +13,23 @@ var myLogger = function (req, res, next) {
 app.use(myLogger);
 
 app.get('/api/status', (req, res) => {
-    request.get('https://ezecontrol.com/api/status.php', {
-        'auth': {
-            'user': 'AAE599',
-            'pass': 'romeo6424',
-            'sendImmediately': false
+    // request.get('https://ezecontrol.com/api/status.php', {
+    //     'auth': {
+    //         'user': 'AAE599',
+    //         'pass': 'romeo6424',
+    //         'sendImmediately': false
+    //     }
+    // }, (err, response, body) => {
+    //     if(err) return res.status(400).send({'Error: ': err});
+    //     res.send(body);
+    // });
+    res.send({
+        inputs: {
+            1: {
+                name: 'Test Input',
+                real: 1
+            }
         }
-    }, (err, response, body) => {
-        if(err) return res.status(400).send({'Error: ': err});
-        res.send(body);
     });
 })
 

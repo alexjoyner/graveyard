@@ -3,7 +3,7 @@ FROM node:8
 WORKDIR /usr/src/app
 
 COPY package*.json ./
-
+RUN npm install --global nodemon
 RUN npm install
 
 COPY . .
