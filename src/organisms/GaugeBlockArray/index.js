@@ -37,7 +37,8 @@ class GaugeBlockArray extends Component{
                     if(input.unit === 'CFM') opts = cfm;
                     if(input.unit === 'A')  opts = amps;
                     if(input.unit === 'PSI')  opts = psi;
-                    return <GaugeBlock key={i} id={key} value={input.real} label={input.name} gaugeOpts={opts}></GaugeBlock>
+                    console.log(opts);
+                    return <GaugeBlock key={i} {...opts} value={input.real} label={input.name} ></GaugeBlock>
                 })}
             </CenteredContent>
         )

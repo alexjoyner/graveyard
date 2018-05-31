@@ -1,17 +1,28 @@
-import { GAUGE_COLOR_LEVELS, PSI_MAX } from "./_commonOpts";
+import { PSI_MAX } from "./_commonOpts";
 
 export const psi = {
-	gauge: {
-		label: {
-			format: value => `${value} PSI`,
-		},
-        max: PSI_MAX
-	},
-	color: {
-		pattern: GAUGE_COLOR_LEVELS, // the three color levels for the percentage values.
-		threshold: {
-            values: [30, 110, 130, PSI_MAX],
-            max: PSI_MAX,
-		},
-	}
-};
+	units: 'PSI',
+	max: PSI_MAX,
+	min: 0,
+	ranges: [{
+	    lowerValue: 0,
+	    upperValue: 50,
+	    color: "#95a5a6"
+	},{
+	    lowerValue: 50,
+	    upperValue: 100,
+	    color: "#9b59b6"
+	},{
+	    lowerValue: 100,
+	    upperValue: 150,
+	    color: "#f1c40f"
+	},{
+	    lowerValue: 150,
+	    upperValue: 200,
+	    color: "#2ecc71"
+	},{
+	    lowerValue: 200,
+	    upperValue: PSI_MAX,
+	    color: "#e74c3c"
+	}]
+  };

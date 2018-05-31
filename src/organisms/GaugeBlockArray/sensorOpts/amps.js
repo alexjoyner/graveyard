@@ -1,18 +1,28 @@
-import { GAUGE_COLOR_LEVELS, AMPS_MAX } from "./_commonOpts";
+import { AMPS_MAX } from "./_commonOpts";
 
 export const amps = {
-	gauge: {
-		label: {
-			format: value => `${value} A`,
-		},
-        max: AMPS_MAX
-	},
-	color: {
-		pattern: GAUGE_COLOR_LEVELS, // the three color levels for the percentage values.
-		threshold: {
-            unit: 'value',
-            values: [30, 150, 300, AMPS_MAX],
-            max: AMPS_MAX,
-		},
-	}
-};
+	units: 'A',
+	max: AMPS_MAX,
+	min: 0,
+	ranges: [{
+	    lowerValue: 0,
+	    upperValue: 100,
+	    color: "#95a5a6"
+	},{
+	    lowerValue: 100,
+	    upperValue: 200,
+	    color: "#9b59b6"
+	},{
+	    lowerValue: 200,
+	    upperValue: 300,
+	    color: "#f1c40f"
+	},{
+	    lowerValue: 300,
+	    upperValue: 400,
+	    color: "#2ecc71"
+	},{
+	    lowerValue: 400,
+	    upperValue: AMPS_MAX,
+	    color: "#e74c3c"
+	}]
+  };
