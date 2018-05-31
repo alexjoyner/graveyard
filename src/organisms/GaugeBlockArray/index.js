@@ -38,7 +38,12 @@ class GaugeBlockArray extends Component{
                     if(input.unit === 'A')  opts = amps;
                     if(input.unit === 'PSI')  opts = psi;
                     console.log(opts);
-                    return <GaugeBlock key={i} {...opts} value={input.real} label={input.name} ></GaugeBlock>
+                    return <GaugeBlock 
+                        key={i} 
+                        {...opts} 
+                        value={input.real} 
+                        label={input.name}
+                        height={'20vh'}></GaugeBlock>
                 })}
             </CenteredContent>
         )

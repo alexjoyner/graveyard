@@ -1,20 +1,29 @@
 import { TEMP_MAX } from "./_commonOpts";
+import { colors } from 'ro-component-library';
 
 export const temp = {
-	units: 'PSI',
+	units: '°F',
 	max: TEMP_MAX,
 	min: 0,
 	ranges: [{
-	    lowerValue: 0,
-	    upperValue: 63,
-	    color: "#3498db"
-	},{
-	    lowerValue: 63,
-	    upperValue: 80,
-	    color: "#2ecc71"
-	},{
-	    lowerValue: 80,
-	    upperValue: TEMP_MAX,
-	    color: "#e74c3c"
+		lowerValue: 0,
+		upperValue: 50,
+		color: colors.danger
+	}, {
+		lowerValue: 50,
+		upperValue: 65,
+		color: colors.warning
+	}, {
+		lowerValue: 65,
+		upperValue: 75,
+		color: colors.success
+	}, {
+		lowerValue: 75,
+		upperValue: 85,
+		color: colors.warning
+	}, {
+		lowerValue: 85,
+		upperValue: TEMP_MAX,
+		color: colors.danger
 	}]
-  };
+};

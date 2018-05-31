@@ -34,7 +34,7 @@ export class AuthModal extends Component{
                         onChange={(e) => this.handleInputChange(e)}
                         type={'text'}
                         labelText={'Access Code'}
-                        autofocus={true} 
+                        autoFocus={true} 
                         /> 
                 </div>
                 <div style={{'right': '0', 'position': 'absolute', 'bottom': '0', 'padding-bottom': '10px', 'text-align': 'center'}}>
