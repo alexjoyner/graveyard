@@ -1,8 +1,9 @@
 const express = require('express');
 //var https = require('https');
-var http = require('http');
+const http = require('http');
 const app = express();
 const request = require('request');
+const bodyParser = require('body-parser');
 var myLogger = function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -11,25 +12,19 @@ var myLogger = function (req, res, next) {
   }
   
 app.use(myLogger);
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
 
-app.get('/api/status', (req, res) => {
-    // request.get('https://ezecontrol.com/api/status.php', {
-    //     'auth': {
-    //         'user': 'AAE599',
-    //         'pass': 'romeo6424',
-    //         'sendImmediately': false
-    //     }
-    // }, (err, response, body) => {
-    //     if(err) return res.status(400).send({'Error: ': err});
-    //     res.send(body);
-    // });
-    res.send({
-        inputs: {
-            1: {
-                name: 'Test Input',
-                real: 4
-            }
+app.get('/status/:pass', (req, res) => {
+    request.get('https://ezecontrol.com/api/status.php', {
+        'auth': {
+            'user': 'AAE599',
+            'pass': req.params.pass,
+            'sendImmediately': false
         }
+    }, (err, response, body) => {
+        if(err) return res.status(400).send({'Error: ': err});
+        res.send(body);
     });
 })
 
