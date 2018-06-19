@@ -43,7 +43,7 @@ class GaugeBlockArray extends Component{
                         {...opts} 
                         value={input.real} 
                         label={input.name}
-                        height={'20vh'}></GaugeBlock>
+                        height={'25vh'}></GaugeBlock>
                 })}
             </CenteredContent>
         )

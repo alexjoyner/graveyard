@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
-import {Header, colors, SideBar} from 'ro-component-library';
+import {
+  Header, colors, SideBarPage, ListItem, 
+  ListHeader, CenteredContent, RoHighChart, PageOverlay} from 'ro-component-library';
 import {GaugeBlockArray} from './organisms/GaugeBlockArray';
 import {AuthModal} from './organisms/AuthModal';
 
+const SideBarContent = () => (
+  <div>
+    <ListHeader>Rooms</ListHeader>
+    <CenteredContent>
+      <ListItem>Demo Room</ListItem>
+      <ListItem color={colors.primaryLight}>+ Add Room</ListItem>
+    </CenteredContent>
+  </div>
+)
+
 class App extends Component {
   state = {
-    authenticated: false
+    authenticated: false,
+    historyModalShown: true
   }
   setAuthenticated(){
     this.setState({
@@ -14,38 +27,23 @@ class App extends Component {
     this.forceUpdate();
   }
   render() {
-    return (
+    return this.state.authenticated? (
       <div style={{'margin-top': '80px'}}>
         <Header 
-          color={colors.primary} 
+          color={colors.dark} 
           height={'67px'} 
           fontSize={'25px'} 
           logoText={'Dashboard Demo'} 
           sticky />
-        <div className={'PageBody'}>
-          {this.state.authenticated? <GaugeBlockArray></GaugeBlockArray> : (
-            <AuthModal successAuth={() => this.setAuthenticated()}></AuthModal>
-          )}
-        </div>
-          {this.state.authenticated? (
-          <SideBar>
-            <div>
-              <h2>Taco Stuff</h2>
-              <ul>
-                <li>Shells</li>
-                <li>Beans</li>
-                <li>Tomatoes</li>
-                <li>Sour Cream</li>
-                <li>Cheese</li>
-                <li>Avacado</li>
-              </ul>
-            </div>
-          </SideBar>
-          ) : (
-            null
-          )}
-      </div>
-    ); 
+        <SideBarPage sideBarContents={<SideBarContent />} >
+          <GaugeBlockArray></GaugeBlockArray>
+        </SideBarPage>
+        {this.state.historyModalShown?(
+          <PageOverlay><RoHighChart /></PageOverlay>
+        ):''}
+    </div>) : (
+      <AuthModal successAuth={() => this.setAuthenticated()}></AuthModal>
+    );
   }
 }
 
