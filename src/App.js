@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import {
   Header, colors, SideBarPage, ListItem, 
-  ListHeader, CenteredContent, RoHighChart, PageOverlay} from 'ro-component-library';
+  ListHeader, CenteredContent, PageOverlay} from 'ro-component-library';
 import {GaugeBlockArray} from './organisms/GaugeBlockArray';
 import {AuthModal} from './organisms/AuthModal';
+import { HistoricalGraphModal } from './organisms/HistoricalGraphModal';
 
 const SideBarContent = () => (
   <div>
@@ -39,7 +40,7 @@ class App extends Component {
           <GaugeBlockArray></GaugeBlockArray>
         </SideBarPage>
         {this.state.historyModalShown?(
-          <PageOverlay><RoHighChart /></PageOverlay>
+          <PageOverlay><HistoricalGraphModal /></PageOverlay>
         ):''}
     </div>) : (
       <AuthModal successAuth={() => this.setAuthenticated()}></AuthModal>
