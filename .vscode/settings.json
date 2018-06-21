@@ -6,10 +6,11 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/.vscode": true,
-        "**/node_modules": false,
+        "**/node_modules": true,
         "**/build": true,
         "**/.gitignore": true,
         "**/yarn.lock": true,
-        "**/package.json": false
+        "**/package.json": true,
+        "**/.storybook": true,
     }
 }

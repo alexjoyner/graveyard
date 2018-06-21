@@ -18,17 +18,19 @@
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-icons": "^2.2.7",
+    "react-redux": "^5.0.7",
     "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
     "request": "^2.86.0",
     "styled-components": "^3.2.6"
   },
   "devDependencies": {
-    "gh-pages": "^1.1.0",
-    "@storybook/react": "^3.4.7",
     "@storybook/addon-actions": "^3.4.7",
     "@storybook/addon-links": "^3.4.7",
     "@storybook/addons": "^3.4.7",
+    "@storybook/react": "^3.4.7",
     "babel-core": "^6.26.3",
-    "babel-runtime": "^6.26.0"
+    "babel-runtime": "^6.26.0",
+    "gh-pages": "^1.1.0"
   }
 }
