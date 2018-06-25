@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import {
   Header, colors, SideBarPage, ListItem, 
   ListHeader, CenteredContent, PageOverlay} from 'ro-component-library';
@@ -17,18 +18,8 @@ const SideBarContent = () => (
 )
 
 class App extends Component {
-  state = {
-    authenticated: false,
-    historyModalShown: true
-  }
-  setAuthenticated(){
-    this.setState({
-      authenticated: true
-    })
-    this.forceUpdate();
-  }
   render() {
-    return this.state.authenticated? (
+    return this.props.loggedIn? (
       <div style={{'margin-top': '80px'}}>
         <Header 
           color={colors.dark} 
@@ -39,13 +30,14 @@ class App extends Component {
         <SideBarPage sideBarContents={<SideBarContent />} >
           <GaugeBlockArray></GaugeBlockArray>
         </SideBarPage>
-        {this.state.historyModalShown?(
-          <PageOverlay><HistoricalGraphModal /></PageOverlay>
-        ):''}
     </div>) : (
-      <AuthModal successAuth={() => this.setAuthenticated()}></AuthModal>
+      <AuthModal></AuthModal>
     );
   }
 }
-
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    loggedIn: state.AuthModalReducer.loggedIn
+  }
+}
+export default connect(mapStateToProps)(App);

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import {GaugeBlock, CenteredContent} from 'ro-component-library';
-import {cfm, temp, amps, psi} from "./sensorOpts";
 
 class GaugeBlockArray extends Component{
     state = {
@@ -14,9 +14,6 @@ class GaugeBlockArray extends Component{
             if(myJson.status === 'Offline')
                 return alert('System offline')
             callback(myJson.inputs);
-            setTimeout(() => {
-            this.retreiveData(passCode, callback);
-            }, 10000);
         });
     }
     componentDidMount(){
@@ -33,11 +30,10 @@ class GaugeBlockArray extends Component{
                 {Object.keys(this.state.inputs).map((key, i) => {
                     let input = this.state.inputs[key];
                     let opts = null;
-                    if(input.unit === 'F') opts = temp;
-                    if(input.unit === 'CFM') opts = cfm;
-                    if(input.unit === 'A')  opts = amps;
-                    if(input.unit === 'PSI')  opts = psi;
-                    console.log(opts);
+                    if(input.unit === 'F') opts = this.props.temp;
+                    if(input.unit === 'CFM') opts = this.props.cfm;
+                    if(input.unit === 'A')  opts = this.props.amps;
+                    if(input.unit === 'PSI')  opts = this.props.psi;
                     return <GaugeBlock 
                         key={i} 
                         {...opts} 
@@ -50,4 +46,11 @@ class GaugeBlockArray extends Component{
     }
   }
 
+const mapStateToProps = (state) => {
+    return {
+        ...state.GaugeBlockArrayReducer.defaultOpts
+    }
+}
+
+GaugeBlockArray = connect(mapStateToProps, null)(GaugeBlockArray)
 export {GaugeBlockArray};
