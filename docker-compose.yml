@@ -1,7 +1,10 @@
 version: '2'
 services:
   eze-handler:
-    build: .
+    build:
+      context: .
+      args:
+        - NODE_ENV=development
     ports:
       - "8080:80"
     command: nodemon index.js
