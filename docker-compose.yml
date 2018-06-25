@@ -7,6 +7,6 @@ services:
         - NODE_ENV=development
     ports:
       - "8080:80"
-    command: nodemon index.js
+    command: nodemon index.js -L
     volumes:
       - ./index.js:/usr/src/app/index.js

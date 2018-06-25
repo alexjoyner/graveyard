@@ -1,0 +1,18 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/.vscode": true,
+    "**/node_modules": true,
+    "**/.gitignore": true,
+    "**/.dockerignore": true,
+    "**/yarn.lock": true,
+    "**/package.json": true,
+    "**/Dockerfile": true,
+    "**/docker-compose.yml": true,
+    "**/docker-cloud.yml": true,
+  }
+}

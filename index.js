@@ -15,10 +15,10 @@ app.use(myLogger);
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.get('/status/:pass', (req, res) => {
+app.get('/status/:username/:pass', (req, res) => {
     request.get('https://ezecontrol.com/api/status.php', {
         'auth': {
-            'user': 'AAE599',
+            'user': req.params.username,
             'pass': req.params.pass,
             'sendImmediately': false
         }
