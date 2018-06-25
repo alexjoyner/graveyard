@@ -8,7 +8,7 @@ class GaugeBlockArray extends Component{
         inputs: {}
     } 
     retreiveData(passCode, callback){
-        let requestUrl = new Request(`${env.serverAddr}/status/romeo6424`);
+        let requestUrl = new Request(`${env.serverAddr}/status/AAE599/romeo6424`);
         fetch(requestUrl)
         .then((response) => response.json())
         .then((myJson) => {
