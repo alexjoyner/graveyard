@@ -1,17 +1,12 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import {Modal, Button, Input, colors} from 'ro-component-library';
 import {TiTick} from 'react-icons/lib/ti';
 
-
-export class AuthModal extends Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            inputValue: ''
-        }
-    }
-    getData(){
-        this.props.successAuth();
+class AuthModal extends Component{
+    state = {
+        inputValue: '',
+        error: false
     }
     handleInputChange(e){
         let value = e.target.value;
@@ -21,7 +16,19 @@ export class AuthModal extends Component{
     }
     handleSubmit(event) {
         event.preventDefault();
-        this.getData();
+        console.log(this.props);
+        if(this.state.inputValue === 'jjj')
+            return this.props.dispatch({type: 'LOGGED_IN'});
+        this.setState({
+            inputValue: '',
+            error: true
+        });
+        setTimeout(() => {
+            this.setState({
+                ...this.state,
+                error: false
+            });
+        }, 2000);
     }
     render(){
         return (
@@ -32,9 +39,10 @@ export class AuthModal extends Component{
                         {...this.state}
                         onBlur={() => this.setState({blurred: true})}
                         onChange={(e) => this.handleInputChange(e)}
+                        value={this.state.inputValue}
                         type={'text'}
                         labelText={'Access Code'}
-                        autoFocus={true} 
+                        autoFocus={true}
                         /> 
                 </div>
                 <div style={{'right': '0', 'position': 'absolute', 'bottom': '0', 'padding-bottom': '10px', 'text-align': 'center'}}>
@@ -49,3 +57,5 @@ export class AuthModal extends Component{
         )
     }
 }
+AuthModal = connect()(AuthModal);
+export { AuthModal };
