@@ -19,7 +19,7 @@ const SideBarContent = () => (
 class App extends Component {
   render() {
     return this.props.loggedIn? (
-      <div style={{'margin-top': '80px'}}>
+      <div style={{marginTop: '80px'}}>
         <Header 
           color={colors.dark} 
           height={'67px'} 
