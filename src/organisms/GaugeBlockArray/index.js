@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import {GaugeBlock, CenteredContent} from 'ro-component-library';
 import {cfm, temp, amps, psi} from "./sensorOpts";
+import { env } from '../../../src/.env';
 
 class GaugeBlockArray extends Component{
     state = {
         inputs: {}
     } 
     retreiveData(passCode, callback){
-        let requestUrl = new Request('https://api.voicir.com');
+        let requestUrl = new Request(`${env.serverAddr}/status/romeo6424`);
         fetch(requestUrl)
         .then((response) => response.json())
         .then((myJson) => {
