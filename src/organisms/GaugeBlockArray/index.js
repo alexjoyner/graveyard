@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {GaugeBlock, CenteredContent} from 'ro-component-library';
-import {cfm, temp, amps, psi} from "./sensorOpts";
 import { env } from '../../../src/.env';
 
 class GaugeBlockArray extends Component{

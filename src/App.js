@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {
   Header, colors, SideBarPage, ListItem, 
-  ListHeader, CenteredContent, PageOverlay} from 'ro-component-library';
+  ListHeader, CenteredContent} from 'ro-component-library';
 import {GaugeBlockArray} from './organisms/GaugeBlockArray';
 import {AuthModal} from './organisms/AuthModal';
-import { HistoricalGraphModal } from './organisms/HistoricalGraphModal';
 
 const SideBarContent = () => (
   <div>

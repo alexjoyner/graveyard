@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, RoHighChart, TopBar, colors } from 'ro-component-library';
+import { Modal, RoHighChart } from 'ro-component-library';
 
 class HistoricalGraphModal extends Component {
     render(){
