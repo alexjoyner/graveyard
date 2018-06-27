@@ -5,8 +5,9 @@ import {
   ListHeader, CenteredContent} from 'ro-component-library';
 import {GaugeBlockArray} from './organisms/GaugeBlockArray';
 import {AuthModal} from './organisms/AuthModal';
+import { HistoricalGraphModal } from './organisms/HistoricalGraphModal';
 
-const SideBarContent = () => (
+const SideBarContent = ({ roomCreds }) => (
   <div>
     <ListHeader>Rooms</ListHeader>
     <CenteredContent>
@@ -26,9 +27,12 @@ class App extends Component {
           fontSize={'25px'} 
           logoText={'Dashboard Demo'} 
           sticky />
-        <SideBarPage sideBarContents={<SideBarContent />} >
+        <SideBarPage sideBarContents={<SideBarContent {...this.props} />} >
           <GaugeBlockArray></GaugeBlockArray>
         </SideBarPage>
+        {(this.props.modalShown)?(
+          <HistoricalGraphModal modalData={this.props.modalData}/>
+        ):null}
     </div>) : (
       <AuthModal></AuthModal>
     );
@@ -36,7 +40,8 @@ class App extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    loggedIn: state.AuthModalReducer.loggedIn
+    ...state.HistoricalGraphModalReducer,
+    ...state.AuthModalReducer
   }
 }
 export default connect(mapStateToProps)(App);

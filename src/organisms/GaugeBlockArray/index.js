@@ -56,7 +56,8 @@ class GaugeBlockArray extends Component{
             key={getUniqueID()} 
             value={input.real} 
             label={input.name}
-            height={'10vh'}></GaugeBlock>
+            height={'10vh'}
+            onClick={() => this.props.dispatch({type: 'SHOW_HISTORICAL_MODAL'})}></GaugeBlock>
         })}
       </CenteredContent>
     )
