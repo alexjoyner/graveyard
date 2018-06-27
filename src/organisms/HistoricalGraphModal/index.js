@@ -12,7 +12,7 @@ const GetData = (username, pass) => {
             const myJson = await response.json();
             console.log('Data before converion: ', myJson);
             myJson.data = myJson.data.map((point) => {
-                return [point.time, point.value]
+                return [(new Date(point.time)).getTime(), point.value]
             });
             console.log('Data after conversion: ', myJson);
             dispatch({
