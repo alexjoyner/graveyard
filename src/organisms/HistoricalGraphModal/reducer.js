@@ -1,15 +1,17 @@
 const INITIAL_STATE = {
-    modalShown: false,
-    modalData: JSON.parse(localStorage.getItem('MODAL_DATA')) || {},
+    modalStage: 'hidden',
+    modalData: {},
 }
 
 export const HistoricalGraphModalReducer = (state = INITIAL_STATE, action) => {
   console.log(action);
     switch(action.type){
+        case 'LOADING_HISTORICAL_DATA':
+            return {...state, modalStage: 'loading'};
         case 'SHOW_HISTORICAL_MODAL':
-            return {...state, modalShown: true};
+            return {...state, modalStage: 'shown'};
         case 'HIDE_HISTORICAL_MODAL':
-            return {...state, modalShown: false};
+            return {...state, modalStage: 'hidden'};
         case 'NEW_HISTORICAL_DATA':
             return {...state, modalData: action.data};
         default:

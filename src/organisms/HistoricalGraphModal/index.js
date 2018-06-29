@@ -5,24 +5,35 @@ import { getChartConfig } from './utils/getChartConfig';
 
 class HistoricalGraphModal extends Component {
     constructor(props){
-      console.time('chart-render');
       super(props);
-      this.state = {
-        config: getChartConfig(this.props.modalData),
-      };
+      console.time('chart-render');
     }
     componentDidMount(){
       console.timeEnd('chart-render');
     }
     render() {
-        return (this.props.modalShown)?(
-            <Modal>
-                <Button small onClick={() => this.props.dispatch({
-                    type: 'HIDE_HISTORICAL_MODAL'
-                })}>X</Button>
-                <RoHighChart config={this.state.config} />
-            </Modal>
-        ):(<div style={{visibility: 'hidden'}}></div>);
+        switch(this.props.modalStage){
+          case 'loading':
+            return (
+              <Modal>
+                  <Button small primary onClick={() => this.props.dispatch({
+                      type: 'HIDE_HISTORICAL_MODAL'
+                  })}>X</Button>
+                  <h1>Loading Historical Data</h1>
+              </Modal>
+            )
+          case 'shown':
+            return (
+              <Modal>
+                  <Button small primary onClick={() => this.props.dispatch({
+                      type: 'HIDE_HISTORICAL_MODAL'
+                  })}>X</Button>
+                  <RoHighChart config={getChartConfig(this.props.modalData)} />
+              </Modal>
+            )
+          default:
+            return (<div style={{visibility: 'hidden'}}></div>)
+        }
     }
 }
 
