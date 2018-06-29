@@ -18,11 +18,11 @@ export const ShowHistoryGraphLoading = () => {
 }
 
 export const GetNewHistoryData = (opts) => {
-  const baseStart = '2017-12-18';
-  const baseEnd = '2017-12-24';
-  const start = opts.startDate || baseStart;
-  const end = opts.endDate || baseEnd;
+  let start = opts.startDate || moment('2017-12-18');
+  let end = opts.endDate || moment('2017-12-24');
   const input = opts.input || '1';
+  start = start.format('YYYY-MM-DD HH:mm');
+  end = end.format('YYYY-MM-DD HH:mm');
   return async (dispatch) => {
     try {
       const requestUrl = new Request(`${env.serverAddr}/history/AAE599/romeo6424/?input=${input}&from=${start}&to=${end}`);

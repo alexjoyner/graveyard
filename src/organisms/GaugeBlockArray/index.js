@@ -42,7 +42,6 @@ class GaugeBlockArray extends Component{
     )
   }
   render(){
-    console.log(this.props);
     const inputs = Object.keys(this.props.inputs);
     return (!inputs.length)? this.renderPlaceholders() : (
       <CenteredContent>

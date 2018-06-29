@@ -4,7 +4,6 @@ const INITIAL_STATE = {
 }
 
 export const HistoricalGraphModalReducer = (state = INITIAL_STATE, action) => {
-  console.log(action);
     switch(action.type){
         case 'LOADING_HISTORICAL_DATA':
             return {...state, modalStage: 'loading'};

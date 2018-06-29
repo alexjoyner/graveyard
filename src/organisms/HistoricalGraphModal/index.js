@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import { RoHighChart, Button, Modal, Panel, Input } from 'ro-component-library';
+import { RoHighChart, RoDatePicker, Button, Modal, Panel, Input } from 'ro-component-library';
 import { getChartConfig } from './utils/getChartConfig';
 import { GetNewHistoryData } from './actions';
 
 const getFormattedDates = (preset) => {
   let startDate = '';
-  let endDate = moment().format('YYYY-MM-DD HH:mm');;
+  let endDate = moment();
   switch(preset){
     case 'day':
-      startDate = moment().subtract(24, 'hours').format('YYYY-MM-DD HH:mm');
+      startDate = moment().subtract(24, 'hours');
       break;
     case 'week':
-      startDate = moment().subtract(1, 'weeks').format('YYYY-MM-DD HH:mm');
+      startDate = moment().subtract(1, 'weeks');
       break;
     case 'month':
-      startDate = moment().subtract(1, 'month').format('YYYY-MM-DD HH:mm');
+      startDate = moment().subtract(1, 'month');
       break;
     case '6 months':
-      startDate = moment().subtract(6, 'months').format('YYYY-MM-DD HH:mm');
+      startDate = moment().subtract(6, 'months');
       break;
     default:
       console.error('Internal: No correct date preset passed to getFormattedDates');
@@ -33,22 +33,20 @@ class HistoricalGraphModal extends Component {
       const NOW = moment();
       const ONE_DAY_AGO = moment().subtract(24, 'hours');
       this.state = {
-        startDate: ONE_DAY_AGO.format('YYYY-MM-DD HH:mm'),
-        endDate: NOW.format('YYYY-MM-DD HH:mm'), 
+        startDate: ONE_DAY_AGO,
+        endDate: NOW, 
       }
     }
-    handleStartDateChange(e){
-      let value = e.target.value;
+    handleStartDateChange(date){
       this.setState({
         ...this.state,
-        startDate: value
+        startDate: date
       })
     }
-    handleEndDateChange(e){
-      let value = e.target.value;
+    handleEndDateChange(date){
       this.setState({
         ...this.state,
-        endDate: value
+        endDate: date
       })
     }
     getNewTimeFrame(preset){
@@ -58,7 +56,7 @@ class HistoricalGraphModal extends Component {
         startDate, 
         endDate,
       });
-      GetNewHistoryData(this.state)(this.props.dispatch);
+      //GetNewHistoryData(this.state)(this.props.dispatch);
     }
     getCustomData(){
       GetNewHistoryData(this.state)(this.props.dispatch);
@@ -67,16 +65,26 @@ class HistoricalGraphModal extends Component {
       return (this.props.modalStage !== 'hidden')?(
         <Modal width="90%">
           <Panel width="90%">
-            <Input 
-              primary 
-              value={this.state.startDate} 
-              onChange={(e) => this.handleStartDateChange(e)}
-              labelText="Start Date: YYYY-MM-DD HH:MM"/>
-            <Input 
-              primary 
-              value={this.state.endDate} 
-              onChange={(e) => this.handleEndDateChange(e)}
-              labelText="End Date: YYYY-MM-DD HH:MM"/>
+            <RoDatePicker
+              customInput={<Input labelText="Start Date:"/>}
+              labelText="Start Date:"
+              onChange={date => this.handleStartDateChange(date)}
+              selected={this.state.startDate}
+              timeFormat="HH:mm"
+              dateFormat="YYYY-MM-DD HH:mm"
+              timeIntervals={30}
+              showTimeSelect
+            />
+            <RoDatePicker
+              customInput={<Input labelText="End Date:"/>}
+              labelText="End Date:"
+              onChange={date => this.handleEndDateChange(date)}
+              selected={this.state.endDate}
+              timeFormat="HH:mm"
+              dateFormat="YYYY-MM-DD HH:mm"
+              timeIntervals={30}
+              showTimeSelect
+            />
             <Button primary onClick={() => this.getCustomData()}>Custom</Button>
             <Button primary onClick={() => this.getNewTimeFrame('6 months')}>6 Months</Button>
             <Button primary onClick={() => this.getNewTimeFrame('month')}>1 Month</Button>
