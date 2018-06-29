@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {GaugeBlock, CenteredContent, getUniqueID, PlainBox} from 'ro-component-library';
 import { env } from '../../../src/.env';
+import { ShowHistoryGraph } from '../HistoricalGraphModal/actions';
 
 const GetData = (username, pass) => {
   return async (dispatch) => {
@@ -41,6 +42,7 @@ class GaugeBlockArray extends Component{
     )
   }
   render(){
+    console.log(this.props);
     const inputs = Object.keys(this.props.inputs);
     return (!inputs.length)? this.renderPlaceholders() : (
       <CenteredContent>
@@ -57,7 +59,7 @@ class GaugeBlockArray extends Component{
             value={input.real} 
             label={input.name}
             height={'10vh'}
-            onClick={() => this.props.dispatch({type: 'SHOW_HISTORICAL_MODAL'})}></GaugeBlock>
+            onClick={() => ShowHistoryGraph('', '')(this.props.dispatch)}></GaugeBlock>
         })}
       </CenteredContent>
     )

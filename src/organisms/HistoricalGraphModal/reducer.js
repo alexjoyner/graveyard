@@ -1,11 +1,10 @@
 const INITIAL_STATE = {
     modalShown: false,
-    modalData: {
-        data: [],
-    },
+    modalData: JSON.parse(localStorage.getItem('MODAL_DATA')) || {},
 }
 
 export const HistoricalGraphModalReducer = (state = INITIAL_STATE, action) => {
+  console.log(action);
     switch(action.type){
         case 'SHOW_HISTORICAL_MODAL':
             return {...state, modalShown: true};
