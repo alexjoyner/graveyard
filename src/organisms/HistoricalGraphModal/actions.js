@@ -12,7 +12,7 @@ export const GetNewHistoryGraph = (opts) => {
 export const ShowHistoryGraphLoading = () => {
   return (dispatch) => {
     dispatch({
-      type: 'LOADING_HISTORICAL_DATA'
+      type: 'LOADING_START'
     });
   }
 }
@@ -46,6 +46,9 @@ export const ShowHistoryModal = () => {
   return (dispatch) => {
     dispatch({
       type: 'SHOW_HISTORICAL_MODAL'
+    });
+    dispatch({
+      type: 'LOADING_STOP'
     });
   }
 }
