@@ -1,53 +1,114 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Modal, RoHighChart, Button } from 'ro-component-library';
-import { config } from 'ro-component-library/lib/atoms/RoHighChart/demoData/config';
-import { env } from '../../.env';
+import moment from 'moment';
+import { RoHighChart, RoDatePicker, Button, Modal, Panel, Input } from 'ro-component-library';
+import { getChartConfig } from './utils/getChartConfig';
+import { GetNewHistoryData } from './actions';
 
-const GetData = (username, pass) => {
-    return async (dispatch) => {
-        try {
-            const requestUrl = new Request(`${env.serverAddr}/history/AAE599/romeo6424/?input=2&from=2017-12-18&to=2018-01-05`);
-            const response = await fetch(requestUrl);
-            const myJson = await response.json();
-            console.log('Data before converion: ', myJson);
-            myJson.data = myJson.data.map((point) => {
-                return [(new Date(point.time)).getTime(), point.value]
-            });
-            console.log('Data after conversion: ', myJson);
-            dispatch({
-                type: 'NEW_HISTORICAL_DATA',
-                data: myJson
-            });
-        }
-        catch (e) {
-            console.error(e);
-        }
-    }
+const getFormattedDates = (preset) => {
+  let startDate = '';
+  let endDate = moment();
+  switch(preset){
+    case 'day':
+      startDate = moment().subtract(24, 'hours');
+      break;
+    case 'week':
+      startDate = moment().subtract(1, 'weeks');
+      break;
+    case 'month':
+      startDate = moment().subtract(1, 'month');
+      break;
+    case '6 months':
+      startDate = moment().subtract(6, 'months');
+      break;
+    default:
+      console.error('Internal: No correct date preset passed to getFormattedDates');
+  }
+  return { startDate, endDate };
 }
-
 
 class HistoricalGraphModal extends Component {
-    componentDidMount() {
-        const { dispatch } = this.props;
-        GetData('AAE599', 'romeo6424')(dispatch);
+    constructor(props){
+      super(props);
+      const NOW = moment();
+      const ONE_DAY_AGO = moment().subtract(24, 'hours');
+      this.state = {
+        startDate: ONE_DAY_AGO,
+        endDate: NOW, 
+      }
+    }
+    handleStartDateChange(date){
+      this.setState({
+        ...this.state,
+        startDate: date
+      })
+    }
+    handleEndDateChange(date){
+      this.setState({
+        ...this.state,
+        endDate: date
+      })
+    }
+    getNewTimeFrame(preset){
+      const { startDate, endDate } = getFormattedDates(preset);
+      this.setState({
+        ...this.state,
+        startDate, 
+        endDate,
+      });
+      //GetNewHistoryData(this.state)(this.props.dispatch);
+    }
+    getCustomData(){
+      GetNewHistoryData(this.state)(this.props.dispatch);
     }
     render() {
-        let chartConfig = config;
-        chartConfig.series[0].data = this.props.modalData.data;
-        console.log('Chart Config', chartConfig);
-        return (
-            <Modal width="90%">
-                <Button small onClick={() => this.props.dispatch({
-                    type: 'HIDE_HISTORICAL_MODAL'
-                })}>X</Button>
-                {(this.props.modalData.data.length > 0) ? (
-                    <RoHighChart config={chartConfig} />) : (
-                        <h1>No Graph Data To Show</h1>)}
-            </Modal>
-        )
+      return (this.props.modalStage !== 'hidden')?(
+        <Modal width="90%">
+          <Panel width="90%">
+            <RoDatePicker
+              customInput={<Input labelText="Start Date:"/>}
+              labelText="Start Date:"
+              onChange={date => this.handleStartDateChange(date)}
+              selected={this.state.startDate}
+              timeFormat="HH:mm"
+              dateFormat="YYYY-MM-DD HH:mm"
+              timeIntervals={30}
+              showTimeSelect
+            />
+            <RoDatePicker
+              customInput={<Input labelText="End Date:"/>}
+              labelText="End Date:"
+              onChange={date => this.handleEndDateChange(date)}
+              selected={this.state.endDate}
+              timeFormat="HH:mm"
+              dateFormat="YYYY-MM-DD HH:mm"
+              timeIntervals={30}
+              showTimeSelect
+            />
+            <Button primary onClick={() => this.getCustomData()}>Custom</Button>
+            <Button primary onClick={() => this.getNewTimeFrame('6 months')}>6 Months</Button>
+            <Button primary onClick={() => this.getNewTimeFrame('month')}>1 Month</Button>
+            <Button primary onClick={() => this.getNewTimeFrame('week')}>1 Week</Button>
+            <Button primary onClick={() => this.getNewTimeFrame('day')}>1 Day</Button>
+          </Panel>
+          <Button primary onClick={() => this.props.dispatch({
+              type: 'HIDE_HISTORICAL_MODAL'
+          })}>Close</Button>
+          {(this.props.modalStage === 'loading')?(
+            <h1>Loading Data</h1>
+          ):(
+            <RoHighChart config={getChartConfig(this.props.modalData)} />
+          )}
+        </Modal>
+      ):(<div style={{visibility: 'hidden'}}></div>)
     }
 }
 
-HistoricalGraphModal = connect()(HistoricalGraphModal);
+const mapStateToProps = (state) => {
+  return {
+    ...state.HistoricalGraphModalReducer,
+  }
+}
+
+HistoricalGraphModal = connect(mapStateToProps, null)(HistoricalGraphModal);
 export { HistoricalGraphModal };

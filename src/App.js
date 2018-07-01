@@ -53,10 +53,8 @@ class App extends Component {
         <SideBarPage sideBarContents={<SideBarContent {...this.props} />} >
           <GaugeBlockArray></GaugeBlockArray>
         </SideBarPage>
-        {(this.props.modalShown)?(
-          <HistoricalGraphModal modalData={this.props.modalData}/>
-        ):null}
-    </div>) : (
+        <HistoricalGraphModal modalData={this.props.modalData}/>
+      </div>) : (
       <AuthModal></AuthModal>
     );
   }

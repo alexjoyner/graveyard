@@ -32,7 +32,7 @@ class AuthModal extends Component{
     }
     render(){
         return (
-            <Modal>
+            <Modal width="20%">
                 <form onSubmit={(event) => this.handleSubmit(event)}>
                 <div style={{'width': '85%', 'float': 'left'}}>
                     <Input 
@@ -47,7 +47,7 @@ class AuthModal extends Component{
                 </div>
                 <div style={{'right': '0', 'position': 'absolute', 'bottom': '0', 'padding-bottom': '10px', 'text-align': 'center'}}>
                     <span>
-                    <Button type={'submit'} primary ghost small onClick={() => this.getData()}>
+                    <Button type={'submit'} primary ghost small onClick={(event) => this.handleSubmit(event)}>
                         <TiTick size={'30px'} style={{'textAlign': 'center', 'color': `${colors.primary}`}}/> 
                     </Button>
                     </span>
