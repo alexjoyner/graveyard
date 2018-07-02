@@ -15,8 +15,11 @@ let MultiSelectedChartsMenu = (props) => {
                     let id = getUniqueID();
                     return (
                         <ListItem key={id}>
-                            {item.input.name} 
-                            <GoTrashcan color={colors.dangerLight}/>
+                            {item.input.name}
+                            <Button small dark onClick={() => props.dispatch({
+                                type: 'REMOVE_INPUT', index: i})}>
+                                <GoTrashcan size={20} color={colors.dangerLight}/>
+                            </Button>
                         </ListItem>
                     )
                 })}
