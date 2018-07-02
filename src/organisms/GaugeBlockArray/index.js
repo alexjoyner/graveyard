@@ -24,6 +24,9 @@ const GetData = (username, pass) => {
 }
 
 class GaugeBlockArray extends Component{
+  constructor(props){
+    super(props);
+  }
   componentDidMount(){
     const {dispatch} = this.props;
     GetData('AAE599', 'romeo6424')(dispatch);
@@ -41,12 +44,22 @@ class GaugeBlockArray extends Component{
       </CenteredContent>
     )
   }
+  multiSelectInput(input, key){
+    this.props.dispatch({type: 'MULTISELECT_INPUT', data: {
+      input, key
+    }});
+    setTimeout(() => {
+      this.props.dispatch({type: 'MULTISELECT_DESELECT_INPUT', data: key});
+    }, 2000)
+  }
   render(){
+    console.log(this.props);
     const inputs = Object.keys(this.props.inputs);
     return (!inputs.length)? this.renderPlaceholders() : (
       <CenteredContent>
         {inputs.map((key) => {
           let input = this.props.inputs[key];
+          console.log('Input: ', input.multiSelected)
           let opts = null;
           if(input.unit === 'F') opts = this.props.temp;
           if(input.unit === 'CFM') opts = this.props.cfm;
@@ -54,13 +67,12 @@ class GaugeBlockArray extends Component{
           if(input.unit === 'PSI')  opts = this.props.psi;
           return <GaugeBlock 
             {...opts} 
-            key={getUniqueID()} 
+            key={getUniqueID()}
             value={input.real} 
             label={input.name}
+            multiSelected={input.multiSelected}
             height={'10vh'}
-            onClick={() => GetNewHistoryGraph({
-              input: key
-            })(this.props.dispatch)}></GaugeBlock>
+            onClick={() => this.multiSelectInput(input, key)}></GaugeBlock>
         })}
       </CenteredContent>
     )

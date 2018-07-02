@@ -7,6 +7,7 @@ import {GaugeBlockArray} from './organisms/GaugeBlockArray';
 import {AuthModal} from './organisms/AuthModal';
 import { HistoricalGraphModal } from './organisms/HistoricalGraphModal';
 import { DashNotification } from './organisms/DashNotification';
+import { MultiSelectedChartsMenu } from './organisms/MultiSelectedChartsMenu';
 
 const SideBarContent = ({ roomCreds }) => (
   <div>
@@ -15,6 +16,7 @@ const SideBarContent = ({ roomCreds }) => (
       <ListItem>Demo Room</ListItem>
       <ListItem color={colors.primaryLight}>+ Add Room</ListItem>
     </CenteredContent>
+    <MultiSelectedChartsMenu />
   </div>
 )
 
