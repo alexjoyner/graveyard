@@ -58,7 +58,9 @@ class GaugeBlockArray extends Component{
             value={input.real} 
             label={input.name}
             height={'10vh'}
-            onClick={() => GetNewHistoryGraph({})(this.props.dispatch)}></GaugeBlock>
+            onClick={() => GetNewHistoryGraph({
+              input: key
+            })(this.props.dispatch)}></GaugeBlock>
         })}
       </CenteredContent>
     )
