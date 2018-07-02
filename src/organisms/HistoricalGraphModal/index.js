@@ -34,7 +34,8 @@ class HistoricalGraphModal extends Component {
       const ONE_DAY_AGO = moment().subtract(24, 'hours');
       this.state = {
         startDate: ONE_DAY_AGO,
-        endDate: NOW, 
+        endDate: NOW,
+        showCustom: false,
       }
     }
     handleStartDateChange(date){
@@ -61,35 +62,46 @@ class HistoricalGraphModal extends Component {
     getCustomData(){
       GetNewHistoryData(this.state)(this.props.dispatch);
     }
+    toggleCustom(){
+      this.setState({
+        ...this.state,
+        showCustom: !this.state.showCustom
+      })
+    }
     render() {
       return (this.props.modalStage !== 'hidden')?(
         <Modal width="90%">
           <Panel width="90%">
-            <RoDatePicker
-              customInput={<Input labelText="Start Date:"/>}
-              labelText="Start Date:"
-              onChange={date => this.handleStartDateChange(date)}
-              selected={this.state.startDate}
-              timeFormat="HH:mm"
-              dateFormat="YYYY-MM-DD HH:mm"
-              timeIntervals={30}
-              showTimeSelect
-            />
-            <RoDatePicker
-              customInput={<Input labelText="End Date:"/>}
-              labelText="End Date:"
-              onChange={date => this.handleEndDateChange(date)}
-              selected={this.state.endDate}
-              timeFormat="HH:mm"
-              dateFormat="YYYY-MM-DD HH:mm"
-              timeIntervals={30}
-              showTimeSelect
-            />
-            <Button primary onClick={() => this.getCustomData()}>Custom</Button>
             <Button primary onClick={() => this.getNewTimeFrame('6 months')}>6 Months</Button>
             <Button primary onClick={() => this.getNewTimeFrame('month')}>1 Month</Button>
             <Button primary onClick={() => this.getNewTimeFrame('week')}>1 Week</Button>
             <Button primary onClick={() => this.getNewTimeFrame('day')}>1 Day</Button>
+            <Button primary onClick={() => this.toggleCustom()}>Custom</Button>
+            {(this.state.showCustom)?(
+              <span>
+                <RoDatePicker
+                  customInput={<Input labelText="Start Date:"/>}
+                  labelText="Start Date:"
+                  onChange={date => this.handleStartDateChange(date)}
+                  selected={this.state.startDate}
+                  timeFormat="HH:mm"
+                  dateFormat="YYYY-MM-DD HH:mm"
+                  timeIntervals={30}
+                  showTimeSelect
+                />
+                <RoDatePicker
+                  customInput={<Input labelText="End Date:"/>}
+                  labelText="End Date:"
+                  onChange={date => this.handleEndDateChange(date)}
+                  selected={this.state.endDate}
+                  timeFormat="HH:mm"
+                  dateFormat="YYYY-MM-DD HH:mm"
+                  timeIntervals={30}
+                  showTimeSelect
+                />
+                <Button success onClick={() => this.getCustomData()}>Submit</Button>
+              </span>
+            ):null}
           </Panel>
           <Button primary onClick={() => this.props.dispatch({
               type: 'HIDE_HISTORICAL_MODAL'
