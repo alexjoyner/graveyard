@@ -1,6 +1,6 @@
 const INITIAL_STATE = {
     modalStage: 'hidden',
-    modalData: {},
+    modalData: [],
 }
 
 export const HistoricalGraphModalReducer = (state = INITIAL_STATE, action) => {

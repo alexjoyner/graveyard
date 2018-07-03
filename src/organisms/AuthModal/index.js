@@ -17,7 +17,7 @@ class AuthModal extends Component{
     handleSubmit(event) {
         event.preventDefault();
         console.log(this.props);
-        if(this.state.inputValue === 'jjj')
+        if(this.state.inputValue === 'eesdemo')
             return this.props.dispatch({type: 'LOGGED_IN'});
         this.setState({
             inputValue: '',

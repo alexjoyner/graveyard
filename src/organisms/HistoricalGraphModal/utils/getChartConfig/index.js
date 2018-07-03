@@ -1,3 +1,5 @@
+import { consolidateStreamedStyles } from "styled-components";
+
 // function getData(n) {
 //   var arr = [],
 //     i,
@@ -72,7 +74,27 @@
 //     }]
 //   }
 // }
-export const getChartConfig = (info) => {
+
+export const getChartConfig = (inputs) => {
+  let seriesObjects = inputs.map((input, i) => {
+    return {
+      name: `${input.source.inputname} (${input.source.unit})`,
+      _colorIndex: i,
+      marker: {
+        enabled: false,
+      },
+      colorByPoint: false,
+      data: input.data,
+    }
+  });
+  const chartConfig = Object.assign({}, getBaseConfig(), {
+    series: seriesObjects
+  });
+  console.log(chartConfig);
+  return chartConfig;
+};
+
+const getBaseConfig = (info) => {
   return {
     chart: {
       type: 'line',
@@ -82,7 +104,7 @@ export const getChartConfig = (info) => {
       useGPUTranslations: true,
     },
     title: {
-      text: `${info.source.inputname} (${info.source.unit})`,
+      text: 'Historical Data View',
     },
     subtitle: {
       text: document.ontouchstart === undefined ?
@@ -110,15 +132,6 @@ export const getChartConfig = (info) => {
     legend: {
       enabled: true,
     },
-    series: [{
-      name: 'Demo Data',
-      _colorIndex: 3,
-      _symbolIndex: 0,
-      marker: {
-        enabled: false,
-      },
-      colorByPoint: false,
-      data: info.data,
-    }],
+    series: [],
   };
 }

@@ -5,10 +5,10 @@ const INITIAL_STATE = {
 export const MultiSelectedChartsMenuReducer = (state = INITIAL_STATE, action) => {
     switch(action.type){
         case 'MULTISELECT_INPUT':
-            let key = `AAE599${action.data.key}`;
+            let id = `AAE599${action.data.key}`;
             let alreadyAdded = false;
             state.items.forEach((input) => {
-                if(input.key === key){
+                if(input.id === id){
                     console.error('Already added that input');
                     alreadyAdded = true;
                 }
@@ -18,7 +18,10 @@ export const MultiSelectedChartsMenuReducer = (state = INITIAL_STATE, action) =>
 
             return {...state, items: state.items.concat({
                 ...action.data,
-                key,
+                id,
+                source: {
+                    inputnumber: action.data.key,
+                },
                 username: 'AAE599',
                 password: 'romeo6424',
             })}
