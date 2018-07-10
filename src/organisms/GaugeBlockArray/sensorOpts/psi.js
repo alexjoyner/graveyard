@@ -1,4 +1,5 @@
 import { PSI_MAX } from "./_commonOpts";
+import { colors } from "ro-component-library";
 
 export const psi = {
 	units: 'PSI',
@@ -7,22 +8,22 @@ export const psi = {
 	ranges: [{
 	    lowerValue: 0,
 	    upperValue: 50,
-	    color: "#95a5a6"
+	    color: colors.danger
 	},{
 	    lowerValue: 50,
 	    upperValue: 100,
-	    color: "#9b59b6"
+	    color: colors.warning
 	},{
 	    lowerValue: 100,
 	    upperValue: 150,
-	    color: "#f1c40f"
+	    color: colors.success
 	},{
 	    lowerValue: 150,
 	    upperValue: 200,
-	    color: "#2ecc71"
+	    color: colors.warning
 	},{
 	    lowerValue: 200,
 	    upperValue: PSI_MAX,
-	    color: "#e74c3c"
+	    color: colors.danger
 	}]
   };

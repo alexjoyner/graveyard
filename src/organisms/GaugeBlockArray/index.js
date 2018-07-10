@@ -60,15 +60,23 @@ class GaugeBlockArray extends Component{
         {inputs.map((key) => {
           let input = this.props.inputs[key];
           console.log('Input: ', input.multiSelected)
-          let opts = null;
+          let opts = {
+            min: 0,
+            max: 100,
+          };
           if(input.unit === 'F') opts = this.props.temp;
           if(input.unit === 'CFM') opts = this.props.cfm;
           if(input.unit === 'A')  opts = this.props.amps;
           if(input.unit === 'PSI')  opts = this.props.psi;
+          let gaugeVal = input.real;
+          if(gaugeVal > opts.max)
+            gaugeVal = opts.max;
+          if(gaugeVal < opts.min)
+            gaugeVal = opts.min;
           return <GaugeBlock 
             {...opts} 
             key={getUniqueID()}
-            value={input.real} 
+            value={gaugeVal} 
             label={input.name}
             multiSelected={input.multiSelected}
             height={'10vh'}

@@ -8,7 +8,7 @@ export const temp = {
 	ranges: [{
 		lowerValue: 0,
 		upperValue: 50,
-		color: colors.danger
+		color: colors.primary
 	}, {
 		lowerValue: 50,
 		upperValue: 65,

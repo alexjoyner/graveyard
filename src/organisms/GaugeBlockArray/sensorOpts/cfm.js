@@ -1,4 +1,5 @@
 import { CFM_MAX } from "./_commonOpts";
+import { colors } from "ro-component-library";
 
 export const cfm = {
 	units: 'CFM',
@@ -6,23 +7,23 @@ export const cfm = {
 	min: 0,
 	ranges: [{
 	    lowerValue: 0,
-	    upperValue: 100,
-	    color: "#95a5a6"
-	},{
-	    lowerValue: 0,
 	    upperValue: 200,
-	    color: "#9b59b6"
+	    color: colors.danger
 	},{
 	    lowerValue: 200,
 	    upperValue: 250,
-	    color: "#f1c40f"
+	    color: colors.warning
 	},{
 	    lowerValue: 250,
-	    upperValue: 350,
-	    color: "#2ecc71"
+	    upperValue: 325,
+	    color: colors.success
 	},{
-	    lowerValue: 350,
+	    lowerValue: 325,
+	    upperValue: 375,
+	    color: colors.warning
+	},{
+	    lowerValue: 375,
 	    upperValue: CFM_MAX,
-	    color: "#e74c3c"
+	    color: colors.danger
 	}]
   };

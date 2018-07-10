@@ -1,4 +1,5 @@
 import { AMPS_MAX } from "./_commonOpts";
+import { colors } from "ro-component-library";
 
 export const amps = {
 	units: 'A',
@@ -6,23 +7,23 @@ export const amps = {
 	min: 0,
 	ranges: [{
 	    lowerValue: 0,
-	    upperValue: 100,
-	    color: "#95a5a6"
+	    upperValue: 30,
+	    color: colors.danger
 	},{
-	    lowerValue: 100,
-	    upperValue: 200,
-	    color: "#9b59b6"
+	    lowerValue: 30,
+	    upperValue: 40,
+	    color: colors.warning
 	},{
-	    lowerValue: 200,
-	    upperValue: 300,
-	    color: "#f1c40f"
+	    lowerValue: 40,
+	    upperValue: 60,
+	    color: colors.success
 	},{
-	    lowerValue: 300,
-	    upperValue: 400,
-	    color: "#2ecc71"
+	    lowerValue: 60,
+	    upperValue: 70,
+	    color: colors.warning
 	},{
-	    lowerValue: 400,
+	    lowerValue: 70,
 	    upperValue: AMPS_MAX,
-	    color: "#e74c3c"
+	    color: colors.danger
 	}]
   };
