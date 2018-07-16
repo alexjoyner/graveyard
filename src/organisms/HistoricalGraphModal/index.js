@@ -72,10 +72,10 @@ class HistoricalGraphModal extends Component {
       return (this.props.modalStage !== 'hidden')?(
         <Modal width="90%">
           <Panel width="90%">
-            <Button primary onClick={() => this.getNewTimeFrame('6 months')}>6 Months</Button>
-            <Button primary onClick={() => this.getNewTimeFrame('month')}>1 Month</Button>
-            <Button primary onClick={() => this.getNewTimeFrame('week')}>1 Week</Button>
             <Button primary onClick={() => this.getNewTimeFrame('day')}>1 Day</Button>
+            <Button primary onClick={() => this.getNewTimeFrame('week')}>1 Week</Button>
+            <Button primary onClick={() => this.getNewTimeFrame('month')}>1 Month</Button>
+            <Button primary onClick={() => this.getNewTimeFrame('6 months')}>6 Months</Button>
             <Button primary onClick={() => this.toggleCustom()}>Custom</Button>
             {(this.state.showCustom)?(
               <span>
@@ -84,20 +84,20 @@ class HistoricalGraphModal extends Component {
                   labelText="Start Date:"
                   onChange={date => this.handleStartDateChange(date)}
                   selected={this.state.startDate}
-                  timeFormat="HH:mm"
-                  dateFormat="YYYY-MM-DD HH:mm"
-                  timeIntervals={30}
-                  showTimeSelect
+                  selectsStart
+                  startDate={this.state.startDate}
+                  endDate={this.state.endDate}
+                  dateFormat="ll"
                 />
                 <RoDatePicker
                   customInput={<Input labelText="End Date:"/>}
                   labelText="End Date:"
                   onChange={date => this.handleEndDateChange(date)}
                   selected={this.state.endDate}
-                  timeFormat="HH:mm"
-                  dateFormat="YYYY-MM-DD HH:mm"
-                  timeIntervals={30}
-                  showTimeSelect
+                  selectsEnd
+                  startDate={this.state.startDate}
+                  endDate={this.state.endDate}
+                  dateFormat="ll"
                 />
                 <Button success onClick={() => this.getCustomData()}>Submit</Button>
               </span>
