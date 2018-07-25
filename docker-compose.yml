@@ -44,7 +44,7 @@ services:
       - ../socketio-databridge:/opt/app
       - socket-data-node_modules:/opt/app/node_modules
     ports:
-      - "3000:80"
+      - "3030:80"
     environment:
       - NODE_ENV=development
     networks:
