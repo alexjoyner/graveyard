@@ -29,7 +29,7 @@ export const GetNewHistoryData = (requests, opts) => {
         const input = request.source.inputnumber || '1';
         start = start.format('YYYY-MM-DD HH:mm');
         end = end.format('YYYY-MM-DD HH:mm');
-        const fetchUrl = new Request(`${env.serverAddr}/history/AAE599/romeo6424/?input=${input}&from=${start}&to=${end}`);
+        const fetchUrl = new Request(`${env.serverAddr}/v1/history/AAE599/romeo6424/?input=${input}&from=${start}&to=${end}`);
         return fetch(fetchUrl);
       })
       let responses = await Promise.all(calls);
