@@ -1,8 +1,8 @@
 version: '3'
 services:
-  nginx:
+  root:
     build:
-      context: ./nginx
+      context: .
     volumes:
       - ./nginx/nginx.dev.conf:/etc/nginx/nginx.conf
     restart: always
