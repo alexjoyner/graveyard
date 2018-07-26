@@ -6,10 +6,6 @@ services:
       - letsencrypt_fullchain
       - letsencrypt_privkey
       - ssl_dhparam
-    environment:
-      LETSENCRYPT_FULLCHAIN_PATH: /run/secrets/letsencrypt_fullchain
-      LETSENCRYPT_PRIVKEY_PATH: /run/secrets/letsencrypt_privkey
-      SSL_DHPARAM_PATH: /run/secrets/ssl_dhparam
     ports:
       - "80:80"
       - "443:443"
@@ -20,8 +16,8 @@ services:
 
 secrets:
   letsencrypt_fullchain:
-    external: letsencrypt_fullchain
+    external: true
   letsencrypt_privkey:
-    external: letsencrypt_privkey
+    external: true
   ssl_dhparam:
-    external: ssl_dhparam
+    external: true
