@@ -11,8 +11,15 @@ services:
       - "443:443"
     depends_on:
       - eze-handler
+    networks:
+      - ees-datalogger
   eze-handler:
     image: rosco9awj/eze-handler
+    networks:
+      - ees-datalogger
+
+networks:
+  ees-datalogger:
 
 secrets:
   letsencrypt_fullchain:
@@ -20,4 +27,4 @@ secrets:
   letsencrypt_privkey:
     external: true
   ssl_dhparam:
-    external: true
+    external: true   "bbvwysj21jxbl0xk0ss3frliy" "azhjm7iymhh287qc3xd1g0xzx"
