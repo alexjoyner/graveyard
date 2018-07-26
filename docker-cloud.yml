@@ -22,9 +22,5 @@ networks:
   ees-datalogger:
 
 secrets:
-  letsencrypt_fullchain:
-    external: true
-  letsencrypt_privkey:
-    external: true
   ssl_dhparam:
     external: true   "bbvwysj21jxbl0xk0ss3frliy" "azhjm7iymhh287qc3xd1g0xzx"

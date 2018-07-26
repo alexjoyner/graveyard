@@ -1,3 +1,3 @@
 FROM nginx
-COPY nginx/production/ssl-params.conf /etc/nginx/ssl-params.conf
-COPY nginx/production/nginx.conf /etc/nginx/nginx.conf
+COPY nginx/ssl-params.conf /etc/nginx/ssl-params.conf
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
