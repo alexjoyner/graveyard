@@ -12,8 +12,8 @@ app.use(function(req, res, next) {
 
 app.use(morgan('common'));
 
-app.post('/new/panel-data', function (req, res) {
-  res.send('Saving panel data');
+app.post('/', function (req, res) {
+  res.send('Saving new log!');
 });
 
 app.get('/healthz', function (req, res) {
@@ -24,7 +24,7 @@ app.get('/healthz', function (req, res) {
 });
 
 let server = app.listen(PORT, function () {
-  console.log('Webserver is ready');
+  console.log('Log Handler is ready');
 });
 
 

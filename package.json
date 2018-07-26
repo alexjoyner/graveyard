@@ -1,5 +1,5 @@
 {
-  "name": "panel-data-api",
+  "name": "log-handler",
   "private": true,
   "version": "1.0.0",
   "description": "Node.js Hello world app using docker features for easy docker-compose local dev and solid production defaults",
