@@ -11,8 +11,8 @@
     "**/.dockerignore": true,
     "**/yarn.lock": true,
     "**/package.json": true,
-    "**/Dockerfile": true,
-    "**/docker-compose.yml": true,
+    "**/Dockerfile": false,
+    "**/docker-compose.yml": false,
     "**/docker-cloud.yml": true,
   }
 }
