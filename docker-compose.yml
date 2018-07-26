@@ -11,8 +11,8 @@ services:
     ports:
       - "8080:80"
     depends_on:
-      - panel-data-api
-      - socket-data
+      # - panel-data-api
+      # - socket-data
       - eze-handler
   eze-handler:
     build:
@@ -22,30 +22,30 @@ services:
     command: nodemon index.js -L
     volumes:
       - ../eze-handler/index.js:/usr/src/app/index.js
-  panel-data-api:
-    build:
-      context: ../panel-data-db-api
-      args:
-        - NODE_ENV=development
-    restart: always
-    command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
-    volumes:
-      - ../panel-data-db-api:/opt/app
-      - panel-data-node_modules:/opt/app/node_modules
-    environment:
-      - NODE_ENV=development
-  socket-data:
-    build:
-      context: ../socketio-databridge
-      args:
-        - NODE_ENV=development
-    restart: always
-    command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
-    volumes:
-      - ../socketio-databridge:/opt/app
-      - socket-data-node_modules:/opt/app/node_modules
-    environment:
-      - NODE_ENV=development
-volumes:
-    socket-data-node_modules:
-    panel-data-node_modules:
+#   panel-data-api:
+#     build:
+#       context: ../panel-data-db-api
+#       args:
+#         - NODE_ENV=development
+#     restart: always
+#     command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
+#     volumes:
+#       - ../panel-data-db-api:/opt/app
+#       - panel-data-node_modules:/opt/app/node_modules
+#     environment:
+#       - NODE_ENV=development
+#   socket-data:
+#     build:
+#       context: ../socketio-databridge
+#       args:
+#         - NODE_ENV=development
+#     restart: always
+#     command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
+#     volumes:
+#       - ../socketio-databridge:/opt/app
+#       - socket-data-node_modules:/opt/app/node_modules
+#     environment:
+#       - NODE_ENV=development
+# volumes:
+#     socket-data-node_modules:
+#     panel-data-node_modules:

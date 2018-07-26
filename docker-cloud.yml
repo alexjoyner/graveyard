@@ -1,0 +1,15 @@
+version: '3'
+services:
+  main:
+    image: ees-datalogger-main
+    volumes:
+      - /etc/ssl/certs/dhparam.pem:/etc/ssl/certs/dhparam.pem
+      - /etc/letsencrypt/live/api.voicir.com:/etc/letsencrypt/live/api.voicir.com
+      - /etc/nginx/snippets/ssl-params.conf:/etc/nginx/snippets/ssl-params.conf
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - eze-handler
+  eze-handler:
+    image: rosco9awj/eze-handler
