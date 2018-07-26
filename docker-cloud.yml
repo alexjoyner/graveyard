@@ -1,12 +1,15 @@
-version: '3'
+version: '3.1'
 services:
   main:
     image: rosco9awj/ees-datalogger-main
-    volumes:
-      - /etc/ssl/certs/dhparam.pem:/etc/nginx/dhparam.pem
-      - /etc/letsencrypt/live/api.voicir.com/fullchain.pem:/etc/nginx/fullchain.pem
-      - /etc/letsencrypt/live/api.voicir.com/privkey.pem:/etc/nginx/privkey.pem
-      - /etc/nginx/snippets/ssl-params.conf:/etc/nginx/ssl-params.conf
+    secrets:
+      - letsencrypt_fullchain
+      - letsencrypt_privkey
+      - ssl_dhparam
+    environment:
+      LETSENCRYPT_FULLCHAIN_PATH: /run/secrets/letsencrypt_fullchain
+      LETSENCRYPT_PRIVKEY_PATH: /run/secrets/letsencrypt_privkey
+      SSL_DHPARAM_PATH: /run/secrets/ssl_dhparam
     ports:
       - "80:80"
       - "443:443"
@@ -14,3 +17,11 @@ services:
       - eze-handler
   eze-handler:
     image: rosco9awj/eze-handler
+
+secrets:
+  letsencrypt_fullchain:
+    external: letsencrypt_fullchain
+  letsencrypt_privkey:
+    external: letsencrypt_privkey
+  ssl_dhparam:
+    external: ssl_dhparam
