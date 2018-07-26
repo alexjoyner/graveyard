@@ -7,7 +7,7 @@ import { GetNewHistoryGraph } from '../HistoricalGraphModal/actions';
 const GetData = (username, pass) => {
   return async (dispatch) => {
     try {
-      const requestUrl = new Request(`${env.serverAddr}/status/${username}/${pass}`);
+      const requestUrl = new Request(`${env.serverAddr}/v1/status/${username}/${pass}`);
       const response = await fetch(requestUrl);
       const myJson = await response.json();
       if(myJson.status === 'Offline')
