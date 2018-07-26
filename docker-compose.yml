@@ -1,22 +1,27 @@
 version: '3'
 services:
-  ui-service:
+  nginx:
     build:
-      context: ../ees-datalogger-ui
-      args:
-        - NODE_ENV=development
-    restart: always
+      context: ./nginx
     volumes:
-      - ../ees-datalogger-ui:/home/node/app
-      - ui-service-node-modules:/home/node/app/node_modules
-      - ../ro-component-library:/home/node/app/node_modules/ro-component-library
+      - ./nginx/nginx.dev.conf:/etc/nginx/nginx.conf
+    restart: always
+    environment:
+      - NODE_ENV=development
     ports:
       - "8080:80"
-      - "81:81"
-    networks:
-      - frontend
     depends_on:
       - panel-data-api
+      - socket-data
+      - eze-handler
+  eze-handler:
+    build:
+      context: ../eze-handler
+      args:
+        - NODE_ENV=development
+    command: nodemon index.js -L
+    volumes:
+      - ../eze-handler/index.js:/usr/src/app/index.js
   panel-data-api:
     build:
       context: ../panel-data-db-api
@@ -27,12 +32,8 @@ services:
     volumes:
       - ../panel-data-db-api:/opt/app
       - panel-data-node_modules:/opt/app/node_modules
-    ports:
-      - "9000:80"
     environment:
       - NODE_ENV=development
-    networks:
-      - frontend
   socket-data:
     build:
       context: ../socketio-databridge
@@ -43,17 +44,8 @@ services:
     volumes:
       - ../socketio-databridge:/opt/app
       - socket-data-node_modules:/opt/app/node_modules
-    ports:
-      - "3030:80"
     environment:
       - NODE_ENV=development
-    networks:
-      - frontend
-
 volumes:
     socket-data-node_modules:
     panel-data-node_modules:
-    ui-service-node-modules:
-
-networks:
-  frontend:
