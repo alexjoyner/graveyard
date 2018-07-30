@@ -1,8 +1,12 @@
 let express = require('express');
 let morgan = require('morgan');
+let bodyParser = require('body-parser');
 const PORT = process.env.PORT || 8080;
 
 let app = express();
+
+app.use(bodyParser.json());
+
 
 app.use(function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
@@ -13,6 +17,7 @@ app.use(function(req, res, next) {
 app.use(morgan('common'));
 
 app.post('/', function (req, res) {
+  console.log('New Log: ', req.body);
   res.send('Saving new log!');
 });
 
