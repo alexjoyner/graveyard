@@ -31,15 +31,19 @@ class Logger{
         metric: {
             id: 1
         }
-       }); 
+       });
+       this.postToServer(log);
        console.log('New Log: ', log);
        setTimeout(() => {
            this.run();
        }, this.frequency);
     }
+    postToServer(log){
+      axios.post('http://localhost:8080/log/', log)
+    }
 }
 const mainLogger = new Logger({
-    frequency: 1000 * 60
+    frequency: 1000 * 30
 });
 console.log('Starting logger');
 mainLogger.run();
