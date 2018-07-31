@@ -43,18 +43,18 @@ services:
       - "32768:5432"
     environment:
       POSTGRES_PASSWORD: password
-  # socket-data:
-  #   build:
-  #     context: ../socketio-databridge
-  #     args:
-  #       - NODE_ENV=development
-  #   restart: always
-  #   command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
-  #   volumes:
-  #     - ../socketio-databridge:/opt/app
-  #     - socket-data-node_modules:/opt/app/node_modules
-  #   environment:
-  #     - NODE_ENV=development
+  socket-service:
+    build:
+      context: ../datalogger-socket-service
+      args:
+        - NODE_ENV=development
+    restart: always
+    command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
+    volumes:
+      - ../datalogger-socket-service:/opt/app
+      - socket-data-node_modules:/opt/app/node_modules
+    environment:
+      - NODE_ENV=development
 volumes:
     socket-data-node_modules:
     log-handler-node_modules:
