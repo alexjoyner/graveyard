@@ -1,6 +1,8 @@
 let express = require('express');
 let morgan = require('morgan');
 let bodyParser = require('body-parser');
+const { Client } = require('pg');
+
 const PORT = process.env.PORT || 8080;
 
 let app = express();
@@ -15,6 +17,27 @@ app.use(function(req, res, next) {
 });
 
 app.use(morgan('common'));
+app.post('/test', async (req, res) => {
+  const { body } = req;
+  try{
+    const client = new Client({
+      user: 'postgres',
+      password: 'password',
+      database: 'postgres',
+      host: 'postgres',
+    });
+    await client.connect();
+    const log = await client.query(
+      'INSERT INTO "log" ("metric_id", "datetime", "metricvalue") VALUES ($1, $2, $3)', 
+      [body.metricID, body.dateTime, body.value]
+    )
+    await client.end();
+    res.send(200);
+  }
+  catch(e){  
+    console.log("Error: ", e);
+  }
+})
 
 app.post('/', function (req, res) {
   console.log('New Log: ', req.body);
