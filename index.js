@@ -12,9 +12,9 @@ const getRandomValue = (max, min) => {
 const getLog = (opts) => {
     const RAND_VAL = getRandomValue(opts.max, opts.min);
     return {
-        metric: opts.metric.id,
+        metricID: opts.metric.id,
         value: RAND_VAL,
-        timeStamp: moment().format('YYYY-MM-DD HH:mm')
+        dateTime: moment().format('YYYY-MM-DD HH:mm')
     }
 }
 
@@ -31,11 +31,15 @@ class Logger{
         metric: {
             id: 1
         }
-       }); 
+       });
+       this.postToServer(log);
        console.log('New Log: ', log);
        setTimeout(() => {
            this.run();
        }, this.frequency);
+    }
+    postToServer(log){
+      axios.post('http://localhost:8080/log/test', log)
     }
 }
 const mainLogger = new Logger({
