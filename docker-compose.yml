@@ -12,7 +12,7 @@ services:
       - "8080:80"
     depends_on:
       - log-handler
-      # - socket-data
+      - socket-service
       - eze-handler
   eze-handler:
     build:
@@ -55,6 +55,8 @@ services:
       - socket-data-node_modules:/opt/app/node_modules
     environment:
       - NODE_ENV=development
+    ports:
+      - "32000:80"
 volumes:
     socket-data-node_modules:
     log-handler-node_modules:
