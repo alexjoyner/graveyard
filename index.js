@@ -28,7 +28,7 @@ app.post('/test', async (req, res) => {
     });
     await client.connect();
     const log = await client.query(
-      'INSERT INTO "log" ("metric_id", "datetime", "metricvalue") VALUES ($1, $2, $3)', 
+      'INSERT INTO "log" ("metric_id", "datetime", "val") VALUES ($1, $2, $3)', 
       [body.metricID, body.dateTime, body.value]
     )
     await client.end();
