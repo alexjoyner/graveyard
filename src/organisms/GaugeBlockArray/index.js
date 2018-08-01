@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {GaugeBlock, CenteredContent, getUniqueID, PlainBox} from 'ro-component-library';
 import { env } from '../../../src/.env';
-import { GetNewHistoryGraph } from '../HistoricalGraphModal/actions';
 
 const GetData = (username, pass) => {
   return async (dispatch) => {
@@ -24,9 +23,6 @@ const GetData = (username, pass) => {
 }
 
 class GaugeBlockArray extends Component{
-  constructor(props){
-    super(props);
-  }
   componentDidMount(){
     const {dispatch} = this.props;
     GetData('AAE599', 'romeo6424')(dispatch);

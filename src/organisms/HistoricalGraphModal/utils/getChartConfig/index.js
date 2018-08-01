@@ -1,5 +1,3 @@
-import { consolidateStreamedStyles } from "styled-components";
-
 // function getData(n) {
 //   var arr = [],
 //     i,
