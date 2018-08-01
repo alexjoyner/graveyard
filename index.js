@@ -20,7 +20,6 @@ app.use((req, res, next) => {
 
 app.post('/newlog', (req, res) => {
     io.sockets.emit('add log', req.body);
-    axios.post('http://panel-data-api/new/panel-data', req.body);
     res.send(req.body).end();
 });
 
