@@ -1,3 +1,32 @@
+CREATE TABLE client (
+	code character varying(10) NOT NULL UNIQUE,
+	name character varying(20) NOT NULL UNIQUE,
+	id SERIAL PRIMARY KEY
+);
+
+CREATE TABLE metric (
+  id SERIAL PRIMARY KEY,
+  name character varying(20) NOT NULL,
+  client_id integer NOT NULL REFERENCES client(id) ON DELETE CASCADE ON UPDATE CASCADE,
+);
+
+CREATE TABLE log (
+  metric_id integer REFERENCES metric(id) ON DELETE CASCADE ON UPDATE CASCADE,
+  datetime timestamp with time zone,
+  val real NOT NULL,
+  CONSTRAINT logs_pkey PRIMARY KEY (metric_id, datetime)
+);
+
+INSERT INTO "public"."client"("code", "name") VALUES(
+  'ees-demo',
+  'EES Demo Unit'
+);
+
+INSERT INTO "public"."metric"("name", "client_id") VALUES(
+  'Demo Metric',
+  1
+);
+
 INSERT INTO "log" ("metric_id", "datetime", "metricvalue") VALUES (1, E'2018-07-31 09:22:00+00', 20);
 INSERT INTO "log" ("metric_id", "datetime", "metricvalue") VALUES (1, E'2018-07-31 09:23:00+00', 72);
 INSERT INTO "log" ("metric_id", "datetime", "metricvalue") VALUES (1, E'2018-07-31 09:24:00+00', 38);
