@@ -1,6 +1,7 @@
 let express = require('express');
 let morgan = require('morgan');
 let bodyParser = require('body-parser');
+const axios = require('axios');
 const { Client } = require('pg');
 
 const PORT = process.env.PORT || 8080;
@@ -31,6 +32,7 @@ app.post('/test', async (req, res) => {
       'INSERT INTO "log" ("metric_id", "datetime", "val") VALUES ($1, $2, $3)', 
       [body.metricID, body.dateTime, body.value]
     )
+    await axios.post('http://socket-service/newlog', body);
     await client.end();
     res.send(200);
   }
