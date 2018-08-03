@@ -11,9 +11,10 @@ import { MultiSelectedChartsMenu } from './organisms/MultiSelectedChartsMenu';
 
 const SideBarContent = ({ roomCreds }) => (
   <div>
-    <ListHeader>Rooms</ListHeader>
+    <ListHeader>Groups</ListHeader>
     <CenteredContent>
-      <ListItem>Demo Room</ListItem>
+      <ListItem>EZE Demo Unit</ListItem>
+      <ListItem>EES Custom DB Demo</ListItem>
       <ListItem color={colors.primaryLight}>+ Add Room</ListItem>
     </CenteredContent>
     <MultiSelectedChartsMenu />

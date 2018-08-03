@@ -1,31 +1,13 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {GaugeBlock, CenteredContent, getUniqueID, PlainBox} from 'ro-component-library';
-import { env } from '../../../src/.env';
+import { getCustomData, getEzeData } from './actions';
 
-const GetData = (username, pass) => {
-  return async (dispatch) => {
-    try {
-      const requestUrl = new Request(`${env.serverAddr}/v1/status/${username}/${pass}`);
-      const response = await fetch(requestUrl);
-      const myJson = await response.json();
-      if(myJson.status === 'Offline')
-        return alert('System offline');
-      dispatch({
-        type: 'NEW_INPUTS',
-        data: myJson
-      });
-    }
-    catch(e) {
-      console.error(e);
-    }
-  }
-}
 
 class GaugeBlockArray extends Component{
   componentDidMount(){
     const {dispatch} = this.props;
-    GetData('AAE599', 'romeo6424')(dispatch);
+    getCustomData('AAE599', 'romeo6424')(dispatch); 
   }
   renderPlaceholders(){
     return (
