@@ -2,9 +2,9 @@ version: '3'
 services:
   root:
     build:
-      context: .
+      context: ../server/nginx
     volumes:
-      - ./nginx/nginx.dev.conf:/etc/nginx/nginx.conf
+      - ../server/nginx/nginx.dev.conf:/etc/nginx/nginx.conf
     restart: always
     environment:
       - NODE_ENV=development
@@ -16,21 +16,21 @@ services:
       - eze-handler
   eze-handler:
     build:
-      context: ../eze-handler
+      context: ../server/eze-handler
       args:
         - NODE_ENV=development
     command: nodemon index.js -L
     volumes:
-      - ../eze-handler/index.js:/usr/src/app/index.js
+      - ../server/eze-handler/index.js:/usr/src/app/index.js
   log-handler:
     build:
-      context: ../log-handler
+      context: ../server/log-handler
       args:
         - NODE_ENV=development
     restart: always
     command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
     volumes:
-      - ../log-handler:/opt/app
+      - ../server/log-handler:/opt/app
       - log-handler-node_modules:/opt/app/node_modules
     environment:
       - NODE_ENV=development
@@ -45,13 +45,13 @@ services:
       POSTGRES_PASSWORD: password
   socket-service:
     build:
-      context: ../datalogger-socket-service
+      context: ../server/socket-service
       args:
         - NODE_ENV=development
     restart: always
     command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
     volumes:
-      - ../datalogger-socket-service:/opt/app
+      - ../server/socket-service:/opt/app
       - socket-data-node_modules:/opt/app/node_modules
     environment:
       - NODE_ENV=development
