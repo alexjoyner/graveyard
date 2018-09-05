@@ -1,1 +1,0 @@
-SELECT metric_id, date_part('epoch', datetime), metricvalue FROM log WHERE metric_id = 1 AND datetime BETWEEN '2018-07-31 10:00:00' AND '2018-07-31 10:20:00';
