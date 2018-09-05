@@ -10,11 +10,12 @@ cd ../../
 
 ### Yarn link ro component library to client
 cd ./shared/ro-component-library
+yarn install
+yarn build
 yarn unlink ro-component-library
 yarn link
 cd ../../ees-datalogger/client
 yarn link ro-component-library
-cd ../
+yarn start
 
-#Go Back to the ees-datalogger-main folder
-cd ./__main__
+
