@@ -4,7 +4,7 @@ services:
     build:
       context: .
     volumes:
-      - ./nginx/nginx.dev.conf:/etc/nginx/nginx.conf
+      - ../server/nginx/nginx.dev.conf:/etc/nginx/nginx.conf
     restart: always
     environment:
       - NODE_ENV=development
