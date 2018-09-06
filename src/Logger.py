@@ -20,11 +20,11 @@ class Logger:
     print log
     res = requests.post(URL, json=log)
     print res
+  def run(self):
+    self.log()
+    time.sleep(3)
+    self.run()
 
 if __name__ == "__main__":
-  x = 0
   myLogger = Logger()
-  while x <= 10:
-    myLogger.log()
-    time.sleep(1)
-    x += 1
+  myLogger.run()

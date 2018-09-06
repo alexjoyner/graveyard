@@ -3,7 +3,7 @@ import sys
 import MessageChannel
 from multiprocessing import Process
 import Processor
-
+from Logger import Logger
 def init():
 #add user-defined appplication function
 	print 'start program for here'
@@ -32,9 +32,11 @@ def main(argv=sys.argv):
 	for option, value in opts:
 		if option in ('-h', '--help'):
 	    		usage()
-
-	app = Processor.Pyapp()
-	app.run()		
+          
+  myLogger = Logger()
+  myLogger.run()
+	# app = Processor.Pyapp()
+	# app.run()		
 		
 if __name__=='__main__':
 	main()
