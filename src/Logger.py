@@ -2,27 +2,27 @@ import time
 import datetime
 import requests
 from ModbusHandler import ModbusHandler
+from GlobalConfig import GlobalConfig
 
-URL = "http://192.168.2.33:8080/log/test"
-ModbusDevice = ModbusHandler()
 class Logger:
   def __init__(self):
-    print 'new Logger'
+    self.config = GlobalConfig()
+    self.ModbusDevice = ModbusHandler()
   def log(self):
-    print 'New Log Point'
     now = datetime.datetime.now()
-    data = ModbusDevice.getAnalogInputs()
+    data = self.ModbusDevice.getAnalogInputs()
     log={
       "pointID": 1,
       "value": data[5] / 10,
       "dateTime": now.strftime("%Y-%m-%d %H:%M:%S")
     }
-    print log
-    res = requests.post(URL, json=log)
-    print res
-  def run(self):
+    requests.post(
+      self.config.getAll()['DESTINATION_URL'], 
+      json=log
+    )
+  def run(self, delay=3):
     self.log()
-    time.sleep(3)
+    time.sleep(delay)
     self.run()
 
 if __name__ == "__main__":
