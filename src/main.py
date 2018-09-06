@@ -35,8 +35,6 @@ def main(argv=sys.argv):
           
   myLogger = Logger()
   myLogger.run()
-	# app = Processor.Pyapp()
-	# app.run()		
 		
 if __name__=='__main__':
 	main()
