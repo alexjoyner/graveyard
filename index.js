@@ -21,6 +21,7 @@ app.use(morgan('common'));
 app.post('/test', async (req, res) => {
   const { body } = req;
   try{
+    await axios.post('http://socket-service/newlog', body);
     const client = new Client({
       user: 'postgres',
       password: 'password',
@@ -28,16 +29,16 @@ app.post('/test', async (req, res) => {
       host: 'postgres',
     });
     await client.connect();
-    const log = await client.query(
+    await client.query(
       'INSERT INTO "log" ("point_id", "datetime", "val") VALUES ($1, $2, $3)', 
       [body.pointID, body.dateTime, body.value]
     )
-    await axios.post('http://socket-service/newlog', body);
     await client.end();
     res.send(200);
   }
   catch(e){  
     console.log("Error: ", e);
+    res.status(500).send('Something went wrong. Sorry');
   }
 })
 
