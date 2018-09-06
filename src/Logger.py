@@ -15,7 +15,7 @@ class Logger:
     log={
       "pointID": 1,
       "value": data[5] / 10,
-      "dateTime": now.strftime("%Y-%m-%d %H:%M")
+      "dateTime": now.strftime("%Y-%m-%d %H:%M:%S")
     }
     print log
     res = requests.post(URL, json=log)
@@ -26,5 +26,5 @@ if __name__ == "__main__":
   myLogger = Logger()
   while x <= 10:
     myLogger.log()
-    time.sleep(60)
+    time.sleep(1)
     x += 1
