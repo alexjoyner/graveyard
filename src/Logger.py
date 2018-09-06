@@ -3,7 +3,7 @@ import datetime
 import requests
 from ModbusHandler import ModbusHandler
 
-URL = "http://localhost:8080/log/test"
+URL = "http://192.168.2.33:8080/log/test"
 ModbusDevice = ModbusHandler()
 class Logger:
   def __init__(self):
