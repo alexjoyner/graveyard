@@ -1,23 +1,30 @@
 import time
+import datetime
 import requests
 from ModbusHandler import ModbusHandler
 
-URL = "https://webhook.site/b60f0eb6-2e1c-4dd5-82fa-db24bb9f92ba"
+URL = "http://localhost:8080/log/test"
 ModbusDevice = ModbusHandler()
 class Logger:
   def __init__(self):
-    print('new Logger')
+    print 'new Logger'
   def log(self):
-    print("New Log Point")
+    print 'New Log Point'
+    now = datetime.datetime.now()
     data = ModbusDevice.getAnalogInputs()
-    print(data)
-    res = requests.post(URL, json=data)
-    print(res)
+    log={
+      "pointID": 1,
+      "value": data[5] / 10,
+      "dateTime": now.strftime("%Y-%m-%d %H:%M")
+    }
+    print log
+    res = requests.post(URL, json=log)
+    print res
 
 if __name__ == "__main__":
   x = 0
   myLogger = Logger()
   while x <= 10:
     myLogger.log()
-    time.sleep(10)
+    time.sleep(60)
     x += 1

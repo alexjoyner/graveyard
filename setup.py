@@ -11,6 +11,8 @@ setup(
 	package_dir={ '' : 'src' },
 	zip_safe=False,
 	install_requires=[
+  'requests==2.19.1',
+  'modbus-tk==0.5.8',
 	],
 	entry_points = """
 		[console_scripts]
