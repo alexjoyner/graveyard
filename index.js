@@ -29,8 +29,8 @@ app.post('/test', async (req, res) => {
     });
     await client.connect();
     const log = await client.query(
-      'INSERT INTO "log" ("metric_id", "datetime", "val") VALUES ($1, $2, $3)', 
-      [body.metricID, body.dateTime, body.value]
+      'INSERT INTO "log" ("point_id", "datetime", "val") VALUES ($1, $2, $3)', 
+      [body.pointID, body.dateTime, body.value]
     )
     await axios.post('http://socket-service/newlog', body);
     await client.end();
