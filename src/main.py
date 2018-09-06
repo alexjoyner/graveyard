@@ -1,6 +1,8 @@
 
 import sys
 import MessageChannel
+from multiprocessing import Process
+import Processor
 
 def init():
 #add user-defined appplication function
@@ -30,10 +32,9 @@ def main(argv=sys.argv):
 	for option, value in opts:
 		if option in ('-h', '--help'):
 	    		usage()
-	print sys.path
-	init()	
-	MessageChannel.registerSigInt()
-	MessageChannel.run()		
+
+	app = Processor.Pyapp()
+	app.run()		
 		
 if __name__=='__main__':
 	main()
