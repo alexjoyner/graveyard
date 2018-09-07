@@ -1,6 +1,7 @@
 let express = require('express');
 let morgan = require('morgan');
 let bodyParser = require('body-parser');
+let fs = require('fs');
 const axios = require('axios');
 const { Client } = require('pg');
 
@@ -22,12 +23,14 @@ app.post('/test', async (req, res) => {
   const { body } = req;
   try{
     await axios.post('http://socket-service/newlog', body);
-    const client = new Client({
-      user: 'postgres',
-      password: 'password',
-      database: 'postgres',
-      host: 'postgres',
-    });
+    let conInfo = {
+      user: fs.readFileSync(process.env.PG_USER_FILE, 'utf8'),
+      password: fs.readFileSync(process.env.PG_PASS_FILE, 'utf8'),
+      database: fs.readFileSync(process.env.PG_DB_FILE, 'utf8'),
+      host: fs.readFileSync(process.env.PG_HOST_FILE, 'utf8'),
+    }
+    console.log(conInfo)
+    const client = new Client(conInfo);
     await client.connect();
     await client.query(
       'INSERT INTO "log" ("point_id", "datetime", "val") VALUES ($1, $2, $3)', 
