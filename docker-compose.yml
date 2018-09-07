@@ -1,13 +1,6 @@
-version: '3'
+version: '3.1'
 services:
   root:
-    build:
-      context: ../server/nginx
-    volumes:
-      - ../server/nginx/nginx.dev.conf:/etc/nginx/nginx.conf
-    restart: always
-    environment:
-      - NODE_ENV=development
     ports:
       - "8080:80"
     depends_on:
@@ -15,48 +8,17 @@ services:
       - socket-service
       - eze-handler
   eze-handler:
-    build:
-      context: ../server/eze-handler
-      args:
-        - NODE_ENV=development
-    command: nodemon index.js -L
-    volumes:
-      - ../server/eze-handler/index.js:/usr/src/app/index.js
   log-handler:
-    build:
-      context: ../server/log-handler
-      args:
-        - NODE_ENV=development
-    restart: always
-    command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
-    volumes:
-      - ../server/log-handler:/opt/app
-      - log-handler-node_modules:/opt/app/node_modules
+    secrets:
+      - pg-user
+      - pg-pass
+      - pg-db
+      - pg-host
     environment:
-      - NODE_ENV=development
-    depends_on:
-      - postgres
-  postgres:
-    image: postgres
-    restart: always
-    ports:
-      - "32768:5432"
-    environment:
-      POSTGRES_PASSWORD: password
+      - PG_USER_FILE=/run/secrets/pg-user
+      - PG_HOST_FILE=/run/secrets/pg-host
+      - PG_DB_FILE=/run/secrets/pg-db
+      - PG_PASS_FILE=/run/secrets/pg-pass
   socket-service:
-    build:
-      context: ../server/socket-service
-      args:
-        - NODE_ENV=development
-    restart: always
-    command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
-    volumes:
-      - ../server/socket-service:/opt/app
-      - socket-data-node_modules:/opt/app/node_modules
-    environment:
-      - NODE_ENV=development
     ports:
       - "32000:80"
-volumes:
-    socket-data-node_modules:
-    log-handler-node_modules:

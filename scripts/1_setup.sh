@@ -2,7 +2,7 @@
 
 echo "Preparing Development Environment"
 #Go up one directory
-cd ../
+cd ../../
 #Clone all the necessary github repos to the github folder
 ### Datalogger Repos ###
 git clone https://github.com/alexjoyner/ir900_datalogger.git

@@ -1,0 +1,50 @@
+secrets:
+  pg-db:
+    external: true
+  pg-host:
+    external: true
+  pg-pass:
+    external: true
+  pg-user:
+    external: true
+  ssl_dhparam:
+    external: true
+services:
+  eze-handler:
+    image: rosco9awj/eze-handler
+    restart: always
+  log-handler:
+    environment:
+      PG_DB_FILE: /run/secrets/pg-db
+      PG_HOST_FILE: /run/secrets/pg-host
+      PG_PASS_FILE: /run/secrets/pg-pass
+      PG_USER_FILE: /run/secrets/pg-user
+    image: rosco9awj/log-handler
+    restart: always
+    secrets:
+    - source: pg-db
+    - source: pg-host
+    - source: pg-pass
+    - source: pg-user
+  root:
+    depends_on:
+    - eze-handler
+    - log-handler
+    - socket-service
+    image: rosco9awj/ees-datalogger-nginx
+    ports:
+    - 8080:80/tcp
+    - 80:80/tcp
+    - 443:443/tcp
+    restart: always
+    secrets:
+    - source: ssl_dhparam
+    volumes:
+    - \etc\letsecrypt:/etc/letsencrypt:rw
+  socket-service:
+    image: rosco9awj/datalogger-socket-service
+    ports:
+    - 32000:80/tcp
+    restart: always
+version: '3.1'
+
