@@ -15,6 +15,10 @@ services:
     volumes:
       - ../server/eze-handler/index.js:/usr/src/app/index.js
   log-handler:
+    build:
+      context: ../server/log-handler
+      args:
+        - NODE_ENV=development
     command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
     volumes:
       - ../server/log-handler:/opt/app
