@@ -1,0 +1,53 @@
+version: '3.1'
+
+services:
+  root:
+    build:
+      context: ../server/nginx
+    volumes:
+      - ../server/nginx/nginx.dev.conf:/etc/nginx/nginx.conf
+  eze-handler:
+    build:
+      context: ../server/eze-handler
+      args:
+        - NODE_ENV=development
+    command: nodemon index.js -L
+    volumes:
+      - ../server/eze-handler/index.js:/usr/src/app/index.js
+  log-handler:
+    command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
+    volumes:
+      - ../server/log-handler:/opt/app
+      - log-handler-node_modules:/opt/app/node_modules
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - postgres
+  socket-service:
+    build:
+      context: ../server/socket-service
+      args:
+        - NODE_ENV=development
+    command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
+    volumes:
+      - ../server/socket-service:/opt/app
+      - socket-data-node_modules:/opt/app/node_modules
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - "32768:5432"
+    environment:
+      POSTGRES_PASSWORD: password
+volumes:
+  socket-data-node_modules:
+  log-handler-node_modules:
+secrets:
+  pg-user:
+    file: dev-keys/pg-user.txt
+  pg-pass:
+    file: dev-keys/pg-pass.txt
+  pg-host:
+    file: dev-keys/pg-host.txt
+  pg-db:
+    file: dev-keys/pg-db.txt

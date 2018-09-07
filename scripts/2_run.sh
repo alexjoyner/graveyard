@@ -2,7 +2,7 @@
 echo "Running installation scripts"
 
 ### Yarn install on client
-cd ../client
+cd ../../client
 yarn install
 
 ## Goto shared github directory

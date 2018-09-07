@@ -1,0 +1,32 @@
+version: '3.1'
+services:
+  root:
+    image: rosco9awj/ees-datalogger-nginx
+    restart: always
+    volumes:
+      - /etc/letsecrypt:/etc/letsencrypt
+    secrets:
+      - ssl_dhparam
+    ports:
+      - "80:80"
+      - "443:443"
+  eze-handler:
+    image: rosco9awj/eze-handler
+    restart: always
+  log-handler:
+    image: rosco9awj/log-handler
+    restart: always
+  socket-service:
+    image: rosco9awj/datalogger-socket-service
+    restart: always
+secrets:
+  pg-user:
+    external: true
+  pg-pass:
+    external: true
+  pg-host:
+    external: true
+  pg-db:
+    external: true
+  ssl_dhparam:
+    external: true
