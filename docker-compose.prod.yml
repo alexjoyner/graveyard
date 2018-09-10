@@ -2,23 +2,29 @@ version: '3.1'
 services:
   root:
     image: rosco9awj/ees-datalogger-nginx
-    restart: always
+    deploy:
+      restart_policy:
+        condition: on-failure
     volumes:
-      - /etc/letsecrypt:/etc/letsencrypt
-    secrets:
-      - ssl_dhparam
+      - /etc/letsecrypt:/etc/ssl
     ports:
       - "80:80"
       - "443:443"
   eze-handler:
     image: rosco9awj/eze-handler
-    restart: always
+    deploy:
+      restart_policy:
+        condition: on-failure
   log-handler:
     image: rosco9awj/log-handler
-    restart: always
+    deploy:
+      restart_policy:
+        condition: on-failure
   socket-service:
     image: rosco9awj/datalogger-socket-service
-    restart: always
+    deploy:
+      restart_policy:
+        condition: on-failure
 secrets:
   pg-user:
     external: true

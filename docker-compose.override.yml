@@ -4,8 +4,11 @@ services:
   root:
     build:
       context: ../server/nginx
+    ports:
+      - "8080:80"
     volumes:
       - ../server/nginx/nginx.dev.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/ssl
   eze-handler:
     build:
       context: ../server/eze-handler
@@ -55,3 +58,5 @@ secrets:
     file: dev-keys/pg-host.txt
   pg-db:
     file: dev-keys/pg-db.txt
+  ssl_dhparam:
+    file: ssl/dhparam.pem

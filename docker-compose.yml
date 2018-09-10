@@ -1,8 +1,8 @@
 version: '3.1'
 services:
   root:
-    ports:
-      - "8080:80"
+    secrets:
+      - ssl_dhparam
     depends_on:
       - log-handler
       - socket-service
