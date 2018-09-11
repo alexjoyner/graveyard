@@ -30,7 +30,7 @@ services:
     - source: pg-host
     - source: pg-pass
     - source: pg-user
-  root:
+  main:
     depends_on:
     - eze-handler
     - log-handler
@@ -45,7 +45,7 @@ services:
     secrets:
     - source: ssl_dhparam
     volumes:
-    - /etc/letsecrypt:/etc/ssl:rw
+    - /etc/letsecrypt:/etc/letsecrypt:rw
   socket-service:
     deploy:
       restart_policy:

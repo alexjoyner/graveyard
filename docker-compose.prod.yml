@@ -1,12 +1,12 @@
 version: '3.1'
 services:
-  root:
+  main:
     image: rosco9awj/ees-datalogger-nginx
     deploy:
       restart_policy:
         condition: on-failure
     volumes:
-      - /etc/letsecrypt:/etc/ssl
+      - /etc/letsecrypt:/etc/letsencrypt
     ports:
       - "80:80"
       - "443:443"

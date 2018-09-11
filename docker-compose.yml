@@ -1,6 +1,6 @@
 version: '3.1'
 services:
-  root:
+  main:
     secrets:
       - ssl_dhparam
     depends_on:
