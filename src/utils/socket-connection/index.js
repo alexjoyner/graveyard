@@ -1,6 +1,6 @@
 import { env } from '../../.env';
 let io = require('socket.io-client');
-let socket = io(env.serverAddr, {path: '/live'});
+let socket = io(env.serverAddr);
 
 export class connect {
     static getLogsSubscription(cb){
