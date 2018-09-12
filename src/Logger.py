@@ -20,7 +20,7 @@ class Logger:
       self.config.getAll()['DESTINATION_URL'], 
       json=log
     )
-  def run(self, delay=3):
+  def run(self, delay=10):
     self.log()
     time.sleep(delay)
     self.run()

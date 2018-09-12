@@ -1,11 +1,16 @@
-from configparser import ConfigParser
+try:
+    from configparser import ConfigParser
+except ImportError:
+    from ConfigParser import ConfigParser  # ver. < 3.0
 import os
 
 class GlobalConfig:
   def __init__(self):
-    env = os.environ.get('PY_ENV')
+    env = os.environ.get('PY_ENV') or "prod"
     self.config = ConfigParser()
-    self.config.read('../config.ini')
+    filename = '/var/app/ir900_datlogger/config.ini'
+    # filename = '../config.ini'
+    self.config.read(filename)
     if(env.lower() == 'dev' or env.lower() == 'development'):
       self.BASE_ENV = 'DEV_ENV'
     else:
