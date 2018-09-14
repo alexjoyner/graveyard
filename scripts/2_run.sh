@@ -12,7 +12,6 @@ cd ../../
 cd ./shared/ro-component-library
 yarn install
 yarn build
-yarn unlink ro-component-library
 yarn link
 cd ../../ees-datalogger/client
 yarn link ro-component-library

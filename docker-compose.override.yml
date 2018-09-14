@@ -1,11 +1,14 @@
 version: '3.1'
 
 services:
-  root:
+  main:
     build:
       context: ../server/nginx
+    ports:
+      - "8080:80"
     volumes:
       - ../server/nginx/nginx.dev.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/ssl
   eze-handler:
     build:
       context: ../server/eze-handler
@@ -15,6 +18,10 @@ services:
     volumes:
       - ../server/eze-handler/index.js:/usr/src/app/index.js
   log-handler:
+    build:
+      context: ../server/log-handler
+      args:
+        - NODE_ENV=development
     command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
     volumes:
       - ../server/log-handler:/opt/app
@@ -51,3 +58,5 @@ secrets:
     file: dev-keys/pg-host.txt
   pg-db:
     file: dev-keys/pg-db.txt
+  ssl_dhparam:
+    file: ssl/dhparam.pem
