@@ -7,8 +7,20 @@ services:
       - log-handler
       - socket-service
       - eze-handler
+      - historical-service
   eze-handler:
   log-handler:
+    secrets:
+      - pg-user
+      - pg-pass
+      - pg-db
+      - pg-host
+    environment:
+      - PG_USER_FILE=/run/secrets/pg-user
+      - PG_HOST_FILE=/run/secrets/pg-host
+      - PG_DB_FILE=/run/secrets/pg-db
+      - PG_PASS_FILE=/run/secrets/pg-pass
+  historical-service:
     secrets:
       - pg-user
       - pg-pass
