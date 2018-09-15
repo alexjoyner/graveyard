@@ -1,0 +1,31 @@
+{
+  "name": "historical-service",
+  "version": "1.0.0",
+  "description": "this is a service originally created for getting historical data created  for the datalogging service",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev-docker": "../node_modules/nodemon/bin/nodemon.js --debug=5858",
+    "dev-host": "nodemon --debug=5858"
+  },
+  "dependencies": {
+    "express": "^4.14.1",
+    "morgan": "^1.8.1",
+    "body-parser": "^1.18.3",
+    "pg": "^7.4.3",
+    "axios": "^0.18.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexjoyner/historical-data-service.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexjoyner/historical-data-service/issues"
+  },
+  "homepage": "https://github.com/alexjoyner/historical-data-service#readme"
+}
