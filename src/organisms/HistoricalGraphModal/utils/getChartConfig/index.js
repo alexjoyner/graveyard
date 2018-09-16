@@ -115,6 +115,16 @@ const getBaseConfig = (info) => {
           color: 'white',
         },
       },
+      events: {
+        afterSetExtremes: (event) => {
+              var min = Math.ceil(event.min);
+              var max = Math.floor(event.max);
+              console.log({
+                'min': min,
+                'max': max
+              })
+          }
+      }
     },
     yAxis: {
       title: {
