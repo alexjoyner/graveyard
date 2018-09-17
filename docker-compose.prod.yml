@@ -20,6 +20,11 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+  historical-service:
+    image: rosco9awj/historical-data-service
+    deploy:
+      restart_policy:
+        condition: on-failure
   socket-service:
     image: rosco9awj/datalogger-socket-service
     deploy:

@@ -15,6 +15,21 @@ services:
       restart_policy:
         condition: on-failure
     image: rosco9awj/eze-handler
+  historical-service:
+    deploy:
+      restart_policy:
+        condition: on-failure
+    environment:
+      PG_DB_FILE: /run/secrets/pg-db
+      PG_HOST_FILE: /run/secrets/pg-host
+      PG_PASS_FILE: /run/secrets/pg-pass
+      PG_USER_FILE: /run/secrets/pg-user
+    image: rosco9awj/historical-data-service
+    secrets:
+    - source: pg-db
+    - source: pg-host
+    - source: pg-pass
+    - source: pg-user
   log-handler:
     deploy:
       restart_policy:
@@ -33,6 +48,7 @@ services:
   main:
     depends_on:
     - eze-handler
+    - historical-service
     - log-handler
     - socket-service
     deploy:
@@ -45,7 +61,7 @@ services:
     secrets:
     - source: ssl_dhparam
     volumes:
-    - /etc/letsecrypt:/etc/letsecrypt:rw
+    - /etc/letsecrypt:/etc/letsencrypt:rw
   socket-service:
     deploy:
       restart_policy:

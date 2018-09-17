@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "/Users/rosco/Documents/GitHub/ees-datalogger/client"
+		},
+		{
+			"path": "/Users/rosco/Documents/GitHub/ees-datalogger/server"
+		},
+		{
+			"path": "/Users/rosco/Documents/GitHub/ees-datalogger/ir900_datalogger"
+		},
+		{
+			"path": "/Users/rosco/Documents/GitHub/shared/ro-component-library"
+		}
+	],
+	"settings": {
+		"javascript.validate.enable": false
+	}
+}
