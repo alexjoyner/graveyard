@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {
   Header, colors, SideBarPage, ListItem, 
-  ListHeader, CenteredContent, Button} from 'ro-component-library';
+  ListHeader, CenteredContent} from 'ro-component-library';
 import {GaugeBlockArray} from './organisms/GaugeBlockArray';
 import {AuthModal} from './organisms/AuthModal';
 import { HistoricalGraphModal } from './organisms/HistoricalGraphModal';
 import { DashNotification } from './organisms/DashNotification';
 import { MultiSelectedChartsMenu } from './organisms/MultiSelectedChartsMenu';
+import { FeedbackButton } from './organisms/FeedbackButton';
 
 const SideBarContent = ({ roomCreds }) => (
   <div>
@@ -32,14 +33,7 @@ class App extends Component {
           fontSize={'25px'} 
           logoText={'Dashboard Demo'} 
           sticky >
-          <Button 
-            large 
-            primary 
-            style={{
-              'float': 'right',
-              'margin-top': '3px'
-            }}
-            onClick={() => window.location.href='http://feedback.voicir.com'}>Feedback</Button>
+          <FeedbackButton />
         </Header>
         <SideBarPage sideBarContents={<SideBarContent {...this.props} />} >
           <GaugeBlockArray></GaugeBlockArray>
