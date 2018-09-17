@@ -8,6 +8,7 @@ import {AuthModal} from './organisms/AuthModal';
 import { HistoricalGraphModal } from './organisms/HistoricalGraphModal';
 import { DashNotification } from './organisms/DashNotification';
 import { MultiSelectedChartsMenu } from './organisms/MultiSelectedChartsMenu';
+import { FeedbackButton } from './organisms/FeedbackButton';
 
 const SideBarContent = ({ roomCreds }) => (
   <div>
@@ -31,7 +32,9 @@ class App extends Component {
           height={'67px'} 
           fontSize={'25px'} 
           logoText={'Dashboard Demo'} 
-          sticky />
+          sticky >
+          <FeedbackButton />
+        </Header>
         <SideBarPage sideBarContents={<SideBarContent {...this.props} />} >
           <GaugeBlockArray></GaugeBlockArray>
         </SideBarPage>
