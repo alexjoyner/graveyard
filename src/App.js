@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {
   Header, colors, SideBarPage, ListItem, 
-  ListHeader, CenteredContent} from 'ro-component-library';
+  ListHeader, CenteredContent, Button} from 'ro-component-library';
 import {GaugeBlockArray} from './organisms/GaugeBlockArray';
 import {AuthModal} from './organisms/AuthModal';
 import { HistoricalGraphModal } from './organisms/HistoricalGraphModal';
@@ -31,7 +31,16 @@ class App extends Component {
           height={'67px'} 
           fontSize={'25px'} 
           logoText={'Dashboard Demo'} 
-          sticky />
+          sticky >
+          <Button 
+            large 
+            primary 
+            style={{
+              'float': 'right',
+              'margin-top': '3px'
+            }}
+            onClick={() => window.location.href='http://feedback.voicir.com'}>Feedback</Button>
+        </Header>
         <SideBarPage sideBarContents={<SideBarContent {...this.props} />} >
           <GaugeBlockArray></GaugeBlockArray>
         </SideBarPage>
