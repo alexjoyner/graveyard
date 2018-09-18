@@ -7,7 +7,7 @@ class ModbusHandler:
   def __init__(self):
     config = GlobalConfig()
     self.master = modbus_tcp.TcpMaster(
-      host=config.getAll()['MODBUS_URL'],
+      host=config.getModbusInfo()['MODBUS_ADDRESS'],
       port=502
     )
 
