@@ -9,12 +9,10 @@ yarn install
 cd ../../
 
 ### Yarn link ro component library to client
-cd ./shared/ro-component-library
+cd ./node_modules/ro-component-library
 yarn install
 yarn build
-yarn link
 cd ../../ees-datalogger/client
-yarn link ro-component-library
 yarn start
 
 
