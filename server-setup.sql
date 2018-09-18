@@ -23,6 +23,9 @@ INSERT INTO "public"."client"("code", "name") VALUES(
 );
 
 INSERT INTO "public"."point"("name", "client_id") VALUES(
-  'Demo point',
+  'Test Sensor 1',
+  1
+),(
+  'Test Sensor 2',
   1
 );
