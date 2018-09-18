@@ -1,0 +1,20 @@
+{
+"folders": [
+	{
+		"path": "."
+	},
+	{
+		"path": "D:\\GitHub\\ees-datalogger\\client"
+	},
+	{
+		"path": "D:\\GitHub\\ees-datalogger\\ir900_datalogger"
+	},
+	{
+		"path": "D:\\GitHub\\ees-datalogger\\server"
+	},
+	{
+		"path": "D:\\GitHub\\shared\\ro-component-library"
+	}
+],
+  "settings": {}
+}
