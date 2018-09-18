@@ -16,19 +16,19 @@ class ModbusHandler:
     data = self.master.execute(255, cst.READ_HOLDING_REGISTERS, 8335, 10)
     now = datetime.datetime.now()
     return {
-      "inputs": self.buildLogPack(data),
-      "dateTime": "%s-05" % now.strftime("%Y-%m-%d %H:%M:%S")
+      "logs": self.buildLogPack(data),
+      "datetime": "%s-05" % now.strftime("%Y-%m-%d %H:%M:%S")
     }
   def buildLogPack(self, IO_DATA):
-    logPack = []
+    logPack = {}
     for x in range(int(self.config.getModbusInfo()['NUM_OF_AI'])):
       aiNum = x + 1
       aiInfo = self.config.getInputInfo("AI_" + str(aiNum))
-      if(aiInfo["active"]):
-        logPack.append({
-          "pointID": aiInfo["point_id"],
+      if(bool(aiInfo["active"])):
+        logPack[aiInfo["point_id"]] = {
           "value": IO_DATA[x] / 10,
-        })
+          "unit": aiInfo["unit"]
+        }
     return logPack
 
 if __name__ == '__main__':
