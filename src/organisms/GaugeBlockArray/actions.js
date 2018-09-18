@@ -23,16 +23,11 @@ export const getEzeData = (username, pass) => {
 
 export const getCustomData = () => {
   return (dispatch) => {
-    connect.getLogsSubscription((err, log) => {
+    connect.getLogsSubscription((err, logs) => {
       dispatch({
         type: 'NEW_INPUTS',
         data: {
-          inputs: {
-            1: {
-              name: 'Test Metric',
-              real: log.value
-            }
-          }
+          inputs: logs
         }
       })
     })
