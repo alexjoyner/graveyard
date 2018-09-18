@@ -1,1 +1,1 @@
-# test-repo
+This is a test of portability of git repos
