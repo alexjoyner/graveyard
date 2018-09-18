@@ -17,6 +17,7 @@
 	}
 ],
   "settings": {
+		"javascript.validate.enable": false,
     "files.eol": "\n"
   }
 }

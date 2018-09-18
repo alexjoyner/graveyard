@@ -4,19 +4,20 @@
 			"path": "."
 		},
 		{
-			"path": "/Users/rosco/Documents/GitHub/ees-datalogger/client"
+			"path": "/Volumes/MISC/GitHub/ees-datalogger/client"
 		},
 		{
-			"path": "/Users/rosco/Documents/GitHub/ees-datalogger/server"
+			"path": "/Volumes/MISC/GitHub/ees-datalogger/ir900_datalogger"
 		},
 		{
-			"path": "/Users/rosco/Documents/GitHub/ees-datalogger/ir900_datalogger"
+			"path": "/Volumes/MISC/GitHub/ees-datalogger/server"
 		},
 		{
-			"path": "/Users/rosco/Documents/GitHub/node_modules/ro-component-library"
+			"path": "/Volumes/MISC/GitHub/node_modules/ro-component-library"
 		}
 	],
 	"settings": {
-		"javascript.validate.enable": false
+		"javascript.validate.enable": false,
+		"files.eol": "\n"
 	}
 }
