@@ -16,5 +16,7 @@
 		"path": "D:\\GitHub\\node_modules\\ro-component-library"
 	}
 ],
-  "settings": {}
+  "settings": {
+    "files.eol": "\n"
+  }
 }
