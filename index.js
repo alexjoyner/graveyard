@@ -33,7 +33,7 @@ app.post('/test', async (req, res) => {
     console.log(conInfo)
     const client = new Client(conInfo);
     await client.connect();
-    await client.query(myQueryBuilder.getInsertString(body, 'tmp'))
+    await client.query(myQueryBuilder.getInsertString(body, 'log'))
     await client.end();
     res.send(200);
   }
