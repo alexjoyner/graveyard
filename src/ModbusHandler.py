@@ -21,7 +21,7 @@ class ModbusHandler:
     }
   def buildLogPack(self, IO_DATA):
     logPack = []
-    for x in range(7):
+    for x in range(int(self.config.getModbusInfo()['NUM_OF_AI'])):
       aiNum = x + 1
       aiInfo = self.config.getInputInfo("AI_" + str(aiNum))
       if(aiInfo["active"]):
