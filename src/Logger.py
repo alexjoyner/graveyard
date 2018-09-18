@@ -1,5 +1,4 @@
 import time
-import datetime
 import requests
 import logging
 from ModbusHandler import ModbusHandler
@@ -10,17 +9,11 @@ class Logger:
     self.config = GlobalConfig()
     self.ModbusDevice = ModbusHandler()
   def log(self):
-    now = datetime.datetime.now()
     data = self.ModbusDevice.getAnalogInputs()
-    log={
-      "pointID": 1,
-      "value": data[5] / 10,
-      "dateTime": "%s-05" % now.strftime("%Y-%m-%d %H:%M:%S")
-    }
-    logging.info("Logging: \n %s" % log)
+    logging.info("Logging: \n %s" % data)
     requests.post(
       self.config.getEnvVars()['SERVER_ADDRESS'] + '/log/test', 
-      json=log
+      json=data
     )
   def run(self, delay=10):
     self.log()
