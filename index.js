@@ -41,6 +41,8 @@ app.get('/all/:pointID', async (req, res) => {
                     (AVG(val) - STDDEV_SAMP(val) * 2.5) as lower_bound,
                     (AVG(val) + STDDEV_SAMP(val) * 2.5) as upper_bound
                 FROM log
+                WHERE 
+                    point_id = $1
             )
             SELECT datetime, val FROM(
                 SELECT 
