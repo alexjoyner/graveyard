@@ -46,7 +46,7 @@ class GaugeBlockArray extends Component{
           if(input.unit === 'CFM') opts = this.props.cfm;
           if(input.unit === 'A')  opts = this.props.amps;
           if(input.unit === 'PSI')  opts = this.props.psi;
-          let gaugeVal = input.real;
+          let gaugeVal = input.value;
           if(gaugeVal > opts.max)
             gaugeVal = opts.max;
           if(gaugeVal < opts.min)
