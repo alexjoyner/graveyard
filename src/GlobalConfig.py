@@ -22,6 +22,7 @@ class GlobalConfig:
   def getInputInfo(self, input):
     return {
       "point_id": self.parser[input]["point_id"],
+      "name": self.parser[input]["name"],
       "unit": self.parser[input]["unit"],
       "active": self.parser.getboolean(input, "active")
     }

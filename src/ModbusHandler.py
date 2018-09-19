@@ -26,6 +26,7 @@ class ModbusHandler:
       aiInfo = self.config.getInputInfo("AI_" + str(aiNum))
       if(bool(aiInfo["active"])):
         logPack[aiInfo["point_id"]] = {
+          "name": aiInfo["name"],
           "value": IO_DATA[x] / 10,
           "unit": aiInfo["unit"]
         }
