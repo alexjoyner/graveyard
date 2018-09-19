@@ -8,13 +8,15 @@ class GlobalConfig:
   def __init__(self):
     env = os.environ.get('PY_ENV') or "prod"
     self.parser = ConfigParser()
-    #filename = '/var/app/ir900_datlogger/config.ini'
-    filename = '../config.ini'
-    self.parser.read(filename)
+    filename = ''
     if(env.lower() == 'dev' or env.lower() == 'development'):
       self.BASE_ENV = 'DEV_ENV'
+      filename = '../config.ini'
     else:
       self.BASE_ENV = 'PROD_ENV'
+      filename = '/var/app/ir900_datlogger/config.ini'
+    print filename
+    self.parser.read(filename)
   def getEnvVars(self):
     return self.parser[self.BASE_ENV]
   def getModbusInfo(self):
