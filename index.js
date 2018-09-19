@@ -22,23 +22,23 @@ app.use(morgan('common'));
 app.post('/test', async (req, res) => {
   const { body } = req;
   const myQueryBuilder = new QueryBuilder();
+  let conInfo = {
+    user: fs.readFileSync(process.env.PG_USER_FILE, 'utf8'),
+    password: fs.readFileSync(process.env.PG_PASS_FILE, 'utf8'),
+    database: fs.readFileSync(process.env.PG_DB_FILE, 'utf8'),
+    host: fs.readFileSync(process.env.PG_HOST_FILE, 'utf8'),
+  }
+  const client = new Client(conInfo);
   try{
-    await axios.post('http://socket-service/newlog', body.logs);
-    let conInfo = {
-      user: fs.readFileSync(process.env.PG_USER_FILE, 'utf8'),
-      password: fs.readFileSync(process.env.PG_PASS_FILE, 'utf8'),
-      database: fs.readFileSync(process.env.PG_DB_FILE, 'utf8'),
-      host: fs.readFileSync(process.env.PG_HOST_FILE, 'utf8'),
-    }
-    console.log(conInfo)
-    const client = new Client(conInfo);
     await client.connect();
+    await axios.post('http://socket-service/newlog', body.logs);
     await client.query(myQueryBuilder.getInsertString(body, 'log'))
     await client.end();
     res.send(200);
   }
   catch(e){  
     console.log("Error: ", e);
+    client.end();
     res.status(500).send('Something went wrong. Sorry');
   }
 })
