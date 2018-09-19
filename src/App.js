@@ -14,7 +14,6 @@ const SideBarContent = ({ roomCreds }) => (
   <div>
     <ListHeader>Groups</ListHeader>
     <CenteredContent>
-      <ListItem>EZE Demo Unit</ListItem>
       <ListItem>EES Custom DB Demo</ListItem>
       <ListItem color={colors.primaryLight}>+ Add Room</ListItem>
     </CenteredContent>
