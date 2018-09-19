@@ -9,7 +9,6 @@ class GlobalConfig:
     env = os.environ.get('PY_ENV') or "prod"
     self.parser = ConfigParser()
     #filename = '/var/app/ir900_datlogger/config.ini'
-    #filename = 'C:\Users\rosco\Documents\GitHub\ees-datalogger\ir900_datalogger\config.ini'
     filename = '../config.ini'
     self.parser.read(filename)
     if(env.lower() == 'dev' or env.lower() == 'development'):
@@ -21,7 +20,11 @@ class GlobalConfig:
   def getModbusInfo(self):
     return self.parser["MODBUS_INFO"]
   def getInputInfo(self, input):
-    return self.parser[input]
+    return {
+      "point_id": self.parser[input]["point_id"],
+      "unit": self.parser[input]["unit"],
+      "active": self.parser.getboolean(input, "active")
+    }
 
 if __name__ == '__main__':
   config = GlobalConfig()
