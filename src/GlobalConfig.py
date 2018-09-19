@@ -14,8 +14,7 @@ class GlobalConfig:
       filename = '../config.ini'
     else:
       self.BASE_ENV = 'PROD_ENV'
-      filename = '/var/app/ir900_datlogger/config.ini'
-    print filename
+      filename = '/var/app/ir900_datalogger/config.ini'
     self.parser.read(filename)
   def getEnvVars(self):
     return self.parser[self.BASE_ENV]
