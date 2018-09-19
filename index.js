@@ -4,7 +4,7 @@ let bodyParser = require('body-parser');
 let fs = require('fs');
 const axios = require('axios');
 const { Client } = require('pg');
-
+const QueryBuilder = require('./utils/query_builder');
 const PORT = process.env.PORT || 8080;
 
 let app = express();
@@ -21,8 +21,9 @@ app.use(function(req, res, next) {
 app.use(morgan('common'));
 app.post('/test', async (req, res) => {
   const { body } = req;
+  const myQueryBuilder = new QueryBuilder();
   try{
-    await axios.post('http://socket-service/newlog', body);
+    await axios.post('http://socket-service/newlog', body.logs);
     let conInfo = {
       user: fs.readFileSync(process.env.PG_USER_FILE, 'utf8'),
       password: fs.readFileSync(process.env.PG_PASS_FILE, 'utf8'),
@@ -32,10 +33,7 @@ app.post('/test', async (req, res) => {
     console.log(conInfo)
     const client = new Client(conInfo);
     await client.connect();
-    await client.query(
-      'INSERT INTO "log" ("point_id", "datetime", "val") VALUES ($1, $2, $3)', 
-      [body.pointID, body.dateTime, body.value]
-    )
+    await client.query(myQueryBuilder.getInsertString(body, 'log'))
     await client.end();
     res.send(200);
   }
