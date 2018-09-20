@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 setup(
-	name='ir900_datlogger',
+	name='ir900_datalogger',
 	sdk_version='',
-	version='0.0.1',
+	version='1.1.0',
 	author='Alex Joyner',
 	author_email='alex.joyner@evanselectricalservicesllc.com',
 	description='EES Datalogger file for inhand ir915 router',
