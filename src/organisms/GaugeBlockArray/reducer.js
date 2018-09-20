@@ -1,8 +1,8 @@
-import {cfm, temp, amps, psi} from "./sensorOpts";
+import {cfm, temp, amps, psi, vibration} from "./sensorOpts";
 
 const INITIAL_STATE = {
   inputs: {},
-  cfm, temp, amps, psi
+  cfm, temp, amps, psi, vibration
 }
 
 
