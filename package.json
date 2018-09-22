@@ -1,0 +1,10 @@
+{
+  "name": "ees-accounts-service",
+  "version": "1.0.0",
+  "description": "Handles getting account information for ees applicaitons",
+  "main": "index.js",
+  "repository": "https://github.com/alexjoyner/ees-accounts-service.git",
+  "author": "alex joyner",
+  "license": "MIT",
+  "private": true
+}
