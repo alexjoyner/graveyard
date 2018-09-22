@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {GaugeBlock, CenteredContent, getUniqueID, PlainBox} from 'ro-component-library';
-import { getCustomData, getEzeData } from './actions';
+import { getPointsLogs, getEzeData } from './actions';
 
 
 class GaugeBlockArray extends Component{
   componentDidMount(){
     const {dispatch} = this.props;
-    getCustomData('AAE599', 'romeo6424')(dispatch); 
+    getPointsLogs(this.props.points)(dispatch); 
   }
   renderPlaceholders(){
     return (
@@ -31,7 +31,7 @@ class GaugeBlockArray extends Component{
     }, 2000)
   }
   render(){
-    console.log(this.props);
+    console.log('Gauge Block Props: ', this.props);
     const inputs = Object.keys(this.props.inputs);
     return (!inputs.length)? this.renderPlaceholders() : (
       <CenteredContent>
@@ -46,6 +46,7 @@ class GaugeBlockArray extends Component{
           if(input.unit === 'CFM') opts = this.props.cfm;
           if(input.unit === 'A')  opts = this.props.amps;
           if(input.unit === 'PSI')  opts = this.props.psi;
+          if(input.unit === 'in/sec')  opts = this.props.vibration;
           let gaugeVal = input.value;
           if(gaugeVal > opts.max)
             gaugeVal = opts.max;
