@@ -1,0 +1,12 @@
+{
+  "name": "ees-datalogger-main",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/alexjoyner/ees-datalogger-main.git",
+  "author": "alex@voicir.com",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "docker-compose down && docker-compose up --build"
+  }
+}
