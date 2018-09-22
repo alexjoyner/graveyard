@@ -25,6 +25,11 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+  accounts-service:
+    image: rosco9awj/accounts-data-service
+    deploy:
+      restart_policy:
+        condition: on-failure
   socket-service:
     image: rosco9awj/datalogger-socket-service
     deploy:
