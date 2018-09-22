@@ -22,7 +22,7 @@ class FeedbackButton extends Component{
       style={{
         'position': 'absolute',
         'right': '3px',
-        'margin-top': '3px'
+        'marginTop': '3px'
       }}
       onClick={() => this.goToFeedback()}>Feedback</Button>
     )
