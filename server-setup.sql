@@ -28,4 +28,7 @@ INSERT INTO "public"."point"("name", "client_id") VALUES(
 ),(
   'Test Sensor 2',
   1
+),(
+  'Test Sensor 3',
+  1
 );
