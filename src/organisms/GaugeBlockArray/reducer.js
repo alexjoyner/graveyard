@@ -1,6 +1,7 @@
 import {cfm, temp, amps, psi, vibration} from "./sensorOpts";
 
 const INITIAL_STATE = {
+  points: [1,2,3],
   inputs: {},
   cfm, temp, amps, psi, vibration
 }
@@ -8,8 +9,16 @@ const INITIAL_STATE = {
 
 export const GaugeBlockArrayReducer = (state = INITIAL_STATE, action) => {
   switch(action.type){
-    case 'NEW_INPUTS':
-      return {...state, inputs: action.data.inputs}
+    case 'NEW_LOG':
+      const newState = {...state, inputs: {
+        ...state.inputs,
+        [action.data.pointID]: {
+          ...action.data.log,
+          multiSelected: false
+        }
+      }};
+      console.log(newState);
+      return newState;
     case 'MULTISELECT_INPUT':
       return {...state, inputs: {
         ...state.inputs,

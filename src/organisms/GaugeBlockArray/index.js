@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {GaugeBlock, CenteredContent, getUniqueID, PlainBox} from 'ro-component-library';
-import { getCustomData, getEzeData } from './actions';
+import { getPointsLogs, getEzeData } from './actions';
 
 
 class GaugeBlockArray extends Component{
   componentDidMount(){
     const {dispatch} = this.props;
-    getCustomData('AAE599', 'romeo6424')(dispatch); 
+    getPointsLogs(this.props.points)(dispatch); 
   }
   renderPlaceholders(){
     return (

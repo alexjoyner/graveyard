@@ -21,14 +21,12 @@ export const getEzeData = (username, pass) => {
   }
 }
 
-export const getCustomData = () => {
+export const getPointsLogs = (pointsArray) => {
   return (dispatch) => {
-    connect.getLogsSubscription((err, logs) => {
+    connect.getLogsSubscription(pointsArray, (err, log) => {
       dispatch({
-        type: 'NEW_INPUTS',
-        data: {
-          inputs: logs
-        }
+        type: 'NEW_LOG',
+        data: log
       })
     })
   }
