@@ -19,14 +19,23 @@ app.use((req, res, next) => {
 });
 
 app.post('/newlog', (req, res) => {
-    io.sockets.emit('add log', req.body);
+    Object.keys(req.body).map((key) => {
+      io.to('point-' + key).emit('add log', {
+        'pointID': key,
+        'log': req.body[key]
+      });
+    })
     res.send(req.body).end();
 });
 
 io.on('connection', function (socket) {
     console.log(socket.id + ' New Connection');
-    socket.on('new log', (log) => {
-        io.sockets.emit('add log', log);
+    socket.on('join-group', (pointGroup) => {
+        //TODO: Should regex authenticate good group name
+        for(let i = 0; i < pointGroup.length; i++){
+          console.log('Joining group: ', 'point-' + pointGroup[i]);
+          socket.join('point-' + pointGroup[i]);
+        }
     });
     socket.on('disconnect', () => {
         console.log(socket.id + ' Disconnected')
