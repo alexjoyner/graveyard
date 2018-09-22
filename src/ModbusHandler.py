@@ -8,7 +8,7 @@ class ModbusHandler:
   def __init__(self):
     self.config = GlobalConfig()
     self.master = modbus_tcp.TcpMaster(
-      host=self.config.getModbusInfo()['MODBUS_ADDRESS'],
+      host=self.config.getModbusInfo('MODBUS_ADDRESS'),
       port=502
     )
 
@@ -21,11 +21,12 @@ class ModbusHandler:
     }
   def buildLogPack(self, IO_DATA):
     logPack = {}
-    for x in range(int(self.config.getModbusInfo()['NUM_OF_AI'])):
+    for x in range(int(self.config.getModbusInfo('NUM_OF_AI'))):
       aiNum = x + 1
       aiInfo = self.config.getInputInfo("AI_" + str(aiNum))
       if(bool(aiInfo["active"])):
         logPack[aiInfo["point_id"]] = {
+          "name": aiInfo["name"],
           "value": IO_DATA[x] / 10,
           "unit": aiInfo["unit"]
         }
