@@ -7,7 +7,6 @@ export const getEzeData = (username, pass) => {
       const requestUrl = new Request(`${env.serverAddr}/v1/status/${username}/${pass}`);
       const response = await fetch(requestUrl);
       const myJson = await response.json();
-      console.log('EZE-DATA: ', myJson)
       if(myJson.status === 'Offline')
         return alert('System offline');
       dispatch({

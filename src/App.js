@@ -9,6 +9,7 @@ import { HistoricalGraphModal } from './organisms/HistoricalGraphModal';
 import { DashNotification } from './organisms/DashNotification';
 import { MultiSelectedChartsMenu } from './organisms/MultiSelectedChartsMenu';
 import { FeedbackButton } from './organisms/FeedbackButton';
+import { initializeData } from './actions';
 
 const SideBarContent = ({ roomCreds }) => (
   <div>
@@ -22,6 +23,10 @@ const SideBarContent = ({ roomCreds }) => (
 )
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    initializeData()(this.props.dispatch);
+  }
   render() {
     return this.props.loggedIn? (
       <div style={{marginTop: '80px'}}>

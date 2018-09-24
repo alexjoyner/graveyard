@@ -31,13 +31,11 @@ class GaugeBlockArray extends Component{
     }, 2000)
   }
   render(){
-    console.log('Gauge Block Props: ', this.props);
     const inputs = Object.keys(this.props.inputs);
     return (!inputs.length)? this.renderPlaceholders() : (
       <CenteredContent>
         {inputs.map((key) => {
           let input = this.props.inputs[key];
-          console.log('Input: ', input.multiSelected)
           let opts = {
             min: 0,
             max: 100,

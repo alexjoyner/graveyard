@@ -17,7 +17,6 @@ export const GaugeBlockArrayReducer = (state = INITIAL_STATE, action) => {
           multiSelected: false
         }
       }};
-      console.log(newState);
       return newState;
     case 'MULTISELECT_INPUT':
       return {...state, inputs: {

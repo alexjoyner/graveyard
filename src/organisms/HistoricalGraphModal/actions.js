@@ -25,18 +25,23 @@ export const GetHistoryData = (requests, opts) => {
   return async (dispatch) => {
     try {
       let calls = requests.map((request) => {
-        let start = opts.startDate || moment('2017-12-18');
-        let end = opts.endDate || moment('2017-12-19');
         const input = request.source.inputnumber || '1';
-        start = start.format('YYYY-MM-DD HH:mm');
-        end = end.format('YYYY-MM-DD HH:mm');
-        const fetchUrl = new Request(`${env.serverAddr}/history/all/1`);
+        let now = moment().format('YYYY-MM-DD HH:mm');
+        let start = opts.startDate.format('YYYY-MM-DD HH:mm');
+        let end = opts.endDate.format('YYYY-MM-DD HH:mm');
+        let fetchUrl = null;
+        if(start && end){
+          fetchUrl = new Request(`${env.serverAddr}/history/${input}/from/${start}/${end}`);
+        }else if(start && !end){
+          fetchUrl = new Request(`${env.serverAddr}/history/${input}/from/${start}/${now}`);
+        }else{
+          fetchUrl = new Request(`${env.serverAddr}/history/all/${input}`);
+        }
         return fetch(fetchUrl);
       })
       let responses = await Promise.all(calls);
       let jsonCalls = responses.map((response) => response.json());
       let rawResults = await Promise.all(jsonCalls);
-      console.log('History Data: ', rawResults);
       dispatch({
         type: 'NEW_HISTORICAL_DATA',
         data: rawResults,
@@ -71,7 +76,6 @@ export const GetEzeHistoryData = (requests, opts) => {
         });
         return rawResult;
       });
-      console.log('History Data: ', finalResult);
       dispatch({
         type: 'NEW_HISTORICAL_DATA',
         data: finalResult,

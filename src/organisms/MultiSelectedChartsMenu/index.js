@@ -12,7 +12,6 @@ let MultiSelectedChartsMenu = (props) => {
             <ListHeader>Charts Selected:</ListHeader>
             <CenteredContent>
                 {props.items.map((item, i) => {
-                    console.log(item);
                     let id = getUniqueID();
                     return (
                         <ListItem key={id}>
