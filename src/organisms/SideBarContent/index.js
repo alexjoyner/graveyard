@@ -3,13 +3,20 @@ import { connect } from 'react-redux';
 import { ListHeader, CenteredContent, ListItem, colors } from 'ro-component-library';
 import { MultiSelectedChartsMenu } from '../MultiSelectedChartsMenu';
 import { setNewGroup } from './actions';
-import { leaveCurrentGroupPoints } from '../GaugeBlockArray/actions';
+import { leaveCurrentGroupPoints, getAllPoints } from '../GaugeBlockArray/actions';
 
 
 let SideBarContent = (props) => (
     <div>
       <ListHeader>Groups</ListHeader>
       <CenteredContent>
+        <ListItem 
+            onClick={() => {
+                leaveCurrentGroupPoints(props.points)(props.dispatch);
+                getAllPoints(1)(props.dispatch);
+            }}>
+            All Points
+        </ListItem>
         {props.groups.map((group) => {
             return (
                 <ListItem 
@@ -22,7 +29,6 @@ let SideBarContent = (props) => (
                 </ListItem>
             )
         })}
-        <ListItem color={colors.primaryLight}>+ Add Room</ListItem>
       </CenteredContent>
       <MultiSelectedChartsMenu />
     </div>
