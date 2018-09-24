@@ -7,7 +7,7 @@ CREATE TABLE client (
 CREATE TABLE point_group (
   id SERIAL PRIMARY KEY,
   client_id integer NOT NULL REFERENCES client(id) ON DELETE CASCADE ON UPDATE CASCADE,
-  name character varying(20) NOT NULL,
+  name character varying(20) NOT NULL
 );
 
 CREATE TABLE point_group_x_point (
@@ -29,40 +29,14 @@ CREATE TABLE log (
   CONSTRAINT logs_pkey PRIMARY KEY (point_id, datetime)
 );
 
-INSERT INTO "public"."client"("code", "name") VALUES(
-  'ees-demo',
-  'EES Demo Unit'
-);
+INSERT INTO "public"."client"("code", "name") VALUES
+('eesdemo','EES Demo Unit');
 
-INSERT INTO "public"."point"("name", "client_id") VALUES(
-  'Test Sensor 1',
-  1
-),(
-  'Test Sensor 2',
-  1
-),(
-  'Test Sensor 3',
-  1
-);
+INSERT INTO "public"."point"("name", "client_id") VALUES
+('Test Sensor 1',1),('Test Sensor 2',1),('Test Sensor 3',1);
 
-INSERT INTO "public"."point_group"("name", "client_id") VALUES(
-  'Predict Maintenance',
-  1
-),(
-  'Production',
-  1
-),(
-  'Process',
-  1
-);
+INSERT INTO "public"."point_group"("name", "client_id") VALUES
+('Predict Maintenance',1),('Production',1),('Process',1);
 
-INSERT INTO "public"."point_group_x_point"("point_id", "point_group_id") VALUES(
-  1,
-  1
-),(
-  2,
-  1
-),(
-  3,
-  1
-);
+INSERT INTO "public"."point_group_x_point"("point_id", "point_group_id") VALUES
+(1,1),(2,2),(3,3),(1,2);
