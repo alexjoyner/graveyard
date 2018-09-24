@@ -4,8 +4,8 @@ WITH special_vals AS (
     	(AVG(val) - STDDEV_SAMP(val) * 2.5) as lower_bound,
         (AVG(val) + STDDEV_SAMP(val) * 2.5) as upper_bound
     FROM log
-    WHERE 
-        point_id = 1
+	WHERE 
+		point_id = $1
 )
 SELECT datetime, val FROM(
 	SELECT 
@@ -15,13 +15,18 @@ SELECT datetime, val FROM(
 	FROM 
 	    log 
 	WHERE 
-	    point_id = 1
+	    point_id = $1
 	ORDER BY
 		datetime ASC
 ) logs
-WHERE 
-	rn % ((SELECT tot_vals FROM special_vals) / 1440) = 0
-	OR
-	val < (SELECT lower_bound FROM special_vals) 
-	OR 
-	val > (SELECT upper_bound FROM special_vals);
+WHERE
+CASE 
+	WHEN ((SELECT tot_vals FROM special_vals) > 1441) THEN
+		rn % ((SELECT tot_vals FROM special_vals) / 1440) = 0
+		OR
+		val < (SELECT lower_bound FROM special_vals) 
+		OR 
+		val > (SELECT upper_bound FROM special_vals) 
+	ELSE
+		rn > 0
+	END;
