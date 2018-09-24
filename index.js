@@ -17,19 +17,72 @@ app.use(function(req, res, next) {
 });
 
 app.use(morgan('common'));
-app.get('/points', async (req, res) => {
-  const { body } = req;
-  let conInfo = {
-    user: fs.readFileSync(process.env.PG_USER_FILE, 'utf8'),
-    password: fs.readFileSync(process.env.PG_PASS_FILE, 'utf8'),
-    database: fs.readFileSync(process.env.PG_DB_FILE, 'utf8'),
-    host: fs.readFileSync(process.env.PG_HOST_FILE, 'utf8'),
-  }
-  let Query = 'SELECT id, name FROM point WHERE client_id = 1;'
+let conInfo = {
+  user: fs.readFileSync(process.env.PG_USER_FILE, 'utf8'),
+  password: fs.readFileSync(process.env.PG_PASS_FILE, 'utf8'),
+  database: fs.readFileSync(process.env.PG_DB_FILE, 'utf8'),
+  host: fs.readFileSync(process.env.PG_HOST_FILE, 'utf8'),
+}
+app.get('/groups/:id', async (req, res) => {
+  const { id } = req.params;
+  let Query = 'SELECT id, name FROM point_group WHERE client_id = $1;'
   const client = new Client(conInfo);
   try{
     await client.connect();
-    const rawData = await client.query(Query)
+    const rawData = await client.query({
+      text: Query,
+      values: [id]
+    })
+    const result = rawData.rows
+    await client.end();
+    res.send(result);
+  }
+  catch(e){  
+    console.log("Error: ", e);
+    client.end();
+    res.status(500).send('Something went wrong. Sorry');
+  }
+})
+
+app.get('/points/group/:groupID', async (req, res) => {
+  const { groupID } = req.params;
+  let Query = `
+  SELECT 
+    point.*
+  FROM point_group_x_point 
+  INNER JOIN
+    point
+  ON
+    (point_group_x_point.point_id = point.id)
+  WHERE 
+    point_group_id = $1;`
+  const client = new Client(conInfo);
+  try{
+    await client.connect();
+    const rawData = await client.query({
+      text: Query,
+      values: [groupID]
+    })
+    const result = rawData.rows
+    await client.end();
+    res.send(result);
+  }
+  catch(e){  
+    console.log("Error: ", e);
+    client.end();
+    res.status(500).send('Something went wrong. Sorry');
+  }
+})
+app.get('/points/:clientID', async (req, res) => {
+  const { clientID } = req.params;
+  let Query = 'SELECT id, name FROM point WHERE client_id = $1;'
+  const client = new Client(conInfo);
+  try{
+    await client.connect();
+    const rawData = await client.query({
+      text: Query,
+      values: [clientID]
+    })
     const result = rawData.rows
     await client.end();
     res.send(result);
