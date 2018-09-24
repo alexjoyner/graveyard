@@ -56,12 +56,17 @@ app.get('/all/:pointID', async (req, res) => {
                 ORDER BY
                     datetime ASC
             ) logs
-            WHERE 
-                rn % ((SELECT tot_vals FROM special_vals) / 1440) = 0
-                OR
-                val < (SELECT lower_bound FROM special_vals) 
-                OR 
-                val > (SELECT upper_bound FROM special_vals);`,
+            WHERE
+            CASE 
+                WHEN ((SELECT tot_vals FROM special_vals) > 1441) THEN
+                    rn % ((SELECT tot_vals FROM special_vals) / 1440) = 0
+                    OR
+                    val < (SELECT lower_bound FROM special_vals) 
+                    OR 
+                    val > (SELECT upper_bound FROM special_vals) 
+                ELSE
+                    rn > 0
+                END;`,
             values: [req.params.pointID]
         })
         await client.end();
