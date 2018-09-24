@@ -13,39 +13,46 @@ app.use(bodyParser.json());
 
 // CORS
 app.use((req, res, next) => {
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-	next();
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
 });
 
 app.post('/newlog', (req, res) => {
-    Object.keys(req.body).map((key) => {
-      io.to('point-' + key).emit('add log', {
-        'pointID': key,
-        'log': req.body[key]
-      });
-    })
-    res.send(req.body).end();
+  Object.keys(req.body).map((key) => {
+    io.to('point-' + key).emit('add log', {
+      'pointID': key,
+      'log': req.body[key]
+    });
+  })
+  res.send(req.body).end();
 });
 
 io.on('connection', function (socket) {
-    console.log(socket.id + ' New Connection');
-    socket.on('join-group', (pointGroup) => {
-        //TODO: Should regex authenticate good group name
-        for(let i = 0; i < pointGroup.length; i++){
-          console.log('Joining group: ', 'point-' + pointGroup[i]);
-          socket.join('point-' + pointGroup[i]);
-        }
-    });
-    socket.on('disconnect', () => {
-        console.log(socket.id + ' Disconnected')
-    })
+  console.log(socket.id + ' New Connection');
+  socket.on('join-group', (pointGroup) => {
+    //TODO: Should regex authenticate good group name
+    for (let i = 0; i < pointGroup.length; i++) {
+      console.log('Joining group: ', 'point-' + pointGroup[i]); 
+      socket.join('point-' + pointGroup[i]);
+    }
+  });
+  socket.on('leave-group', (pointGroup) => {
+    //TODO: Should regex authenticate good group name
+    for (let i = 0; i < pointGroup.length; i++) {
+      console.log('Leaving group: ', 'point-' + pointGroup[i]);
+      socket.leave('point-' + pointGroup[i]);
+    }
+  });
+  socket.on('disconnect', () => {
+    console.log(socket.id + ' Disconnected')
+  })
 });
 
-app.get('/healthz',(req, res) =>{
-	// do app logic here to determine if app is truly healthy
-	// you should return 200 if healthy, and anything else will fail
-	// if you want, you should be able to restrict this to localhost (include ipv4 and ipv6)
+app.get('/healthz', (req, res) => {
+  // do app logic here to determine if app is truly healthy
+  // you should return 200 if healthy, and anything else will fail
+  // if you want, you should be able to restrict this to localhost (include ipv4 and ipv6)
   res.send('I am happy and healthy\n');
 });
 
@@ -65,25 +72,25 @@ server.listen(PORT, () => {
 //
 
 // quit on ctrl-c when running docker in terminal
-process.on('SIGINT', function onSigint () {
-	console.info('Got SIGINT (aka ctrl-c in docker). Graceful shutdown ', new Date().toISOString());
+process.on('SIGINT', function onSigint() {
+  console.info('Got SIGINT (aka ctrl-c in docker). Graceful shutdown ', new Date().toISOString());
   shutdown();
 });
 
 // quit properly on docker stop
-process.on('SIGTERM', function onSigterm () {
+process.on('SIGTERM', function onSigterm() {
   console.info('Got SIGTERM (docker container stop). Graceful shutdown ', new Date().toISOString());
   shutdown();
 })
 
 // shut down server
 function shutdown() {
-  server.close(function onServerClosed (err) {
+  server.close(function onServerClosed(err) {
     if (err) {
       console.error(err);
       process.exitCode = 1;
-		}
-		process.exit();
+    }
+    process.exit();
   })
 }
 //
