@@ -25,11 +25,13 @@ export const GetHistoryData = (requests, opts) => {
   return async (dispatch) => {
     try {
       let calls = requests.map((request) => {
+        let start, end, fetchUrl;
         const input = request.source.inputnumber || '1';
         let now = moment().format('YYYY-MM-DD HH:mm');
-        let start = opts.startDate.format('YYYY-MM-DD HH:mm');
-        let end = opts.endDate.format('YYYY-MM-DD HH:mm');
-        let fetchUrl = null;
+        if(opts.start)
+          start = opts.startDate.format('YYYY-MM-DD HH:mm');
+        if(opts.end)
+          end = opts.endDate.format('YYYY-MM-DD HH:mm');
         if(start && end){
           fetchUrl = new Request(`${env.serverAddr}/history/${input}/from/${start}/${end}`);
         }else if(start && !end){

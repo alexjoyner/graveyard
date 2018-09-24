@@ -9,4 +9,7 @@ export class connect {
             cb(null, log);
         })
     }
+    static unsubscribeFromPoints(pointsArray, cb){
+        socket.emit('leave-group', pointsArray);
+    }
 }

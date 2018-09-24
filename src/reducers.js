@@ -4,6 +4,7 @@ import { GaugeBlockArrayReducer } from './organisms/GaugeBlockArray/reducer';
 import { HistoricalGraphModalReducer } from './organisms/HistoricalGraphModal/reducer';
 import { NotificationReducer } from './organisms/DashNotification/reducer';
 import { MultiSelectedChartsMenuReducer } from './organisms/MultiSelectedChartsMenu/reducer';
+import { SideBarContentReducer } from './organisms/SideBarContent/reducer'
 
 export const reducers = combineReducers({
     AuthModalReducer,
@@ -11,4 +12,5 @@ export const reducers = combineReducers({
     HistoricalGraphModalReducer,
     NotificationReducer,
     MultiSelectedChartsMenuReducer,
+    SideBarContentReducer
 })

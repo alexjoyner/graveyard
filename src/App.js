@@ -1,26 +1,13 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {
-  Header, colors, SideBarPage, ListItem, 
-  ListHeader, CenteredContent} from 'ro-component-library';
+import { Header, colors, SideBarPage } from 'ro-component-library';
 import {GaugeBlockArray} from './organisms/GaugeBlockArray';
 import {AuthModal} from './organisms/AuthModal';
 import { HistoricalGraphModal } from './organisms/HistoricalGraphModal';
 import { DashNotification } from './organisms/DashNotification';
-import { MultiSelectedChartsMenu } from './organisms/MultiSelectedChartsMenu';
 import { FeedbackButton } from './organisms/FeedbackButton';
 import { initializeData } from './actions';
-
-const SideBarContent = ({ roomCreds }) => (
-  <div>
-    <ListHeader>Groups</ListHeader>
-    <CenteredContent>
-      <ListItem>EES Custom DB Demo</ListItem>
-      <ListItem color={colors.primaryLight}>+ Add Room</ListItem>
-    </CenteredContent>
-    <MultiSelectedChartsMenu />
-  </div>
-)
+import { SideBarContent } from './organisms/SideBarContent';
 
 class App extends Component {
   constructor(props){
