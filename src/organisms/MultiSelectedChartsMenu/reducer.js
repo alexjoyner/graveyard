@@ -1,14 +1,16 @@
 const INITIAL_STATE = {
-    items: [],
+    chartInputs: [],
 };
 
 export const MultiSelectedChartsMenuReducer = (state = INITIAL_STATE, action) => {
     switch(action.type){
         case 'MULTISELECT_INPUT':
-            let id = `AAE599${action.data.key}`;
+            console.log(state);
+            console.log(action);
+            let id = action.data.id;
             let alreadyAdded = false;
-            state.items.forEach((input) => {
-                if(input.id === id){
+            state.chartInputs.forEach((input) => {
+                if(input.source.id === id){
                     console.error('Already added that input');
                     alreadyAdded = true;
                 }
@@ -16,19 +18,28 @@ export const MultiSelectedChartsMenuReducer = (state = INITIAL_STATE, action) =>
             if(alreadyAdded)
                 return state;
 
-            return {...state, items: state.items.concat({
-                ...action.data,
-                id,
+            return {...state, chartInputs: state.chartInputs.concat({
                 source: {
-                    inputnumber: action.data.key,
-                },
-                username: 'AAE599',
-                password: 'romeo6424',
+                    id,
+                    ...action.data.input,
+                }
             })}
         case 'REMOVE_INPUT':
-            let newItems = state.items.slice();
-            newItems.splice(action.index, 1);
-            return {...state, items: newItems}
+            console.log(state);
+            console.log(action);
+            let removedIndex = null;
+            state.chartInputs.map((input, i) => {
+                if(input.source.id === action.data){
+                    removedIndex = i;
+                    return;
+                }
+            })
+            if(removedIndex !== null){
+                let newChartInputs = state.chartInputs.slice();
+                newChartInputs.splice(removedIndex, 1);
+                return {...state, chartInputs: newChartInputs}
+            }
+            return state;
         default: 
             return state;
     }

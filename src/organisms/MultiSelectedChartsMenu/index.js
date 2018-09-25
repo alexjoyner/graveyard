@@ -11,13 +11,12 @@ let MultiSelectedChartsMenu = (props) => {
             <br />
             <ListHeader>Charts Selected:</ListHeader>
             <CenteredContent>
-                {props.items.map((item, i) => {
-                    let id = getUniqueID();
+                {props.chartInputs.map((chartInput) => {
                     return (
-                        <ListItem key={id}>
-                            {item.input.name}
+                        <ListItem key={chartInput.source.id}>
+                            {chartInput.source.name}
                             <Button small dark onClick={() => props.dispatch({
-                                type: 'REMOVE_INPUT', index: i})}>
+                                type: 'REMOVE_INPUT', data: chartInput.source.id})}>
                                 <GoTrashcan size={20} color={colors.dangerLight}/>
                             </Button>
                         </ListItem>
@@ -25,7 +24,7 @@ let MultiSelectedChartsMenu = (props) => {
                 })}
                 <ListItem 
                     color={colors.primary} 
-                    onClick={() => GetNewHistoryGraph(props.items, {})(props.dispatch)}>
+                    onClick={() => GetNewHistoryGraph(props.chartInputs, {})(props.dispatch)}>
                     Get Graphs
                 </ListItem>
             </CenteredContent>
