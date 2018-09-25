@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {GaugeBlock, CenteredContent, getUniqueID, PlainBox} from 'ro-component-library';
-import { getPointsLogs, getEzeData } from './actions';
+import { getPointsLogs } from './actions';
 
 
 class GaugeBlockArray extends Component{
