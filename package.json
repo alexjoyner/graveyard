@@ -6,5 +6,20 @@
   "repository": "https://github.com/alexjoyner/ees-accounts-service.git",
   "author": "alex joyner",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "scripts": {
+    "start": "node index.js",
+    "dev-docker": "../node_modules/nodemon/bin/nodemon.js --debug=5858",
+    "dev-host": "nodemon --debug=5858"
+  },
+  "dependencies": {
+    "express": "^4.14.1",
+    "morgan": "^1.8.1",
+    "body-parser": "^1.18.3",
+    "pg": "^7.4.3",
+    "axios": "^0.18.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
 }
