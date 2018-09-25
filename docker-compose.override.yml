@@ -9,14 +9,6 @@ services:
     volumes:
       - ../server/nginx/nginx.dev.conf:/etc/nginx/nginx.conf
       - ./ssl:/etc/ssl
-  eze-handler:
-    build:
-      context: ../server/eze-handler
-      args:
-        - NODE_ENV=development
-    command: nodemon index.js -L
-    volumes:
-      - ../server/eze-handler/index.js:/usr/src/app/index.js
   log-handler:
     build:
       context: ../server/log-handler

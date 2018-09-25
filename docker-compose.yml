@@ -8,7 +8,6 @@ services:
       - socket-service
       - eze-handler
       - historical-service
-  eze-handler:
   log-handler:
     secrets:
       - pg-user
