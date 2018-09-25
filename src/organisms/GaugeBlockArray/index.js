@@ -22,22 +22,20 @@ class GaugeBlockArray extends Component{
       </CenteredContent>
     )
   }
-  multiSelectInput(input, key){
+  multiSelectInput(input, id){
     this.props.dispatch({type: 'MULTISELECT_INPUT', data: {
-      input, key
+      input, id
     }});
     setTimeout(() => {
-      this.props.dispatch({type: 'MULTISELECT_DESELECT_INPUT', data: key});
+      this.props.dispatch({type: 'MULTISELECT_DESELECT_INPUT', data: id});
     }, 2000)
   }
   render(){
-    console.log('Gauge Block Props: ', this.props);
     const inputs = Object.keys(this.props.inputs);
     return (!inputs.length)? this.renderPlaceholders() : (
       <CenteredContent>
-        {inputs.map((key) => {
-          let input = this.props.inputs[key];
-          console.log('Input: ', input.multiSelected)
+        {inputs.map((id) => {
+          let input = this.props.inputs[id];
           let opts = {
             min: 0,
             max: 100,
@@ -54,12 +52,12 @@ class GaugeBlockArray extends Component{
             gaugeVal = opts.min;
           return <GaugeBlock 
             {...opts} 
-            key={getUniqueID()}
+            key={id}
             value={gaugeVal} 
             label={input.name}
             multiSelected={input.multiSelected}
             height={'10vh'}
-            onClick={() => this.multiSelectInput(input, key)}></GaugeBlock>
+            onClick={() => this.multiSelectInput(input, id)}></GaugeBlock>
         })}
       </CenteredContent>
     )

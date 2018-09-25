@@ -7,7 +7,6 @@ export const getEzeData = (username, pass) => {
       const requestUrl = new Request(`${env.serverAddr}/v1/status/${username}/${pass}`);
       const response = await fetch(requestUrl);
       const myJson = await response.json();
-      console.log('EZE-DATA: ', myJson)
       if(myJson.status === 'Offline')
         return alert('System offline');
       dispatch({
@@ -29,5 +28,47 @@ export const getPointsLogs = (pointsArray) => {
         data: log
       })
     })
+  }
+}
+export const getAllPoints = (clientID) => {
+  return async (dispatch) => {
+    try {
+      const requestUrl = new Request(`${env.serverAddr}/me/points/${clientID}`);
+      const response = await fetch(requestUrl);
+      const pointsArray = await response.json();
+      let pointsIdArray = [];
+      for(let i = 0; i < pointsArray.length; i++){
+        pointsIdArray.push(pointsArray[i].id);
+      }
+      getPointsLogs(pointsIdArray)(dispatch);
+    }catch(e){
+      console.error(e);
+    }
+  }
+}
+
+export const getNewGroupPoints = (groupID) => {
+  return async (dispatch) => {
+    try {
+      const requestUrl = new Request(`${env.serverAddr}/me/points/group/${groupID}`);
+      const response = await fetch(requestUrl);
+      const pointsArray = await response.json();
+      let pointsIdArray = [];
+      for(let i = 0; i < pointsArray.length; i++){
+        pointsIdArray.push(pointsArray[i].id);
+      }
+      getPointsLogs(pointsIdArray)(dispatch);
+    }catch(e){
+
+    }
+  }
+}
+
+export const leaveCurrentGroupPoints = (currentPointsArray) => {
+  return (dispatch) => {
+    connect.unsubscribeFromPoints(currentPointsArray);
+    dispatch({
+      type: 'REMOVE_POINTS'
+    });
   }
 }

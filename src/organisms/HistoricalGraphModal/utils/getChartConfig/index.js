@@ -88,7 +88,6 @@ export const getChartConfig = (inputs) => {
   const chartConfig = Object.assign({}, getBaseConfig(), {
     series: seriesObjects
   });
-  console.log(chartConfig);
   return chartConfig;
 };
 

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Notification } from 'ro-component-library';
 
 let DashNotification = (props) => {
-    console.log(props);
     return (
     <Notification shown={props.shown} onClose={() => props.dispatch({type: 'HIDE_NOTIFICATION'})}>
         {props.contents}

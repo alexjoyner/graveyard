@@ -10,20 +10,20 @@ const INITIAL_STATE = {
 export const GaugeBlockArrayReducer = (state = INITIAL_STATE, action) => {
   switch(action.type){
     case 'NEW_LOG':
-      const newState = {...state, inputs: {
+      return {...state, inputs: {
         ...state.inputs,
         [action.data.pointID]: {
           ...action.data.log,
           multiSelected: false
         }
       }};
-      console.log(newState);
-      return newState;
+    case 'REMOVE_POINTS':
+      return {...state, inputs: []};
     case 'MULTISELECT_INPUT':
       return {...state, inputs: {
         ...state.inputs,
-        [action.data.key]: {
-          ...state.inputs[action.data.key],
+        [action.data.id]: {
+          ...state.inputs[action.data.id],
           multiSelected: true
         }
       }};
