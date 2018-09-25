@@ -1,20 +1,23 @@
 {
 "folders": [
-	{
-		"path": "."
-	},
-	{
-		"path": "C:\\Users\\rosco\\Documents\\GitHub\\ees-datalogger\\client"
-	},
-	{
-		"path": "D:\\GitHub\\ees-datalogger\\ir900_datalogger"
-	},
-	{
-		"path": "D:\\GitHub\\ees-datalogger\\server"
-	},
-	{
-		"path": "C:\\Users\\rosco\\Documents\\GitHub\\shared\\ro-component-library"
-	}
+  {
+    "path": "."
+  },
+  {
+    "path": "C:\\Users\\rosco\\Documents\\GitHub\\ees-datalogger\\client"
+  },
+  {
+    "path": "D:\\ees-datalogger\\ir900_datalogger"
+  },
+  {
+    "path": "D:\\ees-datalogger\\server"
+  },
+  {
+    "path": "C:\\Users\\rosco\\Documents\\GitHub\\shared\\ro-component-library"
+  },
+  {
+    "path": "D:\\_helpers"
+  }
 ],
   "settings": {
 		"javascript.validate.enable": false,
