@@ -70,13 +70,7 @@ app.get('/all/:pointID', async (req, res) => {
             values: [req.params.pointID]
         })
         await client.end();
-        res.send({
-            source: {
-                inputname: 'Test Point',
-                unit: 'F'
-            },
-            data: logs.rows
-        });
+        res.send(logs.rows);
     }
     catch (e) {
         console.log("Error: ", e);
