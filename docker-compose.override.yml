@@ -43,6 +43,19 @@ services:
       - NODE_ENV=development
     depends_on:
       - postgres
+  accounts-service:
+    build:
+      context: ../server/accounts-service
+      args:
+        - NODE_ENV=development
+    command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
+    volumes:
+      - ../server/accounts-service:/opt/app
+      - accounts-service-node_modules:/opt/app/node_modules
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - postgres
   socket-service:
     build:
       context: ../server/socket-service
@@ -63,6 +76,7 @@ volumes:
   socket-data-node_modules:
   log-handler-node_modules:
   historical-service-node_modules:
+  accounts-service-node_modules:
 secrets:
   pg-user:
     file: dev-keys/pg-user.txt

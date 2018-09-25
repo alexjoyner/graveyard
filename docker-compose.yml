@@ -31,6 +31,17 @@ services:
       - PG_HOST_FILE=/run/secrets/pg-host
       - PG_DB_FILE=/run/secrets/pg-db
       - PG_PASS_FILE=/run/secrets/pg-pass
+  accounts-service:
+    secrets:
+      - pg-user
+      - pg-pass
+      - pg-db
+      - pg-host
+    environment:
+      - PG_USER_FILE=/run/secrets/pg-user
+      - PG_HOST_FILE=/run/secrets/pg-host
+      - PG_DB_FILE=/run/secrets/pg-db
+      - PG_PASS_FILE=/run/secrets/pg-pass
   socket-service:
     ports:
       - "32000:80"
