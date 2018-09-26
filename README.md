@@ -6,7 +6,8 @@ This is the root project for the EES Datalogger based on the Inhand IR900 Router
 The EES datalogger uses the microservices architecture along with Docker to build projects.  The repositories used in this project are outlined in the setup script located at ./scripts/1_setup.sh
 
 #### Installing
-**Before outlining the install/setup process, it should be noted that this project was built around using vscode as the text editor of choice**
+**Before outlining the install/setup process, it should be noted that this project was built around using vscode as the text editor of choice.**
+
 Our setup process for this project is the following:
 1) Using a portable drive, put this repo in the drive at /ees-datalogger/@main
    - For the workspaces in this project to work properly, the drive needs to be in the D:/ drive slot on windows.
