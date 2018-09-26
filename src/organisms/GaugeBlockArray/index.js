@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import {GaugeBlock, CenteredContent, getUniqueID, PlainBox} from 'ro-component-library';
+import {GaugeBlock, CenteredContent, PlainBox} from 'ro-component-library';
 import { getPointsLogs } from './actions';
 
 
