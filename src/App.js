@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { Header, colors, SideBarPage } from 'ro-component-library';
 import {GaugeBlockArray} from './organisms/GaugeBlockArray';
-import {AuthModal} from './organisms/AuthModal';
 import { HistoricalGraphModal } from './organisms/HistoricalGraphModal';
 import { DashNotification } from './organisms/DashNotification';
 import { FeedbackButton } from './organisms/FeedbackButton';
@@ -15,7 +14,7 @@ class App extends Component {
     initializeData()(this.props.dispatch);
   }
   render() {
-    return this.props.loggedIn? (
+    return (
       <div style={{marginTop: '80px'}}>
         <DashNotification />
         <Header 
@@ -30,8 +29,7 @@ class App extends Component {
           <GaugeBlockArray></GaugeBlockArray>
         </SideBarPage>
         <HistoricalGraphModal modalData={this.props.modalData}/>
-      </div>) : (
-      <AuthModal></AuthModal>
+      </div>
     );
   }
 }
