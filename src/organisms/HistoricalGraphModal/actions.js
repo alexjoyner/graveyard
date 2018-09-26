@@ -1,11 +1,11 @@
 import moment from 'moment';
 import { env } from '../../.env';
-import { showBasicNotification } from '../DashNotification/actions';
+import { showNotification, START_LOADING } from '../DashNotification/actions';
 
 export const GetNewHistoryGraph = (requests, opts) => {
   return async (dispatch) => {
     if (requests.length === 0)
-      return showBasicNotification('Please add at least one graph')(dispatch);
+      return showNotification('Please add at least one graph')(dispatch);
     ShowHistoryGraphLoading()(dispatch);
     await GetHistoryData(requests, opts)(dispatch);
     ShowHistoryModal()(dispatch);
@@ -15,7 +15,7 @@ export const GetNewHistoryGraph = (requests, opts) => {
 export const ShowHistoryGraphLoading = () => {
   return (dispatch) => {
     dispatch({
-      type: 'LOADING_START'
+      type: START_LOADING
     });
   }
 }
