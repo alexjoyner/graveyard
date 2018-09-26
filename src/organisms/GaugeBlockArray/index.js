@@ -2,25 +2,13 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {GaugeBlock, CenteredContent, PlainBox} from 'ro-component-library';
 import { getPointsLogs } from './actions';
+import { GaugeBlockArrayNoDataContent } from './particles/GaugeBlockArrayNoDataContent';
 
 
 class GaugeBlockArray extends Component{
   componentDidMount(){
     const {dispatch} = this.props;
     getPointsLogs(this.props.points)(dispatch); 
-  }
-  renderPlaceholders(){
-    return (
-      <CenteredContent>
-        <PlainBox height="25vh" width="25%"/>
-        <PlainBox height="25vh" width="25%"/>
-        <PlainBox height="25vh" width="25%"/>
-        <PlainBox height="25vh" width="25%"/>
-        <PlainBox height="25vh" width="25%"/>
-        <PlainBox height="25vh" width="25%"/>
-        <PlainBox height="25vh" width="25%"/>
-      </CenteredContent>
-    )
   }
   multiSelectInput(input, id){
     this.props.dispatch({type: 'MULTISELECT_INPUT', data: {
@@ -32,7 +20,7 @@ class GaugeBlockArray extends Component{
   }
   render(){
     const inputs = Object.keys(this.props.inputs);
-    return (!inputs.length)? this.renderPlaceholders() : (
+    return (!inputs.length)? <GaugeBlockArrayNoDataContent /> : (
       <CenteredContent>
         {inputs.map((id) => {
           let input = this.props.inputs[id];
