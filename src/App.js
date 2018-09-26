@@ -35,8 +35,7 @@ class App extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    ...state.HistoricalGraphModalReducer,
-    ...state.AuthModalReducer
+    ...state.HistoricalGraphModalReducer
   }
 }
 export default connect(mapStateToProps)(App);
