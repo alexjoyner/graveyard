@@ -6,7 +6,6 @@ services:
     depends_on:
       - log-handler
       - socket-service
-      - eze-handler
       - historical-service
   log-handler:
     secrets:
