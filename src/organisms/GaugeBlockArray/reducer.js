@@ -3,6 +3,7 @@ import {temp} from './sensorOpts/temp';
 import {psi} from './sensorOpts/psi';
 import {amps} from './sensorOpts/amps';
 import {vibration} from './sensorOpts/vibration';
+import { NEW_LOG, REMOVE_POINTS } from './actions/types';
 
 const INITIAL_STATE = {
   points: [1,2,3],
@@ -13,7 +14,7 @@ const INITIAL_STATE = {
 
 export const GaugeBlockArrayReducer = (state = INITIAL_STATE, action) => {
   switch(action.type){
-    case 'NEW_LOG':
+    case NEW_LOG:
       return {...state, inputs: {
         ...state.inputs,
         [action.data.pointID]: {
@@ -21,7 +22,7 @@ export const GaugeBlockArrayReducer = (state = INITIAL_STATE, action) => {
           multiSelected: false
         }
       }};
-    case 'REMOVE_POINTS':
+    case REMOVE_POINTS:
       return {...state, inputs: []};
     case 'MULTISELECT_INPUT':
       return {...state, inputs: {

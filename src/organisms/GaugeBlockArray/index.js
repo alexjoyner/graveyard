@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {GaugeBlock, CenteredContent, PlainBox} from 'ro-component-library';
-import { subscribeToNewPoints } from './actions';
 import { GaugeBlockArrayNoDataContent } from './particles/GaugeBlockArrayNoDataContent';
+import { subscribeToNewPoints } from './actions/subscribeToNewPoints';
 
 
 class GaugeBlockArray extends Component{
