@@ -1,10 +1,12 @@
+import { MULTISELECT_POINT } from "../GaugeBlockArray/actions/types";
+
 const INITIAL_STATE = {
     chartInputs: [],
 };
 
 export const MultiSelectedChartsMenuReducer = (state = INITIAL_STATE, action) => {
     switch(action.type){
-        case 'MULTISELECT_INPUT':
+        case MULTISELECT_POINT:
             console.log(state);
             console.log(action);
             let id = action.data.id;

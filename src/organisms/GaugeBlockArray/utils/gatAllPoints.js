@@ -1,5 +1,4 @@
 import { env } from "../../../.env";
-import { SocketConnection } from "../../../utils/socket-connection";
 
 export const getAllPoints = async (clientID) => {
   try {

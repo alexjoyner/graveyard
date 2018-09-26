@@ -3,7 +3,7 @@ import {temp} from './sensorOpts/temp';
 import {psi} from './sensorOpts/psi';
 import {amps} from './sensorOpts/amps';
 import {vibration} from './sensorOpts/vibration';
-import { NEW_LOG, REMOVE_POINTS } from './actions/types';
+import { NEW_LOG, REMOVE_POINTS, MULTISELECT_POINT, MULTISELECT_DESELECT_POINT } from './actions/types';
 
 const INITIAL_STATE = {
   points: [1,2,3],
@@ -24,7 +24,10 @@ export const GaugeBlockArrayReducer = (state = INITIAL_STATE, action) => {
       }};
     case REMOVE_POINTS:
       return {...state, inputs: []};
-    case 'MULTISELECT_INPUT':
+    /* Please not that the following multiselect cases are currently only for
+    the purposes of visual changes on the point gauge. Adding the point to the multi-select
+    menu is handled in the multi select menu organism.*/
+    case MULTISELECT_POINT:
       return {...state, inputs: {
         ...state.inputs,
         [action.data.id]: {
@@ -32,7 +35,7 @@ export const GaugeBlockArrayReducer = (state = INITIAL_STATE, action) => {
           multiSelected: true
         }
       }};
-    case 'MULTISELECT_DESELECT_INPUT':
+    case MULTISELECT_DESELECT_POINT:
       return {...state, inputs: {
         ...state.inputs,
         [action.data]: {
