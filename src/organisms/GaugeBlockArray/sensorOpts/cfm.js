@@ -1,9 +1,8 @@
-import { CFM_MAX } from "./_commonOpts";
 import { colors } from "ro-component-library";
 
 export const cfm = {
 	units: 'CFM',
-	max: CFM_MAX,
+	max: 500,
 	min: 0,
 	ranges: [{
 	    lowerValue: 0,
@@ -23,7 +22,7 @@ export const cfm = {
 	    color: colors.warning
 	},{
 	    lowerValue: 375,
-	    upperValue: CFM_MAX,
+	    upperValue: 500,
 	    color: colors.danger
 	}]
   };

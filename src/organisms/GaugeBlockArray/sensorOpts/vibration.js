@@ -1,9 +1,8 @@
-import { VIBRATION_MAX } from "./_commonOpts";
 import { colors } from 'ro-component-library';
 
 export const vibration = {
 	units: 'in/sec',
-	max: VIBRATION_MAX,
+	max: 500,
 	min: 0,
 	ranges: [{
 		lowerValue: 0,
@@ -23,7 +22,7 @@ export const vibration = {
 		color: colors.warning
 	}, {
 		lowerValue: 200,
-		upperValue: VIBRATION_MAX,
+		upperValue: 500,
 		color: colors.danger
 	}]
 };

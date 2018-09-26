@@ -1,4 +1,8 @@
-import {cfm, temp, amps, psi, vibration} from "./sensorOpts";
+import {cfm} from './sensorOpts/cfm';
+import {temp} from './sensorOpts/temp';
+import {psi} from './sensorOpts/psi';
+import {amps} from './sensorOpts/amps';
+import {vibration} from './sensorOpts/vibration';
 
 const INITIAL_STATE = {
   points: [1,2,3],

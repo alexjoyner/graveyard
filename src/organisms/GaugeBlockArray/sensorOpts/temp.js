@@ -1,9 +1,8 @@
-import { TEMP_MAX } from "./_commonOpts";
 import { colors } from 'ro-component-library';
 
 export const temp = {
 	units: '°F',
-	max: TEMP_MAX,
+	max: 100,
 	min: 0,
 	ranges: [{
 		lowerValue: 0,
@@ -23,7 +22,7 @@ export const temp = {
 		color: colors.warning
 	}, {
 		lowerValue: 85,
-		upperValue: TEMP_MAX,
+		upperValue: 100,
 		color: colors.danger
 	}]
 };
