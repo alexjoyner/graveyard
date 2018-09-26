@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {GaugeBlock, CenteredContent, PlainBox} from 'ro-component-library';
-import { getPointsLogs } from './actions';
+import { subscribeToNewPoints } from './actions';
 import { GaugeBlockArrayNoDataContent } from './particles/GaugeBlockArrayNoDataContent';
 
 
 class GaugeBlockArray extends Component{
   componentDidMount(){
     const {dispatch} = this.props;
-    getPointsLogs(this.props.points)(dispatch); 
+    subscribeToNewPoints(this.props.points)(dispatch); 
   }
   multiSelectInput(input, id){
     this.props.dispatch({type: 'MULTISELECT_INPUT', data: {
