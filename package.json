@@ -7,6 +7,6 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "docker-compose down && docker-compose up --build"
+    "start": "cd ./docker && docker-compose down && docker-compose up --build"
   }
 }
