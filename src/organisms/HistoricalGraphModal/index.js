@@ -72,11 +72,11 @@ class HistoricalGraphModal extends Component {
       return (this.props.modalStage !== 'hidden')?(
         <Modal width="90%">
           <Panel width="90%">
-            <Button primary onClick={() => this.getNewTimeFrame('day')}>1 Day</Button>
-            <Button primary onClick={() => this.getNewTimeFrame('week')}>1 Week</Button>
-            <Button primary onClick={() => this.getNewTimeFrame('month')}>1 Month</Button>
-            <Button primary onClick={() => this.getNewTimeFrame('6 months')}>6 Months</Button>
-            <Button primary onClick={() => this.toggleCustom()}>Custom</Button>
+            <Button color="primary" onClick={() => this.getNewTimeFrame('day')}>1 Day</Button>
+            <Button color="primary" onClick={() => this.getNewTimeFrame('week')}>1 Week</Button>
+            <Button color="primary" onClick={() => this.getNewTimeFrame('month')}>1 Month</Button>
+            <Button color="primary" onClick={() => this.getNewTimeFrame('6 months')}>6 Months</Button>
+            <Button color="primary" onClick={() => this.toggleCustom()}>Custom</Button>
             {(this.state.showCustom)?(
               <span>
                 <RoDatePicker
@@ -99,11 +99,11 @@ class HistoricalGraphModal extends Component {
                   endDate={this.state.endDate}
                   dateFormat="ll"
                 />
-                <Button success onClick={() => this.getCustomData()}>Submit</Button>
+                <Button color="success" onClick={() => this.getCustomData()}>Submit</Button>
               </span>
             ):null}
           </Panel>
-          <Button primary onClick={() => this.props.dispatch({
+          <Button color="primary" onClick={() => this.props.dispatch({
               type: 'HIDE_HISTORICAL_MODAL'
           })}>Close</Button>
           {(this.props.modalStage === 'loading')?(

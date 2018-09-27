@@ -18,7 +18,7 @@ class App extends Component {
       <div style={{marginTop: '80px'}}>
         <DashNotification />
         <Header 
-          color={colors.dark} 
+          color="dark" 
           height={'67px'} 
           fontSize={'25px'} 
           logoText={'Dashboard Demo'} 

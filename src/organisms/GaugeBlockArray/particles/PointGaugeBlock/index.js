@@ -20,5 +20,6 @@ export const PointGaugeBlock = (props) => {
     label={input.name}
     multiSelected={input.multiSelected}
     height={'10vh'}
-    onClick={() => multiSelectPoint(input, props.id)(props.dispatch)}></GaugeBlock>
-}
+    onChartClick={() => multiSelectPoint(input, props.id)(props.dispatch)}
+    onSettingsClick={() => console.log('implement onSettingsClick')}></GaugeBlock>
+} 

@@ -11,10 +11,10 @@ const initializeData = () => {
                 data: userGroups
             })
         }
-        catch (e) {
+        catch (e) { 
             console.error(e);
         }
     }
-}
+} 
 
 export {initializeData};

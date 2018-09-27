@@ -15,7 +15,7 @@ let MultiSelectedChartsMenu = (props) => {
                     return (
                         <ListItem key={chartInput.source.id}>
                             {chartInput.source.name}
-                            <Button small dark onClick={() => props.dispatch({
+                            <Button size="small" color="dark" onClick={() => props.dispatch({
                                 type: 'REMOVE_INPUT', data: chartInput.source.id})}>
                                 <GoTrashcan size={20} color={colors.dangerLight}/>
                             </Button>
@@ -23,7 +23,7 @@ let MultiSelectedChartsMenu = (props) => {
                     )
                 })}
                 <ListItem 
-                    color={colors.primary} 
+                    color="primary" 
                     onClick={() => GetNewHistoryGraph(props.chartInputs, {})(props.dispatch)}>
                     Get Graphs
                 </ListItem>

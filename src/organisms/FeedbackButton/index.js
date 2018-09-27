@@ -8,8 +8,8 @@ class FeedbackButton extends Component {
   render() {
     return (
       <Button
-        large
-        primary
+        size="large"
+        color="primary"
         style={{
           'position': 'absolute',
           'right': '3px',
