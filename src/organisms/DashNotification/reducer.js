@@ -1,5 +1,5 @@
 import React from 'react';
-import { SHOW_NOTIFICATION, HIDE_NOTIFICATION, START_LOADING, STOP_LOADING } from './actions';
+import { SHOW_NOTIFICATION, HIDE_NOTIFICATION, START_LOADING, STOP_LOADING } from '../../actions/actions';
 
 const INITIAL_STATE = {
   shown: false,

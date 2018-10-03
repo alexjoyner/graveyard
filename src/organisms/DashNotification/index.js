@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Notification } from 'ro-component-library';
 import { hideNotification } from './actions';
 
-let DashNotification = (props) => {
+let Notification = (props) => {
   return (
     <Notification shown={props.shown} onClose={() => hideNotification()(props.dispatch)}>
       {props.contents}
@@ -17,5 +17,5 @@ const mapStateToProps = (state) => {
   }
 }
 
-DashNotification = connect(mapStateToProps, null)(DashNotification);
-export { DashNotification };
+Notification = connect(mapStateToProps, null)(Notification);
+export { Notification };
