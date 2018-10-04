@@ -3,10 +3,6 @@ import { env } from '../../.env';
 import { showNotification, START_LOADING, startLoadingNotif, stopLoadingNotif } from '../../actions/notification';
 import { TEST_NOTIFICATION } from '../Notifications';
 
-const timeout = (ms) => {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 export const GetNewHistoryGraph = (requests, opts) => {
   return async (dispatch) => {
     if (requests.length === 0)
