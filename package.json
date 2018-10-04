@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "digest-auth-request": "^0.7.0",
+    "global": "^4.3.2",
     "highcharts": "^6.1.1",
     "highcharts-react-official": "^1.2.0",
     "moment": "^2.22.2",
@@ -24,11 +25,21 @@
     "redux": "^4.0.0",
     "request": "^2.86.0",
     "socket.io-client": "^2.1.1",
-    "styled-components": "^3.2.6"
+    "styled-components": "^3.2.6",
+    "ro-component-library": "*"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-flowtype": "^2.49.3",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jest": "^21.17.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.9.1",
+    "file-loader": "^1.1.11",
+    "flow-bin": "^0.82.0",
     "gh-pages": "^1.1.0"
   }
 }

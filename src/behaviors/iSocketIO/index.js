@@ -1,33 +1,30 @@
-import { env } from "../../.env";
-const io = require('socket.io-client');
+import io from 'socket.io-client';
+import { env } from '../../.env';
+
 const socket = io(env.serverAddr);
 
 class iSocketIO {
-  constructor(){
-    if(this.subscribe === undefined)
-      throw new TypeError("Must override method");
-    if(this.unsubscribe === undefined)
-      throw new TypeError("Must override method");
-    if(this.join === undefined)
-      throw new TypeError("Must override method");
+  constructor() {
+    if (this.subscribe === undefined) { throw new TypeError('Must override method'); }
+    if (this.unsubscribe === undefined) { throw new TypeError('Must override method'); }
+    if (this.join === undefined) { throw new TypeError('Must override method'); }
   }
 }
 
 class PointsSocket extends iSocketIO {
-  constructor(){super()}
-  subscribe(pointsArray, cb){
-    this.join(pointsArray);
+  subscribe(pointsArray, cb) {
+    this.points = pointsArray;
+    this.join();
     socket.on('add log', (log) => {
-        cb(null, log);
-    })
+      cb(null, log);
+    });
   }
-  unsubscribe(pointsArray, cb){
-    socket.emit('leave-group', pointsArray);
+  unsubscribe() {
+    socket.emit('leave-group', this.points);
   }
-  join(pointsArray){
-    socket.emit('join-group', pointsArray);
+  join() {
+    socket.emit('join-group', this.points);
   }
 }
 
-
-export {PointsSocket};
+export { PointsSocket };
