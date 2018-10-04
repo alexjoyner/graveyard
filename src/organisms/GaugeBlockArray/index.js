@@ -4,11 +4,13 @@ import {GaugeBlock, CenteredContent} from 'ro-component-library';
 import { GaugeBlockArrayNoDataContent } from './particles/GaugeBlockArrayNoDataContent';
 import { subscribeToNewPoints } from './actions/subscribeToNewPoints';
 import { PointGaugeBlock } from './particles/PointGaugeBlock';
+import { PointsSocket } from '../../behaviors/iSocketIO';
 
 
 class GaugeBlockArray extends Component{
   componentDidMount(){
     const {dispatch} = this.props;
+    const socketConnection = new PointsSocket();
     subscribeToNewPoints(this.props.points)(dispatch); 
   }
   

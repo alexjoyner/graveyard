@@ -1,9 +1,10 @@
-import { SocketConnection } from "../../../utils/socket-connection";
 import { REMOVE_POINTS } from "./types";
+import { PointsSocket } from "../../../behaviors/iSocketIO";
+const socket = new PointsSocket();
 
 export const removePoints = (currentPointsArray) => {
   return (dispatch) => {
-    SocketConnection.unsubscribeFromPoints(currentPointsArray);
+    socket.unsubscribe(currentPointsArray);
     dispatch({
       type: REMOVE_POINTS
     });

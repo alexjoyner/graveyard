@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { ListHeader, CenteredContent, ListItem, colors } from 'ro-component-library';
 import { MultiSelectedChartsMenu } from '../MultiSelectedChartsMenu';
 import { setNewGroup } from './actions';
-import { SocketConnection } from '../../utils/socket-connection';
 import { getAllPoints } from '../GaugeBlockArray/utils/gatAllPoints';
 import { subscribeToNewPoints } from '../GaugeBlockArray/actions/subscribeToNewPoints';
 import { removePoints } from '../GaugeBlockArray/actions/removePoints';
