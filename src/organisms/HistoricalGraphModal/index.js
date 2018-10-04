@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import { RoHighChart, RoDatePicker, Button, Modal, Panel, Input } from 'ro-component-library';
 import { getChartConfig } from './utils/getChartConfig';
-import { GetNewHistoryGraph } from './actions';
+import { buildNewHistoryGraph } from './actions';
 
 const getFormattedDates = (preset) => {
   let startDate = '';
@@ -57,10 +57,10 @@ class HistoricalGraphModal extends Component {
         startDate, 
         endDate,
       });
-      GetNewHistoryGraph(this.props.modalData, this.state)(this.props.dispatch);
+      buildNewHistoryGraph(this.props.modalData, this.state)(this.props.dispatch);
     }
     getCustomData(){
-      GetNewHistoryGraph(this.props.modalData, this.state)(this.props.dispatch);
+      buildNewHistoryGraph(this.props.modalData, this.state)(this.props.dispatch);
     }
     toggleCustom(){
       this.setState({
