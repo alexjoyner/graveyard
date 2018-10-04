@@ -1,22 +1,20 @@
 import moment from 'moment';
 import { env } from '../../.env';
-import { showNotification, START_LOADING } from '../../actions/actions';
+import { showNotification, START_LOADING, startLoadingNotif, stopLoadingNotif } from '../../actions/notification';
+import { TEST_NOTIFICATION } from '../Notifications';
+
+const timeout = (ms) => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 export const GetNewHistoryGraph = (requests, opts) => {
   return async (dispatch) => {
     if (requests.length === 0)
-      return showNotification('Please add at least one graph')(dispatch);
-    ShowHistoryGraphLoading()(dispatch);
+      return showNotification(TEST_NOTIFICATION, 'Please add at least one graph')(dispatch); 
+    startLoadingNotif(TEST_NOTIFICATION)(dispatch);
     await GetHistoryData(requests, opts)(dispatch);
     ShowHistoryModal()(dispatch);
-  }
-}
-
-export const ShowHistoryGraphLoading = () => {
-  return (dispatch) => {
-    dispatch({
-      type: START_LOADING
-    });
+    stopLoadingNotif(TEST_NOTIFICATION)(dispatch);
   }
 }
 
@@ -69,9 +67,6 @@ export const ShowHistoryModal = () => {
   return (dispatch) => {
     dispatch({
       type: 'SHOW_HISTORICAL_MODAL'
-    });
-    dispatch({
-      type: 'LOADING_STOP'
     });
   }
 }

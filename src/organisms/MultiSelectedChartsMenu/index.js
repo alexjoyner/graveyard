@@ -20,7 +20,7 @@ let MultiSelectedChartsMenu = (props) => {
                                 <GoTrashcan size={20} color={colors.dangerLight}/>
                             </Button>
                         </ListItem>
-                    )
+                    ) 
                 })}
                 <ListItem 
                     color="primary" 
