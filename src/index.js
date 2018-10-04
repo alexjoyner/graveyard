@@ -8,7 +8,7 @@ import { reducers } from './reducers';
 
 const store = createStore(reducers);
 
-const Base = () => (
+export const Base = () => (
   <Provider store={store}>
     <App />
   </Provider>

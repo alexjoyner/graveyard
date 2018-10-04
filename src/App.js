@@ -8,10 +8,9 @@ import { initializeData } from './actions';
 import { SideBarContent } from './organisms/SideBarContent';
 import { TestNotification } from './organisms/Notifications';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    initializeData()(this.props.dispatch);
+export class App extends Component {
+  componentDidMount() {
+    initializeData();
   }
   render() {
     return (
