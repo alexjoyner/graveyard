@@ -1,11 +1,10 @@
 {
-    "extends": ["airbnb", "plugin:jest/recommended", "plugin:flowtype/recommended"],
+    "extends": ["airbnb", "plugin:jest/recommended"],
     "env": {
       "browser": true
     },
     "plugins": [
-      "jest",
-      "flowtype"
+      "jest"
     ],
     "rules": {
         "import/prefer-default-export": false,

@@ -1,16 +1,14 @@
-import { env } from "../../../.env";
+import { env } from '../../../.env';
 
 export const getPointsFromGroupID = async (groupID) => {
   try {
     const requestUrl = new Request(`${env.serverAddr}/me/points/group/${groupID}`);
     const response = await fetch(requestUrl);
     const pointsArray = await response.json();
-    let pointsIdArray = [];
-    for(let i = 0; i < pointsArray.length; i++){
-      pointsIdArray.push(pointsArray[i].id);
-    }
+    const pointsIdArray = pointsArray.map(point => point.id);
     return pointsIdArray;
-  }catch(e){
+  } catch (e) {
     console.error(e);
+    return e;
   }
-}
+};
