@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { CenteredContent } from 'ro-component-library';
 import { GaugeBlockArrayNoDataContent } from './particles/GaugeBlockArrayNoDataContent';
-import { subscribeToNewPoints } from './actions/subscribeToNewPoints';
+import { subscribeToNewPoints } from './actions/managePoints';
 import { PointGaugeBlock } from './particles/PointGaugeBlock';
 
 

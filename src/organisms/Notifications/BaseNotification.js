@@ -9,7 +9,7 @@ const Notification = ({ BaseComponent, name, ...props }) => (
   </BaseComponent>
 );
 Notification.propTypes = {
-  BaseComponent: React.Element.isRequired,
+  BaseComponent: PropTypes.element.isRequired,
   name: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,
 };

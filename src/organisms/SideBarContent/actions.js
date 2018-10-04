@@ -1,5 +1,5 @@
 import { getPointsFromGroupID } from '../GaugeBlockArray/utils/getPointsFromGroupID';
-import { subscribeToNewPoints } from '../GaugeBlockArray/actions/subscribeToNewPoints';
+import { subscribeToNewPoints } from '../GaugeBlockArray/actions/managePoints';
 
 const setNewGroup = groupID => async (dispatch) => {
   try {

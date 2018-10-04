@@ -1,4 +1,4 @@
-import { NEW_LOG } from './types';
+import { NEW_LOG, REMOVE_POINTS } from './types';
 import { PointsSocket } from '../../../behaviors/iSocketIO';
 
 const socket = new PointsSocket();
@@ -11,3 +11,9 @@ export const subscribeToNewPoints = pointsArray => (dispatch) => {
   });
 };
 
+export const removePoints = () => (dispatch) => {
+  socket.unsubscribe();
+  dispatch({
+    type: REMOVE_POINTS,
+  });
+};

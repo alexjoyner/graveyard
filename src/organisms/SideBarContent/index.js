@@ -5,8 +5,7 @@ import { ListHeader, CenteredContent, ListItem } from 'ro-component-library';
 import { MultiSelectedChartsMenu } from '../MultiSelectedChartsMenu';
 import { setNewGroup } from './actions';
 import { getAllPoints } from '../GaugeBlockArray/utils/gatAllPoints';
-import { subscribeToNewPoints } from '../GaugeBlockArray/actions/subscribeToNewPoints';
-import { removePoints } from '../GaugeBlockArray/actions/removePoints';
+import { subscribeToNewPoints, removePoints } from '../GaugeBlockArray/actions/managePoints';
 
 
 const BaseSideBarContent = props => (
@@ -15,7 +14,7 @@ const BaseSideBarContent = props => (
     <CenteredContent>
       <ListItem
         onClick={async () => {
-          removePoints(props.points)(props.dispatch);
+          removePoints()(props.dispatch);
           const allPoints = await getAllPoints(1);
           subscribeToNewPoints(allPoints)(props.dispatch);
         }}
@@ -26,7 +25,7 @@ const BaseSideBarContent = props => (
         <ListItem
           key={group.id}
           onClick={() => {
-              removePoints(props.points)(props.dispatch);
+              removePoints()(props.dispatch);
               setNewGroup(group.id)(props.dispatch);
             }}
         >
@@ -39,8 +38,7 @@ const BaseSideBarContent = props => (
 );
 BaseSideBarContent.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  points: PropTypes.arrayof(PropTypes.number).isRequired,
-  groups: PropTypes.arrayof(PropTypes.shape({
+  groups: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
   })).isRequired,
@@ -48,7 +46,6 @@ BaseSideBarContent.propTypes = {
 
 const mapStateToProps = state => ({
   ...state.SideBarContentReducer,
-  ...state.GaugeBlockArrayReducer,
 });
 
 const SideBarContent = connect(mapStateToProps, null)(BaseSideBarContent);
