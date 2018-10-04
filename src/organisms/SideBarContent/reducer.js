@@ -1,12 +1,12 @@
 const INITIAL_STATE = {
-    groups: []
+  groups: [],
 };
 
 export const SideBarContentReducer = (state = INITIAL_STATE, action) => {
-    switch(action.type){
-        case 'INIT_GROUPS':
-            return {...state, groups: action.data}
-        default: 
-            return state;
-    }
-}
+  switch (action.type) {
+    case 'INIT_GROUPS':
+      return { ...state, groups: action.data };
+    default:
+      return state;
+  }
+};

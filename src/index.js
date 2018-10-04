@@ -8,8 +8,11 @@ import { reducers } from './reducers';
 
 const store = createStore(reducers);
 
-ReactDOM.render(
-<Provider store={store}>
+const Base = () => (
+  <Provider store={store}>
     <App />
-</Provider>, document.getElementById('root'));
+  </Provider>
+);
+
+ReactDOM.render(<Base />, document.getElementById('root'));
 registerServiceWorker();

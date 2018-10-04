@@ -12,4 +12,4 @@ const PROP_CONFIG = {
 const env = (NODE_ENV === 'production')?PROP_CONFIG : DEV_CONFIG;
 
 
-export {env};
+export {env}; 

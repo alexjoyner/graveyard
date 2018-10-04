@@ -1,42 +1,53 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {  ListItem, ListHeader, CenteredContent, Button, colors, getUniqueID } from 'ro-component-library';
+import { ListItem, ListHeader, CenteredContent, Button, colors } from 'ro-component-library';
 import { GoTrashcan } from 'react-icons/lib/go';
 import { buildNewHistoryGraph } from '../HistoricalGraphModal/actions';
+import { removeInput } from './actions';
 
 
-let MultiSelectedChartsMenu = (props) => {
-    return (
-        <div>
-            <br />
-            <ListHeader>Charts Selected:</ListHeader>
-            <CenteredContent>
-                {props.chartInputs.map((chartInput) => {
-                    return (
-                        <ListItem key={chartInput.source.id}>
-                            {chartInput.source.name}
-                            <Button size="small" color="dark" onClick={() => props.dispatch({
-                                type: 'REMOVE_INPUT', data: chartInput.source.id})}>
-                                <GoTrashcan size={20} color={colors.dangerLight}/>
-                            </Button>
-                        </ListItem>
-                    ) 
-                })}
-                <ListItem 
-                    color="primary" 
-                    onClick={() => buildNewHistoryGraph(props.chartInputs, {})(props.dispatch)}>
-                    Get Graphs
-                </ListItem>
-            </CenteredContent>
-        </div>
-    )
-}
+const BaseMultiSelectedChartsMenu = props => (
+  <div>
+    <br />
+    <ListHeader>Charts Selected:</ListHeader>
+    <CenteredContent>
+      {props.chartInputs.map(chartInput => (
+        <ListItem key={chartInput.source.id}>
+          {chartInput.source.name}
+          <Button
+            size="small"
+            color="dark"
+            onClick={() => removeInput(chartInput.source.id)}
+          >
+            <GoTrashcan size={20} color={colors.dangerLight} />
+          </Button>
+        </ListItem>
+      ))}
+      <ListItem
+        color="primary"
+        onClick={() => buildNewHistoryGraph(props.chartInputs, {})(props.dispatch)}
+      >
+        Get Graphs
+      </ListItem>
+    </CenteredContent>
+  </div>
+);
+BaseMultiSelectedChartsMenu.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  chartInputs: PropTypes.arrayof(PropTypes.shape({
+    source: PropTypes.shape({
+      id: PropTypes.number,
+      inputname: PropTypes.string,
+      unit: PropTypes.string,
+    }),
+    data: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
+  })).isRequired,
+};
 
-const mapStateToProps = (state) => {
-    return {
-        ...state.MultiSelectedChartsMenuReducer
-    }
-}
+const mapStateToProps = state => ({
+  ...state.MultiSelectedChartsMenuReducer,
+});
 
-MultiSelectedChartsMenu = connect(mapStateToProps, null)(MultiSelectedChartsMenu);
+const MultiSelectedChartsMenu = connect(mapStateToProps, null)(BaseMultiSelectedChartsMenu);
 export { MultiSelectedChartsMenu };

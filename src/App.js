@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import { Header, colors, SideBarPage } from 'ro-component-library';
-import {GaugeBlockArray} from './organisms/GaugeBlockArray';
+import { connect } from 'react-redux';
+import { Header, SideBarPage } from 'ro-component-library';
+import { GaugeBlockArray } from './organisms/GaugeBlockArray';
 import { HistoricalGraphModal } from './organisms/HistoricalGraphModal';
 import { FeedbackButton } from './organisms/FeedbackButton';
 import { initializeData } from './actions';
@@ -9,33 +9,32 @@ import { SideBarContent } from './organisms/SideBarContent';
 import { TestNotification } from './organisms/Notifications';
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    initializeData()(this.props.dispatch); 
+    initializeData()(this.props.dispatch);
   }
   render() {
     return (
-      <div style={{marginTop: '80px'}}>
+      <div style={{ marginTop: '80px' }}>
         <TestNotification />
-        <Header 
-          color="dark" 
-          height={'67px'} 
-          fontSize={'25px'} 
-          logoText={'Dashboard Demo'} 
-          sticky >
+        <Header
+          color="dark"
+          height="67px"
+          fontSize="25px"
+          logoText="Dashboard Demo"
+          sticky
+        >
           <FeedbackButton />
         </Header>
         <SideBarPage sideBarContents={<SideBarContent {...this.props} />} >
-          <GaugeBlockArray></GaugeBlockArray>
+          <GaugeBlockArray />
         </SideBarPage>
-        <HistoricalGraphModal modalData={this.props.modalData}/>
+        <HistoricalGraphModal modalData={this.props.modalData} />
       </div>
     );
   }
 }
-const mapStateToProps = (state) => {
-  return {
-    ...state.HistoricalGraphModalReducer
-  }
-}
+const mapStateToProps = state => ({
+  ...state.HistoricalGraphModalReducer,
+});
 export default connect(mapStateToProps)(App);

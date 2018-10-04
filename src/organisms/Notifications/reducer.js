@@ -1,12 +1,12 @@
 import React from 'react';
-import { SHOW_NOTIFICATION, HIDE_NOTIFICATION, START_LOADING, STOP_LOADING } from '../../actions/notification';
+import { SHOW_NOTIFICATION, HIDE_NOTIFICATION } from '../../actions/notification';
 
 const INITIAL_STATE = {
   TEST_NOTIFICATION: {
     shown: false,
-    contents: <div></div>
-  }
-}
+    contents: <div />,
+  },
+};
 
 export const NotificationReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -15,17 +15,18 @@ export const NotificationReducer = (state = INITIAL_STATE, action) => {
         ...state,
         [action.name]: {
           shown: true,
-          contents: action.contents || state[action.name].contents
-        }
+          contents: action.contents || state[action.name].contents,
+        },
       };
     case HIDE_NOTIFICATION:
       return {
         ...state,
         [action.name]: {
           ...state[action.name],
-          shown: false
-        }
+          shown: false,
+        },
       };
     default: return state;
   }
-}
+};
+

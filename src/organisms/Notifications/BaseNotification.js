@@ -1,22 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Notification } from 'ro-component-library';
-import { hideNotification } from '../../actions/notification.js'; 
+import { hideNotification } from '../../actions/notification';
 
-let BaseNotification = ({BaseComponent, name, ...props}) => {
-  console.log(props);
-  return (
-    <BaseComponent shown={props[name].shown} onClose={() => hideNotification(name)(props.dispatch)}>
-      {props[name].contents}
-    </BaseComponent> 
-  )
+const Notification = ({ BaseComponent, name, ...props }) => (
+  <BaseComponent shown={props[name].shown} onClose={() => hideNotification(name)(props.dispatch)}>
+    {props[name].contents}
+  </BaseComponent>
+);
+Notification.propTypes = {
+  BaseComponent: React.Element.isRequired,
+  name: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
- 
-const mapStateToProps = (state) => {
-  return {
-    ...state.NotificationReducer
-  }
-}
 
-BaseNotification = connect(mapStateToProps, null)(BaseNotification);
+const mapStateToProps = state => ({
+  ...state.NotificationReducer,
+});
+
+const BaseNotification = connect(mapStateToProps, null)(Notification);
 export { BaseNotification };
