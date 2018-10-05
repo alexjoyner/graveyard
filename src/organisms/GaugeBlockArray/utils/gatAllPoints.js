@@ -1,12 +1,9 @@
-import { env } from '../../../.env';
+import { getPointsFromGroupID } from './getPointsFromGroupID';
 
-export const getAllPoints = async (clientID) => {
+export const getAllPoints = async () => {
   try {
-    const requestUrl = new Request(`${env.serverAddr}/me/points/${clientID}`);
-    const response = await fetch(requestUrl);
-    const pointsArray = await response.json();
-    const pointsIdArray = pointsArray.map(point => point.id);
-    return pointsIdArray;
+    // Group ID 0 is used as an id to get all points
+    return await getPointsFromGroupID(0);
   } catch (e) {
     console.error(e);
     return e;
