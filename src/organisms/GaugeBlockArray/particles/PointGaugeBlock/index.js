@@ -1,9 +1,9 @@
 import React from 'react';
 import { GaugeBlock } from 'ro-component-library';
-import { multiSelectPoint } from '../../actions/multiSelectPoint';
+import { connect } from 'react-redux';
+import { multiSelectPoint, multiDeselectPoint } from '../../actions/multiSelectPoint';
 
-
-export const PointGaugeBlock = (props) => {
+export const BasePointGaugeBlock = (props) => {
   const { input } = props;
   let opts = {
     min: 0,
@@ -20,8 +20,17 @@ export const PointGaugeBlock = (props) => {
     label={input.name}
     multiSelected={input.multiSelected}
     height="10vh"
-    onChartClick={() => multiSelectPoint(input, props.id)(props.dispatch)}
+    onChartClick={() => {
+      props.multiSelectPoint(input, props.id);
+    }}
     onSettingsClick={() => console.log('implement onSettingsClick')}
   />);
 };
+
+const PointGaugeBlock = connect(null, {
+  multiSelectPoint,
+  multiDeselectPoint,
+})(BasePointGaugeBlock);
+
+export { PointGaugeBlock };
 

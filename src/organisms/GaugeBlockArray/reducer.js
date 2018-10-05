@@ -4,8 +4,10 @@ import { psi } from './sensorOpts/psi';
 import { amps } from './sensorOpts/amps';
 import { vibration } from './sensorOpts/vibration';
 import { NEW_LOG, REMOVE_POINTS, MULTISELECT_POINT, MULTISELECT_DESELECT_POINT } from './actions/types';
+import { CHANGE_GROUP } from '../SideBarContent/actions';
 
 const INITIAL_STATE = {
+  currentGroup: 0,
   points: [1, 2, 3],
   inputs: {},
   cfm,
@@ -18,6 +20,8 @@ const INITIAL_STATE = {
 
 export const GaugeBlockArrayReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case CHANGE_GROUP:
+      return { ...state, currentGroup: action.data };
     case NEW_LOG:
       return {
         ...state,

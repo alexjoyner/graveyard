@@ -1,13 +1,6 @@
-import { getPointsFromGroupID } from '../GaugeBlockArray/utils/getPointsFromGroupID';
-import { subscribeToNewPoints } from '../GaugeBlockArray/actions/managePoints';
+export const CHANGE_GROUP = 'CHANGE_GROUP';
 
-const setNewGroup = groupID => async (dispatch) => {
-  try {
-    const groupPointsArray = await getPointsFromGroupID(groupID);
-    subscribeToNewPoints(groupPointsArray)(dispatch);
-  } catch (e) {
-    console.log(e);
-  }
-};
-
-export { setNewGroup };
+export const changePointGroup = groupID => ({
+  type: CHANGE_GROUP,
+  data: groupID,
+});

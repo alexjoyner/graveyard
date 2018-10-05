@@ -1,12 +1,11 @@
 import { MULTISELECT_DESELECT_POINT, MULTISELECT_POINT } from './types';
 
-export const multiSelectPoint = (input, id) => (dispatch) => {
-  dispatch({
-    type: MULTISELECT_POINT,
-    data: { input, id },
-  });
-  setTimeout(() => {
-    dispatch({ type: MULTISELECT_DESELECT_POINT, data: id });
-  }, 2000);
-};
+export const multiSelectPoint = (input, id) => ({
+  type: MULTISELECT_POINT,
+  data: { input, id },
+});
 
+export const multiDeselectPoint = id => ({
+  type: MULTISELECT_DESELECT_POINT,
+  data: id,
+});

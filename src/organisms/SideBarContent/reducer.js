@@ -4,8 +4,10 @@ const INITIAL_STATE = {
 
 export const SideBarContentReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'INIT_GROUPS':
-      return { ...state, groups: action.data };
+    case 'INIT_GROUPS': {
+      const baseGroup = [{ id: 0, name: 'All Points' }];
+      return { ...state, groups: baseGroup.concat(action.data) };
+    }
     default:
       return state;
   }
