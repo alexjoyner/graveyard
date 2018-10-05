@@ -10,7 +10,7 @@ import { TestNotification } from './organisms/Notifications';
 
 export class App extends Component {
   componentDidMount() {
-    initializeData();
+    initializeData()(this.props.dispatch);
   }
   render() {
     return (
