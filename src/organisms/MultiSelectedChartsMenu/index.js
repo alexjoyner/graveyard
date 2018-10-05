@@ -37,7 +37,7 @@ BaseMultiSelectedChartsMenu.propTypes = {
   dispatch: PropTypes.func.isRequired,
   chartInputs: PropTypes.arrayOf(PropTypes.shape({
     source: PropTypes.shape({
-      id: PropTypes.number,
+      id: PropTypes.string,
       inputname: PropTypes.string,
       unit: PropTypes.string,
     }),

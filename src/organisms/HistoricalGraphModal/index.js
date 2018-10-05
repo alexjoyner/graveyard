@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { RoHighChart, RoDatePicker, Button, Modal, Panel, Input } from 'ro-component-library';
 import { getChartConfig } from './utils/getChartConfig';
 import { buildNewHistoryGraph } from './actions';
+import { Point } from '../../propTypes';
 
 const getFormattedDates = (preset) => {
   let startDate = '';
@@ -69,6 +70,7 @@ class BaseHistoricalGraphModal extends Component {
     });
   }
   render() {
+    console.log(this.props);
     return (this.props.modalStage !== 'hidden') ? (
       <Modal width="90%">
         <Panel width="90%">
@@ -122,14 +124,10 @@ class BaseHistoricalGraphModal extends Component {
 BaseHistoricalGraphModal.propTypes = {
   dispatch: PropTypes.func.isRequired,
   modalStage: PropTypes.string.isRequired,
-  modalData: PropTypes.shape({
-    source: PropTypes.shape({
-      id: PropTypes.number,
-      inputname: PropTypes.string,
-      unit: PropTypes.string,
-    }),
-    data: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
-  }).isRequired,
+  modalData: PropTypes.arrayOf(Point),
+};
+BaseHistoricalGraphModal.defaultProps = {
+  modalData: [],
 };
 
 const mapStateToProps = state => ({
