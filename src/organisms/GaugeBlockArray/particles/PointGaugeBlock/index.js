@@ -22,6 +22,9 @@ export const BasePointGaugeBlock = (props) => {
     height="10vh"
     onChartClick={() => {
       props.multiSelectPoint(input, props.id);
+      setTimeout(() => {
+        props.multiDeselectPoint(props.id);
+      }, 2000);
     }}
     onSettingsClick={() => console.log('implement onSettingsClick')}
   />);
