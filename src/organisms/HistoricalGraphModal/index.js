@@ -4,8 +4,8 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import { RoHighChart, RoDatePicker, Button, Modal, Panel, Input } from 'ro-component-library';
 import { getChartConfig } from './utils/getChartConfig';
-import { buildNewHistoryGraph } from './actions';
 import { Point } from '../../propTypes';
+import { buildHistoryGraph } from './utils/buildHistoryGraph';
 
 const getFormattedDates = (preset) => {
   let startDate = '';
@@ -46,10 +46,10 @@ class BaseHistoricalGraphModal extends Component {
       startDate,
       endDate,
     });
-    buildNewHistoryGraph(this.props.modalData, this.state)(this.props.dispatch);
+    buildHistoryGraph(this.props.modalData, this.state)(this.props.dispatch);
   }
   getCustomData() {
-    buildNewHistoryGraph(this.props.modalData, this.state)(this.props.dispatch);
+    buildHistoryGraph(this.props.modalData, this.state)(this.props.dispatch);
   }
   handleStartDateChange(date) {
     this.setState({

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { ListItem, ListHeader, CenteredContent, Button, colors } from 'ro-component-library';
 import { GoTrashcan } from 'react-icons/lib/go';
-import { buildNewHistoryGraph } from '../HistoricalGraphModal/actions';
+import { buildHistoryGraph } from '../HistoricalGraphModal/utils/buildHistoryGraph';
 import { removeInput } from './actions';
 
 
@@ -26,7 +26,7 @@ const BaseMultiSelectedChartsMenu = props => (
       ))}
       <ListItem
         color="primary"
-        onClick={() => buildNewHistoryGraph(props.chartInputs, {})(props.dispatch)}
+        onClick={() => buildHistoryGraph(props.chartInputs, {})(props.dispatch)}
       >
         Get Graphs
       </ListItem>
