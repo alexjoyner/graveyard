@@ -7,8 +7,12 @@ export const getPointsFromGroupID = async (groupID) => {
       new Request(`${env.serverAddr}/me/points/group/${groupID}`);
     const response = await fetch(requestUrl);
     const pointsArray = await response.json();
-    const pointsIdArray = pointsArray.map(point => point.id);
-    return pointsIdArray;
+    const points = {};
+    pointsArray.map((point) => {
+      points[point.id] = point;
+      return null;
+    });
+    return points;
   } catch (e) {
     throw new Error(e);
   }

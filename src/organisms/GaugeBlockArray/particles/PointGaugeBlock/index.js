@@ -5,18 +5,9 @@ import { multiSelectPoint, multiDeselectPoint } from '../../actions/multiSelectP
 
 export const BasePointGaugeBlock = (props) => {
   const { input } = props;
-  let opts = {
-    min: 0,
-    max: 100,
-  };
-  if (input.unit === 'F') opts = props.temp;
-  if (input.unit === 'CFM') opts = props.cfm;
-  if (input.unit === 'A') opts = props.amps;
-  if (input.unit === 'PSI') opts = props.psi;
-  if (input.unit === 'in/sec') opts = props.vibration;
   return (<GaugeBlock
-    {...opts}
-    value={input.value}
+    {...input.settings}
+    value={input.value || 0}
     label={input.name}
     multiSelected={input.multiSelected}
     height="10vh"

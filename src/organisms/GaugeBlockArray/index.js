@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { CenteredContent } from 'ro-component-library';
 import { GaugeBlockArrayNoDataContent } from './particles/GaugeBlockArrayNoDataContent';
-import { publishNewLog, removeAllPoints } from './actions/managePoints';
+import { publishNewPoints, publishNewLog, removeAllPoints } from './actions/managePoints';
 import { PointGaugeBlock } from './particles/PointGaugeBlock';
 import { PointsSocket } from '../../behaviors/iSocketIO';
 import { getPointsFromGroupID } from './utils/getPointsFromGroupID';
@@ -25,7 +25,9 @@ class BaseGaugeBlockArray extends Component {
   }
   async handleSubscribeToGroup(groupID) {
     const groupPoints = await getPointsFromGroupID(groupID);
-    socket.subscribe(groupPoints, (err, log) => {
+    this.props.publishNewPoints(groupPoints);
+    const pointsIdArray = Object.keys(groupPoints);
+    socket.subscribe(pointsIdArray, (err, log) => {
       this.props.publishNewLog(log);
     });
   }
@@ -50,6 +52,7 @@ const mapStateToProps = state => ({
 });
 
 const GaugeBlockArray = connect(mapStateToProps, {
+  publishNewPoints,
   publishNewLog,
   removeAllPoints,
 })(BaseGaugeBlockArray);
