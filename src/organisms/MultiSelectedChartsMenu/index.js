@@ -16,7 +16,7 @@ class BaseMultiSelectedChartsMenu extends Component {
     if (points.length === 0) {
       return this.props.showNotification(TEST_NOTIFICATION, 'Please add at least one point');
     }
-    this.props.buildGraph();
+    this.props.buildGraph(this.props.multiSelectedPoints);
     return null;
   }
   render() {

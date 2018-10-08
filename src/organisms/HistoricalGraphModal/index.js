@@ -10,7 +10,7 @@ import { TEST_NOTIFICATION } from '../Notifications';
 import { getRequestFetchUrls } from './utils/getRequestFetchUrls';
 import { getRawHistoryData } from './utils/getRawHistoryData';
 import { formatDataForGraph } from './utils/formatDataForGraph';
-import { dispatchNewHistoricalData, ShowHistoryModal, closeHistoryModal } from './actions';
+import { dispatchNewHistoricalData, showHistoryModal, closeHistoryModal } from './actions';
 
 const getFormattedDates = (preset) => {
   let startDate = '';
@@ -41,12 +41,12 @@ class BaseHistoricalGraphModal extends Component {
   }
   async runBuildGraphProcess() {
     this.props.startLoadingNotif(TEST_NOTIFICATION);
-    const points = Object.keys(this.props.multiSelectedPoints).map(pointID => this.props.multiSelectedPoints[pointID]);
+    const points = Object.keys(this.props.chartPoints).map(pointID => this.props.chartPoints[pointID]);
     const calls = getRequestFetchUrls(points, {});
     const rawDataArray = await getRawHistoryData(calls);
     const formattedData = formatDataForGraph(rawDataArray, points);
     this.props.dispatchNewHistoricalData(formattedData);
-    this.props.ShowHistoryModal();
+    this.props.showHistoryModal();
     this.props.stopLoadingNotif(TEST_NOTIFICATION);
     return null;
   }
@@ -77,11 +77,11 @@ BaseHistoricalGraphModal.propTypes = {
   startLoadingNotif: PropTypes.func.isRequired,
   stopLoadingNotif: PropTypes.func.isRequired,
   dispatchNewHistoricalData: PropTypes.func.isRequired,
-  ShowHistoryModal: PropTypes.func.isRequired,
+  showHistoryModal: PropTypes.func.isRequired,
   closeHistoryModal: PropTypes.func.isRequired,
   modalStage: PropTypes.string.isRequired,
   modalData: PropTypes.arrayOf(Point),
-  multiSelectedPoints: Points.isRequired,
+  chartPoints: Points.isRequired,
 };
 BaseHistoricalGraphModal.defaultProps = {
   modalData: [],
@@ -89,14 +89,13 @@ BaseHistoricalGraphModal.defaultProps = {
 
 const mapStateToProps = state => ({
   ...state.HistoricalGraphModalReducer,
-  ...state.MultiSelectedChartsMenuReducer,
 });
 
 const HistoricalGraphModal = connect(mapStateToProps, {
   startLoadingNotif,
   stopLoadingNotif,
   dispatchNewHistoricalData,
-  ShowHistoryModal,
+  showHistoryModal,
   closeHistoryModal,
 })(BaseHistoricalGraphModal);
 export { HistoricalGraphModal };
