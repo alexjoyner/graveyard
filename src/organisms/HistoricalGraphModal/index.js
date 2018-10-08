@@ -2,10 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import { RoHighChart, RoDatePicker, Button, Modal, Panel, Input } from 'ro-component-library';
+import { RoHighChart, Button, Modal, Panel } from 'ro-component-library';
+import { startLoadingNotif, stopLoadingNotif } from '../../actions/notification';
 import { getChartConfig } from './utils/getChartConfig';
-import { Point } from '../../propTypes';
-import { buildHistoryGraph } from './utils/buildHistoryGraph';
+import { Point, Points } from '../../propTypes';
+import { TEST_NOTIFICATION } from '../Notifications';
+import { getRequestFetchUrls } from './utils/getRequestFetchUrls';
+import { getRawHistoryData } from './utils/getRawHistoryData';
+import { formatDataForGraph } from './utils/formatDataForGraph';
+import { dispatchNewHistoricalData, ShowHistoryModal, closeHistoryModal } from './actions';
 
 const getFormattedDates = (preset) => {
   let startDate = '';
@@ -24,106 +29,59 @@ const getFormattedDates = (preset) => {
       startDate = moment().subtract(6, 'months');
       break;
     default:
-      throw new Error('Internal: No correct date preset passed to getFormattedDates');
+      console.error('Internal: No correct date preset passed to getFormattedDates');
   }
   return { startDate, endDate };
 };
 class BaseHistoricalGraphModal extends Component {
-  constructor(props) {
-    super(props);
-    const NOW = moment();
-    const ONE_DAY_AGO = moment().subtract(24, 'hours');
-    this.state = {
-      startDate: ONE_DAY_AGO,
-      endDate: NOW,
-      showCustom: false,
-    };
+  componentDidUpdate() {
+    if (this.props.modalStage === 'BUILDING') {
+      this.runBuildGraphProcess();
+    }
   }
-  getNewTimeFrame(preset) {
-    const { startDate, endDate } = getFormattedDates(preset);
-    this.setState({
-      ...this.state,
-      startDate,
-      endDate,
-    });
-    buildHistoryGraph(this.props.modalData, this.state)(this.props.dispatch);
-  }
-  getCustomData() {
-    buildHistoryGraph(this.props.modalData, this.state)(this.props.dispatch);
-  }
-  handleStartDateChange(date) {
-    this.setState({
-      ...this.state,
-      startDate: date,
-    });
-  }
-  handleEndDateChange(date) {
-    this.setState({
-      ...this.state,
-      endDate: date,
-    });
-  }
-  toggleCustom() {
-    this.setState({
-      ...this.state,
-      showCustom: !this.state.showCustom,
-    });
+  async runBuildGraphProcess() {
+    this.props.startLoadingNotif(TEST_NOTIFICATION);
+    const points = Object.keys(this.props.multiSelectedPoints).map(pointID => this.props.multiSelectedPoints[pointID]);
+    const calls = getRequestFetchUrls(points, {});
+    const rawDataArray = await getRawHistoryData(calls);
+    const formattedData = formatDataForGraph(rawDataArray, points);
+    this.props.dispatchNewHistoricalData(formattedData);
+    this.props.ShowHistoryModal();
+    this.props.stopLoadingNotif(TEST_NOTIFICATION);
+    return null;
   }
   render() {
-    return (this.props.modalStage !== 'hidden') ? (
+    return (this.props.modalStage === 'SHOWN') ? (
       <Modal width="90%">
         <Panel width="90%">
           <Button color="primary" onClick={() => this.getNewTimeFrame('day')}>1 Day</Button>
           <Button color="primary" onClick={() => this.getNewTimeFrame('week')}>1 Week</Button>
           <Button color="primary" onClick={() => this.getNewTimeFrame('month')}>1 Month</Button>
           <Button color="primary" onClick={() => this.getNewTimeFrame('6 months')}>6 Months</Button>
-          <Button color="primary" onClick={() => this.toggleCustom()}>Custom</Button>
-          {(this.state.showCustom) ? (
-            <span>
-              <RoDatePicker
-                customInput={<Input labelText="Start Date:" />}
-                labelText="Start Date:"
-                onChange={date => this.handleStartDateChange(date)}
-                selected={this.state.startDate}
-                selectsStart
-                startDate={this.state.startDate}
-                endDate={this.state.endDate}
-                dateFormat="ll"
-              />
-              <RoDatePicker
-                customInput={<Input labelText="End Date:" />}
-                labelText="End Date:"
-                onChange={date => this.handleEndDateChange(date)}
-                selected={this.state.endDate}
-                selectsEnd
-                startDate={this.state.startDate}
-                endDate={this.state.endDate}
-                dateFormat="ll"
-              />
-              <Button color="success" onClick={() => this.getCustomData()}>Submit</Button>
-            </span>
-            ) : null}
         </Panel>
         <Button
           color="primary"
-          onClick={() => this.props.dispatch({
-              type: 'HIDE_HISTORICAL_MODAL',
-          })}
+          onClick={() => this.props.closeHistoryModal()}
         >Close
         </Button>
-        {(this.props.modalStage === 'loading') ? (
+        {(this.props.modalStage === 'LOADING') ? (
           <h1>Loading Data</h1>
-          ) : (
-            <RoHighChart config={getChartConfig(this.props.modalData)} />
-          )}
+        ) : (
+          <RoHighChart config={getChartConfig(this.props.modalData)} />
+        )}
       </Modal>
     ) : (<div style={{ visibility: 'hidden' }} />);
   }
 }
 BaseHistoricalGraphModal.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  startLoadingNotif: PropTypes.func.isRequired,
+  stopLoadingNotif: PropTypes.func.isRequired,
+  dispatchNewHistoricalData: PropTypes.func.isRequired,
+  ShowHistoryModal: PropTypes.func.isRequired,
+  closeHistoryModal: PropTypes.func.isRequired,
   modalStage: PropTypes.string.isRequired,
   modalData: PropTypes.arrayOf(Point),
+  multiSelectedPoints: Points.isRequired,
 };
 BaseHistoricalGraphModal.defaultProps = {
   modalData: [],
@@ -131,7 +89,14 @@ BaseHistoricalGraphModal.defaultProps = {
 
 const mapStateToProps = state => ({
   ...state.HistoricalGraphModalReducer,
+  ...state.MultiSelectedChartsMenuReducer,
 });
 
-const HistoricalGraphModal = connect(mapStateToProps, null)(BaseHistoricalGraphModal);
+const HistoricalGraphModal = connect(mapStateToProps, {
+  startLoadingNotif,
+  stopLoadingNotif,
+  dispatchNewHistoricalData,
+  ShowHistoryModal,
+  closeHistoryModal,
+})(BaseHistoricalGraphModal);
 export { HistoricalGraphModal };

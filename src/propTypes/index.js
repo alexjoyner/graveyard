@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 export const Log = PropTypes.arrayOf(PropTypes.number);
 export const Point = PropTypes.shape({
-  id: PropTypes.string,
+  id: PropTypes.number,
   name: PropTypes.string,
   settings: PropTypes.shape({
     unit: PropTypes.string,

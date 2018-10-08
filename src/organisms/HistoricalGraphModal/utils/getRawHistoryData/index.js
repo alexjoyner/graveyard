@@ -1,4 +1,4 @@
-export const getRawHistoryData = calls => async () => {
+export const getRawHistoryData = async (calls) => {
   try {
     const responses = await Promise.all(calls);
     const jsonCalls = responses.map(response => response.json());

@@ -1,6 +1,4 @@
-export const formatDataForGraph = (rawDataArray, requests) => rawDataArray.map((data, i) => ({
-  id: requests[i].id,
-  name: requests[i].name,
-  unit: requests[i].settings.unit,
+export const formatDataForGraph = (rawDataArray, points) => rawDataArray.map((data, i) => ({
+  ...points[i],
   data,
 }));
