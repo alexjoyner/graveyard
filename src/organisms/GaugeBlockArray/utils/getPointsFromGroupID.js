@@ -10,7 +10,6 @@ export const getPointsFromGroupID = async (groupID) => {
     const pointsIdArray = pointsArray.map(point => point.id);
     return pointsIdArray;
   } catch (e) {
-    console.error(e);
-    return e;
+    throw new Error(e);
   }
 };

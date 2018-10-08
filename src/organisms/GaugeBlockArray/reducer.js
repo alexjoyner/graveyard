@@ -8,7 +8,6 @@ import { CHANGE_GROUP } from '../SideBarContent/actions';
 
 const INITIAL_STATE = {
   currentGroup: 0,
-  points: [1, 2, 3],
   inputs: {},
   cfm,
   temp,

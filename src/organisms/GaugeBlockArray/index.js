@@ -9,23 +9,23 @@ import { getPointsFromGroupID } from './utils/getPointsFromGroupID';
 
 const socket = new PointsSocket();
 
-
 class BaseGaugeBlockArray extends Component {
   componentDidMount() {
-    socket.subscribe(this.props.points, (err, log) => {
-      this.props.publishNewLog(log);
-    });
+    this.handleSubscribeToGroup(this.props.currentGroup);
   }
   componentDidUpdate(prevProps) {
     if (this.props.currentGroup !== prevProps.currentGroup) {
-      this.handleChangeGroup(this.props.currentGroup);
+      this.handleRemoveAllPoints();
+      this.handleSubscribeToGroup(this.props.currentGroup);
     }
   }
-  async handleChangeGroup(groupID) {
+  handleRemoveAllPoints() {
     socket.unsubscribe();
     this.props.removeAllPoints();
-    const allPoints = await getPointsFromGroupID(groupID);
-    socket.subscribe(allPoints, (err, log) => {
+  }
+  async handleSubscribeToGroup(groupID) {
+    const groupPoints = await getPointsFromGroupID(groupID);
+    socket.subscribe(groupPoints, (err, log) => {
       this.props.publishNewLog(log);
     });
   }
