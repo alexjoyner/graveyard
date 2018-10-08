@@ -26,7 +26,9 @@ export const BasePointGaugeBlock = (props) => {
         props.multiDeselectPoint(props.id);
       }, 2000);
     }}
-    onSettingsClick={() => console.log('implement onSettingsClick')}
+    onSettingsClick={() => {
+      throw new Error('No on settings click implementation');
+    }}
   />);
 };
 
