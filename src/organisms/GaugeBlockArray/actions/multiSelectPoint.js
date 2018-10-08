@@ -1,8 +1,8 @@
 import { MULTISELECT_DESELECT_POINT, MULTISELECT_POINT } from './types';
 
-export const multiSelectPoint = (input, id) => ({
+export const multiSelectPoint = (point, id) => ({
   type: MULTISELECT_POINT,
-  data: { input, id },
+  data: { point, id },
 });
 
 export const multiDeselectPoint = id => ({

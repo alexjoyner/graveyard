@@ -32,14 +32,14 @@ class BaseGaugeBlockArray extends Component {
     });
   }
   render() {
-    const inputs = Object.keys(this.props.inputs);
-    return (!inputs.length) ?
+    const points = Object.keys(this.props.points);
+    return (!points.length) ?
       <GaugeBlockArrayNoDataContent /> : (
         <CenteredContent>
-          {inputs.map(id => (<PointGaugeBlock
+          {points.map(id => (<PointGaugeBlock
             {...this.props}
             key={id}
-            input={this.props.inputs[id]}
+            point={this.props.points[id]}
             id={id}
           />))}
         </CenteredContent>

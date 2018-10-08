@@ -10,7 +10,7 @@ const initializeData = () => async (dispatch) => {
       data: userGroups,
     });
   } catch (e) {
-    console.error(e);
+    throw new Error(e);
   }
 };
 

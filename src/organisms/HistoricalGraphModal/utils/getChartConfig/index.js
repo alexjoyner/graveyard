@@ -1,12 +1,12 @@
-export const getChartConfig = (inputs) => {
-  const seriesObjects = inputs.map((input, i) => ({
-    name: `${input.source.inputname} (${input.source.unit})`,
+export const getChartConfig = (points) => {
+  const seriesObjects = points.map((point, i) => ({
+    name: `${point.name} (${point.settings.unit})`,
     _colorIndex: i,
     marker: {
       enabled: false,
     },
     colorByPoint: false,
-    data: input.data,
+    data: points.data,
   }));
   const chartConfig = Object.assign({}, getBaseConfig(), {
     series: seriesObjects,

@@ -1,46 +1,35 @@
+import _ from 'lodash';
 import { MULTISELECT_POINT } from '../GaugeBlockArray/actions/types';
-import { REMOVE_INPUT } from './actions';
+import { REMOVE_POINT } from './actions';
 
 const INITIAL_STATE = {
-  chartInputs: [],
+  multiSelectedPoints: {},
 };
 
 export const MultiSelectedChartsMenuReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case MULTISELECT_POINT: {
-      const { id } = action.data;
+      const { id } = action.data.point;
       let alreadyAdded = false;
-      state.chartInputs.forEach((input) => {
-        if (input.source.id === id) {
-          console.error('Already added that input');
-          alreadyAdded = true;
-        }
-      });
+      if (state.multiSelectedPoints[id]) {
+        alreadyAdded = true;
+        console.log('Already selected that point');
+      }
       if (alreadyAdded) { return state; }
       return {
         ...state,
-        chartInputs: state.chartInputs.concat({
-          source: {
-            id,
-            ...action.data.input,
+        multiSelectedPoints: {
+          ...state.multiSelectedPoints,
+          [action.data.point.id]: {
+            ...action.data.point,
           },
-        }),
+        },
       };
     }
-    case REMOVE_INPUT: {
-      let removedIndex = null;
-      state.chartInputs.map((input, i) => {
-        if (input.source.id === action.data) {
-          removedIndex = i;
-        }
-        return input;
-      });
-      if (removedIndex !== null) {
-        const newChartInputs = state.chartInputs.slice();
-        newChartInputs.splice(removedIndex, 1);
-        return { ...state, chartInputs: newChartInputs };
-      }
-      return state;
+    case REMOVE_POINT: {
+      const newState = _.cloneDeep(state);
+      delete newState.multiSelectedPoints[action.data];
+      return newState;
     }
     default:
       return state;

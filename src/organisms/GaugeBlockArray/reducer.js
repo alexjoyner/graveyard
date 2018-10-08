@@ -3,7 +3,7 @@ import { CHANGE_GROUP } from '../SideBarContent/actions';
 
 const INITIAL_STATE = {
   currentGroup: 0,
-  inputs: {},
+  points: {},
 };
 
 
@@ -14,32 +14,32 @@ export const GaugeBlockArrayReducer = (state = INITIAL_STATE, action) => {
     case NEW_POINTS:
       return {
         ...state,
-        inputs: action.data,
+        points: action.data,
       };
     case NEW_LOG:
       return {
         ...state,
-        inputs: {
-          ...state.inputs,
+        points: {
+          ...state.points,
           [action.data.pointID]: {
-            ...state.inputs[action.data.pointID],
+            ...state.points[action.data.pointID],
             value: action.data.log.value,
             multiSelected: false,
           },
         },
       };
     case REMOVE_POINTS:
-      return { ...state, inputs: [] };
+      return { ...state, points: [] };
     /* Please not that the following multiselect cases are currently only for
     the purposes of visual changes on the point gauge. Adding the point to the multi-select
     menu is handled in the multi select menu organism. */
     case MULTISELECT_POINT:
       return {
         ...state,
-        inputs: {
-          ...state.inputs,
+        points: {
+          ...state.points,
           [action.data.id]: {
-            ...state.inputs[action.data.id],
+            ...state.points[action.data.id],
             multiSelected: true,
           },
         },
@@ -47,10 +47,10 @@ export const GaugeBlockArrayReducer = (state = INITIAL_STATE, action) => {
     case MULTISELECT_DESELECT_POINT:
       return {
         ...state,
-        inputs: {
-          ...state.inputs,
+        points: {
+          ...state.points,
           [action.data]: {
-            ...state.inputs[action.data],
+            ...state.points[action.data],
             multiSelected: false,
           },
         },

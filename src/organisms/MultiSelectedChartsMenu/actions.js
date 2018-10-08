@@ -1,9 +1,7 @@
-export const REMOVE_INPUT = 'REMOVE_INPUT';
+export const REMOVE_POINT = 'REMOVE_POINT';
 
-export const removeInput = input => (dispatch) => {
-  dispatch({
-    type: REMOVE_INPUT,
-    data: input,
-  });
-};
+export const removePoint = point => ({
+  type: REMOVE_POINT,
+  data: point,
+});
 

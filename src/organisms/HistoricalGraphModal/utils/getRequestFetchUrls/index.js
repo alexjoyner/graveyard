@@ -6,7 +6,7 @@ export const getRequestFetchUrls = (requests, opts) => {
     let start;
     let end;
     let fetchUrl;
-    const input = request.source.id || '1';
+    const input = request.id || '1';
     const now = moment().format('YYYY-MM-DD HH:mm');
     if (opts.start) { start = opts.startDate.format('YYYY-MM-DD HH:mm'); }
     if (opts.end) { end = opts.endDate.format('YYYY-MM-DD HH:mm'); }

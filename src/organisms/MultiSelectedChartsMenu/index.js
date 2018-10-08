@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { ListItem, ListHeader, CenteredContent, Button, colors } from 'ro-component-library';
 import { GoTrashcan } from 'react-icons/lib/go';
 import { buildHistoryGraph } from '../HistoricalGraphModal/utils/buildHistoryGraph';
-import { removeInput } from './actions';
+import { removePoint } from './actions';
+import { Points } from '../../propTypes';
 
 
 const BaseMultiSelectedChartsMenu = props => (
@@ -12,13 +13,13 @@ const BaseMultiSelectedChartsMenu = props => (
     <br />
     <ListHeader>Charts Selected:</ListHeader>
     <CenteredContent>
-      {props.chartInputs.map(chartInput => (
-        <ListItem key={chartInput.source.id}>
-          {chartInput.source.name}
+      {Object.keys(props.multiSelectedPoints).map(pointID => (
+        <ListItem key={pointID}>
+          {props.multiSelectedPoints[pointID].name}
           <Button
             size="small"
             color="dark"
-            onClick={() => removeInput(chartInput.source.id)}
+            onClick={() => props.removePoint(pointID)}
           >
             <GoTrashcan size={20} color={colors.dangerLight} />
           </Button>
@@ -26,28 +27,23 @@ const BaseMultiSelectedChartsMenu = props => (
       ))}
       <ListItem
         color="primary"
-        onClick={() => buildHistoryGraph(props.chartInputs, {})(props.dispatch)}
+        onClick={() => buildHistoryGraph(props.multiSelectedPoints, {})}
       >
-        Get Graphs
+        Build Graph
       </ListItem>
     </CenteredContent>
   </div>
 );
 BaseMultiSelectedChartsMenu.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  chartInputs: PropTypes.arrayOf(PropTypes.shape({
-    source: PropTypes.shape({
-      id: PropTypes.string,
-      inputname: PropTypes.string,
-      unit: PropTypes.string,
-    }),
-    data: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
-  })).isRequired,
+  removePoint: PropTypes.func.isRequired,
+  multiSelectedPoints: Points.isRequired,
 };
 
 const mapStateToProps = state => ({
   ...state.MultiSelectedChartsMenuReducer,
 });
 
-const MultiSelectedChartsMenu = connect(mapStateToProps, null)(BaseMultiSelectedChartsMenu);
+const MultiSelectedChartsMenu = connect(mapStateToProps, {
+  removePoint,
+})(BaseMultiSelectedChartsMenu);
 export { MultiSelectedChartsMenu };
