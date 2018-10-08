@@ -5,7 +5,6 @@ export const getRawHistoryData = calls => async () => {
     const rawData = await Promise.all(jsonCalls);
     return rawData;
   } catch (e) {
-    console.error(e);
-    return null;
+    throw new Error(e);
   }
 };

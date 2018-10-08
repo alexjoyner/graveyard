@@ -24,7 +24,7 @@ const getFormattedDates = (preset) => {
       startDate = moment().subtract(6, 'months');
       break;
     default:
-      console.error('Internal: No correct date preset passed to getFormattedDates');
+      throw new Error('Internal: No correct date preset passed to getFormattedDates');
   }
   return { startDate, endDate };
 };
@@ -70,7 +70,6 @@ class BaseHistoricalGraphModal extends Component {
     });
   }
   render() {
-    console.log(this.props);
     return (this.props.modalStage !== 'hidden') ? (
       <Modal width="90%">
         <Panel width="90%">
