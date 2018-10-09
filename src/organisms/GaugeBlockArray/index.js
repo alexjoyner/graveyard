@@ -7,7 +7,7 @@ import { PointGaugeBlock } from './particles/PointGaugeBlock';
 import { PointsSocket } from '../../behaviors/iSocketIO';
 import { getPointsFromGroupID } from './utils/getPointsFromGroupID';
 
-const socket = new PointsSocket();
+const socket = new PointsSocket({});
 
 class BaseGaugeBlockArray extends Component {
   componentDidMount() {
