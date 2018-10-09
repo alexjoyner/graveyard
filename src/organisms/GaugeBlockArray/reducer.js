@@ -29,7 +29,7 @@ export const GaugeBlockArrayReducer = (state = INITIAL_STATE, action) => {
         },
       };
     case REMOVE_POINTS:
-      return { ...state, points: [] };
+      return { ...state, points: {} };
     /* Please not that the following multiselect cases are currently only for
     the purposes of visual changes on the point gauge. Adding the point to the multi-select
     menu is handled in the multi select menu organism. */
@@ -49,8 +49,8 @@ export const GaugeBlockArrayReducer = (state = INITIAL_STATE, action) => {
         ...state,
         points: {
           ...state.points,
-          [action.data]: {
-            ...state.points[action.data],
+          [action.data.id]: {
+            ...state.points[action.data.id],
             multiSelected: false,
           },
         },

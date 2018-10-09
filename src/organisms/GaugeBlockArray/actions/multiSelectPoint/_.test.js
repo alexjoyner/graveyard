@@ -16,7 +16,9 @@ describe('multiDeselect point', () => {
   it('should return correct action', () => {
     expect(multiDeselectPoint(1)).toEqual({
       type: MULTISELECT_DESELECT_POINT,
-      data: 1,
+      data: {
+        id: 1,
+      },
     });
   });
 });

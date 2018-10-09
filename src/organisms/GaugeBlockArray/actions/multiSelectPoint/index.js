@@ -7,5 +7,5 @@ export const multiSelectPoint = (point, id) => ({
 
 export const multiDeselectPoint = id => ({
   type: MULTISELECT_DESELECT_POINT,
-  data: id,
+  data: { id },
 });
