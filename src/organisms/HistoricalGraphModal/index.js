@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import moment from 'moment';
 import PropTypes from 'prop-types';
 import { RoHighChart, Button, Modal, Panel } from 'ro-component-library';
 import { startLoadingNotif, stopLoadingNotif } from '../../actions/notification';
@@ -11,38 +10,18 @@ import { getRequestFetchUrls } from './utils/getRequestFetchUrls';
 import { getRawHistoryData } from './utils/getRawHistoryData';
 import { formatDataForGraph } from './utils/formatDataForGraph';
 import { dispatchNewHistoricalData, showHistoryModal, closeHistoryModal } from './actions';
+import { IntervalButton } from './particles/IntervalButton';
 
-const getFormattedDates = (preset) => {
-  let startDate = '';
-  const endDate = moment();
-  switch (preset) {
-    case 'day':
-      startDate = moment().subtract(24, 'hours');
-      break;
-    case 'week':
-      startDate = moment().subtract(1, 'weeks');
-      break;
-    case 'month':
-      startDate = moment().subtract(1, 'month');
-      break;
-    case '6 months':
-      startDate = moment().subtract(6, 'months');
-      break;
-    default:
-      console.error('Internal: No correct date preset passed to getFormattedDates');
-  }
-  return { startDate, endDate };
-};
 class BaseHistoricalGraphModal extends Component {
   componentDidUpdate() {
     if (this.props.modalStage === 'BUILDING') {
       this.runBuildGraphProcess();
     }
   }
-  async runBuildGraphProcess() {
+  async runBuildGraphProcess(opts = {}) {
     this.props.startLoadingNotif(TEST_NOTIFICATION);
     const points = Object.keys(this.props.chartPoints).map(pointID => this.props.chartPoints[pointID]);
-    const calls = getRequestFetchUrls(points, {});
+    const calls = getRequestFetchUrls(points, opts);
     const rawDataArray = await getRawHistoryData(calls);
     const formattedData = formatDataForGraph(rawDataArray, points);
     this.props.dispatchNewHistoricalData(formattedData);
@@ -54,10 +33,11 @@ class BaseHistoricalGraphModal extends Component {
     return (this.props.modalStage === 'SHOWN') ? (
       <Modal width="90%">
         <Panel width="90%">
-          <Button color="primary" onClick={() => this.getNewTimeFrame('day')}>1 Day</Button>
-          <Button color="primary" onClick={() => this.getNewTimeFrame('week')}>1 Week</Button>
-          <Button color="primary" onClick={() => this.getNewTimeFrame('month')}>1 Month</Button>
-          <Button color="primary" onClick={() => this.getNewTimeFrame('6 months')}>6 Months</Button>
+          <IntervalButton color="primary" type="oneDay" onClick={opts => this.runBuildGraphProcess(opts)} >1 Day</IntervalButton>
+          <IntervalButton color="primary" type="oneWeek" onClick={opts => this.runBuildGraphProcess(opts)} >1 Week</IntervalButton>
+          <IntervalButton color="primary" type="oneMonth" onClick={opts => this.runBuildGraphProcess(opts)} >1 Month</IntervalButton>
+          <IntervalButton color="primary" type="sixMonths" onClick={opts => this.runBuildGraphProcess(opts)} >6 Months</IntervalButton>
+          <IntervalButton color="primary" onClick={() => this.runBuildGraphProcess()} >All</IntervalButton>
         </Panel>
         <Button
           color="primary"
