@@ -19,7 +19,7 @@ CREATE TABLE point_group_x_point (
 CREATE TABLE point (
   id SERIAL PRIMARY KEY,
   name character varying(20) NOT NULL,
-  client_id integer NOT NULL REFERENCES client(id) ON DELETE CASCADE ON UPDATE CASCADE
+  client_id integer NOT NULL REFERENCES client(id) ON DELETE CASCADE ON UPDATE CASCADE,
   settings JSON NOT NULL
 );
 
