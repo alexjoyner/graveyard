@@ -11,6 +11,7 @@ export const BasePointGaugeBlock = (props) => {
     label={point.name}
     multiSelected={point.multiSelected}
     height="10vh"
+    panelWidth="20%"
     onChartClick={() => {
       props.multiSelectPoint(point, props.id);
       setTimeout(() => {

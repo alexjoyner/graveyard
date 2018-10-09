@@ -20,7 +20,9 @@ class BaseHistoricalGraphModal extends Component {
   }
   async runBuildGraphProcess(opts = {}) {
     this.props.startLoadingNotif(TEST_NOTIFICATION);
-    const points = Object.keys(this.props.chartPoints).map(pointID => this.props.chartPoints[pointID]);
+    const points = Object
+      .keys(this.props.chartPoints)
+      .map(pointID => this.props.chartPoints[pointID]);
     const calls = getRequestFetchUrls(points, opts);
     const rawDataArray = await getRawHistoryData(calls);
     const formattedData = formatDataForGraph(rawDataArray, points);
