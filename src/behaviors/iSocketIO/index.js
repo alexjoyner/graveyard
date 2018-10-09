@@ -1,8 +1,6 @@
 import io from 'socket.io-client';
 import { env } from '../../.env';
 
-const socket = io(env.serverAddr);
-
 class iSocketIO {
   constructor() {
     if (this.subscribe === undefined) { throw new TypeError('Must override method'); }
@@ -12,18 +10,28 @@ class iSocketIO {
 }
 
 class PointsSocket extends iSocketIO {
+  constructor(opts) {
+    super();
+    this.socket = opts.socket || io(env.serverAddr);
+  }
   subscribe(pointsArray, cb) {
     this.points = pointsArray;
     this.join();
-    socket.on('add log', (log) => {
+    this.socket.on('add log', (log) => {
       cb(null, log);
     });
   }
   unsubscribe() {
-    socket.emit('leave-group', this.points);
+    this.socket.emit('leave-group', this.points);
   }
   join() {
-    socket.emit('join-group', this.points);
+    this.socket.emit('join-group', this.points);
+  }
+  setPoints(pointsArray) {
+    this.points = pointsArray;
+  }
+  getPoints() {
+    return this.points;
   }
 }
 
