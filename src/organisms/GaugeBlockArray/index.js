@@ -7,9 +7,11 @@ import { PointGaugeBlock } from './particles/PointGaugeBlock';
 import { PointsSocket } from '../../behaviors/iSocketIO';
 import { getPointsFromGroupID } from './utils/getPointsFromGroupID';
 
-const socket = new PointsSocket({});
-
-class BaseGaugeBlockArray extends Component {
+export class BaseGaugeBlockArray extends Component {
+  constructor(props) {
+    super(props);
+    this.socket = props.socket || new PointsSocket({});
+  }
   componentDidMount() {
     this.handleSubscribeToGroup(this.props.currentGroup);
   }
@@ -20,14 +22,14 @@ class BaseGaugeBlockArray extends Component {
     }
   }
   handleRemoveAllPoints() {
-    socket.unsubscribe();
+    this.socket.unsubscribe();
     this.props.removeAllPoints();
   }
   async handleSubscribeToGroup(groupID) {
     const groupPoints = await getPointsFromGroupID(groupID);
     this.props.publishNewPoints(groupPoints);
     const pointsIdArray = Object.keys(groupPoints);
-    socket.subscribe(pointsIdArray, (err, log) => {
+    this.socket.subscribe(pointsIdArray, (err, log) => {
       this.props.publishNewLog(log);
     });
   }
