@@ -1,4 +1,4 @@
-import { getPointsFromGroupID } from './getPointsFromGroupID';
+import { getPointsFromGroupID } from '../getPointsFromGroupID';
 
 export const getAllPoints = async () => {
   try {
