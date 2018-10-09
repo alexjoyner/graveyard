@@ -1,4 +1,4 @@
-import { NEW_LOG, REMOVE_POINTS, NEW_POINTS } from './types';
+import { NEW_LOG, REMOVE_POINTS, NEW_POINTS } from '../types';
 
 export const publishNewPoints = points => ({
   type: NEW_POINTS,
