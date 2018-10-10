@@ -3,7 +3,6 @@ import moment from 'moment';
 import { Button } from 'ro-component-library';
 
 const getInterval = (type) => {
-  console.log(type);
   const startPoints = {
     oneDay: moment().subtract(24, 'hours'),
     oneWeek: moment().subtract(1, 'week'),
