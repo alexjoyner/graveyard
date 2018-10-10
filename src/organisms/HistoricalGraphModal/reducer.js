@@ -1,7 +1,7 @@
-import { NEW_HISTORICAL_DATA, SHOW_GRAPH, BUILD_GRAPH } from './actions';
+import { NEW_HISTORICAL_DATA, SHOW_GRAPH, BUILD_GRAPH, CLOSE_HISTORICAL_MODAL } from './actions';
 
 const INITIAL_STATE = {
-  modalStage: 'hidden',
+  modalStage: 'CLOSED',
   modalData: [],
   chartPoints: {},
 };
@@ -14,12 +14,10 @@ export const HistoricalGraphModalReducer = (state = INITIAL_STATE, action) => {
         modalStage: 'BUILDING',
         chartPoints: action.data,
       };
-    case 'LOADING_HISTORICAL_DATA':
-      return { ...state, modalStage: 'LOADING' };
     case SHOW_GRAPH:
       return { ...state, modalStage: 'SHOWN' };
-    case 'HIDE_HISTORICAL_MODAL':
-      return { ...state, modalStage: 'HIDDEN' };
+    case CLOSE_HISTORICAL_MODAL:
+      return { ...state, modalStage: 'CLOSED' };
     case NEW_HISTORICAL_DATA:
       return { ...state, modalData: action.data };
     default:
