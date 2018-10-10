@@ -17,7 +17,7 @@ class PointsSocket extends ISocketIO {
   subscribe(pointsArray, cb) {
     this.points = pointsArray;
     this.join();
-    this.socket.on('add log', (log) => {
+    this.socket.on('add log', /* istanbul ignore next */ (log) => {
       cb(null, log);
     });
   }
