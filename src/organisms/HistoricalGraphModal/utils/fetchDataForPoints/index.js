@@ -1,17 +1,17 @@
 import { env } from '../../../../.env';
 
-export const getRequestFetchUrls = (requests, opts) => {
-  const calls = requests.map((request) => {
+export const fetchDataForPoints = (points, opts) => {
+  const calls = points.map((point) => {
     let start;
     let end;
     let fetchUrl;
-    const input = request.id || '1';
+    const pointID = point.id || '1';
     if (opts.start) { start = opts.start.format('YYYY-MM-DD HH:mm'); }
     if (opts.end) { end = opts.end.format('YYYY-MM-DD HH:mm'); }
     if (start && end) {
-      fetchUrl = new Request(`${env.serverAddr}/history/${input}/from/${start}/${end}`);
+      fetchUrl = new Request(`${env.serverAddr}/history/${pointID}/from/${start}/${end}`);
     } else {
-      fetchUrl = new Request(`${env.serverAddr}/history/all/${input}`);
+      fetchUrl = new Request(`${env.serverAddr}/history/all/${pointID}`);
     }
     return fetch(fetchUrl);
   });

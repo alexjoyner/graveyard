@@ -6,7 +6,7 @@ import { startLoadingNotif, stopLoadingNotif } from '../../actions/notification'
 import { getChartConfig } from './utils/getChartConfig';
 import { Point, Points } from '../../propTypes';
 import { TEST_NOTIFICATION } from '../Notifications';
-import { getRequestFetchUrls } from './utils/getRequestFetchUrls';
+import { fetchDataForPoints } from './utils/fetchDataForPoints';
 import { getRawHistoryData } from './utils/getRawHistoryData';
 import { formatDataForGraph } from './utils/formatDataForGraph';
 import { dispatchNewHistoricalData, showHistoryModal, closeHistoryModal } from './actions';
@@ -23,7 +23,7 @@ class BaseHistoricalGraphModal extends Component {
     const points = Object
       .keys(this.props.chartPoints)
       .map(pointID => this.props.chartPoints[pointID]);
-    const calls = getRequestFetchUrls(points, opts);
+    const calls = fetchDataForPoints(points, opts);
     const rawDataArray = await getRawHistoryData(calls);
     const formattedData = formatDataForGraph(rawDataArray, points);
     this.props.dispatchNewHistoricalData(formattedData);
