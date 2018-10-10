@@ -1,6 +1,6 @@
 import React from 'react';
 import { Notification } from 'ro-component-library';
-import { BaseNotification } from './BaseNotification';
+import { BaseNotification } from './particles/BaseNotification';
 
 export const TEST_NOTIFICATION = 'TEST_NOTIFICATION';
 

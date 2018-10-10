@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { hideNotification } from '../../actions/notification';
+import { hideNotification } from '../../../../actions/notification';
 
-const Notification = ({ BaseComponent, name, ...props }) => (
+export const Notification = ({ BaseComponent, name, ...props }) => (
   <BaseComponent shown={props[name].shown} onClose={() => props.hideNotification(name)}>
     {props[name].contents}
   </BaseComponent>
