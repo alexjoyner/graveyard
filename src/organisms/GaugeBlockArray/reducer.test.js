@@ -1,6 +1,6 @@
 import { GaugeBlockArrayReducer } from './reducer';
 import { CHANGE_GROUP } from '../SideBarContent/actions';
-import { NEW_POINTS, REMOVE_POINTS, MULTISELECT_POINT, MULTISELECT_DESELECT_POINT } from './actions/types';
+import { NEW_POINTS, REMOVE_POINTS, MULTISELECT_POINT, MULTISELECT_DESELECT_POINT, NEW_LOG } from './actions/types';
 
 describe('GaugeBlockArrayReducer', () => {
   let InitialState;
@@ -37,6 +37,21 @@ describe('GaugeBlockArrayReducer', () => {
       ...InitialState,
       points: {
         15: { name: 'Test Point' },
+      },
+    });
+  });
+  it('should allow new logs', () => {
+    const state = GaugeBlockArrayReducer(InitialState, {
+      type: NEW_LOG,
+      data: {
+        pointID: 1,
+        log: { value: 20 },
+      },
+    });
+    expect(state).toEqual({
+      ...InitialState,
+      points: {
+        1: { name: 'Default Test Point', value: 20, multiSelected: false },
       },
     });
   });
