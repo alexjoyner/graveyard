@@ -5,7 +5,7 @@ import { ListHeader, CenteredContent, ListItem } from 'ro-component-library';
 import { MultiSelectedChartsMenu } from '../MultiSelectedChartsMenu';
 import { changePointGroup } from './actions';
 
-const BaseSideBarContent = props => (
+export const BaseSideBarContent = props => (
   <div>
     <ListHeader>Groups</ListHeader>
     <CenteredContent>
