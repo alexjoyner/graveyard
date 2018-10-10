@@ -12,7 +12,7 @@ import { formatDataForGraph } from './utils/formatDataForGraph';
 import { dispatchNewHistoricalData, showHistoryModal, closeHistoryModal } from './actions';
 import { IntervalButton } from './particles/IntervalButton';
 
-class BaseHistoricalGraphModal extends Component {
+export class BaseHistoricalGraphModal extends Component {
   componentDidUpdate() {
     if (this.props.modalStage === 'BUILDING') {
       this.runBuildGraphProcess();
