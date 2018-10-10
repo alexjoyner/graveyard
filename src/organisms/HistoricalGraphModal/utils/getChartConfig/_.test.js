@@ -1,6 +1,6 @@
 import { getChartConfig } from './';
 
-describe('getChartCOnfig', () => {
+describe('getChartConfig', () => {
   let result;
   beforeEach(() => {
     result = getChartConfig([
