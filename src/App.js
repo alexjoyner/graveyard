@@ -4,13 +4,15 @@ import { Header, SideBarPage } from 'ro-component-library';
 import { GaugeBlockArray } from './organisms/GaugeBlockArray';
 import { HistoricalGraphModal } from './organisms/HistoricalGraphModal';
 import { FeedbackButton } from './organisms/FeedbackButton';
-import { initializeData } from './actions';
+import { getGroups } from './organisms/SideBarContent/utils/getGroups';
+import { setGroups } from './organisms/SideBarContent/actions';
 import { SideBarContent } from './organisms/SideBarContent';
 import { TestNotification } from './organisms/Notifications';
 
 export class App extends Component {
-  componentDidMount() {
-    this.props.initializeData();
+  async componentDidMount() {
+    const groups = await getGroups();
+    this.props.setGroups(groups);
   }
   render() {
     return (
@@ -33,9 +35,6 @@ export class App extends Component {
     );
   }
 }
-const mapStateToProps = state => ({
-  ...state.HistoricalGraphModalReducer,
-});
-export default connect(mapStateToProps, {
-  initializeData,
+export default connect(null, {
+  setGroups,
 })(App);
