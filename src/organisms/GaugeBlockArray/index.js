@@ -10,6 +10,7 @@ import { getPointsFromGroupID } from './utils/getPointsFromGroupID';
 export class BaseGaugeBlockArray extends Component {
   constructor(props) {
     super(props);
+    /* istanbul ignore next */
     this.socket = props.socket || new PointsSocket({});
   }
   componentDidMount() {

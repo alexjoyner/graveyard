@@ -20,25 +20,48 @@ window.fetch = mockFetch([
 ]);
 
 describe('BaseGaugeBlockArray component', () => {
-  let component;
-  beforeEach(() => {
-    const props = {
-      publishNewPoints: jest.fn(),
-      publishNewLog: jest.fn(),
-      removeAllPoints: jest.fn(),
-      socket: new PointsSocket({
-        socket: io,
-      }),
-      points: {
-        1: { name: 'Test Input', value: 10 },
-      },
-    };
-    component = shallow(<BaseGaugeBlockArray {...props} />);
+  describe('Component without data', () => {
+    let component;
+    beforeEach(() => {
+      const props = {
+        publishNewPoints: jest.fn(),
+        publishNewLog: jest.fn(),
+        removeAllPoints: jest.fn(),
+        socket: new PointsSocket({
+          socket: io,
+        }),
+        points: {},
+      };
+      component = shallow(<BaseGaugeBlockArray {...props} />);
+    });
+    it('Should render without exploding', () => {
+      expect(component).toBeDefined();
+    });
+    it('Should match snapshot', () => {
+      expect(component).toMatchSnapshot();
+    });
   });
-  it('Should render without exploding', () => {
-    expect(component).toBeDefined();
-  });
-  it('Should match snapshot', () => {
-    expect(component).toMatchSnapshot();
+  describe('Component with points', () => {
+    let component;
+    beforeEach(() => {
+      const props = {
+        publishNewPoints: jest.fn(),
+        publishNewLog: jest.fn(),
+        removeAllPoints: jest.fn(),
+        socket: new PointsSocket({
+          socket: io,
+        }),
+        points: {
+          1: { name: 'Test Input', value: 10 },
+        },
+      };
+      component = shallow(<BaseGaugeBlockArray {...props} />);
+    });
+    it('Should render without exploding', () => {
+      expect(component).toBeDefined();
+    });
+    it('Should match snapshot', () => {
+      expect(component).toMatchSnapshot();
+    });
   });
 });
