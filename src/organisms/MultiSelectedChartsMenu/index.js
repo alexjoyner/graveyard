@@ -10,7 +10,7 @@ import { showNotification } from '../../actions/notification';
 import { TEST_NOTIFICATION } from '../Notifications';
 
 
-class BaseMultiSelectedChartsMenu extends Component {
+export class BaseMultiSelectedChartsMenu extends Component {
   handleStartBraphBuild() {
     const points = Object.keys(this.props.multiSelectedPoints);
     if (points.length === 0) {
