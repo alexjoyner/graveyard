@@ -1,4 +1,4 @@
-import { INIT_GROUPS } from './actions';
+import { SET_GROUPS } from './actions';
 
 const INITIAL_STATE = {
   groups: [],
@@ -6,7 +6,7 @@ const INITIAL_STATE = {
 
 export const SideBarContentReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case INIT_GROUPS: {
+    case SET_GROUPS: {
       const baseGroup = [{ id: 0, name: 'All Points' }];
       return { ...state, groups: baseGroup.concat(action.data) };
     }

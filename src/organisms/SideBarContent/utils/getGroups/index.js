@@ -1,17 +1,14 @@
-import { env } from './.env';
+import { env } from '../../../../.env';
 
-const initializeData = () => async (dispatch) => {
+const getGroups = async () => {
   try {
     const fetchUrl = new Request(`${env.serverAddr}/me/groups/1`);
     const response = await fetch(fetchUrl);
     const userGroups = await response.json();
-    dispatch({
-      type: 'INIT_GROUPS',
-      data: userGroups,
-    });
+    return userGroups;
   } catch (e) {
     throw new Error(e);
   }
 };
 
-export { initializeData };
+export { getGroups };

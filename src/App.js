@@ -10,7 +10,7 @@ import { TestNotification } from './organisms/Notifications';
 
 export class App extends Component {
   componentDidMount() {
-    initializeData()(this.props.dispatch);
+    this.props.initializeData();
   }
   render() {
     return (
@@ -36,4 +36,6 @@ export class App extends Component {
 const mapStateToProps = state => ({
   ...state.HistoricalGraphModalReducer,
 });
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, {
+  initializeData,
+})(App);

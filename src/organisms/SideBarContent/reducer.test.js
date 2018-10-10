@@ -1,5 +1,5 @@
 import { SideBarContentReducer } from './reducer';
-import { INIT_GROUPS } from './actions';
+import { SET_GROUPS } from './actions';
 
 describe('SideBarContentReducer', () => {
   let InitialState;
@@ -12,9 +12,9 @@ describe('SideBarContentReducer', () => {
     const state = SideBarContentReducer(InitialState, {});
     expect(state).toEqual(InitialState);
   });
-  it('should allow initializing groups', () => {
+  it('should allow setting groups', () => {
     const state = SideBarContentReducer(InitialState, {
-      type: INIT_GROUPS,
+      type: SET_GROUPS,
       data: [{ id: 1, name: 'test group' }],
     });
     expect(state).toEqual({
