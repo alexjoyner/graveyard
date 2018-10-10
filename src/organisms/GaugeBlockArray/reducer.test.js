@@ -1,4 +1,4 @@
-import { GaugeBlockArrayReducer } from './reducer';
+import { GaugeBlockArrayReducer, INITIAL_STATE } from './reducer';
 import { CHANGE_GROUP } from '../SideBarContent/actions';
 import { NEW_POINTS, REMOVE_POINTS, MULTISELECT_POINT, MULTISELECT_DESELECT_POINT, NEW_LOG } from './actions/types';
 
@@ -11,6 +11,12 @@ describe('GaugeBlockArrayReducer', () => {
         1: { name: 'Default Test Point' },
       },
     };
+  });
+  it('should return true initial state', () => {
+    const state = GaugeBlockArrayReducer(undefined, {});
+    // Expect undefined state to return true default state
+    //   from app
+    expect(state).toEqual(INITIAL_STATE);
   });
   it('should return initial state', () => {
     const state = GaugeBlockArrayReducer(InitialState, {});
