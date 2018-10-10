@@ -1,7 +1,7 @@
 import io from 'socket.io-client';
 import { env } from '../../.env';
 
-class iSocketIO {
+export class ISocketIO {
   constructor() {
     if (this.subscribe === undefined) { throw new TypeError('Must override method'); }
     if (this.unsubscribe === undefined) { throw new TypeError('Must override method'); }
@@ -9,7 +9,7 @@ class iSocketIO {
   }
 }
 
-class PointsSocket extends iSocketIO {
+class PointsSocket extends ISocketIO {
   constructor(opts) {
     super();
     this.socket = opts.socket || io(env.serverAddr);
