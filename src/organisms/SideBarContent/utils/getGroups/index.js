@@ -7,6 +7,7 @@ const getGroups = async () => {
     const userGroups = await response.json();
     return userGroups;
   } catch (e) {
+    /* istanbul ignore next */
     throw new Error(e);
   }
 };
