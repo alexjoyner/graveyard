@@ -11,7 +11,7 @@ const FeedbackButton = () => (
       marginTop: '8px',
     }}
     onClick={() => {
-      window.location.href = 'http://feedback.voicir.com';
+      window.location.assign('http://feedback.voicir.com');
     }}
   >
     Feedback
