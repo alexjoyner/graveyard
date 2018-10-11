@@ -26,6 +26,7 @@ BaseSideBarContent.propTypes = {
   })).isRequired,
 };
 
+/* istanbul ignore next */
 const mapStateToProps = state => ({
   ...state.SideBarContentReducer,
 });

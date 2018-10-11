@@ -14,6 +14,7 @@ Notification.propTypes = {
   name: PropTypes.string.isRequired,
 };
 
+/* istanbul ignore next */
 const mapStateToProps = state => ({
   ...state.NotificationReducer,
 });

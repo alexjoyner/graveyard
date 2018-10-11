@@ -55,6 +55,7 @@ BaseMultiSelectedChartsMenu.propTypes = {
   showNotification: PropTypes.func.isRequired,
 };
 
+/* istanbul ignore next */
 const mapStateToProps = state => ({
   ...state.MultiSelectedChartsMenuReducer,
 });
