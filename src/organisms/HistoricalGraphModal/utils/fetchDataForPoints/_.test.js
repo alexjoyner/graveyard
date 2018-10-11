@@ -10,7 +10,7 @@ describe('fetchDataForPoints', () => {
   beforeEach(() => {
     window.fetch = mockFetch;
     requests = [
-      { id: 1, name: 'test' },
+      { name: 'test' }, // Defaults to id: 1
       { id: 2, name: 'test2' },
     ];
   });
@@ -19,6 +19,20 @@ describe('fetchDataForPoints', () => {
     expect(testResult).toEqual([
       new Request(`${env.serverAddr}/history/all/1`),
       new Request(`${env.serverAddr}/history/all/2`),
+    ]);
+  });
+  it('should return historical requests with start&end options', () => {
+    const testResult = fetchDataForPoints(requests, {
+      start: {
+        format: () => 'TEST_START',
+      },
+      end: {
+        format: () => 'TEST_END',
+      },
+    });
+    expect(testResult).toEqual([
+      new Request(`${env.serverAddr}/history/1/from/TEST_START/TEST_END`),
+      new Request(`${env.serverAddr}/history/2/from/TEST_START/TEST_END`),
     ]);
   });
 });
