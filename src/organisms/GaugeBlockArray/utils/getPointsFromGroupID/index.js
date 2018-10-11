@@ -14,6 +14,7 @@ export const getPointsFromGroupID = async (groupID) => {
     });
     return points;
   } catch (e) {
+    /* istanbul ignore next */
     throw new Error(e);
   }
 };
