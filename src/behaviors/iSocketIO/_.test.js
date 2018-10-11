@@ -7,11 +7,11 @@ jest.mock('socket.io-client', () => ({
 }));
 class BrokenISocket1 extends ISocketIO {}
 class BrokenISocket2 extends ISocketIO {
-  subscribe() {}
+  subscribe() { return this; }
 }
 class BrokenISocket3 extends ISocketIO {
-  subscribe() {}
-  unsubscribe() {}
+  subscribe() { return this; }
+  unsubscribe() { return this; }
 }
 
 describe('iSocketIO classed', () => {

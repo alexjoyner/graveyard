@@ -8,7 +8,7 @@ describe('PointGaugeBlock component', () => {
   let props;
   describe('shallow mounted version', () => {
     beforeEach(() => {
-      const props = {
+      props = {
         point: {
           name: 'test',
           value: 0,

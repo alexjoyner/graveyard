@@ -31,6 +31,7 @@ export class BaseGaugeBlockArray extends Component {
     this.props.publishNewPoints(groupPoints);
     const pointsIdArray = Object.keys(groupPoints);
     this.socket.subscribe(pointsIdArray, (err, log) => {
+      /* istanbul ignore next */
       this.props.publishNewLog(log);
     });
   }
