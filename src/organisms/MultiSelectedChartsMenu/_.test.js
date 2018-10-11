@@ -5,13 +5,14 @@ import { BaseMultiSelectedChartsMenu } from './';
 describe('BaseMultiSelectedChartsMenu component', () => {
   describe('Base component state', () => {
     let component;
+    let props;
     beforeEach(() => {
-      const props = {
+      props = {
         removePoint: jest.fn(),
         buildGraph: jest.fn(),
         multiSelectedPoints: {
           1: { id: 1, name: 'test' },
-          2: { id: 2, name: 'test3' },
+          2: { id: 2, name: 'test2' },
         },
         showNotification: jest.fn(),
       };
@@ -22,6 +23,27 @@ describe('BaseMultiSelectedChartsMenu component', () => {
     });
     it('Should match snapshot', () => {
       expect(component).toMatchSnapshot();
+    });
+    it('should call remove point', () => {
+      component.find('Button').forEach((Button) => {
+        Button.props().onClick();
+      });
+      expect(props.removePoint).toHaveBeenCalled();
+      expect(props.removePoint).toHaveBeenCalledTimes(2);
+    });
+    it('should have the last button build the graph', () => {
+      component.find('ListItem').last().props().onClick();
+      expect(props.showNotification).toHaveBeenCalledTimes(0);
+      expect(props.buildGraph).toHaveBeenCalledTimes(1);
+    });
+    it('should show notification if no points were added', () => {
+      component.setProps({
+        ...props,
+        multiSelectedPoints: {},
+      });
+      component.find('ListItem').last().props().onClick();
+      expect(props.buildGraph).toHaveBeenCalledTimes(0);
+      expect(props.showNotification).toHaveBeenCalledTimes(1);
     });
   });
 });

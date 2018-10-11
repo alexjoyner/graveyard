@@ -13,7 +13,7 @@ ShallowWrapper {
             },
             "2": Object {
               "id": 2,
-              "name": "test3",
+              "name": "test2",
             },
           }
     }
@@ -54,7 +54,7 @@ ShallowWrapper {
                     </Button>
           </ListItem>
           <ListItem>
-                    test3
+                    test2
                     <Button
                               color="dark"
                               ghost={false}
@@ -120,7 +120,7 @@ ShallowWrapper {
                 </Button>
 </ListItem>,
               <ListItem>
-                test3
+                test2
                 <Button
                                 color="dark"
                                 ghost={false}
@@ -205,7 +205,7 @@ ShallowWrapper {
             "nodeType": "function",
             "props": Object {
               "children": Array [
-                "test3",
+                "test2",
                 <Button
                   color="dark"
                   ghost={false}
@@ -221,7 +221,7 @@ ShallowWrapper {
             },
             "ref": null,
             "rendered": Array [
-              "test3",
+              "test2",
               Object {
                 "instance": null,
                 "key": undefined,
@@ -300,7 +300,7 @@ ShallowWrapper {
                         </Button>
             </ListItem>
             <ListItem>
-                        test3
+                        test2
                         <Button
                                     color="dark"
                                     ghost={false}
@@ -366,7 +366,7 @@ ShallowWrapper {
                   </Button>
 </ListItem>,
                 <ListItem>
-                  test3
+                  test2
                   <Button
                                     color="dark"
                                     ghost={false}
@@ -451,7 +451,7 @@ ShallowWrapper {
               "nodeType": "function",
               "props": Object {
                 "children": Array [
-                  "test3",
+                  "test2",
                   <Button
                     color="dark"
                     ghost={false}
@@ -467,7 +467,7 @@ ShallowWrapper {
               },
               "ref": null,
               "rendered": Array [
-                "test3",
+                "test2",
                 Object {
                   "instance": null,
                   "key": undefined,
