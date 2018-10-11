@@ -5,8 +5,9 @@ import { Notification } from './';
 
 describe('Notification component', () => {
   let component;
+  let props;
   beforeEach(() => {
-    const props = {
+    props = {
       BaseComponent: RoNotif,
       hideNotification: jest.fn(),
       name: 'test',
@@ -21,5 +22,10 @@ describe('Notification component', () => {
   });
   it('Should match snapshot', () => {
     expect(component).toMatchSnapshot();
+  });
+  it('should allow closing notification', () => {
+    component.props().onClose();
+    expect(props.hideNotification).toHaveBeenCalledTimes(1);
+    expect(props.hideNotification).toHaveBeenCalledWith('test');
   });
 });
