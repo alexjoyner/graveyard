@@ -4,14 +4,15 @@ import { BaseSideBarContent } from './';
 
 describe('BaseSideBarContent component', () => {
   let component;
+  let props;
   beforeEach(() => {
-    const props = {
+    props = {
       changePointGroup: jest.fn(),
       groups: [
-        {id: 1, name: 'test'}, 
-        {id: 2, name: 'test2'},
+        { id: 1, name: 'test' },
+        { id: 2, name: 'test2' },
       ],
-    }
+    };
     component = shallow(<BaseSideBarContent {...props} />);
   });
   it('Should render without exploding', () => {
@@ -19,5 +20,12 @@ describe('BaseSideBarContent component', () => {
   });
   it('Should match snapshot', () => {
     expect(component).toMatchSnapshot();
+  });
+  it('should allow changing to the appropriate group', () => {
+    component.find('ListItem').forEach((item) => {
+      item.props().onClick();
+    });
+    expect(props.changePointGroup).toBeCalledWith(1);
+    expect(props.changePointGroup).toBeCalledWith(2);
   });
 });
