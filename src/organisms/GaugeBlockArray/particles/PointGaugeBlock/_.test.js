@@ -62,6 +62,6 @@ describe('PointGaugeBlock component', () => {
       const GaugeBlock = component.find('GaugeBlock');
       expect(GaugeBlock.props().onSettingsClick)
         .toThrowError(new Error('No on settings click implementation'));
-    })
+    });
   });
 });
