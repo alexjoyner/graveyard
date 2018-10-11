@@ -12,7 +12,7 @@ export class ISocketIO {
 class PointsSocket extends ISocketIO {
   constructor(opts) {
     super();
-    this.socket = opts.socket || io(env.serverAddr);
+    this.socket = opts.socket || /* istanbul ignore next */ io(env.serverAddr);
   }
   subscribe(pointsArray, cb) {
     this.points = pointsArray;

@@ -5,11 +5,27 @@ jest.mock('socket.io-client', () => ({
   on: jest.fn(),
   emit: jest.fn(),
 }));
+class BrokenISocket1 extends ISocketIO {}
+class BrokenISocket2 extends ISocketIO {
+  subscribe() {}
+}
+class BrokenISocket3 extends ISocketIO {
+  subscribe() {}
+  unsubscribe() {}
+}
 
 describe('iSocketIO classed', () => {
   describe('iSocketIO Base Class', () => {
-    it('should throw not implemented error', () => {
-      const createBrokenSocket = () => new ISocketIO();
+    it('should throw from not implementing subscribe', () => {
+      const createBrokenSocket = () => new BrokenISocket1();
+      expect(createBrokenSocket).toThrowError(TypeError);
+    });
+    it('should throw from not implementing unsubscirbe', () => {
+      const createBrokenSocket = () => new BrokenISocket2();
+      expect(createBrokenSocket).toThrowError(TypeError);
+    });
+    it('should throw from not implementing join', () => {
+      const createBrokenSocket = () => new BrokenISocket3();
       expect(createBrokenSocket).toThrowError(TypeError);
     });
   });
