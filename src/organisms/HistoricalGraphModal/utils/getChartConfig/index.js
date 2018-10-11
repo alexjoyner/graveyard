@@ -36,16 +36,16 @@ const getBaseConfig = () => ({
         color: 'white',
       },
     },
-    events: {
-      afterSetExtremes: (event) => {
-        const min = Math.ceil(event.min);
-        const max = Math.floor(event.max);
-        console.log({
-          min,
-          max,
-        });
-      },
-    },
+    // events: {
+    //   afterSetExtremes: (event) => {
+    //     const min = Math.ceil(event.min);
+    //     const max = Math.floor(event.max);
+    //     console.log({
+    //       min,
+    //       max,
+    //     });
+    //   },
+    // },
   },
   yAxis: {
     title: {

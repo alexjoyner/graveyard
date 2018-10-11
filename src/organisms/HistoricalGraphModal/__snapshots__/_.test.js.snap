@@ -165,9 +165,6 @@ ShallowWrapper {
                                 "text": "Historical Data View",
                               },
                               "xAxis": Object {
-                                "events": Object {
-                                  "afterSetExtremes": [Function],
-                                },
                                 "labels": Object {
                                   "style": Object {
                                     "color": "white",
@@ -416,9 +413,6 @@ ShallowWrapper {
               "text": "Historical Data View",
             },
             "xAxis": Object {
-              "events": Object {
-                "afterSetExtremes": [Function],
-              },
               "labels": Object {
                 "style": Object {
                   "color": "white",
@@ -583,9 +577,6 @@ ShallowWrapper {
                                       "text": "Historical Data View",
                                     },
                                     "xAxis": Object {
-                                      "events": Object {
-                                        "afterSetExtremes": [Function],
-                                      },
                                       "labels": Object {
                                         "style": Object {
                                           "color": "white",
@@ -834,9 +825,6 @@ ShallowWrapper {
                 "text": "Historical Data View",
               },
               "xAxis": Object {
-                "events": Object {
-                  "afterSetExtremes": [Function],
-                },
                 "labels": Object {
                   "style": Object {
                     "color": "white",

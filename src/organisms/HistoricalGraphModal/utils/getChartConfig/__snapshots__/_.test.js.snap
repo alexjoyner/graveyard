@@ -45,9 +45,6 @@ Object {
     "text": "Historical Data View",
   },
   "xAxis": Object {
-    "events": Object {
-      "afterSetExtremes": [Function],
-    },
     "labels": Object {
       "style": Object {
         "color": "white",
