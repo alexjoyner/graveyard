@@ -26,8 +26,9 @@ describe('BaseHistoricalGraphModal component', () => {
   });
   describe('Shown Chart Component', () => {
     let component;
+    let props;
     beforeEach(() => {
-      const props = {
+      props = {
         startLoadingNotif: jest.fn(),
         stopLoadingNotif: jest.fn(),
         dispatchNewHistoricalData: jest.fn(),
@@ -43,6 +44,10 @@ describe('BaseHistoricalGraphModal component', () => {
     });
     it('Should match snapshot', () => {
       expect(component).toMatchSnapshot();
+    });
+    it('should allow closing history modal', () => {
+      component.find('Button').last().props().onClick();
+      expect(props.closeHistoryModal).toHaveBeenCalledTimes(1);
     });
   });
   describe('Full Mounted Component', () => {

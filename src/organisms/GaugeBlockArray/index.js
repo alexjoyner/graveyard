@@ -30,8 +30,8 @@ export class BaseGaugeBlockArray extends Component {
     const groupPoints = await getPointsFromGroupID(groupID);
     this.props.publishNewPoints(groupPoints);
     const pointsIdArray = Object.keys(groupPoints);
+    /* istanbul ignore next */
     this.socket.subscribe(pointsIdArray, (err, log) => {
-      /* istanbul ignore next */
       this.props.publishNewLog(log);
     });
   }
@@ -51,6 +51,7 @@ export class BaseGaugeBlockArray extends Component {
   }
 }
 
+/* istanbul ignore next */
 const mapStateToProps = state => ({
   ...state.GaugeBlockArrayReducer,
 });

@@ -46,11 +46,7 @@ export class BaseHistoricalGraphModal extends Component {
           onClick={() => this.props.closeHistoryModal()}
         >Close
         </Button>
-        {(this.props.modalStage === 'LOADING') ? (
-          <h1>Loading Data</h1>
-        ) : (
-          <RoHighChart config={getChartConfig(this.props.modalData)} />
-        )}
+        <RoHighChart config={getChartConfig(this.props.modalData)} />
       </Modal>
     ) : (<div style={{ visibility: 'hidden' }} />);
   }
