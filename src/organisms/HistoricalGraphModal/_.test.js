@@ -2,6 +2,14 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { BaseHistoricalGraphModal } from './';
 
+const mockFetch = data => jest.fn().mockImplementation(() => Promise.resolve({
+  status: 200,
+  json: () => data,
+}));
+
+window.fetch = mockFetch([
+  { id: 1, name: 'testPoint' },
+]);
 describe('BaseHistoricalGraphModal component', () => {
   describe('Empty Hidden Chart Component', () => {
     let component;
@@ -61,7 +69,9 @@ describe('BaseHistoricalGraphModal component', () => {
         showHistoryModal: jest.fn(),
         closeHistoryModal: jest.fn(),
         modalStage: 'SHOWN',
-        chartPoints: {},
+        chartPoints: {
+          1: { id: 1, name: 'test point' },
+        },
       };
     });
     afterEach(() => {

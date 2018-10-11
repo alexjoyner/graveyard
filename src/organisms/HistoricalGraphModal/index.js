@@ -65,6 +65,7 @@ BaseHistoricalGraphModal.defaultProps = {
   modalData: [],
 };
 
+/* istanbul ignore next */
 const mapStateToProps = state => ({
   ...state.HistoricalGraphModalReducer,
 });
