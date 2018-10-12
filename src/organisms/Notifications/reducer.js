@@ -1,7 +1,7 @@
 import React from 'react';
 import { SHOW_NOTIFICATION, HIDE_NOTIFICATION } from '../../actions/notification';
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   TEST_NOTIFICATION: {
     shown: false,
     contents: <div />,
@@ -15,7 +15,7 @@ export const NotificationReducer = (state = INITIAL_STATE, action) => {
         ...state,
         [action.name]: {
           shown: true,
-          contents: action.contents || state[action.name].contents,
+          contents: action.contents,
         },
       };
     case HIDE_NOTIFICATION:

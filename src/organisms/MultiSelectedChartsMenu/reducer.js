@@ -2,7 +2,7 @@ import _ from 'lodash';
 import { MULTISELECT_POINT } from '../GaugeBlockArray/actions/types';
 import { REMOVE_POINT } from './actions';
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   multiSelectedPoints: {},
 };
 

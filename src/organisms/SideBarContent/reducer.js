@@ -1,6 +1,6 @@
 import { SET_GROUPS } from './actions';
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   groups: [],
 };
 

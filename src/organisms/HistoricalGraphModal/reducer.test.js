@@ -1,4 +1,4 @@
-import { HistoricalGraphModalReducer } from './reducer';
+import { HistoricalGraphModalReducer, INITIAL_STATE as TRUE_INITIAL_STATE } from './reducer';
 import { BUILD_GRAPH, SHOW_GRAPH, CLOSE_HISTORICAL_MODAL, NEW_HISTORICAL_DATA } from './actions';
 
 describe('HistoricalGraphModalReducer', () => {
@@ -9,6 +9,10 @@ describe('HistoricalGraphModalReducer', () => {
       modalData: [],
       chartPoints: {},
     };
+  });
+  it('should return true initial state', () => {
+    const state = HistoricalGraphModalReducer(undefined, {});
+    expect(state).toEqual(TRUE_INITIAL_STATE);
   });
   it('should return default state', () => {
     const state = HistoricalGraphModalReducer(InitialState, {});

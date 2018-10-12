@@ -1,5 +1,5 @@
 import React from 'react';
-import { NotificationReducer } from './reducer';
+import { NotificationReducer, INITIAL_STATE as TRUE_INITIAL_STATE } from './reducer';
 import { SHOW_NOTIFICATION, HIDE_NOTIFICATION } from '../../actions/notification';
 
 describe('NotificationReducer', () => {
@@ -11,6 +11,10 @@ describe('NotificationReducer', () => {
         contents: null,
       },
     };
+  });
+  it('should return true initial state', () => {
+    const state = NotificationReducer(undefined, {});
+    expect(state).toEqual(TRUE_INITIAL_STATE);
   });
   it('should return initial state', () => {
     const state = NotificationReducer(InitialState, {});
