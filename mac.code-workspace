@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "/Users/rosco/Documents/GitHub/shared/ro-component-library"
+		}
+	],
+	"settings": {
+		"javascript.validate.enable": false,
+		"files.eol": "\n"
+	}
+}

@@ -2,7 +2,7 @@
   "name": "closet-pioneer",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "http://alexjoyner.github.io/closet-pioneer",
+  "homepage" : "http://alexjoyner.github.io",
   "dependencies": {
     "react": "^16.5.2",
     "react-dom": "^16.2.0",
