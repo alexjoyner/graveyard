@@ -75,7 +75,7 @@ app.get('/points/group/:groupID', async (req, res) => {
 })
 app.get('/points/:clientID', async (req, res) => {
   const { clientID } = req.params;
-  let Query = 'SELECT id, name FROM point WHERE client_id = $1;'
+  let Query = 'SELECT id, name, settings FROM point WHERE client_id = $1;'
   const client = new Client(conInfo);
   try{
     await client.connect();
