@@ -1,12 +1,15 @@
 {
   "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/CVS": true,
     "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.gitignore": false,
+    "**/.hg": true,
     "**/.idea": true,
+    "**/.svn": true,
     "**/.vscode": true,
-    "**/.gitignore": false
+    "**/CVS": true,
+    "**/dev-keys": true,
+    "**/digital-ocean": true,
+    "**/workspaces": true
   }
 }

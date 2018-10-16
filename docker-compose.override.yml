@@ -8,7 +8,7 @@ services:
       - "8080:80"
     volumes:
       - ../server/nginx/nginx.dev.conf:/etc/nginx/nginx.conf
-      - ./ssl:/etc/ssl
+      - ./dev-keys/ssl:/etc/ssl
   log-handler:
     build:
       context: ../server/log-handler
@@ -79,4 +79,4 @@ secrets:
   pg-db:
     file: dev-keys/pg-db.txt
   ssl_dhparam:
-    file: ssl/dhparam.pem
+    file: dev-keys/ssl/dhparam.pem

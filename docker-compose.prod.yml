@@ -6,7 +6,7 @@ services:
       restart_policy:
         condition: on-failure
     volumes:
-      - /etc/letsecrypt:/etc/letsencrypt
+      - /etc/letsencrypt:/etc/letsencrypt
     ports:
       - "80:80"
       - "443:443"
@@ -26,7 +26,7 @@ services:
       restart_policy:
         condition: on-failure
   accounts-service:
-    image: rosco9awj/accounts-data-service
+    image: rosco9awj/ees-accounts-service
     deploy:
       restart_policy:
         condition: on-failure

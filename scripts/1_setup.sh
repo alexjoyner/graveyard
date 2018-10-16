@@ -14,8 +14,5 @@ git clone https://github.com/alexjoyner/log-handler.git ./server/log-handler
 git clone https://github.com/alexjoyner/datalogger-socket-service.git ./server/socket-service
 git clone https://github.com/alexjoyner/historical-data-service.git ./server/historical-service
 git clone https://github.com/alexjoyner/ees-datalogger-nginx.git ./server/nginx
-### Client Repos ###
-git clone https://github.com/alexjoyner/ees-simple-dash.git ./client
-cd ../
-### Shared Repos ###
-git clone https://github.com/alexjoyner/ro-component-library.git ./shared/ro-component-library
+
+echo "Now you just need the client repo and ro-component-library"
