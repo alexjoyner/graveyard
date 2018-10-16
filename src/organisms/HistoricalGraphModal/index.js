@@ -1,126 +1,80 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import moment from 'moment';
-import { RoHighChart, RoDatePicker, Button, Modal, Panel, Input } from 'ro-component-library';
+import PropTypes from 'prop-types';
+import { RoHighChart, Button, Modal, Panel } from 'ro-component-library';
+import { startLoadingNotif, stopLoadingNotif } from '../../actions/notification';
 import { getChartConfig } from './utils/getChartConfig';
-import { GetNewHistoryGraph } from './actions';
+import { Point, Points } from '../../propTypes';
+import { TEST_NOTIFICATION } from '../Notifications';
+import { fetchDataForPoints } from './utils/fetchDataForPoints';
+import { getRawHistoryData } from './utils/getRawHistoryData';
+import { formatDataForGraph } from './utils/formatDataForGraph';
+import { dispatchNewHistoricalData, showHistoryModal, closeHistoryModal } from './actions';
+import { IntervalButton } from './particles/IntervalButton';
 
-const getFormattedDates = (preset) => {
-  let startDate = '';
-  let endDate = moment();
-  switch(preset){
-    case 'day':
-      startDate = moment().subtract(24, 'hours');
-      break;
-    case 'week':
-      startDate = moment().subtract(1, 'weeks');
-      break;
-    case 'month':
-      startDate = moment().subtract(1, 'month');
-      break;
-    case '6 months':
-      startDate = moment().subtract(6, 'months');
-      break;
-    default:
-      console.error('Internal: No correct date preset passed to getFormattedDates');
+export class BaseHistoricalGraphModal extends Component {
+  componentDidUpdate() {
+    if (this.props.modalStage === 'BUILDING') {
+      this.runBuildGraphProcess();
+    }
   }
-  return { startDate, endDate };
-}
-
-class HistoricalGraphModal extends Component {
-    constructor(props){
-      super(props);
-      const NOW = moment();
-      const ONE_DAY_AGO = moment().subtract(24, 'hours');
-      this.state = {
-        startDate: ONE_DAY_AGO,
-        endDate: NOW,
-        showCustom: false,
-      }
-    }
-    handleStartDateChange(date){
-      this.setState({
-        ...this.state,
-        startDate: date
-      })
-    }
-    handleEndDateChange(date){
-      this.setState({
-        ...this.state,
-        endDate: date
-      })
-    }
-    getNewTimeFrame(preset){
-      const { startDate, endDate } = getFormattedDates(preset);
-      this.setState({
-        ...this.state,
-        startDate, 
-        endDate,
-      });
-      GetNewHistoryGraph(this.props.modalData, this.state)(this.props.dispatch);
-    }
-    getCustomData(){
-      GetNewHistoryGraph(this.props.modalData, this.state)(this.props.dispatch);
-    }
-    toggleCustom(){
-      this.setState({
-        ...this.state,
-        showCustom: !this.state.showCustom
-      })
-    }
-    render() {
-      return (this.props.modalStage !== 'hidden')?(
-        <Modal width="90%">
-          <Panel width="90%">
-            <Button primary onClick={() => this.getNewTimeFrame('day')}>1 Day</Button>
-            <Button primary onClick={() => this.getNewTimeFrame('week')}>1 Week</Button>
-            <Button primary onClick={() => this.getNewTimeFrame('month')}>1 Month</Button>
-            <Button primary onClick={() => this.getNewTimeFrame('6 months')}>6 Months</Button>
-            <Button primary onClick={() => this.toggleCustom()}>Custom</Button>
-            {(this.state.showCustom)?(
-              <span>
-                <RoDatePicker
-                  customInput={<Input labelText="Start Date:"/>}
-                  labelText="Start Date:"
-                  onChange={date => this.handleStartDateChange(date)}
-                  selected={this.state.startDate}
-                  selectsStart
-                  startDate={this.state.startDate}
-                  endDate={this.state.endDate}
-                  dateFormat="ll"
-                />
-                <RoDatePicker
-                  customInput={<Input labelText="End Date:"/>}
-                  labelText="End Date:"
-                  onChange={date => this.handleEndDateChange(date)}
-                  selected={this.state.endDate}
-                  selectsEnd
-                  startDate={this.state.startDate}
-                  endDate={this.state.endDate}
-                  dateFormat="ll"
-                />
-                <Button success onClick={() => this.getCustomData()}>Submit</Button>
-              </span>
-            ):null}
-          </Panel>
-          <Button primary onClick={() => this.props.dispatch({
-              type: 'HIDE_HISTORICAL_MODAL'
-          })}>Close</Button>
-          {(this.props.modalStage === 'loading')?(
-            <h1>Loading Data</h1>
-          ):(
-            <RoHighChart config={getChartConfig(this.props.modalData)} />
-          )}
-        </Modal>
-      ):(<div style={{visibility: 'hidden'}}></div>)
-    }
-}
-
-const mapStateToProps = (state) => {
-  return {
-    ...state.HistoricalGraphModalReducer,
+  async runBuildGraphProcess(opts = {}) {
+    this.props.startLoadingNotif(TEST_NOTIFICATION);
+    const points = Object
+      .keys(this.props.chartPoints)
+      .map(pointID => this.props.chartPoints[pointID]);
+    const calls = fetchDataForPoints(points, opts);
+    const rawDataArray = await getRawHistoryData(calls);
+    const formattedData = formatDataForGraph(rawDataArray, points);
+    this.props.dispatchNewHistoricalData(formattedData);
+    this.props.showHistoryModal();
+    this.props.stopLoadingNotif(TEST_NOTIFICATION);
+    return null;
+  }
+  render() {
+    return (this.props.modalStage === 'SHOWN') ? (
+      <Modal width="90%">
+        <Panel width="90%">
+          <IntervalButton color="primary" type="oneDay" onClick={opts => this.runBuildGraphProcess(opts)} >1 Day</IntervalButton>
+          <IntervalButton color="primary" type="oneWeek" onClick={opts => this.runBuildGraphProcess(opts)} >1 Week</IntervalButton>
+          <IntervalButton color="primary" type="oneMonth" onClick={opts => this.runBuildGraphProcess(opts)} >1 Month</IntervalButton>
+          <IntervalButton color="primary" type="sixMonths" onClick={opts => this.runBuildGraphProcess(opts)} >6 Months</IntervalButton>
+          <IntervalButton color="primary" onClick={() => this.runBuildGraphProcess()} >All</IntervalButton>
+        </Panel>
+        <Button
+          color="primary"
+          onClick={() => this.props.closeHistoryModal()}
+        >Close
+        </Button>
+        <RoHighChart config={getChartConfig(this.props.modalData)} />
+      </Modal>
+    ) : (<div style={{ visibility: 'hidden' }} />);
   }
 }
+BaseHistoricalGraphModal.propTypes = {
+  startLoadingNotif: PropTypes.func.isRequired,
+  stopLoadingNotif: PropTypes.func.isRequired,
+  dispatchNewHistoricalData: PropTypes.func.isRequired,
+  showHistoryModal: PropTypes.func.isRequired,
+  closeHistoryModal: PropTypes.func.isRequired,
+  modalStage: PropTypes.string.isRequired,
+  modalData: PropTypes.arrayOf(Point),
+  chartPoints: Points.isRequired,
+};
+BaseHistoricalGraphModal.defaultProps = {
+  modalData: [],
+};
 
-HistoricalGraphModal = connect(mapStateToProps, null)(HistoricalGraphModal);
+/* istanbul ignore next */
+const mapStateToProps = state => ({
+  ...state.HistoricalGraphModalReducer,
+});
+
+const HistoricalGraphModal = connect(mapStateToProps, {
+  startLoadingNotif,
+  stopLoadingNotif,
+  dispatchNewHistoricalData,
+  showHistoryModal,
+  closeHistoryModal,
+})(BaseHistoricalGraphModal);
 export { HistoricalGraphModal };

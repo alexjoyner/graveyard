@@ -1,45 +1,37 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { ListHeader, CenteredContent, ListItem, colors } from 'ro-component-library';
+import { ListHeader, CenteredContent, ListItem } from 'ro-component-library';
 import { MultiSelectedChartsMenu } from '../MultiSelectedChartsMenu';
-import { setNewGroup } from './actions';
-import { leaveCurrentGroupPoints, getAllPoints } from '../GaugeBlockArray/actions';
+import { changePointGroup } from './actions';
 
-
-let SideBarContent = (props) => (
-    <div>
-      <ListHeader>Groups</ListHeader>
-      <CenteredContent>
-        <ListItem 
-            onClick={() => {
-                leaveCurrentGroupPoints(props.points)(props.dispatch);
-                getAllPoints(1)(props.dispatch);
-            }}>
-            All Points
+export const BaseSideBarContent = props => (
+  <div>
+    <ListHeader>Groups</ListHeader>
+    <CenteredContent>
+      {props.groups.map(group => (
+        <ListItem key={group.id} onClick={() => { props.changePointGroup(group.id); }} >
+          {group.name}
         </ListItem>
-        {props.groups.map((group) => {
-            return (
-                <ListItem 
-                    key={group.id}
-                    onClick={() => {
-                        leaveCurrentGroupPoints(props.points)(props.dispatch);
-                        setNewGroup(group)(props.dispatch);
-                    }}>
-                    {group.name}
-                </ListItem>
-            )
-        })}
-      </CenteredContent>
-      <MultiSelectedChartsMenu />
-    </div>
-  )
+        ))}
+    </CenteredContent>
+    <MultiSelectedChartsMenu />
+  </div>
+);
+BaseSideBarContent.propTypes = {
+  changePointGroup: PropTypes.func.isRequired,
+  groups: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+  })).isRequired,
+};
 
-const mapStateToProps = (state) => {
-    return {
-        ...state.SideBarContentReducer,
-        ...state.GaugeBlockArrayReducer
-    }
-}
+/* istanbul ignore next */
+const mapStateToProps = state => ({
+  ...state.SideBarContentReducer,
+});
 
-SideBarContent = connect(mapStateToProps, null)(SideBarContent);
+const SideBarContent = connect(mapStateToProps, {
+  changePointGroup,
+})(BaseSideBarContent);
 export { SideBarContent };

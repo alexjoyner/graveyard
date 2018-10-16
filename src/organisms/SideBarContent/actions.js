@@ -1,7 +1,12 @@
-import { getNewGroupPoints } from "../GaugeBlockArray/actions";
+export const SET_GROUPS = 'SET_GROUPS';
+export const CHANGE_GROUP = 'CHANGE_GROUP';
 
-const setNewGroup = (group) => {
-    return getNewGroupPoints(group.id);
-}
+export const setGroups = groups => ({
+  type: SET_GROUPS,
+  data: groups,
+});
 
-export {setNewGroup};
+export const changePointGroup = groupID => ({
+  type: CHANGE_GROUP,
+  data: groupID,
+});

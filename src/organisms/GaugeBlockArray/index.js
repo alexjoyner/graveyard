@@ -1,74 +1,64 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {GaugeBlock, CenteredContent, getUniqueID, PlainBox} from 'ro-component-library';
-import { getPointsLogs } from './actions';
+import { CenteredContent } from 'ro-component-library';
+import { GaugeBlockArrayNoDataContent } from './particles/GaugeBlockArrayNoDataContent';
+import { publishNewPoints, publishNewLog, removeAllPoints } from './actions/managePoints';
+import { PointGaugeBlock } from './particles/PointGaugeBlock';
+import { PointsSocket } from '../../behaviors/iSocketIO';
+import { getPointsFromGroupID } from './utils/getPointsFromGroupID';
 
-
-class GaugeBlockArray extends Component{
-  componentDidMount(){
-    const {dispatch} = this.props;
-    getPointsLogs(this.props.points)(dispatch); 
+export class BaseGaugeBlockArray extends Component {
+  constructor(props) {
+    super(props);
+    /* istanbul ignore next */
+    this.socket = props.socket || new PointsSocket({});
   }
-  renderPlaceholders(){
-    return (
-      <CenteredContent>
-        <PlainBox height="25vh" width="25%"/>
-        <PlainBox height="25vh" width="25%"/>
-        <PlainBox height="25vh" width="25%"/>
-        <PlainBox height="25vh" width="25%"/>
-        <PlainBox height="25vh" width="25%"/>
-        <PlainBox height="25vh" width="25%"/>
-        <PlainBox height="25vh" width="25%"/>
-      </CenteredContent>
-    )
+  componentDidMount() {
+    this.handleSubscribeToGroup(this.props.currentGroup);
   }
-  multiSelectInput(input, id){
-    this.props.dispatch({type: 'MULTISELECT_INPUT', data: {
-      input, id
-    }});
-    setTimeout(() => {
-      this.props.dispatch({type: 'MULTISELECT_DESELECT_INPUT', data: id});
-    }, 2000)
-  }
-  render(){
-    const inputs = Object.keys(this.props.inputs);
-    return (!inputs.length)? this.renderPlaceholders() : (
-      <CenteredContent>
-        {inputs.map((id) => {
-          let input = this.props.inputs[id];
-          let opts = {
-            min: 0,
-            max: 100,
-          };
-          if(input.unit === 'F') opts = this.props.temp;
-          if(input.unit === 'CFM') opts = this.props.cfm;
-          if(input.unit === 'A')  opts = this.props.amps;
-          if(input.unit === 'PSI')  opts = this.props.psi;
-          if(input.unit === 'in/sec')  opts = this.props.vibration;
-          let gaugeVal = input.value;
-          if(gaugeVal > opts.max)
-            gaugeVal = opts.max;
-          if(gaugeVal < opts.min)
-            gaugeVal = opts.min;
-          return <GaugeBlock 
-            {...opts} 
-            key={id}
-            value={gaugeVal} 
-            label={input.name}
-            multiSelected={input.multiSelected}
-            height={'10vh'}
-            onClick={() => this.multiSelectInput(input, id)}></GaugeBlock>
-        })}
-      </CenteredContent>
-    )
-  }
-}
-
-const mapStateToProps = (state) => {
-    return {
-        ...state.GaugeBlockArrayReducer
+  componentDidUpdate(prevProps) {
+    if (this.props.currentGroup !== prevProps.currentGroup) {
+      this.handleRemoveAllPoints();
+      this.handleSubscribeToGroup(this.props.currentGroup);
     }
+  }
+  handleRemoveAllPoints() {
+    this.socket.unsubscribe();
+    this.props.removeAllPoints();
+  }
+  async handleSubscribeToGroup(groupID) {
+    const groupPoints = await getPointsFromGroupID(groupID);
+    this.props.publishNewPoints(groupPoints);
+    const pointsIdArray = Object.keys(groupPoints);
+    /* istanbul ignore next */
+    this.socket.subscribe(pointsIdArray, (err, log) => {
+      this.props.publishNewLog(log);
+    });
+  }
+  render() {
+    const points = Object.keys(this.props.points);
+    return (!points.length) ?
+      <GaugeBlockArrayNoDataContent /> : (
+        <CenteredContent>
+          {points.map(id => (<PointGaugeBlock
+            {...this.props}
+            key={id}
+            point={this.props.points[id]}
+            id={id}
+          />))}
+        </CenteredContent>
+      );
+  }
 }
 
-GaugeBlockArray = connect(mapStateToProps, null)(GaugeBlockArray)
-export {GaugeBlockArray};
+/* istanbul ignore next */
+const mapStateToProps = state => ({
+  ...state.GaugeBlockArrayReducer,
+});
+
+const GaugeBlockArray = connect(mapStateToProps, {
+  publishNewPoints,
+  publishNewLog,
+  removeAllPoints,
+})(BaseGaugeBlockArray);
+export { GaugeBlockArray };

@@ -1,77 +1,21 @@
-import moment from 'moment';
-import { env } from '../../.env';
-import { showBasicNotification } from '../DashNotification/actions';
+export const NEW_HISTORICAL_DATA = 'NEW_HISTORICAL_DATA';
+export const SHOW_GRAPH = 'SHOW_HISTORICAL_MODAL';
+export const BUILD_GRAPH = 'BUILD_GRAPH';
+export const CLOSE_HISTORICAL_MODAL = 'CLOSE_HISTORICAL_MODAL';
+export const buildGraph = chartPoints => ({
+  type: BUILD_GRAPH,
+  data: chartPoints,
+});
 
-export const GetNewHistoryGraph = (requests, opts) => {
-  return async (dispatch) => {
-    if (requests.length === 0)
-      return showBasicNotification('Please add at least one graph')(dispatch);
-    ShowHistoryGraphLoading()(dispatch);
-    await GetHistoryData(requests, opts)(dispatch);
-    ShowHistoryModal()(dispatch);
-  }
-}
+export const dispatchNewHistoricalData = formattedGraphDataArray => ({
+  type: NEW_HISTORICAL_DATA,
+  data: formattedGraphDataArray,
+});
 
-export const ShowHistoryGraphLoading = () => {
-  return (dispatch) => {
-    dispatch({
-      type: 'LOADING_START'
-    });
-  }
-}
+export const showHistoryModal = () => ({
+  type: SHOW_GRAPH,
+});
 
-export const GetHistoryData = (requests, opts) => {
-  return async (dispatch) => {
-    try {
-      let calls = requests.map((request) => {
-        let start, end, fetchUrl;
-        const input = request.source.id || '1';
-        let now = moment().format('YYYY-MM-DD HH:mm');
-        if (opts.start)
-          start = opts.startDate.format('YYYY-MM-DD HH:mm');
-        if (opts.end)
-          end = opts.endDate.format('YYYY-MM-DD HH:mm');
-        if (start && end) {
-          fetchUrl = new Request(`${env.serverAddr}/history/${input}/from/${start}/${end}`);
-        } else if (start && !end) {
-          fetchUrl = new Request(`${env.serverAddr}/history/${input}/from/${start}/${now}`);
-        } else {
-          fetchUrl = new Request(`${env.serverAddr}/history/all/${input}`);
-        }
-        return fetch(fetchUrl);
-      })
-      let responses = await Promise.all(calls);
-      let jsonCalls = responses.map((response) => response.json());
-      let rawData = await Promise.all(jsonCalls);
-      let result = rawData.map((data, i) => {
-        return {
-          source: {
-            id: requests[i].source.id,
-            inputname: requests[i].source.name,
-            unit: requests[i].source.unit
-          },
-          data
-        }
-      })
-      dispatch({
-        type: 'NEW_HISTORICAL_DATA',
-        data: result,
-      });
-    }
-    catch (e) {
-      console.error(e);
-    }
-  }
-
-}
-
-export const ShowHistoryModal = () => {
-  return (dispatch) => {
-    dispatch({
-      type: 'SHOW_HISTORICAL_MODAL'
-    });
-    dispatch({
-      type: 'LOADING_STOP'
-    });
-  }
-}
+export const closeHistoryModal = () => ({
+  type: CLOSE_HISTORICAL_MODAL,
+});

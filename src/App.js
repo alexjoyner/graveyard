@@ -1,44 +1,40 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import { Header, colors, SideBarPage } from 'ro-component-library';
-import {GaugeBlockArray} from './organisms/GaugeBlockArray';
-import {AuthModal} from './organisms/AuthModal';
+import { connect } from 'react-redux';
+import { Header, SideBarPage } from 'ro-component-library';
+import { GaugeBlockArray } from './organisms/GaugeBlockArray';
 import { HistoricalGraphModal } from './organisms/HistoricalGraphModal';
-import { DashNotification } from './organisms/DashNotification';
 import { FeedbackButton } from './organisms/FeedbackButton';
-import { initializeData } from './actions';
+import { getGroups } from './organisms/SideBarContent/utils/getGroups';
+import { setGroups } from './organisms/SideBarContent/actions';
 import { SideBarContent } from './organisms/SideBarContent';
+import { TestNotification } from './organisms/Notifications';
 
-class App extends Component {
-  constructor(props){
-    super(props);
-    initializeData()(this.props.dispatch);
+export class App extends Component {
+  async componentDidMount() {
+    const groups = await getGroups();
+    this.props.setGroups(groups);
   }
   render() {
-    return this.props.loggedIn? (
-      <div style={{marginTop: '80px'}}>
-        <DashNotification />
-        <Header 
-          color={colors.dark} 
-          height={'67px'} 
-          fontSize={'25px'} 
-          logoText={'Dashboard Demo'} 
-          sticky >
+    return (
+      <div style={{ marginTop: '80px' }}>
+        <TestNotification />
+        <Header
+          color="dark"
+          height="67px"
+          fontSize="25px"
+          logoText="Dashboard Demo"
+          sticky
+        >
           <FeedbackButton />
         </Header>
         <SideBarPage sideBarContents={<SideBarContent {...this.props} />} >
-          <GaugeBlockArray></GaugeBlockArray>
+          <GaugeBlockArray />
         </SideBarPage>
-        <HistoricalGraphModal modalData={this.props.modalData}/>
-      </div>) : (
-      <AuthModal></AuthModal>
+        <HistoricalGraphModal modalData={this.props.modalData} />
+      </div>
     );
   }
 }
-const mapStateToProps = (state) => {
-  return {
-    ...state.HistoricalGraphModalReducer,
-    ...state.AuthModalReducer
-  }
-}
-export default connect(mapStateToProps)(App);
+export default connect(null, {
+  setGroups,
+})(App);

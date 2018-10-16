@@ -1,9 +1,25 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import { shallow } from 'enzyme';
+import { App } from './App';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+const mockFetch = data => jest.fn().mockImplementation(() => Promise.resolve({
+  status: 200,
+  json: () => data,
+}));
+
+describe('App component', () => {
+  let component;
+  beforeEach(() => {
+    window.fetch = mockFetch('test');
+    const props = {
+      setGroups: jest.fn(),
+    };
+    component = shallow(<App {...props} />);
+  });
+  it('Should render without exploding', () => {
+    expect(component).toBeDefined();
+  });
+  it('Should match snapshot', () => {
+    expect(component).toMatchSnapshot();
+  });
 });

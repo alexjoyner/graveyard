@@ -9,7 +9,6 @@
       "**/build": true,
       "**/CVS": true,
       "**/node_modules": true,
-      "**/package.json": true,
       "**/public": true,
       "**/yarn.lock": true
     }

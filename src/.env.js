@@ -4,12 +4,11 @@ const DEV_CONFIG = {
   serverAddr: 'http://localhost:8080'
 }
 
-const PROP_CONFIG = {
+const PROD_CONFIG = {
   serverAddr: 'https://api.voicir.com'
 }
 
 
-const env = (NODE_ENV === 'production')?PROP_CONFIG : DEV_CONFIG;
+const env = (NODE_ENV === 'production')?/* istanbul ignore next */ PROD_CONFIG : DEV_CONFIG;
 
-
-export {env};
+export {env}; 
