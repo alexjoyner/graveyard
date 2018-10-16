@@ -10,6 +10,21 @@ secrets:
   ssl_dhparam:
     external: true
 services:
+  accounts-service:
+    deploy:
+      restart_policy:
+        condition: on-failure
+    environment:
+      PG_DB_FILE: /run/secrets/pg-db
+      PG_HOST_FILE: /run/secrets/pg-host
+      PG_PASS_FILE: /run/secrets/pg-pass
+      PG_USER_FILE: /run/secrets/pg-user
+    image: rosco9awj/ees-accounts-service
+    secrets:
+    - source: pg-db
+    - source: pg-host
+    - source: pg-pass
+    - source: pg-user
   eze-handler:
     deploy:
       restart_policy:
@@ -47,7 +62,6 @@ services:
     - source: pg-user
   main:
     depends_on:
-    - eze-handler
     - historical-service
     - log-handler
     - socket-service
@@ -61,7 +75,7 @@ services:
     secrets:
     - source: ssl_dhparam
     volumes:
-    - /etc/letsecrypt:/etc/letsencrypt:rw
+    - /etc/letsencrypt:/etc/letsencrypt:rw
   socket-service:
     deploy:
       restart_policy:
