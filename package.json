@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "digest-auth-request": "^0.7.0",
-    "eslint": "5.6.0",
+    "eslint": "5.7.0",
     "highcharts": "^6.1.1",
     "highcharts-react-official": "^1.2.0",
     "lodash": "^4.17.11",
@@ -29,7 +29,7 @@
     "request": "^2.86.0",
     "ro-component-library": "*",
     "socket.io-client": "^2.1.1",
-    "styled-components": "^3.2.6"
+    "styled-components": "^4.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -37,14 +37,14 @@
     "enzyme": "^3.4.0",
     "enzyme-adapter-react-16": "^1.2.0",
     "enzyme-to-json": "^3.3.4",
-    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jest": "^21.17.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.9.1",
-    "file-loader": "^1.1.11",
-    "flow-bin": "^0.82.0",
-    "gh-pages": "^1.1.0"
+    "file-loader": "^2.0.0",
+    "flow-bin": "^0.83.0",
+    "gh-pages": "^2.0.1"
   },
   "jest": {
     "collectCoverageFrom": [
