@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { ListItem, ListHeader, CenteredContent, Button, colors } from 'ro-component-library';
-import { GoTrashcan } from 'react-icons/lib/go';
+import { GoTrashcan } from 'react-icons/go';
 import { removePoint } from './actions';
 import { Points } from '../../propTypes';
 import { buildGraph } from '../HistoricalGraphModal/actions';
