@@ -3,21 +3,21 @@
 exports[`BaseSideBarContent component Should match snapshot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Unknown
-    changePointGroup={[Function]}
+  Symbol(enzyme.__unrendered__): <BaseSideBarContent
+    changePointGroup={[MockFunction]}
     groups={
-        Array [
-            Object {
-              "id": 1,
-              "name": "test",
-            },
-            Object {
-              "id": 2,
-              "name": "test2",
-            },
-          ]
+      Array [
+        Object {
+          "id": 1,
+          "name": "test",
+        },
+        Object {
+          "id": 2,
+          "name": "test2",
+        },
+      ]
     }
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -32,21 +32,21 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <styled.div>
+        <ForwardRef>
           Groups
-</styled.div>,
-        <styled.div>
+        </ForwardRef>,
+        <ForwardRef>
           <ListItem
-                    onClick={[Function]}
+            onClick={[Function]}
           >
-                    test
+            test
           </ListItem>
           <ListItem
-                    onClick={[Function]}
+            onClick={[Function]}
           >
-                    test2
+            test2
           </ListItem>
-</styled.div>,
+        </ForwardRef>,
         <Connect(BaseMultiSelectedChartsMenu) />,
       ],
     },
@@ -55,30 +55,61 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
           "children": "Groups",
         },
         "ref": null,
         "rendered": "Groups",
-        "type": [Function],
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": undefined,
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-jKJlTe",
+            "isStatic": false,
+            "rules": Array [
+              "
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box; 
+  top: 0;
+  left: 0;
+  background-color: ",
+              [Function],
+              ";
+  border: none;
+  width: 100%;
+  height: 41px;
+  line-height: 41px;
+  vertical-align: middle;
+  padding-left: 10px;
+",
+            ],
+          },
+          "displayName": "styled.div",
+          "render": [Function],
+          "styledComponentId": "sc-jKJlTe",
+          "target": "div",
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        },
       },
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
           "children": Array [
             <ListItem
               onClick={[Function]}
->
+            >
               test
-</ListItem>,
+            </ListItem>,
             <ListItem
               onClick={[Function]}
->
+            >
               test2
-</ListItem>,
+            </ListItem>,
           ],
         },
         "ref": null,
@@ -108,7 +139,25 @@ ShallowWrapper {
             "type": [Function],
           },
         ],
-        "type": [Function],
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": undefined,
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-dxgOiQ",
+            "isStatic": true,
+            "rules": Array [
+              "
+    text-align: center;
+",
+            ],
+          },
+          "displayName": "styled.div",
+          "render": [Function],
+          "styledComponentId": "sc-dxgOiQ",
+          "target": "div",
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        },
       },
       Object {
         "instance": null,
@@ -129,21 +178,21 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <styled.div>
+          <ForwardRef>
             Groups
-</styled.div>,
-          <styled.div>
+          </ForwardRef>,
+          <ForwardRef>
             <ListItem
-                        onClick={[Function]}
+              onClick={[Function]}
             >
-                        test
+              test
             </ListItem>
             <ListItem
-                        onClick={[Function]}
+              onClick={[Function]}
             >
-                        test2
+              test2
             </ListItem>
-</styled.div>,
+          </ForwardRef>,
           <Connect(BaseMultiSelectedChartsMenu) />,
         ],
       },
@@ -152,30 +201,61 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
             "children": "Groups",
           },
           "ref": null,
           "rendered": "Groups",
-          "type": [Function],
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": undefined,
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-jKJlTe",
+              "isStatic": false,
+              "rules": Array [
+                "
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box; 
+  top: 0;
+  left: 0;
+  background-color: ",
+                [Function],
+                ";
+  border: none;
+  width: 100%;
+  height: 41px;
+  line-height: 41px;
+  vertical-align: middle;
+  padding-left: 10px;
+",
+              ],
+            },
+            "displayName": "styled.div",
+            "render": [Function],
+            "styledComponentId": "sc-jKJlTe",
+            "target": "div",
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          },
         },
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
             "children": Array [
               <ListItem
                 onClick={[Function]}
->
+              >
                 test
-</ListItem>,
+              </ListItem>,
               <ListItem
                 onClick={[Function]}
->
+              >
                 test2
-</ListItem>,
+              </ListItem>,
             ],
           },
           "ref": null,
@@ -205,7 +285,25 @@ ShallowWrapper {
               "type": [Function],
             },
           ],
-          "type": [Function],
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": undefined,
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-dxgOiQ",
+              "isStatic": true,
+              "rules": Array [
+                "
+    text-align: center;
+",
+              ],
+            },
+            "displayName": "styled.div",
+            "render": [Function],
+            "styledComponentId": "sc-dxgOiQ",
+            "target": "div",
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          },
         },
         Object {
           "instance": null,
@@ -236,8 +334,6 @@ ShallowWrapper {
         },
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;

@@ -4,22 +4,22 @@ exports[`BaseMultiSelectedChartsMenu component Base component state Should match
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <BaseMultiSelectedChartsMenu
-    buildGraph={[Function]}
+    buildGraph={[MockFunction]}
     multiSelectedPoints={
-        Object {
-            "1": Object {
-              "id": 1,
-              "name": "test",
-            },
-            "2": Object {
-              "id": 2,
-              "name": "test2",
-            },
-          }
+      Object {
+        "1": Object {
+          "id": 1,
+          "name": "test",
+        },
+        "2": Object {
+          "id": 2,
+          "name": "test2",
+        },
+      }
     }
-    removePoint={[Function]}
-    showNotification={[Function]}
-/>,
+    removePoint={[MockFunction]}
+    showNotification={[MockFunction]}
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -35,45 +35,45 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <br />,
-        <styled.div>
+        <ForwardRef>
           Charts Selected:
-</styled.div>,
-        <styled.div>
+        </ForwardRef>,
+        <ForwardRef>
           <ListItem>
-                    test
-                    <Button
-                              color="dark"
-                              ghost={false}
-                              onClick={[Function]}
-                              size="small"
-                    >
-                              <GoTrashcan
-                                        color="#ff7675"
-                                        size={20}
-                              />
-                    </Button>
+            test
+            <Button
+              color="dark"
+              ghost={false}
+              onClick={[Function]}
+              size="small"
+            >
+              <GoTrashcan
+                color="#ff7675"
+                size={20}
+              />
+            </Button>
           </ListItem>
           <ListItem>
-                    test2
-                    <Button
-                              color="dark"
-                              ghost={false}
-                              onClick={[Function]}
-                              size="small"
-                    >
-                              <GoTrashcan
-                                        color="#ff7675"
-                                        size={20}
-                              />
-                    </Button>
+            test2
+            <Button
+              color="dark"
+              ghost={false}
+              onClick={[Function]}
+              size="small"
+            >
+              <GoTrashcan
+                color="#ff7675"
+                size={20}
+              />
+            </Button>
           </ListItem>
           <ListItem
-                    color="primary"
-                    onClick={[Function]}
+            color="primary"
+            onClick={[Function]}
           >
-                    Build Graph
+            Build Graph
           </ListItem>
-</styled.div>,
+        </ForwardRef>,
       ],
     },
     "ref": null,
@@ -90,56 +90,87 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
           "children": "Charts Selected:",
         },
         "ref": null,
         "rendered": "Charts Selected:",
-        "type": [Function],
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": undefined,
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-jKJlTe",
+            "isStatic": false,
+            "rules": Array [
+              "
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box; 
+  top: 0;
+  left: 0;
+  background-color: ",
+              [Function],
+              ";
+  border: none;
+  width: 100%;
+  height: 41px;
+  line-height: 41px;
+  vertical-align: middle;
+  padding-left: 10px;
+",
+            ],
+          },
+          "displayName": "styled.div",
+          "render": [Function],
+          "styledComponentId": "sc-jKJlTe",
+          "target": "div",
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        },
       },
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
           "children": Array [
             Array [
               <ListItem>
                 test
                 <Button
-                                color="dark"
-                                ghost={false}
-                                onClick={[Function]}
-                                size="small"
+                  color="dark"
+                  ghost={false}
+                  onClick={[Function]}
+                  size="small"
                 >
-                                <GoTrashcan
-                                                color="#ff7675"
-                                                size={20}
-                                />
+                  <GoTrashcan
+                    color="#ff7675"
+                    size={20}
+                  />
                 </Button>
-</ListItem>,
+              </ListItem>,
               <ListItem>
                 test2
                 <Button
-                                color="dark"
-                                ghost={false}
-                                onClick={[Function]}
-                                size="small"
+                  color="dark"
+                  ghost={false}
+                  onClick={[Function]}
+                  size="small"
                 >
-                                <GoTrashcan
-                                                color="#ff7675"
-                                                size={20}
-                                />
+                  <GoTrashcan
+                    color="#ff7675"
+                    size={20}
+                  />
                 </Button>
-</ListItem>,
+              </ListItem>,
             ],
             <ListItem
               color="primary"
               onClick={[Function]}
->
+            >
               Build Graph
-</ListItem>,
+            </ListItem>,
           ],
         },
         "ref": null,
@@ -156,12 +187,12 @@ ShallowWrapper {
                   ghost={false}
                   onClick={[Function]}
                   size="small"
->
+                >
                   <GoTrashcan
-                                    color="#ff7675"
-                                    size={20}
+                    color="#ff7675"
+                    size={20}
                   />
-</Button>,
+                </Button>,
               ],
             },
             "ref": null,
@@ -175,7 +206,7 @@ ShallowWrapper {
                   "children": <GoTrashcan
                     color="#ff7675"
                     size={20}
-/>,
+                  />,
                   "color": "dark",
                   "ghost": false,
                   "onClick": [Function],
@@ -211,12 +242,12 @@ ShallowWrapper {
                   ghost={false}
                   onClick={[Function]}
                   size="small"
->
+                >
                   <GoTrashcan
-                                    color="#ff7675"
-                                    size={20}
+                    color="#ff7675"
+                    size={20}
                   />
-</Button>,
+                </Button>,
               ],
             },
             "ref": null,
@@ -230,7 +261,7 @@ ShallowWrapper {
                   "children": <GoTrashcan
                     color="#ff7675"
                     size={20}
-/>,
+                  />,
                   "color": "dark",
                   "ghost": false,
                   "onClick": [Function],
@@ -268,7 +299,25 @@ ShallowWrapper {
             "type": [Function],
           },
         ],
-        "type": [Function],
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": undefined,
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-dxgOiQ",
+            "isStatic": true,
+            "rules": Array [
+              "
+    text-align: center;
+",
+            ],
+          },
+          "displayName": "styled.div",
+          "render": [Function],
+          "styledComponentId": "sc-dxgOiQ",
+          "target": "div",
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        },
       },
     ],
     "type": "div",
@@ -281,45 +330,45 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <br />,
-          <styled.div>
+          <ForwardRef>
             Charts Selected:
-</styled.div>,
-          <styled.div>
+          </ForwardRef>,
+          <ForwardRef>
             <ListItem>
-                        test
-                        <Button
-                                    color="dark"
-                                    ghost={false}
-                                    onClick={[Function]}
-                                    size="small"
-                        >
-                                    <GoTrashcan
-                                                color="#ff7675"
-                                                size={20}
-                                    />
-                        </Button>
+              test
+              <Button
+                color="dark"
+                ghost={false}
+                onClick={[Function]}
+                size="small"
+              >
+                <GoTrashcan
+                  color="#ff7675"
+                  size={20}
+                />
+              </Button>
             </ListItem>
             <ListItem>
-                        test2
-                        <Button
-                                    color="dark"
-                                    ghost={false}
-                                    onClick={[Function]}
-                                    size="small"
-                        >
-                                    <GoTrashcan
-                                                color="#ff7675"
-                                                size={20}
-                                    />
-                        </Button>
+              test2
+              <Button
+                color="dark"
+                ghost={false}
+                onClick={[Function]}
+                size="small"
+              >
+                <GoTrashcan
+                  color="#ff7675"
+                  size={20}
+                />
+              </Button>
             </ListItem>
             <ListItem
-                        color="primary"
-                        onClick={[Function]}
+              color="primary"
+              onClick={[Function]}
             >
-                        Build Graph
+              Build Graph
             </ListItem>
-</styled.div>,
+          </ForwardRef>,
         ],
       },
       "ref": null,
@@ -336,56 +385,87 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
             "children": "Charts Selected:",
           },
           "ref": null,
           "rendered": "Charts Selected:",
-          "type": [Function],
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": undefined,
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-jKJlTe",
+              "isStatic": false,
+              "rules": Array [
+                "
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box; 
+  top: 0;
+  left: 0;
+  background-color: ",
+                [Function],
+                ";
+  border: none;
+  width: 100%;
+  height: 41px;
+  line-height: 41px;
+  vertical-align: middle;
+  padding-left: 10px;
+",
+              ],
+            },
+            "displayName": "styled.div",
+            "render": [Function],
+            "styledComponentId": "sc-jKJlTe",
+            "target": "div",
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          },
         },
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
             "children": Array [
               Array [
                 <ListItem>
                   test
                   <Button
-                                    color="dark"
-                                    ghost={false}
-                                    onClick={[Function]}
-                                    size="small"
+                    color="dark"
+                    ghost={false}
+                    onClick={[Function]}
+                    size="small"
                   >
-                                    <GoTrashcan
-                                                      color="#ff7675"
-                                                      size={20}
-                                    />
+                    <GoTrashcan
+                      color="#ff7675"
+                      size={20}
+                    />
                   </Button>
-</ListItem>,
+                </ListItem>,
                 <ListItem>
                   test2
                   <Button
-                                    color="dark"
-                                    ghost={false}
-                                    onClick={[Function]}
-                                    size="small"
+                    color="dark"
+                    ghost={false}
+                    onClick={[Function]}
+                    size="small"
                   >
-                                    <GoTrashcan
-                                                      color="#ff7675"
-                                                      size={20}
-                                    />
+                    <GoTrashcan
+                      color="#ff7675"
+                      size={20}
+                    />
                   </Button>
-</ListItem>,
+                </ListItem>,
               ],
               <ListItem
                 color="primary"
                 onClick={[Function]}
->
+              >
                 Build Graph
-</ListItem>,
+              </ListItem>,
             ],
           },
           "ref": null,
@@ -402,12 +482,12 @@ ShallowWrapper {
                     ghost={false}
                     onClick={[Function]}
                     size="small"
->
+                  >
                     <GoTrashcan
-                                        color="#ff7675"
-                                        size={20}
+                      color="#ff7675"
+                      size={20}
                     />
-</Button>,
+                  </Button>,
                 ],
               },
               "ref": null,
@@ -421,7 +501,7 @@ ShallowWrapper {
                     "children": <GoTrashcan
                       color="#ff7675"
                       size={20}
-/>,
+                    />,
                     "color": "dark",
                     "ghost": false,
                     "onClick": [Function],
@@ -457,12 +537,12 @@ ShallowWrapper {
                     ghost={false}
                     onClick={[Function]}
                     size="small"
->
+                  >
                     <GoTrashcan
-                                        color="#ff7675"
-                                        size={20}
+                      color="#ff7675"
+                      size={20}
                     />
-</Button>,
+                  </Button>,
                 ],
               },
               "ref": null,
@@ -476,7 +556,7 @@ ShallowWrapper {
                     "children": <GoTrashcan
                       color="#ff7675"
                       size={20}
-/>,
+                    />,
                     "color": "dark",
                     "ghost": false,
                     "onClick": [Function],
@@ -514,7 +594,25 @@ ShallowWrapper {
               "type": [Function],
             },
           ],
-          "type": [Function],
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": undefined,
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-dxgOiQ",
+              "isStatic": true,
+              "rules": Array [
+                "
+    text-align: center;
+",
+              ],
+            },
+            "displayName": "styled.div",
+            "render": [Function],
+            "styledComponentId": "sc-dxgOiQ",
+            "target": "div",
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          },
         },
       ],
       "type": "div",
@@ -536,8 +634,6 @@ ShallowWrapper {
         },
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;

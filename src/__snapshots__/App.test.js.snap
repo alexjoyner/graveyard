@@ -4,8 +4,22 @@ exports[`App component Should match snapshot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <App
-    setGroups={[Function]}
-/>,
+    setGroups={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            "test",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      }
+    }
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -20,28 +34,40 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <Unknown />,
+        <TestNotification />,
         <Header
           color="dark"
           fontSize="25px"
           height="67px"
           logoText="Dashboard Demo"
           sticky={true}
->
+        >
           <FeedbackButton />
-</Header>,
+        </Header>,
         <SideBarPage
           sideBarContents={
-                    <Connect(Component)
-                              setGroups={[Function]}
-                    />
+            <Connect(BaseSideBarContent)
+              setGroups={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      "test",
+                    ],
+                  ],
+                  "results": Array [
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                  ],
+                }
+              }
+            />
           }
->
+        >
           <Connect(BaseGaugeBlockArray) />
-</SideBarPage>,
-        <Connect(BaseHistoricalGraphModal)
-          modalData={undefined}
-/>,
+        </SideBarPage>,
+        <Connect(BaseHistoricalGraphModal) />,
       ],
       "style": Object {
         "marginTop": "80px",
@@ -88,9 +114,23 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": <Connect(BaseGaugeBlockArray) />,
-          "sideBarContents": <Connect(Component)
-            setGroups={[Function]}
-/>,
+          "sideBarContents": <Connect(BaseSideBarContent)
+            setGroups={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    "test",
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "isThrow": false,
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+          />,
         },
         "ref": null,
         "rendered": Object {
@@ -125,28 +165,40 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <Unknown />,
+          <TestNotification />,
           <Header
             color="dark"
             fontSize="25px"
             height="67px"
             logoText="Dashboard Demo"
             sticky={true}
->
+          >
             <FeedbackButton />
-</Header>,
+          </Header>,
           <SideBarPage
             sideBarContents={
-                        <Connect(Component)
-                                    setGroups={[Function]}
-                        />
+              <Connect(BaseSideBarContent)
+                setGroups={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        "test",
+                      ],
+                    ],
+                    "results": Array [
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                    ],
+                  }
+                }
+              />
             }
->
+          >
             <Connect(BaseGaugeBlockArray) />
-</SideBarPage>,
-          <Connect(BaseHistoricalGraphModal)
-            modalData={undefined}
-/>,
+          </SideBarPage>,
+          <Connect(BaseHistoricalGraphModal) />,
         ],
         "style": Object {
           "marginTop": "80px",
@@ -193,9 +245,23 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": <Connect(BaseGaugeBlockArray) />,
-            "sideBarContents": <Connect(Component)
-              setGroups={[Function]}
-/>,
+            "sideBarContents": <Connect(BaseSideBarContent)
+              setGroups={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      "test",
+                    ],
+                  ],
+                  "results": Array [
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                  ],
+                }
+              }
+            />,
           },
           "ref": null,
           "rendered": Object {
@@ -240,8 +306,6 @@ ShallowWrapper {
         },
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;
