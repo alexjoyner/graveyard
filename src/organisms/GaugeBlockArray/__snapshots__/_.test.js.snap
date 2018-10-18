@@ -5,29 +5,138 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <BaseGaugeBlockArray
     points={
-        Object {
-            "1": Object {
-              "name": "Test Input",
-              "value": 10,
-            },
-          }
+      Object {
+        "1": Object {
+          "name": "Test Input",
+          "value": 10,
+        },
+      }
     }
-    publishNewLog={[Function]}
-    publishNewPoints={[Function]}
-    removeAllPoints={[Function]}
+    publishNewLog={[MockFunction]}
+    publishNewPoints={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "1": Object {
+                "id": 1,
+                "name": "testPoint",
+              },
+              "2": Object {
+                "id": 2,
+                "name": "testPoint2",
+              },
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      }
+    }
+    removeAllPoints={[MockFunction]}
     socket={
-        PointsSocket {
-            "points": Array [
-              "1",
-              "2",
+      PointsSocket {
+        "points": Array [
+          "1",
+          "2",
+        ],
+        "socket": Object {
+          "emit": [MockFunction] {
+            "calls": Array [
+              Array [
+                "join-group",
+                Array [
+                  "1",
+                  "2",
+                ],
+              ],
+              Array [
+                "join-group",
+                Array [
+                  "1",
+                  "2",
+                ],
+              ],
+              Array [
+                "join-group",
+                Array [
+                  "1",
+                  "2",
+                ],
+              ],
+              Array [
+                "join-group",
+                Array [
+                  "1",
+                  "2",
+                ],
+              ],
             ],
-            "socket": Object {
-              "emit": [Function],
-              "on": [Function],
-            },
-          }
+            "results": Array [
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+            ],
+          },
+          "on": [MockFunction] {
+            "calls": Array [
+              Array [
+                "add log",
+                [Function],
+              ],
+              Array [
+                "add log",
+                [Function],
+              ],
+              Array [
+                "add log",
+                [Function],
+              ],
+              Array [
+                "add log",
+                [Function],
+              ],
+            ],
+            "results": Array [
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+            ],
+          },
+        },
+      }
     }
-/>,
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -39,41 +148,150 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "class",
+    "nodeType": "function",
     "props": Object {
       "children": Array [
-        <Connect(Component)
+        <Connect(BasePointGaugeBlock)
           id="1"
           point={
-                    Object {
-                              "name": "Test Input",
-                              "value": 10,
-                            }
+            Object {
+              "name": "Test Input",
+              "value": 10,
+            }
           }
           points={
-                    Object {
-                              "1": Object {
-                                "name": "Test Input",
-                                "value": 10,
-                              },
-                            }
+            Object {
+              "1": Object {
+                "name": "Test Input",
+                "value": 10,
+              },
+            }
           }
-          publishNewLog={[Function]}
-          publishNewPoints={[Function]}
-          removeAllPoints={[Function]}
+          publishNewLog={[MockFunction]}
+          publishNewPoints={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  Object {
+                    "1": Object {
+                      "id": 1,
+                      "name": "testPoint",
+                    },
+                    "2": Object {
+                      "id": 2,
+                      "name": "testPoint2",
+                    },
+                  },
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "isThrow": false,
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          removeAllPoints={[MockFunction]}
           socket={
-                    PointsSocket {
-                              "points": Array [
-                                "1",
-                                "2",
-                              ],
-                              "socket": Object {
-                                "emit": [Function],
-                                "on": [Function],
-                              },
-                            }
+            PointsSocket {
+              "points": Array [
+                "1",
+                "2",
+              ],
+              "socket": Object {
+                "emit": [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      "join-group",
+                      Array [
+                        "1",
+                        "2",
+                      ],
+                    ],
+                    Array [
+                      "join-group",
+                      Array [
+                        "1",
+                        "2",
+                      ],
+                    ],
+                    Array [
+                      "join-group",
+                      Array [
+                        "1",
+                        "2",
+                      ],
+                    ],
+                    Array [
+                      "join-group",
+                      Array [
+                        "1",
+                        "2",
+                      ],
+                    ],
+                  ],
+                  "results": Array [
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                  ],
+                },
+                "on": [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      "add log",
+                      [Function],
+                    ],
+                    Array [
+                      "add log",
+                      [Function],
+                    ],
+                    Array [
+                      "add log",
+                      [Function],
+                    ],
+                    Array [
+                      "add log",
+                      [Function],
+                    ],
+                  ],
+                  "results": Array [
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                  ],
+                },
+              },
+            }
           }
-/>,
+        />,
       ],
     },
     "ref": null,
@@ -94,17 +312,124 @@ ShallowWrapper {
               "value": 10,
             },
           },
-          "publishNewLog": [Function],
-          "publishNewPoints": [Function],
-          "removeAllPoints": [Function],
+          "publishNewLog": [MockFunction],
+          "publishNewPoints": [MockFunction] {
+            "calls": Array [
+              Array [
+                Object {
+                  "1": Object {
+                    "id": 1,
+                    "name": "testPoint",
+                  },
+                  "2": Object {
+                    "id": 2,
+                    "name": "testPoint2",
+                  },
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+            ],
+          },
+          "removeAllPoints": [MockFunction],
           "socket": PointsSocket {
             "points": Array [
               "1",
               "2",
             ],
             "socket": Object {
-              "emit": [Function],
-              "on": [Function],
+              "emit": [MockFunction] {
+                "calls": Array [
+                  Array [
+                    "join-group",
+                    Array [
+                      "1",
+                      "2",
+                    ],
+                  ],
+                  Array [
+                    "join-group",
+                    Array [
+                      "1",
+                      "2",
+                    ],
+                  ],
+                  Array [
+                    "join-group",
+                    Array [
+                      "1",
+                      "2",
+                    ],
+                  ],
+                  Array [
+                    "join-group",
+                    Array [
+                      "1",
+                      "2",
+                    ],
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "isThrow": false,
+                    "value": undefined,
+                  },
+                  Object {
+                    "isThrow": false,
+                    "value": undefined,
+                  },
+                  Object {
+                    "isThrow": false,
+                    "value": undefined,
+                  },
+                  Object {
+                    "isThrow": false,
+                    "value": undefined,
+                  },
+                ],
+              },
+              "on": [MockFunction] {
+                "calls": Array [
+                  Array [
+                    "add log",
+                    [Function],
+                  ],
+                  Array [
+                    "add log",
+                    [Function],
+                  ],
+                  Array [
+                    "add log",
+                    [Function],
+                  ],
+                  Array [
+                    "add log",
+                    [Function],
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "isThrow": false,
+                    "value": undefined,
+                  },
+                  Object {
+                    "isThrow": false,
+                    "value": undefined,
+                  },
+                  Object {
+                    "isThrow": false,
+                    "value": undefined,
+                  },
+                  Object {
+                    "isThrow": false,
+                    "value": undefined,
+                  },
+                ],
+              },
             },
           },
         },
@@ -113,47 +438,174 @@ ShallowWrapper {
         "type": [Function],
       },
     ],
-    "type": [Function],
+    "type": Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": undefined,
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-dxgOiQ",
+        "isStatic": true,
+        "rules": Array [
+          "
+    text-align: center;
+",
+        ],
+      },
+      "displayName": "styled.div",
+      "render": [Function],
+      "styledComponentId": "sc-dxgOiQ",
+      "target": "div",
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    },
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "class",
+      "nodeType": "function",
       "props": Object {
         "children": Array [
-          <Connect(Component)
+          <Connect(BasePointGaugeBlock)
             id="1"
             point={
-                        Object {
-                                    "name": "Test Input",
-                                    "value": 10,
-                                  }
+              Object {
+                "name": "Test Input",
+                "value": 10,
+              }
             }
             points={
-                        Object {
-                                    "1": Object {
-                                      "name": "Test Input",
-                                      "value": 10,
-                                    },
-                                  }
+              Object {
+                "1": Object {
+                  "name": "Test Input",
+                  "value": 10,
+                },
+              }
             }
-            publishNewLog={[Function]}
-            publishNewPoints={[Function]}
-            removeAllPoints={[Function]}
+            publishNewLog={[MockFunction]}
+            publishNewPoints={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "1": Object {
+                        "id": 1,
+                        "name": "testPoint",
+                      },
+                      "2": Object {
+                        "id": 2,
+                        "name": "testPoint2",
+                      },
+                    },
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "isThrow": false,
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+            removeAllPoints={[MockFunction]}
             socket={
-                        PointsSocket {
-                                    "points": Array [
-                                      "1",
-                                      "2",
-                                    ],
-                                    "socket": Object {
-                                      "emit": [Function],
-                                      "on": [Function],
-                                    },
-                                  }
+              PointsSocket {
+                "points": Array [
+                  "1",
+                  "2",
+                ],
+                "socket": Object {
+                  "emit": [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        "join-group",
+                        Array [
+                          "1",
+                          "2",
+                        ],
+                      ],
+                      Array [
+                        "join-group",
+                        Array [
+                          "1",
+                          "2",
+                        ],
+                      ],
+                      Array [
+                        "join-group",
+                        Array [
+                          "1",
+                          "2",
+                        ],
+                      ],
+                      Array [
+                        "join-group",
+                        Array [
+                          "1",
+                          "2",
+                        ],
+                      ],
+                    ],
+                    "results": Array [
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                    ],
+                  },
+                  "on": [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        "add log",
+                        [Function],
+                      ],
+                      Array [
+                        "add log",
+                        [Function],
+                      ],
+                      Array [
+                        "add log",
+                        [Function],
+                      ],
+                      Array [
+                        "add log",
+                        [Function],
+                      ],
+                    ],
+                    "results": Array [
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                    ],
+                  },
+                },
+              }
             }
-/>,
+          />,
         ],
       },
       "ref": null,
@@ -174,17 +626,124 @@ ShallowWrapper {
                 "value": 10,
               },
             },
-            "publishNewLog": [Function],
-            "publishNewPoints": [Function],
-            "removeAllPoints": [Function],
+            "publishNewLog": [MockFunction],
+            "publishNewPoints": [MockFunction] {
+              "calls": Array [
+                Array [
+                  Object {
+                    "1": Object {
+                      "id": 1,
+                      "name": "testPoint",
+                    },
+                    "2": Object {
+                      "id": 2,
+                      "name": "testPoint2",
+                    },
+                  },
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "isThrow": false,
+                  "value": undefined,
+                },
+              ],
+            },
+            "removeAllPoints": [MockFunction],
             "socket": PointsSocket {
               "points": Array [
                 "1",
                 "2",
               ],
               "socket": Object {
-                "emit": [Function],
-                "on": [Function],
+                "emit": [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      "join-group",
+                      Array [
+                        "1",
+                        "2",
+                      ],
+                    ],
+                    Array [
+                      "join-group",
+                      Array [
+                        "1",
+                        "2",
+                      ],
+                    ],
+                    Array [
+                      "join-group",
+                      Array [
+                        "1",
+                        "2",
+                      ],
+                    ],
+                    Array [
+                      "join-group",
+                      Array [
+                        "1",
+                        "2",
+                      ],
+                    ],
+                  ],
+                  "results": Array [
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                  ],
+                },
+                "on": [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      "add log",
+                      [Function],
+                    ],
+                    Array [
+                      "add log",
+                      [Function],
+                    ],
+                    Array [
+                      "add log",
+                      [Function],
+                    ],
+                    Array [
+                      "add log",
+                      [Function],
+                    ],
+                  ],
+                  "results": Array [
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                  ],
+                },
               },
             },
           },
@@ -193,7 +752,25 @@ ShallowWrapper {
           "type": [Function],
         },
       ],
-      "type": [Function],
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": undefined,
+        "componentStyle": ComponentStyle {
+          "componentId": "sc-dxgOiQ",
+          "isStatic": true,
+          "rules": Array [
+            "
+    text-align: center;
+",
+          ],
+        },
+        "displayName": "styled.div",
+        "render": [Function],
+        "styledComponentId": "sc-dxgOiQ",
+        "target": "div",
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      },
     },
   ],
   Symbol(enzyme.__options__): Object {
@@ -212,8 +789,6 @@ ShallowWrapper {
         },
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;
@@ -223,22 +798,93 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <BaseGaugeBlockArray
     points={Object {}}
-    publishNewLog={[Function]}
-    publishNewPoints={[Function]}
-    removeAllPoints={[Function]}
-    socket={
-        PointsSocket {
-            "points": Array [
-              "1",
-              "2",
-            ],
-            "socket": Object {
-              "emit": [Function],
-              "on": [Function],
+    publishNewLog={[MockFunction]}
+    publishNewPoints={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "1": Object {
+                "id": 1,
+                "name": "testPoint",
+              },
+              "2": Object {
+                "id": 2,
+                "name": "testPoint2",
+              },
             },
-          }
+          ],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      }
     }
-/>,
+    removeAllPoints={[MockFunction]}
+    socket={
+      PointsSocket {
+        "points": Array [
+          "1",
+          "2",
+        ],
+        "socket": Object {
+          "emit": [MockFunction] {
+            "calls": Array [
+              Array [
+                "join-group",
+                Array [
+                  "1",
+                  "2",
+                ],
+              ],
+              Array [
+                "join-group",
+                Array [
+                  "1",
+                  "2",
+                ],
+              ],
+            ],
+            "results": Array [
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+            ],
+          },
+          "on": [MockFunction] {
+            "calls": Array [
+              Array [
+                "add log",
+                [Function],
+              ],
+              Array [
+                "add log",
+                [Function],
+              ],
+            ],
+            "results": Array [
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+            ],
+          },
+        },
+      }
+    }
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -283,8 +929,6 @@ ShallowWrapper {
         },
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;

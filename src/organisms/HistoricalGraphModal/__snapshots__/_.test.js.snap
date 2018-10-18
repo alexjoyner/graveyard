@@ -5,14 +5,14 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <BaseHistoricalGraphModal
     chartPoints={Object {}}
-    closeHistoryModal={[Function]}
-    dispatchNewHistoricalData={[Function]}
+    closeHistoryModal={[MockFunction]}
+    dispatchNewHistoricalData={[MockFunction]}
     modalData={Array []}
     modalStage="CLOSED"
-    showHistoryModal={[Function]}
-    startLoadingNotif={[Function]}
-    stopLoadingNotif={[Function]}
-/>,
+    showHistoryModal={[MockFunction]}
+    startLoadingNotif={[MockFunction]}
+    stopLoadingNotif={[MockFunction]}
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -65,8 +65,6 @@ ShallowWrapper {
         },
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;
@@ -76,14 +74,14 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <BaseHistoricalGraphModal
     chartPoints={Object {}}
-    closeHistoryModal={[Function]}
-    dispatchNewHistoricalData={[Function]}
+    closeHistoryModal={[MockFunction]}
+    dispatchNewHistoricalData={[MockFunction]}
     modalData={Array []}
     modalStage="SHOWN"
-    showHistoryModal={[Function]}
-    startLoadingNotif={[Function]}
-    stopLoadingNotif={[Function]}
-/>,
+    showHistoryModal={[MockFunction]}
+    startLoadingNotif={[MockFunction]}
+    stopLoadingNotif={[MockFunction]}
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -100,157 +98,157 @@ ShallowWrapper {
       "children": Array [
         <Panel
           width="90%"
->
+        >
           <IntervalButton
-                    color="primary"
-                    onClick={[Function]}
-                    type="oneDay"
+            color="primary"
+            onClick={[Function]}
+            type="oneDay"
           >
-                    1 Day
+            1 Day
           </IntervalButton>
           <IntervalButton
-                    color="primary"
-                    onClick={[Function]}
-                    type="oneWeek"
+            color="primary"
+            onClick={[Function]}
+            type="oneWeek"
           >
-                    1 Week
+            1 Week
           </IntervalButton>
           <IntervalButton
-                    color="primary"
-                    onClick={[Function]}
-                    type="oneMonth"
+            color="primary"
+            onClick={[Function]}
+            type="oneMonth"
           >
-                    1 Month
+            1 Month
           </IntervalButton>
           <IntervalButton
-                    color="primary"
-                    onClick={[Function]}
-                    type="sixMonths"
+            color="primary"
+            onClick={[Function]}
+            type="sixMonths"
           >
-                    6 Months
+            6 Months
           </IntervalButton>
           <IntervalButton
-                    color="primary"
-                    onClick={[Function]}
+            color="primary"
+            onClick={[Function]}
           >
-                    All
+            All
           </IntervalButton>
-</Panel>,
+        </Panel>,
         <Button
           color="primary"
           ghost={false}
           onClick={[Function]}
           size="default"
->
+        >
           Close
-</Button>,
+        </Button>,
         <RoHighChart
           config={
-                    Object {
-                              "boost": Object {
-                                "useGPUTranslations": true,
-                              },
-                              "chart": Object {
-                                "type": "line",
-                                "zoomType": "x",
-                              },
-                              "legend": Object {
-                                "enabled": true,
-                              },
-                              "series": Array [],
-                              "subtitle": Object {
-                                "text": "Click and drag in the plot area to zoom in",
-                              },
-                              "title": Object {
-                                "text": "Historical Data View",
-                              },
-                              "xAxis": Object {
-                                "labels": Object {
-                                  "style": Object {
-                                    "color": "white",
-                                  },
-                                },
-                                "type": "datetime",
-                              },
-                              "yAxis": Object {
-                                "labels": Object {
-                                  "format": "{value}",
-                                  "style": Object {
-                                    "color": "white",
-                                  },
-                                },
-                                "title": Object {
-                                  "text": "Value",
-                                },
-                              },
-                            }
+            Object {
+              "boost": Object {
+                "useGPUTranslations": true,
+              },
+              "chart": Object {
+                "type": "line",
+                "zoomType": "x",
+              },
+              "legend": Object {
+                "enabled": true,
+              },
+              "series": Array [],
+              "subtitle": Object {
+                "text": "Click and drag in the plot area to zoom in",
+              },
+              "title": Object {
+                "text": "Historical Data View",
+              },
+              "xAxis": Object {
+                "labels": Object {
+                  "style": Object {
+                    "color": "white",
+                  },
+                },
+                "type": "datetime",
+              },
+              "yAxis": Object {
+                "labels": Object {
+                  "format": "{value}",
+                  "style": Object {
+                    "color": "white",
+                  },
+                },
+                "title": Object {
+                  "text": "Value",
+                },
+              },
+            }
           }
           theme={
-                    Object {
-                              "chart": Object {
-                                "backgroundColor": "#2d3436",
-                                "borderColor": "#ffffff",
-                                "plotBackgroundColor": "#2d3436",
-                                "style": Object {
-                                  "color": "#dfe6e9",
-                                  "fontFamily": "\\"Lucida Grande\\", \\"Lucida Sans Unicode\\", Verdana, Arial, Helvetica, sans-serif",
-                                  "fontSize": "12px",
-                                },
-                                "type": "line",
-                              },
-                              "colors": Array [
-                                "#fdcb6e",
-                                "#ff7675",
-                                "#55efc4",
-                                "#74b9ff",
-                              ],
-                              "credits": Object {
-                                "enabled": false,
-                              },
-                              "exporting": Object {
-                                "enabled": true,
-                              },
-                              "legend": Object {
-                                "itemStyle": Object {
-                                  "color": "white",
-                                  "fontFamily": "\\"Lucida Grande\\", \\"Lucida Sans Unicode\\", Verdana, Arial, Helvetica, sans-serif",
-                                  "fontSize": "10px",
-                                },
-                              },
-                              "subtitle": Object {
-                                "style": Object {
-                                  "color": "#dfe6e9",
-                                  "fontFamily": "\\"Lucida Grande\\", \\"Lucida Sans Unicode\\", Verdana, Arial, Helvetica, sans-serif",
-                                  "fontSize": "18px",
-                                },
-                                "text": "",
-                              },
-                              "title": Object {
-                                "style": Object {
-                                  "color": "#dfe6e9",
-                                  "fontFamily": "\\"Lucida Grande\\", \\"Lucida Sans Unicode\\", Verdana, Arial, Helvetica, sans-serif",
-                                  "fontSize": "18px",
-                                },
-                                "text": "Categorized, four series",
-                              },
-                              "tooltip": Object {
-                                "shared": true,
-                              },
-                              "yAxis": Object {
-                                "labels": Object {},
-                                "title": Object {
-                                  "style": Object {
-                                    "color": "#ffffff",
-                                    "fontFamily": "\\"Lucida Grande\\", \\"Lucida Sans Unicode\\", Verdana, Arial, Helvetica, sans-serif",
-                                    "fontSize": "12px",
-                                    "fontStyle": "normal",
-                                    "fontWeight": "normal",
-                                  },
-                                },
-                              },
-                            }
+            Object {
+              "chart": Object {
+                "backgroundColor": "#2d3436",
+                "borderColor": "#ffffff",
+                "plotBackgroundColor": "#2d3436",
+                "style": Object {
+                  "color": "#dfe6e9",
+                  "fontFamily": "\\"Lucida Grande\\", \\"Lucida Sans Unicode\\", Verdana, Arial, Helvetica, sans-serif",
+                  "fontSize": "12px",
+                },
+                "type": "line",
+              },
+              "colors": Array [
+                "#fdcb6e",
+                "#ff7675",
+                "#55efc4",
+                "#74b9ff",
+              ],
+              "credits": Object {
+                "enabled": false,
+              },
+              "exporting": Object {
+                "enabled": true,
+              },
+              "legend": Object {
+                "itemStyle": Object {
+                  "color": "white",
+                  "fontFamily": "\\"Lucida Grande\\", \\"Lucida Sans Unicode\\", Verdana, Arial, Helvetica, sans-serif",
+                  "fontSize": "10px",
+                },
+              },
+              "subtitle": Object {
+                "style": Object {
+                  "color": "#dfe6e9",
+                  "fontFamily": "\\"Lucida Grande\\", \\"Lucida Sans Unicode\\", Verdana, Arial, Helvetica, sans-serif",
+                  "fontSize": "18px",
+                },
+                "text": "",
+              },
+              "title": Object {
+                "style": Object {
+                  "color": "#dfe6e9",
+                  "fontFamily": "\\"Lucida Grande\\", \\"Lucida Sans Unicode\\", Verdana, Arial, Helvetica, sans-serif",
+                  "fontSize": "18px",
+                },
+                "text": "Categorized, four series",
+              },
+              "tooltip": Object {
+                "shared": true,
+              },
+              "yAxis": Object {
+                "labels": Object {},
+                "title": Object {
+                  "style": Object {
+                    "color": "#ffffff",
+                    "fontFamily": "\\"Lucida Grande\\", \\"Lucida Sans Unicode\\", Verdana, Arial, Helvetica, sans-serif",
+                    "fontSize": "12px",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                },
+              },
+            }
           }
-/>,
+        />,
       ],
       "height": "auto",
       "width": "90%",
@@ -267,36 +265,36 @@ ShallowWrapper {
               color="primary"
               onClick={[Function]}
               type="oneDay"
->
+            >
               1 Day
-</IntervalButton>,
+            </IntervalButton>,
             <IntervalButton
               color="primary"
               onClick={[Function]}
               type="oneWeek"
->
+            >
               1 Week
-</IntervalButton>,
+            </IntervalButton>,
             <IntervalButton
               color="primary"
               onClick={[Function]}
               type="oneMonth"
->
+            >
               1 Month
-</IntervalButton>,
+            </IntervalButton>,
             <IntervalButton
               color="primary"
               onClick={[Function]}
               type="sixMonths"
->
+            >
               6 Months
-</IntervalButton>,
+            </IntervalButton>,
             <IntervalButton
               color="primary"
               onClick={[Function]}
->
+            >
               All
-</IntervalButton>,
+            </IntervalButton>,
           ],
           "width": "90%",
         },
@@ -512,157 +510,157 @@ ShallowWrapper {
         "children": Array [
           <Panel
             width="90%"
->
+          >
             <IntervalButton
-                        color="primary"
-                        onClick={[Function]}
-                        type="oneDay"
+              color="primary"
+              onClick={[Function]}
+              type="oneDay"
             >
-                        1 Day
+              1 Day
             </IntervalButton>
             <IntervalButton
-                        color="primary"
-                        onClick={[Function]}
-                        type="oneWeek"
+              color="primary"
+              onClick={[Function]}
+              type="oneWeek"
             >
-                        1 Week
+              1 Week
             </IntervalButton>
             <IntervalButton
-                        color="primary"
-                        onClick={[Function]}
-                        type="oneMonth"
+              color="primary"
+              onClick={[Function]}
+              type="oneMonth"
             >
-                        1 Month
+              1 Month
             </IntervalButton>
             <IntervalButton
-                        color="primary"
-                        onClick={[Function]}
-                        type="sixMonths"
+              color="primary"
+              onClick={[Function]}
+              type="sixMonths"
             >
-                        6 Months
+              6 Months
             </IntervalButton>
             <IntervalButton
-                        color="primary"
-                        onClick={[Function]}
+              color="primary"
+              onClick={[Function]}
             >
-                        All
+              All
             </IntervalButton>
-</Panel>,
+          </Panel>,
           <Button
             color="primary"
             ghost={false}
             onClick={[Function]}
             size="default"
->
+          >
             Close
-</Button>,
+          </Button>,
           <RoHighChart
             config={
-                        Object {
-                                    "boost": Object {
-                                      "useGPUTranslations": true,
-                                    },
-                                    "chart": Object {
-                                      "type": "line",
-                                      "zoomType": "x",
-                                    },
-                                    "legend": Object {
-                                      "enabled": true,
-                                    },
-                                    "series": Array [],
-                                    "subtitle": Object {
-                                      "text": "Click and drag in the plot area to zoom in",
-                                    },
-                                    "title": Object {
-                                      "text": "Historical Data View",
-                                    },
-                                    "xAxis": Object {
-                                      "labels": Object {
-                                        "style": Object {
-                                          "color": "white",
-                                        },
-                                      },
-                                      "type": "datetime",
-                                    },
-                                    "yAxis": Object {
-                                      "labels": Object {
-                                        "format": "{value}",
-                                        "style": Object {
-                                          "color": "white",
-                                        },
-                                      },
-                                      "title": Object {
-                                        "text": "Value",
-                                      },
-                                    },
-                                  }
+              Object {
+                "boost": Object {
+                  "useGPUTranslations": true,
+                },
+                "chart": Object {
+                  "type": "line",
+                  "zoomType": "x",
+                },
+                "legend": Object {
+                  "enabled": true,
+                },
+                "series": Array [],
+                "subtitle": Object {
+                  "text": "Click and drag in the plot area to zoom in",
+                },
+                "title": Object {
+                  "text": "Historical Data View",
+                },
+                "xAxis": Object {
+                  "labels": Object {
+                    "style": Object {
+                      "color": "white",
+                    },
+                  },
+                  "type": "datetime",
+                },
+                "yAxis": Object {
+                  "labels": Object {
+                    "format": "{value}",
+                    "style": Object {
+                      "color": "white",
+                    },
+                  },
+                  "title": Object {
+                    "text": "Value",
+                  },
+                },
+              }
             }
             theme={
-                        Object {
-                                    "chart": Object {
-                                      "backgroundColor": "#2d3436",
-                                      "borderColor": "#ffffff",
-                                      "plotBackgroundColor": "#2d3436",
-                                      "style": Object {
-                                        "color": "#dfe6e9",
-                                        "fontFamily": "\\"Lucida Grande\\", \\"Lucida Sans Unicode\\", Verdana, Arial, Helvetica, sans-serif",
-                                        "fontSize": "12px",
-                                      },
-                                      "type": "line",
-                                    },
-                                    "colors": Array [
-                                      "#fdcb6e",
-                                      "#ff7675",
-                                      "#55efc4",
-                                      "#74b9ff",
-                                    ],
-                                    "credits": Object {
-                                      "enabled": false,
-                                    },
-                                    "exporting": Object {
-                                      "enabled": true,
-                                    },
-                                    "legend": Object {
-                                      "itemStyle": Object {
-                                        "color": "white",
-                                        "fontFamily": "\\"Lucida Grande\\", \\"Lucida Sans Unicode\\", Verdana, Arial, Helvetica, sans-serif",
-                                        "fontSize": "10px",
-                                      },
-                                    },
-                                    "subtitle": Object {
-                                      "style": Object {
-                                        "color": "#dfe6e9",
-                                        "fontFamily": "\\"Lucida Grande\\", \\"Lucida Sans Unicode\\", Verdana, Arial, Helvetica, sans-serif",
-                                        "fontSize": "18px",
-                                      },
-                                      "text": "",
-                                    },
-                                    "title": Object {
-                                      "style": Object {
-                                        "color": "#dfe6e9",
-                                        "fontFamily": "\\"Lucida Grande\\", \\"Lucida Sans Unicode\\", Verdana, Arial, Helvetica, sans-serif",
-                                        "fontSize": "18px",
-                                      },
-                                      "text": "Categorized, four series",
-                                    },
-                                    "tooltip": Object {
-                                      "shared": true,
-                                    },
-                                    "yAxis": Object {
-                                      "labels": Object {},
-                                      "title": Object {
-                                        "style": Object {
-                                          "color": "#ffffff",
-                                          "fontFamily": "\\"Lucida Grande\\", \\"Lucida Sans Unicode\\", Verdana, Arial, Helvetica, sans-serif",
-                                          "fontSize": "12px",
-                                          "fontStyle": "normal",
-                                          "fontWeight": "normal",
-                                        },
-                                      },
-                                    },
-                                  }
+              Object {
+                "chart": Object {
+                  "backgroundColor": "#2d3436",
+                  "borderColor": "#ffffff",
+                  "plotBackgroundColor": "#2d3436",
+                  "style": Object {
+                    "color": "#dfe6e9",
+                    "fontFamily": "\\"Lucida Grande\\", \\"Lucida Sans Unicode\\", Verdana, Arial, Helvetica, sans-serif",
+                    "fontSize": "12px",
+                  },
+                  "type": "line",
+                },
+                "colors": Array [
+                  "#fdcb6e",
+                  "#ff7675",
+                  "#55efc4",
+                  "#74b9ff",
+                ],
+                "credits": Object {
+                  "enabled": false,
+                },
+                "exporting": Object {
+                  "enabled": true,
+                },
+                "legend": Object {
+                  "itemStyle": Object {
+                    "color": "white",
+                    "fontFamily": "\\"Lucida Grande\\", \\"Lucida Sans Unicode\\", Verdana, Arial, Helvetica, sans-serif",
+                    "fontSize": "10px",
+                  },
+                },
+                "subtitle": Object {
+                  "style": Object {
+                    "color": "#dfe6e9",
+                    "fontFamily": "\\"Lucida Grande\\", \\"Lucida Sans Unicode\\", Verdana, Arial, Helvetica, sans-serif",
+                    "fontSize": "18px",
+                  },
+                  "text": "",
+                },
+                "title": Object {
+                  "style": Object {
+                    "color": "#dfe6e9",
+                    "fontFamily": "\\"Lucida Grande\\", \\"Lucida Sans Unicode\\", Verdana, Arial, Helvetica, sans-serif",
+                    "fontSize": "18px",
+                  },
+                  "text": "Categorized, four series",
+                },
+                "tooltip": Object {
+                  "shared": true,
+                },
+                "yAxis": Object {
+                  "labels": Object {},
+                  "title": Object {
+                    "style": Object {
+                      "color": "#ffffff",
+                      "fontFamily": "\\"Lucida Grande\\", \\"Lucida Sans Unicode\\", Verdana, Arial, Helvetica, sans-serif",
+                      "fontSize": "12px",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                  },
+                },
+              }
             }
-/>,
+          />,
         ],
         "height": "auto",
         "width": "90%",
@@ -679,36 +677,36 @@ ShallowWrapper {
                 color="primary"
                 onClick={[Function]}
                 type="oneDay"
->
+              >
                 1 Day
-</IntervalButton>,
+              </IntervalButton>,
               <IntervalButton
                 color="primary"
                 onClick={[Function]}
                 type="oneWeek"
->
+              >
                 1 Week
-</IntervalButton>,
+              </IntervalButton>,
               <IntervalButton
                 color="primary"
                 onClick={[Function]}
                 type="oneMonth"
->
+              >
                 1 Month
-</IntervalButton>,
+              </IntervalButton>,
               <IntervalButton
                 color="primary"
                 onClick={[Function]}
                 type="sixMonths"
->
+              >
                 6 Months
-</IntervalButton>,
+              </IntervalButton>,
               <IntervalButton
                 color="primary"
                 onClick={[Function]}
->
+              >
                 All
-</IntervalButton>,
+              </IntervalButton>,
             ],
             "width": "90%",
           },
@@ -932,8 +930,6 @@ ShallowWrapper {
         },
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;
