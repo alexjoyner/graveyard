@@ -14,7 +14,9 @@ export class App extends Component {
     const groups = await getGroups();
     this.props.setGroups(groups);
   }
+
   render() {
+    const modalData = this.props;
     return (
       <div style={{ marginTop: '80px' }}>
         <TestNotification />
@@ -27,10 +29,10 @@ export class App extends Component {
         >
           <FeedbackButton />
         </Header>
-        <SideBarPage sideBarContents={<SideBarContent {...this.props} />} >
+        <SideBarPage sideBarContents={<SideBarContent {...this.props} />}>
           <GaugeBlockArray />
         </SideBarPage>
-        <HistoricalGraphModal modalData={this.props.modalData} />
+        <HistoricalGraphModal modalData={modalData} />
       </div>
     );
   }

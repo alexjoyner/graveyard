@@ -67,7 +67,25 @@ ShallowWrapper {
         >
           <Connect(BaseGaugeBlockArray) />
         </SideBarPage>,
-        <Connect(BaseHistoricalGraphModal) />,
+        <Connect(BaseHistoricalGraphModal)
+          modalData={
+            Object {
+              "setGroups": [MockFunction] {
+                "calls": Array [
+                  Array [
+                    "test",
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "isThrow": false,
+                    "value": undefined,
+                  },
+                ],
+              },
+            }
+          }
+        />,
       ],
       "style": Object {
         "marginTop": "80px",
@@ -149,7 +167,21 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "modalData": undefined,
+          "modalData": Object {
+            "setGroups": [MockFunction] {
+              "calls": Array [
+                Array [
+                  "test",
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "isThrow": false,
+                  "value": undefined,
+                },
+              ],
+            },
+          },
         },
         "ref": null,
         "rendered": null,
@@ -198,7 +230,25 @@ ShallowWrapper {
           >
             <Connect(BaseGaugeBlockArray) />
           </SideBarPage>,
-          <Connect(BaseHistoricalGraphModal) />,
+          <Connect(BaseHistoricalGraphModal)
+            modalData={
+              Object {
+                "setGroups": [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      "test",
+                    ],
+                  ],
+                  "results": Array [
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                  ],
+                },
+              }
+            }
+          />,
         ],
         "style": Object {
           "marginTop": "80px",
@@ -280,7 +330,21 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "modalData": undefined,
+            "modalData": Object {
+              "setGroups": [MockFunction] {
+                "calls": Array [
+                  Array [
+                    "test",
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "isThrow": false,
+                    "value": undefined,
+                  },
+                ],
+              },
+            },
           },
           "ref": null,
           "rendered": null,

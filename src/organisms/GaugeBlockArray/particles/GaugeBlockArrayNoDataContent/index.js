@@ -12,4 +12,3 @@ export const GaugeBlockArrayNoDataContent = () => (
     <PlainBox height="250px" width="25%" />
   </CenteredContent>
 );
-

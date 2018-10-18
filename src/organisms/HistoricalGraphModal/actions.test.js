@@ -1,4 +1,8 @@
-import { buildGraph, BUILD_GRAPH, dispatchNewHistoricalData, NEW_HISTORICAL_DATA, showHistoryModal, SHOW_GRAPH, closeHistoryModal, CLOSE_HISTORICAL_MODAL } from './actions';
+import {
+  buildGraph, BUILD_GRAPH, dispatchNewHistoricalData,
+  NEW_HISTORICAL_DATA, showHistoryModal, SHOW_GRAPH,
+  closeHistoryModal, CLOSE_HISTORICAL_MODAL,
+} from './actions';
 
 describe('HistoricalGraphActions', () => {
   describe('buildGraph', () => {

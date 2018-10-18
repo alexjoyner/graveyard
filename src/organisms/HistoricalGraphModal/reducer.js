@@ -1,4 +1,6 @@
-import { NEW_HISTORICAL_DATA, SHOW_GRAPH, BUILD_GRAPH, CLOSE_HISTORICAL_MODAL } from './actions';
+import {
+  NEW_HISTORICAL_DATA, SHOW_GRAPH, BUILD_GRAPH, CLOSE_HISTORICAL_MODAL,
+} from './actions';
 
 export const INITIAL_STATE = {
   modalStage: 'CLOSED',

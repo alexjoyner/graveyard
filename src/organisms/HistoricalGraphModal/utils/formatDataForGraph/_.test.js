@@ -1,4 +1,4 @@
-import { formatDataForGraph } from './';
+import { formatDataForGraph } from '.';
 
 describe('formatDataForGraph', () => {
   it('should return correct value', () => {

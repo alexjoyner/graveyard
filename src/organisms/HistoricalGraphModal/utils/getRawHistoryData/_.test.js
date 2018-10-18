@@ -1,4 +1,4 @@
-import { getRawHistoryData } from './';
+import { getRawHistoryData } from '.';
 
 describe('getRawHistoryData', () => {
   let calls;

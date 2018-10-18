@@ -19,9 +19,9 @@ export const getInterval = (type) => {
 };
 
 export const IntervalButton = ({
-  onClick, type, ...props
+  onClick, type, children, ...props
 }) => (
   <Button {...props} onClick={() => onClick(getInterval(type || ''))}>
-    {props.children}
+    {children}
   </Button>
 );

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { RoHighChart, Button, Modal, Panel } from 'ro-component-library';
+import {
+  RoHighChart, Button, Modal, Panel,
+} from 'ro-component-library';
 import { startLoadingNotif, stopLoadingNotif } from '../../actions/notification';
 import { getChartConfig } from './utils/getChartConfig';
 import { Point, Points } from '../../propTypes';
@@ -14,15 +16,18 @@ import { IntervalButton } from './particles/IntervalButton';
 
 export class BaseHistoricalGraphModal extends Component {
   componentDidUpdate() {
-    if (this.props.modalStage === 'BUILDING') {
+    const { modalStage } = this.props;
+    if (modalStage === 'BUILDING') {
       this.runBuildGraphProcess();
     }
   }
+
   async runBuildGraphProcess(opts = {}) {
+    const { chartPoints } = this.props;
     this.props.startLoadingNotif(TEST_NOTIFICATION);
     const points = Object
-      .keys(this.props.chartPoints)
-      .map(pointID => this.props.chartPoints[pointID]);
+      .keys(chartPoints)
+      .map(pointID => chartPoints[pointID]);
     const calls = fetchDataForPoints(points, opts);
     const rawDataArray = await getRawHistoryData(calls);
     const formattedData = formatDataForGraph(rawDataArray, points);
@@ -31,22 +36,25 @@ export class BaseHistoricalGraphModal extends Component {
     this.props.stopLoadingNotif(TEST_NOTIFICATION);
     return null;
   }
+
   render() {
-    return (this.props.modalStage === 'SHOWN') ? (
+    const { modalStage, modalData } = this.props;
+    return (modalStage === 'SHOWN') ? (
       <Modal width="90%">
         <Panel width="90%">
-          <IntervalButton color="primary" type="oneDay" onClick={opts => this.runBuildGraphProcess(opts)} >1 Day</IntervalButton>
-          <IntervalButton color="primary" type="oneWeek" onClick={opts => this.runBuildGraphProcess(opts)} >1 Week</IntervalButton>
-          <IntervalButton color="primary" type="oneMonth" onClick={opts => this.runBuildGraphProcess(opts)} >1 Month</IntervalButton>
-          <IntervalButton color="primary" type="sixMonths" onClick={opts => this.runBuildGraphProcess(opts)} >6 Months</IntervalButton>
-          <IntervalButton color="primary" onClick={() => this.runBuildGraphProcess()} >All</IntervalButton>
+          <IntervalButton color="primary" type="oneDay" onClick={opts => this.runBuildGraphProcess(opts)}>1 Day</IntervalButton>
+          <IntervalButton color="primary" type="oneWeek" onClick={opts => this.runBuildGraphProcess(opts)}>1 Week</IntervalButton>
+          <IntervalButton color="primary" type="oneMonth" onClick={opts => this.runBuildGraphProcess(opts)}>1 Month</IntervalButton>
+          <IntervalButton color="primary" type="sixMonths" onClick={opts => this.runBuildGraphProcess(opts)}>6 Months</IntervalButton>
+          <IntervalButton color="primary" onClick={() => this.runBuildGraphProcess()}>All</IntervalButton>
         </Panel>
         <Button
           color="primary"
           onClick={() => this.props.closeHistoryModal()}
-        >Close
+        >
+          <span>Close</span>
         </Button>
-        <RoHighChart config={getChartConfig(this.props.modalData)} />
+        <RoHighChart config={getChartConfig(modalData)} />
       </Modal>
     ) : (<div style={{ visibility: 'hidden' }} />);
   }

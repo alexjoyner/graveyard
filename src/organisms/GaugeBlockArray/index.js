@@ -13,19 +13,25 @@ export class BaseGaugeBlockArray extends Component {
     /* istanbul ignore next */
     this.socket = props.socket || new PointsSocket({});
   }
+
   componentDidMount() {
-    this.handleSubscribeToGroup(this.props.currentGroup);
+    const { currentGroup } = this.props;
+    this.handleSubscribeToGroup(currentGroup);
   }
+
   componentDidUpdate(prevProps) {
-    if (this.props.currentGroup !== prevProps.currentGroup) {
+    const { currentGroup } = this.props;
+    if (currentGroup !== prevProps.currentGroup) {
       this.handleRemoveAllPoints();
-      this.handleSubscribeToGroup(this.props.currentGroup);
+      this.handleSubscribeToGroup(currentGroup);
     }
   }
+
   handleRemoveAllPoints() {
     this.socket.unsubscribe();
     this.props.removeAllPoints();
   }
+
   async handleSubscribeToGroup(groupID) {
     const groupPoints = await getPointsFromGroupID(groupID);
     this.props.publishNewPoints(groupPoints);
@@ -35,17 +41,21 @@ export class BaseGaugeBlockArray extends Component {
       this.props.publishNewLog(log);
     });
   }
+
   render() {
-    const points = Object.keys(this.props.points);
-    return (!points.length) ?
-      <GaugeBlockArrayNoDataContent /> : (
+    const { points } = this.props;
+    const groupPoints = Object.keys(points);
+    return (!groupPoints.length)
+      ? <GaugeBlockArrayNoDataContent /> : (
         <CenteredContent>
-          {points.map(id => (<PointGaugeBlock
-            {...this.props}
-            key={id}
-            point={this.props.points[id]}
-            id={id}
-          />))}
+          {groupPoints.map(id => (
+            <PointGaugeBlock
+              {...this.props}
+              key={id}
+              point={points[id]}
+              id={id}
+            />
+          ))}
         </CenteredContent>
       );
   }

@@ -14,7 +14,7 @@ const FeedbackButton = () => (
       window.location.assign('http://feedback.voicir.com');
     }}
   >
-    Feedback
+    <span>Feedback</span>
   </Button>
 );
 

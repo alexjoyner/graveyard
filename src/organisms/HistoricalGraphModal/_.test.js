@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { BaseHistoricalGraphModal } from './';
+import { BaseHistoricalGraphModal } from '.';
 
 const mockFetch = data => jest.fn().mockImplementation(() => Promise.resolve({
   status: 200,
