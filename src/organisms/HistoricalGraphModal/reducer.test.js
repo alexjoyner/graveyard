@@ -1,5 +1,7 @@
 import { HistoricalGraphModalReducer, INITIAL_STATE as TRUE_INITIAL_STATE } from './reducer';
-import { BUILD_GRAPH, SHOW_GRAPH, CLOSE_HISTORICAL_MODAL, NEW_HISTORICAL_DATA } from './actions';
+import {
+  BUILD_GRAPH, SHOW_GRAPH, CLOSE_HISTORICAL_MODAL, NEW_HISTORICAL_DATA,
+} from './actions';
 
 describe('HistoricalGraphModalReducer', () => {
   let InitialState;

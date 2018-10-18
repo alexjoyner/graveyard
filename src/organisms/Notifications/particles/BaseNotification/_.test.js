@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Notification as RoNotif } from 'ro-component-library';
-import { Notification } from './';
+import { Notification } from '.';
 
 describe('Notification component', () => {
   let component;

@@ -4,4 +4,3 @@ export const removePoint = point => ({
   type: REMOVE_POINT,
   data: point,
 });
-

@@ -1,4 +1,6 @@
-import { changePointGroup, setGroups, CHANGE_GROUP, SET_GROUPS } from './actions';
+import {
+  changePointGroup, setGroups, CHANGE_GROUP, SET_GROUPS,
+} from './actions';
 
 describe('SideBarContent actions', () => {
   describe('changePointGroup', () => {
@@ -18,4 +20,3 @@ describe('SideBarContent actions', () => {
     });
   });
 });
-

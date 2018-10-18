@@ -5,23 +5,25 @@ import { multiSelectPoint, multiDeselectPoint } from '../../actions/multiSelectP
 
 export const BasePointGaugeBlock = (props) => {
   const { point } = props;
-  return (<GaugeBlock
-    {...point.settings}
-    value={point.value || 0}
-    label={point.name}
-    multiSelected={point.multiSelected}
-    height="10vh"
-    panelWidth="20%"
-    onChartClick={() => {
-      props.multiSelectPoint(point, props.id);
-      setTimeout(() => {
-        props.multiDeselectPoint(props.id);
-      }, 2000);
-    }}
-    onSettingsClick={() => {
-      throw new Error('No on settings click implementation');
-    }}
-  />);
+  return (
+    <GaugeBlock
+      {...point.settings}
+      value={point.value || 0}
+      label={point.name}
+      multiSelected={point.multiSelected}
+      height="10vh"
+      panelWidth="20%"
+      onChartClick={() => {
+        props.multiSelectPoint(point, props.id);
+        setTimeout(() => {
+          props.multiDeselectPoint(props.id);
+        }, 2000);
+      }}
+      onSettingsClick={() => {
+        throw new Error('No on settings click implementation');
+      }}
+    />
+  );
 };
 
 const PointGaugeBlock = connect(null, {
@@ -30,4 +32,3 @@ const PointGaugeBlock = connect(null, {
 })(BasePointGaugeBlock);
 
 export { PointGaugeBlock };
-

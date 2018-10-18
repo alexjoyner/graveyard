@@ -1,4 +1,4 @@
-import { getGroups } from './';
+import { getGroups } from '.';
 
 const mockFetch = data => jest.fn().mockImplementation(() => Promise.resolve({
   status: 200,

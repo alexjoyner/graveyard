@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { BaseMultiSelectedChartsMenu } from './';
+import { BaseMultiSelectedChartsMenu } from '.';
 
 describe('BaseMultiSelectedChartsMenu component', () => {
   describe('Base component state', () => {

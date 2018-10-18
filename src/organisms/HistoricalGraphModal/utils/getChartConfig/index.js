@@ -26,8 +26,8 @@ const getBaseConfig = () => ({
     text: 'Historical Data View',
   },
   subtitle: {
-    text: /* istanbul ignore next */ document.ontouchstart === undefined ?
-      'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in',
+    text: /* istanbul ignore next */ document.ontouchstart === undefined
+      ? 'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in',
   },
   xAxis: {
     type: 'datetime',

@@ -1,6 +1,8 @@
 import { GaugeBlockArrayReducer, INITIAL_STATE } from './reducer';
 import { CHANGE_GROUP } from '../SideBarContent/actions';
-import { NEW_POINTS, REMOVE_POINTS, MULTISELECT_POINT, MULTISELECT_DESELECT_POINT, NEW_LOG } from './actions/types';
+import {
+  NEW_POINTS, REMOVE_POINTS, MULTISELECT_POINT, MULTISELECT_DESELECT_POINT, NEW_LOG,
+} from './actions/types';
 
 describe('GaugeBlockArrayReducer', () => {
   let InitialState;

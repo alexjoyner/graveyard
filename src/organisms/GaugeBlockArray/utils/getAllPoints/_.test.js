@@ -1,5 +1,5 @@
 import { getPointsFromGroupID } from '../getPointsFromGroupID';
-import { getAllPoints } from './';
+import { getAllPoints } from '.';
 
 jest.mock('../getPointsFromGroupID', () => ({
   getPointsFromGroupID: jest.fn(),

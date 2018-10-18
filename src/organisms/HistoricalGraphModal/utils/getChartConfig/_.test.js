@@ -1,4 +1,4 @@
-import { getChartConfig } from './';
+import { getChartConfig } from '.';
 
 describe('getChartConfig', () => {
   let result;
