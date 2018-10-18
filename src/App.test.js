@@ -22,4 +22,10 @@ describe('App component', () => {
   it('Should match snapshot', () => {
     expect(component).toMatchSnapshot();
   });
+  it('Should NOT be using SideBarPage', () => {
+    expect(component.find('SideBarPage')).toHaveLength(0);
+  });
+  it('Should contain a DashBoard page', () => {
+    expect(component.find('DashBoard')).toHaveLength(1);
+  });
 });
