@@ -140,7 +140,9 @@ ShallowWrapper {
           onClick={[Function]}
           size="default"
         >
-          Close
+          <span>
+            Close
+          </span>
         </Button>,
         <RoHighChart
           config={
@@ -377,14 +379,26 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "children": "Close",
+          "children": <span>
+            Close
+          </span>,
           "color": "primary",
           "ghost": false,
           "onClick": [Function],
           "size": "default",
         },
         "ref": null,
-        "rendered": "Close",
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Close",
+          },
+          "ref": null,
+          "rendered": "Close",
+          "type": "span",
+        },
         "type": [Function],
       },
       Object {
@@ -552,7 +566,9 @@ ShallowWrapper {
             onClick={[Function]}
             size="default"
           >
-            Close
+            <span>
+              Close
+            </span>
           </Button>,
           <RoHighChart
             config={
@@ -789,14 +805,26 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "children": "Close",
+            "children": <span>
+              Close
+            </span>,
             "color": "primary",
             "ghost": false,
             "onClick": [Function],
             "size": "default",
           },
           "ref": null,
-          "rendered": "Close",
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Close",
+            },
+            "ref": null,
+            "rendered": "Close",
+            "type": "span",
+          },
           "type": [Function],
         },
         Object {

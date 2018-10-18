@@ -71,7 +71,9 @@ ShallowWrapper {
             color="primary"
             onClick={[Function]}
           >
-            Build Graph
+            <span>
+              Build Graph
+            </span>
           </ListItem>
         </ForwardRef>,
       ],
@@ -169,7 +171,9 @@ ShallowWrapper {
               color="primary"
               onClick={[Function]}
             >
-              Build Graph
+              <span>
+                Build Graph
+              </span>
             </ListItem>,
           ],
         },
@@ -290,12 +294,24 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "function",
             "props": Object {
-              "children": "Build Graph",
+              "children": <span>
+                Build Graph
+              </span>,
               "color": "primary",
               "onClick": [Function],
             },
             "ref": null,
-            "rendered": "Build Graph",
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Build Graph",
+              },
+              "ref": null,
+              "rendered": "Build Graph",
+              "type": "span",
+            },
             "type": [Function],
           },
         ],
@@ -366,7 +382,9 @@ ShallowWrapper {
               color="primary"
               onClick={[Function]}
             >
-              Build Graph
+              <span>
+                Build Graph
+              </span>
             </ListItem>
           </ForwardRef>,
         ],
@@ -464,7 +482,9 @@ ShallowWrapper {
                 color="primary"
                 onClick={[Function]}
               >
-                Build Graph
+                <span>
+                  Build Graph
+                </span>
               </ListItem>,
             ],
           },
@@ -585,12 +605,24 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "function",
               "props": Object {
-                "children": "Build Graph",
+                "children": <span>
+                  Build Graph
+                </span>,
                 "color": "primary",
                 "onClick": [Function],
               },
               "ref": null,
-              "rendered": "Build Graph",
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Build Graph",
+                },
+                "ref": null,
+                "rendered": "Build Graph",
+                "type": "span",
+              },
               "type": [Function],
             },
           ],
