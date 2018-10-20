@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { ISideBar, BasicSideBar, BasicSideBarPageBody } from 'ro-component-library';
 
-class DashBoard extends Component {
-  render() {
-    return (
-      <div>
-        
-      </div>
-    );
-  }
-}
-
-export { DashBoard };
+console.log(BasicSideBar);
+export const DashBoard = () => (
+  <ISideBar {...{
+    SideBar: BasicSideBar,
+    Body: BasicSideBarPageBody,
+  }}
+  />
+);

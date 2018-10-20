@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { SideBarReducer } from 'ro-component-library';
+import { ISideBarReducer } from 'ro-component-library';
 import { GaugeBlockArrayReducer } from './organisms/GaugeBlockArray/reducer';
 import { HistoricalGraphModalReducer } from './organisms/HistoricalGraphModal/reducer';
 import { NotificationReducer } from './organisms/Notifications/reducer';
@@ -12,5 +12,5 @@ export const reducers = combineReducers({
   NotificationReducer,
   MultiSelectedChartsMenuReducer,
   SideBarContentReducer,
-  SideBarReducer,
+  ISideBarReducer,
 });
