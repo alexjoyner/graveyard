@@ -1,6 +1,6 @@
 {
   "name": "historical-service",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "this is a service originally created for getting historical data created  for the datalogging service",
   "main": "index.js",
   "scripts": {
@@ -10,11 +10,11 @@
     "postversion": "git push --tags && echo \"Successfully released version $npm_package_version!\""
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
     "express": "^4.14.1",
     "morgan": "^1.8.1",
-    "body-parser": "^1.18.3",
-    "pg": "^7.4.3",
-    "axios": "^0.18.0"
+    "pg": "^7.4.3"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
