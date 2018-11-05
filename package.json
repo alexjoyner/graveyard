@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "digest-auth-request": "^0.7.0",
-    "eslint": "5.7.0",
+    "eslint": "5.6.0",
     "highcharts": "^6.1.1",
     "highcharts-react-official": "^1.2.0",
     "lodash": "^4.17.11",
