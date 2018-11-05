@@ -1,6 +1,6 @@
 {
   "name": "ees-datalogger-nginx",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "null",
   "repository": "https://github.com/alexjoyner/ees-datalogger-nginx.git",
   "author": "alex@voicir.com",
