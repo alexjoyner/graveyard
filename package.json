@@ -1,0 +1,12 @@
+{
+  "name": "ees-datalogger-nginx",
+  "version": "0.1.0",
+  "main": "null",
+  "repository": "https://github.com/alexjoyner/ees-datalogger-nginx.git",
+  "author": "alex@voicir.com",
+  "license": "PRIVATE",
+  "private": true,
+  "scripts": {
+    "postversion": "git push --tags && echo \"Successfully released version $npm_package_version!\""
+  }
+}
