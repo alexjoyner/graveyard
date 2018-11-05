@@ -1,7 +1,7 @@
 {
   "name": "socket-data",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Node.js Hello world app using docker features for easy docker-compose local dev and solid production defaults",
   "author": "Alex Joyner <alex@voicir.com>",
   "main": "index.js",
