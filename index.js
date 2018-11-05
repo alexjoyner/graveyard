@@ -3,6 +3,8 @@ let morgan = require('morgan');
 let bodyParser = require('body-parser');
 let fs = require('fs');
 const { Client } = require('pg');
+const GET_client_groups = require('./routes/GET_client_groups');
+
 const PORT = process.env.PORT || 8080;
 
 let app = express();
@@ -23,27 +25,7 @@ let conInfo = {
   database: fs.readFileSync(process.env.PG_DB_FILE, 'utf8'),
   host: fs.readFileSync(process.env.PG_HOST_FILE, 'utf8'),
 }
-app.get('/groups/:id', async (req, res) => {
-  const { id } = req.params;
-  let Query = 'SELECT id, name FROM point_group WHERE client_id = $1;'
-  const client = new Client(conInfo);
-  try{
-    await client.connect();
-    const rawData = await client.query({
-      text: Query,
-      values: [id]
-    })
-    const result = rawData.rows
-    await client.end();
-    res.send(result);
-  }
-  catch(e){  
-    console.log("Error: ", e);
-    client.end();
-    res.status(500).send('Something went wrong. Sorry');
-  }
-})
-
+GET_client_groups(app);
 app.get('/points/group/:groupID', async (req, res) => {
   const { groupID } = req.params;
   let Query = `
