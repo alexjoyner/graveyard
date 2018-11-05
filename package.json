@@ -11,7 +11,8 @@
     "coverage": "react-scripts test --coverage",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "postversion": "git push --tags && echo \"Successfully released version $npm_package_version!\""
   },
   "dependencies": {
     "digest-auth-request": "^0.7.0",
@@ -23,9 +24,9 @@
     "prop-types": "^15.6.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-icons": "3.2.1",
+    "react-icons": "3.2.2",
     "react-redux": "^5.0.7",
-    "react-scripts": "2.0.5",
+    "react-scripts": "2.1.1",
     "redux": "^4.0.0",
     "request": "^2.86.0",
     "ro-component-library": "*",
@@ -43,7 +44,7 @@
     "eslint-plugin-jest": "^21.17.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.9.1",
-    "flow-bin": "^0.83.0",
+    "flow-bin": "^0.85.0",
     "gh-pages": "^2.0.1"
   },
   "jest": {
