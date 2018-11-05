@@ -1,0 +1,13 @@
+{
+  "name": "ir900_datalogger",
+  "version": "0.2.0",
+  "description": "Inhand Device Installed Program for oee-master",
+  "main": "null",
+  "repository": "https://github.com/alexjoyner/ir900_datalogger.git",
+  "author": "alex@voicir.com",
+  "license": "PRIVATE",
+  "private": true,
+  "scripts": {
+    "postversion": "git push --tags && echo \"Successfully released version $npm_package_version!\""
+  }
+}
