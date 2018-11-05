@@ -1,6 +1,6 @@
 {
   "name": "ees-datalogger-main",
-  "version": "1.0.1",
+  "version": "0.1.1",
   "main": "index.js",
   "repository": "https://github.com/alexjoyner/ees-datalogger-main.git",
   "author": "alex@voicir.com",
