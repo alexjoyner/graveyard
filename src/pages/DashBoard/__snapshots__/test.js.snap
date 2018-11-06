@@ -36,6 +36,7 @@ ShallowWrapper {
         "render": [Function],
         "styledComponentId": "sc-kkGfuU",
         "target": "div",
+        "toString": [Function],
         "warnTooManyClasses": [Function],
         "withComponent": [Function],
       },
@@ -43,7 +44,7 @@ ShallowWrapper {
         "$$typeof": Symbol(react.forward_ref),
         "attrs": undefined,
         "componentStyle": ComponentStyle {
-          "componentId": "sc-kEYyzF",
+          "componentId": "sc-hMqMXs",
           "isStatic": true,
           "rules": Array [
             "
@@ -56,14 +57,18 @@ ShallowWrapper {
             ";
   height: 100vh;
   width: 300px;
-  left: 0px;
+  left: -250px;
 ",
           ],
         },
-        "displayName": "Styled(styled.div)",
+        "displayName": "styled.div",
+        "propTypes": Object {
+          "shown": [Function],
+        },
         "render": [Function],
-        "styledComponentId": "sc-kEYyzF",
+        "styledComponentId": "sc-hMqMXs",
         "target": "div",
+        "toString": [Function],
         "warnTooManyClasses": [Function],
         "withComponent": [Function],
       },
@@ -97,6 +102,7 @@ ShallowWrapper {
           "render": [Function],
           "styledComponentId": "sc-kkGfuU",
           "target": "div",
+          "toString": [Function],
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         },
@@ -104,7 +110,7 @@ ShallowWrapper {
           "$$typeof": Symbol(react.forward_ref),
           "attrs": undefined,
           "componentStyle": ComponentStyle {
-            "componentId": "sc-kEYyzF",
+            "componentId": "sc-hMqMXs",
             "isStatic": true,
             "rules": Array [
               "
@@ -117,14 +123,18 @@ ShallowWrapper {
               ";
   height: 100vh;
   width: 300px;
-  left: 0px;
+  left: -250px;
 ",
             ],
           },
-          "displayName": "Styled(styled.div)",
+          "displayName": "styled.div",
+          "propTypes": Object {
+            "shown": [Function],
+          },
           "render": [Function],
-          "styledComponentId": "sc-kEYyzF",
+          "styledComponentId": "sc-hMqMXs",
           "target": "div",
+          "toString": [Function],
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         },
