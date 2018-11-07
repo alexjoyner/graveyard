@@ -22,4 +22,7 @@ describe('DashHeader Component', () => {
   it('Should contain the test OEE Master', () => {
     expect(component.find('h1').text()).toEqual('OEE Master');
   });
+  it('Should contain a Feedback link', () => {
+    expect(component.find('FeedbackButton')).toHaveLength(1);
+  });
 });

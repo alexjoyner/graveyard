@@ -1,21 +1,16 @@
 import React from 'react';
-import { Button } from 'ro-component-library';
+import { Button, Go } from 'ro-component-library';
 
 const FeedbackButton = () => (
-  <Button
-    size="large"
-    color="primary"
+  <Go
+    to="http://feedback.voicir.com"
     style={{
       position: 'absolute',
       right: '3px',
-      marginTop: '8px',
-    }}
-    onClick={() => {
-      window.location.assign('http://feedback.voicir.com');
     }}
   >
-    <span>Feedback</span>
-  </Button>
+    <Button color="primary">Feedback</Button>
+  </Go>
 );
 
 export { FeedbackButton };

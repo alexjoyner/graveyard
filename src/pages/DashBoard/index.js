@@ -1,8 +1,5 @@
 import React from 'react';
-import { GoThreeBars } from 'react-icons/go';
-import { ISideBar, Button } from 'ro-component-library';
-import { Header } from 'ro-component-library/lib/atoms/Header';
-import { ISideBarToggle } from 'ro-component-library/lib/behaviors/ISideBar/ISideBarToggle';
+import { ISideBar } from 'ro-component-library';
 import { TestNotification } from '../../organisms/Notifications';
 import { DashBody } from '../../organisms/DashBody';
 import { DashSideBar } from '../../organisms/DashSideBar';
