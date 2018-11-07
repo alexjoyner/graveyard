@@ -1,6 +1,6 @@
 {
   "name": "ees-accounts-service",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Handles getting account information for ees applicaitons",
   "main": "index.js",
   "repository": "https://github.com/alexjoyner/ees-accounts-service.git",
