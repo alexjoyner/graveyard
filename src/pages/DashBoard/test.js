@@ -16,12 +16,6 @@ describe('DashBoard Page', () => {
   it('Should have ISideBar behavior', () => {
     expect(component.find('Connect(TISideBar)')).toHaveLength(1);
   });
-  it('SHould have a Header component', () => {
-    expect(component.find('Header')).toHaveLength(1);
-  });
-  it('Should have a sidebar toggle button', () => {
-    expect(component.find('Connect(TISideBarToggle)')).toHaveLength(1);
-  });
   it('Should contain a test notification', () => {
     expect(component.find('TestNotification')).toHaveLength(1);
   });
@@ -33,5 +27,8 @@ describe('DashBoard Page', () => {
   });
   it('Should have HistoricalGraphModal', () => {
     expect(component.find('Connect(BaseHistoricalGraphModal)')).toHaveLength(1);
+  });
+  it('Should contain a DashHeader', () => {
+    expect(component.find('DashHeader')).toHaveLength(1);
   });
 });

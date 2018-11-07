@@ -19,16 +19,7 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <TestNotification />,
-        <Header
-          color="dark"
-        >
-          <Connect(TISideBarToggle)
-            Button={[Function]}
-          />
-          <h1>
-            OEE Master
-          </h1>
-        </Header>,
+        <DashHeader />,
         <Connect(TISideBar)
           Body={[Function]}
           SideBar={[Function]}
@@ -51,42 +42,9 @@ ShallowWrapper {
         "instance": null,
         "key": undefined,
         "nodeType": "function",
-        "props": Object {
-          "children": Array [
-            <Connect(TISideBarToggle)
-              Button={[Function]}
-            />,
-            <h1>
-              OEE Master
-            </h1>,
-          ],
-          "color": "dark",
-        },
+        "props": Object {},
         "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "Button": [Function],
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": "OEE Master",
-            },
-            "ref": null,
-            "rendered": "OEE Master",
-            "type": "h1",
-          },
-        ],
+        "rendered": null,
         "type": [Function],
       },
       Object {
@@ -121,16 +79,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <TestNotification />,
-          <Header
-            color="dark"
-          >
-            <Connect(TISideBarToggle)
-              Button={[Function]}
-            />
-            <h1>
-              OEE Master
-            </h1>
-          </Header>,
+          <DashHeader />,
           <Connect(TISideBar)
             Body={[Function]}
             SideBar={[Function]}
@@ -153,42 +102,9 @@ ShallowWrapper {
           "instance": null,
           "key": undefined,
           "nodeType": "function",
-          "props": Object {
-            "children": Array [
-              <Connect(TISideBarToggle)
-                Button={[Function]}
-              />,
-              <h1>
-                OEE Master
-              </h1>,
-            ],
-            "color": "dark",
-          },
+          "props": Object {},
           "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "Button": [Function],
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": "OEE Master",
-              },
-              "ref": null,
-              "rendered": "OEE Master",
-              "type": "h1",
-            },
-          ],
+          "rendered": null,
           "type": [Function],
         },
         Object {

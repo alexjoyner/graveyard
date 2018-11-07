@@ -7,19 +7,12 @@ import { TestNotification } from '../../organisms/Notifications';
 import { DashBody } from '../../organisms/DashBody';
 import { DashSideBar } from '../../organisms/DashSideBar';
 import { HistoricalGraphModal } from '../../organisms/HistoricalGraphModal';
+import { DashHeader } from '../../organisms/DashHeader';
 
-const ToggleBtn = props => (
-  <Button color="primary" {...props}>
-    <GoThreeBars />
-  </Button>
-);
 export const DashBoard = () => (
   <>
     <TestNotification />
-    <Header color="dark">
-      <ISideBarToggle Button={ToggleBtn} />
-      <h1>OEE Master</h1>
-    </Header>
+    <DashHeader />
     <ISideBar {...{
       SideBar: DashSideBar,
       Body: DashBody,
