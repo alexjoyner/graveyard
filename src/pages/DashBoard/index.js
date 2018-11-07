@@ -2,27 +2,15 @@ import React from 'react';
 import { GoThreeBars } from 'react-icons/go';
 import { ISideBar, Button } from 'ro-component-library';
 import { Header } from 'ro-component-library/lib/atoms/Header';
-import { HeaderSideBarPageBody } from 'ro-component-library/lib/atoms/SideBar/SideBarPageBody';
 import { ISideBarToggle } from 'ro-component-library/lib/behaviors/ISideBar/ISideBarToggle';
-import { AnimatedSideBar } from 'ro-component-library/lib/atoms/SideBar';
 import { TestNotification } from '../../organisms/Notifications';
-import { SideBarContent } from '../../organisms/SideBarContent';
-import { GaugeBlockArray } from '../../organisms/GaugeBlockArray';
+import { DashBody } from '../../organisms/DashBody';
+import { DashSideBar } from '../../organisms/DashSideBar';
 
-const ToggleBtn = () => (
-  <Button color="primary">
+const ToggleBtn = props => (
+  <Button color="primary" {...props}>
     <GoThreeBars />
   </Button>
-);
-const DashSideBar = () => (
-  <AnimatedSideBar color="dark">
-    <SideBarContent />
-  </AnimatedSideBar>
-);
-const DashBody = () => (
-  <HeaderSideBarPageBody>
-    <GaugeBlockArray />
-  </HeaderSideBarPageBody>
 );
 export const DashBoard = () => (
   <>
