@@ -6,6 +6,7 @@ import { ISideBarToggle } from 'ro-component-library/lib/behaviors/ISideBar/ISid
 import { TestNotification } from '../../organisms/Notifications';
 import { DashBody } from '../../organisms/DashBody';
 import { DashSideBar } from '../../organisms/DashSideBar';
+import { HistoricalGraphModal } from '../../organisms/HistoricalGraphModal';
 
 const ToggleBtn = props => (
   <Button color="primary" {...props}>
@@ -24,5 +25,6 @@ export const DashBoard = () => (
       Body: DashBody,
     }}
     />
+    <HistoricalGraphModal />
   </>
 );

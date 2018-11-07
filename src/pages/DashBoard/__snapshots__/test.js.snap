@@ -15,133 +15,205 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "class",
+    "nodeType": "function",
     "props": Object {
-      "Body": Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "attrs": undefined,
-        "componentStyle": ComponentStyle {
-          "componentId": "sc-kkGfuU",
-          "isStatic": false,
-          "rules": Array [
-            "
-  margin-left: ",
-            [Function],
-            ";
-  min-height: 10px;
-",
-          ],
-        },
-        "displayName": "styled.div",
-        "render": [Function],
-        "styledComponentId": "sc-kkGfuU",
-        "target": "div",
-        "toString": [Function],
-        "warnTooManyClasses": [Function],
-        "withComponent": [Function],
-      },
-      "SideBar": Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "attrs": undefined,
-        "componentStyle": ComponentStyle {
-          "componentId": "sc-hMqMXs",
-          "isStatic": true,
-          "rules": Array [
-            "
-  position: fixed;
-  z-index: ",
-            "1",
-            ";
-  background-color: ",
-            "#b2bec3",
-            ";
-  height: 100vh;
-  width: 300px;
-  left: -250px;
-",
-          ],
-        },
-        "displayName": "styled.div",
-        "propTypes": Object {
-          "shown": [Function],
-        },
-        "render": [Function],
-        "styledComponentId": "sc-hMqMXs",
-        "target": "div",
-        "toString": [Function],
-        "warnTooManyClasses": [Function],
-        "withComponent": [Function],
-      },
+      "children": Array [
+        <TestNotification />,
+        <Header
+          color="dark"
+        >
+          <Connect(TISideBarToggle)
+            Button={[Function]}
+          />
+          <h1>
+            OEE Master
+          </h1>
+        </Header>,
+        <Connect(TISideBar)
+          Body={[Function]}
+          SideBar={[Function]}
+        />,
+        <Connect(BaseHistoricalGraphModal) />,
+      ],
     },
     "ref": null,
-    "rendered": null,
-    "type": [Function],
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": Array [
+            <Connect(TISideBarToggle)
+              Button={[Function]}
+            />,
+            <h1>
+              OEE Master
+            </h1>,
+          ],
+          "color": "dark",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "Button": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "OEE Master",
+            },
+            "ref": null,
+            "rendered": "OEE Master",
+            "type": "h1",
+          },
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "Body": [Function],
+          "SideBar": [Function],
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": Symbol(react.fragment),
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "class",
+      "nodeType": "function",
       "props": Object {
-        "Body": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "attrs": undefined,
-          "componentStyle": ComponentStyle {
-            "componentId": "sc-kkGfuU",
-            "isStatic": false,
-            "rules": Array [
-              "
-  margin-left: ",
-              [Function],
-              ";
-  min-height: 10px;
-",
-            ],
-          },
-          "displayName": "styled.div",
-          "render": [Function],
-          "styledComponentId": "sc-kkGfuU",
-          "target": "div",
-          "toString": [Function],
-          "warnTooManyClasses": [Function],
-          "withComponent": [Function],
-        },
-        "SideBar": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "attrs": undefined,
-          "componentStyle": ComponentStyle {
-            "componentId": "sc-hMqMXs",
-            "isStatic": true,
-            "rules": Array [
-              "
-  position: fixed;
-  z-index: ",
-              "1",
-              ";
-  background-color: ",
-              "#b2bec3",
-              ";
-  height: 100vh;
-  width: 300px;
-  left: -250px;
-",
-            ],
-          },
-          "displayName": "styled.div",
-          "propTypes": Object {
-            "shown": [Function],
-          },
-          "render": [Function],
-          "styledComponentId": "sc-hMqMXs",
-          "target": "div",
-          "toString": [Function],
-          "warnTooManyClasses": [Function],
-          "withComponent": [Function],
-        },
+        "children": Array [
+          <TestNotification />,
+          <Header
+            color="dark"
+          >
+            <Connect(TISideBarToggle)
+              Button={[Function]}
+            />
+            <h1>
+              OEE Master
+            </h1>
+          </Header>,
+          <Connect(TISideBar)
+            Body={[Function]}
+            SideBar={[Function]}
+          />,
+          <Connect(BaseHistoricalGraphModal) />,
+        ],
       },
       "ref": null,
-      "rendered": null,
-      "type": [Function],
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": Array [
+              <Connect(TISideBarToggle)
+                Button={[Function]}
+              />,
+              <h1>
+                OEE Master
+              </h1>,
+            ],
+            "color": "dark",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "Button": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "OEE Master",
+              },
+              "ref": null,
+              "rendered": "OEE Master",
+              "type": "h1",
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "Body": [Function],
+            "SideBar": [Function],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": Symbol(react.fragment),
     },
   ],
   Symbol(enzyme.__options__): Object {

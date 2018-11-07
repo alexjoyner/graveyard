@@ -10,7 +10,7 @@ describe('DashBoard Page', () => {
   it('Should render without exploding', () => {
     expect(component).toBeDefined();
   });
-  xit('Should match snapshot', () => {
+  it('Should match snapshot', () => {
     expect(component).toMatchSnapshot();
   });
   it('Should have ISideBar behavior', () => {
@@ -30,5 +30,8 @@ describe('DashBoard Page', () => {
   });
   it('Should have a page body', () => {
     expect(component.find('Connect(TISideBar)').props().Body).toBeDefined();
+  });
+  it('Should have HistoricalGraphModal', () => {
+    expect(component.find('Connect(BaseHistoricalGraphModal)')).toHaveLength(1);
   });
 });
