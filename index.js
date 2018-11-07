@@ -26,55 +26,7 @@ let conInfo = {
   host: fs.readFileSync(process.env.PG_HOST_FILE, 'utf8'),
 }
 useRoutes(app);
-app.get('/points/group/:groupID', async (req, res) => {
-  const { groupID } = req.params;
-  let Query = `
-  SELECT 
-    point.*
-  FROM point_group_x_point 
-  INNER JOIN
-    point
-  ON
-    (point_group_x_point.point_id = point.id)
-  WHERE 
-    point_group_id = $1;`
-  const client = new Client(conInfo);
-  try{
-    await client.connect();
-    const rawData = await client.query({
-      text: Query,
-      values: [groupID]
-    })
-    const result = rawData.rows
-    await client.end();
-    res.send(result);
-  }
-  catch(e){  
-    console.log("Error: ", e);
-    client.end();
-    res.status(500).send('Something went wrong. Sorry');
-  }
-})
-app.get('/points/:clientID', async (req, res) => {
-  const { clientID } = req.params;
-  let Query = 'SELECT id, name, settings FROM point WHERE client_id = $1;'
-  const client = new Client(conInfo);
-  try{
-    await client.connect();
-    const rawData = await client.query({
-      text: Query,
-      values: [clientID]
-    })
-    const result = rawData.rows
-    await client.end();
-    res.send(result);
-  }
-  catch(e){  
-    console.log("Error: ", e);
-    client.end();
-    res.status(500).send('Something went wrong. Sorry');
-  }
-})
+
 app.get('/healthz', function (req, res) {
 	// do app logic here to determine if app is truly healthy
 	// you should return 200 if healthy, and anything else will fail
