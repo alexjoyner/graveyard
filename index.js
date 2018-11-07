@@ -3,7 +3,7 @@ let morgan = require('morgan');
 let bodyParser = require('body-parser');
 let fs = require('fs');
 const { Client } = require('pg');
-const GET_client_groups = require('./routes/GET_client_groups');
+const useRoutes = require('./routes');
 
 const PORT = process.env.PORT || 8080;
 
@@ -25,7 +25,7 @@ let conInfo = {
   database: fs.readFileSync(process.env.PG_DB_FILE, 'utf8'),
   host: fs.readFileSync(process.env.PG_HOST_FILE, 'utf8'),
 }
-GET_client_groups(app);
+useRoutes(app);
 app.get('/points/group/:groupID', async (req, res) => {
   const { groupID } = req.params;
   let Query = `
