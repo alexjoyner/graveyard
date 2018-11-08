@@ -1,7 +1,7 @@
-const utils = require('../../utils');
+const utils = require('ro-server-utils');
 
 module.exports = {
-    getGroupsByClientID: async (req, res) => {
+    getGroupsByClientID: (req, res) => {
         const { clientID } = req.params;
         return {
             text: 'SELECT id, name FROM point_group WHERE client_id = $1;',
