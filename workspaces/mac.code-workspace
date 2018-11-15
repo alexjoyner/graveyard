@@ -7,13 +7,16 @@
 			"path": "/Volumes/Alex's Code/ees-datalogger/ir900_datalogger"
 		},
 		{
-			"path": "/Volumes/Alex's Code/ees-datalogger/server"
-		},
-		{
 			"path": "/Users/rosco/Documents/GitHub/ees-datalogger/client"
 		},
 		{
 			"path": "/Users/rosco/Documents/GitHub/shared/ro-component-library"
+		},
+		{
+			"path": "/Volumes/Alex's Code/ees-datalogger/server"
+		},
+		{
+			"path": "/Users/rosco/Documents/GitHub/shared/ro-server-utils"
 		},
 		{
 			"path": "/Users/rosco/Documents/GitHub/ees-datalogger/_helpers"

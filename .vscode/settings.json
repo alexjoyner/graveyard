@@ -11,5 +11,6 @@
     "**/dev-keys": true,
     "**/digital-ocean": true,
     "**/workspaces": true
-  }
+  },
+  "python.linting.enabled": false
 }
