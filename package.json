@@ -11,10 +11,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "body-parser": "^1.18.3",
-    "express": "^4.14.1",
-    "morgan": "^1.8.1",
-    "pg": "^7.4.3"
+    "ro-server-utils": "0.4.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
