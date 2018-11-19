@@ -1,6 +1,6 @@
 {
   "name": "ees-accounts-service",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "description": "Handles getting account information for ees applicaitons",
   "main": "index.js",
   "repository": "https://github.com/alexjoyner/ees-accounts-service.git",
@@ -10,14 +10,12 @@
   "scripts": {
     "start": "node index.js",
     "dev-docker": "../node_modules/nodemon/bin/nodemon.js --debug=5858",
-    "dev-host": "nodemon --debug=5858"
+    "dev-host": "nodemon --debug=5858",
+    "postversion": "git push --tags && echo \"Successfully released version $npm_package_version!\""
   },
   "dependencies": {
-    "express": "^4.14.1",
-    "morgan": "^1.8.1",
-    "body-parser": "^1.18.3",
-    "pg": "^7.4.3",
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "ro-server-utils": "0.4.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
