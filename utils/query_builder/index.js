@@ -1,12 +1,16 @@
 class QueryBuilder {
-    getInsertString(data, tableName = 'log') {
+    getInsertString(req) {
+        let data = req.body;
+        let tableName = data.tableName || 'log' 
         let values = "";
         let logs = data.logs;
         Object.keys(logs).map((point_id /* Point ID is the key */, i, arr) => {
             let lastChar = (arr.length - 1 === i) ? ';' : ',';
             values = values + `(${point_id}, '${data.datetime}', ${logs[point_id].value})${lastChar}`;
         })
-        return `INSERT INTO "${tableName}" ("point_id", "datetime", "val") VALUES ${values}`
+        return {
+            text: `INSERT INTO "${tableName}" ("point_id", "datetime", "val") VALUES ${values}`
+        }
     }
 }
 
