@@ -1,6 +1,6 @@
 {
   "name": "ees-simple-dash",
-  "version": "0.1.0",
+  "version": "0.3.1",
   "private": true,
   "homepage": "http://alexjoyner.github.io/",
   "scripts": {
@@ -11,11 +11,13 @@
     "coverage": "react-scripts test --coverage",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "postversion": "git push --tags && echo \"Successfully released version $npm_package_version!\""
   },
   "dependencies": {
+    "@babel/core": "^7.1.2",
     "digest-auth-request": "^0.7.0",
-    "eslint": "5.7.0",
+    "eslint": "5.6.0",
     "highcharts": "^6.1.1",
     "highcharts-react-official": "^1.2.0",
     "lodash": "^4.17.11",
@@ -23,18 +25,16 @@
     "prop-types": "^15.6.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-icons": "3.2.1",
-    "react-redux": "^5.0.7",
-    "react-scripts": "2.0.5",
-    "redux": "^4.0.0",
+    "react-icons": "3.2.2",
+    "react-redux": "5.1.0",
+    "react-scripts": "2.1.1",
+    "redux": "^4.0.1",
     "request": "^2.86.0",
-    "ro-component-library": "*",
-    "socket.io-client": "^2.1.1",
-    "styled-components": "^4.0.0"
+    "ro-component-library": "^1.4.0",
+    "socket.io-client": "^2.1.1"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-runtime": "^6.26.0",
+    "babel-core": "^7.0.0-bridge",
     "enzyme": "^3.4.0",
     "enzyme-adapter-react-16": "^1.2.0",
     "enzyme-to-json": "^3.3.4",
@@ -43,7 +43,7 @@
     "eslint-plugin-jest": "^21.17.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.9.1",
-    "flow-bin": "^0.83.0",
+    "flow-bin": "^0.85.0",
     "gh-pages": "^2.0.1"
   },
   "jest": {
