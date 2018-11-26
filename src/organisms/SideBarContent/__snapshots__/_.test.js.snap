@@ -36,16 +36,16 @@ ShallowWrapper {
           Groups
         </ForwardRef>,
         <ForwardRef>
-          <ListItem
+          <ForwardRef
             onClick={[Function]}
           >
             test
-          </ListItem>
-          <ListItem
+          </ForwardRef>
+          <ForwardRef
             onClick={[Function]}
           >
             test2
-          </ListItem>
+          </ForwardRef>
         </ForwardRef>,
         <Connect(BaseMultiSelectedChartsMenu) />,
       ],
@@ -65,30 +65,19 @@ ShallowWrapper {
           "$$typeof": Symbol(react.forward_ref),
           "attrs": undefined,
           "componentStyle": ComponentStyle {
-            "componentId": "sc-jKJlTe",
+            "componentId": "ListHeader-ceem0n-0",
             "isStatic": false,
             "rules": Array [
-              "
-  -moz-box-sizing: border-box; 
-  -webkit-box-sizing: border-box; 
-  box-sizing: border-box; 
-  top: 0;
-  left: 0;
-  background-color: ",
+              "-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;top:0;left:0;background-color:",
               [Function],
-              ";
-  border: none;
-  width: 100%;
-  height: 41px;
-  line-height: 41px;
-  vertical-align: middle;
-  padding-left: 10px;
-",
+              ";color:",
+              [Function],
+              ";border:none;width:100%;height:41px;line-height:41px;vertical-align:middle;padding-left:10px;",
             ],
           },
-          "displayName": "styled.div",
+          "displayName": "ListHeader",
           "render": [Function],
-          "styledComponentId": "sc-jKJlTe",
+          "styledComponentId": "ListHeader-ceem0n-0",
           "target": "div",
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -101,16 +90,16 @@ ShallowWrapper {
         "nodeType": "function",
         "props": Object {
           "children": Array [
-            <ListItem
+            <ForwardRef
               onClick={[Function]}
             >
               test
-            </ListItem>,
-            <ListItem
+            </ForwardRef>,
+            <ForwardRef
               onClick={[Function]}
             >
               test2
-            </ListItem>,
+            </ForwardRef>,
           ],
         },
         "ref": null,
@@ -125,7 +114,28 @@ ShallowWrapper {
             },
             "ref": null,
             "rendered": "test",
-            "type": [Function],
+            "type": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": undefined,
+              "componentStyle": ComponentStyle {
+                "componentId": "ListItem-sc-1v9ift-0",
+                "isStatic": false,
+                "rules": Array [
+                  "box-sizing:border-box;width:90%;margin-top:5px;padding:10px;border-radius:2px;border:none;background-color:",
+                  [Function],
+                  ";color:",
+                  [Function],
+                  ";display:inline-block;cursor:pointer;opacity:1;&:hover{opacity:0.95;}&:active{box-shadow:none;opacity:0.85;}",
+                ],
+              },
+              "displayName": "ListItem",
+              "render": [Function],
+              "styledComponentId": "ListItem-sc-1v9ift-0",
+              "target": "div",
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            },
           },
           Object {
             "instance": null,
@@ -137,24 +147,43 @@ ShallowWrapper {
             },
             "ref": null,
             "rendered": "test2",
-            "type": [Function],
+            "type": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": undefined,
+              "componentStyle": ComponentStyle {
+                "componentId": "ListItem-sc-1v9ift-0",
+                "isStatic": false,
+                "rules": Array [
+                  "box-sizing:border-box;width:90%;margin-top:5px;padding:10px;border-radius:2px;border:none;background-color:",
+                  [Function],
+                  ";color:",
+                  [Function],
+                  ";display:inline-block;cursor:pointer;opacity:1;&:hover{opacity:0.95;}&:active{box-shadow:none;opacity:0.85;}",
+                ],
+              },
+              "displayName": "ListItem",
+              "render": [Function],
+              "styledComponentId": "ListItem-sc-1v9ift-0",
+              "target": "div",
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            },
           },
         ],
         "type": Object {
           "$$typeof": Symbol(react.forward_ref),
           "attrs": undefined,
           "componentStyle": ComponentStyle {
-            "componentId": "sc-dxgOiQ",
+            "componentId": "CenteredContent-ys47ff-0",
             "isStatic": true,
             "rules": Array [
-              "
-    text-align: center;
-",
+              "text-align:center;",
             ],
           },
-          "displayName": "styled.div",
+          "displayName": "CenteredContent",
           "render": [Function],
-          "styledComponentId": "sc-dxgOiQ",
+          "styledComponentId": "CenteredContent-ys47ff-0",
           "target": "div",
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -184,16 +213,16 @@ ShallowWrapper {
             Groups
           </ForwardRef>,
           <ForwardRef>
-            <ListItem
+            <ForwardRef
               onClick={[Function]}
             >
               test
-            </ListItem>
-            <ListItem
+            </ForwardRef>
+            <ForwardRef
               onClick={[Function]}
             >
               test2
-            </ListItem>
+            </ForwardRef>
           </ForwardRef>,
           <Connect(BaseMultiSelectedChartsMenu) />,
         ],
@@ -213,30 +242,19 @@ ShallowWrapper {
             "$$typeof": Symbol(react.forward_ref),
             "attrs": undefined,
             "componentStyle": ComponentStyle {
-              "componentId": "sc-jKJlTe",
+              "componentId": "ListHeader-ceem0n-0",
               "isStatic": false,
               "rules": Array [
-                "
-  -moz-box-sizing: border-box; 
-  -webkit-box-sizing: border-box; 
-  box-sizing: border-box; 
-  top: 0;
-  left: 0;
-  background-color: ",
+                "-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;top:0;left:0;background-color:",
                 [Function],
-                ";
-  border: none;
-  width: 100%;
-  height: 41px;
-  line-height: 41px;
-  vertical-align: middle;
-  padding-left: 10px;
-",
+                ";color:",
+                [Function],
+                ";border:none;width:100%;height:41px;line-height:41px;vertical-align:middle;padding-left:10px;",
               ],
             },
-            "displayName": "styled.div",
+            "displayName": "ListHeader",
             "render": [Function],
-            "styledComponentId": "sc-jKJlTe",
+            "styledComponentId": "ListHeader-ceem0n-0",
             "target": "div",
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -249,16 +267,16 @@ ShallowWrapper {
           "nodeType": "function",
           "props": Object {
             "children": Array [
-              <ListItem
+              <ForwardRef
                 onClick={[Function]}
               >
                 test
-              </ListItem>,
-              <ListItem
+              </ForwardRef>,
+              <ForwardRef
                 onClick={[Function]}
               >
                 test2
-              </ListItem>,
+              </ForwardRef>,
             ],
           },
           "ref": null,
@@ -273,7 +291,28 @@ ShallowWrapper {
               },
               "ref": null,
               "rendered": "test",
-              "type": [Function],
+              "type": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": undefined,
+                "componentStyle": ComponentStyle {
+                  "componentId": "ListItem-sc-1v9ift-0",
+                  "isStatic": false,
+                  "rules": Array [
+                    "box-sizing:border-box;width:90%;margin-top:5px;padding:10px;border-radius:2px;border:none;background-color:",
+                    [Function],
+                    ";color:",
+                    [Function],
+                    ";display:inline-block;cursor:pointer;opacity:1;&:hover{opacity:0.95;}&:active{box-shadow:none;opacity:0.85;}",
+                  ],
+                },
+                "displayName": "ListItem",
+                "render": [Function],
+                "styledComponentId": "ListItem-sc-1v9ift-0",
+                "target": "div",
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              },
             },
             Object {
               "instance": null,
@@ -285,24 +324,43 @@ ShallowWrapper {
               },
               "ref": null,
               "rendered": "test2",
-              "type": [Function],
+              "type": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": undefined,
+                "componentStyle": ComponentStyle {
+                  "componentId": "ListItem-sc-1v9ift-0",
+                  "isStatic": false,
+                  "rules": Array [
+                    "box-sizing:border-box;width:90%;margin-top:5px;padding:10px;border-radius:2px;border:none;background-color:",
+                    [Function],
+                    ";color:",
+                    [Function],
+                    ";display:inline-block;cursor:pointer;opacity:1;&:hover{opacity:0.95;}&:active{box-shadow:none;opacity:0.85;}",
+                  ],
+                },
+                "displayName": "ListItem",
+                "render": [Function],
+                "styledComponentId": "ListItem-sc-1v9ift-0",
+                "target": "div",
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              },
             },
           ],
           "type": Object {
             "$$typeof": Symbol(react.forward_ref),
             "attrs": undefined,
             "componentStyle": ComponentStyle {
-              "componentId": "sc-dxgOiQ",
+              "componentId": "CenteredContent-ys47ff-0",
               "isStatic": true,
               "rules": Array [
-                "
-    text-align: center;
-",
+                "text-align:center;",
               ],
             },
-            "displayName": "styled.div",
+            "displayName": "CenteredContent",
             "render": [Function],
-            "styledComponentId": "sc-dxgOiQ",
+            "styledComponentId": "CenteredContent-ys47ff-0",
             "target": "div",
             "toString": [Function],
             "warnTooManyClasses": [Function],

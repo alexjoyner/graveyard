@@ -64,27 +64,20 @@ ShallowWrapper {
           "$$typeof": Symbol(react.forward_ref),
           "attrs": undefined,
           "componentStyle": ComponentStyle {
-            "componentId": "sc-ckVGcZ",
+            "componentId": "PlainBox-sc-10nrb46-0",
             "isStatic": false,
             "rules": Array [
-              "
-    ",
               [Function],
-              "
-    ",
+              " ",
               [Function],
-              "
-    min-width: ",
+              " min-width:",
               [Function],
-              ";
-    background-color: #c0c0c0;
-    display: inline-block;
-",
+              ";background-color:#c0c0c0;display:inline-block;",
             ],
           },
-          "displayName": "styled.div",
+          "displayName": "PlainBox",
           "render": [Function],
-          "styledComponentId": "sc-ckVGcZ",
+          "styledComponentId": "PlainBox-sc-10nrb46-0",
           "target": "div",
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -105,27 +98,20 @@ ShallowWrapper {
           "$$typeof": Symbol(react.forward_ref),
           "attrs": undefined,
           "componentStyle": ComponentStyle {
-            "componentId": "sc-ckVGcZ",
+            "componentId": "PlainBox-sc-10nrb46-0",
             "isStatic": false,
             "rules": Array [
-              "
-    ",
               [Function],
-              "
-    ",
+              " ",
               [Function],
-              "
-    min-width: ",
+              " min-width:",
               [Function],
-              ";
-    background-color: #c0c0c0;
-    display: inline-block;
-",
+              ";background-color:#c0c0c0;display:inline-block;",
             ],
           },
-          "displayName": "styled.div",
+          "displayName": "PlainBox",
           "render": [Function],
-          "styledComponentId": "sc-ckVGcZ",
+          "styledComponentId": "PlainBox-sc-10nrb46-0",
           "target": "div",
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -146,27 +132,20 @@ ShallowWrapper {
           "$$typeof": Symbol(react.forward_ref),
           "attrs": undefined,
           "componentStyle": ComponentStyle {
-            "componentId": "sc-ckVGcZ",
+            "componentId": "PlainBox-sc-10nrb46-0",
             "isStatic": false,
             "rules": Array [
-              "
-    ",
               [Function],
-              "
-    ",
+              " ",
               [Function],
-              "
-    min-width: ",
+              " min-width:",
               [Function],
-              ";
-    background-color: #c0c0c0;
-    display: inline-block;
-",
+              ";background-color:#c0c0c0;display:inline-block;",
             ],
           },
-          "displayName": "styled.div",
+          "displayName": "PlainBox",
           "render": [Function],
-          "styledComponentId": "sc-ckVGcZ",
+          "styledComponentId": "PlainBox-sc-10nrb46-0",
           "target": "div",
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -187,27 +166,20 @@ ShallowWrapper {
           "$$typeof": Symbol(react.forward_ref),
           "attrs": undefined,
           "componentStyle": ComponentStyle {
-            "componentId": "sc-ckVGcZ",
+            "componentId": "PlainBox-sc-10nrb46-0",
             "isStatic": false,
             "rules": Array [
-              "
-    ",
               [Function],
-              "
-    ",
+              " ",
               [Function],
-              "
-    min-width: ",
+              " min-width:",
               [Function],
-              ";
-    background-color: #c0c0c0;
-    display: inline-block;
-",
+              ";background-color:#c0c0c0;display:inline-block;",
             ],
           },
-          "displayName": "styled.div",
+          "displayName": "PlainBox",
           "render": [Function],
-          "styledComponentId": "sc-ckVGcZ",
+          "styledComponentId": "PlainBox-sc-10nrb46-0",
           "target": "div",
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -228,27 +200,20 @@ ShallowWrapper {
           "$$typeof": Symbol(react.forward_ref),
           "attrs": undefined,
           "componentStyle": ComponentStyle {
-            "componentId": "sc-ckVGcZ",
+            "componentId": "PlainBox-sc-10nrb46-0",
             "isStatic": false,
             "rules": Array [
-              "
-    ",
               [Function],
-              "
-    ",
+              " ",
               [Function],
-              "
-    min-width: ",
+              " min-width:",
               [Function],
-              ";
-    background-color: #c0c0c0;
-    display: inline-block;
-",
+              ";background-color:#c0c0c0;display:inline-block;",
             ],
           },
-          "displayName": "styled.div",
+          "displayName": "PlainBox",
           "render": [Function],
-          "styledComponentId": "sc-ckVGcZ",
+          "styledComponentId": "PlainBox-sc-10nrb46-0",
           "target": "div",
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -269,27 +234,20 @@ ShallowWrapper {
           "$$typeof": Symbol(react.forward_ref),
           "attrs": undefined,
           "componentStyle": ComponentStyle {
-            "componentId": "sc-ckVGcZ",
+            "componentId": "PlainBox-sc-10nrb46-0",
             "isStatic": false,
             "rules": Array [
-              "
-    ",
               [Function],
-              "
-    ",
+              " ",
               [Function],
-              "
-    min-width: ",
+              " min-width:",
               [Function],
-              ";
-    background-color: #c0c0c0;
-    display: inline-block;
-",
+              ";background-color:#c0c0c0;display:inline-block;",
             ],
           },
-          "displayName": "styled.div",
+          "displayName": "PlainBox",
           "render": [Function],
-          "styledComponentId": "sc-ckVGcZ",
+          "styledComponentId": "PlainBox-sc-10nrb46-0",
           "target": "div",
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -310,27 +268,20 @@ ShallowWrapper {
           "$$typeof": Symbol(react.forward_ref),
           "attrs": undefined,
           "componentStyle": ComponentStyle {
-            "componentId": "sc-ckVGcZ",
+            "componentId": "PlainBox-sc-10nrb46-0",
             "isStatic": false,
             "rules": Array [
-              "
-    ",
               [Function],
-              "
-    ",
+              " ",
               [Function],
-              "
-    min-width: ",
+              " min-width:",
               [Function],
-              ";
-    background-color: #c0c0c0;
-    display: inline-block;
-",
+              ";background-color:#c0c0c0;display:inline-block;",
             ],
           },
-          "displayName": "styled.div",
+          "displayName": "PlainBox",
           "render": [Function],
-          "styledComponentId": "sc-ckVGcZ",
+          "styledComponentId": "PlainBox-sc-10nrb46-0",
           "target": "div",
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -342,17 +293,15 @@ ShallowWrapper {
       "$$typeof": Symbol(react.forward_ref),
       "attrs": undefined,
       "componentStyle": ComponentStyle {
-        "componentId": "sc-dxgOiQ",
+        "componentId": "CenteredContent-ys47ff-0",
         "isStatic": true,
         "rules": Array [
-          "
-    text-align: center;
-",
+          "text-align:center;",
         ],
       },
-      "displayName": "styled.div",
+      "displayName": "CenteredContent",
       "render": [Function],
-      "styledComponentId": "sc-dxgOiQ",
+      "styledComponentId": "CenteredContent-ys47ff-0",
       "target": "div",
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -412,27 +361,20 @@ ShallowWrapper {
             "$$typeof": Symbol(react.forward_ref),
             "attrs": undefined,
             "componentStyle": ComponentStyle {
-              "componentId": "sc-ckVGcZ",
+              "componentId": "PlainBox-sc-10nrb46-0",
               "isStatic": false,
               "rules": Array [
-                "
-    ",
                 [Function],
-                "
-    ",
+                " ",
                 [Function],
-                "
-    min-width: ",
+                " min-width:",
                 [Function],
-                ";
-    background-color: #c0c0c0;
-    display: inline-block;
-",
+                ";background-color:#c0c0c0;display:inline-block;",
               ],
             },
-            "displayName": "styled.div",
+            "displayName": "PlainBox",
             "render": [Function],
-            "styledComponentId": "sc-ckVGcZ",
+            "styledComponentId": "PlainBox-sc-10nrb46-0",
             "target": "div",
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -453,27 +395,20 @@ ShallowWrapper {
             "$$typeof": Symbol(react.forward_ref),
             "attrs": undefined,
             "componentStyle": ComponentStyle {
-              "componentId": "sc-ckVGcZ",
+              "componentId": "PlainBox-sc-10nrb46-0",
               "isStatic": false,
               "rules": Array [
-                "
-    ",
                 [Function],
-                "
-    ",
+                " ",
                 [Function],
-                "
-    min-width: ",
+                " min-width:",
                 [Function],
-                ";
-    background-color: #c0c0c0;
-    display: inline-block;
-",
+                ";background-color:#c0c0c0;display:inline-block;",
               ],
             },
-            "displayName": "styled.div",
+            "displayName": "PlainBox",
             "render": [Function],
-            "styledComponentId": "sc-ckVGcZ",
+            "styledComponentId": "PlainBox-sc-10nrb46-0",
             "target": "div",
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -494,27 +429,20 @@ ShallowWrapper {
             "$$typeof": Symbol(react.forward_ref),
             "attrs": undefined,
             "componentStyle": ComponentStyle {
-              "componentId": "sc-ckVGcZ",
+              "componentId": "PlainBox-sc-10nrb46-0",
               "isStatic": false,
               "rules": Array [
-                "
-    ",
                 [Function],
-                "
-    ",
+                " ",
                 [Function],
-                "
-    min-width: ",
+                " min-width:",
                 [Function],
-                ";
-    background-color: #c0c0c0;
-    display: inline-block;
-",
+                ";background-color:#c0c0c0;display:inline-block;",
               ],
             },
-            "displayName": "styled.div",
+            "displayName": "PlainBox",
             "render": [Function],
-            "styledComponentId": "sc-ckVGcZ",
+            "styledComponentId": "PlainBox-sc-10nrb46-0",
             "target": "div",
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -535,27 +463,20 @@ ShallowWrapper {
             "$$typeof": Symbol(react.forward_ref),
             "attrs": undefined,
             "componentStyle": ComponentStyle {
-              "componentId": "sc-ckVGcZ",
+              "componentId": "PlainBox-sc-10nrb46-0",
               "isStatic": false,
               "rules": Array [
-                "
-    ",
                 [Function],
-                "
-    ",
+                " ",
                 [Function],
-                "
-    min-width: ",
+                " min-width:",
                 [Function],
-                ";
-    background-color: #c0c0c0;
-    display: inline-block;
-",
+                ";background-color:#c0c0c0;display:inline-block;",
               ],
             },
-            "displayName": "styled.div",
+            "displayName": "PlainBox",
             "render": [Function],
-            "styledComponentId": "sc-ckVGcZ",
+            "styledComponentId": "PlainBox-sc-10nrb46-0",
             "target": "div",
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -576,27 +497,20 @@ ShallowWrapper {
             "$$typeof": Symbol(react.forward_ref),
             "attrs": undefined,
             "componentStyle": ComponentStyle {
-              "componentId": "sc-ckVGcZ",
+              "componentId": "PlainBox-sc-10nrb46-0",
               "isStatic": false,
               "rules": Array [
-                "
-    ",
                 [Function],
-                "
-    ",
+                " ",
                 [Function],
-                "
-    min-width: ",
+                " min-width:",
                 [Function],
-                ";
-    background-color: #c0c0c0;
-    display: inline-block;
-",
+                ";background-color:#c0c0c0;display:inline-block;",
               ],
             },
-            "displayName": "styled.div",
+            "displayName": "PlainBox",
             "render": [Function],
-            "styledComponentId": "sc-ckVGcZ",
+            "styledComponentId": "PlainBox-sc-10nrb46-0",
             "target": "div",
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -617,27 +531,20 @@ ShallowWrapper {
             "$$typeof": Symbol(react.forward_ref),
             "attrs": undefined,
             "componentStyle": ComponentStyle {
-              "componentId": "sc-ckVGcZ",
+              "componentId": "PlainBox-sc-10nrb46-0",
               "isStatic": false,
               "rules": Array [
-                "
-    ",
                 [Function],
-                "
-    ",
+                " ",
                 [Function],
-                "
-    min-width: ",
+                " min-width:",
                 [Function],
-                ";
-    background-color: #c0c0c0;
-    display: inline-block;
-",
+                ";background-color:#c0c0c0;display:inline-block;",
               ],
             },
-            "displayName": "styled.div",
+            "displayName": "PlainBox",
             "render": [Function],
-            "styledComponentId": "sc-ckVGcZ",
+            "styledComponentId": "PlainBox-sc-10nrb46-0",
             "target": "div",
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -658,27 +565,20 @@ ShallowWrapper {
             "$$typeof": Symbol(react.forward_ref),
             "attrs": undefined,
             "componentStyle": ComponentStyle {
-              "componentId": "sc-ckVGcZ",
+              "componentId": "PlainBox-sc-10nrb46-0",
               "isStatic": false,
               "rules": Array [
-                "
-    ",
                 [Function],
-                "
-    ",
+                " ",
                 [Function],
-                "
-    min-width: ",
+                " min-width:",
                 [Function],
-                ";
-    background-color: #c0c0c0;
-    display: inline-block;
-",
+                ";background-color:#c0c0c0;display:inline-block;",
               ],
             },
-            "displayName": "styled.div",
+            "displayName": "PlainBox",
             "render": [Function],
-            "styledComponentId": "sc-ckVGcZ",
+            "styledComponentId": "PlainBox-sc-10nrb46-0",
             "target": "div",
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -690,17 +590,15 @@ ShallowWrapper {
         "$$typeof": Symbol(react.forward_ref),
         "attrs": undefined,
         "componentStyle": ComponentStyle {
-          "componentId": "sc-dxgOiQ",
+          "componentId": "CenteredContent-ys47ff-0",
           "isStatic": true,
           "rules": Array [
-            "
-    text-align: center;
-",
+            "text-align:center;",
           ],
         },
-        "displayName": "styled.div",
+        "displayName": "CenteredContent",
         "render": [Function],
-        "styledComponentId": "sc-dxgOiQ",
+        "styledComponentId": "CenteredContent-ys47ff-0",
         "target": "div",
         "toString": [Function],
         "warnTooManyClasses": [Function],
