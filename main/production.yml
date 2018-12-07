@@ -1,0 +1,87 @@
+secrets:
+  pg-db:
+    external: true
+  pg-host:
+    external: true
+  pg-pass:
+    external: true
+  pg-user:
+    external: true
+  ssl_dhparam:
+    external: true
+services:
+  accounts-service:
+    deploy:
+      restart_policy:
+        condition: on-failure
+    environment:
+      PG_DB_FILE: /run/secrets/pg-db
+      PG_HOST_FILE: /run/secrets/pg-host
+      PG_PASS_FILE: /run/secrets/pg-pass
+      PG_USER_FILE: /run/secrets/pg-user
+    image: rosco9awj/ees-accounts-service
+    secrets:
+    - source: pg-db
+    - source: pg-host
+    - source: pg-pass
+    - source: pg-user
+  eze-handler:
+    deploy:
+      restart_policy:
+        condition: on-failure
+    image: rosco9awj/eze-handler
+  historical-service:
+    deploy:
+      restart_policy:
+        condition: on-failure
+    environment:
+      PG_DB_FILE: /run/secrets/pg-db
+      PG_HOST_FILE: /run/secrets/pg-host
+      PG_PASS_FILE: /run/secrets/pg-pass
+      PG_USER_FILE: /run/secrets/pg-user
+    image: rosco9awj/historical-data-service
+    secrets:
+    - source: pg-db
+    - source: pg-host
+    - source: pg-pass
+    - source: pg-user
+  log-handler:
+    deploy:
+      restart_policy:
+        condition: on-failure
+    environment:
+      PG_DB_FILE: /run/secrets/pg-db
+      PG_HOST_FILE: /run/secrets/pg-host
+      PG_PASS_FILE: /run/secrets/pg-pass
+      PG_USER_FILE: /run/secrets/pg-user
+    image: rosco9awj/log-handler
+    secrets:
+    - source: pg-db
+    - source: pg-host
+    - source: pg-pass
+    - source: pg-user
+  main:
+    depends_on:
+    - historical-service
+    - log-handler
+    - socket-service
+    deploy:
+      restart_policy:
+        condition: on-failure
+    image: rosco9awj/ees-datalogger-nginx
+    ports:
+    - 80:80/tcp
+    - 443:443/tcp
+    secrets:
+    - source: ssl_dhparam
+    volumes:
+    - /etc/letsencrypt:/etc/letsencrypt:rw
+  socket-service:
+    deploy:
+      restart_policy:
+        condition: on-failure
+    image: rosco9awj/datalogger-socket-service
+    ports:
+    - 32000:80/tcp
+version: '3.1'
+

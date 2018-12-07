@@ -1,0 +1,27 @@
+{
+"folders": [
+  {
+    "path": "D:\\ees-datalogger\\@main"
+  },
+  {
+    "path": "C:\\Users\\rosco\\Documents\\GitHub\\shared\\ro-component-library"
+  },
+  {
+    "path": "C:\\Users\\rosco\\Documents\\GitHub\\ees-datalogger\\client"
+  },
+  {
+    "path": "D:\\ees-datalogger\\ir900_datalogger"
+  },
+  {
+    "path": "D:\\ees-datalogger\\server"
+  },
+  {
+    "path": "D:\\_helpers"
+  }
+],
+  "settings": {
+		"javascript.validate.enable": false,
+    "files.eol": "\n",
+    "flow.useNPMPackagedFlow": true
+  }
+}
