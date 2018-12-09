@@ -3,20 +3,20 @@ version: '3.1'
 services:
   main:
     build:
-      context: ../server/nginx
+      context: ../nginx
     ports:
       - "8080:80"
     volumes:
-      - ../server/nginx/nginx.dev.conf:/etc/nginx/nginx.conf
+      - ../nginx/nginx.dev.conf:/etc/nginx/nginx.conf
       - ./dev-keys/ssl:/etc/ssl
   log-handler:
     build:
-      context: ../server/log-handler
+      context: ../log-handler
       args:
         - NODE_ENV=development
     command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
     volumes:
-      - ../server/log-handler:/opt/app
+      - ../log-handler:/opt/app
       - log-handler-node_modules:/opt/app/node_modules
     environment:
       - NODE_ENV=development
@@ -24,12 +24,12 @@ services:
       - postgres
   historical-service:
     build:
-      context: ../server/historical-service
+      context: ../historical-service
       args:
         - NODE_ENV=development
     command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
     volumes:
-      - ../server/historical-service:/opt/app
+      - ../historical-service:/opt/app
       - historical-service-node_modules:/opt/app/node_modules
     environment:
       - NODE_ENV=development
@@ -37,12 +37,12 @@ services:
       - postgres
   accounts-service:
     build:
-      context: ../server/accounts-service
+      context: ../accounts-service
       args:
         - NODE_ENV=development
     command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
     volumes:
-      - ../server/accounts-service:/opt/app
+      - ../accounts-service:/opt/app
       - accounts-service-node_modules:/opt/app/node_modules
     environment:
       - NODE_ENV=development
@@ -50,12 +50,12 @@ services:
       - postgres
   socket-service:
     build:
-      context: ../server/socket-service
+      context: ../socket-service
       args:
         - NODE_ENV=development
     command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
     volumes:
-      - ../server/socket-service:/opt/app
+      - ../socket-service:/opt/app
       - socket-data-node_modules:/opt/app/node_modules
   postgres:
     image: postgres
