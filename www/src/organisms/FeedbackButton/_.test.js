@@ -10,12 +10,10 @@ describe('FeedbackButton Component', () => {
   it('should match snapshot', () => {
     expect(component).toMatchSnapshot();
   });
-
+  it('Should have a Go component', () => {
+    expect(component.find('Go')).toHaveLength(1);
+  });
   it('should link to voicir feedback', () => {
-    window.location.assign = jest.fn();
-    const Button = component.find('Button');
-    Button.props().onClick();
-    expect(window.location.assign)
-      .toBeCalledWith('http://feedback.voicir.com');
+    expect(component.find('Go').props().to).toEqual('http://feedback.voicir.com');
   });
 });
