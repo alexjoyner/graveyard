@@ -17,30 +17,33 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
-      "children": <span>
+      "children": <Button
+        color="primary"
+        ghost={false}
+        size="default"
+      >
         Feedback
-      </span>,
-      "color": "primary",
-      "ghost": false,
-      "onClick": [Function],
-      "size": "large",
+      </Button>,
       "style": Object {
-        "marginTop": "8px",
         "position": "absolute",
         "right": "3px",
       },
+      "to": "http://feedback.voicir.com",
     },
     "ref": null,
     "rendered": Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "function",
       "props": Object {
         "children": "Feedback",
+        "color": "primary",
+        "ghost": false,
+        "size": "default",
       },
       "ref": null,
       "rendered": "Feedback",
-      "type": "span",
+      "type": [Function],
     },
     "type": [Function],
   },
@@ -50,30 +53,33 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
-        "children": <span>
+        "children": <Button
+          color="primary"
+          ghost={false}
+          size="default"
+        >
           Feedback
-        </span>,
-        "color": "primary",
-        "ghost": false,
-        "onClick": [Function],
-        "size": "large",
+        </Button>,
         "style": Object {
-          "marginTop": "8px",
           "position": "absolute",
           "right": "3px",
         },
+        "to": "http://feedback.voicir.com",
       },
       "ref": null,
       "rendered": Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "host",
+        "nodeType": "function",
         "props": Object {
           "children": "Feedback",
+          "color": "primary",
+          "ghost": false,
+          "size": "default",
         },
         "ref": null,
         "rendered": "Feedback",
-        "type": "span",
+        "type": [Function],
       },
       "type": [Function],
     },

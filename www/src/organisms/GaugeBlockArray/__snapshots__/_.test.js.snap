@@ -442,18 +442,17 @@ ShallowWrapper {
       "$$typeof": Symbol(react.forward_ref),
       "attrs": undefined,
       "componentStyle": ComponentStyle {
-        "componentId": "sc-dxgOiQ",
+        "componentId": "CenteredContent-ys47ff-0",
         "isStatic": true,
         "rules": Array [
-          "
-    text-align: center;
-",
+          "text-align:center;",
         ],
       },
-      "displayName": "styled.div",
+      "displayName": "CenteredContent",
       "render": [Function],
-      "styledComponentId": "sc-dxgOiQ",
+      "styledComponentId": "CenteredContent-ys47ff-0",
       "target": "div",
+      "toString": [Function],
       "warnTooManyClasses": [Function],
       "withComponent": [Function],
     },
@@ -756,18 +755,17 @@ ShallowWrapper {
         "$$typeof": Symbol(react.forward_ref),
         "attrs": undefined,
         "componentStyle": ComponentStyle {
-          "componentId": "sc-dxgOiQ",
+          "componentId": "CenteredContent-ys47ff-0",
           "isStatic": true,
           "rules": Array [
-            "
-    text-align: center;
-",
+            "text-align:center;",
           ],
         },
-        "displayName": "styled.div",
+        "displayName": "CenteredContent",
         "render": [Function],
-        "styledComponentId": "sc-dxgOiQ",
+        "styledComponentId": "CenteredContent-ys47ff-0",
         "target": "div",
+        "toString": [Function],
         "warnTooManyClasses": [Function],
         "withComponent": [Function],
       },
