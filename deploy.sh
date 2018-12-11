@@ -1,11 +1,11 @@
 #!/bin/bash -e
-
+COMMIT_RANGE = './services'
 detect_changed_services() {
   echo "----------------------------------------------"
   echo "detecting changed folders for this commit"
 
   # get a list of all the changed folders only
-  changed_folders=`git diff --name-only $SHIPPABLE_COMMIT_RANGE | grep / | awk 'BEGIN {FS="/"} {print $1}' | uniq`
+  changed_folders=`git diff --name-only $COMMIT_RANGE | grep / | awk 'BEGIN {FS="/"} {print $2}' | uniq`
   echo "changed folders "$changed_folders
 
   changed_services=()
@@ -13,7 +13,7 @@ detect_changed_services() {
   do
     if [ "$folder" == '_global' ]; then
       echo "common folder changed, building and publishing all microservices"
-      changed_services=`find . -maxdepth 2 -type d -not -name '_global' -not -name 'shippable' -not -name '.git' -not -path '.' | sed 's|./||'`
+      changed_services=`find . -maxdepth 1 -type d -not -name '_global' -not -name 'shippable' -not -name '.git' -not -path '.' | sed 's|./||'`
       echo "list of microservice "$changed_services
       break
     else
@@ -39,4 +39,5 @@ package_changed_services() {
 }
 
 detect_changed_services
+
 read -p "Press enter to continue"
