@@ -1,0 +1,13 @@
+{
+  "name": "oee-master",
+  "version": "0.1.0",
+  "description": "Root monrepo for oee-master",
+  "main": "na",
+  "repository": "https://github.com/alexjoyner/oee-master.git",
+  "author": "Alex Joyner <alex@voicir.com>",
+  "license": "PRIVATE",
+  "private": true,
+  "scripts": {
+    "deploy": "./deploy.sh"
+  }
+}
