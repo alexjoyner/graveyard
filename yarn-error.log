@@ -2,7 +2,7 @@ Arguments:
   /usr/local/bin/node /usr/local/Cellar/yarn/1.12.1/libexec/bin/yarn.js version
 
 PATH: 
-  /Library/Frameworks/Python.framework/Versions/3.7/bin:/Library/Frameworks/Python.framework/Versions/3.5/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/usr/local/heroku/bin:/Users/rosco/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/opt/X11/bin:/usr/local/git/bin
+  /var/folders/cs/mrnd199d1t3b1srd7fjgxz8h0000gn/T/yarn--1544648576596-0.04755060315983184:/Users/rosco/Documents/GitHub/oee-master/node_modules/.bin:/Users/rosco/.config/yarn/link/node_modules/.bin:/Users/rosco/Documents/GitHub/oee-master/node_modules/.bin:/Users/rosco/.config/yarn/link/node_modules/.bin:/usr/local/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/bin/node_modules/npm/bin/node-gyp-bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/Library/Frameworks/Python.framework/Versions/3.5/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/usr/local/heroku/bin:/Users/rosco/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/opt/X11/bin:/usr/local/git/bin
 
 Yarn version: 
   1.12.1
@@ -31,13 +31,14 @@ npm manifest:
     "name": "oee-master",
     "version": "0.1.0",
     "description": "Root monrepo for oee-master",
-    "main": "na",
+    "main": "n/a",
     "repository": "https://github.com/alexjoyner/oee-master.git",
     "author": "Alex Joyner <alex@voicir.com>",
     "license": "PRIVATE",
     "private": true,
     "scripts": {
-      "deploy": "./deploy.sh"
+      "deploy:server": "sh ./automation/deploy-server.sh",
+      "deploy:client": "sh ./automation/deploy-client.sh"
     }
   }
 
