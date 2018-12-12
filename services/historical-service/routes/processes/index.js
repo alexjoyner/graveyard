@@ -1,11 +1,11 @@
 const utils = require('ro-server-utils');
 
 module.exports = {
-    getLogsByPointID: (req, res) => {
-        const { pointID } = req.params;
-        return {
-            rowMode: 'array',
-            text: `
+  getLogsByPointID: (req) => {
+    const { pointID } = req.params;
+    return {
+      rowMode: 'array',
+      text: `
               WITH special_vals AS (
                   SELECT 
                       count(*) as tot_vals,
@@ -38,14 +38,14 @@ module.exports = {
                   ELSE
                       rn > 0
                   END;`,
-            values: [pointID]
-          };
-    },
-    getLogsFromInterval: (req, res) => {
-        const { pointID, start, end } = req.params;
-        return {
-            rowMode: 'array',
-            text: `
+      values: [pointID],
+    };
+  },
+  getLogsFromInterval: (req) => {
+    const { pointID, start, end } = req.params;
+    return {
+      rowMode: 'array',
+      text: `
                 WITH special_vals AS (
                   SELECT 
                       count(*) as tot_vals,
@@ -82,19 +82,16 @@ module.exports = {
                   ELSE
                       rn > 0
                   END;`,
-            values: [pointID, start, end]
-          }
-    },
-    runBasicQuery: (getQuery) => {
-        return async (req, res) => {
-            try{
-                const groups = await utils.runQuery('pg', getQuery(req));
-                res.send(groups);
-            }
-            catch(e){  
-                console.error(e);
-                res.status(500).send('Something went wrong. Sorry');
-            }
-        }
+      values: [pointID, start, end],
+    };
+  },
+  runBasicQuery: getQuery => async (req, res) => {
+    try {
+      const groups = await utils.runQuery('pg', getQuery(req));
+      res.send(groups);
+    } catch (e) {
+      console.error(e);
+      res.status(500).send('Something went wrong. Sorry');
     }
-}
+  },
+};
