@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "http://alexjoyner.github.io/",
   "scripts": {
-    "start": "react-scripts start",
+    "start": "yarn link ro-component-library && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:bail": "react-scripts test -b",
