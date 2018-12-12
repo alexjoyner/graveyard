@@ -1,43 +1,28 @@
 #!/bin/bash -e
-COMMIT_RANGE = './services'
-detect_changed_services() {
-  echo "----------------------------------------------"
-  echo "detecting changed folders for this commit"
-
-  # get a list of all the changed folders only
-  changed_folders=`git diff --name-only $COMMIT_RANGE | grep / | awk 'BEGIN {FS="/"} {print $2}' | uniq`
-  echo "changed folders "$changed_folders
-
-  changed_services=()
-  for folder in $changed_folders
-  do
-    if [ "$folder" == '_global' ]; then
-      echo "common folder changed, building and publishing all microservices"
-      changed_services=`find . -maxdepth 1 -type d -not -name '_global' -not -name 'shippable' -not -name '.git' -not -path '.' | sed 's|./||'`
-      echo "list of microservice "$changed_services
-      break
-    else
-      echo "Adding $folder to list of services to build"
-      changed_services+=("$folder")
-    fi
-  done
-}
-package_changed_services() {
-  # Iterate on each service and run the packaging script
-  for service in $changed_services
-  do
-      echo "-------------------Running packaging for $service---------------------"
-      # copy the common code to the service so that it can be packaged in the docker image
-      cp -r ./_global $service
-      pushd "$service"
-      # move the build script to the root of the service
-      echo "Service $services"
-      mv ./_global/package-service.sh ./.
-      ./package-service.sh "$service"
-      popd
-  done
+get_package_version(){
+  # Version key/value should be on his own line
+  PACKAGE_VERSION=$(cat package.json \
+    | grep version \
+    | head -1 \
+    | awk -F: '{ print $2 }' \
+    | sed 's/[",]//g' \
+    | tr -d '[[:space:]]')
 }
 
-detect_changed_services
+get_all_services(){
+  services=`find ./services -maxdepth 1 -type d`
+}
 
-read -p "Press enter to continue"
+deploy_services() {
+  get_package_version
+  get_all_services
+  echo $PACKAGE_VERSION
+  echo $services
+}
+
+#./_global/detect_changed_services.sh
+#./_global/package_changed_services.sh
+main(){
+  deploy_services
+}
+main
