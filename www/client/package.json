@@ -6,7 +6,7 @@
   "scripts": {
     "start": "yarn link ro-component-library && react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "yarn link ro-component-library && react-scripts test",
     "test:bail": "react-scripts test -b",
     "coverage": "react-scripts test --coverage",
     "eject": "react-scripts eject",
