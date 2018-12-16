@@ -1,7 +1,7 @@
 version: '3.1'
 services:
   main:
-    image: rosco9awj/ees-datalogger-nginx:
+    image: rosco9awj/ees-datalogger-nginx:v2.0.0
     deploy:
       restart_policy:
         condition: on-failure
@@ -16,22 +16,22 @@ services:
       restart_policy:
         condition: on-failure
   log-handler:
-    image: rosco9awj/log-handler:
+    image: rosco9awj/log-handler:v2.0.0
     deploy:
       restart_policy:
         condition: on-failure
   historical-service:
-    image: rosco9awj/historical-data-service:
+    image: rosco9awj/historical-data-service:v2.0.0
     deploy:
       restart_policy:
         condition: on-failure
   accounts-service:
-    image: rosco9awj/ees-accounts-service:
+    image: rosco9awj/ees-accounts-service:v2.0.0
     deploy:
       restart_policy:
         condition: on-failure
   socket-service:
-    image: rosco9awj/datalogger-socket-service:
+    image: rosco9awj/datalogger-socket-service:v2.0.0
     deploy:
       restart_policy:
         condition: on-failure
