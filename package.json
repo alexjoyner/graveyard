@@ -10,7 +10,8 @@
   "scripts": {
     "deploy:server": "cd ./server && yarn deploy",
     "deploy:client": "cd ./www && yarn deploy",
-    "deploy": "yarn run deploy:server && yarn run deploy:client"
+    "deploy": "yarn run deploy:server && yarn run deploy:client",
+    "postversion": "git push --tags && echo \"Successfully released version $npm_package_version!\""
   },
   "devDependencies": {
     "eslint": "5.6.0",
