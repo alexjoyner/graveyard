@@ -1,6 +1,6 @@
 {
   "name": "oee-master",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Root monrepo for oee-master",
   "main": "n/a",
   "repository": "https://github.com/alexjoyner/oee-master.git",
@@ -8,7 +8,8 @@
   "license": "PRIVATE",
   "private": true,
   "scripts": {
-    "deploy:server": "cd ./server && yarn deploy",
+    "test:server": "echo \"Error: no test specified\" && exit 0",
+    "deploy:server": "cd ./server && sh ./automation/deploy.sh",
     "deploy:client": "cd ./www && yarn deploy",
     "deploy": "yarn run deploy:server && yarn run deploy:client"
   },
