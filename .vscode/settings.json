@@ -1,6 +1,14 @@
 {
   "files.exclude": {
+    ".vscode": true,
+    "**/__snapshots__": true,
+    "**/.eslintrc.json": true,
+    "**/.gitignore": true,
     "**/*.bak": true,
-    "**/node_modules": true
+    "**/*.lock": true,
+    "**/build": true,
+    "**/Dockerfile": true,
+    "**/node_modules": true,
+    "www/public": true
   }
 }
