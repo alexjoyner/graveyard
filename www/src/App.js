@@ -13,7 +13,7 @@ export class App extends Component {
   render() {
     return (
       <DashBoard />
-    ); 
+    );
   }
 }
 export default connect(null, {
