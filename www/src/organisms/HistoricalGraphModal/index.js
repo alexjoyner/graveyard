@@ -13,12 +13,13 @@ import { getRawHistoryData } from './utils/getRawHistoryData';
 import { formatDataForGraph } from './utils/formatDataForGraph';
 import { dispatchNewHistoricalData, showHistoryModal, closeHistoryModal } from './actions';
 import { IntervalButton } from './particles/IntervalButton';
+import { getTimeInterval } from './utils/getTimeInterval';
 
 export class BaseHistoricalGraphModal extends Component {
   componentDidUpdate() {
     const { modalStage } = this.props;
     if (modalStage === 'BUILDING') {
-      this.runBuildGraphProcess();
+      this.runBuildGraphProcess(getTimeInterval('oneWeek'));
     }
   }
 

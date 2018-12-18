@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 jest.mock('moment');
-import { IntervalButton, getInterval } from './';  //eslint-disable-line
+import { IntervalButton } from './';  //eslint-disable-line
 
 describe('IntervalButton component', () => {
   let component;
@@ -22,35 +22,5 @@ describe('IntervalButton component', () => {
   it('should allow click', () => {
     component.find('Button').props().onClick();
     expect(props.onClick).toHaveBeenCalledWith({});
-  });
-});
-describe('getInterval', () => {
-  const testMoment = { subtract: expect.any(Function) };
-  it('should have correct default values', () => {
-    expect(getInterval()).toEqual({});
-  });
-  it('should allow 1 day', () => {
-    expect(getInterval('oneDay')).toEqual({
-      end: testMoment,
-      start: '24hours',
-    });
-  });
-  it('should allow 1 week', () => {
-    expect(getInterval('oneWeek')).toEqual({
-      end: testMoment,
-      start: '1week',
-    });
-  });
-  it('should allow 1 month', () => {
-    expect(getInterval('oneMonth')).toEqual({
-      end: testMoment,
-      start: '1month',
-    });
-  });
-  it('should allow 6 months', () => {
-    expect(getInterval('sixMonths')).toEqual({
-      end: testMoment,
-      start: '6months',
-    });
   });
 });

@@ -11,6 +11,7 @@ class BrokenISocket2 extends ISocketIO {
 }
 class BrokenISocket3 extends ISocketIO {
   subscribe() { return this; }
+
   unsubscribe() { return this; }
 }
 
@@ -44,6 +45,11 @@ describe('iSocketIO classed', () => {
       testSocket.setPoints([7, 1, 3]);
       testSocket.join();
       expect(io.emit).toBeCalledWith('join-group', [7, 1, 3]);
+    });
+    it('should allow get last logs', () => {
+      testSocket.setPoints([7, 1, 3]);
+      testSocket.getLastLogs();
+      expect(io.emit).toBeCalledWith('get-last-logs', [7, 1, 3]);
     });
     it('should allow unsubscribe', () => {
       testSocket.setPoints([7, 1, 3]);

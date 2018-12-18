@@ -1,0 +1,43 @@
+version: '3.1'
+services:
+  main:
+    image: rosco9awj/oee-master-nginx:v0.3.5
+    deploy:
+      restart_policy:
+        condition: on-failure
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+    ports:
+      - "80:80"
+      - "443:443"
+  log-handler:
+    image: rosco9awj/oee-master-log-handler:v0.3.5
+    deploy:
+      restart_policy:
+        condition: on-failure
+  historical-service:
+    image: rosco9awj/oee-master-historical-service:v0.3.5
+    deploy:
+      restart_policy:
+        condition: on-failure
+  accounts-service:
+    image: rosco9awj/oee-master-accounts-service:v0.3.5
+    deploy:
+      restart_policy:
+        condition: on-failure
+  socket-service:
+    image: rosco9awj/oee-master-socket-service:v0.3.5
+    deploy:
+      restart_policy:
+        condition: on-failure
+secrets:
+  pg-user:
+    external: true
+  pg-pass:
+    external: true
+  pg-host:
+    external: true
+  pg-db:
+    external: true
+  ssl_dhparam:
+    external: true

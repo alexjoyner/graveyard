@@ -4,9 +4,9 @@
   "private": true,
   "homepage": "http://alexjoyner.github.io/",
   "scripts": {
-    "start": "react-scripts start",
+    "start": "yarn link ro-component-library && react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "yarn link ro-component-library && react-scripts test",
     "test:bail": "react-scripts test -b",
     "coverage": "react-scripts test --coverage",
     "eject": "react-scripts eject",
@@ -17,7 +17,6 @@
   "dependencies": {
     "@babel/core": "^7.1.2",
     "digest-auth-request": "^0.7.0",
-    "eslint": "5.6.0",
     "highcharts": "^6.1.1",
     "highcharts-react-official": "^1.2.0",
     "lodash": "^4.17.11",
@@ -38,11 +37,7 @@
     "enzyme": "^3.4.0",
     "enzyme-adapter-react-16": "^1.2.0",
     "enzyme-to-json": "^3.3.4",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-jest": "^21.17.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.9.1",
+    "eslint": "5.6.0",
     "flow-bin": "^0.85.0",
     "gh-pages": "^2.0.1"
   },
