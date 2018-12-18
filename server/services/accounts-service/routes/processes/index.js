@@ -1,29 +1,33 @@
 const utils = require('ro-server-utils');
+const fs = require('fs');
+const path = require('path');
+
+const getQueryText = (relativePath) => {
+  const queryText = fs.readFileSync(
+    path.resolve(__dirname, relativePath), 'utf8'
+  );
+  return queryText;
+}
 
 module.exports = {
   getGroupsByClientID: (req) => {
     const { clientID } = req.params;
     return {
-      text: 'SELECT id, name FROM point_group WHERE client_id = $1;',
+      text: getQueryText('./queries/getGroupsByClientID.pgsql'),
       values: [clientID],
     };
   },
   getPointsByClientID: (req) => {
     const { clientID } = req.params;
     return {
-      text: 'SELECT id, name, settings FROM point WHERE client_id = $1;',
+      text: getQueryText('./queries/getPointsByClientID.pgsql'),
       values: [clientID],
     };
   },
   getPointsByGroupID: (req) => {
     const { groupID } = req.params;
     return {
-      text: `
-            SELECT point.* FROM point_group_x_point 
-                INNER JOIN point
-                ON (point_group_x_point.point_id = point.id)
-            WHERE 
-              point_group_id = $1;`,
+      text: getQueryText('./queries/getPointsByGroupID.pgsql'),
       values: [groupID],
     };
   },
