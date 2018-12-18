@@ -14,22 +14,32 @@ class PointsSocket extends ISocketIO {
     super();
     this.socket = opts.socket || /* istanbul ignore next */ io(env.serverAddr);
   }
+
   subscribe(pointsArray, cb) {
     this.points = pointsArray;
-    this.join();
     this.socket.on('add log', /* istanbul ignore next */ (log) => {
       cb(null, log);
     });
+    this.join();
+    this.getLastLogs();
   }
+
   unsubscribe() {
     this.socket.emit('leave-group', this.points);
   }
+
   join() {
     this.socket.emit('join-group', this.points);
   }
+
+  getLastLogs() {
+    this.socket.emit('get-last-logs', this.points);
+  }
+
   setPoints(pointsArray) {
     this.points = pointsArray;
   }
+
   getPoints() {
     return this.points;
   }

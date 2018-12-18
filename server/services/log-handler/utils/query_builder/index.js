@@ -1,16 +1,17 @@
 class QueryBuilder {
   getInsertString(req) {
-    this.data = req.body;
-    this.tableName = this.data.tableName || 'log';
+    console.log(req.body);
+    const data = req.body;
+    const tableName = data.tableName || 'log';
     let values = '';
-    this.logs = this.data.logs;
-    Object.keys(this.logs).map((pointID /* Point ID is the key */, i, arr) => {
+    const logs = data.logs;
+    Object.keys(logs).map((pointID /* Point ID is the key */, i, arr) => {
       const lastChar = (arr.length - 1 === i) ? ';' : ',';
-      values += `(${pointID}, '${this.data.datetime}', ${this.logs[pointID].value})${lastChar}`;
+      values += `(${pointID}, '${data.datetime}', ${logs[pointID].value})${lastChar}`;
       return null;
     });
     return {
-      text: `INSERT INTO "${this.tableName}" ("point_id", "datetime", "val") VALUES ${values}`,
+      text: `INSERT INTO "${tableName}" ("point_id", "datetime", "val") VALUES ${values}`,
     };
   }
 }
