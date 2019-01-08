@@ -2,7 +2,7 @@
 
 main(){
     echo "Transferring docker compose"
-    cd ~/apps/ees-datalogger
+    cd ~/apps/oee-master
     docker stack deploy --compose-file docker-cloud.yml oee-master
 }
 

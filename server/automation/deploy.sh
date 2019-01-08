@@ -68,11 +68,9 @@ create_production_stack_file(){
 }
 
 deploy_stack_to_server(){
-  temp_version="0.3.2"
-  version=$temp_version
-  SERVER_URL="206.81.0.34"
+  SERVER_URL="204.48.24.79"
   pushd "./services/_main"
-  scp ./docker-cloud.yml rosco@$SERVER_URL:/home/rosco/apps/ees-datalogger
+  scp ./docker-cloud.yml rosco@$SERVER_URL:/home/alex/apps/oee-master
   ssh rosco@$SERVER_URL 'bash -s' < ../../automation/transfer_prod_docker_compose.sh
   popd
 }
