@@ -9,6 +9,19 @@ services:
     volumes:
       - ../nginx/nginx.dev.conf:/etc/nginx/nginx.conf
       - ./dev-keys/ssl:/etc/ssl
+  health-service:
+    build:
+      context: ../health-service
+      args:
+        - NODE_ENV=development
+    command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
+    volumes:
+      - ../health-service:/opt/app
+      - health-service-node_modules:/opt/app/node_modules
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - postgres
   log-handler:
     build:
       context: ../log-handler
@@ -67,6 +80,7 @@ services:
 volumes:
   socket-data-node_modules:
   log-handler-node_modules:
+  health-service-node_modules:
   historical-service-node_modules:
   accounts-service-node_modules:
 secrets:

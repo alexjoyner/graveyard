@@ -70,8 +70,8 @@ create_production_stack_file(){
 deploy_stack_to_server(){
   SERVER_URL="204.48.24.79"
   pushd "./services/_main"
-  scp ./docker-cloud.yml rosco@$SERVER_URL:/home/alex/apps/oee-master
-  ssh rosco@$SERVER_URL 'bash -s' < ../../automation/transfer_prod_docker_compose.sh
+  scp ./docker-cloud.yml alex@$SERVER_URL:/home/alex/apps/oee-master
+  ssh alex@$SERVER_URL 'bash -s' < ../../automation/transfer_prod_docker_compose.sh
   popd
 }
 

@@ -122,7 +122,8 @@ sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 docker swarm init
 
 # Create docker keys
-echo "<YOUR KEY HERE>" | docker secret create <SECRET_NAME> -
+# Note: we use printf
+printf "<YOUR KEY HERE>" | docker secret create <SECRET_NAME> -
 # repeat secret create for every needed secret
 
 # Create key for diffie helman
