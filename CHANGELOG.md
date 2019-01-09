@@ -5,13 +5,16 @@
     Click to see more.
   </summary>
   
-their are currently no unreleased feature
+their are currently no unreleased features in development
 
 </details>
 
+## 0.6.0 (January 9, 2019)
+### Socket service
+**features**
+- Added getting last log with cache
 
 ## 0.5.1 (January 8, 2019)
-
 ### OEE-MASTER
 **fetaures**
 - Added server setup helpers
