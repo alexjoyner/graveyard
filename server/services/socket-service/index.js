@@ -1,11 +1,14 @@
 const utils = require('ro-server-utils');
 const axios = require('axios');
+const NodeCache = require('node-cache');
 const app = utils.getExpressApp()('basic');
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
+const myCache = new NodeCache();
 
 app.post('/newlog', (req, res) => {
+  myCache.set(key, req.body[key])
   Object.keys(req.body).map(key => io.to(`point-${key}`).emit('add log', {
     pointID: key,
     log: req.body[key],
@@ -24,20 +27,27 @@ io.on('connection', (socket) => {
   });
   socket.on('get-last-logs', async (pointsArray) => {
     for (let i = 0; i < pointsArray.length; i += 1) {
-      const raw_data = await axios.get(`http://historical-service/last/${pointsArray[i]}`);
-      const data = raw_data.data;
-      if(data.length === 1){
-        const last_value = data[0][1];
-        console.log('Socket: ', socket.id)
-        console.log('Adding point: ', {
-          pointID: pointsArray[i],
-          log: last_value,
-        });
-
+      const cacheLog = myCache.get(pointsArray[i]);
+      if(cacheLog == undefined){
+        const raw_data = await axios.get(`http://historical-service/last/${pointsArray[i]}`);
+        const data = raw_data.data;
+        if(data.length === 1){
+          const last_value = data[0][1];
+          myCache.set(pointsArray[i], last_value);
+          socket.emit('add log', {
+            pointID: pointsArray[i],
+            log: {
+              value: last_value,
+              source: 'FROM DB :('
+            },
+          });
+        }
+      }else{
         socket.emit('add log', {
           pointID: pointsArray[i],
           log: {
-            value: last_value
+            value: cacheLog,
+            source: 'FROM CACHE :)'
           },
         });
       }

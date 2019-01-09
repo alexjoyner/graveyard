@@ -2,20 +2,28 @@
 
 new_version=0.0.0
 main(){
-  echo "Making sure all tests are passing"
-  yarn run test
-  testCode=$?
-
-  if [ $testCode -eq 0 ]
+  echo "Checking branch is master"
+  currentBranch=$(git branch | grep \* | cut -d ' ' -f2)
+  if [ "$currentBranch" == "master" ]
   then
-    echo "####################  Starting Server Deployment! ####################"
-    declare_new_version
-    deploy_services
-    create_production_stack_file
-    deploy_stack_to_server
-    echo "DONE WITH SERVER DEPLOYMENT!"
+    echo "You are on master"
+    echo "Making sure all tests are passing"
+    yarn run test
+    testCode=$?
+
+    if [ $testCode -eq 0 ]
+    then
+      echo "####################  Starting Server Deployment! ####################"
+      declare_new_version
+      deploy_services
+      create_production_stack_file
+      deploy_stack_to_server
+      echo "DONE WITH SERVER DEPLOYMENT!"
+    else
+      echo "Tests did not pass!!! Cancelling deployment"
+    fi
   else
-    echo "Tests did not pass!!! Cancelling deployment"
+    echo "You cant deploy from branch: $currentBranch" 
   fi
 }
 
@@ -76,4 +84,4 @@ deploy_stack_to_server(){
 }
 
 main
-echo "####################  Server Deployed! ####################"
+echo "####################  DONE! ####################"
