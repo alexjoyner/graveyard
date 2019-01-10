@@ -1,7 +1,9 @@
 CREATE TABLE client (
-	code character varying(10) NOT NULL UNIQUE,
+	id SERIAL PRIMARY KEY,
+	access_code character varying(10) NOT NULL UNIQUE,
 	name character varying(20) NOT NULL UNIQUE,
-	id SERIAL PRIMARY KEY
+	danger_number character varying(12) NOT NULL UNIQUE,
+	warning_number character varying(12) NOT NULL UNIQUE
 );
 
 CREATE TABLE point_group (
@@ -30,12 +32,12 @@ CREATE TABLE log (
   CONSTRAINT logs_pkey PRIMARY KEY (point_id, datetime)
 );
 
-INSERT INTO "public"."client"("code", "name") VALUES
-('eesdemo','EES Demo Unit');
+INSERT INTO "public"."client"("access_code", "name", "danger_number", "warning_number") VALUES
+('eesdemo','EES Demo Unit', '2523820384', '2523820384');
 
-INSERT INTO "point" ("id", "name", "client_id", "settings") VALUES (1, E'Test Current Sensor', 1, E'{\r\n  "units": "A",\r\n  "max": 100,\r\n  "min": 0,\r\n  "ranges": [{\r\n    "lowerValue": 0,\r\n    "upperValue": 30,\r\n    "color": "red"\r\n  }, {\r\n    "lowerValue": 30,\r\n    "upperValue": 40,\r\n    "color": "orange"\r\n  }, {\r\n    "lowerValue": 40,\r\n    "upperValue": 60,\r\n    "color": "green"\r\n  }, {\r\n    "lowerValue": 60,\r\n    "upperValue": 70,\r\n    "color": "orange"\r\n  }, {\r\n    "lowerValue": 70,\r\n    "upperValue": 100,\r\n    "color": "red"\r\n  }]\r\n}');
-INSERT INTO "point" ("id", "name", "client_id", "settings") VALUES (2, E'Test Temp Sensor', 1, E'{\r\n  "units": "°F",\r\n  "max": 100,\r\n  "min": 0,\r\n  "ranges": [{\r\n    "lowerValue": 0,\r\n    "upperValue": 50,\r\n    "color": "blue"\r\n  }, {\r\n    "lowerValue": 50,\r\n    "upperValue": 65,\r\n    "color": "orange"\r\n  }, {\r\n    "lowerValue": 65,\r\n    "upperValue": 75,\r\n    "color": "green"\r\n  }, {\r\n    "lowerValue": 75,\r\n    "upperValue": 85,\r\n    "color": "orange"\r\n  }, {\r\n    "lowerValue": 85,\r\n    "upperValue": 100,\r\n    "color": "red"\r\n  }]\r\n}');
-INSERT INTO "point" ("id", "name", "client_id", "settings") VALUES (3, E'Test CFM Sensor', 1, E'{\r\n  "units": "CFM",\r\n  "max": 500,\r\n  "min": 0,\r\n  "ranges": [{\r\n    "lowerValue": 0,\r\n    "upperValue": 200,\r\n    "color": "red"\r\n  }, {\r\n    "lowerValue": 200,\r\n    "upperValue": 250,\r\n    "color": "orange"\r\n  }, {\r\n    "lowerValue": 250,\r\n    "upperValue": 325,\r\n    "color": "green"\r\n  }, {\r\n    "lowerValue": 325,\r\n    "upperValue": 375,\r\n    "color": "orange"\r\n  }, {\r\n    "lowerValue": 375,\r\n    "upperValue": 500,\r\n    "color": "red"\r\n  }]\r\n}');
+INSERT INTO "point" ("id", "name", "client_id", "settings") VALUES (1, E'Test Current Sensor', 1, E'{\r\n  "units": "A",\r\n  "max": 100,\r\n  "min": 0,\r\n  "ranges": [{\r\n    "lowerValue": 0,\r\n    "upperValue": 30,\r\n    "color": "red",\r\n  "alertLevel": "danger"\r\n  }, {\r\n    "lowerValue": 30,\r\n    "upperValue": 40,\r\n    "color": "orange",\r\n  "alertLevel": "warning"\r\n  }, {\r\n    "lowerValue": 40,\r\n    "upperValue": 60,\r\n    "color": "green",\r\n  "alertLevel": "ok"\r\n  }, {\r\n    "lowerValue": 60,\r\n    "upperValue": 70,\r\n    "color": "orange",\r\n  "alertLevel": "warning"\r\n  }, {\r\n    "lowerValue": 70,\r\n    "upperValue": 100,\r\n    "color": "red",\r\n  "alertLevel": "danger"\r\n  }]\r\n}');
+INSERT INTO "point" ("id", "name", "client_id", "settings") VALUES (2, E'Test Temp Sensor', 1, E'{\r\n  "units": "°F",\r\n  "max": 100,\r\n  "min": 0,\r\n  "ranges": [{\r\n    "lowerValue": 0,\r\n    "upperValue": 50,\r\n    "color": "blue",\r\n  "alertLevel": "danger"\r\n  }, {\r\n    "lowerValue": 50,\r\n    "upperValue": 65,\r\n    "color": "orange",\r\n  "alertLevel": "warning"\r\n  }, {\r\n    "lowerValue": 65,\r\n    "upperValue": 75,\r\n    "color": "green",\r\n  "alertLevel": "ok"\r\n  }, {\r\n    "lowerValue": 75,\r\n    "upperValue": 85,\r\n    "color": "orange",\r\n  "alertLevel": "warning"\r\n  }, {\r\n    "lowerValue": 85,\r\n    "upperValue": 100,\r\n    "color": "red",\r\n  "alertLevel": "danger"\r\n  }]\r\n}');
+INSERT INTO "point" ("id", "name", "client_id", "settings") VALUES (3, E'Test CFM Sensor', 1, E'{\r\n  "units": "CFM",\r\n  "max": 500,\r\n  "min": 0,\r\n  "ranges": [{\r\n    "lowerValue": 0,\r\n    "upperValue": 200,\r\n    "color": "red",\r\n  "alertLevel": "danger"\r\n  }, {\r\n    "lowerValue": 200,\r\n    "upperValue": 250,\r\n    "color": "orange",\r\n  "alertLevel": "warning"\r\n  }, {\r\n    "lowerValue": 250,\r\n    "upperValue": 325,\r\n    "color": "green",\r\n  "alertLevel": "ok"\r\n  }, {\r\n    "lowerValue": 325,\r\n    "upperValue": 375,\r\n    "color": "orange",\r\n  "alertLevel": "warning"\r\n  }, {\r\n    "lowerValue": 375,\r\n    "upperValue": 500,\r\n    "color": "red",\r\n  "alertLevel": "danger"\r\n  }]\r\n}');
 
 INSERT INTO "public"."point_group"("name", "client_id") VALUES
 ('Predict Maintenance',1),('Production',1),('Process',1);

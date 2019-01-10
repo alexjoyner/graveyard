@@ -35,6 +35,11 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+  alerts-service:
+    image: rosco9awj/oee-master-alerts-service:v0.6.0
+    deploy:
+      restart_policy:
+        condition: on-failure
 secrets:
   pg-user:
     external: true
@@ -45,4 +50,10 @@ secrets:
   pg-db:
     external: true
   ssl_dhparam:
+    external: true
+  twilio-sid:
+    external: true
+  twilio-auth-token:
+    external: true
+  twilio-phone-num:
     external: true

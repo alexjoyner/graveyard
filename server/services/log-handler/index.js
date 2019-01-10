@@ -5,6 +5,17 @@ const QueryBuilder = require('./utils/query_builder');
 const app = utils.getExpressApp('basic');
 const myQueryBuilder = new QueryBuilder();
 
+const CheckAlerts = async (req, res, next) => {
+  const { body } = req;
+  try {
+    await axios.post('http://alerts-service/check/logs', body.logs);
+    next();
+  } catch (e) {
+    console.log('Error: ', e);
+    res.status(500).send('Something went wrong. Sorry');
+  }
+};
+
 const PostLiveLog = async (req, res, next) => {
   const { body } = req;
   try {
@@ -20,7 +31,7 @@ const PostLiveLog = async (req, res, next) => {
 //   - Both do the same thing, just a naming changes
 //      v2 should remove /test
 app.post('/test', PostLiveLog, utils.runQuery('pg', myQueryBuilder.getInsertString));
-app.post('/new', PostLiveLog, utils.runQuery('pg', myQueryBuilder.getInsertString));
+app.post('/new', CheckAlerts, PostLiveLog, utils.runQuery('pg', myQueryBuilder.getInsertString));
 
 app.post('/', (req, res) => {
   console.log('New Log: ', req.body);
