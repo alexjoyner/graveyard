@@ -6,7 +6,7 @@ main(){
   currentBranch=$(git branch | grep \* | cut -d ' ' -f2)
   if [ "$currentBranch" == "master" ] || [ "$currentBranch" == "staging" ]
   then
-    echo "You are on master"
+    echo "You are on $currentBranch branch"
     echo "Making sure all tests are passing"
     yarn run test
     testCode=$?
