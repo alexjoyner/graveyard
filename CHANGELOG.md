@@ -5,7 +5,14 @@
     Click to see more.
   </summary>
   
-their are currently no unreleased features in development
+## 0.7.0
+### Alerts service
+**features**
+- Adds service to send out text alerts for alarming sensor values
+
+### Socket Service
+**fixed**
+- post to /newLog key undefined
 
 </details>
 

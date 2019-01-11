@@ -13,11 +13,17 @@ services:
       - pg-pass
       - pg-db
       - pg-host
+      - twilio-sid
+      - twilio-auth-token
+      - twilio-phone-num
     environment:
       - PG_USER_FILE=/run/secrets/pg-user
       - PG_HOST_FILE=/run/secrets/pg-host
       - PG_DB_FILE=/run/secrets/pg-db
       - PG_PASS_FILE=/run/secrets/pg-pass
+      - TWILIO_SID=/run/secrets/twilio-sid
+      - TWILIO_AUTH_TOKEN=/run/secrets/twilio-auth-token
+      - TWILIO_PHONE_NUM=/run/secrets/twilio-phone-num
   log-handler:
     secrets:
       - pg-user
@@ -54,3 +60,20 @@ services:
   socket-service:
     ports:
       - "32000:80"
+  alerts-service:
+    secrets:
+      - pg-user
+      - pg-pass
+      - pg-db
+      - pg-host
+      - twilio-sid
+      - twilio-auth-token
+      - twilio-phone-num
+    environment:
+      - PG_USER_FILE=/run/secrets/pg-user
+      - PG_HOST_FILE=/run/secrets/pg-host
+      - PG_DB_FILE=/run/secrets/pg-db
+      - PG_PASS_FILE=/run/secrets/pg-pass
+      - TWILIO_SID=/run/secrets/twilio-sid
+      - TWILIO_AUTH_TOKEN=/run/secrets/twilio-auth-token
+      - TWILIO_PHONE_NUM=/run/secrets/twilio-phone-num

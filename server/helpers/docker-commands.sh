@@ -14,6 +14,6 @@ docker stack rm <STACK_NAME>
 sudo journalctl -u docker.service | tail -n 50
 # view logs of single service 
 #   -f = follow
-docker service logs ees-datalogger_accounts-service -f
+docker service logs oee-master_alerts-service -f
 # view status of stack services
 docker stack services <SERVICE_NAME>

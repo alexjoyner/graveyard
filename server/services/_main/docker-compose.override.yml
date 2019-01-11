@@ -70,6 +70,15 @@ services:
     volumes:
       - ../socket-service:/opt/app
       - socket-data-node_modules:/opt/app/node_modules
+  alerts-service:
+    build:
+      context: ../alerts-service
+      args:
+        - NODE_ENV=development
+    command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
+    volumes:
+      - ../alerts-service:/opt/app
+      - alerts-node_modules:/opt/app/node_modules
   postgres:
     image: postgres
     restart: always
@@ -79,6 +88,7 @@ services:
       POSTGRES_PASSWORD: password
 volumes:
   socket-data-node_modules:
+  alerts-node_modules:
   log-handler-node_modules:
   health-service-node_modules:
   historical-service-node_modules:
@@ -92,5 +102,11 @@ secrets:
     file: dev-keys/pg-host.txt
   pg-db:
     file: dev-keys/pg-db.txt
+  twilio-sid:
+    file: ../../../../../../Desktop/twilio/sid.txt
+  twilio-auth-token:
+    file: ../../../../../../Desktop/twilio/auth_token.txt
+  twilio-phone-num:
+    file: ../../../../../../Desktop/twilio/phone_num.txt
   ssl_dhparam:
     file: dev-keys/ssl/dhparam.pem

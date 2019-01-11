@@ -8,11 +8,13 @@ const io = require('socket.io')(server);
 const myCache = new NodeCache();
 
 app.post('/newlog', (req, res) => {
-  myCache.set(key, req.body[key])
-  Object.keys(req.body).map(key => io.to(`point-${key}`).emit('add log', {
-    pointID: key,
-    log: req.body[key],
-  }));
+  Object.keys(req.body).map(key => {
+    io.to(`point-${key}`).emit('add log', {
+      pointID: key,
+      log: req.body[key],
+    });
+    myCache.set(key, req.body[key].value);
+  });
   res.send(req.body).end();
 });
 

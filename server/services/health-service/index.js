@@ -1,7 +1,7 @@
 const utils = require('ro-server-utils');
 const fs = require('fs');
 const { Client } = require('pg');
-const app = utils.getExpressApp('basic');
+const app = utils.getExpressApp()('basic');
 
 const conInfo = {
   user: fs.readFileSync(process.env.PG_USER_FILE, 'utf8'),
@@ -46,5 +46,18 @@ app.get('/check/db', runQuery('pg', () => ({
   text: "SELECT $1::text as message",
   values: ['Hello world!']
 })));
+app.get('/check/twilio', async (req, res) => {
+  const textOpts = {
+    message: 'Hello World',
+    recipient: req.query.to
+  };
+  try{
+    const result = await utils.notify()('text', textOpts)
+    res.send({success: true, data: result, opts: textOpts});
+  }catch(e){
+    res.send({success: false, error: e, opts: textOpts});
+  }
+});
 
-utils.runExpressApp(app);
+
+utils.runExpressApp()(app);
