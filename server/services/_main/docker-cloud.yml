@@ -25,7 +25,7 @@ services:
       PG_HOST_FILE: /run/secrets/pg-host
       PG_PASS_FILE: /run/secrets/pg-pass
       PG_USER_FILE: /run/secrets/pg-user
-    image: rosco9awj/oee-master-accounts-service:v0.7.1
+    image: rosco9awj/oee-master-accounts-service:v0.7.2
     secrets:
     - source: pg-db
     - source: pg-host
@@ -43,7 +43,7 @@ services:
       TWILIO_AUTH_TOKEN: /run/secrets/twilio-auth-token
       TWILIO_PHONE_NUM: /run/secrets/twilio-phone-num
       TWILIO_SID: /run/secrets/twilio-sid
-    image: rosco9awj/oee-master-alerts-service:v0.7.1
+    image: rosco9awj/oee-master-alerts-service:v0.7.2
     secrets:
     - source: pg-db
     - source: pg-host
@@ -64,7 +64,7 @@ services:
       TWILIO_AUTH_TOKEN: /run/secrets/twilio-auth-token
       TWILIO_PHONE_NUM: /run/secrets/twilio-phone-num
       TWILIO_SID: /run/secrets/twilio-sid
-    image: rosco9awj/oee-master-health-service:v0.7.1
+    image: rosco9awj/oee-master-health-service:v0.7.2
     secrets:
     - source: pg-db
     - source: pg-host
@@ -82,7 +82,7 @@ services:
       PG_HOST_FILE: /run/secrets/pg-host
       PG_PASS_FILE: /run/secrets/pg-pass
       PG_USER_FILE: /run/secrets/pg-user
-    image: rosco9awj/oee-master-historical-service:v0.7.1
+    image: rosco9awj/oee-master-historical-service:v0.7.2
     secrets:
     - source: pg-db
     - source: pg-host
@@ -97,7 +97,7 @@ services:
       PG_HOST_FILE: /run/secrets/pg-host
       PG_PASS_FILE: /run/secrets/pg-pass
       PG_USER_FILE: /run/secrets/pg-user
-    image: rosco9awj/oee-master-log-handler:v0.7.1
+    image: rosco9awj/oee-master-log-handler:v0.7.2
     secrets:
     - source: pg-db
     - source: pg-host
@@ -111,7 +111,7 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
-    image: rosco9awj/oee-master-nginx:v0.7.1
+    image: rosco9awj/oee-master-nginx:v0.7.2
     ports:
     - 80:80/tcp
     - 443:443/tcp
@@ -123,7 +123,7 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
-    image: rosco9awj/oee-master-socket-service:v0.7.1
+    image: rosco9awj/oee-master-socket-service:v0.7.2
     ports:
     - 32000:80/tcp
 version: '3.1'
