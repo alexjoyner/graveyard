@@ -1,5 +1,3 @@
-import Highcharts from 'highcharts';
-
 export const getChartConfig = (points) => {
   const seriesObjects = points.map((point, i) => ({
     name: `${point.name} (${point.settings.units})`,
