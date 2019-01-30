@@ -15,7 +15,7 @@ module.exports = {
     return {
       rowMode: 'array',
       text: getQueryText('./queries/getLogsByPointID.pgsql'),
-      values: [pointID],
+      values: [pointID, 'EST'], //TODO: Programatically include timezone
     };
   },
   getLastLogByPointID: (req) => {
@@ -23,7 +23,7 @@ module.exports = {
     return {
       rowMode: 'array',
       text: getQueryText('./queries/getLastLogByPointID.pgsql'),
-      values: [pointID],
+      values: [pointID, 'EST'], //TODO: Programatically include timezone
     };
   },
   getLogsFromInterval: (req) => {
@@ -31,7 +31,7 @@ module.exports = {
     return {
       rowMode: 'array',
       text: getQueryText('./queries/getLogsFromInterval.pgsql'),
-      values: [pointID, start, end],
+      values: [pointID, start, end, 'EST'], //TODO: Programatically include timezone
     };
   },
   runBasicQuery: getQuery => async (req, res) => {

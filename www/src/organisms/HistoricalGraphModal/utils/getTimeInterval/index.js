@@ -1,17 +1,16 @@
-import moment from 'moment';
-
+import moment from 'moment-timezone';
 
 export const getTimeInterval = (type) => {
   const startPoints = {
-    oneDay: moment().subtract(24, 'hours'),
-    oneWeek: moment().subtract(1, 'week'),
-    oneMonth: moment().subtract(1, 'month'),
-    sixMonths: moment().subtract(6, 'months'),
+    oneDay: moment().tz('Europe/London').subtract(24, 'hours'),
+    oneWeek: moment().tz('Europe/London').subtract(1, 'week'),
+    oneMonth: moment().tz('Europe/London').subtract(1, 'month'),
+    sixMonths: moment().tz('Europe/London').subtract(6, 'months'),
   };
   if (startPoints[type]) {
     return {
       start: startPoints[type],
-      end: moment(),
+      end: moment().tz('Europe/London'),
     };
   }
   return {};

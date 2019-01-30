@@ -55,7 +55,7 @@ ShallowWrapper {
                 ],
               ],
               Array [
-                "join-group",
+                "get-last-logs",
                 Array [
                   "1",
                   "2",
@@ -69,7 +69,35 @@ ShallowWrapper {
                 ],
               ],
               Array [
+                "get-last-logs",
+                Array [
+                  "1",
+                  "2",
+                ],
+              ],
+              Array [
                 "join-group",
+                Array [
+                  "1",
+                  "2",
+                ],
+              ],
+              Array [
+                "get-last-logs",
+                Array [
+                  "1",
+                  "2",
+                ],
+              ],
+              Array [
+                "join-group",
+                Array [
+                  "1",
+                  "2",
+                ],
+              ],
+              Array [
+                "get-last-logs",
                 Array [
                   "1",
                   "2",
@@ -77,6 +105,22 @@ ShallowWrapper {
               ],
             ],
             "results": Array [
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
               Object {
                 "isThrow": false,
                 "value": undefined,
@@ -210,7 +254,7 @@ ShallowWrapper {
                       ],
                     ],
                     Array [
-                      "join-group",
+                      "get-last-logs",
                       Array [
                         "1",
                         "2",
@@ -224,7 +268,35 @@ ShallowWrapper {
                       ],
                     ],
                     Array [
+                      "get-last-logs",
+                      Array [
+                        "1",
+                        "2",
+                      ],
+                    ],
+                    Array [
                       "join-group",
+                      Array [
+                        "1",
+                        "2",
+                      ],
+                    ],
+                    Array [
+                      "get-last-logs",
+                      Array [
+                        "1",
+                        "2",
+                      ],
+                    ],
+                    Array [
+                      "join-group",
+                      Array [
+                        "1",
+                        "2",
+                      ],
+                    ],
+                    Array [
+                      "get-last-logs",
                       Array [
                         "1",
                         "2",
@@ -232,6 +304,22 @@ ShallowWrapper {
                     ],
                   ],
                   "results": Array [
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
                     Object {
                       "isThrow": false,
                       "value": undefined,
@@ -352,7 +440,7 @@ ShallowWrapper {
                     ],
                   ],
                   Array [
-                    "join-group",
+                    "get-last-logs",
                     Array [
                       "1",
                       "2",
@@ -366,7 +454,35 @@ ShallowWrapper {
                     ],
                   ],
                   Array [
+                    "get-last-logs",
+                    Array [
+                      "1",
+                      "2",
+                    ],
+                  ],
+                  Array [
                     "join-group",
+                    Array [
+                      "1",
+                      "2",
+                    ],
+                  ],
+                  Array [
+                    "get-last-logs",
+                    Array [
+                      "1",
+                      "2",
+                    ],
+                  ],
+                  Array [
+                    "join-group",
+                    Array [
+                      "1",
+                      "2",
+                    ],
+                  ],
+                  Array [
+                    "get-last-logs",
                     Array [
                       "1",
                       "2",
@@ -374,6 +490,22 @@ ShallowWrapper {
                   ],
                 ],
                 "results": Array [
+                  Object {
+                    "isThrow": false,
+                    "value": undefined,
+                  },
+                  Object {
+                    "isThrow": false,
+                    "value": undefined,
+                  },
+                  Object {
+                    "isThrow": false,
+                    "value": undefined,
+                  },
+                  Object {
+                    "isThrow": false,
+                    "value": undefined,
+                  },
                   Object {
                     "isThrow": false,
                     "value": undefined,
@@ -523,7 +655,7 @@ ShallowWrapper {
                         ],
                       ],
                       Array [
-                        "join-group",
+                        "get-last-logs",
                         Array [
                           "1",
                           "2",
@@ -537,7 +669,35 @@ ShallowWrapper {
                         ],
                       ],
                       Array [
+                        "get-last-logs",
+                        Array [
+                          "1",
+                          "2",
+                        ],
+                      ],
+                      Array [
                         "join-group",
+                        Array [
+                          "1",
+                          "2",
+                        ],
+                      ],
+                      Array [
+                        "get-last-logs",
+                        Array [
+                          "1",
+                          "2",
+                        ],
+                      ],
+                      Array [
+                        "join-group",
+                        Array [
+                          "1",
+                          "2",
+                        ],
+                      ],
+                      Array [
+                        "get-last-logs",
                         Array [
                           "1",
                           "2",
@@ -545,6 +705,22 @@ ShallowWrapper {
                       ],
                     ],
                     "results": Array [
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
                       Object {
                         "isThrow": false,
                         "value": undefined,
@@ -665,7 +841,7 @@ ShallowWrapper {
                       ],
                     ],
                     Array [
-                      "join-group",
+                      "get-last-logs",
                       Array [
                         "1",
                         "2",
@@ -679,7 +855,35 @@ ShallowWrapper {
                       ],
                     ],
                     Array [
+                      "get-last-logs",
+                      Array [
+                        "1",
+                        "2",
+                      ],
+                    ],
+                    Array [
                       "join-group",
+                      Array [
+                        "1",
+                        "2",
+                      ],
+                    ],
+                    Array [
+                      "get-last-logs",
+                      Array [
+                        "1",
+                        "2",
+                      ],
+                    ],
+                    Array [
+                      "join-group",
+                      Array [
+                        "1",
+                        "2",
+                      ],
+                    ],
+                    Array [
+                      "get-last-logs",
                       Array [
                         "1",
                         "2",
@@ -687,6 +891,22 @@ ShallowWrapper {
                     ],
                   ],
                   "results": Array [
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
+                    Object {
+                      "isThrow": false,
+                      "value": undefined,
+                    },
                     Object {
                       "isThrow": false,
                       "value": undefined,
@@ -839,7 +1059,21 @@ ShallowWrapper {
                 ],
               ],
               Array [
+                "get-last-logs",
+                Array [
+                  "1",
+                  "2",
+                ],
+              ],
+              Array [
                 "join-group",
+                Array [
+                  "1",
+                  "2",
+                ],
+              ],
+              Array [
+                "get-last-logs",
                 Array [
                   "1",
                   "2",
@@ -847,6 +1081,14 @@ ShallowWrapper {
               ],
             ],
             "results": Array [
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
               Object {
                 "isThrow": false,
                 "value": undefined,

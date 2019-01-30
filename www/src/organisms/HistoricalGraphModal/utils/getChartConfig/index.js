@@ -1,3 +1,5 @@
+import Highcharts from 'highcharts';
+
 export const getChartConfig = (points) => {
   const seriesObjects = points.map((point, i) => ({
     name: `${point.name} (${point.settings.units})`,
@@ -29,7 +31,18 @@ const getBaseConfig = () => ({
     text: /* istanbul ignore next */ document.ontouchstart === undefined
       ? 'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in',
   },
+  tooltip: {
+    dateTimeLabelFormats: {
+      hour: '%A, %b %e, %I %p',
+      minute: '%A, %b %e, %I:%M %p',
+      second: '%A, %b %e, %I:%M:%S %p'
+    },
+  },
   xAxis: {
+    dateTimeLabelFormats: {
+      hour: '%I %p',
+      minute: '%I:%M %p',
+    },
     type: 'datetime',
     labels: {
       style: {

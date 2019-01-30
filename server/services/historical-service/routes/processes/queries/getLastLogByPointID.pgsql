@@ -1,5 +1,5 @@
 SELECT 
-    date_part('epoch', datetime) * 1000 as datetime, 
+    date_part('epoch', datetime AT TIME ZONE $2) * 1000 as datetime, 
     val
 FROM 
     log 

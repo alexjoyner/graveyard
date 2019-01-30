@@ -21,6 +21,7 @@
     "highcharts-react-official": "^1.2.0",
     "lodash": "^4.17.11",
     "moment": "^2.22.2",
+    "moment-timezone": "^0.5.23",
     "prop-types": "^15.6.1",
     "react": "^16.7.0-alpha.2",
     "react-dom": "^16.7.0-alpha.2",
@@ -29,7 +30,7 @@
     "react-scripts": "2.1.1",
     "redux": "^4.0.1",
     "request": "^2.86.0",
-    "ro-component-library": "^1.4.0",
+    "ro-component-library": "1.6.1",
     "socket.io-client": "^2.2.0"
   },
   "devDependencies": {
