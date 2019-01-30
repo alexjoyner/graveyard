@@ -1,4 +1,4 @@
-CREATE TABLE client (
+CREATE TABLE IF NOT EXISTS client (
 	id SERIAL PRIMARY KEY,
 	access_code character varying(10) NOT NULL UNIQUE,
 	name character varying(20) NOT NULL UNIQUE,
@@ -6,26 +6,26 @@ CREATE TABLE client (
 	warning_number character varying(12) NOT NULL UNIQUE
 );
 
-CREATE TABLE point_group (
+CREATE TABLE IF NOT EXISTS point_group (
   id SERIAL PRIMARY KEY,
   client_id integer NOT NULL REFERENCES client(id) ON DELETE CASCADE ON UPDATE CASCADE,
   name character varying(20) NOT NULL
 );
 
-CREATE TABLE point_group_x_point (
+CREATE TABLE IF NOT EXISTS point_group_x_point (
   point_group_id INTEGER,
   point_id INTEGER,
   CONSTRAINT point_group_x_point_pkey PRIMARY KEY (point_group_id, point_id)
 );
 
-CREATE TABLE point (
+CREATE TABLE IF NOT EXISTS point (
   id SERIAL PRIMARY KEY,
   name character varying(20) NOT NULL,
   client_id integer NOT NULL REFERENCES client(id) ON DELETE CASCADE ON UPDATE CASCADE,
   settings JSON NOT NULL
 );
 
-CREATE TABLE log (
+CREATE TABLE IF NOT EXISTS log (
   point_id integer REFERENCES point(id) ON DELETE CASCADE ON UPDATE CASCADE,
   datetime timestamp with time zone,
   val real NOT NULL,
