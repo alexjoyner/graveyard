@@ -8,6 +8,14 @@ export const BasePointGaugeBlock = (props) => {
   return (
     <GaugeBlock
       {...point.settings}
+      overrides={{
+        GaugeBlockStatus: {
+          component: () => null
+        },
+        GaugeBlockSettingsBtn: {
+          component: () => null
+        }
+      }}
       value={point.value || 0}
       label={point.name}
       multiSelected={point.multiSelected}

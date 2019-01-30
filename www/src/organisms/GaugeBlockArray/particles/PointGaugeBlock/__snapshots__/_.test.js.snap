@@ -33,6 +33,14 @@ ShallowWrapper {
       "multiSelected": false,
       "onChartClick": [Function],
       "onSettingsClick": [Function],
+      "overrides": Object {
+        "GaugeBlockSettingsBtn": Object {
+          "component": [Function],
+        },
+        "GaugeBlockStatus": Object {
+          "component": [Function],
+        },
+      },
       "panelWidth": "20%",
       "units": "T",
       "value": 0,
@@ -52,6 +60,14 @@ ShallowWrapper {
         "multiSelected": false,
         "onChartClick": [Function],
         "onSettingsClick": [Function],
+        "overrides": Object {
+          "GaugeBlockSettingsBtn": Object {
+            "component": [Function],
+          },
+          "GaugeBlockStatus": Object {
+            "component": [Function],
+          },
+        },
         "panelWidth": "20%",
         "units": "T",
         "value": 0,

@@ -1,7 +1,7 @@
-jest.mock('moment');
+import moment from 'moment-timezone';
 import { getTimeInterval } from './';  //eslint-disable-line
-
-
+jest.mock('moment-timezone');
+moment = jest.fn(() => console.log('Hello World'));
 describe('getTimeInterval', () => {
   const testMoment = { subtract: expect.any(Function) };
   it('should have correct default values', () => {
