@@ -1,6 +1,6 @@
 import React from 'react';
 import { GoThreeBars } from 'react-icons/go';
-import { Header, ISideBarToggle, Button } from 'ro-component-library';
+import { Header, sideBarActions, Button } from 'ro-component-library';
 import { FeedbackButton } from '../FeedbackButton';
 
 const ToggleBtn = props => (
@@ -9,9 +9,9 @@ const ToggleBtn = props => (
   </Button>
 );
 
-export const DashHeader = () => (
+export const DashHeader = ({toggleSideBar}) => (
   <Header color="dark">
-    <ISideBarToggle Button={ToggleBtn} />
+    <ToggleBtn onClick={() => sideBarActions().toggle()} />
     <h1>OEE Master</h1>
     <FeedbackButton />
   </Header>

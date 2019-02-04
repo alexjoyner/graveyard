@@ -1,7 +1,34 @@
-import { configure } from '@storybook/react';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { configure, addDecorator } from "@storybook/react";
+import {StyletronProvider, Styletron} from 'ro-component-library';
+import {ThemeProvider, LightTheme} from 'baseui';
+import { reducers } from '../src/reducers';
 
+const store = createStore(reducers);
+
+// automatically import all files ending in *.src.js
+const req = require.context("../src", true, /.stories.js$/);
 function loadStories() {
-  require('../src/stories');
+  req.keys().forEach(filename => req(filename));
 }
 
+const engine = new Styletron();
+addDecorator(story => {
+  return (
+    <Provider store={store}>
+      {story()}
+    </Provider>
+  )
+})
+// Add providers for theme and styletron
+addDecorator(story => {
+  return (
+    <StyletronProvider value={engine}>
+      <ThemeProvider theme={LightTheme}>{story()}</ThemeProvider>
+    </StyletronProvider>
+  );
+});
 configure(loadStories, module);
