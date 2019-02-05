@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { SideBar as RoSideBar, colors } from 'ro-component-library';
+import { useWindowSize } from '../../effects/useWindowSize';
 import { GroupsMenu } from '../GroupsMenu';
+import { MultiSelectedChartsMenu } from '../../organisms/MultiSelectedChartsMenu';
 
-
+const SideBarContent = props => (
+  <>
+    <GroupsMenu {...props} />
+    <MultiSelectedChartsMenu />
+  </>
+);
 const SideBar = ({ children, ...props }) => {
-  const mql = window.matchMedia('(min-width: 800px)');
-  const [isDocked, setDocked] = useState(mql.matches);
-
-  useEffect(() => {
-    mql.addListener(() => setDocked(mql.matches));
-    return () => mql.removeListener(() => setDocked(mql.matches));
-  }, []);
+  const isDocked = useWindowSize();
   const sidebarStyles = {
     sidebar: {
       background: colors.dark,
@@ -20,7 +21,7 @@ const SideBar = ({ children, ...props }) => {
   };
   return (
     <RoSideBar
-      sidebar={<GroupsMenu {...props} />}
+      sidebar={<SideBarContent {...props} />}
       styles={sidebarStyles}
       docked={isDocked}
     >
