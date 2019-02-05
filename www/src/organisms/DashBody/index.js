@@ -1,65 +1,58 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { CenteredContent } from 'ro-component-library';
 import { DashBodyNoDataContent } from './particles/DashBodyNoDataContent';
-import { publishNewPoints, publishNewLog, removeAllPoints } from './actions/managePoints';
+import {
+  publishNewPoints as publishNewPointsAction,
+  publishNewLog as publishNewLogAction,
+  removeAllPoints as removeAllPointsAction,
+} from './actions/managePoints';
 import { PointGaugeBlock } from './particles/PointGaugeBlock';
 import { PointsSocket } from '../../behaviors/iSocketIO';
 import { getPointsFromGroupID } from './utils/getPointsFromGroupID';
 
-export class BaseDashBody extends Component {
-  constructor(props) {
-    super(props);
-    /* istanbul ignore next */
-    this.socket = props.socket || new PointsSocket({});
-  }
-
-  componentDidMount() {
-    const { currentGroup } = this.props;
-    this.handleSubscribeToGroup(currentGroup);
-  }
-
-  componentDidUpdate(prevProps) {
-    const { currentGroup } = this.props;
-    if (currentGroup !== prevProps.currentGroup) {
-      this.handleRemoveAllPoints();
-      this.handleSubscribeToGroup(currentGroup);
-    }
-  }
-
-  handleRemoveAllPoints() {
-    this.socket.unsubscribe();
-    this.props.removeAllPoints();
-  }
-
-  async handleSubscribeToGroup(groupID) {
-    const groupPoints = await getPointsFromGroupID(groupID);
-    this.props.publishNewPoints(groupPoints);
+const TDashBod = ({
+  currentGroup, socket, points,
+  publishNewPoints, publishNewLog, ...props
+}) => {
+  let groupPoints = Object.keys(points);
+  const handleSubscribeToGroup = async (groupID) => {
+    groupPoints = await getPointsFromGroupID(groupID);
+    publishNewPoints(groupPoints);
     const pointsIdArray = Object.keys(groupPoints);
     /* istanbul ignore next */
-    this.socket.subscribe(pointsIdArray, (err, log) => {
-      this.props.publishNewLog(log);
+    socket.subscribe(pointsIdArray, (err, log) => {
+      publishNewLog(log);
     });
-  }
-
-  render() {
-    const { points } = this.props;
-    const groupPoints = Object.keys(points);
-    return (!groupPoints.length)
-      ? <DashBodyNoDataContent /> : (
-        <CenteredContent>
-          {groupPoints.map(id => (
-            <PointGaugeBlock
-              {...this.props}
-              key={id}
-              point={points[id]}
-              id={id}
-            />
-          ))}
-        </CenteredContent>
-      );
-  }
-}
+  };
+  useEffect(() => {
+    handleSubscribeToGroup(currentGroup);
+  }, []);
+  return (!groupPoints.length)
+    ? <DashBodyNoDataContent /> : (
+      <CenteredContent>
+        {groupPoints.map(id => (
+          <PointGaugeBlock
+            {...props}
+            key={id}
+            point={points[id]}
+            id={id}
+          />
+        ))}
+      </CenteredContent>
+    );
+};
+TDashBod.propTypes = {
+  currentGroup: PropTypes.number.isRequired,
+  socket: PropTypes.instanceOf(PointsSocket),
+  points: PropTypes.arrayOf(PropTypes.number).isRequired,
+  publishNewPoints: PropTypes.func.isRequired,
+  publishNewLog: PropTypes.func.isRequired,
+};
+TDashBod.defaultProps = {
+  socket: new PointsSocket({}),
+};
 
 /* istanbul ignore next */
 const mapStateToProps = state => ({
@@ -67,8 +60,8 @@ const mapStateToProps = state => ({
 });
 
 const DashBody = connect(mapStateToProps, {
-  publishNewPoints,
-  publishNewLog,
-  removeAllPoints,
-})(BaseDashBody);
+  publishNewPoints: publishNewPointsAction,
+  publishNewLog: publishNewLogAction,
+  removeAllPoints: removeAllPointsAction,
+})(TDashBod);
 export { DashBody };
