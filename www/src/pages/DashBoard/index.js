@@ -3,13 +3,13 @@ import { SideBar } from '../../molecules/SideBar';
 import { TestNotification } from '../../organisms/Notifications';
 import { DashBody } from '../../organisms/DashBody';
 import { HistoricalGraphModal } from '../../organisms/HistoricalGraphModal';
-import { DashHeader } from '../../organisms/DashHeader';
+import { Header } from '../../organisms/Header';
 
 export const DashBoard = () => (
   <SideBar>
-    <TestNotification />
-    <DashHeader />
+    <Header />
     <DashBody />
+    <TestNotification />
     <HistoricalGraphModal />
   </SideBar>
 );

@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Header } from '.';
 
-storiesOf('Molecules', module)
+storiesOf('Organisms', module)
   .add('Header', () => (
     <Header />
   ));

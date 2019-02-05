@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { DashHeader } from '.';
+import { Header } from '.';
 
-describe('DashHeader Component', () => {
+describe('Header Component', () => {
   let component;
   beforeEach(() => {
-    component = shallow(<DashHeader />);
+    component = shallow(<Header />);
   });
   it('Should render without exploding', () => {
     expect(component).toBeDefined();
