@@ -7,8 +7,8 @@ describe('FeedbackButton Component', () => {
   beforeEach(() => {
     component = shallow(<FeedbackButton />);
   });
-  it('should match snapshot', () => {
-    expect(component).toMatchSnapshot();
+  it('Should render without exploding', () => {
+    expect(component).toBeDefined();
   });
   it('Should have a Go component', () => {
     expect(component.find('Go')).toHaveLength(1);

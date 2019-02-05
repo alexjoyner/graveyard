@@ -1,3 +1,4 @@
+import { toaster } from 'ro-component-library';
 import { ChartsSelectedReducer, INITIAL_STATE as TRUE_INITIAL_STATE } from './reducer';
 import { MULTISELECT_POINT } from '../../organisms/DashBody/actions/types';
 import { REMOVE_POINT } from './actions';
@@ -47,6 +48,8 @@ describe('ChartsSelectedReducer', () => {
         1: { id: 1, name: 'Test' },
       },
     });
+
+    expect(toaster).toHaveBeenCalledTimes(1);
   });
   it('should allow removing a point', () => {
     const state = ChartsSelectedReducer(InitialState, {

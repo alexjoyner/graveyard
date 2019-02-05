@@ -44,7 +44,18 @@ Object {
   "title": Object {
     "text": "Historical Data View",
   },
+  "tooltip": Object {
+    "dateTimeLabelFormats": Object {
+      "hour": "%A, %b %e, %I %p",
+      "minute": "%A, %b %e, %I:%M %p",
+      "second": "%A, %b %e, %I:%M:%S %p",
+    },
+  },
   "xAxis": Object {
+    "dateTimeLabelFormats": Object {
+      "hour": "%I %p",
+      "minute": "%I:%M %p",
+    },
     "labels": Object {
       "style": Object {
         "color": "white",

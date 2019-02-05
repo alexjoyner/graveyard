@@ -3,7 +3,7 @@
 exports[`GagugeBlock NO Data Content should match snapshot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <GaugeBlockArrayNoDataContent />,
+  Symbol(enzyme.__unrendered__): <DashBodyNoDataContent />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -18,31 +18,31 @@ ShallowWrapper {
     "nodeType": "function",
     "props": Object {
       "children": Array [
-        <ForwardRef
+        <UNDEFINED
           height="250px"
           width="25%"
         />,
-        <ForwardRef
+        <UNDEFINED
           height="250px"
           width="25%"
         />,
-        <ForwardRef
+        <UNDEFINED
           height="250px"
           width="25%"
         />,
-        <ForwardRef
+        <UNDEFINED
           height="250px"
           width="25%"
         />,
-        <ForwardRef
+        <UNDEFINED
           height="250px"
           width="25%"
         />,
-        <ForwardRef
+        <UNDEFINED
           height="250px"
           width="25%"
         />,
-        <ForwardRef
+        <UNDEFINED
           height="250px"
           width="25%"
         />,
@@ -60,29 +60,7 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": null,
-        "type": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "attrs": undefined,
-          "componentStyle": ComponentStyle {
-            "componentId": "PlainBox-sc-10nrb46-0",
-            "isStatic": false,
-            "rules": Array [
-              [Function],
-              " ",
-              [Function],
-              " min-width:",
-              [Function],
-              ";background-color:#c0c0c0;display:inline-block;",
-            ],
-          },
-          "displayName": "PlainBox",
-          "render": [Function],
-          "styledComponentId": "PlainBox-sc-10nrb46-0",
-          "target": "div",
-          "toString": [Function],
-          "warnTooManyClasses": [Function],
-          "withComponent": [Function],
-        },
+        "type": undefined,
       },
       Object {
         "instance": null,
@@ -94,29 +72,7 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": null,
-        "type": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "attrs": undefined,
-          "componentStyle": ComponentStyle {
-            "componentId": "PlainBox-sc-10nrb46-0",
-            "isStatic": false,
-            "rules": Array [
-              [Function],
-              " ",
-              [Function],
-              " min-width:",
-              [Function],
-              ";background-color:#c0c0c0;display:inline-block;",
-            ],
-          },
-          "displayName": "PlainBox",
-          "render": [Function],
-          "styledComponentId": "PlainBox-sc-10nrb46-0",
-          "target": "div",
-          "toString": [Function],
-          "warnTooManyClasses": [Function],
-          "withComponent": [Function],
-        },
+        "type": undefined,
       },
       Object {
         "instance": null,
@@ -128,29 +84,7 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": null,
-        "type": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "attrs": undefined,
-          "componentStyle": ComponentStyle {
-            "componentId": "PlainBox-sc-10nrb46-0",
-            "isStatic": false,
-            "rules": Array [
-              [Function],
-              " ",
-              [Function],
-              " min-width:",
-              [Function],
-              ";background-color:#c0c0c0;display:inline-block;",
-            ],
-          },
-          "displayName": "PlainBox",
-          "render": [Function],
-          "styledComponentId": "PlainBox-sc-10nrb46-0",
-          "target": "div",
-          "toString": [Function],
-          "warnTooManyClasses": [Function],
-          "withComponent": [Function],
-        },
+        "type": undefined,
       },
       Object {
         "instance": null,
@@ -162,29 +96,7 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": null,
-        "type": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "attrs": undefined,
-          "componentStyle": ComponentStyle {
-            "componentId": "PlainBox-sc-10nrb46-0",
-            "isStatic": false,
-            "rules": Array [
-              [Function],
-              " ",
-              [Function],
-              " min-width:",
-              [Function],
-              ";background-color:#c0c0c0;display:inline-block;",
-            ],
-          },
-          "displayName": "PlainBox",
-          "render": [Function],
-          "styledComponentId": "PlainBox-sc-10nrb46-0",
-          "target": "div",
-          "toString": [Function],
-          "warnTooManyClasses": [Function],
-          "withComponent": [Function],
-        },
+        "type": undefined,
       },
       Object {
         "instance": null,
@@ -196,29 +108,7 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": null,
-        "type": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "attrs": undefined,
-          "componentStyle": ComponentStyle {
-            "componentId": "PlainBox-sc-10nrb46-0",
-            "isStatic": false,
-            "rules": Array [
-              [Function],
-              " ",
-              [Function],
-              " min-width:",
-              [Function],
-              ";background-color:#c0c0c0;display:inline-block;",
-            ],
-          },
-          "displayName": "PlainBox",
-          "render": [Function],
-          "styledComponentId": "PlainBox-sc-10nrb46-0",
-          "target": "div",
-          "toString": [Function],
-          "warnTooManyClasses": [Function],
-          "withComponent": [Function],
-        },
+        "type": undefined,
       },
       Object {
         "instance": null,
@@ -230,29 +120,7 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": null,
-        "type": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "attrs": undefined,
-          "componentStyle": ComponentStyle {
-            "componentId": "PlainBox-sc-10nrb46-0",
-            "isStatic": false,
-            "rules": Array [
-              [Function],
-              " ",
-              [Function],
-              " min-width:",
-              [Function],
-              ";background-color:#c0c0c0;display:inline-block;",
-            ],
-          },
-          "displayName": "PlainBox",
-          "render": [Function],
-          "styledComponentId": "PlainBox-sc-10nrb46-0",
-          "target": "div",
-          "toString": [Function],
-          "warnTooManyClasses": [Function],
-          "withComponent": [Function],
-        },
+        "type": undefined,
       },
       Object {
         "instance": null,
@@ -264,49 +132,10 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": null,
-        "type": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "attrs": undefined,
-          "componentStyle": ComponentStyle {
-            "componentId": "PlainBox-sc-10nrb46-0",
-            "isStatic": false,
-            "rules": Array [
-              [Function],
-              " ",
-              [Function],
-              " min-width:",
-              [Function],
-              ";background-color:#c0c0c0;display:inline-block;",
-            ],
-          },
-          "displayName": "PlainBox",
-          "render": [Function],
-          "styledComponentId": "PlainBox-sc-10nrb46-0",
-          "target": "div",
-          "toString": [Function],
-          "warnTooManyClasses": [Function],
-          "withComponent": [Function],
-        },
+        "type": undefined,
       },
     ],
-    "type": Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": undefined,
-      "componentStyle": ComponentStyle {
-        "componentId": "CenteredContent-ys47ff-0",
-        "isStatic": true,
-        "rules": Array [
-          "text-align:center;",
-        ],
-      },
-      "displayName": "CenteredContent",
-      "render": [Function],
-      "styledComponentId": "CenteredContent-ys47ff-0",
-      "target": "div",
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
-    },
+    "type": undefined,
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
@@ -315,31 +144,31 @@ ShallowWrapper {
       "nodeType": "function",
       "props": Object {
         "children": Array [
-          <ForwardRef
+          <UNDEFINED
             height="250px"
             width="25%"
           />,
-          <ForwardRef
+          <UNDEFINED
             height="250px"
             width="25%"
           />,
-          <ForwardRef
+          <UNDEFINED
             height="250px"
             width="25%"
           />,
-          <ForwardRef
+          <UNDEFINED
             height="250px"
             width="25%"
           />,
-          <ForwardRef
+          <UNDEFINED
             height="250px"
             width="25%"
           />,
-          <ForwardRef
+          <UNDEFINED
             height="250px"
             width="25%"
           />,
-          <ForwardRef
+          <UNDEFINED
             height="250px"
             width="25%"
           />,
@@ -357,29 +186,7 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": null,
-          "type": Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": undefined,
-            "componentStyle": ComponentStyle {
-              "componentId": "PlainBox-sc-10nrb46-0",
-              "isStatic": false,
-              "rules": Array [
-                [Function],
-                " ",
-                [Function],
-                " min-width:",
-                [Function],
-                ";background-color:#c0c0c0;display:inline-block;",
-              ],
-            },
-            "displayName": "PlainBox",
-            "render": [Function],
-            "styledComponentId": "PlainBox-sc-10nrb46-0",
-            "target": "div",
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          },
+          "type": undefined,
         },
         Object {
           "instance": null,
@@ -391,29 +198,7 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": null,
-          "type": Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": undefined,
-            "componentStyle": ComponentStyle {
-              "componentId": "PlainBox-sc-10nrb46-0",
-              "isStatic": false,
-              "rules": Array [
-                [Function],
-                " ",
-                [Function],
-                " min-width:",
-                [Function],
-                ";background-color:#c0c0c0;display:inline-block;",
-              ],
-            },
-            "displayName": "PlainBox",
-            "render": [Function],
-            "styledComponentId": "PlainBox-sc-10nrb46-0",
-            "target": "div",
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          },
+          "type": undefined,
         },
         Object {
           "instance": null,
@@ -425,29 +210,7 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": null,
-          "type": Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": undefined,
-            "componentStyle": ComponentStyle {
-              "componentId": "PlainBox-sc-10nrb46-0",
-              "isStatic": false,
-              "rules": Array [
-                [Function],
-                " ",
-                [Function],
-                " min-width:",
-                [Function],
-                ";background-color:#c0c0c0;display:inline-block;",
-              ],
-            },
-            "displayName": "PlainBox",
-            "render": [Function],
-            "styledComponentId": "PlainBox-sc-10nrb46-0",
-            "target": "div",
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          },
+          "type": undefined,
         },
         Object {
           "instance": null,
@@ -459,29 +222,7 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": null,
-          "type": Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": undefined,
-            "componentStyle": ComponentStyle {
-              "componentId": "PlainBox-sc-10nrb46-0",
-              "isStatic": false,
-              "rules": Array [
-                [Function],
-                " ",
-                [Function],
-                " min-width:",
-                [Function],
-                ";background-color:#c0c0c0;display:inline-block;",
-              ],
-            },
-            "displayName": "PlainBox",
-            "render": [Function],
-            "styledComponentId": "PlainBox-sc-10nrb46-0",
-            "target": "div",
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          },
+          "type": undefined,
         },
         Object {
           "instance": null,
@@ -493,29 +234,7 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": null,
-          "type": Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": undefined,
-            "componentStyle": ComponentStyle {
-              "componentId": "PlainBox-sc-10nrb46-0",
-              "isStatic": false,
-              "rules": Array [
-                [Function],
-                " ",
-                [Function],
-                " min-width:",
-                [Function],
-                ";background-color:#c0c0c0;display:inline-block;",
-              ],
-            },
-            "displayName": "PlainBox",
-            "render": [Function],
-            "styledComponentId": "PlainBox-sc-10nrb46-0",
-            "target": "div",
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          },
+          "type": undefined,
         },
         Object {
           "instance": null,
@@ -527,29 +246,7 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": null,
-          "type": Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": undefined,
-            "componentStyle": ComponentStyle {
-              "componentId": "PlainBox-sc-10nrb46-0",
-              "isStatic": false,
-              "rules": Array [
-                [Function],
-                " ",
-                [Function],
-                " min-width:",
-                [Function],
-                ";background-color:#c0c0c0;display:inline-block;",
-              ],
-            },
-            "displayName": "PlainBox",
-            "render": [Function],
-            "styledComponentId": "PlainBox-sc-10nrb46-0",
-            "target": "div",
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          },
+          "type": undefined,
         },
         Object {
           "instance": null,
@@ -561,49 +258,10 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": null,
-          "type": Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": undefined,
-            "componentStyle": ComponentStyle {
-              "componentId": "PlainBox-sc-10nrb46-0",
-              "isStatic": false,
-              "rules": Array [
-                [Function],
-                " ",
-                [Function],
-                " min-width:",
-                [Function],
-                ";background-color:#c0c0c0;display:inline-block;",
-              ],
-            },
-            "displayName": "PlainBox",
-            "render": [Function],
-            "styledComponentId": "PlainBox-sc-10nrb46-0",
-            "target": "div",
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          },
+          "type": undefined,
         },
       ],
-      "type": Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "attrs": undefined,
-        "componentStyle": ComponentStyle {
-          "componentId": "CenteredContent-ys47ff-0",
-          "isStatic": true,
-          "rules": Array [
-            "text-align:center;",
-          ],
-        },
-        "displayName": "CenteredContent",
-        "render": [Function],
-        "styledComponentId": "CenteredContent-ys47ff-0",
-        "target": "div",
-        "toString": [Function],
-        "warnTooManyClasses": [Function],
-        "withComponent": [Function],
-      },
+      "type": undefined,
     },
   ],
   Symbol(enzyme.__options__): Object {
