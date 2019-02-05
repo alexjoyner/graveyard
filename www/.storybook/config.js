@@ -6,6 +6,8 @@ import { configure, addDecorator } from "@storybook/react";
 import {StyletronProvider, Styletron} from 'ro-component-library';
 import {ThemeProvider, LightTheme} from 'baseui';
 import { reducers } from '../src/reducers';
+import 'ro-component-library/styles/normalize.css';
+import 'ro-component-library/styles/typography.css';
 
 const store = createStore(reducers);
 

@@ -9,7 +9,7 @@ const ToggleBtn = props => (
   </Button>
 );
 
-export const DashHeader = ({toggleSideBar}) => (
+export const DashHeader = () => (
   <Header color="dark">
     <ToggleBtn onClick={() => sideBarActions().toggle()} />
     <h1>OEE Master</h1>
