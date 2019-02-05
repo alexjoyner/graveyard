@@ -1,15 +1,14 @@
 import React from 'react';
-import { SideBar } from 'ro-component-library';
+import { SideBar } from '../../molecules/SideBar';
 import { TestNotification } from '../../organisms/Notifications';
 import { DashBody } from '../../organisms/DashBody';
-import { DashSideBar } from '../../organisms/DashSideBar';
 import { HistoricalGraphModal } from '../../organisms/HistoricalGraphModal';
 import { DashHeader } from '../../organisms/DashHeader';
 
 export const DashBoard = () => (
-  <SideBar sidebar={DashSideBar}>
+  <SideBar>
     <TestNotification />
-    <DashHeader/>
+    <DashHeader />
     <DashBody />
     <HistoricalGraphModal />
   </SideBar>

@@ -14,8 +14,8 @@ const SideBar = ({ children, ...props }) => {
   const sidebarStyles = {
     sidebar: {
       background: colors.dark,
-      width: '300px',
-      top: (isDocked) ? '56px' : '0px',
+      width: (isDocked) ? '300px' : '250px',
+      top: '56px',
     },
   };
   return (

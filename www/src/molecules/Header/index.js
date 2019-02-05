@@ -10,7 +10,7 @@ const ToggleBtn = props => (
 );
 
 export const Header = () => (
-  <RoHeader color="dark">
+  <RoHeader color="dark" styles={{ left: 0 }}>
     <ToggleBtn onClick={() => sideBarActions().toggle()} />
     <h1>OEE Master</h1>
     <FeedbackButton />
