@@ -1,19 +1,22 @@
 import _ from 'lodash';
-import { MULTISELECT_POINT } from '../GaugeBlockArray/actions/types';
+import { toaster } from 'ro-component-library';
+import { MULTISELECT_POINT } from '../../organisms/GaugeBlockArray/actions/types';
 import { REMOVE_POINT } from './actions';
 
 export const INITIAL_STATE = {
   multiSelectedPoints: {},
 };
 
-export const MultiSelectedChartsMenuReducer = (state = INITIAL_STATE, action) => {
+export const ChartsSelectedReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case MULTISELECT_POINT: {
       const { id } = action.data.point;
       let alreadyAdded = false;
       if (state.multiSelectedPoints[id]) {
         alreadyAdded = true;
-        console.log('Already selected that point');
+        toaster().warning('You already selected that point! :)', {
+          autoHideDuration: 5000,
+        });
       }
       if (alreadyAdded) { return state; }
       return {

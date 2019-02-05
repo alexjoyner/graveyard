@@ -4,7 +4,7 @@ export const INITIAL_STATE = {
   groups: [],
 };
 
-export const SideBarContentReducer = (state = INITIAL_STATE, action) => {
+export const GroupsMenuReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SET_GROUPS: {
       const baseGroup = [{ id: 0, name: 'All Points' }];

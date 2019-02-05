@@ -2,7 +2,7 @@ import {
   changePointGroup, setGroups, CHANGE_GROUP, SET_GROUPS,
 } from './actions';
 
-describe('SideBarContent actions', () => {
+describe('GroupsMenu actions', () => {
   describe('changePointGroup', () => {
     it('should return correct action', () => {
       expect(changePointGroup(2)).toEqual({

@@ -9,7 +9,7 @@ const FeedbackButton = () => (
       right: '3px',
     }}
   >
-    <Button color="primary">Feedback</Button>
+    <Button color="primary" size="small">Feedback</Button>
   </Go>
 );
 

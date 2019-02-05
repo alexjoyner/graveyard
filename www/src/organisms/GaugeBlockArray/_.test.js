@@ -2,7 +2,7 @@ import React from 'react';
 import io from 'socket.io-client';
 import { Provider } from 'react-redux';
 import { shallow, mount } from 'enzyme';
-import { BaseGaugeBlockArray } from './';
+import { BaseGaugeBlockArray } from '.';
 import { PointsSocket } from '../../behaviors/iSocketIO';
 
 const mockFetch = data => jest.fn().mockImplementation(() => Promise.resolve({

@@ -5,26 +5,26 @@ import {
   ListItem, ListHeader, CenteredContent, Button, colors,
 } from 'ro-component-library';
 import { GoTrashcan } from 'react-icons/go';
-import { removePoint } from './actions';
+import { removePoint as removePointAction } from './actions';
 import { Points } from '../../propTypes';
-import { buildGraph } from '../HistoricalGraphModal/actions';
-import { showNotification } from '../../actions/notification';
-import { TEST_NOTIFICATION } from '../Notifications';
+import { buildGraph as buildGraphAction } from '../../organisms/HistoricalGraphModal/actions';
+import { showNotification as showNotificationAction } from '../../actions/notification';
+import { TEST_NOTIFICATION } from '../../organisms/Notifications';
 
 
-export class BaseMultiSelectedChartsMenu extends Component {
+export class TChartsSelected extends Component {
   handleStartBraphBuild() {
-    const { multiSelectedPoints } = this.props;
+    const { multiSelectedPoints, showNotification, buildGraph } = this.props;
     const points = Object.keys(multiSelectedPoints);
     if (points.length === 0) {
-      return this.props.showNotification(TEST_NOTIFICATION, 'Please add at least one point');
+      return showNotification(TEST_NOTIFICATION, 'Please add at least one point');
     }
-    this.props.buildGraph(multiSelectedPoints);
+    buildGraph(multiSelectedPoints);
     return null;
   }
 
   render() {
-    const { multiSelectedPoints } = this.props;
+    const { multiSelectedPoints, removePoint } = this.props;
     return (
       <div>
         <br />
@@ -36,7 +36,7 @@ export class BaseMultiSelectedChartsMenu extends Component {
               <Button
                 size="small"
                 color="dark"
-                onClick={() => this.props.removePoint(pointID)}
+                onClick={() => removePoint(pointID)}
               >
                 <GoTrashcan size={20} color={colors.dangerLight} />
               </Button>
@@ -53,7 +53,7 @@ export class BaseMultiSelectedChartsMenu extends Component {
     );
   }
 }
-BaseMultiSelectedChartsMenu.propTypes = {
+TChartsSelected.propTypes = {
   removePoint: PropTypes.func.isRequired,
   buildGraph: PropTypes.func.isRequired,
   multiSelectedPoints: Points.isRequired,
@@ -62,12 +62,12 @@ BaseMultiSelectedChartsMenu.propTypes = {
 
 /* istanbul ignore next */
 const mapStateToProps = state => ({
-  ...state.MultiSelectedChartsMenuReducer,
+  ...state.ChartsSelectedReducer,
 });
 
-const MultiSelectedChartsMenu = connect(mapStateToProps, {
-  removePoint,
-  buildGraph,
-  showNotification,
-})(BaseMultiSelectedChartsMenu);
-export { MultiSelectedChartsMenu };
+const ChartsSelected = connect(mapStateToProps, {
+  removePoint: removePointAction,
+  buildGraph: buildGraphAction,
+  showNotification: showNotificationAction,
+})(TChartsSelected);
+export { ChartsSelected };

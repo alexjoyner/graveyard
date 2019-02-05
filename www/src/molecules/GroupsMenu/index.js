@@ -36,7 +36,7 @@ TGroupsMenu.propTypes = {
 
 /* istanbul ignore next */
 const mapStateToProps = state => ({
-  ...state.SideBarContentReducer,
+  ...state.GroupsMenuReducer,
 });
 
 const GroupsMenu = connect(mapStateToProps, {

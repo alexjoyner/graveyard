@@ -5,14 +5,14 @@ import { FeedbackButton } from '../FeedbackButton';
 import { useWindowSize } from '../../effects/useWindowSize';
 
 const ToggleBtn = props => (
-  <Button color="primary" {...props}>
+  <Button color="primary" size="small" {...props}>
     <GoThreeBars />
   </Button>
 );
 
 const logoStyles = {
-  marginLeft: '15px',
-  fontSize: '2em',
+  marginLeft: '10px',
+  fontSize: '1.5em',
 };
 
 const Header = () => {

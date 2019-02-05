@@ -1,5 +1,7 @@
-import { NEW_LOG, REMOVE_POINTS, MULTISELECT_POINT, MULTISELECT_DESELECT_POINT, NEW_POINTS } from './actions/types';
-import { CHANGE_GROUP } from '../SideBarContent/actions';
+import {
+  NEW_LOG, REMOVE_POINTS, MULTISELECT_POINT, MULTISELECT_DESELECT_POINT, NEW_POINTS,
+} from './actions/types';
+import { CHANGE_GROUP } from '../../molecules/GroupsMenu/actions';
 
 export const INITIAL_STATE = {
   currentGroup: 0,

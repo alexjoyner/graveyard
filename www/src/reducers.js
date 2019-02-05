@@ -3,14 +3,14 @@ import { ISideBarReducer } from 'ro-component-library';
 import { GaugeBlockArrayReducer } from './organisms/GaugeBlockArray/reducer';
 import { HistoricalGraphModalReducer } from './organisms/HistoricalGraphModal/reducer';
 import { NotificationReducer } from './organisms/Notifications/reducer';
-import { MultiSelectedChartsMenuReducer } from './organisms/MultiSelectedChartsMenu/reducer';
-import { SideBarContentReducer } from './organisms/SideBarContent/reducer';
+import { ChartsSelectedReducer } from './molecules/ChartsSelected/reducer';
+import { GroupsMenuReducer } from './molecules/GroupsMenu/reducer';
 
 export const reducers = combineReducers({
   GaugeBlockArrayReducer,
   HistoricalGraphModalReducer,
   NotificationReducer,
-  MultiSelectedChartsMenuReducer,
-  SideBarContentReducer,
+  ChartsSelectedReducer,
+  GroupsMenuReducer,
   ISideBarReducer,
 });

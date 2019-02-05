@@ -1,7 +1,7 @@
-import { SideBarContentReducer, INITIAL_STATE as TRUE_INITIAL_STATE } from './reducer';
+import { GroupsMenuReducer, INITIAL_STATE as TRUE_INITIAL_STATE } from './reducer';
 import { SET_GROUPS } from './actions';
 
-describe('SideBarContentReducer', () => {
+describe('GroupsMenuReducer', () => {
   let InitialState;
   beforeEach(() => {
     InitialState = {
@@ -9,15 +9,15 @@ describe('SideBarContentReducer', () => {
     };
   });
   it('should return initial state', () => {
-    const state = SideBarContentReducer(InitialState, {});
+    const state = GroupsMenuReducer(InitialState, {});
     expect(state).toEqual(InitialState);
   });
   it('should return true initial state', () => {
-    const state = SideBarContentReducer(undefined, {});
+    const state = GroupsMenuReducer(undefined, {});
     expect(state).toEqual(TRUE_INITIAL_STATE);
   });
   it('should allow setting groups', () => {
-    const state = SideBarContentReducer(InitialState, {
+    const state = GroupsMenuReducer(InitialState, {
       type: SET_GROUPS,
       data: [{ id: 1, name: 'test group' }],
     });

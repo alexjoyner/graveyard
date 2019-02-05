@@ -1,8 +1,8 @@
-import { MultiSelectedChartsMenuReducer, INITIAL_STATE as TRUE_INITIAL_STATE } from './reducer';
-import { MULTISELECT_POINT } from '../GaugeBlockArray/actions/types';
+import { ChartsSelectedReducer, INITIAL_STATE as TRUE_INITIAL_STATE } from './reducer';
+import { MULTISELECT_POINT } from '../../organisms/GaugeBlockArray/actions/types';
 import { REMOVE_POINT } from './actions';
 
-describe('MultiSelectedChartsMenuReducer', () => {
+describe('ChartsSelectedReducer', () => {
   let InitialState;
   beforeEach(() => {
     InitialState = {
@@ -12,15 +12,15 @@ describe('MultiSelectedChartsMenuReducer', () => {
     };
   });
   it('should return initial state', () => {
-    const state = MultiSelectedChartsMenuReducer(InitialState, {});
+    const state = ChartsSelectedReducer(InitialState, {});
     expect(state).toEqual(InitialState);
   });
   it('should return true initial state', () => {
-    const state = MultiSelectedChartsMenuReducer(undefined, {});
+    const state = ChartsSelectedReducer(undefined, {});
     expect(state).toEqual(TRUE_INITIAL_STATE);
   });
   it('should allow selecting a point', () => {
-    const state = MultiSelectedChartsMenuReducer(InitialState, {
+    const state = ChartsSelectedReducer(InitialState, {
       type: MULTISELECT_POINT,
       data: {
         point: { id: 2, name: 'Test' },
@@ -35,7 +35,7 @@ describe('MultiSelectedChartsMenuReducer', () => {
     });
   });
   it('shouldnt allow selecting a point twice', () => {
-    const state = MultiSelectedChartsMenuReducer(InitialState, {
+    const state = ChartsSelectedReducer(InitialState, {
       type: MULTISELECT_POINT,
       data: {
         point: { id: 1, name: 'Test' },
@@ -49,7 +49,7 @@ describe('MultiSelectedChartsMenuReducer', () => {
     });
   });
   it('should allow removing a point', () => {
-    const state = MultiSelectedChartsMenuReducer(InitialState, {
+    const state = ChartsSelectedReducer(InitialState, {
       type: REMOVE_POINT,
       data: 1,
     });

@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { BaseMultiSelectedChartsMenu } from '.';
+import { TChartsSelected } from '.';
 
-describe('BaseMultiSelectedChartsMenu component', () => {
+describe('TChartsSelected component', () => {
   describe('Base component state', () => {
     let component;
     let props;
@@ -16,7 +16,7 @@ describe('BaseMultiSelectedChartsMenu component', () => {
         },
         showNotification: jest.fn(),
       };
-      component = shallow(<BaseMultiSelectedChartsMenu {...props} />);
+      component = shallow(<TChartsSelected {...props} />);
     });
     it('Should render without exploding', () => {
       expect(component).toBeDefined();
