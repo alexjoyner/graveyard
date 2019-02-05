@@ -1,8 +1,8 @@
 import React from 'react';
 import { SideBar as RoSideBar, colors } from 'ro-component-library';
 import { useWindowSize } from '../../effects/useWindowSize';
-import { GroupsMenu } from '../GroupsMenu';
-import { MultiSelectedChartsMenu } from '../../organisms/MultiSelectedChartsMenu';
+import { GroupsMenu } from '../../molecules/GroupsMenu';
+import { MultiSelectedChartsMenu } from '../MultiSelectedChartsMenu';
 
 const SideBarContent = props => (
   <>
