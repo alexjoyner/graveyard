@@ -8,7 +8,7 @@ export const INITIAL_STATE = {
   chartPoints: {},
 };
 
-export const HistoricalGraphModalReducer = (state = INITIAL_STATE, action) => {
+export const ChartModalReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case BUILD_GRAPH:
       return {

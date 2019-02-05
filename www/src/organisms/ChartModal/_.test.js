@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { BaseHistoricalGraphModal } from '.';
+import { BaseChartModal } from '.';
 
 const mockFetch = data => jest.fn().mockImplementation(() => Promise.resolve({
   status: 200,
@@ -10,7 +10,7 @@ const mockFetch = data => jest.fn().mockImplementation(() => Promise.resolve({
 window.fetch = mockFetch([
   { id: 1, name: 'testPoint' },
 ]);
-describe('BaseHistoricalGraphModal component', () => {
+describe('BaseChartModal component', () => {
   describe('Empty Hidden Chart Component', () => {
     let component;
     beforeEach(() => {
@@ -23,7 +23,7 @@ describe('BaseHistoricalGraphModal component', () => {
         modalStage: 'CLOSED',
         chartPoints: {},
       };
-      component = shallow(<BaseHistoricalGraphModal {...props} />);
+      component = shallow(<BaseChartModal {...props} />);
     });
     it('Should render without exploding', () => {
       expect(component).toBeDefined();
@@ -45,7 +45,7 @@ describe('BaseHistoricalGraphModal component', () => {
         modalStage: 'SHOWN',
         chartPoints: {},
       };
-      component = shallow(<BaseHistoricalGraphModal {...props} />);
+      component = shallow(<BaseChartModal {...props} />);
     });
     it('Should render without exploding', () => {
       expect(component).toBeDefined();
@@ -80,24 +80,24 @@ describe('BaseHistoricalGraphModal component', () => {
       }
     });
     it('Should render without exploding', () => {
-      const component = mount(<BaseHistoricalGraphModal {...props} />);
+      const component = mount(<BaseChartModal {...props} />);
       expect(component).toBeDefined();
     });
     it('Should call component did update', () => {
-      spy = jest.spyOn(BaseHistoricalGraphModal.prototype, 'componentDidUpdate');
-      const component = mount(<BaseHistoricalGraphModal {...props} />);
+      spy = jest.spyOn(BaseChartModal.prototype, 'componentDidUpdate');
+      const component = mount(<BaseChartModal {...props} />);
       component.setProps({ ...props, modalStage: 'TESTING' });
       expect(spy).toHaveBeenCalled();
     });
     it('Should call runBuildGraphProcess', () => {
-      spy = jest.spyOn(BaseHistoricalGraphModal.prototype, 'runBuildGraphProcess');
-      const component = mount(<BaseHistoricalGraphModal {...props} />);
+      spy = jest.spyOn(BaseChartModal.prototype, 'runBuildGraphProcess');
+      const component = mount(<BaseChartModal {...props} />);
       component.setProps({ ...props, modalStage: 'BUILDING' });
       expect(spy).toHaveBeenCalled();
     });
     it('Should call runBuildGraphProcess from IntervalButton', () => {
-      spy = jest.spyOn(BaseHistoricalGraphModal.prototype, 'runBuildGraphProcess');
-      const component = mount(<BaseHistoricalGraphModal {...props} />);
+      spy = jest.spyOn(BaseChartModal.prototype, 'runBuildGraphProcess');
+      const component = mount(<BaseChartModal {...props} />);
       const IntervalButton = component.find('IntervalButton');
       IntervalButton.forEach((Button) => {
         Button.props().onClick();

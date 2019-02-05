@@ -15,7 +15,7 @@ import { dispatchNewHistoricalData, showHistoryModal, closeHistoryModal } from '
 import { IntervalButton } from './particles/IntervalButton';
 import { getTimeInterval } from './utils/getTimeInterval';
 
-export class BaseHistoricalGraphModal extends Component {
+export class BaseChartModal extends Component {
   componentDidUpdate() {
     const { modalStage } = this.props;
     if (modalStage === 'BUILDING') {
@@ -60,7 +60,7 @@ export class BaseHistoricalGraphModal extends Component {
     ) : (<div style={{ visibility: 'hidden' }} />);
   }
 }
-BaseHistoricalGraphModal.propTypes = {
+BaseChartModal.propTypes = {
   startLoadingNotif: PropTypes.func.isRequired,
   stopLoadingNotif: PropTypes.func.isRequired,
   dispatchNewHistoricalData: PropTypes.func.isRequired,
@@ -70,20 +70,20 @@ BaseHistoricalGraphModal.propTypes = {
   modalData: PropTypes.arrayOf(Point),
   chartPoints: Points.isRequired,
 };
-BaseHistoricalGraphModal.defaultProps = {
+BaseChartModal.defaultProps = {
   modalData: [],
 };
 
 /* istanbul ignore next */
 const mapStateToProps = state => ({
-  ...state.HistoricalGraphModalReducer,
+  ...state.ChartModalReducer,
 });
 
-const HistoricalGraphModal = connect(mapStateToProps, {
+const ChartModal = connect(mapStateToProps, {
   startLoadingNotif,
   stopLoadingNotif,
   dispatchNewHistoricalData,
   showHistoryModal,
   closeHistoryModal,
-})(BaseHistoricalGraphModal);
-export { HistoricalGraphModal };
+})(BaseChartModal);
+export { ChartModal };

@@ -4,7 +4,7 @@ import {
   closeHistoryModal, CLOSE_HISTORICAL_MODAL,
 } from './actions';
 
-describe('HistoricalGraphActions', () => {
+describe('ChartActions', () => {
   describe('buildGraph', () => {
     it('should return correct action', () => {
       expect(buildGraph([{ id: 1, name: 'testPoint' }])).toEqual({

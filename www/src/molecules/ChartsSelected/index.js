@@ -7,7 +7,7 @@ import {
 import { GoTrashcan } from 'react-icons/go';
 import { removePoint as removePointAction } from './actions';
 import { Points } from '../../propTypes';
-import { buildGraph as buildGraphAction } from '../../organisms/HistoricalGraphModal/actions';
+import { buildGraph as buildGraphAction } from '../../organisms/ChartModal/actions';
 import { showNotification as showNotificationAction } from '../../actions/notification';
 import { TEST_NOTIFICATION } from '../../organisms/Notifications';
 

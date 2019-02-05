@@ -1,9 +1,9 @@
-import { HistoricalGraphModalReducer, INITIAL_STATE as TRUE_INITIAL_STATE } from './reducer';
+import { ChartModalReducer, INITIAL_STATE as TRUE_INITIAL_STATE } from './reducer';
 import {
   BUILD_GRAPH, SHOW_GRAPH, CLOSE_HISTORICAL_MODAL, NEW_HISTORICAL_DATA,
 } from './actions';
 
-describe('HistoricalGraphModalReducer', () => {
+describe('ChartModalReducer', () => {
   let InitialState;
   beforeEach(() => {
     InitialState = {
@@ -13,15 +13,15 @@ describe('HistoricalGraphModalReducer', () => {
     };
   });
   it('should return true initial state', () => {
-    const state = HistoricalGraphModalReducer(undefined, {});
+    const state = ChartModalReducer(undefined, {});
     expect(state).toEqual(TRUE_INITIAL_STATE);
   });
   it('should return default state', () => {
-    const state = HistoricalGraphModalReducer(InitialState, {});
+    const state = ChartModalReducer(InitialState, {});
     expect(state).toEqual(InitialState);
   });
   it('should allow build graph', () => {
-    const state = HistoricalGraphModalReducer(InitialState, {
+    const state = ChartModalReducer(InitialState, {
       type: BUILD_GRAPH,
       data: { 1: { name: 'test' } },
     });
@@ -32,7 +32,7 @@ describe('HistoricalGraphModalReducer', () => {
     });
   });
   it('should allow showing the graph modal', () => {
-    const state = HistoricalGraphModalReducer(InitialState, {
+    const state = ChartModalReducer(InitialState, {
       type: SHOW_GRAPH,
     });
     expect(state).toEqual({
@@ -41,7 +41,7 @@ describe('HistoricalGraphModalReducer', () => {
     });
   });
   it('should allow closing the graph modal', () => {
-    const state = HistoricalGraphModalReducer(InitialState, {
+    const state = ChartModalReducer(InitialState, {
       type: CLOSE_HISTORICAL_MODAL,
     });
     expect(state).toEqual({
@@ -50,7 +50,7 @@ describe('HistoricalGraphModalReducer', () => {
     });
   });
   it('should accept new historical data', () => {
-    const state = HistoricalGraphModalReducer(InitialState, {
+    const state = ChartModalReducer(InitialState, {
       type: NEW_HISTORICAL_DATA,
       data: ['TESTING'],
     });

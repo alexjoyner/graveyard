@@ -2,7 +2,7 @@ import React from 'react';
 import { SideBar } from '../../organisms/SideBar';
 import { TestNotification } from '../../organisms/Notifications';
 import { DashBody } from '../../organisms/DashBody';
-import { HistoricalGraphModal } from '../../organisms/HistoricalGraphModal';
+import { ChartModal } from '../../organisms/ChartModal';
 import { Header } from '../../organisms/Header';
 
 export const DashBoard = () => (
@@ -10,6 +10,6 @@ export const DashBoard = () => (
     <Header />
     <DashBody />
     <TestNotification />
-    <HistoricalGraphModal />
+    <ChartModal />
   </SideBar>
 );

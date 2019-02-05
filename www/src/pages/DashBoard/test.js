@@ -25,8 +25,8 @@ describe('DashBoard Page', () => {
   it('Should have a page body', () => {
     expect(component.find('Connect(TISideBar)').props().Body).toBeDefined();
   });
-  it('Should have HistoricalGraphModal', () => {
-    expect(component.find('Connect(BaseHistoricalGraphModal)')).toHaveLength(1);
+  it('Should have ChartModal', () => {
+    expect(component.find('Connect(BaseChartModal)')).toHaveLength(1);
   });
   it('Should contain a DashHeader', () => {
     expect(component.find('DashHeader')).toHaveLength(1);
