@@ -2,22 +2,20 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
-  ListItem, ListHeader, CenteredContent, Button, colors,
+  ListItem, ListHeader, CenteredContent, Button, colors, toaster,
 } from 'ro-component-library';
 import { GoTrashcan } from 'react-icons/go';
 import { removePoint as removePointAction } from './actions';
 import { Points } from '../../propTypes';
 import { buildGraph as buildGraphAction } from '../../organisms/ChartModal/actions';
-import { showNotification as showNotificationAction } from '../../actions/notification';
-import { TEST_NOTIFICATION } from '../../organisms/Notifications';
 
 
 export class TChartsSelected extends Component {
   handleStartBraphBuild() {
-    const { multiSelectedPoints, showNotification, buildGraph } = this.props;
+    const { multiSelectedPoints, buildGraph } = this.props;
     const points = Object.keys(multiSelectedPoints);
     if (points.length === 0) {
-      return showNotification(TEST_NOTIFICATION, 'Please add at least one point');
+      return toaster().info('Please add at least one point', { autoHideDuration: 5000 });
     }
     buildGraph(multiSelectedPoints);
     return null;
@@ -57,7 +55,6 @@ TChartsSelected.propTypes = {
   removePoint: PropTypes.func.isRequired,
   buildGraph: PropTypes.func.isRequired,
   multiSelectedPoints: Points.isRequired,
-  showNotification: PropTypes.func.isRequired,
 };
 
 /* istanbul ignore next */
@@ -68,6 +65,5 @@ const mapStateToProps = state => ({
 const ChartsSelected = connect(mapStateToProps, {
   removePoint: removePointAction,
   buildGraph: buildGraphAction,
-  showNotification: showNotificationAction,
 })(TChartsSelected);
 export { ChartsSelected };

@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
-  RoHighChart, Button, Modal, Panel,
+  RoHighChart, Button, Modal, Panel, toaster,
 } from 'ro-component-library';
-import { startLoadingNotif, stopLoadingNotif } from '../../actions/notification';
 import { getChartConfig } from './utils/getChartConfig';
 import { Point, Points } from '../../propTypes';
-import { TEST_NOTIFICATION } from '../Notifications';
 import { fetchDataForPoints } from './utils/fetchDataForPoints';
 import { getRawHistoryData } from './utils/getRawHistoryData';
 import { formatDataForGraph } from './utils/formatDataForGraph';
@@ -25,7 +23,8 @@ export class BaseChartModal extends Component {
 
   async runBuildGraphProcess(opts = {}) {
     const { chartPoints } = this.props;
-    this.props.startLoadingNotif(TEST_NOTIFICATION);
+    toaster().clear();
+    toaster().info(<h2>Loading</h2>, { autoHideDuration: 0 });
     const points = Object
       .keys(chartPoints)
       .map(pointID => chartPoints[pointID]);
@@ -34,7 +33,7 @@ export class BaseChartModal extends Component {
     const formattedData = formatDataForGraph(rawDataArray, points);
     this.props.dispatchNewHistoricalData(formattedData);
     this.props.showHistoryModal();
-    this.props.stopLoadingNotif(TEST_NOTIFICATION);
+    toaster().clear();
     return null;
   }
 
@@ -61,8 +60,6 @@ export class BaseChartModal extends Component {
   }
 }
 BaseChartModal.propTypes = {
-  startLoadingNotif: PropTypes.func.isRequired,
-  stopLoadingNotif: PropTypes.func.isRequired,
   dispatchNewHistoricalData: PropTypes.func.isRequired,
   showHistoryModal: PropTypes.func.isRequired,
   closeHistoryModal: PropTypes.func.isRequired,
@@ -80,8 +77,6 @@ const mapStateToProps = state => ({
 });
 
 const ChartModal = connect(mapStateToProps, {
-  startLoadingNotif,
-  stopLoadingNotif,
   dispatchNewHistoricalData,
   showHistoryModal,
   closeHistoryModal,
