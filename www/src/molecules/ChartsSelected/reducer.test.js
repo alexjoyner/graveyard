@@ -1,5 +1,5 @@
 import { ChartsSelectedReducer, INITIAL_STATE as TRUE_INITIAL_STATE } from './reducer';
-import { MULTISELECT_POINT } from '../../organisms/GaugeBlockArray/actions/types';
+import { MULTISELECT_POINT } from '../../organisms/DashBody/actions/types';
 import { REMOVE_POINT } from './actions';
 
 describe('ChartsSelectedReducer', () => {

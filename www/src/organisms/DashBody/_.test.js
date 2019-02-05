@@ -2,7 +2,7 @@ import React from 'react';
 import io from 'socket.io-client';
 import { Provider } from 'react-redux';
 import { shallow, mount } from 'enzyme';
-import { BaseGaugeBlockArray } from '.';
+import { BaseDashBody } from '.';
 import { PointsSocket } from '../../behaviors/iSocketIO';
 
 const mockFetch = data => jest.fn().mockImplementation(() => Promise.resolve({
@@ -20,7 +20,7 @@ window.fetch = mockFetch([
   { id: 2, name: 'testPoint2' },
 ]);
 
-describe('BaseGaugeBlockArray component', () => {
+describe('BaseDashBody component', () => {
   describe('Component without data', () => {
     let component;
     let props;
@@ -34,7 +34,7 @@ describe('BaseGaugeBlockArray component', () => {
         }),
         points: {},
       };
-      component = shallow(<BaseGaugeBlockArray {...props} />);
+      component = shallow(<BaseDashBody {...props} />);
     });
     it('Should render without exploding', () => {
       expect(component).toBeDefined();
@@ -58,7 +58,7 @@ describe('BaseGaugeBlockArray component', () => {
           1: { name: 'Test Input', value: 10 },
         },
       };
-      component = shallow(<BaseGaugeBlockArray {...props} />);
+      component = shallow(<BaseDashBody {...props} />);
     });
     it('Should render without exploding', () => {
       expect(component).toBeDefined();
@@ -90,20 +90,20 @@ describe('BaseGaugeBlockArray component', () => {
       };
       Base = () => (
         <Provider store={mockStore}>
-          <BaseGaugeBlockArray {...props} />
+          <BaseDashBody {...props} />
         </Provider>
       );
     });
     it('should call componentDidUpdate', () => {
-      const spy = jest.spyOn(BaseGaugeBlockArray.prototype, 'componentDidUpdate');
+      const spy = jest.spyOn(BaseDashBody.prototype, 'componentDidUpdate');
       const component = mount(<Base />);
       component.setProps({ ...props });
       expect(spy).toHaveBeenCalled();
     });
     it('should call handleRemoveAllPoints', () => {
-      const spy = jest.spyOn(BaseGaugeBlockArray.prototype, 'handleRemoveAllPoints');
+      const spy = jest.spyOn(BaseDashBody.prototype, 'handleRemoveAllPoints');
       const root = mount(<Base />);
-      const component = root.find('BaseGaugeBlockArray');
+      const component = root.find('BaseDashBody');
       component.instance().componentDidUpdate({
         ...props,
         currentGroup: 10,
@@ -111,9 +111,9 @@ describe('BaseGaugeBlockArray component', () => {
       expect(spy).toHaveBeenCalled();
     });
     it('should call handleSubscribeToGroup', () => {
-      const spy = jest.spyOn(BaseGaugeBlockArray.prototype, 'handleSubscribeToGroup');
+      const spy = jest.spyOn(BaseDashBody.prototype, 'handleSubscribeToGroup');
       const root = mount(<Base />);
-      const component = root.find('BaseGaugeBlockArray');
+      const component = root.find('BaseDashBody');
       component.instance().componentDidUpdate({
         ...props,
         currentGroup: 10,

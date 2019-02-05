@@ -1,10 +1,10 @@
-import { GaugeBlockArrayReducer, INITIAL_STATE } from './reducer';
-import { CHANGE_GROUP } from '../SideBarContent/actions';
+import { DashBodyReducer, INITIAL_STATE } from './reducer';
+import { CHANGE_GROUP } from '../../molecules/GroupsMenu/actions';
 import {
   NEW_POINTS, REMOVE_POINTS, MULTISELECT_POINT, MULTISELECT_DESELECT_POINT, NEW_LOG,
 } from './actions/types';
 
-describe('GaugeBlockArrayReducer', () => {
+describe('DashBodyReducer', () => {
   let InitialState;
   beforeEach(() => {
     InitialState = {
@@ -15,17 +15,17 @@ describe('GaugeBlockArrayReducer', () => {
     };
   });
   it('should return true initial state', () => {
-    const state = GaugeBlockArrayReducer(undefined, {});
+    const state = DashBodyReducer(undefined, {});
     // Expect undefined state to return true default state
     //   from app
     expect(state).toEqual(INITIAL_STATE);
   });
   it('should return initial state', () => {
-    const state = GaugeBlockArrayReducer(InitialState, {});
+    const state = DashBodyReducer(InitialState, {});
     expect(state).toEqual(InitialState);
   });
   it('should allow change group', () => {
-    const state = GaugeBlockArrayReducer(InitialState, {
+    const state = DashBodyReducer(InitialState, {
       type: CHANGE_GROUP,
       data: 2,
     });
@@ -35,7 +35,7 @@ describe('GaugeBlockArrayReducer', () => {
     });
   });
   it('should allow new points', () => {
-    const state = GaugeBlockArrayReducer(InitialState, {
+    const state = DashBodyReducer(InitialState, {
       type: NEW_POINTS,
       data: {
         15: { name: 'Test Point' },
@@ -49,7 +49,7 @@ describe('GaugeBlockArrayReducer', () => {
     });
   });
   it('should allow new logs', () => {
-    const state = GaugeBlockArrayReducer(InitialState, {
+    const state = DashBodyReducer(InitialState, {
       type: NEW_LOG,
       data: {
         pointID: 1,
@@ -64,7 +64,7 @@ describe('GaugeBlockArrayReducer', () => {
     });
   });
   it('should allow removing all points', () => {
-    const state = GaugeBlockArrayReducer(InitialState, {
+    const state = DashBodyReducer(InitialState, {
       type: REMOVE_POINTS,
     });
     expect(state).toEqual({
@@ -73,7 +73,7 @@ describe('GaugeBlockArrayReducer', () => {
     });
   });
   it('should allow multiselect point', () => {
-    const state = GaugeBlockArrayReducer(InitialState, {
+    const state = DashBodyReducer(InitialState, {
       type: MULTISELECT_POINT,
       data: {
         id: 1,
@@ -85,7 +85,7 @@ describe('GaugeBlockArrayReducer', () => {
     });
   });
   it('should allow multiDeselect point', () => {
-    const state = GaugeBlockArrayReducer(InitialState, {
+    const state = DashBodyReducer(InitialState, {
       type: MULTISELECT_DESELECT_POINT,
       data: {
         id: 1,

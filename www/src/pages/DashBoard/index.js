@@ -1,4 +1,5 @@
 import React from 'react';
+import { HeaderSideBarPageBody } from 'ro-component-library';
 import { SideBar } from '../../organisms/SideBar';
 import { DashBody } from '../../organisms/DashBody';
 import { ChartModal } from '../../organisms/ChartModal';
@@ -7,7 +8,9 @@ import { Header } from '../../organisms/Header';
 export const DashBoard = () => (
   <SideBar>
     <Header />
-    <DashBody />
+    <HeaderSideBarPageBody>
+      <DashBody />
+    </HeaderSideBarPageBody>
     <ChartModal />
   </SideBar>
 );

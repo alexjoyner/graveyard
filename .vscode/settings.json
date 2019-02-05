@@ -9,7 +9,6 @@
     "**/*.pyc": true,
     "**/build": true,
     "**/Dockerfile": true,
-    "**/node_modules": true,
     "www/public": true
   }
 }

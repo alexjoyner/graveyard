@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { toaster } from 'ro-component-library';
-import { MULTISELECT_POINT } from '../../organisms/GaugeBlockArray/actions/types';
+import { MULTISELECT_POINT } from '../../organisms/DashBody/actions/types';
 import { REMOVE_POINT } from './actions';
 
 export const INITIAL_STATE = {

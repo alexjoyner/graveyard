@@ -1,7 +1,7 @@
 import React from 'react';
 import { GoThreeBars } from 'react-icons/go';
 import { Header as RoHeader, sideBarActions, Button } from 'ro-component-library';
-import { FeedbackButton } from '../FeedbackButton';
+import { FeedbackButton } from '../../molecules/FeedbackButton';
 import { useWindowSize } from '../../effects/useWindowSize';
 
 const ToggleBtn = props => (

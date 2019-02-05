@@ -9,7 +9,7 @@ export const INITIAL_STATE = {
 };
 
 
-export const GaugeBlockArrayReducer = (state = INITIAL_STATE, action) => {
+export const DashBodyReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case CHANGE_GROUP:
       return { ...state, currentGroup: action.data };
