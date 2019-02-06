@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { BaseChartModal } from '.';
+import { TChartModal } from '.';
 
 const mockFetch = data => jest.fn().mockImplementation(() => Promise.resolve({
   status: 200,
@@ -10,7 +10,7 @@ const mockFetch = data => jest.fn().mockImplementation(() => Promise.resolve({
 window.fetch = mockFetch([
   { id: 1, name: 'testPoint' },
 ]);
-describe('BaseChartModal component', () => {
+describe('TChartModal component', () => {
   describe('Empty Hidden Chart Component', () => {
     let component;
     beforeEach(() => {
@@ -23,13 +23,10 @@ describe('BaseChartModal component', () => {
         modalStage: 'CLOSED',
         chartPoints: {},
       };
-      component = shallow(<BaseChartModal {...props} />);
+      component = shallow(<TChartModal {...props} />);
     });
     it('Should render without exploding', () => {
       expect(component).toBeDefined();
-    });
-    it('Should match snapshot', () => {
-      expect(component).toMatchSnapshot();
     });
   });
   describe('Shown Chart Component', () => {
@@ -45,13 +42,10 @@ describe('BaseChartModal component', () => {
         modalStage: 'SHOWN',
         chartPoints: {},
       };
-      component = shallow(<BaseChartModal {...props} />);
+      component = shallow(<TChartModal {...props} />);
     });
     it('Should render without exploding', () => {
       expect(component).toBeDefined();
-    });
-    it('Should match snapshot', () => {
-      expect(component).toMatchSnapshot();
     });
     it('should allow closing history modal', () => {
       component.find('Button').last().props().onClick();
@@ -80,24 +74,24 @@ describe('BaseChartModal component', () => {
       }
     });
     it('Should render without exploding', () => {
-      const component = mount(<BaseChartModal {...props} />);
+      const component = mount(<TChartModal {...props} />);
       expect(component).toBeDefined();
     });
     it('Should call component did update', () => {
-      spy = jest.spyOn(BaseChartModal.prototype, 'componentDidUpdate');
-      const component = mount(<BaseChartModal {...props} />);
+      spy = jest.spyOn(TChartModal.prototype, 'componentDidUpdate');
+      const component = mount(<TChartModal {...props} />);
       component.setProps({ ...props, modalStage: 'TESTING' });
       expect(spy).toHaveBeenCalled();
     });
     it('Should call runBuildGraphProcess', () => {
-      spy = jest.spyOn(BaseChartModal.prototype, 'runBuildGraphProcess');
-      const component = mount(<BaseChartModal {...props} />);
+      spy = jest.spyOn(TChartModal.prototype, 'runBuildGraphProcess');
+      const component = mount(<TChartModal {...props} />);
       component.setProps({ ...props, modalStage: 'BUILDING' });
       expect(spy).toHaveBeenCalled();
     });
     it('Should call runBuildGraphProcess from IntervalButton', () => {
-      spy = jest.spyOn(BaseChartModal.prototype, 'runBuildGraphProcess');
-      const component = mount(<BaseChartModal {...props} />);
+      spy = jest.spyOn(TChartModal.prototype, 'runBuildGraphProcess');
+      const component = mount(<TChartModal {...props} />);
       const IntervalButton = component.find('IntervalButton');
       IntervalButton.forEach((Button) => {
         Button.props().onClick();

@@ -5,10 +5,13 @@ export const Button = ({ children, ...props }) => (<div {...props}>{children}</d
 export const Header = ({ children, ...props }) => (<div {...props}>{children}</div>);
 export const GaugeBlock = ({ children, ...props }) => (<div {...props}>{children}</div>);
 export const HeaderSideBarPageBody = ({ children, ...props }) => (<div {...props}>{children}</div>);
+export const Panel = ({ children, ...props }) => (<div {...props}>{children}</div>);
+export const Modal = ({ children, ...props }) => (<div {...props}>{children}</div>);
 export const Toast = ({ children, ...props }) => (<div {...props}>{children}</div>);
 export const toasterAPI = {
   warning: jest.fn(),
   info: jest.fn(),
+  clear: jest.fn(),
 };
 export const toaster = jest.fn(() => toasterAPI);
 export const sideBarActions = jest.fn(() => ({
@@ -34,3 +37,4 @@ export const colors = {
 export const ListItem = ({ children, ...props }) => (<div {...props}>{children}</div>);
 export const ListHeader = ({ children, ...props }) => (<div {...props}>{children}</div>);
 export const CenteredContent = ({ children, ...props }) => (<div {...props}>{children}</div>);
+export const RoHighChart = ({ children, ...props }) => (<div {...props}>{children}</div>);

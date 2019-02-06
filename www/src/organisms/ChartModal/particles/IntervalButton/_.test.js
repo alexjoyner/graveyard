@@ -16,9 +16,6 @@ describe('IntervalButton component', () => {
   it('Should render without exploding', () => {
     expect(component).toBeDefined();
   });
-  it('Should match snapshot', () => {
-    expect(component).toMatchSnapshot();
-  });
   it('should allow click', () => {
     component.find('Button').props().onClick();
     expect(props.onClick).toHaveBeenCalledWith({});
