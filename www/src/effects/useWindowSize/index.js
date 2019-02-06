@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 
-const useWindowSize = () => {
-  const mql = window.matchMedia('(min-width: 800px)');
+const useWindowSize = (query) => {
+  const mql = window.matchMedia(query);
   const [matches, setMatches] = useState(mql.matches);
 
   useEffect(() => {
+    // TODO: NEED TO ADD TESTS FOR THIS BLOCK!
     mql.addListener(() => setMatches(mql.matches));
     return () => mql.removeListener(() => setMatches(mql.matches));
   }, []);
