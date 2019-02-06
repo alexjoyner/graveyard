@@ -8,7 +8,7 @@ import { StyletronProvider, Styletron } from 'ro-component-library';
 import { LightTheme, ThemeProvider } from 'baseui';
 import { reducers } from './reducers';
 import registerServiceWorker from './registerServiceWorker';
-import App from './App';
+import { App } from './App';
 
 const store = createStore(reducers);
 const engine = new Styletron();
