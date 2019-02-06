@@ -1,11 +1,13 @@
 import React from 'react';
 
+const Proxy = ({ children }) => (
+  <div>{children}</div>
+);
 export const Go = ({ children, ...props }) => (<div {...props}>{children}</div>);
 export const Button = ({ children, ...props }) => (<div {...props}>{children}</div>);
 export const Header = ({ children, ...props }) => (<div {...props}>{children}</div>);
-export const GaugeBlock = ({ children, ...props }) => (<div {...props}>{children}</div>);
+export const GaugeBlock = ({ children, ...props }) => (<Proxy {...props}>{children}</Proxy>);
 export const HeaderSideBarPageBody = ({ children, ...props }) => (<div {...props}>{children}</div>);
-export const Panel = ({ children, ...props }) => (<div {...props}>{children}</div>);
 export const Modal = ({ children, ...props }) => (<div {...props}>{children}</div>);
 export const Toast = ({ children, ...props }) => (<div {...props}>{children}</div>);
 export const toasterAPI = {
@@ -38,3 +40,5 @@ export const ListItem = ({ children, ...props }) => (<div {...props}>{children}<
 export const ListHeader = ({ children, ...props }) => (<div {...props}>{children}</div>);
 export const CenteredContent = ({ children, ...props }) => (<div {...props}>{children}</div>);
 export const RoHighChart = ({ children, ...props }) => (<div {...props}>{children}</div>);
+export const Panel = ({ children, ...props }) => (<div {...props}>{children}</div>);
+export const PlainBox = ({ children, ...props }) => (<div {...props}>{children}</div>);

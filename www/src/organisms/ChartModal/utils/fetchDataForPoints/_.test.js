@@ -1,4 +1,4 @@
-import { fetchDataForPoints } from './';
+import { fetchDataForPoints } from '.';
 import { env } from '../../../../.env';
 
 const mockFetch = jest.fn().mockImplementation(data => ({

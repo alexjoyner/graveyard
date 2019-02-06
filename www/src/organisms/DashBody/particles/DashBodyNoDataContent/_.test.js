@@ -7,7 +7,7 @@ describe('GagugeBlock NO Data Content', () => {
   beforeEach(() => {
     component = shallow(<DashBodyNoDataContent />);
   });
-  it('should match snapshot', () => {
-    expect(component).toMatchSnapshot();
+  it('Should render without exploding', () => {
+    expect(component).toBeDefined();
   });
 });

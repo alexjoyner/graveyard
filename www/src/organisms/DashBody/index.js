@@ -9,10 +9,10 @@ import {
   removeAllPoints as removeAllPointsAction,
 } from './actions/managePoints';
 import { PointGaugeBlock } from './particles/PointGaugeBlock';
-import { PointsSocket } from '../../behaviors/iSocketIO';
+import { PointsSocket } from '../../behaviors/PointsSocket';
 import { getPointsFromGroupID } from './utils/getPointsFromGroupID';
 
-const TDashBody = ({
+export const TDashBody = ({
   currentGroup, socket, points,
   publishNewPoints, publishNewLog, ...props
 }) => {
@@ -21,7 +21,6 @@ const TDashBody = ({
     groupPoints = await getPointsFromGroupID(groupID);
     publishNewPoints(groupPoints);
     const pointsIdArray = Object.keys(groupPoints);
-    /* istanbul ignore next */
     socket.subscribe(pointsIdArray, (err, log) => {
       publishNewLog(log);
     });
@@ -46,7 +45,10 @@ const TDashBody = ({
 TDashBody.propTypes = {
   currentGroup: PropTypes.number.isRequired,
   socket: PropTypes.instanceOf(PointsSocket),
-  points: PropTypes.arrayOf(PropTypes.number).isRequired,
+  points: PropTypes.objectOf(PropTypes.shape({
+    name: PropTypes.string,
+    value: PropTypes.value,
+  })).isRequired,
   publishNewPoints: PropTypes.func.isRequired,
   publishNewLog: PropTypes.func.isRequired,
 };

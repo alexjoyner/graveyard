@@ -9,7 +9,11 @@ import { Point, Points } from '../../propTypes';
 import { fetchDataForPoints } from './utils/fetchDataForPoints';
 import { getRawHistoryData } from './utils/getRawHistoryData';
 import { formatDataForGraph } from './utils/formatDataForGraph';
-import { dispatchNewHistoricalData, showHistoryModal, closeHistoryModal } from './actions';
+import {
+  dispatchNewHistoricalData as dispatchNewHistoricalDataAction,
+  showHistoryModal as showHistoryModalAction,
+  closeHistoryModal as closeHistoryModalAction,
+} from './actions';
 import { IntervalButton } from './particles/IntervalButton';
 import { getTimeInterval } from './utils/getTimeInterval';
 
@@ -22,7 +26,7 @@ export class TChartModal extends Component {
   }
 
   async runBuildGraphProcess(opts = {}) {
-    const { chartPoints } = this.props;
+    const { chartPoints, dispatchNewHistoricalData, showHistoryModal } = this.props;
     toaster().clear();
     toaster().info(<h2>Loading</h2>, { autoHideDuration: 0 });
     const points = Object
@@ -31,14 +35,14 @@ export class TChartModal extends Component {
     const calls = fetchDataForPoints(points, opts);
     const rawDataArray = await getRawHistoryData(calls);
     const formattedData = formatDataForGraph(rawDataArray, points);
-    this.props.dispatchNewHistoricalData(formattedData);
-    this.props.showHistoryModal();
+    dispatchNewHistoricalData(formattedData);
+    showHistoryModal();
     toaster().clear();
     return null;
   }
 
   render() {
-    const { modalStage, modalData } = this.props;
+    const { modalStage, modalData, closeHistoryModal } = this.props;
     return (modalStage === 'SHOWN') ? (
       <Modal width="90%">
         <Panel width="90%">
@@ -50,7 +54,7 @@ export class TChartModal extends Component {
         </Panel>
         <Button
           color="primary"
-          onClick={() => this.props.closeHistoryModal()}
+          onClick={() => closeHistoryModal()}
         >
           <span>Close</span>
         </Button>
@@ -77,8 +81,8 @@ const mapStateToProps = state => ({
 });
 
 const ChartModal = connect(mapStateToProps, {
-  dispatchNewHistoricalData,
-  showHistoryModal,
-  closeHistoryModal,
+  dispatchNewHistoricalData: dispatchNewHistoricalDataAction,
+  showHistoryModal: showHistoryModalAction,
+  closeHistoryModal: closeHistoryModalAction,
 })(TChartModal);
 export { ChartModal };
