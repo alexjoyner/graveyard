@@ -1,23 +1,26 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import { Header } from '.';
 
 describe('Header Component', () => {
   let component;
   beforeEach(() => {
-    component = shallow(<Header />);
+    global.matchMedia = jest.fn(() => ({
+      matches: false,
+      addListener: () => null,
+    }));
+    component = mount(<Header />);
   });
   it('Should render without exploding', () => {
     expect(component).toBeDefined();
   });
-  it('Should contain a header', () => {
-    expect(component.find('Header')).toHaveLength(1);
-  });
-  it('Should have correct styling', () => {
-    expect(component.props().color).toEqual('dark');
+  it('Should contain a Header from an external library with correct props', () => {
+    const RoHeader = component.find('Header').get(1);
+    expect(RoHeader).toBeDefined();
+    expect(RoHeader.props.color).toEqual('dark');
   });
   it('Should have a sidebar toggle button', () => {
-    expect(component.find('Connect(TISideBarToggle)')).toHaveLength(1);
+    expect(component.find('ToggleBtn')).toHaveLength(1);
   });
   it('Should contain the test OEE Master', () => {
     expect(component.find('h1').text()).toEqual('OEE Master');
