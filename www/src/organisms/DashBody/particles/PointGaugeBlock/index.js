@@ -3,18 +3,18 @@ import { GaugeBlock } from 'ro-component-library';
 import { connect } from 'react-redux';
 import { multiSelectPoint, multiDeselectPoint } from '../../actions/multiSelectPoint';
 
-export const BasePointGaugeBlock = (props) => {
+export const TPointGaugeBlock = (props) => {
   const { point } = props;
   return (
     <GaugeBlock
       {...point.settings}
       overrides={{
         GaugeBlockStatus: {
-          component: () => null
+          component: () => null,
         },
         GaugeBlockSettingsBtn: {
-          component: () => null
-        }
+          component: () => null,
+        },
       }}
       value={point.value || 0}
       label={point.name}
@@ -37,6 +37,6 @@ export const BasePointGaugeBlock = (props) => {
 const PointGaugeBlock = connect(null, {
   multiSelectPoint,
   multiDeselectPoint,
-})(BasePointGaugeBlock);
+})(TPointGaugeBlock);
 
 export { PointGaugeBlock };

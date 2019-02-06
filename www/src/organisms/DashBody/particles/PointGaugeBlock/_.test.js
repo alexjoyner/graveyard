@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { BasePointGaugeBlock } from '.';
+import { TPointGaugeBlock } from '.';
 
 jest.useFakeTimers();
 describe('PointGaugeBlock component', () => {
@@ -18,13 +18,10 @@ describe('PointGaugeBlock component', () => {
           },
         },
       };
-      component = shallow(<BasePointGaugeBlock {...props} />);
+      component = shallow(<TPointGaugeBlock {...props} />);
     });
     it('Should render without exploding', () => {
       expect(component).toBeDefined();
-    });
-    it('Should match snapshot', () => {
-      expect(component).toMatchSnapshot();
     });
   });
   describe('full mounted version', () => {
@@ -42,7 +39,7 @@ describe('PointGaugeBlock component', () => {
           },
         },
       };
-      component = mount(<BasePointGaugeBlock {...props} />);
+      component = mount(<TPointGaugeBlock {...props} />);
     });
     it('should contain a GagueBlock', () => {
       const GaugeBlock = component.find('GaugeBlock');
