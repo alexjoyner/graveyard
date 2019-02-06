@@ -1,16 +1,9 @@
 import io from 'socket.io-client';
 import { env } from '../../.env';
-
-export class ISocketIO {
-  constructor() {
-    if (this.subscribe === undefined) { throw new TypeError('Must override method'); }
-    if (this.unsubscribe === undefined) { throw new TypeError('Must override method'); }
-    if (this.join === undefined) { throw new TypeError('Must override method'); }
-  }
-}
+import { ISocketIO } from '../interfaces/ISocketIO';
 
 class PointsSocket extends ISocketIO {
-  constructor(opts) {
+  constructor() {
     super();
     const connectionOptions = {
       'force new connection': true,
@@ -18,7 +11,7 @@ class PointsSocket extends ISocketIO {
       timeout: 10000, // before connect_error and connect_timeout are emitted.
       transports: ['websocket'],
     };
-    this.socket = opts.socket || /* istanbul ignore next */ io(env.serverAddr, connectionOptions);
+    this.socket = io(env.serverAddr, connectionOptions);
   }
 
   subscribe(pointsArray, cb) {

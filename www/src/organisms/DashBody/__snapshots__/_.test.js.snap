@@ -1,5 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`BaseDashBody component Component with points Should match snapshot 1`] = `undefined`;
+
+exports[`BaseDashBody component Component without data Should match snapshot 1`] = `undefined`;
+
 exports[`BaseGaugeBlockArray component Component with points Should match snapshot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
