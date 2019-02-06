@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { TGroupsMenu } from './backup';
+import { mount } from 'enzyme';
+import { TGroupsMenu } from '.';
 
 describe('TGroupsMenu component', () => {
   let component;
@@ -13,13 +13,10 @@ describe('TGroupsMenu component', () => {
         { id: 2, name: 'test2' },
       ],
     };
-    component = shallow(<TGroupsMenu {...props} />);
+    component = mount(<TGroupsMenu {...props} />);
   });
   it('Should render without exploding', () => {
     expect(component).toBeDefined();
-  });
-  it('Should match snapshot', () => {
-    expect(component).toMatchSnapshot();
   });
   it('should allow changing to the appropriate group', () => {
     component.find('ListItem').forEach((item) => {
