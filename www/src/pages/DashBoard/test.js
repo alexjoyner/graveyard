@@ -30,5 +30,5 @@ describe('DashBoard Page', () => {
   });
   it('Should have ChartModal', () => {
     expect(component.find('Connect(TChartModal)')).toHaveLength(1);
-  }); 
+  });
 });
