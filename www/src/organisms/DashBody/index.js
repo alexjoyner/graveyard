@@ -12,7 +12,7 @@ import { PointGaugeBlock } from './particles/PointGaugeBlock';
 import { PointsSocket } from '../../behaviors/iSocketIO';
 import { getPointsFromGroupID } from './utils/getPointsFromGroupID';
 
-const TDashBod = ({
+const TDashBody = ({
   currentGroup, socket, points,
   publishNewPoints, publishNewLog, ...props
 }) => {
@@ -43,14 +43,14 @@ const TDashBod = ({
       </CenteredContent>
     );
 };
-TDashBod.propTypes = {
+TDashBody.propTypes = {
   currentGroup: PropTypes.number.isRequired,
   socket: PropTypes.instanceOf(PointsSocket),
   points: PropTypes.arrayOf(PropTypes.number).isRequired,
   publishNewPoints: PropTypes.func.isRequired,
   publishNewLog: PropTypes.func.isRequired,
 };
-TDashBod.defaultProps = {
+TDashBody.defaultProps = {
   socket: new PointsSocket({}),
 };
 
@@ -63,5 +63,5 @@ const DashBody = connect(mapStateToProps, {
   publishNewPoints: publishNewPointsAction,
   publishNewLog: publishNewLogAction,
   removeAllPoints: removeAllPointsAction,
-})(TDashBod);
+})(TDashBody);
 export { DashBody };

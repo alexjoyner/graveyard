@@ -1,9 +1,18 @@
 import React from 'react';
+import { HeaderSideBarPageBody } from 'ro-component-library';
+import { SideBar } from '../../organisms/SideBar';
+import { Header } from '../../organisms/Header';
+import { DashBody } from '../../organisms/DashBody';
+import { ChartModal } from '../../organisms/ChartModal';
 
 const DashBoard = () => (
-  <div>
-    <h1>Hello World</h1>
-  </div>
+  <SideBar>
+    <Header />
+    <HeaderSideBarPageBody>
+      <DashBody />
+    </HeaderSideBarPageBody>
+    <ChartModal />
+  </SideBar>
 );
 
 export { DashBoard };

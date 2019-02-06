@@ -11,21 +11,24 @@ describe('DashBoard Page', () => {
     expect(component).toBeDefined();
   });
   it('Should have a SideBar', () => {
-    expect(component.find('SideBar')).toBeDefined();
+    expect(component.find('SideBar')).toHaveLength(1);
   });
-  xit('Should have ISideBar behavior', () => {
-    expect(component.find('Connect(TISideBar)')).toHaveLength(1);
-  });
-  xit('Should contain a test notification', () => {
-    expect(component.find('TestNotification')).toHaveLength(1);
-  });
-  xit('Should have a page body', () => {
-    expect(component.find('Connect(TISideBar)').props().Body).toBeDefined();
-  });
-  xit('Should have ChartModal', () => {
-    expect(component.find('ChartModal')).toHaveLength(1);
-  });
-  xit('Should contain a Header', () => {
+  it('Should contain a Header', () => {
     expect(component.find('Header')).toHaveLength(1);
   });
+  describe('HeaderSideBarPageBody', () => {
+    let HeaderSideBarPageBody;
+    beforeEach(() => {
+      HeaderSideBarPageBody = component.find('HeaderSideBarPageBody');
+    });
+    it('Should have one instance', () => {
+      expect(HeaderSideBarPageBody).toHaveLength(1);
+    });
+    it('Should contain a DashBody', () => {
+      expect(HeaderSideBarPageBody.find('Connect(TDashBody)')).toHaveLength(1);
+    });
+  });
+  it('Should have ChartModal', () => {
+    expect(component.find('Connect(TChartModal)')).toHaveLength(1);
+  }); 
 });
