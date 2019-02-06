@@ -13,7 +13,7 @@ import { dispatchNewHistoricalData, showHistoryModal, closeHistoryModal } from '
 import { IntervalButton } from './particles/IntervalButton';
 import { getTimeInterval } from './utils/getTimeInterval';
 
-export class BaseChartModal extends Component {
+export class TChartModal extends Component {
   componentDidUpdate() {
     const { modalStage } = this.props;
     if (modalStage === 'BUILDING') {
@@ -59,7 +59,7 @@ export class BaseChartModal extends Component {
     ) : (<div style={{ visibility: 'hidden' }} />);
   }
 }
-BaseChartModal.propTypes = {
+TChartModal.propTypes = {
   dispatchNewHistoricalData: PropTypes.func.isRequired,
   showHistoryModal: PropTypes.func.isRequired,
   closeHistoryModal: PropTypes.func.isRequired,
@@ -67,7 +67,7 @@ BaseChartModal.propTypes = {
   modalData: PropTypes.arrayOf(Point),
   chartPoints: Points.isRequired,
 };
-BaseChartModal.defaultProps = {
+TChartModal.defaultProps = {
   modalData: [],
 };
 
@@ -80,5 +80,5 @@ const ChartModal = connect(mapStateToProps, {
   dispatchNewHistoricalData,
   showHistoryModal,
   closeHistoryModal,
-})(BaseChartModal);
+})(TChartModal);
 export { ChartModal };

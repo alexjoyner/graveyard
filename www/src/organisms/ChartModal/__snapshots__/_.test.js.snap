@@ -1,5 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`BaseChartModal component Empty Hidden Chart Component Should match snapshot 1`] = `undefined`;
+
+exports[`BaseChartModal component Shown Chart Component Should match snapshot 1`] = `undefined`;
+
 exports[`BaseHistoricalGraphModal component Empty Hidden Chart Component Should match snapshot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
