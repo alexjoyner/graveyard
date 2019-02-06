@@ -1,4 +1,5 @@
 import React from 'react';
+import { toasterAPI } from 'ro-component-library';
 import { shallow } from 'enzyme';
 import { TChartsSelected } from '.';
 
@@ -17,29 +18,29 @@ describe('TChartsSelected component', () => {
       };
       component = shallow(<TChartsSelected {...props} />);
     });
-    xit('Should render without exploding', () => {
+    it('Should render without exploding', () => {
       expect(component).toBeDefined();
     });
-    xit('should call remove point', () => {
-      component.find('Button').forEach((Button) => {
+    it('should call remove point', () => {
+      component.find('.removePoint').forEach((Button) => {
         Button.props().onClick();
       });
       expect(props.removePoint).toHaveBeenCalled();
       expect(props.removePoint).toHaveBeenCalledTimes(2);
     });
-    xit('should have the last button build the graph', () => {
+    it('should have the last button build the graph', () => {
       component.find('ListItem').last().props().onClick();
-      expect(props.showNotification).toHaveBeenCalledTimes(0);
       expect(props.buildGraph).toHaveBeenCalledTimes(1);
     });
-    xit('should show notification if no points were added', () => {
+    it('should show notification if no points were added', () => {
       component.setProps({
         ...props,
         multiSelectedPoints: {},
       });
       component.find('ListItem').last().props().onClick();
       expect(props.buildGraph).toHaveBeenCalledTimes(0);
-      expect(props.showNotification).toHaveBeenCalledTimes(1);
+      expect(toasterAPI.info).toHaveBeenCalledTimes(1);
+      expect(toasterAPI.info).toHaveBeenCalledWith('Please add at least one point', { autoHideDuration: 5000 });
     });
   });
 });

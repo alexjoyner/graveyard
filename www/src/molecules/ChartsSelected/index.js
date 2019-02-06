@@ -28,6 +28,7 @@ export const TChartsSelected = ({ multiSelectedPoints, buildGraph, removePoint }
           <ListItem key={pointID}>
             {multiSelectedPoints[pointID].name}
             <Button
+              className="removePoint"
               size="small"
               color="dark"
               onClick={() => removePoint(pointID)}
