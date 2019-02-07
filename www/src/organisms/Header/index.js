@@ -16,11 +16,11 @@ const logoStyles = {
 };
 
 const Header = () => {
-  const sideBarDocked = useWindowSize();
+  const { width } = useWindowSize();
   return (
     <>
       <RoHeader color="dark">
-        {(sideBarDocked) ? null : <ToggleBtn onClick={() => sideBarActions().toggle()} />}
+        {(width > 800) ? null : <ToggleBtn onClick={() => sideBarActions().toggle()} />}
         <h1 style={logoStyles}>OEE Master</h1>
         <FeedbackButton />
       </RoHeader>

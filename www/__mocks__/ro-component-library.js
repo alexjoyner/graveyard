@@ -16,9 +16,10 @@ export const toasterAPI = {
   clear: jest.fn(),
 };
 export const toaster = jest.fn(() => toasterAPI);
-export const sideBarActions = jest.fn(() => ({
-  toggle: () => null,
-}));
+export const sideBarActionsAPI = {
+  toggle: jest.fn(),
+};
+export const sideBarActions = jest.fn(() => sideBarActionsAPI);
 export const colors = {
   default: '#default',
   defaultLight: '#defaultLight',
