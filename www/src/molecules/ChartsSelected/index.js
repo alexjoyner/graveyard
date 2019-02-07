@@ -25,10 +25,10 @@ export const TChartsSelected = ({ multiSelectedPoints, buildGraph, removePoint }
       <ListHeader>Charts Selected:</ListHeader>
       <CenteredContent>
         {Object.keys(multiSelectedPoints).map(pointID => (
-          <ListItem key={pointID}>
+          <ListItem className="selected-point" key={pointID}>
             {multiSelectedPoints[pointID].name}
             <Button
-              className="removePoint"
+              className="remove-point"
               size="small"
               color="dark"
               onClick={() => removePoint(pointID)}
@@ -38,6 +38,7 @@ export const TChartsSelected = ({ multiSelectedPoints, buildGraph, removePoint }
           </ListItem>
         ))}
         <ListItem
+          className="build-graph"
           color="primary"
           onClick={handleStartBraphBuild}
         >

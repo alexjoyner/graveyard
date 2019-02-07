@@ -1,16 +1,20 @@
 import { useState, useEffect } from 'react';
 
-const useWindowSize = (query) => {
-  const mql = window.matchMedia(query);
-  const [matches, setMatches] = useState(mql.matches);
+const useWindowSize = () => {
+  const [width, setWidth] = useState(window.innerWidth);
+  const [height, setHeight] = useState(window.innerHeight);
+
+  const updateDeminsions = () => {
+    setWidth(window.innerWidth);
+    setHeight(window.innerHeight);
+  };
 
   useEffect(() => {
-    // TODO: NEED TO ADD TESTS FOR THIS BLOCK!
-    mql.addListener(() => setMatches(mql.matches));
-    return () => mql.removeListener(() => setMatches(mql.matches));
-  }, []);
+    window.addEventListener('resize', updateDeminsions);
+    return () => window.removeEventListener('resize', updateDeminsions);
+  });
 
-  return matches;
+  return { height, width };
 };
 
 export { useWindowSize };
