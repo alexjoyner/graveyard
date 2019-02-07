@@ -20,6 +20,7 @@ export const sideBarActionsAPI = {
   toggle: jest.fn(),
 };
 export const sideBarActions = jest.fn(() => sideBarActionsAPI);
+export const SideBar = ({ children, ...props }) => (<div {...props}>{children}</div>);
 export const colors = {
   default: '#default',
   defaultLight: '#defaultLight',

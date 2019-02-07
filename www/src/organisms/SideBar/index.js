@@ -1,29 +1,22 @@
 import React from 'react';
 import { SideBar as RoSideBar, colors } from 'ro-component-library';
 import { useWindowSize } from '../../effects/useWindowSize';
-import { GroupsMenu } from '../../molecules/GroupsMenu';
-import { ChartsSelected } from '../../molecules/ChartsSelected';
+import { SideBarContent } from './SideBarContent';
 
-const SideBarContent = props => (
-  <>
-    <GroupsMenu {...props} />
-    <ChartsSelected />
-  </>
-);
-const SideBar = ({ children, ...props }) => {
-  const isDocked = useWindowSize();
+const SideBar = ({ children }) => {
+  const { width } = useWindowSize();
   const sidebarStyles = {
     sidebar: {
       background: colors.dark,
-      width: (isDocked) ? '300px' : '250px',
+      width: (width > 800) ? '300px' : '250px',
       top: '56px',
     },
   };
   return (
     <RoSideBar
-      sidebar={<SideBarContent {...props} />}
+      sidebar={<SideBarContent />}
+      docked={width > 800}
       styles={sidebarStyles}
-      docked={isDocked}
     >
       {children}
     </RoSideBar>
