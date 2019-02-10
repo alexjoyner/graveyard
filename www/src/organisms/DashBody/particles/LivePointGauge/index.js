@@ -3,7 +3,7 @@ import { GaugeBlock } from 'ro-component-library';
 import { connect } from 'react-redux';
 import { multiSelectPoint, multiDeselectPoint } from '../../actions/multiSelectPoint';
 
-export const TPointGaugeBlock = (props) => {
+export const TLivePointGauge = (props) => {
   const { point } = props;
   return (
     <GaugeBlock
@@ -34,9 +34,9 @@ export const TPointGaugeBlock = (props) => {
   );
 };
 
-const PointGaugeBlock = connect(null, {
+const LivePointGauge = connect(null, {
   multiSelectPoint,
   multiDeselectPoint,
-})(TPointGaugeBlock);
+})(TLivePointGauge);
 
-export { PointGaugeBlock };
+export { LivePointGauge };
