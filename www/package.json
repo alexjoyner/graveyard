@@ -50,7 +50,8 @@
     "enzyme-adapter-react-16": "^1.9.1",
     "enzyme-to-json": "^3.3.5",
     "flow-bin": "^0.92.1",
-    "gh-pages": "^2.0.1"
+    "gh-pages": "^2.0.1",
+    "react-testing-library": "^5.8.0"
   },
   "jest": {
     "collectCoverageFrom": [
