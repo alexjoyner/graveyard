@@ -10,7 +10,7 @@ const AccessCodeForm = ({ onSubmit }) => {
   };
   return (
   <>
-    <Modal data-testid="main-modal">
+    <Modal>
       <form onSubmit={handleSubmit} data-testid="code-form">
         <label htmlFor="accessCode">
           Access Code

@@ -7,11 +7,6 @@ test('it should exist', () => {
   expect(container).toBeDefined();
 });
 
-it('Should contain a form', () => {
-  const { getByTestId } = render(<AccessCodeForm onSubmit={() => {}} />);
-  expect(getByTestId('code-form')).toBeDefined();
-});
-
 it('Should allow form submit with correct data', () => {
   const props = {
     onSubmit: jest.fn(),
