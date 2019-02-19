@@ -1,7 +1,7 @@
 import React from 'react';
 import { HeaderSideBarPageBody } from 'ro-component-library';
 import { SideBar } from '../../organisms/SideBar';
-import { DashBody } from '../../organisms/DashBody';
+import { DashBody } from '../../organisms/DashBody/bck';
 import { ChartModal } from '../../organisms/ChartModal';
 import { Header } from '../../organisms/Header';
 

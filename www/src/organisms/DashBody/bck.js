@@ -27,7 +27,7 @@ export const TDashBody = ({
   };
   useEffect(() => {
     handleSubscribeToGroup(currentGroup);
-  }, []);
+  }, [currentGroup]);
   return (!groupPoints.length)
     ? <DashBodyNoDataContent /> : (
       <CenteredContent>

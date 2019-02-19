@@ -1,5 +1,7 @@
 import React from 'react';
-import { Modal } from 'ro-component-library';
+import {
+  Input, Modal, Button, Block,
+} from 'ro-component-library';
 import PropTypes from 'prop-types';
 
 const AccessCodeForm = ({ onSubmit }) => {
@@ -11,13 +13,37 @@ const AccessCodeForm = ({ onSubmit }) => {
   return (
   <>
     <Modal>
-      <form onSubmit={handleSubmit} data-testid="code-form">
-        <label htmlFor="accessCode">
-          Access Code
-          <input type="text" id="accessCode" />
-        </label>
-        <button type="submit" value="Submit" data-testid="submit">Submit</button>
-      </form>
+      {({ StyledBody }) => (
+        <StyledBody>
+          <form
+            onSubmit={handleSubmit}
+            data-testid="code-form"
+            style={{
+              minWidth: '320px',
+            }}
+          >
+            <Block display="flex">
+              <Block width="100%" marginRight="scale400">
+                <Input
+                  id="accessCode"
+                  model="basic"
+                  placeholder="Access Code"
+                  overrides={{ Input: { props: { 'data-testid': 'accessCode' } } }}
+                  autoFocus
+                />
+              </Block>
+              <Button
+                model="baseUI"
+                type="submit"
+                value="Submit"
+                data-testid="submit"
+              >
+                Submit
+              </Button>
+            </Block>
+          </form>
+        </StyledBody>
+      )}
     </Modal>
   </>
   );
