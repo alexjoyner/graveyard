@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { CenteredContent } from 'ro-component-library';
+import { CenteredContent } from 'ro-component-library/CenteredContent';
 import { DashBodyNoDataContent } from './particles/DashBodyNoDataContent';
 import {
   publishNewPoints as publishNewPointsAction,

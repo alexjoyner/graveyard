@@ -1,6 +1,7 @@
 import React from 'react';
 import { GoThreeBars } from 'react-icons/go';
-import { Header as RoHeader, sideBarActions, Button } from 'ro-component-library';
+import { Header as RoHeader, sideBarActions } from 'ro-component-library';
+import { Button } from 'ro-component-library/Button';
 import { FeedbackButton } from '../../molecules/FeedbackButton';
 import { useWindowSize } from '../../effects/useWindowSize';
 

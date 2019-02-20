@@ -1,7 +1,8 @@
 import React from 'react';
-import {
-  Input, Modal, Button, Block,
-} from 'ro-component-library';
+import { Input } from 'ro-component-library/Input';
+import { Modal } from 'ro-component-library/Modal';
+import { Button } from 'ro-component-library/Button';
+import { Block } from 'ro-component-library/utilities/Block';
 import PropTypes from 'prop-types';
 
 const AccessCodeForm = ({ onSubmit }) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'ro-component-library';
+import { Button } from 'ro-component-library/Button';
 import { getTimeInterval } from '../../utils/getTimeInterval';
 
 

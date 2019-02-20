@@ -1,5 +1,6 @@
 import React from 'react';
-import { CenteredContent, PlainBox } from 'ro-component-library';
+import { CenteredContent } from 'ro-component-library/CenteredContent';
+import { PlainBox } from 'ro-component-library/PlainBox';
 
 export const DashBodyNoDataContent = () => (
   <CenteredContent>

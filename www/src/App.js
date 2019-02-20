@@ -1,6 +1,6 @@
 import React from 'react';
 import { PLACEMENT } from 'baseui/toast';
-import { Toast } from 'ro-component-library';
+import { Toast } from 'ro-component-library/Toast';
 import { DashBoard } from './pages/DashBoard';
 
 const toastOverrides = {

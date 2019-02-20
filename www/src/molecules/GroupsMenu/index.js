@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { ListHeader, CenteredContent, ListItem } from 'ro-component-library';
+import { ListHeader } from 'ro-component-library/ListHeader';
+import { ListItem } from 'ro-component-library/ListItem';
+import { CenteredContent } from 'ro-component-library/CenteredContent';
 import { changePointGroup, setGroups as setGroupAction } from './actions';
 import { getGroups } from './utils/getGroups';
 

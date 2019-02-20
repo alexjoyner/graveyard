@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Card } from 'ro-component-library';
+import { Card } from 'ro-component-library/Card';
 import { GroupsMenu } from '.';
 
 

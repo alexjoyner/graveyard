@@ -41,5 +41,6 @@ describe('PointsSocket', () => {
     const mockCallback = jest.fn();
     testSocket.subscribe([1, 2, 3], mockCallback);
     expect(mockIOApi.on).toHaveBeenCalledWith('add log', expect.any(Function));
+    expect(mockIOApi.emit).toHaveBeenCalledWith('join-group', [1, 2, 3]);
   });
 });

@@ -1,4 +1,4 @@
-import { toaster } from 'ro-component-library';
+import { toaster } from 'ro-component-library/Toast';
 import { ChartsSelectedReducer, INITIAL_STATE as TRUE_INITIAL_STATE } from './reducer';
 import { MULTISELECT_POINT } from '../../organisms/DashBody/actions/types';
 import { REMOVE_POINT } from './actions';

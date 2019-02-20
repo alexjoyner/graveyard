@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Go } from 'ro-component-library';
+import { Button } from 'ro-component-library/Button';
+import { Go } from 'ro-component-library/Go';
 
 const FeedbackButton = () => (
   <Go
