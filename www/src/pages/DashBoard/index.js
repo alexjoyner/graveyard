@@ -4,6 +4,7 @@ import { SideBar } from '../../organisms/SideBar';
 import { Header } from '../../organisms/Header';
 import { DashBody } from '../../organisms/DashBody/bck';
 import { ChartModal } from '../../organisms/ChartModal';
+import { ChartsSelected } from '../../molecules/ChartsSelected';
 
 const DashBoard = () => (
   <SideBar>
@@ -12,6 +13,7 @@ const DashBoard = () => (
       <DashBody />
     </HeaderSideBarPageBody>
     <ChartModal />
+    <ChartsSelected />
   </SideBar>
 );
 
