@@ -2,8 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
-  RoHighChart, Button, Modal, Panel, toaster,
+  RoHighChart, toaster,
 } from 'ro-component-library';
+import {
+  Modal,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalButton,
+} from 'ro-component-library/Modal';
 import { getChartConfig } from './utils/getChartConfig';
 import { Point, Points } from '../../propTypes';
 import { fetchDataForPoints } from './utils/fetchDataForPoints';
@@ -44,21 +51,23 @@ export class TChartModal extends Component {
   render() {
     const { modalStage, modalData, closeHistoryModal } = this.props;
     return (modalStage === 'SHOWN') ? (
-      <Modal width="90%">
-        <Panel width="90%">
-          <IntervalButton color="primary" type="oneDay" onClick={opts => this.runBuildGraphProcess(opts)}>1 Day</IntervalButton>
-          <IntervalButton color="primary" type="oneWeek" onClick={opts => this.runBuildGraphProcess(opts)}>1 Week</IntervalButton>
-          <IntervalButton color="primary" type="oneMonth" onClick={opts => this.runBuildGraphProcess(opts)}>1 Month</IntervalButton>
-          <IntervalButton color="primary" type="sixMonths" onClick={opts => this.runBuildGraphProcess(opts)}>6 Months</IntervalButton>
-          <IntervalButton color="primary" onClick={() => this.runBuildGraphProcess()}>All</IntervalButton>
-        </Panel>
-        <Button
-          color="primary"
-          onClick={() => closeHistoryModal()}
-        >
-          <span>Close</span>
-        </Button>
-        <RoHighChart config={getChartConfig(modalData)} />
+      <Modal size="100%" isOpen={modalStage === 'SHOWN'} overrides={{ Close: { component: () => null } }}>
+        <ModalHeader>
+          <IntervalButton size="compact" type="oneDay" onClick={opts => this.runBuildGraphProcess(opts)}>1 Day</IntervalButton>
+          <IntervalButton size="compact" type="oneWeek" onClick={opts => this.runBuildGraphProcess(opts)}>1 Week</IntervalButton>
+          <IntervalButton size="compact" type="oneMonth" onClick={opts => this.runBuildGraphProcess(opts)}>1 Month</IntervalButton>
+          <IntervalButton size="compact" type="sixMonths" onClick={opts => this.runBuildGraphProcess(opts)}>6 Months</IntervalButton>
+        </ModalHeader>
+        <ModalBody>
+          <RoHighChart config={getChartConfig(modalData)} />
+        </ModalBody>
+        <ModalFooter>
+          <ModalButton
+            onClick={() => closeHistoryModal()}
+          >
+            <span>Close</span>
+          </ModalButton>
+        </ModalFooter>
       </Modal>
     ) : (<div style={{ visibility: 'hidden' }} />);
   }
