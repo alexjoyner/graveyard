@@ -20,11 +20,11 @@ const AccessCodeForm = ({ onSubmit }) => {
       }}
     >
       <Block display="flex">
-        <Block width="100%" marginRight="scale400">
+        <Block width={['10%', '10%', '90%', '90%']} marginRight="scale400">
           <Input
             id="accessCode"
             model="basic"
-            placeholder="Please enter Access Code"
+            placeholder="Enter Access Code"
             overrides={{ Input: { props: { 'data-testid': 'accessCode' } } }}
             autoFocus
           />
@@ -35,7 +35,7 @@ const AccessCodeForm = ({ onSubmit }) => {
           value="Submit"
           data-testid="submit"
         >
-          Submit
+            Submit
         </Button>
       </Block>
     </form>
