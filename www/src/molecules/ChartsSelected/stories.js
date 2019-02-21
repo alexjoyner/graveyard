@@ -7,8 +7,6 @@ import { ChartsSelected } from '.';
 storiesOf('Molecules', module)
   .add('Charts Selected', () => (
     <Card>
-      {() => (
-        <ChartsSelected />
-      )}
+      <ChartsSelected />
     </Card>
   ));

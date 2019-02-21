@@ -7,8 +7,6 @@ import { GroupsMenu } from '.';
 storiesOf('Molecules', module)
   .add('Groups Menu', () => (
     <Card>
-      {() => (
-        <GroupsMenu />
-      )}
+      <GroupsMenu />
     </Card>
   ));
