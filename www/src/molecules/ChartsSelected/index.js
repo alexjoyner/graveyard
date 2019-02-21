@@ -5,6 +5,7 @@ import { ListItem } from 'ro-component-library/ListItem';
 import { ListHeader } from 'ro-component-library/ListHeader';
 import { CenteredContent } from 'ro-component-library/CenteredContent';
 import { Button } from 'ro-component-library/Button';
+import { Card } from 'ro-component-library/Card';
 import { colors } from 'ro-component-library/colors';
 import { toaster } from 'ro-component-library/Toast';
 import { GoTrashcan } from 'react-icons/go';
@@ -14,20 +15,26 @@ import { buildGraph as buildGraphAction } from '../../organisms/ChartModal/actio
 
 
 export const TChartsSelected = ({ multiSelectedPoints, buildGraph, removePoint }) => {
+  const points = Object.keys(multiSelectedPoints);
   const handleStartBraphBuild = () => {
-    const points = Object.keys(multiSelectedPoints);
     if (points.length === 0) {
       return toaster().info('Please add at least one point', { autoHideDuration: 5000 });
     }
     return buildGraph(multiSelectedPoints);
   };
 
-  return (
-    <>
-      <br />
+  return (points.length > 0) && (
+    <Card style={{
+      position: 'fixed',
+      bottom: '10px',
+      right: '10px',
+      width: '30%',
+      minWidth: '320px',
+    }}
+    >
       <ListHeader>Charts Selected:</ListHeader>
       <CenteredContent>
-        {Object.keys(multiSelectedPoints).map(pointID => (
+        {points.map(pointID => (
           <ListItem className="selected-point" key={pointID}>
             {multiSelectedPoints[pointID].name}
             <Button
@@ -49,7 +56,7 @@ export const TChartsSelected = ({ multiSelectedPoints, buildGraph, removePoint }
           <span>Build Graph</span>
         </ListItem>
       </CenteredContent>
-    </>
+    </Card>
   );
 };
 TChartsSelected.propTypes = {
