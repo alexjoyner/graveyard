@@ -14,10 +14,12 @@ import { getPointsFromGroupID } from './utils/getPointsFromGroupID';
 
 export const TDashBody = ({
   currentGroup, socket, points,
-  publishNewPoints, publishNewLog, ...props
+  publishNewPoints, publishNewLog, removeAllPoints, ...props
 }) => {
   let groupPoints = Object.keys(points);
   const handleSubscribeToGroup = async (groupID) => {
+    socket.unsubscribe();
+    removeAllPoints();
     groupPoints = await getPointsFromGroupID(groupID);
     publishNewPoints(groupPoints);
     const pointsIdArray = Object.keys(groupPoints);
@@ -51,6 +53,7 @@ TDashBody.propTypes = {
   })).isRequired,
   publishNewPoints: PropTypes.func.isRequired,
   publishNewLog: PropTypes.func.isRequired,
+  removeAllPoints: PropTypes.func.isRequired,
 };
 TDashBody.defaultProps = {
   socket: new PointsSocket({}),

@@ -7,10 +7,14 @@ describe('PointsSocket', () => {
   beforeEach(() => {
     testSocket = new PointsSocket();
   });
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
   it('Should exist', () => {
     expect(testSocket).toBeDefined();
   });
   it('Should setup a new socket', () => {
+    expect(testSocket.getPoints()).toEqual([]);
     expect(mockIO).toHaveBeenLastCalledWith(env.serverAddr, {
       'force new connection': true,
       reconnectionAttempts: 'Infinity', // avoid having user reconnect manually in order to prevent dead clients after a server restart
@@ -36,6 +40,11 @@ describe('PointsSocket', () => {
     testSocket.setPoints([7, 1, 3]);
     testSocket.unsubscribe();
     expect(mockIOApi.emit).toBeCalledWith('leave-group', [7, 1, 3]);
+  });
+  it('should not emit leave-group when there are no points', () => {
+    testSocket.setPoints([]);
+    testSocket.unsubscribe();
+    expect(mockIOApi.emit).toHaveBeenCalledTimes(0);
   });
   it('should allow subscribe', () => {
     const mockCallback = jest.fn();

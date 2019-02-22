@@ -5,6 +5,7 @@ import { ISocketIO } from '../interfaces/ISocketIO';
 class PointsSocket extends ISocketIO {
   constructor() {
     super();
+    this.points = [];
     const connectionOptions = {
       'force new connection': true,
       reconnectionAttempts: 'Infinity', // avoid having user reconnect manually in order to prevent dead clients after a server restart
@@ -24,7 +25,9 @@ class PointsSocket extends ISocketIO {
   }
 
   unsubscribe() {
-    this.socket.emit('leave-group', this.points);
+    if (this.points.length > 0) {
+      this.socket.emit('leave-group', this.points);
+    }
   }
 
   join() {
