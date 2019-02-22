@@ -1,7 +1,14 @@
-const { runBasicQuery, ...processes } = require('./processes');
+const { query, sendLocal } = require('ro-server-utils');
+const { 
+  getGroupsByClientID,
+  getPointsByClientID,
+  getPointsByGroupID,
+  getAccount,
+} = require('./processes');
 
 module.exports = (app) => {
-  app.get('/groups/:clientID', runBasicQuery(processes.getGroupsByClientID));
-  app.get('/points/:clientID', runBasicQuery(processes.getPointsByClientID));
-  app.get('/points/group/:groupID', runBasicQuery(processes.getPointsByGroupID));
+  app.get('/account/:clientID', query('pg', getAccount), sendLocal('results'));
+  app.get('/groups/:clientID', query('pg', getGroupsByClientID), sendLocal('results'));
+  app.get('/points/:clientID', query('pg', getPointsByClientID), sendLocal('results'));
+  app.get('/points/group/:groupID', query('pg', getPointsByGroupID), sendLocal('results'));
 };
