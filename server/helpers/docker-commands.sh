@@ -1,4 +1,5 @@
-
+# Bash into a container
+docker exec -it <CONTAINER_NAME> bash
 
 # COMPOSE
 #########

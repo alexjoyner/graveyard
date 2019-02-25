@@ -1,5 +1,5 @@
 SELECT 
-  id, name, settings 
+  id, username, settings 
 FROM 
   point 
 WHERE 

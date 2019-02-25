@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS client (
 	id SERIAL PRIMARY KEY,
-	access_code character varying(10) NOT NULL UNIQUE,
-	name character varying(20) NOT NULL UNIQUE,
+	username character varying(40) NOT NULL UNIQUE,
+	password character varying(100) NOT NULL UNIQUE,
 	danger_number character varying(12) NOT NULL UNIQUE,
 	warning_number character varying(12) NOT NULL UNIQUE
 );
@@ -32,8 +32,8 @@ CREATE TABLE IF NOT EXISTS log (
   CONSTRAINT logs_pkey PRIMARY KEY (point_id, datetime)
 );
 
-INSERT INTO "public"."client"("access_code", "name", "danger_number", "warning_number") VALUES
-('eesdemo','EES Demo Unit', '2523820384', '2523820384');
+INSERT INTO "public"."client"( "username", "password", "danger_number", "warning_number") VALUES
+('OEE Master Demo', '$2b$10$0Cs1Bfy6Yad9o.qs8EzxrOd7xacfZVuOlEBc6ljCSncEogk9ppS6u', '2523820384', '2523820384');
 
 INSERT INTO "point" ("id", "name", "client_id", "settings") VALUES (1, E'Test Current Sensor', 1, E'{\r\n  "units": "A",\r\n  "max": 100,\r\n  "min": 0,\r\n  "ranges": [{\r\n    "lowerValue": 0,\r\n    "upperValue": 30,\r\n    "color": "danger",\r\n  "alertLevel": "danger"\r\n  }, {\r\n    "lowerValue": 30,\r\n    "upperValue": 40,\r\n    "color": "warning",\r\n  "alertLevel": "warning"\r\n  }, {\r\n    "lowerValue": 40,\r\n    "upperValue": 60,\r\n    "color": "success",\r\n  "alertLevel": "success"\r\n  }, {\r\n    "lowerValue": 60,\r\n    "upperValue": 70,\r\n    "color": "warning",\r\n  "alertLevel": "warning"\r\n  }, {\r\n    "lowerValue": 70,\r\n    "upperValue": 100,\r\n    "color": "danger",\r\n  "alertLevel": "danger"\r\n  }]\r\n}');
 INSERT INTO "point" ("id", "name", "client_id", "settings") VALUES (2, E'Test Temp Sensor', 1, E'{\r\n  "units": "°F",\r\n  "max": 100,\r\n  "min": 0,\r\n  "ranges": [{\r\n    "lowerValue": 0,\r\n    "upperValue": 50,\r\n    "color": "danger",\r\n  "alertLevel": "danger"\r\n  }, {\r\n    "lowerValue": 50,\r\n    "upperValue": 65,\r\n    "color": "warning",\r\n  "alertLevel": "warning"\r\n  }, {\r\n    "lowerValue": 65,\r\n    "upperValue": 75,\r\n    "color": "success",\r\n  "alertLevel": "success"\r\n  }, {\r\n    "lowerValue": 75,\r\n    "upperValue": 85,\r\n    "color": "warning",\r\n  "alertLevel": "warning"\r\n  }, {\r\n    "lowerValue": 85,\r\n    "upperValue": 100,\r\n    "color": "danger",\r\n  "alertLevel": "danger"\r\n  }]\r\n}');

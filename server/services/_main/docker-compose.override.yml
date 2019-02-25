@@ -56,11 +56,11 @@ services:
     command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
     volumes:
       - ../accounts-service:/opt/app
-      - accounts-service-node_modules:/opt/app/node_modules
     environment:
       - NODE_ENV=development
     depends_on:
       - postgres
+    restart: always
   socket-service:
     build:
       context: ../socket-service
@@ -92,7 +92,6 @@ volumes:
   log-handler-node_modules:
   health-service-node_modules:
   historical-service-node_modules:
-  accounts-service-node_modules:
 secrets:
   pg-user:
     file: dev-keys/pg-user.txt
@@ -102,6 +101,8 @@ secrets:
     file: dev-keys/pg-host.txt
   pg-db:
     file: dev-keys/pg-db.txt
+  jwt-secret:
+    file: dev-keys\jwt-secret.txt
   twilio-sid:
     file: ../../../../../../Desktop/twilio/sid.txt
   twilio-auth-token:

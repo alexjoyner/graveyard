@@ -8,7 +8,6 @@
     "**/*.lock": true,
     "**/*.pyc": true,
     "**/build": true,
-    "**/Dockerfile": true,
     "www/public": true
   }
 }
