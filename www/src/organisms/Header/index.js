@@ -1,16 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { GoThreeBars } from 'react-icons/go';
 import { Header as RoHeader, sideBarActions } from 'ro-component-library';
 import { Button } from 'ro-component-library/Button';
-import {
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-} from 'ro-component-library/Modal';
-import { ModalStateContainer } from '../../utils/ModalStateContainer';
-import { AccessCodeForm } from '../../molecules/AccessCodeForm';
 import { useWindowSize } from '../../effects/useWindowSize';
+import { SignInModal } from '../SignInModal';
+import { SignOutButton } from '../../molecules/SignOutButton';
 
 const ToggleBtn = props => (
   <Button color="primary" size="small" {...props}>
@@ -23,43 +18,26 @@ const logoStyles = {
   fontSize: '1.5em',
 };
 
-const Header = () => {
+const THeader = ({ user, token, dispatch }) => {
   const { width } = useWindowSize();
+  const handleSignOut = () => {
+    dispatch({ type: 'SIGN_OUT' });
+  };
   return (
     <>
       <RoHeader color="dark">
         {(width > 800) ? null : <ToggleBtn model="classic" onClick={() => sideBarActions().toggle()} />}
-        <h1 style={logoStyles}>OEE Master</h1>
-        <ModalStateContainer>
-          {({ open, close, isOpen }) => (
-            <>
-              <Button
-                model="classic"
-                color="primary"
-                size="small"
-                onClick={open}
-                style={{
-                  position: 'absolute',
-                  right: '10px',
-                }}
-              >
-                <span>Sign In!</span>
-              </Button>
-              <Modal onClose={close} isOpen={isOpen}>
-                <ModalHeader>Welcome!</ModalHeader>
-                <ModalBody>
-                  <AccessCodeForm onSubmit={data => console.log('Submit', data)} />
-                </ModalBody>
-                <ModalFooter>
-                  <br />
-                </ModalFooter>
-              </Modal>
-            </>
-          )}
-        </ModalStateContainer>
+        <h1 style={logoStyles}>{user.username}</h1>
+        {(token) ? <SignOutButton onClick={handleSignOut} /> : <SignInModal />}
       </RoHeader>
     </>
   );
 };
+
+const mapStateToProps = state => ({
+  ...state.UserReducer,
+});
+
+const Header = connect(mapStateToProps)(THeader);
 
 export { Header };
