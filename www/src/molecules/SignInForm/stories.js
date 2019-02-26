@@ -10,16 +10,16 @@ import {
 } from 'ro-component-library/Modal';
 import { Button } from 'ro-component-library/Button';
 import { ModalStateContainer } from '../../utils/ModalStateContainer';
-import { AccessCodeForm } from '.';
+import { SignInForm } from '.';
 
 
 storiesOf('Molecules', module)
-  .add('Access Code Modal', () => (
+  .add('SignInForm', () => (
     <>
-      <Card title="Basic Access Code Form">
-        <AccessCodeForm onSubmit={action('Submit')} />
+      <Card title="Basic SignInForm">
+        <SignInForm onSubmit={action('Submit')} />
       </Card>
-      <Card title="Modal Access Code Form">
+      <Card title="Modal SignInForm">
         <ModalStateContainer>
           {({ open, close, isOpen }) => (
             <>
@@ -27,7 +27,7 @@ storiesOf('Molecules', module)
               <Modal onClose={close} isOpen={isOpen}>
                 <ModalHeader>Welcome!</ModalHeader>
                 <ModalBody>
-                  <AccessCodeForm onSubmit={action('Submit')} />
+                  <SignInForm onSubmit={action('Submit')} />
                 </ModalBody>
                 <ModalFooter>
                   <br />

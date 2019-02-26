@@ -1,8 +1,8 @@
 import React from 'react';
 import { ThemeProvider, LightTheme } from 'baseui';
-import { StyletronProvider, Styletron } from 'ro-component-library';
+import { StyletronProvider, Styletron } from 'ro-component-library/Styletron';
 import { render, fireEvent } from 'react-testing-library';
-import { AccessCodeForm } from '.';
+import { SignInForm } from '.';
 
 const engine = new Styletron();
 const withStyleTrom = children => (
@@ -12,7 +12,7 @@ const withStyleTrom = children => (
 );
 
 test('it should exist', () => {
-  const { container } = render(withStyleTrom(<AccessCodeForm onSubmit={() => {}} />));
+  const { container } = render(withStyleTrom(<SignInForm onSubmit={() => {}} />));
   expect(container).toBeDefined();
 });
 
@@ -20,12 +20,14 @@ it('Should allow form submit with correct data', () => {
   const props = {
     onSubmit: jest.fn(),
   };
-  const { getByTestId } = render(withStyleTrom(<AccessCodeForm {...props} />));
+  const { getByTestId } = render(withStyleTrom(<SignInForm {...props} />));
   expect(props.onSubmit).toHaveBeenCalledTimes(0);
-  fireEvent.change(getByTestId('accessCode'), { target: { value: 'testing' } });
+  fireEvent.change(getByTestId('username'), { target: { value: 'user' } });
+  fireEvent.change(getByTestId('password'), { target: { value: 'password123' } });
   fireEvent.click(getByTestId('submit'));
   expect(props.onSubmit).toHaveBeenCalledTimes(1);
   expect(props.onSubmit).toHaveBeenCalledWith({
-    accessCode: 'testing',
+    username: 'user',
+    password: 'password123',
   });
 });
