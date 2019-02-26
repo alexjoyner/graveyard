@@ -1,8 +1,8 @@
 import React from 'react';
-import { CenteredContent } from 'ro-component-library/CenteredContent';
+import { Card } from 'ro-component-library/Card';
 
 export const DashBodyNoDataContent = () => (
-  <CenteredContent>
-    <h3>Loading...</h3>
-  </CenteredContent>
+  <Card>
+    <h2>No points to show! Contact Evans Electrical Services LLC to have one activated</h2>
+  </Card>
 );
