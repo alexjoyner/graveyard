@@ -30,4 +30,12 @@ module.exports = {
       values: [groupID],
     };
   },
+  checkIfDemo: (req, res, next) => {
+    const bearerHeader = req.headers['authorization'];
+    if(!bearerHeader){
+        return next()
+    }
+    console.log('USING NEXT ROUTE');
+    next('route');
+  }
 };

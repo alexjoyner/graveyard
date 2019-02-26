@@ -1,5 +1,5 @@
 SELECT 
-  id, username 
+  *
 FROM 
   point_group 
 WHERE 
