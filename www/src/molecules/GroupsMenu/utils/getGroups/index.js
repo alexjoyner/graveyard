@@ -1,9 +1,17 @@
 import { env } from '../../../../.env';
 
 const getGroups = async () => {
+  const token = localStorage.getItem('token');
+  const headers = {};
+  if (token) {
+    headers.Authorization = `Bearer ${token}`;
+  }
+  console.log('Headers: ', headers);
   try {
-    const fetchUrl = new Request(`${env.serverAddr}/me/groups/1`);
-    const response = await fetch(fetchUrl);
+    const fetchUrl = new Request(`${env.serverAddr}/me/groups`);
+    const response = await fetch(fetchUrl, {
+      headers,
+    });
     const userGroups = await response.json();
     return userGroups;
   } catch (e) {
