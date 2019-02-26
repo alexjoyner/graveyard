@@ -31,6 +31,7 @@ const SignInForm = ({ onSubmit }) => {
       <Block margin="scale200">
         <Input
           id="password"
+          type="password"
           model="basic"
           placeholder="Password"
           overrides={{ Input: { props: { 'data-testid': 'password' } } }}
