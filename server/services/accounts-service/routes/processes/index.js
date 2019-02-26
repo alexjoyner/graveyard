@@ -17,10 +17,10 @@ module.exports = {
     };
   },
   getPointsByGroupID: (req, res) => {
-    const { id } = res.locals.tokenData;
+    const { groupID } = req.params;
     return {
       text: getTextFromFile(__dirname, '../queries/getPointsByGroupID.pgsql'),
-      values: [id],
+      values: [groupID],
     };
   },
   checkIfDemo: (req, res, next) => {
@@ -28,7 +28,6 @@ module.exports = {
     if(!bearerHeader){
         return next()
     }
-    console.log('USING NEXT ROUTE');
     next('route');
   }
 };

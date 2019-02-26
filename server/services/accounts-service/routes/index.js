@@ -5,16 +5,14 @@ const {
   getGroupsByClientID,
   getPointsByClientID,
   getPointsByGroupID,
-  getAccount,
 } = require('./processes');
 
 module.exports = (app) => {
   require('./demo')(app);
   // #### Routes For Real Users ####
-  // app.get('/account/:clientID',
-  //   jwt.verify(),
-  //   query('pg', getAccount),
-  //   sendLocal('results'));
+  app.get('/account',
+    jwt.verify(),
+    sendLocal('tokenData'));
   app.get('/groups',
     jwt.verify(),
     query('pg', getGroupsByClientID),
@@ -23,7 +21,7 @@ module.exports = (app) => {
     jwt.verify(),
     query('pg', getPointsByClientID),
     sendLocal('results'));
-  app.get('/points/group',
+  app.get('/points/group/:groupID',
     jwt.verify(),
     query('pg', getPointsByGroupID),
     sendLocal('results'));

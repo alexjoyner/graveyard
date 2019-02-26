@@ -5,7 +5,6 @@ const {
   getGroupsByClientID,
   getPointsByClientID,
   getPointsByGroupID,
-  getAccount,
 } = require('./processes');
 
 module.exports = (app) => {
