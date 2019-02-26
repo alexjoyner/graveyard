@@ -2,32 +2,25 @@ const { getTextFromFile } = require('ro-server-utils');
 
 module.exports = {
   checkUserExists: require('./checkUserExists'),
-  getAccount: (req) => {
-    const { clientID } = req.params;
-    return {
-      text: getTextFromFile(__dirname, '../queries/getAccount.pgsql'),
-      values: [clientID],
-    };
-  },
-  getGroupsByClientID: (req) => {
-    const { clientID } = req.params;
+  getGroupsByClientID: (req, res) => {
+    const { id } = res.locals.tokenData;
     return {
       text: getTextFromFile(__dirname, '../queries/getGroupsByClientID.pgsql'),
-      values: [clientID],
+      values: [id],
     };
   },
-  getPointsByClientID: (req) => {
-    const { clientID } = req.params;
+  getPointsByClientID: (req, res) => {
+    const { id } = res.locals.tokenData;
     return {
       text: getTextFromFile(__dirname, '../queries/getPointsByClientID.pgsql'),
-      values: [clientID],
+      values: [id],
     };
   },
-  getPointsByGroupID: (req) => {
-    const { groupID } = req.params;
+  getPointsByGroupID: (req, res) => {
+    const { id } = res.locals.tokenData;
     return {
       text: getTextFromFile(__dirname, '../queries/getPointsByGroupID.pgsql'),
-      values: [groupID],
+      values: [id],
     };
   },
   checkIfDemo: (req, res, next) => {

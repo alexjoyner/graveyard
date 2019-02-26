@@ -15,15 +15,15 @@ module.exports = (app) => {
   //   jwt.verify(),
   //   query('pg', getAccount),
   //   sendLocal('results'));
-  app.get('/groups/:clientID',
+  app.get('/groups',
     jwt.verify(),
     query('pg', getGroupsByClientID),
     sendLocal('results'));
-  app.get('/points/:clientID',
+  app.get('/points',
     jwt.verify(),
     query('pg', getPointsByClientID),
     sendLocal('results'));
-  app.get('/points/group/:groupID',
+  app.get('/points/group',
     jwt.verify(),
     query('pg', getPointsByGroupID),
     sendLocal('results'));
