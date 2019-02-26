@@ -6,7 +6,7 @@ import { DashBoard } from './pages/DashBoard';
 const toastOverrides = {
   Root: {
     style: {
-      zIndex: 1000,
+      zIndex: 3000,
     },
   },
 };
