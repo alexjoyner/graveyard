@@ -10,25 +10,25 @@ describe('DashBoard Page', () => {
   it('Should render without exploding', () => {
     expect(component).toBeDefined();
   });
-  it('Should match snapshot', () => {
-    expect(component).toMatchSnapshot();
-  });
-  it('Should have ISideBar behavior', () => {
-    expect(component.find('Connect(TISideBar)')).toHaveLength(1);
-  });
-  it('Should contain a test notification', () => {
-    expect(component.find('TestNotification')).toHaveLength(1);
-  });
   it('Should have a SideBar', () => {
-    expect(component.find('Connect(TISideBar)').props().SideBar).toBeDefined();
+    expect(component.find('SideBar')).toHaveLength(1);
   });
-  it('Should have a page body', () => {
-    expect(component.find('Connect(TISideBar)').props().Body).toBeDefined();
+  it('Should contain a Header', () => {
+    expect(component.find('Header')).toHaveLength(1);
   });
-  it('Should have HistoricalGraphModal', () => {
-    expect(component.find('Connect(BaseHistoricalGraphModal)')).toHaveLength(1);
+  describe('HeaderSideBarPageBody', () => {
+    let HeaderSideBarPageBody;
+    beforeEach(() => {
+      HeaderSideBarPageBody = component.find('HeaderSideBarPageBody');
+    });
+    it('Should have one instance', () => {
+      expect(HeaderSideBarPageBody).toHaveLength(1);
+    });
+    it('Should contain a DashBody', () => {
+      expect(HeaderSideBarPageBody.find('Connect(TDashBody)')).toHaveLength(1);
+    });
   });
-  it('Should contain a DashHeader', () => {
-    expect(component.find('DashHeader')).toHaveLength(1);
+  it('Should have ChartModal', () => {
+    expect(component.find('Connect(TChartModal)')).toHaveLength(1);
   });
 });

@@ -1,3 +1,4 @@
+import { toaster } from 'ro-component-library';
 // In production, we register a service worker to serve assets from local cache.
 
 // This lets the app load faster on subsequent visits in production, and gives
@@ -8,11 +9,11 @@
 // To learn more about the benefits of this model, read https://goo.gl/KwvDNy.
 // This link also includes instructions on opting out of this behavior.
 
-const isLocalhost = Boolean(window.location.hostname === 'localhost' ||
+const isLocalhost = Boolean(window.location.hostname === 'localhost'
     // [::1] is the IPv6 localhost address.
-    window.location.hostname === '[::1]' ||
+    || window.location.hostname === '[::1]'
     // 127.0.0.1/8 is considered localhost for IPv4.
-    window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/));
+    || window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/));
 
 export default function register() {
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
@@ -35,8 +36,8 @@ export default function register() {
         // Add some additional logging to localhost, pointing developers to the
         // service worker/PWA documentation.
         navigator.serviceWorker.ready.then(() => {
-          console.log('This web app is being served cache-first by a service ' +
-              'worker. To learn more, visit https://goo.gl/SC7cgQ');
+          console.log('This web app is being served cache-first by a service '
+              + 'worker. To learn more, visit https://goo.gl/SC7cgQ');
         });
       } else {
         // Is not local host. Just register service worker
@@ -59,7 +60,10 @@ function registerValidSW(swUrl) {
               // the fresh content will have been added to the cache.
               // It's the perfect time to display a "New content is
               // available; please refresh." message in your web app.
-              console.log('New content is available; please refresh.');
+              console.log('New content is available! Please Refresh!');
+              toaster().info('New content is available! Please Refresh!', {
+                autoHideDuration: 0,
+              });
             } else {
               // At this point, everything has been precached.
               // It's the perfect time to display a
@@ -81,8 +85,8 @@ function checkValidServiceWorker(swUrl) {
     .then((response) => {
       // Ensure service worker exists, and that we really are getting a JS file.
       if (
-        response.status === 404 ||
-        response.headers.get('content-type').indexOf('javascript') === -1
+        response.status === 404
+        || response.headers.get('content-type').indexOf('javascript') === -1
       ) {
         // No service worker found. Probably a different app. Reload the page.
         navigator.serviceWorker.ready.then((registration) => {

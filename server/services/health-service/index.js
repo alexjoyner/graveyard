@@ -10,7 +10,6 @@ const conInfo = {
   host: fs.readFileSync(process.env.PG_HOST_FILE, 'utf8'),
   port: process.env.PG_PORT || 5432,
 }
-
 const pgQuery = async (opts) => {
   const client = new Client(conInfo);
   try {
@@ -61,3 +60,15 @@ app.get('/check/twilio', async (req, res) => {
 
 
 utils.runExpressApp()(app);
+if(process.env.NODE_ENV === 'development'){
+  console.log('Setting up server!');
+  const db_setup = fs.readFileSync('./db-setup.pgsql', 'utf8');
+  try {
+    runQuery('pg', () => ({
+      text: db_setup
+    }))()
+  }catch(e){
+    console.error(e);
+  }
+}
+

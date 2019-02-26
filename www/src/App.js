@@ -1,21 +1,19 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { getGroups } from './organisms/SideBarContent/utils/getGroups';
-import { setGroups } from './organisms/SideBarContent/actions';
+import React from 'react';
+import { PLACEMENT } from 'baseui/toast';
+import { Toast } from 'ro-component-library/Toast';
 import { DashBoard } from './pages/DashBoard';
 
-export class App extends Component {
-  async componentDidMount() {
-    const groups = await getGroups();
-    this.props.setGroups(groups);
-  }
+const toastOverrides = {
+  Root: {
+    style: {
+      zIndex: 3000,
+    },
+  },
+};
 
-  render() {
-    return (
-      <DashBoard />
-    );
-  }
-}
-export default connect(null, {
-  setGroups,
-})(App);
+export const App = () => (
+  <>
+    <Toast placement={PLACEMENT.bottomLeft} overrides={toastOverrides} />
+    <DashBoard />
+  </>
+);

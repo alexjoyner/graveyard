@@ -1,43 +1,33 @@
-const utils = require('ro-server-utils');
-const fs = require('fs');
-const path = require('path');
-
-const getQueryText = (relativePath) => {
-  const queryText = fs.readFileSync(
-    path.resolve(__dirname, relativePath), 'utf8'
-  );
-  return queryText;
-}
+const { getTextFromFile } = require('ro-server-utils');
 
 module.exports = {
-  getGroupsByClientID: (req) => {
-    const { clientID } = req.params;
+  checkUserExists: require('./checkUserExists'),
+  getGroupsByClientID: (req, res) => {
+    const { id } = res.locals.tokenData;
     return {
-      text: getQueryText('./queries/getGroupsByClientID.pgsql'),
-      values: [clientID],
+      text: getTextFromFile(__dirname, '../queries/getGroupsByClientID.pgsql'),
+      values: [id],
     };
   },
-  getPointsByClientID: (req) => {
-    const { clientID } = req.params;
+  getPointsByClientID: (req, res) => {
+    const { id } = res.locals.tokenData;
     return {
-      text: getQueryText('./queries/getPointsByClientID.pgsql'),
-      values: [clientID],
+      text: getTextFromFile(__dirname, '../queries/getPointsByClientID.pgsql'),
+      values: [id],
     };
   },
-  getPointsByGroupID: (req) => {
+  getPointsByGroupID: (req, res) => {
     const { groupID } = req.params;
     return {
-      text: getQueryText('./queries/getPointsByGroupID.pgsql'),
+      text: getTextFromFile(__dirname, '../queries/getPointsByGroupID.pgsql'),
       values: [groupID],
     };
   },
-  runBasicQuery: getQuery => async (req, res) => {
-    try {
-      const groups = await utils.runQuery('pg', getQuery(req));
-      res.send(groups);
-    } catch (e) {
-      console.error(e);
-      res.status(500).send('Something went wrong. Sorry');
+  checkIfDemo: (req, res, next) => {
+    const bearerHeader = req.headers['authorization'];
+    if(!bearerHeader){
+        return next()
     }
-  },
+    next('route');
+  }
 };

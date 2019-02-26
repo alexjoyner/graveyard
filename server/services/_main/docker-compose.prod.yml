@@ -49,6 +49,8 @@ secrets:
     external: true
   pg-db:
     external: true
+  jwt-secret:
+    external: true
   ssl_dhparam:
     external: true
   twilio-sid:
