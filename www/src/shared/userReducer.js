@@ -25,19 +25,21 @@ export const UserReducer = (state = INITIAL_STATE, action) => {
         });
         return state;
       }
-      toaster().positive('Successfully Signed In!', {
-        autoHideDuration: 8000,
-      });
+      // toaster().positive('Successfully Signed In!', {
+      //   autoHideDuration: 8000,
+      // });
       localStorage.setItem('user', JSON.stringify(user));
-      localStorage.setItem('token', JSON.stringify(token));
+      localStorage.setItem('token', token);
+      location.reload(); //eslint-disable-line
       return { ...state, user, token };
     }
     case SIGN_OUT: {
       localStorage.removeItem('user');
       localStorage.removeItem('token');
-      toaster().positive('Successfully Signed Out!', {
-        autoHideDuration: 8000,
-      });
+      // toaster().positive('Successfully Signed Out!', {
+      //   autoHideDuration: 8000,
+      // });
+      location.reload(); //eslint-disable-line
       return { ...state, user: defaultUser, token: null };
     }
     default:
