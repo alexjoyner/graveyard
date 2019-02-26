@@ -102,7 +102,7 @@ secrets:
   pg-db:
     file: dev-keys/pg-db.txt
   jwt-secret:
-    file: dev-keys\jwt-secret.txt
+    file: dev-keys/jwt-secret.txt
   twilio-sid:
     file: ../../../../../../Desktop/twilio/sid.txt
   twilio-auth-token:

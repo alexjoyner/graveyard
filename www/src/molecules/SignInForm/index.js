@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input } from 'ro-component-library/Input';
 import { Button } from 'ro-component-library/Button';
-import { Block } from 'ro-component-library/utilities/Block';
+import { Block } from 'ro-component-library/Block';
 import PropTypes from 'prop-types';
 
 const SignInForm = ({ onSubmit }) => {

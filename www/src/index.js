@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import 'ro-component-library/styles/normalize.css';
-import 'ro-component-library/styles/typography.css';
+import 'ro-component-library/styles/fonts.css';
 import { StyletronProvider, Styletron } from 'ro-component-library';
 import { LightTheme, ThemeProvider } from 'baseui';
 import { reducers } from './reducers';

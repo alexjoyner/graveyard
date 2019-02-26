@@ -7,7 +7,7 @@ import {StyletronProvider, Styletron} from 'ro-component-library';
 import {ThemeProvider, LightTheme} from 'baseui';
 import { reducers } from '../src/reducers';
 import 'ro-component-library/styles/normalize.css';
-import 'ro-component-library/styles/typography.css';
+import 'ro-component-library/styles/fonts.css';
 
 const store = createStore(reducers);
 
