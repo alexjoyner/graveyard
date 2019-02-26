@@ -14,6 +14,7 @@ const ensureUserWasRetreived = (req, { locals }, next) => {
   }
   const {id, username, password} = locals.results[0];
   locals.user = {id, username}
+  locals.results = {id, username};
   locals.hashedPass = password
   next();
 }
