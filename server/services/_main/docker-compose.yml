@@ -52,11 +52,13 @@ services:
       - pg-pass
       - pg-db
       - pg-host
+      - jwt-secret
     environment:
       - PG_USER_FILE=/run/secrets/pg-user
       - PG_HOST_FILE=/run/secrets/pg-host
       - PG_DB_FILE=/run/secrets/pg-db
       - PG_PASS_FILE=/run/secrets/pg-pass
+      - JWT_SECRET_FILE=/run/secrets/jwt-secret
   socket-service:
     ports:
       - "32000:80"

@@ -19,11 +19,22 @@ describe('App component', () => {
   it('Should render without exploding', () => {
     expect(component).toBeDefined();
   });
-  it('Should match snapshot', () => {
-    expect(component).toMatchSnapshot();
-  });
-  it('Should NOT be using SideBarPage', () => {
-    expect(component.find('SideBarPage')).toHaveLength(0);
+  describe('App Toast', () => {
+    it('Should only have one instance', () => {
+      expect(component.find('Toast')).toHaveLength(1);
+    });
+    it('Should have correct props', () => {
+      expect(component.find('Toast').props()).toEqual({
+        placement: 'bottomLeft',
+        overrides: {
+          Root: {
+            style: {
+              zIndex: 1000,
+            },
+          },
+        },
+      });
+    });
   });
   it('Should contain a DashBoard page', () => {
     expect(component.find('DashBoard')).toHaveLength(1);

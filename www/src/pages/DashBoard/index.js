@@ -1,20 +1,20 @@
 import React from 'react';
-import { ISideBar } from 'ro-component-library';
-import { TestNotification } from '../../organisms/Notifications';
-import { DashBody } from '../../organisms/DashBody';
-import { DashSideBar } from '../../organisms/DashSideBar';
-import { HistoricalGraphModal } from '../../organisms/HistoricalGraphModal';
-import { DashHeader } from '../../organisms/DashHeader';
+import { HeaderSideBarPageBody } from 'ro-component-library';
+import { SideBar } from '../../organisms/SideBar';
+import { Header } from '../../organisms/Header';
+import { DashBody } from '../../organisms/DashBody/bck';
+import { ChartModal } from '../../organisms/ChartModal';
+import { ChartsSelected } from '../../molecules/ChartsSelected';
 
-export const DashBoard = () => (
-  <>
-    <TestNotification />
-    <DashHeader />
-    <ISideBar {...{
-      SideBar: DashSideBar,
-      Body: DashBody,
-    }}
-    />
-    <HistoricalGraphModal />
-  </>
+const DashBoard = () => (
+  <SideBar>
+    <Header />
+    <HeaderSideBarPageBody>
+      <DashBody />
+    </HeaderSideBarPageBody>
+    <ChartModal />
+    <ChartsSelected />
+  </SideBar>
 );
+
+export { DashBoard };

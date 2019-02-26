@@ -1,16 +1,14 @@
 import { combineReducers } from 'redux';
-import { ISideBarReducer } from 'ro-component-library';
-import { GaugeBlockArrayReducer } from './organisms/GaugeBlockArray/reducer';
-import { HistoricalGraphModalReducer } from './organisms/HistoricalGraphModal/reducer';
-import { NotificationReducer } from './organisms/Notifications/reducer';
-import { MultiSelectedChartsMenuReducer } from './organisms/MultiSelectedChartsMenu/reducer';
-import { SideBarContentReducer } from './organisms/SideBarContent/reducer';
+import { DashBodyReducer } from './organisms/DashBody/reducer';
+import { ChartModalReducer } from './organisms/ChartModal/reducer';
+import { ChartsSelectedReducer } from './molecules/ChartsSelected/reducer';
+import { GroupsMenuReducer } from './molecules/GroupsMenu/reducer';
+import { UserReducer } from './shared/userReducer';
 
 export const reducers = combineReducers({
-  GaugeBlockArrayReducer,
-  HistoricalGraphModalReducer,
-  NotificationReducer,
-  MultiSelectedChartsMenuReducer,
-  SideBarContentReducer,
-  ISideBarReducer,
+  DashBodyReducer,
+  ChartModalReducer,
+  ChartsSelectedReducer,
+  GroupsMenuReducer,
+  UserReducer,
 });

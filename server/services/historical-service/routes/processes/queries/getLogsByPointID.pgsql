@@ -9,7 +9,7 @@ WITH special_vals AS (
 )
 SELECT datetime, val FROM(
     SELECT 
-        date_part('epoch', datetime) * 1000 as datetime, 
+        date_part('epoch', datetime AT TIME ZONE $2) * 1000 as datetime, 
         val,
         ROW_NUMBER() OVER (ORDER BY datetime asc) as rn
     FROM 

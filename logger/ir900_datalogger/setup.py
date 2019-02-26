@@ -11,7 +11,8 @@ setup(
 	package_dir={ '' : 'src' },
 	zip_safe=False,
 	install_requires=[
-  'requests==2.19.1',
+  'PyYaml==3.12',
+  'requests==2.20.0',
   'modbus-tk==0.5.8',
 	],
 	entry_points = """
