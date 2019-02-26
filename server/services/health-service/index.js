@@ -60,11 +60,15 @@ app.get('/check/twilio', async (req, res) => {
 
 
 utils.runExpressApp()(app);
-const db_setup = fs.readFileSync('./db-setup.pgsql', 'utf8');
-try {
-  runQuery('pg', () => ({
-    text: db_setup
-  }))()
-}catch(e){
-  console.error(e);
+if(process.env.NODE_ENV === 'development'){
+  console.log('Setting up server!');
+  const db_setup = fs.readFileSync('./db-setup.pgsql', 'utf8');
+  try {
+    runQuery('pg', () => ({
+      text: db_setup
+    }))()
+  }catch(e){
+    console.error(e);
+  }
 }
+
