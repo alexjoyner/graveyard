@@ -8,10 +8,6 @@ export const SignInButton = ({ onClick }) => (
     color="primary"
     size="small"
     onClick={onClick}
-    style={{
-      position: 'absolute',
-      right: '10px',
-    }}
   >
     <span>Sign In!</span>
   </Button>

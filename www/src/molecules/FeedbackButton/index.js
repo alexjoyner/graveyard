@@ -5,12 +5,14 @@ import { Go } from 'ro-component-library/Go';
 const FeedbackButton = () => (
   <Go
     to="http://feedback.voicir.com"
-    style={{
-      position: 'absolute',
-      right: '3px',
-    }}
   >
-    <Button color="primary" size="small">Feedback</Button>
+    <Button
+      model="classic"
+      color="primary"
+      size="small"
+    >
+      <span>Feedback</span>
+    </Button>
   </Go>
 );
 

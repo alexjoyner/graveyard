@@ -8,10 +8,6 @@ export const SignOutButton = ({ onClick }) => (
     color="primary"
     size="small"
     onClick={onClick}
-    style={{
-      position: 'absolute',
-      right: '10px',
-    }}
   >
     <span>Sign Out</span>
   </Button>
