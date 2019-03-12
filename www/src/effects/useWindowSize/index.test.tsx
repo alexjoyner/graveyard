@@ -1,6 +1,6 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
-import { mount } from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
 import { useWindowSize } from '.';
 
 const WindowTestComponent = () => {
@@ -12,14 +12,16 @@ const WindowTestComponent = () => {
     </>
   );
 };
-const resizeWindow = (height, width) => {
+const resizeWindow = (height:number, width:number) => {
+  // @ts-ignore
   window.innerHeight = height;
+  // @ts-ignore
   window.innerWidth = width;
   window.dispatchEvent(new Event('resize'));
 };
 
 describe('useWindowSize Effect', () => {
-  let component;
+  let component:ReactWrapper;
   beforeEach(() => {
     act(() => {
       resizeWindow(10, 50);
