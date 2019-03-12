@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
@@ -13,7 +13,7 @@ import { App } from './App';
 const store = createStore(reducers);
 const engine = new Styletron();
 
-export const StyletronSetup = ({ children }) => (
+export const StyletronSetup = ({ children }:{ children:ReactNode }) => (
   <StyletronProvider value={engine}>
     <ThemeProvider theme={customTheme}>
       {children}

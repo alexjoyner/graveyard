@@ -3,6 +3,7 @@
   "version": "0.8.0",
   "description": "Root monrepo for oee-master",
   "main": "n/a",
+  "types": "src/types/index.js",
   "repository": "https://github.com/alexjoyner/oee-master.git",
   "author": "Alex Joyner <alex@voicir.com>",
   "license": "PRIVATE",
