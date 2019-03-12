@@ -12,9 +12,12 @@ import { GoTrashcan } from 'react-icons/go';
 import { removePoint as removePointAction } from './actions';
 import { Points } from '../../propTypes';
 import { buildGraph as buildGraphAction } from '../../organisms/ChartModal/actions';
+import { multiDeselectPoint as multiDeselectPointAction } from '../../organisms/DashBody/actions/multiSelectPoint';
 
 
-export const TChartsSelected = ({ multiSelectedPoints, buildGraph, removePoint }) => {
+export const TChartsSelected = ({
+  multiSelectedPoints, multiDeselectPoint, buildGraph, removePoint,
+}) => {
   const points = Object.keys(multiSelectedPoints);
   const handleStartBraphBuild = () => {
     if (points.length === 0) {
@@ -42,7 +45,10 @@ export const TChartsSelected = ({ multiSelectedPoints, buildGraph, removePoint }
               className="remove-point"
               size="small"
               color="dark"
-              onClick={() => removePoint(pointID)}
+              onClick={() => {
+                removePoint(pointID);
+                multiDeselectPoint(pointID);
+              }}
             >
               <GoTrashcan size={20} color={colors.dangerLight} />
             </Button>
@@ -73,5 +79,6 @@ const mapStateToProps = state => ({
 const ChartsSelected = connect(mapStateToProps, {
   removePoint: removePointAction,
   buildGraph: buildGraphAction,
+  multiDeselectPoint: multiDeselectPointAction,
 })(TChartsSelected);
 export { ChartsSelected };

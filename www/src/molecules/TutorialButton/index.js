@@ -1,37 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { keyframes, css } from 'ro-component-library/StyledComponents';
 import { Button } from 'ro-component-library/Button';
-
-const pulse = keyframes`
-  0% { transform: scale(1); }
-  30% { transform: scale(1); }
-  40% { transform: scale(1.7); }
-  50% { transform: scale(1); }
-  60% { transform: scale(1); }
-  70% { transform: scale(1.05); }
-  80% { transform: scale(1); }
-  100% { transform: scale(1); }
-`;
-
-const Animate = styled.div`
-  display: inline-block;
-  ${props => (props.animate) && css`
-    animation: ${pulse} 2s linear infinite;
-  `}
-`;
+import { Popover, PLACEMENT } from 'ro-component-library/Popover';
+import { Block } from 'ro-component-library/Block';
 
 export const TutorialButton = ({ animate, onClick }) => (
-  <Animate animate={animate}>
+  <Popover
+    isOpen={animate}
+    content={() => (
+      <Block
+        padding="scale900"
+        maxWidth="200px"
+      >
+        <span>Click HELP to view a tutorial!</span>
+      </Block>
+    )}
+    showArrow
+    placement={PLACEMENT.bottom}
+    onClick={onClick}
+  >
     <Button
-      model="classic"
-      color="primary"
-      size="small"
-      onClick={onClick}
+      size="compact"
+      style={{ marginRight: '5px' }}
     >
       <span>Help</span>
     </Button>
-  </Animate>
+  </Popover>
 );
 TutorialButton.propTypes = {
   animate: PropTypes.bool.isRequired,

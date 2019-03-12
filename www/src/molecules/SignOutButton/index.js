@@ -4,9 +4,7 @@ import { Button } from 'ro-component-library/Button';
 
 export const SignOutButton = ({ onClick }) => (
   <Button
-    model="classic"
-    color="primary"
-    size="small"
+    size="compact"
     onClick={onClick}
   >
     <span>Sign Out</span>
