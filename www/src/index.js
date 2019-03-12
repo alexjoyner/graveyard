@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import 'ro-component-library/styles/normalize.css';
 import 'ro-component-library/styles/fonts.css';
-import { StyletronProvider, Styletron } from 'ro-component-library';
-import { LightTheme, ThemeProvider } from 'baseui';
+import { StyletronProvider, Styletron } from 'ro-component-library/Styletron';
+import { customTheme, ThemeProvider } from 'ro-component-library/Themes';
 import { reducers } from './reducers';
 import registerServiceWorker from './registerServiceWorker';
 import { App } from './App';
@@ -15,7 +15,7 @@ const engine = new Styletron();
 
 export const StyletronSetup = ({ children }) => (
   <StyletronProvider value={engine}>
-    <ThemeProvider theme={LightTheme}>
+    <ThemeProvider theme={customTheme}>
       {children}
     </ThemeProvider>
   </StyletronProvider>

@@ -7,7 +7,6 @@
     "**/*.bak": true,
     "**/*.lock": true,
     "**/*.pyc": true,
-    "**/build": true,
-    "www/public": true
+    "**/build": true
   }
 }

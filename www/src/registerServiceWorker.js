@@ -1,4 +1,7 @@
-import { toaster } from 'ro-component-library';
+import React, { useEffect } from 'react';
+import ReactDOM from 'react-dom';
+import { PLACEMENT } from 'baseui/toast';
+import { Toast, toaster } from 'ro-component-library/Toast';
 // In production, we register a service worker to serve assets from local cache.
 
 // This lets the app load faster on subsequent visits in production, and gives
@@ -61,9 +64,24 @@ function registerValidSW(swUrl) {
               // It's the perfect time to display a "New content is
               // available; please refresh." message in your web app.
               console.log('New content is available! Please Refresh!');
-              toaster().info('New content is available! Please Refresh!', {
-                autoHideDuration: 0,
-              });
+              const UpdateNotif = () => {
+                const toastOverrides = {
+                  Root: {
+                    style: {
+                      zIndex: 3000,
+                    },
+                  },
+                };
+                useEffect(() => {
+                  toaster().info('New content is available! Please Refresh!', {
+                    autoHideDuration: 0,
+                  });
+                }, []);
+                return () => (
+                  <Toast placement={PLACEMENT.bottomLeft} overrides={toastOverrides} />
+                );
+              };
+              ReactDOM.render(<UpdateNotif />, document.getElementById('update-notification'));
             } else {
               // At this point, everything has been precached.
               // It's the perfect time to display a
