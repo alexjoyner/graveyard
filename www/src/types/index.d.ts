@@ -1,1 +1,1 @@
-declare module 'baseui/toast';
+import './modules/baseui';

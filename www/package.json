@@ -25,6 +25,7 @@
     "@types/react": "^16.8.7",
     "@types/react-dom": "^16.8.2",
     "@types/react-redux": "^7.0.3",
+    "@types/socket.io-client": "^1.4.32",
     "baseui": "^5.13.2",
     "digest-auth-request": "^0.7.0",
     "highcharts": "^7.0.3",
