@@ -1,20 +1,18 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
 import { App } from './App';
 
-const mockFetch = data => jest.fn().mockImplementation(() => Promise.resolve({
+const mockFetch = (data:Object) => jest.fn().mockImplementation(() => Promise.resolve({
   status: 200,
   json: () => data,
 }));
 
 describe('App component', () => {
-  let component;
+  let component:ReactWrapper;
   beforeEach(() => {
     window.fetch = mockFetch('test');
-    const props = {
-      setGroups: jest.fn(),
-    };
-    component = shallow(<App {...props} />);
+    const props = {};
+    component = mount(<App {...props} />);
   });
   it('Should render without exploding', () => {
     expect(component).toBeDefined();
