@@ -1,11 +1,11 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
 import { DashBoard } from '.';
 
 describe('DashBoard Page', () => {
-  let component;
+  let component:ReactWrapper;
   beforeEach(() => {
-    component = shallow(<DashBoard />);
+    component = mount(<DashBoard />);
   });
   it('Should render without exploding', () => {
     expect(component).toBeDefined();
@@ -17,7 +17,7 @@ describe('DashBoard Page', () => {
     expect(component.find('Header')).toHaveLength(1);
   });
   describe('HeaderSideBarPageBody', () => {
-    let HeaderSideBarPageBody;
+    let HeaderSideBarPageBody:ReactWrapper;
     beforeEach(() => {
       HeaderSideBarPageBody = component.find('HeaderSideBarPageBody');
     });

@@ -1,4 +1,4 @@
-import { getTimeInterval } from './';  //eslint-disable-line
+import { getTimeInterval } from '.';  //eslint-disable-line
 
 describe('getTimeInterval', () => {
   it('should have correct default values', () => {

@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 jest.mock('moment');
-import { IntervalButton } from './';  //eslint-disable-line
+import { IntervalButton } from '.';  //eslint-disable-line
 
 describe('IntervalButton component', () => {
   let component;
