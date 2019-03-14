@@ -1,4 +1,4 @@
-import { removePoint, REMOVE_POINT } from './actions';
+import { removePoint, REMOVE_POINT } from './gauges.duck';
 
 describe('removePoint', () => {
   it('should return correct action', () => {

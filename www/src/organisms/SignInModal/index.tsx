@@ -10,7 +10,7 @@ import {
 import { toaster } from 'ro-component-library/Toast';
 import { ModalStateContainer } from '../../utils/ModalStateContainer';
 import { SignInForm } from '../../molecules/SignInForm';
-import { SignInButton } from '../../molecules/SignInButton';
+import { SignInButton } from '../../features/Accounts/components/SignInButton/SignInButton';
 import { env } from '../../.env';
 
 const TSignInModal = ({ dispatch }) => {

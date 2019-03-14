@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
-import { App } from './App';
+import { App } from './app';
 
 const mockFetch = (data:Object) => jest.fn().mockImplementation(() => Promise.resolve({
   status: 200,
