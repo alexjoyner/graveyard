@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
 import { Input } from 'ro-component-library/Input';
 import { Button } from 'ro-component-library/Button';
 import { Block } from 'ro-component-library/Block';
-import PropTypes from 'prop-types';
+import { Credentials } from '../../types/accounts';
 
-const SignInForm = ({ onSubmit }) => {
-  const handleSubmit = (e) => {
+const SignInForm = ({ onSubmit }:{ onSubmit: ({}:Credentials) => void }) => {
+  const handleSubmit = (e:FormEvent) => {
     e.preventDefault();
+    // @ts-ignore : because elements is hidden on e.target
     const { username, password } = e.target.elements;
     onSubmit({
       username: username.value,
@@ -50,9 +51,6 @@ const SignInForm = ({ onSubmit }) => {
     </form>
   </>
   );
-};
-SignInForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
 };
 
 export { SignInForm };

@@ -1,18 +1,10 @@
 import React from 'react';
-import { ThemeProvider, LightTheme } from 'baseui';
-import { StyletronProvider, Styletron } from 'ro-component-library/Styletron';
 import { render, fireEvent } from 'react-testing-library';
-import { SignInForm } from '.';
+import { SignInForm } from './SignInForm';
+import { withStyleTron } from '../../../../shared/utils/testUtils/withStyleTron';
 
-const engine = new Styletron();
-const withStyleTrom = children => (
-  <StyletronProvider value={engine}>
-    <ThemeProvider theme={LightTheme}>{children}</ThemeProvider>
-  </StyletronProvider>
-);
-
-test('it should exist', () => {
-  const { container } = render(withStyleTrom(<SignInForm onSubmit={() => {}} />));
+it('should exist', () => {
+  const { container } = render(withStyleTron(<SignInForm onSubmit={() => {}} />));
   expect(container).toBeDefined();
 });
 
@@ -20,7 +12,7 @@ it('Should allow form submit with correct data', () => {
   const props = {
     onSubmit: jest.fn(),
   };
-  const { getByTestId } = render(withStyleTrom(<SignInForm {...props} />));
+  const { getByTestId } = render(withStyleTron(<SignInForm {...props} />));
   expect(props.onSubmit).toHaveBeenCalledTimes(0);
   fireEvent.change(getByTestId('username'), { target: { value: 'user' } });
   fireEvent.change(getByTestId('password'), { target: { value: 'password123' } });

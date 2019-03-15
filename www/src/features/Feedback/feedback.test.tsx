@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { FeedbackButton } from '.';
+import { FeedbackButton } from './feedback';
 
 describe('FeedbackButton Component', () => {
   let component;

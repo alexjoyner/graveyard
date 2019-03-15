@@ -8,7 +8,7 @@ import { useWindowSize } from '../../effects/useWindowSize';
 import { SignInModal } from '../SignInModal';
 import { TutorialModal } from '../TutorialModal';
 import { SignOutButton } from '../../molecules/SignOutButton';
-import { FeedbackButton } from '../../molecules/FeedbackButton';
+import { FeedbackButton } from '../../features/Feedback';
 
 const ToggleBtn = props => (
   <Button color="primary" size="small" {...props}>

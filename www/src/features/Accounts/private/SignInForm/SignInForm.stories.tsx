@@ -9,8 +9,8 @@ import {
   ModalFooter,
 } from 'ro-component-library/Modal';
 import { Button } from 'ro-component-library/Button';
-import { ModalStateContainer } from '../../utils/ModalStateContainer';
-import { SignInForm } from '.';
+import { SignInForm } from './SignInForm';
+import { ModalStateContainer } from '../../../../shared/utils/ModalStateContainer';
 
 
 storiesOf('Molecules', module)

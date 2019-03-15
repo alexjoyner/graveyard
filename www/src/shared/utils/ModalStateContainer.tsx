@@ -1,8 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 
-const ModalStateContainer = ({ children, isInitiallyOpen, ...props }) => {
-  const [isOpen, setOpen] = useState(isInitiallyOpen);
+interface ModalStateContainerChildrenInterface {
+  toggle: () => void,
+  open: () => void,
+  close: () => void,
+  isOpen: boolean,
+};
+interface ModalStateContainerInterface {
+  children: ({}:ModalStateContainerChildrenInterface) => ReactNode,
+  isInitiallyOpen?: boolean,
+}
+
+const ModalStateContainer = ({ children, isInitiallyOpen }:ModalStateContainerInterface) => {
+  const [isOpen, setOpen] = useState(isInitiallyOpen || false);
   const toggle = (open = !isOpen) => {
     setOpen(Boolean(open));
   };
@@ -18,17 +29,10 @@ const ModalStateContainer = ({ children, isInitiallyOpen, ...props }) => {
         toggle,
         open,
         close,
-        isOpen,
-        ...props,
+        isOpen
       })}
     </React.Fragment>
   );
-};
-ModalStateContainer.propTypes = {
-  isInitiallyOpen: PropTypes.bool,
-};
-ModalStateContainer.defaultProps = {
-  isInitiallyOpen: false,
 };
 
 export { ModalStateContainer };

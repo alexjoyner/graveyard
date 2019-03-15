@@ -9,13 +9,8 @@ import { Card } from 'ro-component-library/Card';
 import { colors } from 'ro-component-library/colors';
 import { toaster } from 'ro-component-library/Toast';
 import { GoTrashcan } from 'react-icons/go';
-import { removePoint as removePointAction } from './actions';
-import { Points } from '../../propTypes';
-import { buildGraph as buildGraphAction } from '../../organisms/ChartModal/actions';
-import { multiDeselectPoint as multiDeselectPointAction } from '../../organisms/DashBody/actions/multiSelectPoint';
 
-
-export const TChartsSelected = ({
+export const GaugesSelected = ({
   multiSelectedPoints, multiDeselectPoint, buildGraph, removePoint,
 }) => {
   const points = Object.keys(multiSelectedPoints);
@@ -65,20 +60,3 @@ export const TChartsSelected = ({
     </Card>
   );
 };
-TChartsSelected.propTypes = {
-  removePoint: PropTypes.func.isRequired,
-  buildGraph: PropTypes.func.isRequired,
-  multiSelectedPoints: Points.isRequired,
-};
-
-/* istanbul ignore next */
-const mapStateToProps = state => ({
-  ...state.ChartsSelectedReducer,
-});
-
-const ChartsSelected = connect(mapStateToProps, {
-  removePoint: removePointAction,
-  buildGraph: buildGraphAction,
-  multiDeselectPoint: multiDeselectPointAction,
-})(TChartsSelected);
-export { ChartsSelected };
