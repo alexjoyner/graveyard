@@ -1,3 +1,9 @@
 import { reducer } from './ducks/accounts.duck';
-import { Accounts } from './accounts';
-export { Accounts, reducer}
+import { AuthButton } from './public/AuthButton/AuthButton';
+
+const Accounts = {
+    AuthButton,
+    reducer,
+}
+
+export { Accounts }

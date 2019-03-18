@@ -6,12 +6,13 @@ import {
   ModalBody,
   ModalFooter,
 } from 'ro-component-library/Modal';
-import { ModalStateContainer } from '../../shared/utils/ModalStateContainer';
-import { SignInButton } from './private/SignInButton/SignInButton';
-import { SignInForm } from './private/SignInForm/SignInForm';
-import { trySignIn as trySignInAction } from './ducks/accounts.duck';
+import { ModalStateContainer } from '../../../../shared/utils/ModalStateContainer';
+import { SignInButton } from '../../private/SignInButton/SignInButton';
+import { SignInForm } from '../../private/SignInForm/SignInForm';
+import { trySignIn as trySignInAction } from '../../ducks/accounts.duck';
+import { Action } from '../../../../shared/types';
 
-const TAccounts = ({ trySignIn }:{ trySignIn }) => {
+const TAuthButton = ({ trySignIn }:{ trySignIn:Action }) => {
   return (
     <ModalStateContainer>
       {({ open, close, isOpen }) => (
@@ -32,8 +33,8 @@ const TAccounts = ({ trySignIn }:{ trySignIn }) => {
   );
 };
 
-const Accounts = connect(null, {
+const AuthButton = connect(null, {
   trySignIn: trySignInAction
-})(TAccounts);
+})(TAuthButton as any);
 
-export { Accounts };
+export { AuthButton };

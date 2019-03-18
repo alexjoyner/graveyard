@@ -8,8 +8,5 @@
     "**/*.lock": true,
     "**/*.pyc": true,
     "**/build": true
-  },
-  "settings": {
-    "workbench.editor.showTabs": true,
   }
 }

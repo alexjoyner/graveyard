@@ -1,7 +1,12 @@
 import _ from 'lodash';
 import { toaster } from 'ro-component-library/Toast';
-import { MULTISELECT_POINT } from '../../organisms/DashBody/actions/types';
-import { REMOVE_POINT } from './actions';
+
+export const NEW_LOG = 'NEW_LOG';
+export const NEW_POINTS = 'NEW_POINTS';
+export const REMOVE_POINTS = 'REMOVE_POINTS';
+export const MULTISELECT_POINT = 'MULTISELECT_POINT';
+export const MULTISELECT_DESELECT_POINT = 'MULTISELECT_DESELECT_POINT';
+export const REMOVE_POINT = 'REMOVE_POINT';
 
 export const INITIAL_STATE = {
   multiSelectedPoints: {},
@@ -38,3 +43,33 @@ export const ChartsSelectedReducer = (state = INITIAL_STATE, action) => {
       return state;
   }
 };
+
+
+export const publishNewPoints = points => ({
+  type: NEW_POINTS,
+  data: points,
+});
+
+export const publishNewLog = log => ({
+  type: NEW_LOG,
+  data: log,
+});
+
+export const removeAllPoints = () => ({
+  type: REMOVE_POINTS,
+});
+
+export const removePoint = point => ({
+  type: REMOVE_POINT,
+  data: point,
+});
+
+export const multiSelectPoint = (point, id) => ({
+  type: MULTISELECT_POINT,
+  data: { point, id },
+});
+
+export const multiDeselectPoint = id => ({
+  type: MULTISELECT_DESELECT_POINT,
+  data: { id },
+});
