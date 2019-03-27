@@ -1,15 +1,5 @@
 {
-  "files.exclude": {
-    ".vscode": true,
-    "**/__snapshots__": true,
-    "**/.eslintrc.json": true,
-    "**/.gitignore": true,
-    "**/*.bak": true,
-    "**/*.lock": true,
-    "**/*.pyc": true,
-    "**/build": true
-  },
-  "settings": {
-    "workbench.editor.showTabs": true,
-  }
+	"files.exclude": {
+		"**/__snapshots__": true
+	}
 }
