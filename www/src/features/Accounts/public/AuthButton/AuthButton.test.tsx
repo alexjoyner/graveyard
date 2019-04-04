@@ -1,6 +1,6 @@
-import React from 'react';
-import { render } from 'react-testing-library';
-import { AccountsInterface } from '../../types/accounts';
+// import React from 'react';
+// import { render } from 'react-testing-library';
+// import { AccountsInterface } from '../../types/accounts';
 
-describe('Accounts Feature', () => {
-});
+// describe('Accounts Feature', () => {
+// });

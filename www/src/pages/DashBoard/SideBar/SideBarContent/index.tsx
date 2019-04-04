@@ -1,10 +1,10 @@
-import React from 'react';
-import { GroupsMenu } from '../../../molecules/GroupsMenu';
+// import React from 'react';
+// import { GroupsMenu } from '../../../molecules/GroupsMenu';
 
-const SideBarContent = props => (
-  <>
-    <GroupsMenu {...props} />
-  </>
-);
+// const SideBarContent = props => (
+//   <>
+//     <GroupsMenu {...props} />
+//   </>
+// );
 
-export { SideBarContent };
+// export { SideBarContent };

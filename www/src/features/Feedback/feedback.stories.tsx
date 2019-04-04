@@ -1,8 +1,8 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { FeedbackButton } from '.';
+// import React from 'react';
+// import { storiesOf } from '@storybook/react';
+// import { FeedbackButton } from '.';
 
-storiesOf('Molecules', module)
-  .add('Feedback Button', () => (
-    <FeedbackButton />
-  ));
+// storiesOf('Molecules', module)
+//   .add('Feedback Button', () => (
+//     <FeedbackButton />
+//   ));

@@ -1,11 +1,11 @@
-import { Component } from "react";
+// import { Component } from "react";
 
-export interface AccountsInterface {
-  SignInButton: () => JSX.Element,
-  SignOutButton: () => JSX.Element,
-}
+// export interface AccountsInterface {
+//   SignInButton: () => JSX.Element,
+//   SignOutButton: () => JSX.Element,
+// }
 
-export interface Credentials {
-  username: string,
-  password: string,
-}
+// export interface Credentials {
+//   username: string,
+//   password: string,
+// }

@@ -1,9 +1,9 @@
-import { reducer } from './ducks/accounts.duck';
-import { AuthButton } from './public/AuthButton/AuthButton';
+// import { reducer } from './ducks/accounts.duck';
+// import { AuthButton } from './public/AuthButton/AuthButton';
 
-const Accounts = {
-    AuthButton,
-    reducer,
-}
+// const Accounts = {
+//     AuthButton,
+//     reducer,
+// }
 
-export { Accounts }
+// export { Accounts }
