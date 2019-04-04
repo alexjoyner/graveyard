@@ -1,10 +1,10 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
 import { TLivePointGauge } from '.';
 
 jest.useFakeTimers();
 describe('LivePointGauge component', () => {
-  let component;
+  let component: ReactWrapper;
   let props;
   describe('shallow mounted version', () => {
     beforeEach(() => {
@@ -18,7 +18,7 @@ describe('LivePointGauge component', () => {
           },
         },
       };
-      component = shallow(<TLivePointGauge {...props} />);
+      component = mount(<TLivePointGauge {...props} />);
     });
     it('Should render without exploding', () => {
       expect(component).toBeDefined();

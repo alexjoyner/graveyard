@@ -8,5 +8,7 @@
     "**/*.lock": true,
     "**/*.pyc": true,
     "**/build": true
-  }
+  },
+  "editor.formatOnSave": true,
+  "eslint.autoFixOnSave": true
 }

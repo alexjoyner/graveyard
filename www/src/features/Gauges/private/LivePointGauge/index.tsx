@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { GaugeBlock } from '../../../../molecules/GaugeBlock';
-import { multiSelectPoint, multiDeselectPoint } from '../../actions/multiSelectPoint';
+import { GaugeBlock } from '../PointGauge';
+import { multiSelectPoint, multiDeselectPoint } from '../../ducks/gauges.duck';
 
 export const TLivePointGauge = (props) => {
   const { point } = props;
