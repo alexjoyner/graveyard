@@ -11,3 +11,4 @@
 //     expect(component).toBeDefined();
 //   });
 // });
+export const test = 1;

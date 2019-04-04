@@ -17,3 +17,4 @@
 //     expect(component.find('Go').props().to).toEqual('http://feedback.voicir.com');
 //   });
 // });
+export const test = 1;

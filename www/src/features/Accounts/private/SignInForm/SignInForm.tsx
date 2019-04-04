@@ -54,3 +54,4 @@
 // };
 
 // export { SignInForm };
+export const test = 1;

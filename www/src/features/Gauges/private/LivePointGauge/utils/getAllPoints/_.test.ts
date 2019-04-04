@@ -1,13 +1,14 @@
-import { getPointsFromGroupID } from '../getPointsFromGroupID';
-import { getAllPoints } from '.';
+// import { getPointsFromGroupID } from '../getPointsFromGroupID';
+// import { getAllPoints } from '.';
 
-jest.mock('../getPointsFromGroupID', () => ({
-  getPointsFromGroupID: jest.fn(),
-}));
+// jest.mock('../getPointsFromGroupID', () => ({
+//   getPointsFromGroupID: jest.fn(),
+// }));
 
-describe('getAllPoints', () => {
-  it('should call getPointsFromGroupID', () => {
-    getAllPoints();
-    expect(getPointsFromGroupID).toBeCalledWith(0);
-  });
-});
+// describe('getAllPoints', () => {
+//   it('should call getPointsFromGroupID', () => {
+//     getAllPoints();
+//     expect(getPointsFromGroupID).toBeCalledWith(0);
+//   });
+// });
+export const test = 1;

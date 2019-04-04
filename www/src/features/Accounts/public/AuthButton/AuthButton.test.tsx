@@ -4,3 +4,4 @@
 
 // describe('Accounts Feature', () => {
 // });
+export const test = 1;

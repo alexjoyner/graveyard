@@ -48,3 +48,4 @@
 //   GaugeBlockLabel,
 //   GaugeBlockStatus: StatusLabel,
 // };
+export const test = 1;

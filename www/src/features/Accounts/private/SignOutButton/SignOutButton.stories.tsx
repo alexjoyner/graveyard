@@ -10,3 +10,4 @@
 //       <SignOutButton onClick={action('Submit')} />
 //     </>
 //   ));
+export const test = 1;

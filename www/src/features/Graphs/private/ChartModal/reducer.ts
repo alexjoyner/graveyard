@@ -26,3 +26,4 @@
 //       return state;
 //   }
 // };
+export const test = 1;

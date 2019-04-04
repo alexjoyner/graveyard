@@ -61,3 +61,4 @@
 // };
 
 // export { GaugeBlock };
+export const test = 1;

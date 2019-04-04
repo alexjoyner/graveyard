@@ -12,3 +12,4 @@
 //     expect(getByText('Sign Out')).toBeTruthy();
 //   });
 // });
+export const test = 1;

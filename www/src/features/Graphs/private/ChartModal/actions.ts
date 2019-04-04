@@ -19,3 +19,4 @@
 // export const closeHistoryModal = () => ({
 //   type: CLOSE_HISTORICAL_MODAL,
 // });
+export const test = 1;

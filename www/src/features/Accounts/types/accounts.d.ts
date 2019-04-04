@@ -9,3 +9,4 @@
 //   username: string,
 //   password: string,
 // }
+export const test = 1;

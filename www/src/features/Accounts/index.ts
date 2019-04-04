@@ -7,3 +7,4 @@
 // }
 
 // export { Accounts }
+export const test = 1;

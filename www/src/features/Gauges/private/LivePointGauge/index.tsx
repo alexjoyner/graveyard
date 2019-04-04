@@ -37,3 +37,4 @@
 // })(TLivePointGauge);
 
 // export { LivePointGauge };
+export const test = 1;

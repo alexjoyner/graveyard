@@ -95,3 +95,4 @@
 //   closeHistoryModal: closeHistoryModalAction,
 // })(TChartModal);
 // export { ChartModal };
+export const test = 1;

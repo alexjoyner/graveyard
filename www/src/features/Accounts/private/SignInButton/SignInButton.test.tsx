@@ -12,3 +12,4 @@
 //     expect(getByText('Sign In')).toBeTruthy();
 //   });
 // });
+export const test = 1;

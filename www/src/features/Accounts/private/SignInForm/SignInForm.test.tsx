@@ -23,3 +23,4 @@
 //     password: 'password123',
 //   });
 // });
+export const test = 1;

@@ -9,3 +9,4 @@
 //     <span>Sign Out</span>
 //   </Button>
 // );
+export const test = 1;

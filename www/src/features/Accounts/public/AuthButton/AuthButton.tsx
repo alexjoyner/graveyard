@@ -38,3 +38,4 @@
 // })(TAuthButton as any);
 
 // export { AuthButton };
+export const test = 1;

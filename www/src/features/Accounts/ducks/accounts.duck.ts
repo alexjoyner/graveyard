@@ -57,3 +57,4 @@
 //   localStorage.removeItem('token');
 //   location.reload(); //eslint-disable-line
 // }
+export const test = 1;

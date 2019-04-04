@@ -60,3 +60,4 @@
 //     </Card>
 //   );
 // };
+export const test = 1;

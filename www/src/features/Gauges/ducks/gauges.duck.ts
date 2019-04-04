@@ -77,3 +77,4 @@
 //   type: MULTISELECT_DESELECT_POINT,
 //   data: { id },
 // });
+export const test = 1;

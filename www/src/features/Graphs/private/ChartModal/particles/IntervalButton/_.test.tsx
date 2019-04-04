@@ -21,3 +21,4 @@
 //     expect(props.onClick).toHaveBeenCalledWith({});
 //   });
 // });
+export const test = 1;

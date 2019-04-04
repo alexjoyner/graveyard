@@ -22,3 +22,4 @@
 //     expect(component.contains('Test Sensor')).toBe(true);
 //   });
 // });
+export const test = 1;
