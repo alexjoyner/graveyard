@@ -75,3 +75,19 @@
 // const Header = connect(mapStateToProps)(THeader);
 
 // export { Header };
+import React from 'react';
+import { Header as RoHeader } from 'ro-component-library';
+
+const logoStyles = {
+	marginLeft: '10px',
+	fontSize: '1.5em'
+};
+export const Header = () => {
+	return (
+		<>
+			<RoHeader color='dark'>
+				<h1 style={logoStyles}>OEE-Master</h1>
+			</RoHeader>
+		</>
+	);
+};

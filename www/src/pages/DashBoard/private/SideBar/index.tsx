@@ -24,3 +24,4 @@
 // };
 
 // export { SideBar };
+export { SideBar } from './SideBar';

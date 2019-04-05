@@ -9,4 +9,8 @@
 //   username: string,
 //   password: string,
 // }
-export const test = 1;
+import { Component } from '../../../app/';
+
+export type AccountsFeatureInterface = {
+	AuthButton: Component;
+};

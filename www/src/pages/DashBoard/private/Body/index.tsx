@@ -34,3 +34,4 @@
 // };
 
 // export { TDashBody };
+export { Body } from './Body';
