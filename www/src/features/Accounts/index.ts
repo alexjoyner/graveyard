@@ -1,3 +1,4 @@
+import { AccountsFeature } from './Accounts';
 // import { reducer } from './ducks/accounts.duck';
 // import { AuthButton } from './public/AuthButton/AuthButton';
 
@@ -7,4 +8,4 @@
 // }
 
 // export { Accounts }
-export const test = 1;
+export { AccountsFeature } 

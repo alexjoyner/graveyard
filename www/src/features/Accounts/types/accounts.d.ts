@@ -1,16 +1,15 @@
-// import { Component } from "react";
+import { FC } from "react";
 
-// export interface AccountsInterface {
-//   SignInButton: () => JSX.Element,
-//   SignOutButton: () => JSX.Element,
-// }
+export interface AccountsInterface {
+	SignInButton: FC,
+	SignOutButton: FC,
+}
 
-// export interface Credentials {
-//   username: string,
-//   password: string,
-// }
-import { Component } from '../../../app/';
+export interface Credentials {
+	username: string,
+	password: string,
+}
 
 export type AccountsFeatureInterface = {
-	AuthButton: Component;
+	AuthButton: FC<{ trySignIn: (creds: Credentials) => void }>;
 };

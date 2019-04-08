@@ -10,11 +10,6 @@
 // import { SignOutButton } from '../../molecules/SignOutButton';
 // import { FeedbackButton } from '../../features/Feedback';
 
-// const ToggleBtn = props => (
-//   <Button color="primary" size="small" {...props}>
-//     <GoThreeBars />
-//   </Button>
-// );
 
 // const logoStyles = {
 //   marginLeft: '10px',
@@ -75,18 +70,40 @@
 // const Header = connect(mapStateToProps)(THeader);
 
 // export { Header };
-import React from 'react';
-import { Header as RoHeader } from 'ro-component-library';
+import React, { useContext } from 'react';
+import { Header as RoHeader, sideBarActions } from 'ro-component-library';
+import { DashFeaturesContext } from '../../DashBoard';
+import { Block } from 'ro-component-library/Block';
+import { GoThreeBars } from 'react-icons/go';
+import { Button } from 'ro-component-library/Button';
+import { useWindowSize } from '../../../../shared/effects/useWindowSize';
+
+const ToggleBtn = () => (
+	<Button color="primary" size="small" model="classic" onClick={() => sideBarActions().toggle()} >
+		<GoThreeBars />
+	</Button>
+);
 
 const logoStyles = {
 	marginLeft: '10px',
 	fontSize: '1.5em'
 };
 export const Header = () => {
+	const { width } = useWindowSize();
+	const { Accounts } = useContext(DashFeaturesContext);
+	const { AuthButton } = Accounts;
 	return (
 		<>
 			<RoHeader color='dark'>
-				<h1 style={logoStyles}>OEE-Master</h1>
+				{(width > 800) ? null : <ToggleBtn />}
+				<Block
+					style={{
+						position: 'absolute',
+						right: '10px',
+					}}
+				>
+					<AuthButton trySignIn={creds => console.log('Cred:P ', creds)} />
+				</Block>
 			</RoHeader>
 		</>
 	);

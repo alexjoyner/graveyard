@@ -1,23 +1,19 @@
 import { ReactNode, FC } from 'react';
+import { AccountsFeatureInterface } from '../../../features/Accounts/types/accounts';
 
 // DashBoard App Specific
 // Type Declarations
 export type ExtendableFeatures = 'Accounts' | 'Feedback';
-export type Component = FC<any>;
-export type HeaderFeatureInterface = Component;
-export type SideBarFeatureInterface = Component;
-export type BodyFeatureInterface = Component;
-export type AccountsFeatureInterface = {
-	SignInButton: Component;
-	SignOutButton: Component;
-};
+export type HeaderFeatureInterface = FC<any>;
+export type SideBarFeatureInterface = FC<any>;
+export type BodyFeatureInterface = FC<any>;
 export type FeedbackFeatureInterface = {
-	FeedbackButton: Component;
+	FeedbackButton: FC<any>;
 };
 export interface DashFeatures {
 	Header: HeaderFeatureInterface;
 	SideBar: SideBarFeatureInterface;
 	Body: BodyFeatureInterface;
-	Accounts?: AccountsFeatureInterface;
+	Accounts: AccountsFeatureInterface;
 	Feedback?: FeedbackFeatureInterface;
 }
