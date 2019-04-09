@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { HeaderSideBarPageBody } from 'ro-component-library';
-import { NoComp } from '../../../../shared/components/NoComp';
+import { NullComp } from '../../../../shared/components/NullComp';
 
 const Body = () => {
 	const [points, setPoints] = useState({});
 	return (
 		<HeaderSideBarPageBody>
-			<NoComp />
+			<NullComp />
 		</HeaderSideBarPageBody>
 	);
 };

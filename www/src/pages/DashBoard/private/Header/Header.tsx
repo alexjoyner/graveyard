@@ -10,7 +10,6 @@
 // import { SignOutButton } from '../../molecules/SignOutButton';
 // import { FeedbackButton } from '../../features/Feedback';
 
-
 // const logoStyles = {
 //   marginLeft: '10px',
 //   fontSize: '1.5em',
@@ -79,7 +78,12 @@ import { Button } from 'ro-component-library/Button';
 import { useWindowSize } from '../../../../shared/effects/useWindowSize';
 
 const ToggleBtn = () => (
-	<Button color="primary" size="small" model="classic" onClick={() => sideBarActions().toggle()} >
+	<Button
+		color='primary'
+		size='small'
+		model='classic'
+		onClick={() => sideBarActions().toggle()}
+	>
 		<GoThreeBars />
 	</Button>
 );
@@ -91,18 +95,20 @@ const logoStyles = {
 export const Header = () => {
 	const { width } = useWindowSize();
 	const { Accounts } = useContext(DashFeaturesContext);
-	const { AuthButton } = Accounts;
+	const { AuthButton, AccountInfo } = Accounts;
+	const { UserName } = AccountInfo;
 	return (
 		<>
 			<RoHeader color='dark'>
-				{(width > 800) ? null : <ToggleBtn />}
+				{width > 800 ? null : <ToggleBtn />}
+				<UserName />
 				<Block
 					style={{
 						position: 'absolute',
-						right: '10px',
+						right: '10px'
 					}}
 				>
-					<AuthButton trySignIn={creds => console.log('Cred:P ', creds)} />
+					<AuthButton />
 				</Block>
 			</RoHeader>
 		</>

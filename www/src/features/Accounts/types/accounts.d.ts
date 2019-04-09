@@ -1,15 +1,19 @@
-import { FC } from "react";
+import { FC, ReactNode } from 'react';
+import { ConnectedComponentClass } from 'react-redux';
 
 export interface AccountsInterface {
-	SignInButton: FC,
-	SignOutButton: FC,
+	SignInButton: FC;
+	SignOutButton: FC;
 }
 
 export interface Credentials {
-	username: string,
-	password: string,
+	username: string;
+	password: string;
 }
 
 export type AccountsFeatureInterface = {
-	AuthButton: FC<{ trySignIn: (creds: Credentials) => void }>;
+	AuthButton: ConnectedComponentClass<any, {}> | FC;
+	AccountInfo: {
+		UserName: FC;
+	};
 };

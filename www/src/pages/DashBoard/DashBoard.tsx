@@ -5,18 +5,20 @@ import { Header } from './private/Header';
 import { SideBar } from './private/SideBar';
 import { Body } from './private/Body';
 import { AppFeature } from '../../app/utils/AppFeature';
-import { NoComp } from '../../shared/components/NoComp';
+import { NullComp, NullRenderProps } from '../../shared/components/NullComp';
 
 const DefaultFeatures: DashFeatures = {
 	Header: Header,
 	Body: Body,
 	SideBar: SideBar,
 	Accounts: {
-		AuthButton: NoComp
+		AuthButton: NullComp,
+		AccountInfo: {
+			UserName: NullComp
+		}
 	}
-}
+};
 export const DashFeaturesContext = createContext(DefaultFeatures);
-
 
 //  Abstract Feature Class
 export abstract class DashFeature extends AppFeature {
@@ -30,14 +32,13 @@ export abstract class DashFeature extends AppFeature {
 	}
 }
 
-
 //  Base DashBoard
 class DashBoard implements App {
 	private features: DashFeatures = DefaultFeatures;
 	getFeatures(): DashFeatures {
 		return this.features;
 	}
-	addFeature<App>(Feature: { new(...args: any[]): App }): App {
+	addFeature<App>(Feature: { new (...args: any[]): App }): App {
 		return new Feature(this);
 	}
 	Run() {

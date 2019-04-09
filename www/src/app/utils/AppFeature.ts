@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 
 export abstract class AppFeature implements App {
 	protected abstract features: GenericFeatures;
-	private decoratedApp: App;
+	protected decoratedApp: App;
 	constructor(decoratedApp: App) {
 		this.decoratedApp = decoratedApp;
 	}

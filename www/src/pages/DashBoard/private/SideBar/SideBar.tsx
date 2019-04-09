@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { SideBar as RoSideBar, colors } from 'ro-component-library';
 import { useWindowSize } from '../../../../shared/effects/useWindowSize';
-import { NoComp } from '../../../../shared/components/NoComp';
+import { NullComp } from '../../../../shared/components/NullComp';
 
 const SideBar = ({ children }: { children: ReactNode }) => {
 	const { width } = useWindowSize();
@@ -14,7 +14,7 @@ const SideBar = ({ children }: { children: ReactNode }) => {
 	};
 	return (
 		<RoSideBar
-			sidebar={<NoComp />}
+			sidebar={<NullComp />}
 			docked={width > 800}
 			styles={sidebarStyles}
 		>
