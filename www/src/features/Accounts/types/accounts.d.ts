@@ -13,7 +13,4 @@ export interface Credentials {
 
 export type AccountsFeatureInterface = {
 	AuthButton: ConnectedComponentClass<any, {}> | FC;
-	AccountInfo: {
-		UserName: FC;
-	};
 };

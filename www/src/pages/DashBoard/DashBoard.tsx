@@ -15,9 +15,6 @@ const DefaultFeatures: DashFeatures = {
 	SideBar: SideBar,
 	Accounts: {
 		AuthButton: NullComp,
-		AccountInfo: {
-			UserName: NullComp
-		}
 	}
 };
 export const DashFeaturesContext = createContext(DefaultFeatures);
