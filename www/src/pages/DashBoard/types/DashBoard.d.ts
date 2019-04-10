@@ -1,3 +1,4 @@
+import { GaugesFeatureInterface } from './../../../features/Gauges/gauges';
 import { TutorialFeatureInterface } from './../../../features/Tutorial/tutorial';
 import { ReactNode, FC } from 'react';
 import { AccountsFeatureInterface } from '../../../features/Accounts/types/accounts';
@@ -19,6 +20,7 @@ export interface DashFeatures {
 	Accounts: AccountsFeatureInterface;
 	Feedback: FeedbackFeatureInterface;
 	Tutorial: TutorialFeatureInterface;
+	Gauges: GaugesFeatureInterface;
 }
 
 export interface DashReducers extends ReducersObject { }

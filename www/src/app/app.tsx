@@ -5,6 +5,7 @@ import { DashBoard } from '../pages/DashBoard';
 import { AccountsFeature } from '../features/Accounts';
 import { FeedbackFeature } from '../features/Feedback';
 import { TutorialFeature } from '../features/Tutorial/tutorial';
+import { GaugesFeature } from '../features/Gauges/gauges';
 const toastOverrides = {
 	Root: {
 		style: {
@@ -17,6 +18,7 @@ let MyDash = BaseDash.addFeatures([
 	AccountsFeature,
 	FeedbackFeature,
 	TutorialFeature,
+	GaugesFeature,
 ]);
 let Root = MyDash.Run({});
 export const App = () => (

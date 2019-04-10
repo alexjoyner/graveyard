@@ -21,6 +21,9 @@ const DefaultFeatures: DashFeatures = {
 	},
 	Tutorial: {
 		TutorialButton: NullComp,
+	},
+	Gauges: {
+		GaugeBlock: NullComp,
 	}
 };
 const DefaultState: Object = {

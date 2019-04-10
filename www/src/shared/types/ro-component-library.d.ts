@@ -4,3 +4,6 @@ declare module "ro-component-library/Themes";
 declare module "ro-component-library/Toast";
 declare module "ro-component-library/Go";
 declare module "ro-component-library/Popover";
+declare module "ro-component-library/utils/styled";
+declare module "ro-component-library/Panel";
+declare module "ro-component-library/Gauge";
