@@ -98,9 +98,10 @@ const logoStyles = {
 };
 export const Header = () => {
 	const { width } = useWindowSize();
-	const { Accounts } = useContext(FeaturesContext);
-	const [state, dispatch] = useContext(StoreContext);
-	const { AuthButton, AccountInfo } = Accounts;
+	const { Accounts, Feedback } = useContext(FeaturesContext);
+	const [state] = useContext(StoreContext);
+	const { AuthButton } = Accounts;
+	const { FeedbackButton } = Feedback;
 	const { username } = state.Accounts.user;
 	return (
 		<>
@@ -113,6 +114,7 @@ export const Header = () => {
 						right: '10px'
 					}}
 				>
+					<FeedbackButton />
 					<AuthButton />
 				</Block>
 			</RoHeader>

@@ -1,3 +1,2 @@
-// import { FeedbackButton } from './feedback';
-// export { FeedbackButton }
-export const test = 1;
+import { FeedbackFeature } from './feedback';
+export { FeedbackFeature };

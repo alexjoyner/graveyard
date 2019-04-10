@@ -3,6 +3,7 @@ import { PLACEMENT } from 'baseui/toast';
 import { Toast } from 'ro-component-library/Toast';
 import { DashBoard } from '../pages/DashBoard';
 import { AccountsFeature } from '../features/Accounts';
+import { FeedbackFeature } from '../features/Feedback';
 const toastOverrides = {
 	Root: {
 		style: {
@@ -12,7 +13,8 @@ const toastOverrides = {
 };
 let BaseDash = new DashBoard();
 let MyDash = BaseDash.addFeatures([
-	AccountsFeature
+	AccountsFeature,
+	FeedbackFeature
 ]);
 let Root = MyDash.Run({});
 export const App = () => (

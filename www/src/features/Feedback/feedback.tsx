@@ -1,20 +1,19 @@
-// import React from 'react';
-// import { Button } from 'ro-component-library/Button';
-// import { Go } from 'ro-component-library/Go';
+import { AppFeature } from '../../shared/AppBuilder/AppFeature';
+import { DashFeatures } from '../../pages/DashBoard/types/DashBoard';
+import { DashBoard } from '../../pages/DashBoard';
+import { FC } from 'react';
+import { FeedbackButton } from './public/FeedbackButton/FeedbackButton';
 
-// const FeedbackButton = () => (
-//   <Go
-//     to="http://feedback.voicir.com"
-//   >
-//     <Button
-//       model="classic"
-//       color="primary"
-//       size="small"
-//     >
-//       <span>Feedback</span>
-//     </Button>
-//   </Go>
-// );
+export type FeedbackFeatureInterface = {
+  FeedbackButton: FC;
+};
 
-// export { FeedbackButton };
-export const test = 1;
+export class FeedbackFeature extends AppFeature<DashFeatures> {
+  constructor(App: DashBoard) {
+    super(App);
+    const Feature: FeedbackFeatureInterface = {
+      FeedbackButton
+    };
+    this.setFeatureSettings('Feedback', Feature);
+  }
+}
