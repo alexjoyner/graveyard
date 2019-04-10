@@ -6,6 +6,8 @@ import { Dispatch, Reducer, Action } from 'redux';
 
 export const SIGN_IN = 'SIGN_IN';
 export const SIGN_OUT = 'SIGN_OUT';
+export const OPEN_SIGN_IN_MODAL = 'OPEN_SIGN_IN_MODAL';
+export const CLOSE_SIGN_IN_MODAL = 'CLOSE_SIGN_IN_MODAL';
 
 const DEFAULT_USER = {
 	id: 0,
@@ -14,6 +16,9 @@ const DEFAULT_USER = {
 const user = localStorage.getItem('user');
 export const INITIAL_STATE = {
 	user: user ? JSON.parse(user) : DEFAULT_USER,
+	signInModal: {
+		isOpen: false,
+	},
 	token: localStorage.getItem('token') || null
 };
 
@@ -24,10 +29,24 @@ export const reducer: Reducer = (state = INITIAL_STATE, action) => {
 	switch (action.type) {
 		case SIGN_IN:
 			return { ...state, user: action.data.user, token: action.data.token };
+		case SIGN_OUT:
+			return { ...state, user: DEFAULT_USER, token: null };
+		case OPEN_SIGN_IN_MODAL:
+			return { ...state, signInModal: { isOpen: true } };
+		case CLOSE_SIGN_IN_MODAL:
+			return { ...state, signInModal: { isOpen: false } };
 		default:
 			return state;
 	}
 };
+
+export const openSignInModalAction = {
+	type: OPEN_SIGN_IN_MODAL
+}
+
+export const closeSignInModalAction = {
+	type: CLOSE_SIGN_IN_MODAL
+}
 
 export const trySignIn = (credentials: Credentials) => {
 	return async (dispatch: Dispatch) => {
@@ -44,10 +63,12 @@ export const trySignIn = (credentials: Credentials) => {
 			}
 			localStorage.setItem('user', JSON.stringify(user));
 			localStorage.setItem('token', token);
-			return dispatch({
+			dispatch({
 				type: SIGN_IN,
 				data: response.data
 			});
+			dispatch(closeSignInModalAction);
+			return null;
 		} catch (err) {
 			toaster().negative(err.response.data.error.message, {
 				autoHideDuration: 5000
@@ -59,5 +80,7 @@ export const trySignIn = (credentials: Credentials) => {
 export const signOut = () => {
 	localStorage.removeItem('user');
 	localStorage.removeItem('token');
-	location.reload(); //eslint-disable-line
+	return (dispatch: Dispatch) => {
+		dispatch({ type: SIGN_OUT })
+	}
 };
