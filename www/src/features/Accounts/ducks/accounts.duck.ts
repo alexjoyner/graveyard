@@ -27,6 +27,8 @@ export const INITIAL_STATE = {
 //   user data
 export const reducer: Reducer = (state = INITIAL_STATE, action) => {
 	switch (action.type) {
+		case '__INIT__':
+			return INITIAL_STATE;
 		case SIGN_IN:
 			return { ...state, user: action.data.user, token: action.data.token };
 		case SIGN_OUT:

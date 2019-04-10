@@ -24,14 +24,17 @@ export abstract class BasicApp<F = GenericFeatures> implements App<F> {
 	private features: F;
 	private reducers: ReducersMapObject<any, AnyAction>;
 	private rootContent: ReactNode;
+	private defaultState: Object;
 	constructor(
 		features: F,
 		reducers: ReducersMapObject<any, AnyAction>,
-		rootContent: ReactNode
+		rootContent: ReactNode,
+		defaultState?: Object
 	) {
 		this.features = features;
 		this.reducers = reducers;
 		this.rootContent = rootContent;
+		this.defaultState = defaultState || {};
 	}
 	getFeatures(): F {
 		return this.features;
@@ -52,13 +55,15 @@ export abstract class BasicApp<F = GenericFeatures> implements App<F> {
 		reducers,
 		features,
 		rootContent,
+		defaultState,
 	}: {
 		reducers: ReducersMapObject<any, AnyAction>,
 		features: F,
 		rootContent: ReactNode,
+		defaultState: Object
 	}) {
 		const rootReducer = combineReducers(reducers);
-		const initialState = rootReducer({}, { type: '__INIT__' });
+		const initialState = rootReducer(defaultState, { type: '__INIT__' });
 		const store = useReducer(rootReducer, initialState);
 		return (
 			<StoreContext.Provider value={store} >
@@ -78,6 +83,7 @@ export abstract class BasicApp<F = GenericFeatures> implements App<F> {
 		return <this.Build
 			reducers={reducers || this.getReducers()}
 			features={features || this.getFeatures()}
-			rootContent={this.rootContent} />
+			rootContent={this.rootContent}
+			defaultState={this.defaultState} />
 	}
 }

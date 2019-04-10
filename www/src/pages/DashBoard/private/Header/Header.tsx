@@ -98,10 +98,11 @@ const logoStyles = {
 };
 export const Header = () => {
 	const { width } = useWindowSize();
-	const { Accounts, Feedback } = useContext(FeaturesContext);
+	const { Accounts, Feedback, Tutorial } = useContext(FeaturesContext);
 	const [state] = useContext(StoreContext);
 	const { AuthButton } = Accounts;
 	const { FeedbackButton } = Feedback;
+	const { TutorialButton } = Tutorial;
 	const { username } = state.Accounts.user;
 	return (
 		<>
@@ -114,6 +115,7 @@ export const Header = () => {
 						right: '10px'
 					}}
 				>
+					<TutorialButton />
 					<FeedbackButton />
 					<AuthButton />
 				</Block>

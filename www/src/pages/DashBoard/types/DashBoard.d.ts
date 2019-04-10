@@ -1,3 +1,4 @@
+import { TutorialFeatureInterface } from './../../../features/Tutorial/tutorial';
 import { ReactNode, FC } from 'react';
 import { AccountsFeatureInterface } from '../../../features/Accounts/types/accounts';
 import { Reducer } from 'redux';
@@ -17,6 +18,7 @@ export interface DashFeatures {
 	Body: BodyFeatureInterface;
 	Accounts: AccountsFeatureInterface;
 	Feedback: FeedbackFeatureInterface;
+	Tutorial: TutorialFeatureInterface;
 }
 
 export interface DashReducers extends ReducersObject { }

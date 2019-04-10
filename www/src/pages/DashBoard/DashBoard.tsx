@@ -17,9 +17,20 @@ const DefaultFeatures: DashFeatures = {
 		AuthButton: NullComp,
 	},
 	Feedback: {
-		FeedbackButton: NullComp
+		FeedbackButton: NullComp,
+	},
+	Tutorial: {
+		TutorialButton: NullComp,
 	}
 };
+const DefaultState: Object = {
+	Accounts: {
+		user: {
+			id: null,
+			username: ''
+		}
+	}
+}
 export const DashFeaturesContext = createContext(DefaultFeatures);
 
 //  Base DashBoard
@@ -32,7 +43,7 @@ class DashBoard extends BasicApp<DashFeatures> {
 					<Body />
 				</SideBar>
 			</>
-		));
+		), DefaultState);
 	}
 }
 
