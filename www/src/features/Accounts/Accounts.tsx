@@ -1,12 +1,13 @@
-import React from 'react';
-1;
 import { AccountsFeatureInterface } from './types/accounts';
-import { DashFeature, DashBoard } from '../../pages/DashBoard/DashBoard';
+import { DashBoard } from '../../pages/DashBoard/DashBoard';
 import { AuthButton } from './public/AuthButton/AuthButton';
 import { UserName } from './public/AccountInfo/UserName';
+import { AppFeature } from '../../shared/AppBuilder/AppFeature';
+import { DashFeatures } from '../../pages/DashBoard/types/DashBoard';
+import { reducer } from './ducks/accounts.duck';
 
 // Exported From Feedback Feature Folder
-export class AccountsFeature extends DashFeature {
+export class AccountsFeature extends AppFeature<DashFeatures> {
 	constructor(App: DashBoard) {
 		super(App);
 		const Feature: AccountsFeatureInterface = {
@@ -15,6 +16,9 @@ export class AccountsFeature extends DashFeature {
 				UserName
 			}
 		};
-		this.setFeature('Accounts', Feature);
+		this.setFeatureSettings('Accounts', Feature);
+		this.setReducerSettings({
+			Accounts: reducer
+		});
 	}
 }

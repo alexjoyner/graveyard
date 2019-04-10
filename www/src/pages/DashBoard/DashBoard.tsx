@@ -1,11 +1,13 @@
 import React, { useContext, createContext } from 'react';
-import { App } from '../../app/types/app';
-import { DashFeatures, ExtendableFeatures } from './types/DashBoard';
+import { App, BasicApp } from '../../shared/AppBuilder/App';
+import { DashFeatures, ExtendableFeatures, DashReducers } from './types/DashBoard';
 import { Header } from './private/Header';
 import { SideBar } from './private/SideBar';
 import { Body } from './private/Body';
-import { AppFeature } from '../../app/utils/AppFeature';
-import { NullComp, NullRenderProps } from '../../shared/components/NullComp';
+import { AppFeature } from '../../shared/AppBuilder/AppFeature';
+import { NullComp } from '../../shared/components/NullComp';
+import { Reducer } from 'redux';
+import { ReducersObject } from '../../shared/AppBuilder/types';
 
 const DefaultFeatures: DashFeatures = {
 	Header: Header,
@@ -20,37 +22,17 @@ const DefaultFeatures: DashFeatures = {
 };
 export const DashFeaturesContext = createContext(DefaultFeatures);
 
-//  Abstract Feature Class
-export abstract class DashFeature extends AppFeature {
-	protected features: DashFeatures;
-	constructor(decoratedApp: DashBoard) {
-		super(decoratedApp);
-		this.features = decoratedApp.getFeatures();
-	}
-	protected setFeature(feature: ExtendableFeatures, settings: any): void {
-		this.features[feature] = settings;
-	}
-}
-
 //  Base DashBoard
-class DashBoard implements App {
-	private features: DashFeatures = DefaultFeatures;
-	getFeatures(): DashFeatures {
-		return this.features;
-	}
-	addFeature<App>(Feature: { new (...args: any[]): App }): App {
-		return new Feature(this);
-	}
-	Run() {
-		const { Header, SideBar, Body } = useContext(DashFeaturesContext);
-		return (
+class DashBoard extends BasicApp<DashFeatures> {
+	constructor() {
+		super(DefaultFeatures, {}, (
 			<>
 				<SideBar>
 					<Header />
 					<Body />
 				</SideBar>
 			</>
-		);
+		));
 	}
 }
 

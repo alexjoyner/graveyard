@@ -76,6 +76,10 @@ import { Block } from 'ro-component-library/Block';
 import { GoThreeBars } from 'react-icons/go';
 import { Button } from 'ro-component-library/Button';
 import { useWindowSize } from '../../../../shared/effects/useWindowSize';
+import { FeaturesContext } from '../../../../shared/AppBuilder/featuresContext';
+import { DashFeatures } from '../../types/DashBoard';
+import { AccountsFeatureInterface } from '../../../../features/Accounts/types/accounts';
+import { StoreContext } from '../../../../shared/AppBuilder/storeContext';
 
 const ToggleBtn = () => (
 	<Button
@@ -94,14 +98,15 @@ const logoStyles = {
 };
 export const Header = () => {
 	const { width } = useWindowSize();
-	const { Accounts } = useContext(DashFeaturesContext);
+	const { Accounts } = useContext(FeaturesContext);
+	const [state, dispatch] = useContext(StoreContext);
 	const { AuthButton, AccountInfo } = Accounts;
-	const { UserName } = AccountInfo;
+	const { username } = state.Accounts.user;
 	return (
 		<>
 			<RoHeader color='dark'>
 				{width > 800 ? null : <ToggleBtn />}
-				<UserName />
+				<h1>{username}</h1>
 				<Block
 					style={{
 						position: 'absolute',

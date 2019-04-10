@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { connect } from 'react-redux';
 import {
 	Modal,
@@ -10,14 +10,16 @@ import { ModalStateContainer } from '../../../../shared/utils/ModalStateContaine
 import { SignInButton } from '../../private/SignInButton/SignInButton';
 import { SignInForm } from '../../private/SignInForm/SignInForm';
 import { Credentials } from '../../types/accounts';
-import { trySignIn as trySignInAction } from '../../ducks/accounts.duck';
+import { trySignIn } from '../../ducks/accounts.duck';
+import { StoreContext } from '../../../../shared/AppBuilder/storeContext';
 // import { Action } from '../../../../shared/types';
 
-const TAuthButton = ({
-	trySignIn
-}: {
-	trySignIn: (creds: Credentials) => void;
-}) => {
+const AuthButton = () => {
+	const [state, dispatch] = useContext(StoreContext);
+	const handleSubmit = (creds: Credentials) => {
+		trySignIn(creds)(dispatch);
+	}
+
 	return (
 		<ModalStateContainer>
 			{({ open, close, isOpen }) => (
@@ -26,7 +28,7 @@ const TAuthButton = ({
 					<Modal onClose={close} isOpen={isOpen}>
 						<ModalHeader>Welcome!</ModalHeader>
 						<ModalBody>
-							<SignInForm onSubmit={trySignIn} />
+							<SignInForm onSubmit={handleSubmit} />
 						</ModalBody>
 						<ModalFooter>
 							<br />
@@ -37,12 +39,5 @@ const TAuthButton = ({
 		</ModalStateContainer>
 	);
 };
-
-const AuthButton = connect(
-	null,
-	{
-		trySignIn: trySignInAction
-	}
-)(TAuthButton as any);
 
 export { AuthButton };
