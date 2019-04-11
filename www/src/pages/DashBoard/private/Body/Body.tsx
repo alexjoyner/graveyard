@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { HeaderSideBarPageBody } from 'ro-component-library';
+import { CenteredContent } from 'ro-component-library/CenteredContent';
 import { NullComp } from '../../../../shared/components/NullComp';
 import { FeaturesContext } from '../../../../shared/AppBuilder/featuresContext';
 import { PointsObject } from '../../../../shared/types/oee-master/points';
@@ -14,7 +15,7 @@ const Body = () => {
 	const renderPointBlocks = (points: PointsObject) => {
 		const pointsIDs = Object.keys(points);
 		return (
-			<>
+			<CenteredContent>
 				{(pointsIDs.length === 0) ? (
 					<NoPointsBanner />
 				) : (
@@ -35,7 +36,7 @@ const Body = () => {
 							})}
 						</>
 					)}
-			</>
+			</CenteredContent>
 		)
 	};
 	return (

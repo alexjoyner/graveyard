@@ -107,7 +107,7 @@ export const Header = () => {
 		<>
 			<RoHeader color='dark'>
 				{width > 800 ? null : <ToggleBtn />}
-				<h1>{username}</h1>
+				<h1 style={logoStyles}>{username}</h1>
 				<Block
 					style={{
 						position: 'absolute',
