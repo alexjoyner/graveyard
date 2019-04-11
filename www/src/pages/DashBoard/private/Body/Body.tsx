@@ -6,12 +6,15 @@ import { FeaturesContext } from '../../../../shared/AppBuilder/featuresContext';
 import { PointsObject } from '../../../../shared/types/oee-master/points';
 import { SocketContext } from '../../DashBoard';
 import { Log } from '../../../../shared/types/oee-master/logs';
+import { StoreContext } from '../../../../shared/AppBuilder/storeContext';
+import { selectPoint } from '../../../../features/Points/ducks/points.duck';
 
 const Body = () => {
 	const socket = useContext(SocketContext);
 	const { Gauges, Points } = useContext(FeaturesContext);
+	const [state, dispatch] = useContext(StoreContext);
 	const { GaugeBlock } = Gauges;
-	const { NoPointsBanner, PointsInfo, LivePointData } = Points;
+	const { NoPointsBanner, PointsInfo, LivePointData, SelectedPointsToolbox } = Points;
 	const renderPointBlocks = (points: PointsObject) => {
 		const pointsIDs = Object.keys(points);
 		return (
@@ -28,7 +31,7 @@ const Body = () => {
 												value={lastLog.log.value}
 												name={points[id].name}
 												settings={points[id].settings}
-												onChartClick={() => console.log('CLICK! ', points[id].name)}
+												onChartClick={() => dispatch(selectPoint(points[id]))}
 											/>
 										)}
 									</LivePointData>
@@ -36,6 +39,7 @@ const Body = () => {
 							})}
 						</>
 					)}
+				<SelectedPointsToolbox selectedPoints={state.points.selectedPoints} />
 			</CenteredContent>
 		)
 	};

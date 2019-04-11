@@ -31,6 +31,7 @@ const DefaultFeatures: DashFeatures = {
 		NoPointsBanner: NullComp,
 		PointsInfo: NullComp,
 		LivePointData: NullComp,
+		SelectedPointsToolbox: NullComp,
 	}
 };
 const DefaultState: Object = {

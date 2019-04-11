@@ -8,3 +8,5 @@ declare module "ro-component-library/utils/styled";
 declare module "ro-component-library/Panel";
 declare module "ro-component-library/Gauge";
 declare module "ro-component-library/CenteredContent";
+declare module "ro-component-library/ListItem";
+declare module "ro-component-library/ListHeader";
