@@ -24,6 +24,10 @@ const DefaultFeatures: DashFeatures = {
 	},
 	Gauges: {
 		GaugeBlock: NullComp,
+	},
+	Points: {
+		NoPointsBanner: NullComp,
+		PointsInfo: NullComp
 	}
 };
 const DefaultState: Object = {

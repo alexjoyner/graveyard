@@ -50,7 +50,6 @@ const GaugeBlock: FC<GaugeBlockProps> = ({ value, name, onChartClick }) => {
   return (
     <Panel onClick={onChartClick} width="20%">
       <GaugeBlockToolbar>
-
       </GaugeBlockToolbar>
       <Gauge
         value={value}
@@ -59,7 +58,6 @@ const GaugeBlock: FC<GaugeBlockProps> = ({ value, name, onChartClick }) => {
         {name}
       </GaugeBlockLabel>
       <StatusLabel>
-        <span>live data</span>
       </StatusLabel>
     </Panel>
   );
