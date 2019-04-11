@@ -71,7 +71,6 @@
 // export { Header };
 import React, { useContext } from 'react';
 import { Header as RoHeader, sideBarActions } from 'ro-component-library';
-import { DashFeaturesContext } from '../../DashBoard';
 import { Block } from 'ro-component-library/Block';
 import { GoThreeBars } from 'react-icons/go';
 import { Button } from 'ro-component-library/Button';
