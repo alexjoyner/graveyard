@@ -24,7 +24,7 @@ const SelectedPointsToolbox: FC<SelectedPointsToolboxProps> = ({ selectedPoints 
       minWidth: '320px',
     }}
     >
-      <ListHeader>Charts Selected:</ListHeader>
+      <ListHeader>Points Selected:</ListHeader>
       <CenteredContent>
         {points.map(pointID => (
           <ListItem className="selected-point" key={pointID}>

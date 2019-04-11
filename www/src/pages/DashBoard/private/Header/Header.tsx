@@ -115,7 +115,7 @@ export const Header = () => {
 					}}
 				>
 					<TutorialButton />
-					<FeedbackButton />
+					{(state.Accounts.token) && <FeedbackButton />}
 					<AuthButton />
 				</Block>
 			</RoHeader>
