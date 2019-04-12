@@ -29,7 +29,6 @@ const GraphModal: FC = () => {
   const { graphPoints } = state.Graphs;
 
   const onCloseGraph = () => {
-    console.log('Close Graph');
     setGraphStage('HIDDEN');
     dispatch(closeGraph());
   }

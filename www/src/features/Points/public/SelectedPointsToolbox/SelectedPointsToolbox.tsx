@@ -51,7 +51,7 @@ const SelectedPointsToolbox: FC<SelectedPointsToolboxProps> = ({ selectedPoints,
                 Tool.renderCondition
               ) : true;
               return (
-                <>
+                <React.Fragment key={`${Tool}`}>
                   {(shouldRender) ? (
                     <Button
                       key={Tool}
@@ -63,7 +63,7 @@ const SelectedPointsToolbox: FC<SelectedPointsToolboxProps> = ({ selectedPoints,
                       <Tool.Icon size={20} color={Tool.iconColor} />
                     </Button>
                   ) : null}
-                </>
+                </React.Fragment>
               )
             })}
           </ListItem>
@@ -73,17 +73,16 @@ const SelectedPointsToolbox: FC<SelectedPointsToolboxProps> = ({ selectedPoints,
             Tool.renderCondition
           ) : true;
           return (
-            <>
+            <React.Fragment key={`${Tool}`}>
               {(shouldRender) ? (
                 <ListItem
-                  key={Tool}
                   color={Tool.color}
                   onClick={Tool.onClick}
                 >
                   <span>{Tool.name}</span>
                 </ListItem>
               ) : null}
-            </>
+            </React.Fragment>
           )
         })}
       </CenteredContent>

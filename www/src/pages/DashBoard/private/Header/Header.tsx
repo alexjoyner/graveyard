@@ -104,7 +104,6 @@ export const Header = () => {
 	const { AuthButton } = Accounts;
 	const { FeedbackButton } = Feedback;
 	const { TutorialButton } = Tutorial;
-	console.log(state);
 	const { username } = state.Accounts.user;
 	return (
 		<>

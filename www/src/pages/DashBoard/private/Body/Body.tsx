@@ -1,8 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { HeaderSideBarPageBody } from 'ro-component-library';
 import { GoTrashcan } from 'react-icons/go';
 import { CenteredContent } from 'ro-component-library/CenteredContent';
-import { NullComp } from '../../../../shared/components/NullComp';
 import { FeaturesContext } from '../../../../shared/AppBuilder/featuresContext';
 import { PointsObject, PointID } from '../../../../shared/types/oee-master/points';
 import { SocketContext, DefaultState } from '../../DashBoard';
@@ -18,35 +17,39 @@ import { Card } from 'ro-component-library/Card';
 
 
 
-const renderGroupPoints = (points: PointsObject) => {
+const LivePointGauges = ({ points }: { points: PointsObject }) => {
 	const socket = useContext(SocketContext);
-	const { Gauges, Points, Graphs } = useContext(FeaturesContext);
+	const { Gauges, Points } = useContext(FeaturesContext);
 	const [state, dispatch] = useContext(StoreContext);
-	const { Features } = state;
 	const { GaugeBlock } = Gauges;
-	const { NoPointsBanner, LivePointData, SelectedPointsToolbox } = Points;
+	const { LivePointData } = Points;
 	const pointsIDs = Object.keys(points);
-	const LivePointGauges = () => (
+	return (
 		<>
 			{pointsIDs.map((id: string) => {
 				return (
-					<React.Fragment key={id}>
-						<LivePointData socket={socket} pointID={id}>
-							{(lastLog: Log) => (
+					<LivePointData key={id} socket={socket} pointID={id}>
+						{(lastLog: Log) => {
+							return (
 								<GaugeBlock
 									value={lastLog.log.value}
 									name={points[id].name}
 									settings={points[id].settings}
 									onChartClick={() => dispatch(selectPoint(points[id]))}
 								/>
-							)}
-						</LivePointData>
-					</React.Fragment>
+							)
+						}}
+					</LivePointData>
 				)
 			})}
 		</>
-	);
-	const StaticPointsList = () => (
+	)
+};
+
+const StaticPointsList = ({ points }: { points: PointsObject }) => {
+	const [dispatch] = useContext(StoreContext);
+	const pointsIDs = Object.keys(points);
+	return (
 		<>
 			<Block style={{ display: 'inline-block', width: '50%', marginTop: '30px' }}>
 				{pointsIDs.map((id: string) => {
@@ -58,7 +61,15 @@ const renderGroupPoints = (points: PointsObject) => {
 				})}
 			</Block>
 		</>
-	);
+	)
+};
+
+const renderGroupPoints = (points: PointsObject) => {
+	const { Points, Graphs } = useContext(FeaturesContext);
+	const [state, dispatch] = useContext(StoreContext);
+	const { Features } = state;
+	const { NoPointsBanner, SelectedPointsToolbox } = Points;
+	const pointsIDs = Object.keys(points);
 	return (
 		<>
 			{(pointsIDs.length === 0) ? (
@@ -66,11 +77,7 @@ const renderGroupPoints = (points: PointsObject) => {
 			) : (
 					<CenteredContent>
 						<ListHeader>Points</ListHeader>
-						{(Features.Gauges) ? (
-							<LivePointGauges />
-						) : (
-								<StaticPointsList />
-							)}
+						{(Features.Gauges) ? <LivePointGauges points={points} /> : <StaticPointsList points={points} />}
 					</CenteredContent>
 				)}
 			<SelectedPointsToolbox
@@ -96,7 +103,6 @@ const Body = () => {
 	const { PointsInfo } = Points;
 	const { GraphModal } = Graphs;
 	const { Groups: { currentGroup = 0 } } = state;
-	console.log('State: ', state);
 	return (
 		<HeaderSideBarPageBody>
 			<PointsInfo group={currentGroup}>

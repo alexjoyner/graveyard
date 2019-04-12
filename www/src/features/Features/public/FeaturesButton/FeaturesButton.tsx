@@ -12,8 +12,6 @@ const FeaturesButton: FC = () => {
     Features: state
   }
   const { Features } = formattedState;
-  console.log('Features: ', Features);
-  console.log('State: ', state);
   const setFeatureState = (name: string, enabled: boolean) => {
     dispatch({
       type: SET_FEATURE,

@@ -13,7 +13,6 @@ export const getPointsFromGroupID = async (groupID: number) => {
       : new Request(`${env.serverAddr}/me/points/group/${groupID}`, { headers });
     const response = await fetch(requestUrl);
     const pointsArray = await response.json();
-    console.log(pointsArray);
     const points: PointsObject = {};
     pointsArray.map((point: Point) => {
       points[point.id] = point;

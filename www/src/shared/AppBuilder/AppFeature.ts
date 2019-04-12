@@ -16,7 +16,6 @@ export abstract class AppFeature<F = GenericFeatures> implements App<F> {
 		this.features = { ...this.features, [feature]: settings };
 	}
 	protected setReducerSettings(reducers: ReducersMapObject<any, AnyAction>): void {
-		console.log(reducers);
 		this.reducers = { ...this.reducers, ...reducers };
 	};
 	getFeatures(): F {
