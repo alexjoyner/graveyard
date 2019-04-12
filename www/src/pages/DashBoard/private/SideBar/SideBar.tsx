@@ -1,10 +1,14 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useContext } from 'react';
 import { SideBar as RoSideBar, colors } from 'ro-component-library';
 import { useWindowSize } from '../../../../shared/effects/useWindowSize';
 import { NullComp } from '../../../../shared/components/NullComp';
+import { FeaturesContext } from '../../../../shared/AppBuilder/featuresContext';
+import { StoreContext } from '../../../../shared/AppBuilder/storeContext';
 
 const SideBar = ({ children }: { children: ReactNode }) => {
 	const { width } = useWindowSize();
+	const { Groups } = useContext(FeaturesContext);
+	const { GroupsMenu } = Groups;
 	const sidebarStyles = {
 		sidebar: {
 			background: colors.dark,
@@ -12,15 +16,17 @@ const SideBar = ({ children }: { children: ReactNode }) => {
 			top: '56px'
 		}
 	};
-	return (
-		<RoSideBar
-			sidebar={<NullComp />}
-			docked={width > 800}
-			styles={sidebarStyles}
-		>
-			{children}
-		</RoSideBar>
-	);
+	return (GroupsMenu({}) === null) ? (
+		<>{children}</>
+	) : (
+			<RoSideBar
+				sidebar={<GroupsMenu />}
+				docked={width > 800}
+				styles={sidebarStyles}
+			>
+				{children}
+			</RoSideBar>
+		);
 };
 
 export { SideBar };

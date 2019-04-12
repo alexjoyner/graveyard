@@ -63,10 +63,11 @@ export abstract class BasicApp<F = GenericFeatures> implements App<F> {
 		defaultState: Object
 	}) {
 		const rootReducer = combineReducers(reducers);
-		const initialState = rootReducer(defaultState, { type: '__INIT__' });
-		const store = useReducer(rootReducer, initialState);
+		const initialState = rootReducer({}, { type: '__INIT__' });
+		const [state, dispatch] = useReducer(rootReducer, initialState);
+		const finalState = { ...defaultState, ...state };
 		return (
-			<StoreContext.Provider value={store} >
+			<StoreContext.Provider value={[finalState, dispatch]} >
 				<FeaturesContext.Provider value={features}>
 					{rootContent}
 				</FeaturesContext.Provider>

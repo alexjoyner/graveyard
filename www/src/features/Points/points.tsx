@@ -27,7 +27,7 @@ export class PointsFeature extends AppFeature<DashFeatures>{
     }
     this.setFeatureSettings('Points', Features);
     this.setReducerSettings({
-      points: reducer
+      Points: reducer
     })
   }
 }

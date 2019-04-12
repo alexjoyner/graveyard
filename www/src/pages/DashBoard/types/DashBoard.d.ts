@@ -1,3 +1,6 @@
+import { FeaturesFeatureInterface } from './../../../features/Features/index';
+import { GraphsFeatureInterface } from './../../../features/Graphs/graphs';
+import { GroupsFeatureInterface } from './../../../features/Groups/groups';
 import { PointsFeatureInterface } from './../../../features/Points/points';
 import { GaugesFeatureInterface } from './../../../features/Gauges/gauges';
 import { TutorialFeatureInterface } from './../../../features/Tutorial/tutorial';
@@ -22,7 +25,10 @@ export interface DashFeatures {
 	Feedback: FeedbackFeatureInterface;
 	Tutorial: TutorialFeatureInterface;
 	Gauges: GaugesFeatureInterface;
-	Points: PointsFeatureInterface
+	Points: PointsFeatureInterface;
+	Groups: GroupsFeatureInterface;
+	Graphs: GraphsFeatureInterface;
+	Features: FeaturesFeatureInterface;
 }
 
 export interface DashReducers extends ReducersObject { }

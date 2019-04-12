@@ -3,7 +3,7 @@ import { Reducer } from 'redux';
 // import { Point, PointID } from './../../../shared/types/interfaces/points.d';
 // import { Log } from './../../../shared/types/interfaces/logs.d';
 // import { Reducer } from 'redux';
-// import _ from 'lodash';
+import _ from 'lodash';
 import { toaster } from 'ro-component-library/Toast';
 // import { InitialGaugesStateInterface } from '../types/gauges';
 interface InitialPointsStateInterface {
@@ -12,8 +12,8 @@ interface InitialPointsStateInterface {
 // export const NEW_LOG = 'NEW_LOG';
 // export const NEW_POINTS = 'NEW_POINTS';
 // export const REMOVE_POINTS = 'REMOVE_POINTS';
-export const SELECT_POINT = 'MULTISELECT_POINT';
-export const DESELECT_POINT = 'MULTISELECT_DESELECT_POINT';
+export const SELECT_POINT = 'SELECT_POINT';
+export const DESELECT_POINT = 'DESELECT_POINT';
 // export const REMOVE_POINT = 'REMOVE_POINT';
 
 export const INITIAL_STATE: InitialPointsStateInterface = {
@@ -41,8 +41,10 @@ export const reducer: Reducer = (state = INITIAL_STATE, action) => {
         },
       };
     case DESELECT_POINT:
-      console.log(`${DESELECT_POINT} `, action)
-      return { ...state };
+      console.log('Deselect Point: ', action.data);
+      const newState = _.cloneDeep(state);
+      delete newState.selectedPoints[action.data.id];
+      return newState;
     default:
       return state;
   }

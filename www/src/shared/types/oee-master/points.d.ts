@@ -3,6 +3,7 @@ export interface Point {
   settings: GaugeSettings;
   id: number,
   name: string,
+  data?: [[number, number]]
 }
 export type PointID = number | string;
 

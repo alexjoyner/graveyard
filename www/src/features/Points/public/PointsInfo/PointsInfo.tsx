@@ -17,7 +17,7 @@ const PointsInfo: FC<PointsInfoProps> = ({ group, children }) => {
   useEffect(() => {
     fetchPointsInfo();
     return () => { };
-  }, [])
+  }, [group])
   return <>{children(pointsInfo)}</>
 }
 

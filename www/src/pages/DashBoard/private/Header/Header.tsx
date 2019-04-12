@@ -79,6 +79,7 @@ import { FeaturesContext } from '../../../../shared/AppBuilder/featuresContext';
 import { DashFeatures } from '../../types/DashBoard';
 import { AccountsFeatureInterface } from '../../../../features/Accounts/types/accounts';
 import { StoreContext } from '../../../../shared/AppBuilder/storeContext';
+import { DefaultState } from '../../DashBoard';
 
 const ToggleBtn = () => (
 	<Button
@@ -97,11 +98,13 @@ const logoStyles = {
 };
 export const Header = () => {
 	const { width } = useWindowSize();
-	const { Accounts, Feedback, Tutorial } = useContext(FeaturesContext);
+	const { Accounts, Feedback, Tutorial, Features } = useContext(FeaturesContext);
 	const [state] = useContext(StoreContext);
+	const { FeaturesButton } = Features;
 	const { AuthButton } = Accounts;
 	const { FeedbackButton } = Feedback;
 	const { TutorialButton } = Tutorial;
+	console.log(state);
 	const { username } = state.Accounts.user;
 	return (
 		<>
@@ -114,6 +117,7 @@ export const Header = () => {
 						right: '10px'
 					}}
 				>
+					<FeaturesButton />
 					<TutorialButton />
 					{(state.Accounts.token) && <FeedbackButton />}
 					<AuthButton />
