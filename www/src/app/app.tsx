@@ -18,16 +18,27 @@ const toastOverrides = {
 	}
 };
 let BaseDash = new DashBoard();
-let MyDash = BaseDash.addFeatures([
-	PointsFeature,
-	AccountsFeature,
-	FeedbackFeature,
-	TutorialFeature,
-	GaugesFeature,
-	GroupsFeature,
-	GraphsFeature,
-	FeaturesFeature,
-]);
+const Features = [];
+const rawStoredFeatures = localStorage.getItem('Features');
+const rawFeatures = (rawStoredFeatures) ? JSON.parse(rawStoredFeatures) : {
+	Accounts: true,
+	Feedback: true,
+	Tutorial: true,
+	Gauges: true,
+	Points: true,
+	Groups: true,
+	Graphs: true,
+	Features: true,
+};
+if (rawFeatures.Accounts) Features.push(AccountsFeature);
+if (rawFeatures.Feedback) Features.push(FeedbackFeature);
+if (rawFeatures.Tutorial) Features.push(TutorialFeature);
+if (rawFeatures.Gauges) Features.push(GaugesFeature);
+if (rawFeatures.Points) Features.push(PointsFeature);
+if (rawFeatures.Groups) Features.push(GroupsFeature);
+if (rawFeatures.Graphs) Features.push(GraphsFeature);
+if (rawFeatures.Features) Features.push(FeaturesFeature);
+let MyDash = BaseDash.addFeatures(Features);
 let Root = MyDash.Run({});
 export const App = () => (
 	<>

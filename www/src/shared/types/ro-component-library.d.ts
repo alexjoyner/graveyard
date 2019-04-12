@@ -11,3 +11,4 @@ declare module "ro-component-library/CenteredContent";
 declare module "ro-component-library/ListItem";
 declare module "ro-component-library/ListHeader";
 declare module "ro-component-library/colors";
+declare module "ro-component-library/CheckBox";

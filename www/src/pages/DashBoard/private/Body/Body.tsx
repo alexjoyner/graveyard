@@ -11,36 +11,66 @@ import { StoreContext } from '../../../../shared/AppBuilder/storeContext';
 import { selectPoint, deselectPoint } from '../../../../features/Points/ducks/points.duck';
 import { buildGraph } from '../../../../features/Graphs/ducks/graphs.duck';
 import { colors } from 'ro-component-library/colors';
+import { Block } from 'ro-component-library/Block';
+import { ListHeader } from 'ro-component-library/ListHeader';
+import { Card } from 'ro-component-library/Card';
 
 
 
-const renderPointBlocks = (points: PointsObject) => {
+
+const renderGroupPoints = (points: PointsObject) => {
 	const socket = useContext(SocketContext);
 	const { Gauges, Points, Graphs } = useContext(FeaturesContext);
 	const [state, dispatch] = useContext(StoreContext);
+	const { Features } = state;
 	const { GaugeBlock } = Gauges;
 	const { NoPointsBanner, LivePointData, SelectedPointsToolbox } = Points;
 	const pointsIDs = Object.keys(points);
+	const LivePointGauges = () => (
+		<>
+			{pointsIDs.map((id: string) => {
+				return (
+					<React.Fragment key={id}>
+						<LivePointData socket={socket} pointID={id}>
+							{(lastLog: Log) => (
+								<GaugeBlock
+									value={lastLog.log.value}
+									name={points[id].name}
+									settings={points[id].settings}
+									onChartClick={() => dispatch(selectPoint(points[id]))}
+								/>
+							)}
+						</LivePointData>
+					</React.Fragment>
+				)
+			})}
+		</>
+	);
+	const StaticPointsList = () => (
+		<>
+			<Block style={{ display: 'inline-block', width: '50%', marginTop: '30px' }}>
+				{pointsIDs.map((id: string) => {
+					return (
+						<React.Fragment key={id}>
+							<Card title={points[id].name} onClick={() => dispatch(selectPoint(points[id]))} />
+						</React.Fragment>
+					)
+				})}
+			</Block>
+		</>
+	);
 	return (
 		<>
 			{(pointsIDs.length === 0) ? (
 				<NoPointsBanner />
 			) : (
 					<CenteredContent>
-						{pointsIDs.map((id: string) => {
-							return (
-								<LivePointData key={id} socket={socket} pointID={id}>
-									{(lastLog: Log) => (
-										<GaugeBlock
-											value={lastLog.log.value}
-											name={points[id].name}
-											settings={points[id].settings}
-											onChartClick={() => dispatch(selectPoint(points[id]))}
-										/>
-									)}
-								</LivePointData>
-							)
-						})}
+						<ListHeader>Points</ListHeader>
+						{(Features.Gauges) ? (
+							<LivePointGauges />
+						) : (
+								<StaticPointsList />
+							)}
 					</CenteredContent>
 				)}
 			<SelectedPointsToolbox
@@ -70,7 +100,7 @@ const Body = () => {
 	return (
 		<HeaderSideBarPageBody>
 			<PointsInfo group={currentGroup}>
-				{renderPointBlocks}
+				{renderGroupPoints}
 			</PointsInfo>
 			<GraphModal />
 		</HeaderSideBarPageBody>
