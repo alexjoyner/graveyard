@@ -42,7 +42,10 @@ const DefaultFeatures: DashFeatures = {
 };
 export const DefaultState: Object = {
 	Groups: {
-		currentGroup: 0
+		currentGroup: {
+			id: 0,
+			name: 'All Points'
+		}
 	},
 	Accounts: {
 		user: {

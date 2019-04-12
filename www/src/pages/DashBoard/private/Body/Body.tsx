@@ -47,7 +47,7 @@ const LivePointGauges = ({ points }: { points: PointsObject }) => {
 };
 
 const StaticPointsList = ({ points }: { points: PointsObject }) => {
-	const [dispatch] = useContext(StoreContext);
+	const dispatch = useContext(StoreContext)[1];
 	const pointsIDs = Object.keys(points);
 	return (
 		<>
@@ -76,7 +76,7 @@ const renderGroupPoints = (points: PointsObject) => {
 				<NoPointsBanner />
 			) : (
 					<CenteredContent>
-						<ListHeader>Points</ListHeader>
+						<ListHeader>{state.Groups.currentGroup.name}</ListHeader>
 						{(Features.Gauges) ? <LivePointGauges points={points} /> : <StaticPointsList points={points} />}
 					</CenteredContent>
 				)}
@@ -102,10 +102,10 @@ const Body = () => {
 	const { Points, Graphs } = useContext(FeaturesContext);
 	const { PointsInfo } = Points;
 	const { GraphModal } = Graphs;
-	const { Groups: { currentGroup = 0 } } = state;
+	const { Groups: { currentGroup: { id } } } = state;
 	return (
 		<HeaderSideBarPageBody>
-			<PointsInfo group={currentGroup}>
+			<PointsInfo group={id}>
 				{renderGroupPoints}
 			</PointsInfo>
 			<GraphModal />

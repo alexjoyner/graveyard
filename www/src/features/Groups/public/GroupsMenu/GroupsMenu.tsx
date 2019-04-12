@@ -28,7 +28,7 @@ const GroupsMenu = ({ }) => {
       <ListHeader>Groups</ListHeader>
       <CenteredContent>
         {groups.map(group => (
-          <ListItem key={group.id} onClick={() => dispatch(changeGroup(group.id))}>
+          <ListItem key={group.id} onClick={() => dispatch(changeGroup(group))}>
             {group.name}
           </ListItem>
         ))}

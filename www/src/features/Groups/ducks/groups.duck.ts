@@ -3,7 +3,10 @@ import { Reducer } from 'redux';
 export const CHANGE_GROUP = 'CHANGE_GROUP';
 
 const INITIAL_STATE = {
-  currentGroup: 0,
+  currentGroup: {
+    name: 'All Points',
+    id: 0
+  },
 };
 
 export const reducer: Reducer = (state = INITIAL_STATE, action) => {
@@ -19,7 +22,11 @@ export const reducer: Reducer = (state = INITIAL_STATE, action) => {
 };
 
 
-export const changeGroup = (groupID: number) => ({
+type Group = {
+  id: number,
+  name: string,
+}
+export const changeGroup = (group: Group) => ({
   type: CHANGE_GROUP,
-  data: groupID,
+  data: group,
 });
