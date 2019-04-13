@@ -1,23 +1,23 @@
 {
-  "name": "oee-master",
-  "version": "0.8.0",
-  "description": "Root monrepo for oee-master",
-  "main": "n/a",
-  "repository": "https://github.com/alexjoyner/oee-master.git",
-  "author": "Alex Joyner <alex@voicir.com>",
-  "license": "PRIVATE",
-  "private": true,
-  "scripts": {
-    "deploy:server": "cd ./server && yarn deploy",
-    "deploy:client": "cd ./www && yarn deploy",
-    "deploy": "yarn run deploy:server && yarn run deploy:client",
-    "postversion": "git push --tags && echo \"Successfully released version $npm_package_version!\""
-  },
-  "devDependencies": {
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-jest": "^21.17.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.9.1"
-  }
+	"name": "oee-master",
+	"version": "0.8.0",
+	"description": "Root monrepo for oee-master",
+	"main": "n/a",
+	"repository": "https://github.com/alexjoyner/oee-master.git",
+	"author": "Alex Joyner <alex@voicir.com>",
+	"license": "PRIVATE",
+	"private": true,
+	"scripts": {
+		"deploy:server": "cd ./server && yarn deploy",
+		"deploy:client": "cd ./www && yarn deploy",
+		"deploy": "yarn run deploy:server && yarn run deploy:client",
+		"postversion": "git push --tags && echo \"Successfully released version $npm_package_version!\""
+	},
+	"devDependencies": {
+		"eslint-config-airbnb": "^17.1.0",
+		"eslint-plugin-import": "^2.12.0",
+		"eslint-plugin-jest": "^21.17.0",
+		"eslint-plugin-jsx-a11y": "^6.0.3",
+		"eslint-plugin-react": "^7.9.1"
+	}
 }
