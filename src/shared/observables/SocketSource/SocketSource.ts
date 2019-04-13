@@ -1,6 +1,6 @@
-import { Log } from './../../types/oee-master/logs';
-import { PointID } from './../../types/oee-master/points.d';
-import { SocketObserver, SocketObserverable } from './../types/index.d';
+import { Log } from '../../types/oee-master/logs';
+import { PointID } from '../../types/oee-master/points';
+import { SocketObserver, SocketObserverable } from '../types';
 import io from 'socket.io-client';
 interface RoomsObject {
   [key: string]: SocketObserver[]

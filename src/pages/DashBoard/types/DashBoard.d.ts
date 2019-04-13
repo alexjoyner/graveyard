@@ -1,9 +1,9 @@
-import { FeaturesFeatureInterface } from './../../../features/Features/index';
-import { GraphsFeatureInterface } from './../../../features/Graphs/graphs';
-import { GroupsFeatureInterface } from './../../../features/Groups/groups';
-import { PointsFeatureInterface } from './../../../features/Points/points';
-import { GaugesFeatureInterface } from './../../../features/Gauges/gauges';
-import { TutorialFeatureInterface } from './../../../features/Tutorial/tutorial';
+import { FeaturesFeatureInterface } from '../../../features/Features/index';
+import { GraphsFeatureInterface } from '../../../features/Graphs/graphs';
+import { GroupsFeatureInterface } from '../../../features/Groups/groups';
+import { PointsFeatureInterface } from '../../../features/Points/points';
+import { GaugesFeatureInterface } from '../../../features/Gauges/gauges';
+import { TutorialFeatureInterface } from '../../../features/Tutorial/tutorial';
 import { ReactNode, FC } from 'react';
 import { AccountsFeatureInterface } from '../../../features/Accounts/types/accounts';
 import { Reducer } from 'redux';

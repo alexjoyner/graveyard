@@ -1,4 +1,4 @@
-import { PointsObject, Point } from './../../../../shared/types/oee-master/points.d';
+import { PointsObject, Point } from '../../../../shared/types/oee-master/points';
 import { env } from '../../../../.env';
 
 export const getPointsFromGroupID = async (groupID: number) => {

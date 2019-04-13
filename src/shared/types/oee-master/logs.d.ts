@@ -1,4 +1,4 @@
-import { PointID } from './points.d';
+import { PointID } from './points';
 export interface Log {
   pointID: PointID,
   log: {

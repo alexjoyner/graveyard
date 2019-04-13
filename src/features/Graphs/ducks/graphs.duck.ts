@@ -1,4 +1,4 @@
-import { PointsObject } from './../../../shared/types/oee-master/points.d';
+import { PointsObject } from '../../../shared/types/oee-master/points';
 import { Reducer } from 'redux';
 
 export const BUILD_GRAPH = 'BUILD_GRAPH';

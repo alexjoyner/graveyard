@@ -1,6 +1,6 @@
 import { FeaturesButton } from './public/FeaturesButton/FeaturesButton';
-import { App } from './../../shared/AppBuilder/App';
-import { DashFeatures } from './../../pages/DashBoard/types/DashBoard.d';
+import { App } from '../../shared/AppBuilder/App';
+import { DashFeatures } from '../../pages/DashBoard/types/DashBoard';
 import { FC } from 'react';
 import { AppFeature } from '../../shared/AppBuilder/AppFeature';
 import { reducer } from './ducks/features.duck';

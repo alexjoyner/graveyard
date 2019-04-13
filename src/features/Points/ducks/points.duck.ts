@@ -1,4 +1,4 @@
-import { Point, PointsObject } from './../../../shared/types/oee-master/points.d';
+import { Point, PointsObject } from '../../../shared/types/oee-master/points';
 import { Reducer } from 'redux';
 // import { Point, PointID } from './../../../shared/types/interfaces/points.d';
 // import { Log } from './../../../shared/types/interfaces/logs.d';

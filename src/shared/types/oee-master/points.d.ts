@@ -1,4 +1,4 @@
-import { GaugeSettings } from './../../../features/Gauges/types/gauges.d';
+import { GaugeSettings } from '../../../features/Gauges/types/gauges';
 export interface Point {
   settings: GaugeSettings;
   id: number,
