@@ -2,7 +2,7 @@
 	"name": "oee-master",
 	"version": "0.8.0",
 	"description": "Root monrepo for oee-master",
-	"main": "n/a",
+	"main": "build/electron.js",
 	"repository": "https://github.com/alexjoyner/oee-master.git",
 	"author": "Alex Joyner <alex@voicir.com>",
 	"license": "PRIVATE",
@@ -21,7 +21,9 @@
 		"deploy:client": "yarn deploy",
 		"postversion": "git push --tags && echo \"Successfully released version $npm_package_version!\"",
 		"storybook": "start-storybook -p 9009 -s public",
-		"build-storybook": "build-storybook -s public"
+		"build-storybook": "build-storybook -s public",
+		"electron-start": "electron .",
+		"electron-dist": "electron-builder"
 	},
 	"dependencies": {
 		"@babel/core": "^7.2.2",
@@ -70,7 +72,6 @@
 		"@storybook/addons": "^4.2.0-alpha.11",
 		"@storybook/react": "^4.2.0-alpha.11",
 		"babel-core": "^7.0.0-bridge",
-		"electron": "^4.1.4",
 		"enzyme": "^3.8.0",
 		"enzyme-adapter-react-16": "^1.9.1",
 		"enzyme-to-json": "^3.3.5",
@@ -81,8 +82,19 @@
 		"eslint-plugin-import": "^2.12.0",
 		"eslint-plugin-jest": "^21.17.0",
 		"eslint-plugin-jsx-a11y": "^6.0.3",
-		"eslint-plugin-react": "^7.9.1"
+		"eslint-plugin-react": "^7.9.1",
+		"electron": "^4.1.4",
+		"electron-builder": "^20.39.0",
+		"electron-is-dev": "^1.1.0"
 	},
+	"keywords": [
+		"Electron",
+		"oee-master",
+		"Web",
+		"Desktop",
+		"Datalogger",
+		"Microservices"
+	],
 	"jest": {
 		"collectCoverageFrom": [
 			"src/**/*.{js,jsx}",
@@ -98,5 +110,16 @@
 		"not dead",
 		"not ie <= 11",
 		"not op_mini all"
-	]
+	],
+	"build": {
+		"appId": "com.example.oee-master",
+		"files": [
+			"build/**/*",
+			"node_modules/**/*"
+		],
+		"directories": {
+			"buildResources": "assets",
+			"output": "desktop"
+		}
+	}
 }

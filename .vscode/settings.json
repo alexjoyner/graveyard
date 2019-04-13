@@ -1,9 +1,17 @@
 {
   "files.exclude": {
-    "**/.git": false,
+    "**/__mocks__": true,
+    "**/.eslintrc.json": true,
     "**/.hg": false,
+    "**/.storybook": true,
     "**/.svn": false,
-    "**/CVS": false
+    "**/.vscode": true,
+    "**/*.lock": true,
+    "**/CVS": false,
+    "**/logger": true,
+    "**/README.md": true,
+    "**/yarn-error.log": true,
+    "tsconfig.json": true
   },
   "editor.formatOnSave": true,
   "eslint.autoFixOnSave": true
