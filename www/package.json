@@ -63,6 +63,7 @@
 		"@storybook/addons": "^4.2.0-alpha.11",
 		"@storybook/react": "^4.2.0-alpha.11",
 		"babel-core": "^7.0.0-bridge",
+		"electron": "^4.1.4",
 		"enzyme": "^3.8.0",
 		"enzyme-adapter-react-16": "^1.9.1",
 		"enzyme-to-json": "^3.3.5",

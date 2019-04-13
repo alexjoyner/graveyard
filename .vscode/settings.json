@@ -3,11 +3,9 @@
     ".vscode": true,
     "**/__snapshots__": true,
     "**/.eslintrc.json": true,
-    "**/.gitignore": true,
     "**/*.bak": true,
     "**/*.lock": true,
-    "**/*.pyc": true,
-    "**/build": true
+    "**/*.pyc": true
   },
   "editor.formatOnSave": true,
   "eslint.autoFixOnSave": true
