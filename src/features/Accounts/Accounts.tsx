@@ -1,11 +1,10 @@
 import { AccountsFeatureInterface } from './types/accounts';
 import { DashBoard } from '../../pages/DashBoard/DashBoard';
-import { AuthButton } from './public/AuthButton/AuthButton';
+import { AuthButton } from './public/AuthButton';
 import { AppFeature } from '../../shared/AppBuilder/AppFeature';
-import { DashFeatures } from '../../pages/DashBoard/types/DashBoard';
 import { reducer } from './ducks/accounts.duck';
 
-export class AccountsFeature extends AppFeature<DashFeatures> {
+export class AccountsFeature extends AppFeature {
 	constructor(App: DashBoard) {
 		super(App);
 		const Feature: AccountsFeatureInterface = {

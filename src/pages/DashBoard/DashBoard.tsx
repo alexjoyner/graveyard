@@ -1,9 +1,9 @@
 import React, { createContext } from 'react';
 import { BasicApp } from '../../shared/AppBuilder/App';
 import { DashFeatures } from './types/DashBoard';
-import { Header } from './private/Header';
-import { SideBar } from './private/SideBar';
-import { Body } from './private/Body';
+import { Header } from './public/Header';
+import { SideBar } from './public/SideBar';
+import { Body } from './public/Body';
 import { NullComp } from '../../shared/components/NullComp';
 import { SocketSource } from '../../shared/observables/SocketSource/SocketSource';
 import { env } from '../../.env';

@@ -3,10 +3,10 @@ import { AppFeature } from '../../shared/AppBuilder/AppFeature';
 import { DashFeatures } from '../../pages/DashBoard/types/DashBoard';
 import { App } from '../../shared/AppBuilder/App';
 import { NoPointsBanner } from './public/NoPointsBanner';
-import { PointsInfo, PointsInfoProps } from './public/PointsInfo/PointsInfo';
-import { LivePointData, LivePointDataProps } from './public/LivePointData/LivePointData';
+import { PointsInfo, PointsInfoProps } from './public/PointsInfo';
+import { LivePointData, LivePointDataProps } from './public/LivePointData';
 import { reducer } from './ducks/points.duck';
-import { SelectedPointsToolbox, SelectedPointsToolboxProps } from './public/SelectedPointsToolbox/SelectedPointsToolbox';
+import { SelectedPointsToolbox, SelectedPointsToolboxProps } from './public/SelectedPointsToolbox';
 
 export interface PointsFeatureInterface {
   NoPointsBanner: FC,

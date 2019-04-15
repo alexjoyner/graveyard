@@ -1,12 +1,5 @@
 import { number } from 'prop-types';
 
-// import { Point } from './../../../shared/types/interfaces/points.d';
-// export interface InitialGaugesStateInterface {
-//     multiSelectedPoints: {
-//         [key: number]: Point
-//     },
-// }
-
 type Range = {
   lowerValue: number,
   upperValue: number,

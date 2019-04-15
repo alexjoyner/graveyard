@@ -1,4 +1,4 @@
-import { FeaturesFeatureInterface } from '../../../features/Features/index';
+import { FeaturesFeatureInterface } from '../../../features/Features/Features';
 import { GraphsFeatureInterface } from '../../../features/Graphs/graphs';
 import { GroupsFeatureInterface } from '../../../features/Groups/groups';
 import { PointsFeatureInterface } from '../../../features/Points/points';

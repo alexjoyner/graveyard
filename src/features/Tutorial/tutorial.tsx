@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { AppFeature } from '../../shared/AppBuilder/AppFeature';
 import { DashFeatures } from '../../pages/DashBoard/types/DashBoard';
 import { App } from '../../shared/AppBuilder/App';
-import { TutorialButton } from './public/TutorialButton/TutorialButton';
+import { TutorialButton } from './public/TutorialButton';
 
 export interface TutorialFeatureInterface {
   TutorialButton: FC

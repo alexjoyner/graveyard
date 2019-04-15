@@ -1,6 +1,4 @@
 import React, { FC } from 'react';
-// import PropTypes from 'prop-types';
-// import { GoGraph, GoGear, GoCheck } from 'react-icons/go';
 import { styled } from 'ro-component-library/utils/styled';
 import { Panel } from 'ro-component-library/Panel';
 import { Gauge } from 'ro-component-library/Gauge';
@@ -68,19 +66,6 @@ const GaugeBlock: FC<GaugeBlockProps> = ({ value, settings, name, onChartClick }
     </Panel>
   );
 };
-
-// GaugeBlock.propTypes = {
-//   panelWidth: PropTypes.string,
-//   label: PropTypes.string.isRequired,
-//   onChartClick: PropTypes.func.isRequired,
-//   onSettingsClick: PropTypes.func.isRequired,
-//   multiSelected: PropTypes.bool,
-// };
-
-// GaugeBlock.defaultProps = {
-//   panelWidth: '20%',
-//   multiSelected: false,
-// };
 
 
 export { GaugeBlock };

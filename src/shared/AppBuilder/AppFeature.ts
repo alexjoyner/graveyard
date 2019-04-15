@@ -1,6 +1,6 @@
 import { App } from './App';
 import { ReactNode } from 'react';
-import { Reducer, ReducersMapObject, AnyAction } from 'redux';
+import { ReducersMapObject, AnyAction } from 'redux';
 import { ReducersObject, GenericFeatures } from './types';
 
 export abstract class AppFeature<F = GenericFeatures> implements App<F> {

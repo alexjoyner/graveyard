@@ -2,7 +2,7 @@ import { AppFeature } from '../../shared/AppBuilder/AppFeature';
 import { DashFeatures } from '../../pages/DashBoard/types/DashBoard';
 import { DashBoard } from '../../pages/DashBoard';
 import { FC } from 'react';
-import { FeedbackButton } from './public/FeedbackButton/FeedbackButton';
+import { FeedbackButton } from './public/FeedbackButton';
 
 export type FeedbackFeatureInterface = {
   FeedbackButton: FC;

@@ -1,8 +1,8 @@
 import { combineReducers } from './combineReducers';
 import { StoreContext } from './storeContext';
 import React, { ReactNode, useReducer } from 'react';
-import { ReducersObject, GenericFeatures } from './types';
-import { Reducer, ReducersMapObject, AnyAction } from 'redux';
+import { GenericFeatures } from './types';
+import { ReducersMapObject, AnyAction } from 'redux';
 import { FeaturesContext } from './featuresContext';
 
 export interface App<F = GenericFeatures> {
