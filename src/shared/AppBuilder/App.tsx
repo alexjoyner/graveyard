@@ -31,7 +31,6 @@ export interface App<F = GenericFeatures> {
 	}): ReactNode;
 }
 
-
 //  Base DashBoard
 export class BasicApp<F = GenericFeatures> implements App<F> {
 	private features: F;

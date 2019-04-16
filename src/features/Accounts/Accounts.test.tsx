@@ -6,8 +6,9 @@ import { render, wait, fireEvent, TestApp, RenderResult } from '../../shared/App
 import { FeaturesContext } from '../../shared/AppBuilder/featuresContext';
 import { AccountsFeature } from '.';
 import { StoreContext } from '../../shared/AppBuilder/storeContext';
+import { withToast } from '../../shared/testUtils/withToast';
 
-const AccountsImplement = () => {
+const AccountsImplement = withToast(() => {
   const features = useContext(FeaturesContext);
   const [state] = useContext(StoreContext);
   const { AuthButton } = features.Accounts;
@@ -20,7 +21,7 @@ const AccountsImplement = () => {
       {/* <Toast placement={PLACEMENT.bottomLeft} /> */}
     </>
   )
-}
+})
 
 describe('Accounts Feature', () => {
   let utils: RenderResult;

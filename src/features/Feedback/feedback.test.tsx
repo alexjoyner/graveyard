@@ -21,7 +21,7 @@ describe('Feedback Feature', () => {
     const Root = Test.Run({})
     utils = render(<>{Root}</>)
   });
-  test('Should go to feedback page', async () => {
+  test('Should render the feedback button', async () => {
     const { getByText } = utils;
     expect(getByText('Feedback')).toBeDefined();
   })
