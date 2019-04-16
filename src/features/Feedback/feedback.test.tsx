@@ -1,20 +1,28 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
-// import { FeedbackButton } from './feedback';
+import React, { useContext } from 'react';
+import { FeedbackFeature } from './feedback';
+import { FeaturesContext } from '../../shared/AppBuilder/featuresContext';
+import { RenderResult, } from 'react-testing-library';
+import { TestApp, render } from '../../shared/AppBuilder/test-utils';
 
-// describe('FeedbackButton Component', () => {
-//   let component;
-//   beforeEach(() => {
-//     component = shallow(<FeedbackButton />);
-//   });
-//   it('Should render without exploding', () => {
-//     expect(component).toBeDefined();
-//   });
-//   it('Should have a Go component', () => {
-//     expect(component.find('Go')).toHaveLength(1);
-//   });
-//   it('should link to voicir feedback', () => {
-//     expect(component.find('Go').props().to).toEqual('http://feedback.voicir.com');
-//   });
-// });
-export const test = 1;
+const FeedbackImplement = () => {
+  const { Feedback } = useContext(FeaturesContext);
+  const { FeedbackButton } = Feedback;
+
+  return <FeedbackButton />
+}
+
+describe('Feedback Feature', () => {
+  let utils: RenderResult;
+  beforeEach(() => {
+    const Base = TestApp({
+      children: <FeedbackImplement />
+    });
+    const Test = Base.addFeatures([FeedbackFeature])
+    const Root = Test.Run({})
+    utils = render(<>{Root}</>)
+  });
+  test('Should go to feedback page', async () => {
+    const { getByText } = utils;
+    expect(getByText('Feedback')).toBeDefined();
+  })
+})

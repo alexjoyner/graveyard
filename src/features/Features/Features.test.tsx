@@ -5,6 +5,7 @@ import { FeaturesContext } from '../../shared/AppBuilder/featuresContext';
 import { RenderResult, fireEvent } from 'react-testing-library';
 import { StoreContext } from '../../shared/AppBuilder/storeContext';
 import { INITIAL_STATE } from './ducks/features.duck';
+import { async } from 'q';
 
 
 const FeaturesImplement = () => {
@@ -65,7 +66,7 @@ describe('Features feature', () => {
     expect(localStorage.setItem).toBeCalledTimes(1);
     expect(localStorage.setItem).toHaveBeenLastCalledWith('Features', JSON.stringify(FeaturesState));
   })
-  test('allows toggling gauges', async () => {
+  test('allows toggling live gauges', async () => {
     const { getByText, getByLabelText } = utils;
     const FeaturesState = { ...INITIAL_STATE, Gauges: !INITIAL_STATE.Gauges };
     expect(localStorage.setItem).toBeCalledTimes(0);
