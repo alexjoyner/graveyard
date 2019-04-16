@@ -7,7 +7,6 @@ import { FeaturesContext } from '../../shared/AppBuilder/featuresContext';
 import { AccountsFeature } from '.';
 import { StoreContext } from '../../shared/AppBuilder/storeContext';
 
-
 const AccountsImplement = () => {
   const features = useContext(FeaturesContext);
   const [state] = useContext(StoreContext);
@@ -16,6 +15,8 @@ const AccountsImplement = () => {
     <>
       <AuthButton />
       <h1>{state.Accounts.user.username}</h1>
+      {(state.Accounts.token) ? (<span>Got Token</span>) : null}
+      <span>{JSON.stringify(state.Accounts)}</span>
       {/* <Toast placement={PLACEMENT.bottomLeft} /> */}
     </>
   )
@@ -41,7 +42,7 @@ describe('Accounts Feature', () => {
     fireEvent.click(signInBtn);
     expect(getByText('Enter Credentials:')).toBeDefined();
   })
-  it('Should allow form submit with correct data', async () => {
+  it('Should allow sign in / sign out process', async () => {
     // @ts-ignore
     mockAxios.post.mockResolvedValueOnce({
       data: {
@@ -61,10 +62,16 @@ describe('Accounts Feature', () => {
     fireEvent.click(getByTestId('submit'));
     expect(mockAxios.post).toHaveBeenCalledTimes(1);
     expect(mockAxios.post).toHaveBeenCalledWith("http://localhost:8080/me/signIn", { "password": "123", "username": "testing" });
-    await wait(() => {
-      expect(getByText('Phlbert')).toBeDefined();
-    })
-    // expect(getByText('Philbert')).toBeDefined();
 
+    // Assert that user successfully logged in
+    await wait(() => {
+      expect(getByText('Philbert')).toBeDefined();
+      expect(getByText('Got Token')).toBeDefined();
+    });
+
+    // Assert user can now log out
+    expect(getByText('Sign Out')).toBeDefined();
+    fireEvent.click(getByText('Sign Out'));
+    expect(getByText('Sign In')).toBeDefined();
   });
-}); 
+});

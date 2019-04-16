@@ -11,7 +11,6 @@ class BasicTestApp extends BasicApp {
 }
 
 export const TestApp = ({ children, ...opts }: { children: ReactNode }): BasicApp => {
-  console.log(opts);
   const TestApp = new BasicTestApp(children);
   return TestApp;
 }
