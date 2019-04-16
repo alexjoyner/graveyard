@@ -4,6 +4,19 @@ import React, { ReactNode, useReducer } from 'react';
 import { GenericFeatures } from './types';
 import { ReducersMapObject, AnyAction } from 'redux';
 import { FeaturesContext } from './featuresContext';
+import { StyletronProvider, Styletron } from 'ro-component-library/Styletron';
+import { customTheme, ThemeProvider } from 'ro-component-library/Themes';
+
+const engine = new Styletron();
+
+export const StyletronSetup = ({ children }: { children: ReactNode }) => (
+	<StyletronProvider value={engine}>
+		<ThemeProvider theme={customTheme}>
+			{children}
+		</ThemeProvider>
+	</StyletronProvider>
+);
+
 
 export interface App<F = GenericFeatures> {
 	getFeatures(): F;
@@ -20,20 +33,20 @@ export interface App<F = GenericFeatures> {
 
 
 //  Base DashBoard
-export abstract class BasicApp<F = GenericFeatures> implements App<F> {
+export class BasicApp<F = GenericFeatures> implements App<F> {
 	private features: F;
 	private reducers: ReducersMapObject<any, AnyAction>;
 	private rootContent: ReactNode;
 	private defaultState: Object;
 	constructor(
 		features: F,
-		reducers: ReducersMapObject<any, AnyAction>,
-		rootContent: ReactNode,
+		reducers?: ReducersMapObject<any, AnyAction>,
+		rootContent?: ReactNode,
 		defaultState?: Object
 	) {
 		this.features = features;
-		this.reducers = reducers;
-		this.rootContent = rootContent;
+		this.reducers = reducers || {};
+		this.rootContent = rootContent || <h1>Hello World</h1>;
 		this.defaultState = defaultState || {};
 	}
 	getFeatures(): F {
@@ -67,24 +80,30 @@ export abstract class BasicApp<F = GenericFeatures> implements App<F> {
 		const [state, dispatch] = useReducer(rootReducer, initialState);
 		const finalState = { ...defaultState, ...state };
 		return (
-			<StoreContext.Provider value={[finalState, dispatch]} >
-				<FeaturesContext.Provider value={features}>
-					{rootContent}
-				</FeaturesContext.Provider>
-			</StoreContext.Provider>
+			<StyletronSetup>
+				<StoreContext.Provider value={[finalState, dispatch]} >
+					<FeaturesContext.Provider value={features}>
+						{rootContent}
+					</FeaturesContext.Provider>
+				</StoreContext.Provider>
+			</StyletronSetup>
 		);
 	}
 	Run({
 		reducers,
 		features,
+		rootContent,
+		defaultState
 	}: {
 		reducers?: ReducersMapObject<any, AnyAction>,
 		features?: F
+		rootContent?: ReactNode
+		defaultState?: Object
 	}) {
 		return <this.Build
 			reducers={reducers || this.getReducers()}
 			features={features || this.getFeatures()}
-			rootContent={this.rootContent}
-			defaultState={this.defaultState} />
+			rootContent={rootContent || this.rootContent}
+			defaultState={defaultState || this.defaultState} />
 	}
 }

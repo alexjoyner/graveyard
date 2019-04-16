@@ -37,7 +37,7 @@ const AuthButton = () => {
 					<SignOutButton onClick={handleSignOut} />
 				)}
 			<Modal onClose={handleCloseSignInModal} isOpen={isOpen}>
-				<ModalHeader>Welcome!</ModalHeader>
+				<ModalHeader>Enter Credentials:</ModalHeader>
 				<ModalBody>
 					<SignInForm onSubmit={handleSubmit} />
 				</ModalBody>

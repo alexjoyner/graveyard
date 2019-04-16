@@ -1,4 +1,6 @@
 import React, { createContext } from 'react';
+import { PLACEMENT } from 'baseui/toast';
+import { Toast } from 'ro-component-library/Toast';
 import { BasicApp } from '../../shared/AppBuilder/App';
 import { DashFeatures } from './types/DashBoard';
 import { Header } from './public/Header';
@@ -7,6 +9,13 @@ import { Body } from './public/Body';
 import { NullComp } from '../../shared/components/NullComp';
 import { SocketSource } from '../../shared/observables/SocketSource/SocketSource';
 import { env } from '../../.env';
+const toastOverrides = {
+	Root: {
+		style: {
+			zIndex: 3000
+		}
+	}
+};
 
 const DefaultFeatures: DashFeatures = {
 	Header: Header,
@@ -65,6 +74,7 @@ class DashBoard extends BasicApp<DashFeatures> {
 					<Header />
 					<Body />
 				</SideBar>
+				<Toast placement={PLACEMENT.bottomLeft} overrides={toastOverrides} />
 			</SocketContext.Provider>
 		), DefaultState);
 	}

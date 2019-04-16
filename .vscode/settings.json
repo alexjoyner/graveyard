@@ -1,6 +1,5 @@
 {
   "files.exclude": {
-    "**/__mocks__": true,
     "**/.eslintrc.json": true,
     "**/.hg": false,
     "**/.storybook": true,
