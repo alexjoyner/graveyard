@@ -1,11 +1,14 @@
 {
   "files.exclude": {
-    ".vscode": true,
-    "**/__snapshots__": true,
-    "**/.eslintrc.json": true,
-    "**/*.bak": true,
+    "**/.hg": false,
+    "**/.storybook": true,
+    "**/.svn": false,
+    "**/.vscode": true,
     "**/*.lock": true,
-    "**/*.pyc": true
+    "**/CVS": false,
+    "**/logger": true,
+    "**/README.md": true,
+    "**/yarn-error.log": true
   },
   "editor.formatOnSave": true,
   "eslint.autoFixOnSave": true

@@ -1,7 +1,6 @@
 {
   "extends": [
     "airbnb",
-    "plugin:jest/recommended",
     "plugin:cypress/recommended"
   ],
   "env": {
@@ -9,12 +8,11 @@
     "cypress/globals": true
   },
   "plugins": [
-    "jest",
     "cypress"
   ],
   "rules": {
-    "import/prefer-default-export": false,
-    "react/jsx-filename-extension": false,
+    "import/prefer-default-export": 0,
+    "react/jsx-filename-extension": 0,
     "react/prop-types": [
       2,
       {
@@ -27,13 +25,13 @@
     "no-unused-expressions": [
       "error",
       {
-        "allowTaggedTemplates": true
+        "allowTaggedTemplates": 1
       }
     ],
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": true
+        "devDependencies": 1
       }
     ],
     "spaced-comment": 0
