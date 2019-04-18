@@ -1,5 +1,6 @@
 import { Log } from '../../types/oee-master/logs';
 import { PointID } from '../../types/oee-master/points';
+import { toaster } from 'ro-component-library/Toast';
 import { SocketObserver, SocketObserverable } from './types';
 import io from 'socket.io-client';
 interface RoomsObject {
@@ -12,6 +13,8 @@ class SocketSource implements SocketObserverable {
   constructor(serverAddress: string) {
     this.socket = io(serverAddress);
     this.startNewLogListener();
+    this.startDisconnectListener();
+    this.startReconnectListener();
   };
 
   private addRoom(pointID: PointID) {
@@ -28,6 +31,24 @@ class SocketSource implements SocketObserverable {
   private startNewLogListener() {
     this.socket.on('add log', /* istanbul ignore next */(log: Log) => {
       this.notifyObservers(log.pointID, log);
+    });
+  }
+  private startDisconnectListener() {
+    this.socket.on('disconnect', /* istanbul ignore next */() => {
+      toaster().negative('Disconnected From Server!', {
+        autoHideDuration: 0,
+      })
+    });
+  }
+  private startReconnectListener() {
+    this.socket.on('reconnect', /* istanbul ignore next */() => {
+      toaster().clear();
+      toaster().positive('Socket Reconnected!', {
+        autoHideDuration: 8000,
+      })
+      Object.keys(this.rooms).map(pointID => {
+        this.addRoom(pointID);
+      })
     });
   }
   private notifyObservers(pointID: PointID, log: Log): void {

@@ -1,6 +1,5 @@
 {
   "files.exclude": {
-    "**/.eslintrc.json": true,
     "**/.hg": false,
     "**/.storybook": true,
     "**/.svn": false,
@@ -9,8 +8,7 @@
     "**/CVS": false,
     "**/logger": true,
     "**/README.md": true,
-    "**/yarn-error.log": true,
-    "tsconfig.json": true
+    "**/yarn-error.log": true
   },
   "editor.formatOnSave": true,
   "eslint.autoFixOnSave": true
