@@ -8,7 +8,7 @@ const myQueryBuilder = new QueryBuilder();
 const CheckAlerts = async (req, res, next) => {
   const { body } = req;
   try {
-    await axios.post('http://alerts-service/check/logs', body.logs);
+    await axios.post('http://alerts/check/logs', body.logs);
     next();
   } catch (e) {
     console.log('Error: ', e);
@@ -19,7 +19,7 @@ const CheckAlerts = async (req, res, next) => {
 const PostLiveLog = async (req, res, next) => {
   const { body } = req;
   try {
-    await axios.post('http://socket-service/newlog', body.logs);
+    await axios.post('http://live-data/newlog', body.logs);
     next();
   } catch (e) {
     console.log('Error: ', e);

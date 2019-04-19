@@ -1,9 +1,6 @@
-const { query, sendLocal, authenticate, jwt, getTextFromFile } = require('ro-server-utils');
-const { 
+const { query, sendLocal, getTextFromFile } = require('ro-server-utils');
+const {
   checkIfDemo,
-  checkUserExists,
-  getGroupsByClientID,
-  getPointsByClientID,
   getPointsByGroupID,
 } = require('./processes');
 
@@ -33,8 +30,8 @@ module.exports = (app) => {
   app.get('/points/group/:groupID',
     checkIfDemo,
     (req, res, next) => {
-      const demoGroups = ['1','2','3'];
-      if(demoGroups.indexOf(req.params.groupID) === -1){
+      const demoGroups = ['1', '2', '3'];
+      if (demoGroups.indexOf(req.params.groupID) === -1) {
         next(new Error('Internal Error'));
       }
       next();

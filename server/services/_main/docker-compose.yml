@@ -4,10 +4,10 @@ services:
     secrets:
       - ssl_dhparam
     depends_on:
-      - log-handler
-      - socket-service
-      - historical-service
-  health-service:
+      - point-logs
+      - live-data
+      - graphs
+  health:
     secrets:
       - pg-user
       - pg-pass
@@ -24,7 +24,7 @@ services:
       - TWILIO_SID=/run/secrets/twilio-sid
       - TWILIO_AUTH_TOKEN=/run/secrets/twilio-auth-token
       - TWILIO_PHONE_NUM=/run/secrets/twilio-phone-num
-  log-handler:
+  point-logs:
     secrets:
       - pg-user
       - pg-pass
@@ -35,7 +35,7 @@ services:
       - PG_HOST_FILE=/run/secrets/pg-host
       - PG_DB_FILE=/run/secrets/pg-db
       - PG_PASS_FILE=/run/secrets/pg-pass
-  historical-service:
+  graphs:
     secrets:
       - pg-user
       - pg-pass
@@ -46,7 +46,7 @@ services:
       - PG_HOST_FILE=/run/secrets/pg-host
       - PG_DB_FILE=/run/secrets/pg-db
       - PG_PASS_FILE=/run/secrets/pg-pass
-  accounts-service:
+  accounts:
     secrets:
       - pg-user
       - pg-pass
@@ -59,10 +59,10 @@ services:
       - PG_DB_FILE=/run/secrets/pg-db
       - PG_PASS_FILE=/run/secrets/pg-pass
       - JWT_SECRET_FILE=/run/secrets/jwt-secret
-  socket-service:
+  live-data:
     ports:
       - "32000:80"
-  alerts-service:
+  alerts:
     secrets:
       - pg-user
       - pg-pass

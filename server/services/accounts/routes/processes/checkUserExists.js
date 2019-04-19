@@ -9,19 +9,17 @@ const getUserByClientName = (req) => {
 };
 
 const ensureUserWasRetreived = (req, { locals }, next) => {
-  if(locals.results.length === 0){
+  if (locals.results.length === 0) {
     next(ERRORS.USER_NOT_FOUND);
   }
-  const {id, username, password} = locals.results[0];
-  locals.user = {id, username}
-  locals.results = {id, username};
-  locals.hashedPass = password
+  const { id, username, password } = locals.results[0];
+  locals.user = { id, username };
+  locals.results = { id, username };
+  locals.hashedPass = password;
   next();
-}
+};
 
-module.exports = (opts) => {
-  return [
-    query('pg', getUserByClientName),
-    ensureUserWasRetreived,
-  ]
-}
+module.exports = () => [
+  query('pg', getUserByClientName),
+  ensureUserWasRetreived,
+];

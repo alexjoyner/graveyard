@@ -1,7 +1,8 @@
 const { getTextFromFile } = require('ro-server-utils');
+const checkUserExists = require('./checkUserExists');
 
 module.exports = {
-  checkUserExists: require('./checkUserExists'),
+  checkUserExists,
   getGroupsByClientID: (req, res) => {
     const { id } = res.locals.tokenData;
     return {
@@ -16,7 +17,7 @@ module.exports = {
       values: [id],
     };
   },
-  getPointsByGroupID: (req, res) => {
+  getPointsByGroupID: (req) => {
     const { groupID } = req.params;
     return {
       text: getTextFromFile(__dirname, '../queries/getPointsByGroupID.pgsql'),
@@ -24,10 +25,11 @@ module.exports = {
     };
   },
   checkIfDemo: (req, res, next) => {
-    const bearerHeader = req.headers['authorization'];
-    if(!bearerHeader){
-        return next()
+    const bearerHeader = req.headers.authorization;
+    if (!bearerHeader) {
+      return next();
     }
     next('route');
-  }
+    return null;
+  },
 };

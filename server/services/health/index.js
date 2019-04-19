@@ -1,6 +1,7 @@
 const utils = require('ro-server-utils');
 const fs = require('fs');
 const { Client } = require('pg');
+
 const app = utils.getExpressApp()('basic');
 
 const conInfo = {
@@ -9,66 +10,58 @@ const conInfo = {
   database: fs.readFileSync(process.env.PG_DB_FILE, 'utf8'),
   host: fs.readFileSync(process.env.PG_HOST_FILE, 'utf8'),
   port: process.env.PG_PORT || 5432,
-}
+};
 const pgQuery = async (opts) => {
   const client = new Client(conInfo);
   try {
     await client.connect();
-    const rawData = await client.query(opts)
-    const result = rawData.rows
+    const rawData = await client.query(opts);
+    const result = rawData.rows;
     await client.end();
     return result;
-  }
-  catch (e) {
+  } catch (e) {
     client.end();
     throw e;
   }
-}
+};
 const queryStrategies = {
-  'pg': pgQuery
-}
-const runQuery = (strategy, getOpts) => {
-  return async (req, res) => {
-    try {
-      const groups = await queryStrategies[strategy](getOpts(req));
-      res.send(groups);
-    }
-    catch (e) {
-      res.status(500).send({
-        success: false,
-        error: e
-      });
-    }
+  pg: pgQuery,
+};
+const runQuery = (strategy, getOpts) => async (req, res) => {
+  try {
+    const groups = await queryStrategies[strategy](getOpts(req));
+    res.send(groups);
+  } catch (e) {
+    throw e;
   }
-}
+};
 app.get('/check/db', runQuery('pg', () => ({
-  text: "SELECT $1::text as message",
-  values: ['Hello world!']
+  text: 'SELECT $1::text as message',
+  values: ['Hello world!'],
 })));
 app.get('/check/twilio', async (req, res) => {
   const textOpts = {
     message: 'Hello World',
-    recipient: req.query.to
+    recipient: req.query.to,
   };
-  try{
-    const result = await utils.notify()('text', textOpts)
-    res.send({success: true, data: result, opts: textOpts});
-  }catch(e){
-    res.send({success: false, error: e, opts: textOpts});
+  try {
+    const result = await utils.notify()('text', textOpts);
+    res.send({ success: true, data: result, opts: textOpts });
+  } catch (e) {
+    res.send({ success: false, error: e, opts: textOpts });
   }
 });
 
 
 utils.runExpressApp()(app);
-if(process.env.NODE_ENV === 'development'){
+if (process.env.NODE_ENV === 'development') {
   console.log('Setting up server!');
-  const db_setup = fs.readFileSync('./db-setup.pgsql', 'utf8');
+  const dbSetup = fs.readFileSync('./db-setup.pgsql', 'utf8');
   try {
     runQuery('pg', () => ({
-      text: db_setup
-    }))()
-  }catch(e){
+      text: dbSetup,
+    }))();
+  } catch (e) {
     console.error(e);
   }
 }
-
