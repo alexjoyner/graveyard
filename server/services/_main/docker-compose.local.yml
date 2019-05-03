@@ -1,0 +1,57 @@
+version: '3.1'
+services:
+  main:
+    image: 127.0.0.1:5000/local-oee-master-nginx:v0.8.0
+    deploy:
+      restart_policy:
+        condition: on-failure
+    environment:
+      - MAIN_CONFIG_FILE=nginx.local.conf
+    ports:
+      - "80:80"
+      - "443:443"
+  health:
+    image: 127.0.0.1:5000/local-oee-master-health:v0.8.0
+    deploy:
+      restart_policy:
+        condition: on-failure
+  point-logs:
+    image: 127.0.0.1:5000/local-oee-master-point-logs:v0.8.0
+    environment:
+      - ENV_TYPE=local
+    deploy:
+      restart_policy:
+        condition: on-failure
+  graphs:
+    image: 127.0.0.1:5000/local-oee-master-graphs:v0.8.0
+    deploy:
+      restart_policy:
+        condition: on-failure
+  accounts:
+    image: 127.0.0.1:5000/local-oee-master-accounts:v0.8.0
+    deploy:
+      restart_policy:
+        condition: on-failure
+  live-data:
+    image: 127.0.0.1:5000/local-oee-master-live-data:v0.8.0
+    deploy:
+      restart_policy:
+        condition: on-failure
+  # alerts:
+  #   image: 127.0.0.1:5000/local-oee-master-alerts:v0.8.0
+  #   deploy:
+  #     restart_policy:
+  #       condition: on-failure
+secrets:
+  pg-user:
+    external: true
+  pg-pass:
+    external: true
+  pg-host:
+    external: true
+  pg-db:
+    external: true
+  jwt-secret:
+    external: true
+  ssl_dhparam:
+    external: true

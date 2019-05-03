@@ -1,6 +1,8 @@
 version: '3.1'
 services:
   main:
+    secrets:
+      - ssl_dhparam
     image: rosco9awj/oee-master-nginx:v0.8.0
     deploy:
       restart_policy:
@@ -40,6 +42,22 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+    secrets:
+      - pg-user
+      - pg-pass
+      - pg-db
+      - pg-host
+      - twilio-sid
+      - twilio-auth-token
+      - twilio-phone-num
+    environment:
+      - PG_USER_FILE=/run/secrets/pg-user
+      - PG_HOST_FILE=/run/secrets/pg-host
+      - PG_DB_FILE=/run/secrets/pg-db
+      - PG_PASS_FILE=/run/secrets/pg-pass
+      - TWILIO_SID=/run/secrets/twilio-sid
+      - TWILIO_AUTH_TOKEN=/run/secrets/twilio-auth-token
+      - TWILIO_PHONE_NUM=/run/secrets/twilio-phone-num
 secrets:
   pg-user:
     external: true

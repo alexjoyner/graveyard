@@ -27,11 +27,15 @@ const PostLiveLog = async (req, res, next) => {
   }
 };
 
+let alertProcess = [CheckAlerts];
+if (process.env.ENV_TYPE === 'local') {
+  alertProcess = [];
+}
 // depreciating /log/test to move to /log/new
 //   - Both do the same thing, just a naming changes
 //      v2 should remove /test
-app.post('/test', CheckAlerts, PostLiveLog, utils.runQuery('pg', myQueryBuilder.getInsertString));
-app.post('/new', CheckAlerts, PostLiveLog, utils.runQuery('pg', myQueryBuilder.getInsertString));
+app.post('/test', alertProcess, PostLiveLog, utils.runQuery('pg', myQueryBuilder.getInsertString));
+app.post('/new', alertProcess, PostLiveLog, utils.runQuery('pg', myQueryBuilder.getInsertString));
 
 app.post('/', (req, res) => {
   console.log('New Log: ', req.body);

@@ -18,6 +18,7 @@
 		"eject": "react-scripts eject",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d build",
+		"deploy:localserver": "cd ./server && yarn deploy:local",
 		"deploy:server": "cd ./server && yarn deploy",
 		"deploy:client": "yarn deploy",
 		"postversion": "git push --tags && echo \"Successfully released version $npm_package_version!\"",

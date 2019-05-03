@@ -7,8 +7,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ../nginx/nginx.dev.conf:/etc/nginx/nginx.conf
-      - ./dev-keys/ssl:/etc/ssl
+      - ../nginx/nginx.local.conf:/etc/nginx/nginx.conf
   health:
     build:
       context: ../health
@@ -80,6 +79,22 @@ services:
     volumes:
       - ../alerts:/opt/app
       - alerts-node_modules:/opt/app/node_modules
+    secrets:
+      - pg-user
+      - pg-pass
+      - pg-db
+      - pg-host
+      - twilio-sid
+      - twilio-auth-token
+      - twilio-phone-num
+    environment:
+      - PG_USER_FILE=/run/secrets/pg-user
+      - PG_HOST_FILE=/run/secrets/pg-host
+      - PG_DB_FILE=/run/secrets/pg-db
+      - PG_PASS_FILE=/run/secrets/pg-pass
+      - TWILIO_SID=/run/secrets/twilio-sid
+      - TWILIO_AUTH_TOKEN=/run/secrets/twilio-auth-token
+      - TWILIO_PHONE_NUM=/run/secrets/twilio-phone-num
   postgres:
     image: postgres
     restart: always
@@ -110,5 +125,3 @@ secrets:
     file: ../../../../../../Desktop/twilio/auth_token.txt
   twilio-phone-num:
     file: ../../../../../../Desktop/twilio/phone_num.txt
-  ssl_dhparam:
-    file: dev-keys/ssl/dhparam.pem

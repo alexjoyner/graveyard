@@ -1,0 +1,100 @@
+secrets:
+  jwt-secret:
+    external: true
+  pg-db:
+    external: true
+  pg-host:
+    external: true
+  pg-pass:
+    external: true
+  pg-user:
+    external: true
+  ssl_dhparam:
+    external: true
+services:
+  accounts:
+    deploy:
+      restart_policy:
+        condition: on-failure
+    environment:
+      JWT_SECRET_FILE: /run/secrets/jwt-secret
+      PG_DB_FILE: /run/secrets/pg-db
+      PG_HOST_FILE: /run/secrets/pg-host
+      PG_PASS_FILE: /run/secrets/pg-pass
+      PG_USER_FILE: /run/secrets/pg-user
+    image: 127.0.0.1:5000/local-oee-master-accounts:v0.8.0
+    secrets:
+    - source: jwt-secret
+    - source: pg-db
+    - source: pg-host
+    - source: pg-pass
+    - source: pg-user
+  graphs:
+    deploy:
+      restart_policy:
+        condition: on-failure
+    environment:
+      PG_DB_FILE: /run/secrets/pg-db
+      PG_HOST_FILE: /run/secrets/pg-host
+      PG_PASS_FILE: /run/secrets/pg-pass
+      PG_USER_FILE: /run/secrets/pg-user
+    image: 127.0.0.1:5000/local-oee-master-graphs:v0.8.0
+    secrets:
+    - source: pg-db
+    - source: pg-host
+    - source: pg-pass
+    - source: pg-user
+  health:
+    deploy:
+      restart_policy:
+        condition: on-failure
+    environment:
+      PG_DB_FILE: /run/secrets/pg-db
+      PG_HOST_FILE: /run/secrets/pg-host
+      PG_PASS_FILE: /run/secrets/pg-pass
+      PG_USER_FILE: /run/secrets/pg-user
+    image: 127.0.0.1:5000/local-oee-master-health:v0.8.0
+    secrets:
+    - source: pg-db
+    - source: pg-host
+    - source: pg-pass
+    - source: pg-user
+  live-data:
+    deploy:
+      restart_policy:
+        condition: on-failure
+    image: 127.0.0.1:5000/local-oee-master-live-data:v0.8.0
+    ports:
+    - 32000:80/tcp
+  main:
+    depends_on:
+    - graphs
+    - live-data
+    - point-logs
+    deploy:
+      restart_policy:
+        condition: on-failure
+    environment:
+      MAIN_CONFIG_FILE: nginx.local.conf
+    image: 127.0.0.1:5000/local-oee-master-nginx:v0.8.0
+    ports:
+    - 80:80/tcp
+    - 443:443/tcp
+  point-logs:
+    deploy:
+      restart_policy:
+        condition: on-failure
+    environment:
+      ENV_TYPE: local
+      PG_DB_FILE: /run/secrets/pg-db
+      PG_HOST_FILE: /run/secrets/pg-host
+      PG_PASS_FILE: /run/secrets/pg-pass
+      PG_USER_FILE: /run/secrets/pg-user
+    image: 127.0.0.1:5000/local-oee-master-point-logs:v0.8.0
+    secrets:
+    - source: pg-db
+    - source: pg-host
+    - source: pg-pass
+    - source: pg-user
+version: '3.1'
+
