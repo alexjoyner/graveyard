@@ -1,5 +1,3 @@
-import { env } from '../../../../.env';
-
 const getAllGroups = async () => {
   const token = localStorage.getItem('token');
   const headers: HeadersInit = {};
@@ -7,7 +5,7 @@ const getAllGroups = async () => {
     headers.Authorization = `Bearer ${token}`;
   }
   try {
-    const fetchUrl = new Request(`${env.serverAddr}/me/groups`);
+    const fetchUrl = new Request(`${process.env.REACT_APP_SERVER_ADDRESS}/me/groups`);
     const response = await fetch(fetchUrl, {
       headers,
     });

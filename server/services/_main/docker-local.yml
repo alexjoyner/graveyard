@@ -80,6 +80,14 @@ services:
     ports:
     - 80:80/tcp
     - 443:443/tcp
+  modbus-logger:
+    deploy:
+      restart_policy:
+        condition: on-failure
+    environment:
+      CONTROLLER_ADDRESS: 192.168.2.100
+      SERVER_ADDRESS: http://point-logs
+    image: 127.0.0.1:5000/local-oee-master-modbus-logger:v0.8.0
   point-logs:
     deploy:
       restart_policy:
@@ -96,5 +104,16 @@ services:
     - source: pg-host
     - source: pg-pass
     - source: pg-user
+  postgres:
+    deploy:
+      restart_policy:
+        condition: on-failure
+    environment:
+      POSTGRES_PASSWORD: password
+    image: 127.0.0.1:5000/postgres:v0.8.0
+    ports:
+    - 5432:5432/tcp
+    volumes:
+    - /media/db_main/postgres_oee_master:/var/lib/postgresql/data:rw
 version: '3.1'
 

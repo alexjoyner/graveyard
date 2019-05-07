@@ -8,7 +8,6 @@ import { SideBar } from './public/SideBar';
 import { Body } from './public/Body';
 import { NullComp } from '../../shared/components/NullComp';
 import { SocketSource } from '../../shared/observables/SocketSource/SocketSource';
-import { env } from '../../.env';
 const toastOverrides = {
 	Root: {
 		style: {
@@ -63,13 +62,13 @@ export const DefaultState: Object = {
 		}
 	}
 }
-export const SocketContext = createContext(new SocketSource(env.serverAddr));
+export const SocketContext = createContext(new SocketSource());
 
 //  Base DashBoard
 class DashBoard extends BasicApp<DashFeatures> {
 	constructor() {
 		super(DefaultFeatures, {}, (
-			<SocketContext.Provider value={new SocketSource(env.serverAddr)}>
+			<SocketContext.Provider value={new SocketSource()}>
 				<SideBar>
 					<Header />
 					<Body />

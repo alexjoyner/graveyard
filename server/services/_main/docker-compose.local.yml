@@ -37,6 +37,25 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+  postgres:
+    image: 127.0.0.1:5000/postgres:v0.8.0
+    deploy:
+      restart_policy:
+        condition: on-failure
+    volumes:
+      - /media/db_main/postgres_oee_master:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: password
+  modbus-logger:
+    image: 127.0.0.1:5000/local-oee-master-modbus-logger:v0.8.0
+    deploy:
+      restart_policy:
+        condition: on-failure
+    environment:
+      SERVER_ADDRESS: http://point-logs
+      CONTROLLER_ADDRESS: 192.168.2.100
   # alerts:
   #   image: 127.0.0.1:5000/local-oee-master-alerts:v0.8.0
   #   deploy:

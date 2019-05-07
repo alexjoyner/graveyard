@@ -6,7 +6,6 @@
     "**/.vscode": true,
     "**/*.lock": true,
     "**/CVS": false,
-    "**/logger": true,
     "**/README.md": true,
     "**/yarn-error.log": true
   },

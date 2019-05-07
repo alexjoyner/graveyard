@@ -1,5 +1,4 @@
 import { GraphOptions } from '../../types';
-import { env } from '../../../../.env';
 import { Point } from '../../../../shared/types/oee-master/points';
 
 export const fetchRawPointsLogs = async (points: Point[], opts: GraphOptions) => {
@@ -11,9 +10,9 @@ export const fetchRawPointsLogs = async (points: Point[], opts: GraphOptions) =>
     if (opts.start) { start = opts.start.format('YYYY-MM-DD HH:mm'); }
     if (opts.end) { end = opts.end.format('YYYY-MM-DD HH:mm'); }
     if (start && end) {
-      fetchUrl = new Request(`${env.serverAddr}/history/${pointID}/from/${start}/${end}`);
+      fetchUrl = new Request(`${process.env.REACT_APP_SERVER_ADDRESS}/history/${pointID}/from/${start}/${end}`);
     } else {
-      fetchUrl = new Request(`${env.serverAddr}/history/all/${pointID}`);
+      fetchUrl = new Request(`${process.env.REACT_APP_SERVER_ADDRESS}/history/all/${pointID}`);
     }
     return fetch(fetchUrl);
   });

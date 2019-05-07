@@ -1,5 +1,4 @@
 import { PointsObject, Point } from '../../../../shared/types/oee-master/points';
-import { env } from '../../../../.env';
 
 export const getPointsFromGroupID = async (groupID: number) => {
   const token = localStorage.getItem('token');
@@ -9,8 +8,8 @@ export const getPointsFromGroupID = async (groupID: number) => {
   }
   try {
     const requestUrl = (groupID === 0)
-      ? new Request(`${env.serverAddr}/me/points`, { headers })
-      : new Request(`${env.serverAddr}/me/points/group/${groupID}`, { headers });
+      ? new Request(`${process.env.REACT_APP_SERVER_ADDRESS}/me/points`, { headers })
+      : new Request(`${process.env.REACT_APP_SERVER_ADDRESS}/me/points/group/${groupID}`, { headers });
     const response = await fetch(requestUrl);
     const pointsArray = await response.json();
     const points: PointsObject = {};

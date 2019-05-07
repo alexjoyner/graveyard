@@ -10,8 +10,9 @@ class SocketSource implements SocketObserverable {
   private rooms: RoomsObject = {};
   private socket: SocketIOClient.Emitter;
 
-  constructor(serverAddress: string) {
-    this.socket = io(serverAddress);
+  constructor() {
+    console.log('Starting server in: ', <string>process.env.REACT_APP_SERVER_ADDRESS);
+    this.socket = io(<string>process.env.REACT_APP_SERVER_ADDRESS);
     this.startNewLogListener();
     this.startDisconnectListener();
     this.startReconnectListener();
