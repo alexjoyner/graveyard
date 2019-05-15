@@ -1,6 +1,21 @@
-const { runBasicQuery, ...processes } = require('./processes');
+const {
+  query, sendLocal,
+} = require('ro-server-utils');
+const {
+  getLogsByPointID,
+  getLastLogByPointID,
+  getLogsFromInterval,
+} = require('./processes');
+
 module.exports = (app) => {
-  app.get('/all/:pointID', runBasicQuery(processes.getLogsByPointID));
-  app.get('/last/:pointID', runBasicQuery(processes.getLastLogByPointID));
-  app.get('/:pointID/from/:start/:end', runBasicQuery(processes.getLogsFromInterval));
+  // #### Routes For Real Users ####
+  app.get('/all/:pointID',
+    query('pg', getLogsByPointID),
+    sendLocal('results'));
+  app.get('/last/:pointID',
+    query('pg', getLastLogByPointID),
+    sendLocal('results'));
+  app.get('/:pointID/from/:start/:end',
+    query('pg', getLogsFromInterval),
+    sendLocal('results'));
 };

@@ -1,9 +1,8 @@
-const utils = require('ro-server-utils');
+const { makeApp, runApp } = require('ro-server-utils');
 
-const app = utils.getExpressApp('basic');
+const app = makeApp('basic');
 const useRoutes = require('./routes');
 
 useRoutes(app);
 
-utils.runExpressApp(app);
-//testing
+runApp(app);

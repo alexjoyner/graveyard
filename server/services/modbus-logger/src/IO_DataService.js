@@ -30,7 +30,7 @@ module.exports = {
       if (err) return callback(err);
       const formattedData = {
         logs: {},
-        datetime: moment().format('YYYY-MM-DD HH:mm:ss-05'),
+        datetime: moment().format('YYYY-MM-DD HH:mm:ss'),
       };
       Object.keys(enabledIO.AI).map((inputNum) => {
         const { pointId } = enabledIO.AI[inputNum];

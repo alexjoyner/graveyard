@@ -1,46 +1,28 @@
-const utils = require('ro-server-utils');
-const fs = require('fs');
-const path = require('path');
-
-const getQueryText = (relativePath) => {
-  const queryText = fs.readFileSync(
-    path.resolve(__dirname, relativePath), 'utf8'
-  );
-  return queryText;
-}
+const { getTextFromFile } = require('ro-server-utils');
 
 module.exports = {
   getLogsByPointID: (req) => {
     const { pointID } = req.params;
     return {
       rowMode: 'array',
-      text: getQueryText('./queries/getLogsByPointID.pgsql'),
-      values: [pointID, 'EST'], //TODO: Programatically include timezone
+      text: getTextFromFile(__dirname, '../queries/getLogsByPointID.pgsql'),
+      values: [pointID, 'America/New_York'], //TODO: Programatically include timezone
     };
   },
   getLastLogByPointID: (req) => {
     const { pointID } = req.params;
     return {
       rowMode: 'array',
-      text: getQueryText('./queries/getLastLogByPointID.pgsql'),
-      values: [pointID, 'EST'], //TODO: Programatically include timezone
+      text: getTextFromFile(__dirname, '../queries/getLastLogByPointID.pgsql'),
+      values: [pointID, 'America/New_York'], //TODO: Programatically include timezone
     };
   },
   getLogsFromInterval: (req) => {
     const { pointID, start, end } = req.params;
     return {
       rowMode: 'array',
-      text: getQueryText('./queries/getLogsFromInterval.pgsql'),
-      values: [pointID, start, end, 'EST'], //TODO: Programatically include timezone
+      text: getTextFromFile(__dirname, '../queries/getLogsFromInterval.pgsql'),
+      values: [pointID, start, end, 'America/New_York'], //TODO: Programatically include timezone
     };
-  },
-  runBasicQuery: getQuery => async (req, res) => {
-    try {
-      const groups = await utils.runQuery('pg', getQuery(req));
-      res.send(groups);
-    } catch (e) {
-      console.error(e);
-      res.status(500).send('Something went wrong. Sorry');
-    }
   },
 };
