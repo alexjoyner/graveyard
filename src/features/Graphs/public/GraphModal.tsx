@@ -47,7 +47,7 @@ const GraphModal: FC = () => {
   }
   useEffect(() => {
     if (Object.keys(graphPoints).length > 0) {
-      runBuildGraphProcess(getTimeInterval('oneWeek'));
+      runBuildGraphProcess(getTimeInterval('oneDay'));
     }
   }, [graphPoints]);
   return (graphStage === 'SHOWN') ? (
