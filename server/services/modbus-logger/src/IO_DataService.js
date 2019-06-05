@@ -1,5 +1,4 @@
 const moment = require('moment');
-const ModbusClient = require('./JS_ModbusService');
 /*
 example:
   {'logs':
@@ -25,21 +24,18 @@ const enabledIO = {
 };
 
 module.exports = {
-  fetchEnabledIO(callback) {
-    ModbusClient.readAddresses(8959, 29, (err, data) => {
-      if (err) return callback(err);
-      const formattedData = {
-        logs: {},
-        datetime: moment().format('YYYY-MM-DD HH:mm:ss'),
+  convertModbusDataToLogObject: (data) => {
+    const formattedData = {
+      logs: {},
+      datetime: moment().format('YYYY-MM-DD HH:mm:ss'),
+    };
+    Object.keys(enabledIO.AI).map((inputNum) => {
+      const { pointId } = enabledIO.AI[inputNum];
+      formattedData.logs[pointId] = {
+        value: data[inputNum - 1],
       };
-      Object.keys(enabledIO.AI).map((inputNum) => {
-        const { pointId } = enabledIO.AI[inputNum];
-        formattedData.logs[pointId] = {
-          value: data[inputNum - 1],
-        };
-        return null;
-      });
-      return callback(null, formattedData);
+      return null;
     });
+    return formattedData;
   },
 };
