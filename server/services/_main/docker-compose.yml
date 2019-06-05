@@ -1,10 +1,12 @@
-version: '3.1'
+version: '3.2'
 services:
   main:
     depends_on:
       - point-logs
       - live-data
       - graphs
+      - accounts
+      - health
   health:
     secrets:
       - pg-user

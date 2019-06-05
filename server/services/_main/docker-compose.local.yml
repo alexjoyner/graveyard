@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.2'
 services:
   main:
     image: 127.0.0.1:5000/local-oee-master-nginx:v0.8.0
@@ -10,11 +10,16 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    depends_on:
+      - registry
   health:
     image: 127.0.0.1:5000/local-oee-master-health:v0.8.0
     deploy:
       restart_policy:
         condition: on-failure
+    depends_on:
+      - registry
+      - postgres
   point-logs:
     image: 127.0.0.1:5000/local-oee-master-point-logs:v0.8.0
     environment:
@@ -22,32 +27,52 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+    depends_on:
+      - registry
+      - postgres
   graphs:
     image: 127.0.0.1:5000/local-oee-master-graphs:v0.8.0
     deploy:
       restart_policy:
         condition: on-failure
+    depends_on:
+      - registry
+      - postgres
   accounts:
     image: 127.0.0.1:5000/local-oee-master-accounts:v0.8.0
     deploy:
       restart_policy:
         condition: on-failure
+    depends_on:
+      - registry
+      - postgres
   live-data:
     image: 127.0.0.1:5000/local-oee-master-live-data:v0.8.0
     deploy:
       restart_policy:
         condition: on-failure
+    depends_on:
+      - registry
+      - postgres
   postgres:
-    image: 127.0.0.1:5000/postgres:v0.8.0
+    image: 127.0.0.1:5000/local-oee-master-postgres:v0.8.0
     deploy:
       restart_policy:
         condition: on-failure
+        window: 120s
+    depends_on:
+      - registry
     volumes:
       - /media/db_main/postgres_oee_master:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     environment:
       POSTGRES_PASSWORD: password
+    # healthcheck:
+    #   test: ["CMD-SHELL", "pg_isready -U postgres"]
+    #   interval: 10s
+    #   timeout: 5s
+    #   retries: 5
   modbus-logger:
     image: 127.0.0.1:5000/local-oee-master-modbus-logger:v0.8.0
     deploy:
@@ -56,11 +81,20 @@ services:
     environment:
       SERVER_ADDRESS: http://point-logs
       CONTROLLER_ADDRESS: 192.168.2.100
-  # alerts:
-  #   image: 127.0.0.1:5000/local-oee-master-alerts:v0.8.0
-  #   deploy:
-  #     restart_policy:
-  #       condition: on-failure
+    depends_on:
+      - registry
+      - point-logs
+  registry:
+    image: registry:2
+    deploy:
+      restart_policy:
+        condition: on-failure
+    ports:
+      - target: 5000
+        published: 5000
+        mode: host
+    volumes:
+      - /mnt/registry:/var/lib/registry
 secrets:
   pg-user:
     external: true

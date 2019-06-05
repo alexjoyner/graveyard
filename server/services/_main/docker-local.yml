@@ -13,6 +13,9 @@ secrets:
     external: true
 services:
   accounts:
+    depends_on:
+    - postgres
+    - registry
     deploy:
       restart_policy:
         condition: on-failure
@@ -30,6 +33,9 @@ services:
     - source: pg-pass
     - source: pg-user
   graphs:
+    depends_on:
+    - postgres
+    - registry
     deploy:
       restart_policy:
         condition: on-failure
@@ -45,6 +51,9 @@ services:
     - source: pg-pass
     - source: pg-user
   health:
+    depends_on:
+    - postgres
+    - registry
     deploy:
       restart_policy:
         condition: on-failure
@@ -60,17 +69,24 @@ services:
     - source: pg-pass
     - source: pg-user
   live-data:
+    depends_on:
+    - postgres
+    - registry
     deploy:
       restart_policy:
         condition: on-failure
     image: 127.0.0.1:5000/local-oee-master-live-data:v0.8.0
     ports:
-    - 32000:80/tcp
+    - published: 32000
+      target: 80
   main:
     depends_on:
+    - accounts
     - graphs
+    - health
     - live-data
     - point-logs
+    - registry
     deploy:
       restart_policy:
         condition: on-failure
@@ -78,9 +94,14 @@ services:
       MAIN_CONFIG_FILE: nginx.local.conf
     image: 127.0.0.1:5000/local-oee-master-nginx:v0.8.0
     ports:
-    - 80:80/tcp
-    - 443:443/tcp
+    - published: 80
+      target: 80
+    - published: 443
+      target: 443
   modbus-logger:
+    depends_on:
+    - point-logs
+    - registry
     deploy:
       restart_policy:
         condition: on-failure
@@ -89,6 +110,9 @@ services:
       SERVER_ADDRESS: http://point-logs
     image: 127.0.0.1:5000/local-oee-master-modbus-logger:v0.8.0
   point-logs:
+    depends_on:
+    - postgres
+    - registry
     deploy:
       restart_policy:
         condition: on-failure
@@ -105,15 +129,30 @@ services:
     - source: pg-pass
     - source: pg-user
   postgres:
+    depends_on:
+    - registry
     deploy:
       restart_policy:
         condition: on-failure
+        window: 120s
     environment:
       POSTGRES_PASSWORD: password
-    image: 127.0.0.1:5000/postgres:v0.8.0
+    image: 127.0.0.1:5000/local-oee-master-postgres:v0.8.0
     ports:
-    - 5432:5432/tcp
+    - published: 5432
+      target: 5432
     volumes:
     - /media/db_main/postgres_oee_master:/var/lib/postgresql/data:rw
-version: '3.1'
+  registry:
+    deploy:
+      restart_policy:
+        condition: on-failure
+    image: registry:2
+    ports:
+    - mode: host
+      published: 5000
+      target: 5000
+    volumes:
+    - /mnt/registry:/var/lib/registry:rw
+version: '3.2'
 
