@@ -10,7 +10,7 @@
 	"homepage": "http://alexjoyner.github.io/",
 	"scripts": {
 		"start": "yarn link ro-component-library && react-scripts start",
-		"start:local": "yarn link ro-component-library && REACT_APP_SERVER_ADDRESS=http://192.168.0.47 react-scripts start",
+		"start:local": "yarn link ro-component-library && REACT_APP_SERVER_ADDRESS=http://192.168.2.10 react-scripts start",
 		"build": "react-scripts build",
 		"e2e": "cypress open",
 		"test": "yarn link ro-component-library && react-scripts test",

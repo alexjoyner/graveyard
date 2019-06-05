@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-SERVER_URL="192.168.0.47"
+SERVER_URL="192.168.2.10"
 pushd "../"
 PACKAGE_VERSION=$(cat package.json \
   | grep version \
