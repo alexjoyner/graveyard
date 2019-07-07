@@ -51,7 +51,7 @@ const GraphModal: FC = () => {
     }
   }, [graphPoints]);
   return (graphStage === 'SHOWN') ? (
-    <Modal size="100%" isOpen={graphStage === 'SHOWN'} overrides={{ Close: { component: () => null } }}>
+    <Modal size="100%" isOpen={graphStage === 'SHOWN'} overrides={{ Close: { component: () => null }, Root: { style: { zIndex: 100 } } }}>
       <ModalHeader>
         <IntervalButton size="compact" type="oneDay" onClick={(opts: GraphOptions) => runBuildGraphProcess(opts)}>1 Day</IntervalButton>
         <IntervalButton size="compact" type="oneWeek" onClick={(opts: GraphOptions) => runBuildGraphProcess(opts)}>1 Week</IntervalButton>
