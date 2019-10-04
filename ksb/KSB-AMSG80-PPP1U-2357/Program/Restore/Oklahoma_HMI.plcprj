@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <plcProject caseSensitive="false" useCustomWorkspace="true" debugMode="false" extcheck="true" SFCControl="false" strictPointerCheck="false" copyWarningThreshold="200" version="2.2" useLD2="true" useFBMethods="false">
 	<image>Oklahoma_HMI.imgx</image>
-	<commSettings>ModbusTCP:255,10000,M#TCPIP:192.168.1.6/502,5000</commSettings>
+	<commSettings>Modbus:1,1000,M#COM:12,38400,N,8,1,H</commSettings>
 	<sources>
 		<main>
 			<resources/>
@@ -9,29 +9,32 @@
 				<task name="Background">
 					<program>Reset_Alarms</program>
 					<program>Silence_Alarms</program>
-					<program>Audible_Alarm_Ctrl</program>
-					<program>HighRtd</program>
-					<program>VibrationAlarmCalc</program>
+					<program>pt100WindingTempDetect</program>
+					<program>vibrationDetect</program>
 					<program>pumpRunConditions</program>
 					<program>Pump_Enable</program>
 					<program>bearingTempDetect</program>
 					<program>setTimedAlarms</program>
 					<program>highfloatDetect</program>
 					<program>sealFailDetect</program>
+					<program>System_Ok</program>
+					<program>ptcWindingTempDetect</program>
 				</task>
 				<task name="Init">
 					<program>setDefaults</program>
-					<program>Testing</program>
 				</task>
 			</tasks>
 			<globalVars>
 				<group name="Ungrouped_vars">
-					<var name="DONT_RUN_PUMP" type="BOOL"/>
-					<var name="setWindingTempAlarm" type="BOOL"/>
-					<var name="setHighRtdAlarm" type="BOOL"/>
+					<var name="sensor_alarm_active" type="BOOL"/>
+					<var name="setPt100WindingTempAlarm" type="BOOL"/>
+					<var name="setHighTopBearingAlarm" type="BOOL"/>
 					<var name="setVibrationAlarm" type="BOOL"/>
 					<var name="setHighFloatAlarm" type="BOOL"/>
 					<var name="setSealFailAlarm" type="BOOL"/>
+					<var name="system_ok" type="BOOL"/>
+					<var name="setHighBottomBearingAlarm" type="BOOL"/>
+					<var name="setPtcWindingTempAlarm" type="BOOL"/>
 				</group>
 			</globalVars>
 			<retainVars>
@@ -52,12 +55,15 @@
 END_VAR
 
 VAR_GLOBAL
-	DONT_RUN_PUMP : BOOL;
-	setWindingTempAlarm : BOOL;
-	setHighRtdAlarm : BOOL;
+	sensor_alarm_active : BOOL;
+	setPt100WindingTempAlarm : BOOL;
+	setHighTopBearingAlarm : BOOL;
 	setVibrationAlarm : BOOL;
 	setHighFloatAlarm : BOOL;
 	setSealFailAlarm : BOOL;
+	system_ok : BOOL;
+	setHighBottomBearingAlarm : BOOL;
+	setPtcWindingTempAlarm : BOOL;
 END_VAR
 
 ]]>
@@ -73,14 +79,30 @@ END_VAR
 						<![CDATA[]]>
 					</iecDeclaration>
 					<sourceCode type="ST">
-						<![CDATA[if resetAlarms then
+						<![CDATA[if resetAlarms and NOT setPtcWindingTempAlarm and NOT setPt100WindingTempAlarm then
 	windingTempAlarm := FALSE;
-	sealFailAlarm := FALSE;
-	highFloatAlarm := FALSE;
-	vibrationAlarm := FALSE;
-	highRtdAlarm := FALSE;
-	audibleAlarm := FALSE;
 end_if;
+
+if resetAlarms and NOT setVibrationAlarm then
+	vibrationAlarm := FALSE;
+end_if;
+
+if resetAlarms and NOT setHighTopBearingAlarm then
+	highTopBearingAlarm := FALSE;
+end_if;
+
+if resetAlarms and NOT setHighBottomBearingAlarm then
+	highBottomBearingAlarm := FALSE;
+end_if;
+
+if resetAlarms and NOT setHighFloatAlarm then
+	highFloatAlarm := FALSE;
+end_if;
+
+if resetAlarms and NOT setSealFailAlarm then
+	sealFailAlarm := FALSE;
+end_if;
+
 ]]>
 					</sourceCode>
 				</program>
@@ -96,38 +118,15 @@ end_if;
 ]]>
 					</sourceCode>
 				</program>
-				<program name="Audible_Alarm_Ctrl" version="1.0.0">
+				<program name="pt100WindingTempDetect" version="1.0.0">
 					<vars>
 						<localVars>
-							<var name="oneShot" type="R_TRIG"/>
-						</localVars>
-					</vars>
-					<iecDeclaration valid="TRUE">
-						<![CDATA[]]>
-					</iecDeclaration>
-					<sourceCode type="ST">
-						<![CDATA[/** Alarm should only be enabled once every time
-a new alarm occurs. **/
-oneShot (CLK := DONT_RUN_PUMP);
-if OneShot.Q then
-	audibleAlarm := 1;
-end_if;
-]]>
-					</sourceCode>
-				</program>
-				<program name="HighRtd" version="1.0.0">
-					<vars>
-						<localVars>
-							<var name="HighRtdTimer" type="TON"/>
-							<var name="highRtdTimerVal" type="UDINT"/>
-							<var name="SensorsDisconnect" type="BOOL"/>
+							<var name="highPt100WindingTempTimer" type="TON"/>
+							<var name="sensorsDisconnected" type="BOOL"/>
 						</localVars>
 						<localConsts>
 							<const name="disconnectVal" type="INT">
 								<initValue>-32768</initValue>
-							</const>
-							<const name="windingTempCutoff" type="INT">
-								<initValue>402</initValue>
 							</const>
 						</localConsts>
 					</vars>
@@ -136,234 +135,214 @@ end_if;
 					</iecDeclaration>
 					<sourceCode type="FBD">
 						<FBD>
-							<network order="N:1" width="200" height="25" error="false">
+							<network order="N:1" width="200" height="16" error="false">
 								<conn id="C:0" error="false">
 									<segment xStart="13" yStart="10" xEnd="16" yEnd="10"/>
-									<startPin>V:1</startPin>
-									<endPin>O:12.0</endPin>
+									<startPin>V:2</startPin>
+									<endPin>O:14.0</endPin>
 								</conn>
 								<conn id="C:1" error="false">
 									<segment xStart="15" yStart="11" xEnd="16" yEnd="11"/>
-									<startPin>V:3</startPin>
-									<endPin>O:12.1</endPin>
+									<startPin>V:4</startPin>
+									<endPin>O:14.1</endPin>
 								</conn>
 								<conn id="C:2" error="false">
-									<segment xStart="65" yStart="4" xEnd="67" yEnd="4"/>
-									<startPin>FB:HighRtdTimer.Q</startPin>
-									<endPin>V:4</endPin>
+									<segment xStart="70" yStart="4" xEnd="73" yEnd="4"/>
+									<startPin>FB:highPt100WindingTempTimer.Q</startPin>
+									<endPin>V:5</endPin>
 								</conn>
 								<conn id="C:3" error="false">
 									<segment xStart="20" yStart="10" xEnd="26" yEnd="10"/>
 									<segment xEnd="26" yEnd="5"/>
 									<segment xEnd="27" yEnd="5"/>
-									<startPin>O:12.2</startPin>
-									<endPin>O:14.1</endPin>
+									<startPin>O:14.2</startPin>
+									<endPin>O:16.1</endPin>
 								</conn>
 								<conn id="C:4" error="false">
 									<segment xStart="26" yStart="4" xEnd="27" yEnd="4"/>
-									<startPin>O:13.2</startPin>
-									<endPin>O:14.0</endPin>
+									<startPin>O:15.2</startPin>
+									<endPin>O:16.0</endPin>
 								</conn>
 								<conn id="C:5" error="false">
 									<segment xStart="15" yStart="3" xEnd="16" yEnd="3"/>
-									<startPin>V:8</startPin>
-									<endPin>O:16.1</endPin>
+									<startPin>V:9</startPin>
+									<endPin>O:18.1</endPin>
 								</conn>
 								<conn id="C:6" error="false">
 									<segment xStart="15" yStart="7" xEnd="16" yEnd="7"/>
-									<startPin>V:7</startPin>
-									<endPin>O:15.1</endPin>
+									<startPin>V:8</startPin>
+									<endPin>O:17.1</endPin>
 								</conn>
 								<conn id="C:7" error="false">
 									<segment xStart="13" yStart="6" xEnd="16" yEnd="6"/>
-									<startPin>V:5</startPin>
-									<endPin>O:15.0</endPin>
+									<startPin>V:6</startPin>
+									<endPin>O:17.0</endPin>
 								</conn>
 								<conn id="C:8" error="false">
 									<segment xStart="13" yStart="2" xEnd="16" yEnd="2"/>
-									<startPin>V:6</startPin>
-									<endPin>O:16.0</endPin>
+									<startPin>V:7</startPin>
+									<endPin>O:18.0</endPin>
 								</conn>
 								<conn id="C:9" error="false">
 									<segment xStart="20" yStart="2" xEnd="20" yEnd="4"/>
 									<segment xEnd="22" yEnd="4"/>
-									<startPin>O:16.2</startPin>
-									<endPin>O:13.0</endPin>
+									<startPin>O:18.2</startPin>
+									<endPin>O:15.0</endPin>
 								</conn>
 								<conn id="C:10" error="false">
 									<segment xStart="20" yStart="6" xEnd="20" yEnd="5"/>
 									<segment xEnd="22" yEnd="5"/>
-									<startPin>O:15.2</startPin>
-									<endPin>O:13.1</endPin>
+									<startPin>O:17.2</startPin>
+									<endPin>O:15.1</endPin>
 								</conn>
 								<conn id="C:11" error="false">
-									<segment xStart="31" yStart="4" xEnd="33" yEnd="4"/>
-									<startPin>O:14.2</startPin>
-									<endPin>O:17.0</endPin>
-								</conn>
-								<conn id="C:12" error="false">
-									<segment xStart="13" yStart="14" xEnd="16" yEnd="14"/>
-									<startPin>V:9</startPin>
-									<endPin>O:18.0</endPin>
-								</conn>
-								<conn id="C:13" error="false">
-									<segment xStart="14" yStart="15" xEnd="16" yEnd="15"/>
-									<startPin>V:10</startPin>
-									<endPin>O:18.1</endPin>
-								</conn>
-								<conn id="C:14" error="false">
-									<segment xStart="20" yStart="14" xEnd="31" yEnd="14"/>
+									<segment xStart="15" yStart="13" xEnd="31" yEnd="13"/>
 									<segment xEnd="31" yEnd="5"/>
-									<segment xEnd="33" yEnd="5"/>
-									<startPin>O:18.2</startPin>
-									<endPin>O:17.1</endPin>
-								</conn>
-								<conn id="C:15" error="false">
-									<segment xStart="37" yStart="4" xEnd="39" yEnd="4"/>
-									<startPin>O:17.2</startPin>
-									<endPin>O:19.0</endPin>
-								</conn>
-								<conn id="C:16" error="false">
-									<segment xStart="14" yStart="18" xEnd="37" yEnd="18"/>
-									<segment xEnd="37" yEnd="5"/>
-									<segment xEnd="39" yEnd="5"/>
-									<startPin>V:11</startPin>
+									<segment xEnd="34" yEnd="5"/>
+									<startPin>V:10</startPin>
 									<endPin>O:19.1</endPin>
 								</conn>
-								<conn id="C:17" error="false">
-									<segment xStart="27" yStart="21" xEnd="34" yEnd="21"/>
-									<startPin>V:2</startPin>
+								<conn id="C:12" error="false">
+									<segment xStart="43" yStart="12" xEnd="49" yEnd="12"/>
+									<startPin>V:3</startPin>
 									<endPin>O:20.0</endPin>
 								</conn>
-								<conn id="C:18" error="false">
-									<segment xStart="27" yStart="22" xEnd="34" yEnd="22"/>
-									<startPin>V:21</startPin>
+								<conn id="C:13" error="false">
+									<segment xStart="43" yStart="13" xEnd="49" yEnd="13"/>
+									<startPin>V:11</startPin>
 									<endPin>O:20.1</endPin>
 								</conn>
-								<conn id="C:19" error="false">
-									<segment xStart="39" yStart="21" xEnd="39" yEnd="18"/>
-									<segment xEnd="61" yEnd="18"/>
-									<segment xEnd="61" yEnd="5"/>
+								<conn id="C:14" error="false">
+									<segment xStart="54" yStart="12" xEnd="66" yEnd="12"/>
+									<segment xEnd="66" yEnd="5"/>
 									<startPin>O:20.2</startPin>
-									<endPin>FB:HighRtdTimer.PT</endPin>
+									<endPin>FB:highPt100WindingTempTimer.PT</endPin>
+								</conn>
+								<conn id="C:15" error="false">
+									<segment xStart="43" yStart="7" xEnd="46" yEnd="7"/>
+									<startPin>V:12</startPin>
+									<endPin>F:1.#0</endPin>
+								</conn>
+								<conn id="C:16" error="false">
+									<segment xStart="65" yStart="4" xEnd="66" yEnd="4"/>
+									<startPin>O:21.2</startPin>
+									<endPin>FB:highPt100WindingTempTimer.IN</endPin>
+								</conn>
+								<conn id="C:17" error="false">
+									<segment xStart="38" yStart="4" xEnd="60" yEnd="4"/>
+									<startPin>O:19.2</startPin>
+									<endPin>O:21.0</endPin>
+								</conn>
+								<conn id="C:18" error="false">
+									<segment xStart="38" yStart="9" xEnd="51" yEnd="9"/>
+									<segment xEnd="51" yEnd="8"/>
+									<startPin>V:13</startPin>
+									<endPin>O:22.1</endPin>
+								</conn>
+								<conn id="C:19" error="false">
+									<segment xStart="50" yStart="7" xEnd="51" yEnd="7"/>
+									<startPin>F:1.#O</startPin>
+									<endPin>O:22.0</endPin>
 								</conn>
 								<conn id="C:20" error="false">
-									<segment xStart="53" yStart="14" xEnd="53" yEnd="5"/>
-									<segment xEnd="55" yEnd="5"/>
-									<startPin>F:23.#O</startPin>
-									<endPin>O:25.1</endPin>
+									<segment xStart="55" yStart="7" xEnd="55" yEnd="5"/>
+									<segment xEnd="60" yEnd="5"/>
+									<startPin>O:22.2</startPin>
+									<endPin>O:21.1</endPin>
 								</conn>
 								<conn id="C:21" error="false">
-									<segment xStart="49" yStart="14" xEnd="48" yEnd="14"/>
-									<startPin>F:23.#0</startPin>
-									<endPin>V:24</endPin>
+									<segment xStart="31" yStart="4" xEnd="34" yEnd="4"/>
+									<startPin>O:16.2</startPin>
+									<endPin>O:19.0</endPin>
 								</conn>
-								<conn id="C:22" error="false">
-									<segment xStart="60" yStart="4" xEnd="61" yEnd="4"/>
-									<startPin>O:25.2</startPin>
-									<endPin>FB:HighRtdTimer.IN</endPin>
-								</conn>
-								<conn id="C:23" error="false">
-									<segment xStart="43" yStart="4" xEnd="55" yEnd="4"/>
-									<startPin>O:19.2</startPin>
-									<endPin>O:25.0</endPin>
-								</conn>
-								<var id="V:1" error="false" type="Input" name="motor3_Temp" x="13" y="10">
+								<var id="V:2" error="false" type="Input" name="motor3_Temp" x="13" y="10">
 									<pin>C:0</pin>
 								</var>
-								<var id="V:2" error="false" type="Input" name="pumpRtdAlarmDelay" x="27" y="21">
-									<pin>C:17</pin>
-								</var>
-								<var id="V:3" error="false" type="Input" name="motor3_Temp_Setpoint" x="15" y="11">
-									<pin>C:1</pin>
-								</var>
-								<var id="V:4" error="false" type="Output" name="setWindingTempAlarm" x="67" y="4">
-									<pin>C:2</pin>
-								</var>
-								<var id="V:5" error="false" type="Input" name="motor2_Temp" x="13" y="6">
-									<pin>C:7</pin>
-								</var>
-								<var id="V:6" error="false" type="Input" name="motor1_Temp" x="13" y="2">
-									<pin>C:8</pin>
-								</var>
-								<var id="V:7" error="false" type="Input" name="motor2_Temp_Setpoint" x="15" y="7">
-									<pin>C:6</pin>
-								</var>
-								<var id="V:8" error="false" type="Input" name="motor1_Temp_Setpoint" x="15" y="3">
-									<pin>C:5</pin>
-								</var>
-								<var id="V:9" error="false" type="Input" name="windingTemp" x="13" y="14">
+								<var id="V:3" error="false" type="Input" name="pumpRtdAlarmDelay" x="43" y="12">
 									<pin>C:12</pin>
 								</var>
-								<var id="V:10" error="false" type="Input" name="windingTempCutoff" x="14" y="15">
+								<var id="V:4" error="false" type="Input" name="motor3_Temp_Setpoint" x="15" y="11">
+									<pin>C:1</pin>
+								</var>
+								<var id="V:5" error="false" type="Output" name="setPt100WindingTempAlarm" x="73" y="4">
+									<pin>C:2</pin>
+								</var>
+								<var id="V:6" error="false" type="Input" name="motor2_Temp" x="13" y="6">
+									<pin>C:7</pin>
+								</var>
+								<var id="V:7" error="false" type="Input" name="motor1_Temp" x="13" y="2">
+									<pin>C:8</pin>
+								</var>
+								<var id="V:8" error="false" type="Input" name="motor2_Temp_Setpoint" x="15" y="7">
+									<pin>C:6</pin>
+								</var>
+								<var id="V:9" error="false" type="Input" name="motor1_Temp_Setpoint" x="15" y="3">
+									<pin>C:5</pin>
+								</var>
+								<var id="V:10" error="false" type="Input" name="sensorsDisconnected" x="15" y="13">
+									<pin>C:11</pin>
+								</var>
+								<var id="V:11" error="false" type="Input" name="timerMsToSecConst" x="43" y="13">
 									<pin>C:13</pin>
 								</var>
-								<var id="V:11" error="false" type="Input" name="SensorsDisconnect" x="14" y="18">
-									<pin>C:16</pin>
+								<var id="V:12" error="false" type="Input" name="windingTempAlarmBypassed" x="43" y="7">
+									<pin>C:15</pin>
 								</var>
-								<var id="V:21" error="false" type="Input" name="timerMsToSecConst" x="27" y="22">
+								<var id="V:13" error="false" type="Input" name="resetAlarms" x="38" y="9">
 									<pin>C:18</pin>
 								</var>
-								<var id="V:24" error="false" type="Input" name="windingTempAlarmBypassed" x="48" y="14">
-									<pin>C:21</pin>
-								</var>
-								<op id="O:12" error="false" width="4" name="GE" x="16" y="10">
+								<op id="O:14" error="false" width="4" name="GE" x="16" y="10">
 									<inputPin name="0" negated="false">C:0</inputPin>
 									<inputPin name="1" negated="false">C:1</inputPin>
 									<outputPin name="2" negated="false">C:3</outputPin>
 								</op>
-								<op id="O:13" error="false" width="4" name="OR" x="22" y="4">
+								<op id="O:15" error="false" width="4" name="OR" x="22" y="4">
 									<inputPin name="0" negated="false">C:9</inputPin>
 									<inputPin name="1" negated="false">C:10</inputPin>
 									<outputPin name="2" negated="false">C:4</outputPin>
 								</op>
-								<op id="O:14" error="false" width="4" name="OR" x="27" y="4">
+								<op id="O:16" error="false" width="4" name="OR" x="27" y="4">
 									<inputPin name="0" negated="false">C:4</inputPin>
 									<inputPin name="1" negated="false">C:3</inputPin>
-									<outputPin name="2" negated="false">C:11</outputPin>
+									<outputPin name="2" negated="false">C:21</outputPin>
 								</op>
-								<op id="O:15" error="false" width="4" name="GE" x="16" y="6">
+								<op id="O:17" error="false" width="4" name="GE" x="16" y="6">
 									<inputPin name="0" negated="false">C:7</inputPin>
 									<inputPin name="1" negated="false">C:6</inputPin>
 									<outputPin name="2" negated="false">C:10</outputPin>
 								</op>
-								<op id="O:16" error="false" width="4" name="GE" x="16" y="2">
+								<op id="O:18" error="false" width="4" name="GE" x="16" y="2">
 									<inputPin name="0" negated="false">C:8</inputPin>
 									<inputPin name="1" negated="false">C:5</inputPin>
 									<outputPin name="2" negated="false">C:9</outputPin>
 								</op>
-								<op id="O:17" error="false" width="4" name="OR" x="33" y="4">
-									<inputPin name="0" negated="false">C:11</inputPin>
-									<inputPin name="1" negated="false">C:14</inputPin>
-									<outputPin name="2" negated="false">C:15</outputPin>
+								<op id="O:19" error="false" width="4" name="OR" x="34" y="4">
+									<inputPin name="0" negated="false">C:21</inputPin>
+									<inputPin name="1" negated="false">C:11</inputPin>
+									<outputPin name="2" negated="false">C:17</outputPin>
 								</op>
-								<op id="O:18" error="false" width="4" name="GE" x="16" y="14">
+								<op id="O:20" error="false" width="5" name="MUL" x="49" y="12">
 									<inputPin name="0" negated="false">C:12</inputPin>
 									<inputPin name="1" negated="false">C:13</inputPin>
 									<outputPin name="2" negated="false">C:14</outputPin>
 								</op>
-								<op id="O:19" error="false" width="4" name="OR" x="39" y="4">
-									<inputPin name="0" negated="false">C:15</inputPin>
-									<inputPin name="1" negated="false">C:16</inputPin>
-									<outputPin name="2" negated="false">C:23</outputPin>
-								</op>
-								<op id="O:20" error="false" width="5" name="MUL" x="34" y="21">
+								<op id="O:21" error="false" width="5" name="AND" x="60" y="4">
 									<inputPin name="0" negated="false">C:17</inputPin>
-									<inputPin name="1" negated="false">C:18</inputPin>
-									<outputPin name="2" negated="false">C:19</outputPin>
-								</op>
-								<op id="O:25" error="false" width="5" name="AND" x="55" y="4">
-									<inputPin name="0" negated="false">C:23</inputPin>
 									<inputPin name="1" negated="false">C:20</inputPin>
-									<outputPin name="2" negated="false">C:22</outputPin>
+									<outputPin name="2" negated="false">C:16</outputPin>
 								</op>
-								<fun id="F:23" error="false" width="4" name="NOT" x="49" y="14">
-									<inputPin name="#0" negated="false">C:21</inputPin>
-									<outputPin name="#O" negated="false">C:20</outputPin>
+								<op id="O:22" error="false" width="4" name="OR" x="51" y="7">
+									<inputPin name="0" negated="false">C:19</inputPin>
+									<inputPin name="1" negated="false">C:18</inputPin>
+									<outputPin name="2" negated="false">C:20</outputPin>
+								</op>
+								<fun id="F:1" error="false" width="4" name="NOT" x="46" y="7">
+									<inputPin name="#0" negated="false">C:15</inputPin>
+									<outputPin name="#O" negated="false">C:19</outputPin>
 								</fun>
-								<funBlock id="FB:HighRtdTimer" error="false" width="4" name="TON" x="61" y="4">
-									<inputPin name="IN" negated="false">C:22</inputPin>
-									<inputPin name="PT" negated="false">C:19</inputPin>
+								<funBlock id="FB:highPt100WindingTempTimer" error="false" width="4" name="TON" x="66" y="4">
+									<inputPin name="IN" negated="false">C:16</inputPin>
+									<inputPin name="PT" negated="false">C:14</inputPin>
 									<outputPin name="Q" negated="false">C:2</outputPin>
 									<outputPin name="ET" negated="false"/>
 								</funBlock>
@@ -422,30 +401,9 @@ end_if;
 									<endPin>O:12.0</endPin>
 								</conn>
 								<conn id="C:10" error="false">
-									<segment xStart="33" yStart="3" xEnd="35" yEnd="3"/>
+									<segment xStart="33" yStart="3" xEnd="36" yEnd="3"/>
 									<startPin>O:12.2</startPin>
-									<endPin>O:13.0</endPin>
-								</conn>
-								<conn id="C:11" error="false">
-									<segment xStart="39" yStart="3" xEnd="41" yEnd="3"/>
-									<startPin>O:13.2</startPin>
 									<endPin>V:7</endPin>
-								</conn>
-								<conn id="C:12" error="false">
-									<segment xStart="19" yStart="15" xEnd="35" yEnd="15"/>
-									<segment xEnd="35" yEnd="4"/>
-									<startPin>O:14.2</startPin>
-									<endPin>O:13.1</endPin>
-								</conn>
-								<conn id="C:13" error="false">
-									<segment xStart="13" yStart="15" xEnd="15" yEnd="15"/>
-									<startPin>V:15</startPin>
-									<endPin>O:14.0</endPin>
-								</conn>
-								<conn id="C:14" error="false">
-									<segment xStart="13" yStart="16" xEnd="15" yEnd="16"/>
-									<startPin>V:17</startPin>
-									<endPin>O:14.1</endPin>
 								</conn>
 								<var id="V:1" error="false" type="Input" name="motor1_Temp" x="13" y="3">
 									<pin>C:0</pin>
@@ -465,14 +423,8 @@ end_if;
 								<var id="V:6" error="false" type="Input" name="disconnectVal" x="13" y="12">
 									<pin>C:5</pin>
 								</var>
-								<var id="V:7" error="false" type="Output" name="SensorsDisconnect" x="41" y="3">
-									<pin>C:11</pin>
-								</var>
-								<var id="V:15" error="false" type="Input" name="windingTemp" x="13" y="15">
-									<pin>C:13</pin>
-								</var>
-								<var id="V:17" error="false" type="Input" name="disconnectVal" x="13" y="16">
-									<pin>C:14</pin>
+								<var id="V:7" error="false" type="Output" name="sensorsDisconnected" x="36" y="3">
+									<pin>C:10</pin>
 								</var>
 								<op id="O:8" error="false" width="4" name="OR" x="22" y="3">
 									<inputPin name="0" negated="false">C:6</inputPin>
@@ -499,21 +451,11 @@ end_if;
 									<inputPin name="1" negated="false">C:8</inputPin>
 									<outputPin name="2" negated="false">C:10</outputPin>
 								</op>
-								<op id="O:13" error="false" width="4" name="OR" x="35" y="3">
-									<inputPin name="0" negated="false">C:10</inputPin>
-									<inputPin name="1" negated="false">C:12</inputPin>
-									<outputPin name="2" negated="false">C:11</outputPin>
-								</op>
-								<op id="O:14" error="false" width="4" name="EQ" x="15" y="15">
-									<inputPin name="0" negated="false">C:13</inputPin>
-									<inputPin name="1" negated="false">C:14</inputPin>
-									<outputPin name="2" negated="false">C:12</outputPin>
-								</op>
 							</network>
 						</FBD>
 					</sourceCode>
 				</program>
-				<program name="VibrationAlarmCalc" version="1.0.0">
+				<program name="vibrationDetect" version="1.0.0">
 					<vars>
 						<localVars>
 							<var name="VibrationAlarm_0" type="TON"/>
@@ -531,12 +473,12 @@ end_if;
 						<FBD>
 							<network order="N:1" width="200" height="18" error="false">
 								<conn id="C:0" error="false">
-									<segment xStart="5" yStart="5" xEnd="10" yEnd="5"/>
+									<segment xStart="7" yStart="5" xEnd="11" yEnd="5"/>
 									<startPin>V:1</startPin>
 									<endPin>O:7.0</endPin>
 								</conn>
 								<conn id="C:1" error="false">
-									<segment xStart="9" yStart="6" xEnd="10" yEnd="6"/>
+									<segment xStart="11" yStart="6" xEnd="11" yEnd="6"/>
 									<startPin>V:2</startPin>
 									<endPin>O:7.1</endPin>
 								</conn>
@@ -546,17 +488,17 @@ end_if;
 									<endPin>V:4</endPin>
 								</conn>
 								<conn id="C:3" error="false">
-									<segment xStart="5" yStart="9" xEnd="10" yEnd="9"/>
+									<segment xStart="7" yStart="9" xEnd="10" yEnd="9"/>
 									<startPin>V:5</startPin>
 									<endPin>O:8.0</endPin>
 								</conn>
 								<conn id="C:4" error="false">
-									<segment xStart="6" yStart="10" xEnd="10" yEnd="10"/>
+									<segment xStart="8" yStart="10" xEnd="10" yEnd="10"/>
 									<startPin>V:6</startPin>
 									<endPin>O:8.1</endPin>
 								</conn>
 								<conn id="C:5" error="false">
-									<segment xStart="14" yStart="5" xEnd="16" yEnd="5"/>
+									<segment xStart="15" yStart="5" xEnd="16" yEnd="5"/>
 									<startPin>O:7.2</startPin>
 									<endPin>O:9.0</endPin>
 								</conn>
@@ -603,10 +545,10 @@ end_if;
 									<startPin>V:14</startPin>
 									<endPin>F:13.#0</endPin>
 								</conn>
-								<var id="V:1" error="false" type="Input" name="vibration" x="5" y="5">
+								<var id="V:1" error="false" type="Input" name="vibration" x="7" y="5">
 									<pin>C:0</pin>
 								</var>
-								<var id="V:2" error="false" type="Input" name="vibration_Limit_Setpoint" x="9" y="6">
+								<var id="V:2" error="false" type="Input" name="vibration_Limit_Setpoint" x="11" y="6">
 									<pin>C:1</pin>
 								</var>
 								<var id="V:3" error="false" type="Input" name="vibrationAlarmDelay" x="13" y="14">
@@ -615,10 +557,10 @@ end_if;
 								<var id="V:4" error="false" type="Output" name="setVibrationAlarm" x="40" y="5">
 									<pin>C:2</pin>
 								</var>
-								<var id="V:5" error="false" type="Input" name="vibration" x="5" y="9">
+								<var id="V:5" error="false" type="Input" name="vibration" x="7" y="9">
 									<pin>C:3</pin>
 								</var>
-								<var id="V:6" error="false" type="Input" name="disconnect" x="6" y="10">
+								<var id="V:6" error="false" type="Input" name="disconnect" x="8" y="10">
 									<pin>C:4</pin>
 								</var>
 								<var id="V:10" error="false" type="Input" name="timerMsToSecConst" x="13" y="15">
@@ -627,7 +569,7 @@ end_if;
 								<var id="V:14" error="false" type="Input" name="vibrationAlarmBypassed" x="19" y="12">
 									<pin>C:13</pin>
 								</var>
-								<op id="O:7" error="false" width="4" name="GE" x="10" y="5">
+								<op id="O:7" error="false" width="4" name="GE" x="11" y="5">
 									<inputPin name="0" negated="false">C:0</inputPin>
 									<inputPin name="1" negated="false">C:1</inputPin>
 									<outputPin name="2" negated="false">C:5</outputPin>
@@ -673,19 +615,20 @@ end_if;
 					</iecDeclaration>
 					<sourceCode type="LD2">
 						<LD2 version="1">
-							<network label="" id="1" nextID="10" comment="">
+							<network label="" id="1" nextID="11" comment="">
 								<assignment fromTmpVar="">
 									<input>
 										<or id="6">
 											<contact name="windingTempAlarm" type="Normal" id="0"/>
 											<contact name="sealFailAlarm" type="Normal" id="5"/>
 											<contact name="highFloatAlarm" type="Normal" id="7"/>
-											<contact name="highRtdAlarm" type="Normal" id="8"/>
+											<contact name="highTopBearingAlarm" type="Normal" id="8"/>
 											<contact name="vibrationAlarm" type="Normal" id="9"/>
+											<contact name="highBottomBearingAlarm" type="Normal" id="10"/>
 										</or>
 									</input>
 									<outputs>
-										<coil name="DONT_RUN_PUMP" type="Normal" id="1"/>
+										<coil name="sensor_alarm_active" type="Normal" id="1"/>
 									</outputs>
 								</assignment>
 							</network>
@@ -702,7 +645,7 @@ end_if;
 							<network label="" id="1" nextID="2" comment="">
 								<assignment fromTmpVar="">
 									<input>
-										<contact name="DONT_RUN_PUMP" type="Closed" id="0"/>
+										<contact name="sensor_alarm_active" type="Closed" id="0"/>
 									</input>
 									<outputs>
 										<coil name="pumpEnable" type="Normal" id="1"/>
@@ -715,7 +658,8 @@ end_if;
 				<program name="bearingTempDetect" version="1.0.0">
 					<vars>
 						<localVars>
-							<var name="HighRtdTimer_0" type="TON"/>
+							<var name="HighBottomBearingTempTimer" type="TON"/>
+							<var name="HighTopBearingTempTimer" type="TON"/>
 						</localVars>
 						<localConsts>
 							<const name="windingTempCutoff" type="INT">
@@ -731,24 +675,175 @@ end_if;
 					</iecDeclaration>
 					<sourceCode type="FBD">
 						<FBD>
-							<network order="N:1" width="200" height="20" error="false">
+							<network order="N:1" width="0" height="22" error="false">
 								<conn id="C:0" error="false">
 									<segment xStart="12" yStart="6" xEnd="16" yEnd="6"/>
+									<startPin>V:3</startPin>
+									<endPin>O:10.1</endPin>
+								</conn>
+								<conn id="C:1" error="false">
+									<segment xStart="11" yStart="5" xEnd="16" yEnd="5"/>
+									<startPin>V:2</startPin>
+									<endPin>O:10.0</endPin>
+								</conn>
+								<conn id="C:2" error="false">
+									<segment xStart="46" yStart="5" xEnd="46" yEnd="5"/>
+									<startPin>FB:HighBottomBearingTempTimer.Q</startPin>
+									<endPin>V:4</endPin>
+								</conn>
+								<conn id="C:3" error="false">
+									<segment xStart="11" yStart="10" xEnd="16" yEnd="10"/>
+									<startPin>V:6</startPin>
+									<endPin>O:11.0</endPin>
+								</conn>
+								<conn id="C:4" error="false">
+									<segment xStart="10" yStart="11" xEnd="16" yEnd="11"/>
+									<startPin>V:7</startPin>
+									<endPin>O:11.1</endPin>
+								</conn>
+								<conn id="C:5" error="false">
+									<segment xStart="20" yStart="5" xEnd="23" yEnd="5"/>
+									<startPin>O:10.2</startPin>
+									<endPin>O:12.0</endPin>
+								</conn>
+								<conn id="C:6" error="false">
+									<segment xStart="20" yStart="10" xEnd="23" yEnd="10"/>
+									<segment xEnd="23" yEnd="6"/>
+									<startPin>O:11.2</startPin>
+									<endPin>O:12.1</endPin>
+								</conn>
+								<conn id="C:7" error="false">
+									<segment xStart="28" yStart="18" xEnd="42" yEnd="18"/>
+									<segment xEnd="42" yEnd="6"/>
+									<startPin>O:13.2</startPin>
+									<endPin>FB:HighBottomBearingTempTimer.PT</endPin>
+								</conn>
+								<conn id="C:8" error="false">
+									<segment xStart="20" yStart="18" xEnd="23" yEnd="18"/>
+									<startPin>V:5</startPin>
+									<endPin>O:13.0</endPin>
+								</conn>
+								<conn id="C:9" error="false">
+									<segment xStart="20" yStart="19" xEnd="23" yEnd="19"/>
+									<startPin>V:8</startPin>
+									<endPin>O:13.1</endPin>
+								</conn>
+								<conn id="C:10" error="false">
+									<segment xStart="27" yStart="5" xEnd="36" yEnd="5"/>
+									<startPin>O:12.2</startPin>
+									<endPin>O:14.0</endPin>
+								</conn>
+								<conn id="C:11" error="false">
+									<segment xStart="41" yStart="5" xEnd="42" yEnd="5"/>
+									<startPin>O:14.2</startPin>
+									<endPin>FB:HighBottomBearingTempTimer.IN</endPin>
+								</conn>
+								<conn id="C:12" error="false">
+									<segment xStart="24" yStart="13" xEnd="25" yEnd="13"/>
+									<startPin>V:9</startPin>
+									<endPin>F:1.#0</endPin>
+								</conn>
+								<conn id="C:13" error="false">
+									<segment xStart="36" yStart="13" xEnd="36" yEnd="6"/>
+									<startPin>O:15.2</startPin>
+									<endPin>O:14.1</endPin>
+								</conn>
+								<conn id="C:14" error="false">
+									<segment xStart="29" yStart="13" xEnd="32" yEnd="13"/>
+									<startPin>F:1.#O</startPin>
+									<endPin>O:15.0</endPin>
+								</conn>
+								<conn id="C:15" error="false">
+									<segment xStart="32" yStart="15" xEnd="32" yEnd="14"/>
+									<startPin>V:16</startPin>
+									<endPin>O:15.1</endPin>
+								</conn>
+								<var id="V:2" error="false" type="Input" name="bottomBearingTemp" x="11" y="5">
+									<pin>C:1</pin>
+								</var>
+								<var id="V:3" error="false" type="Input" name="bottomBearingSetpoint" x="12" y="6">
+									<pin>C:0</pin>
+								</var>
+								<var id="V:4" error="false" type="Output" name="setHighBottomBearingAlarm" x="46" y="5">
+									<pin>C:2</pin>
+								</var>
+								<var id="V:5" error="false" type="Input" name="pumpRtdAlarmDelay" x="20" y="18">
+									<pin>C:8</pin>
+								</var>
+								<var id="V:6" error="false" type="Input" name="bottomBearingTemp" x="11" y="10">
+									<pin>C:3</pin>
+								</var>
+								<var id="V:7" error="false" type="Input" name="disconnectVal" x="10" y="11">
+									<pin>C:4</pin>
+								</var>
+								<var id="V:8" error="false" type="Input" name="timerMsToSecConst" x="20" y="19">
+									<pin>C:9</pin>
+								</var>
+								<var id="V:9" error="false" type="Input" name="bottomBearingAlarmBypassed" x="24" y="13">
+									<pin>C:12</pin>
+								</var>
+								<var id="V:16" error="false" type="Input" name="resetAlarms" x="32" y="15">
+									<pin>C:15</pin>
+								</var>
+								<op id="O:10" error="false" width="4" name="GE" x="16" y="5">
+									<inputPin name="0" negated="false">C:1</inputPin>
+									<inputPin name="1" negated="false">C:0</inputPin>
+									<outputPin name="2" negated="false">C:5</outputPin>
+								</op>
+								<op id="O:11" error="false" width="4" name="EQ" x="16" y="10">
+									<inputPin name="0" negated="false">C:3</inputPin>
+									<inputPin name="1" negated="false">C:4</inputPin>
+									<outputPin name="2" negated="false">C:6</outputPin>
+								</op>
+								<op id="O:12" error="false" width="4" name="OR" x="23" y="5">
+									<inputPin name="0" negated="false">C:5</inputPin>
+									<inputPin name="1" negated="false">C:6</inputPin>
+									<outputPin name="2" negated="false">C:10</outputPin>
+								</op>
+								<op id="O:13" error="false" width="5" name="MUL" x="23" y="18">
+									<inputPin name="0" negated="false">C:8</inputPin>
+									<inputPin name="1" negated="false">C:9</inputPin>
+									<outputPin name="2" negated="false">C:7</outputPin>
+								</op>
+								<op id="O:14" error="false" width="5" name="AND" x="36" y="5">
+									<inputPin name="0" negated="false">C:10</inputPin>
+									<inputPin name="1" negated="false">C:13</inputPin>
+									<outputPin name="2" negated="false">C:11</outputPin>
+								</op>
+								<op id="O:15" error="false" width="4" name="OR" x="32" y="13">
+									<inputPin name="0" negated="false">C:14</inputPin>
+									<inputPin name="1" negated="false">C:15</inputPin>
+									<outputPin name="2" negated="false">C:13</outputPin>
+								</op>
+								<fun id="F:1" error="false" width="4" name="NOT" x="25" y="13">
+									<inputPin name="#0" negated="false">C:12</inputPin>
+									<outputPin name="#O" negated="false">C:14</outputPin>
+								</fun>
+								<funBlock id="FB:HighBottomBearingTempTimer" error="false" width="4" name="TON" x="42" y="5">
+									<inputPin name="IN" negated="false">C:11</inputPin>
+									<inputPin name="PT" negated="false">C:7</inputPin>
+									<outputPin name="Q" negated="false">C:2</outputPin>
+									<outputPin name="ET" negated="false"/>
+								</funBlock>
+							</network>
+							<network order="N:2" width="0" height="22" error="false">
+								<conn id="C:0" error="false">
+									<segment xStart="11" yStart="6" xEnd="16" yEnd="6"/>
 									<startPin>V:2</startPin>
 									<endPin>O:8.1</endPin>
 								</conn>
 								<conn id="C:1" error="false">
-									<segment xStart="11" yStart="5" xEnd="16" yEnd="5"/>
+									<segment xStart="10" yStart="5" xEnd="16" yEnd="5"/>
 									<startPin>V:1</startPin>
 									<endPin>O:8.0</endPin>
 								</conn>
 								<conn id="C:2" error="false">
 									<segment xStart="43" yStart="5" xEnd="44" yEnd="5"/>
-									<startPin>FB:HighRtdTimer_0.Q</startPin>
+									<startPin>FB:HighTopBearingTempTimer.Q</startPin>
 									<endPin>V:3</endPin>
 								</conn>
 								<conn id="C:3" error="false">
-									<segment xStart="11" yStart="10" xEnd="16" yEnd="10"/>
+									<segment xStart="10" yStart="10" xEnd="16" yEnd="10"/>
 									<startPin>V:5</startPin>
 									<endPin>O:9.0</endPin>
 								</conn>
@@ -769,64 +864,77 @@ end_if;
 									<endPin>O:10.1</endPin>
 								</conn>
 								<conn id="C:7" error="false">
-									<segment xStart="28" yStart="16" xEnd="39" yEnd="16"/>
+									<segment xStart="28" yStart="18" xEnd="39" yEnd="18"/>
 									<segment xEnd="39" yEnd="6"/>
 									<startPin>O:11.2</startPin>
-									<endPin>FB:HighRtdTimer_0.PT</endPin>
+									<endPin>FB:HighTopBearingTempTimer.PT</endPin>
 								</conn>
 								<conn id="C:8" error="false">
-									<segment xStart="21" yStart="16" xEnd="23" yEnd="16"/>
+									<segment xStart="21" yStart="18" xEnd="23" yEnd="18"/>
 									<startPin>V:4</startPin>
 									<endPin>O:11.0</endPin>
 								</conn>
 								<conn id="C:9" error="false">
-									<segment xStart="21" yStart="17" xEnd="23" yEnd="17"/>
+									<segment xStart="21" yStart="19" xEnd="23" yEnd="19"/>
 									<startPin>V:7</startPin>
 									<endPin>O:11.1</endPin>
 								</conn>
 								<conn id="C:10" error="false">
-									<segment xStart="31" yStart="13" xEnd="31" yEnd="6"/>
-									<segment xEnd="33" yEnd="6"/>
-									<startPin>F:13.#O</startPin>
-									<endPin>O:12.1</endPin>
-								</conn>
-								<conn id="C:11" error="false">
 									<segment xStart="27" yStart="5" xEnd="33" yEnd="5"/>
 									<startPin>O:10.2</startPin>
 									<endPin>O:12.0</endPin>
 								</conn>
-								<conn id="C:12" error="false">
+								<conn id="C:11" error="false">
 									<segment xStart="38" yStart="5" xEnd="39" yEnd="5"/>
 									<startPin>O:12.2</startPin>
-									<endPin>FB:HighRtdTimer_0.IN</endPin>
+									<endPin>FB:HighTopBearingTempTimer.IN</endPin>
 								</conn>
-								<conn id="C:13" error="false">
-									<segment xStart="24" yStart="13" xEnd="27" yEnd="13"/>
+								<conn id="C:12" error="false">
+									<segment xStart="23" yStart="13" xEnd="24" yEnd="13"/>
 									<startPin>V:14</startPin>
 									<endPin>F:13.#0</endPin>
 								</conn>
-								<var id="V:1" error="false" type="Input" name="bottomBearingTemp" x="11" y="5">
+								<conn id="C:13" error="false">
+									<segment xStart="26" yStart="15" xEnd="29" yEnd="15"/>
+									<segment xEnd="29" yEnd="14"/>
+									<startPin>V:16</startPin>
+									<endPin>O:17.1</endPin>
+								</conn>
+								<conn id="C:14" error="false">
+									<segment xStart="33" yStart="13" xEnd="33" yEnd="6"/>
+									<startPin>O:17.2</startPin>
+									<endPin>O:12.1</endPin>
+								</conn>
+								<conn id="C:15" error="false">
+									<segment xStart="28" yStart="13" xEnd="29" yEnd="13"/>
+									<startPin>F:13.#O</startPin>
+									<endPin>O:17.0</endPin>
+								</conn>
+								<var id="V:1" error="false" type="Input" name="topBearingTemp" x="10" y="5">
 									<pin>C:1</pin>
 								</var>
-								<var id="V:2" error="false" type="Input" name="bottomBearingSetpoint" x="12" y="6">
+								<var id="V:2" error="false" type="Input" name="topBearingSetpoint" x="11" y="6">
 									<pin>C:0</pin>
 								</var>
-								<var id="V:3" error="false" type="Output" name="setHighRtdAlarm" x="44" y="5">
+								<var id="V:3" error="false" type="Output" name="setHighTopBearingAlarm" x="44" y="5">
 									<pin>C:2</pin>
 								</var>
-								<var id="V:4" error="false" type="Input" name="pumpRtdAlarmDelay" x="21" y="16">
+								<var id="V:4" error="false" type="Input" name="pumpRtdAlarmDelay" x="21" y="18">
 									<pin>C:8</pin>
 								</var>
-								<var id="V:5" error="false" type="Input" name="bottomBearingTemp" x="11" y="10">
+								<var id="V:5" error="false" type="Input" name="topBearingTemp" x="10" y="10">
 									<pin>C:3</pin>
 								</var>
 								<var id="V:6" error="false" type="Input" name="disconnectVal" x="10" y="11">
 									<pin>C:4</pin>
 								</var>
-								<var id="V:7" error="false" type="Input" name="timerMsToSecConst" x="21" y="17">
+								<var id="V:7" error="false" type="Input" name="timerMsToSecConst" x="21" y="19">
 									<pin>C:9</pin>
 								</var>
-								<var id="V:14" error="false" type="Input" name="highRtdAlarmBypassed" x="24" y="13">
+								<var id="V:14" error="false" type="Input" name="topBearingAlarmBypassed" x="23" y="13">
+									<pin>C:12</pin>
+								</var>
+								<var id="V:16" error="false" type="Input" name="resetAlarms" x="26" y="15">
 									<pin>C:13</pin>
 								</var>
 								<op id="O:8" error="false" width="4" name="GE" x="16" y="5">
@@ -842,24 +950,29 @@ end_if;
 								<op id="O:10" error="false" width="4" name="OR" x="23" y="5">
 									<inputPin name="0" negated="false">C:5</inputPin>
 									<inputPin name="1" negated="false">C:6</inputPin>
-									<outputPin name="2" negated="false">C:11</outputPin>
+									<outputPin name="2" negated="false">C:10</outputPin>
 								</op>
-								<op id="O:11" error="false" width="5" name="MUL" x="23" y="16">
+								<op id="O:11" error="false" width="5" name="MUL" x="23" y="18">
 									<inputPin name="0" negated="false">C:8</inputPin>
 									<inputPin name="1" negated="false">C:9</inputPin>
 									<outputPin name="2" negated="false">C:7</outputPin>
 								</op>
 								<op id="O:12" error="false" width="5" name="AND" x="33" y="5">
-									<inputPin name="0" negated="false">C:11</inputPin>
-									<inputPin name="1" negated="false">C:10</inputPin>
-									<outputPin name="2" negated="false">C:12</outputPin>
+									<inputPin name="0" negated="false">C:10</inputPin>
+									<inputPin name="1" negated="false">C:14</inputPin>
+									<outputPin name="2" negated="false">C:11</outputPin>
 								</op>
-								<fun id="F:13" error="false" width="4" name="NOT" x="27" y="13">
-									<inputPin name="#0" negated="false">C:13</inputPin>
-									<outputPin name="#O" negated="false">C:10</outputPin>
+								<op id="O:17" error="false" width="4" name="OR" x="29" y="13">
+									<inputPin name="0" negated="false">C:15</inputPin>
+									<inputPin name="1" negated="false">C:13</inputPin>
+									<outputPin name="2" negated="false">C:14</outputPin>
+								</op>
+								<fun id="F:13" error="false" width="4" name="NOT" x="24" y="13">
+									<inputPin name="#0" negated="false">C:12</inputPin>
+									<outputPin name="#O" negated="false">C:15</outputPin>
 								</fun>
-								<funBlock id="FB:HighRtdTimer_0" error="false" width="4" name="TON" x="39" y="5">
-									<inputPin name="IN" negated="false">C:12</inputPin>
+								<funBlock id="FB:HighTopBearingTempTimer" error="false" width="4" name="TON" x="39" y="5">
+									<inputPin name="IN" negated="false">C:11</inputPin>
 									<inputPin name="PT" negated="false">C:7</inputPin>
 									<outputPin name="Q" negated="false">C:2</outputPin>
 									<outputPin name="ET" negated="false"/>
@@ -874,7 +987,7 @@ end_if;
 						<![CDATA[]]>
 					</iecDeclaration>
 					<sourceCode type="ST">
-						<![CDATA[if setWindingTempAlarm then
+						<![CDATA[if setPt100WindingTempAlarm OR setPtcWindingTempAlarm then
 	windingTempAlarm := TRUE;
 end_if;
 
@@ -882,8 +995,12 @@ if setVibrationAlarm then
 	vibrationAlarm := TRUE;
 end_if;
 
-if setHighRtdAlarm then
-	highRtdAlarm := TRUE;
+if setHighTopBearingAlarm then
+	highTopBearingAlarm := TRUE;
+end_if;
+
+if setHighBottomBearingAlarm then
+	highBottomBearingAlarm := TRUE;
 end_if;
 
 if setHighFloatAlarm then
@@ -904,7 +1021,7 @@ end_if;
 							</const>
 							<const name="motorSetpointDefault" type="INT">
 								<descr>should be 312</descr>
-								<initValue>311</initValue>
+								<initValue>312</initValue>
 							</const>
 							<const name="bottomBearingSetpointDefault" type="INT">
 								<initValue>311</initValue>
@@ -915,55 +1032,16 @@ end_if;
 						<![CDATA[]]>
 					</iecDeclaration>
 					<sourceCode type="ST">
-						<![CDATA[vibrationAlarmDelay := 60;
-pumpRtdAlarmDelay := 60;
-sealFailAlarmDelay := 45;
-highFloatAlarmDelay := 45; 
-sysWriteParINT(ADR(bottomBearingSetpoint),(bottomBearingSetpointDefault));
-sysWriteParINT(ADR(motor1_Temp_Setpoint),(motorSetpointDefault));
-sysWriteParINT(ADR(motor2_Temp_Setpoint),(motorSetpointDefault));
-sysWriteParINT(ADR(motor3_Temp_Setpoint),(motorSetpointDefault));
-sysWriteParINT(ADR(vibration_Limit_Setpoint),(vibrationSetDefault));
+						<![CDATA[//vibrationAlarmDelay := 60;
+//pumpRtdAlarmDelay := 60;
+//sealFailAlarmDelay := 45;
+//highFloatAlarmDelay := 45; 
+//sysWriteParINT(ADR(bottomBearingSetpoint),(bottomBearingSetpointDefault));
+//sysWriteParINT(ADR(motor1_Temp_Setpoint),(motorSetpointDefault));
+//sysWriteParINT(ADR(motor2_Temp_Setpoint),(motorSetpointDefault));
+//sysWriteParINT(ADR(motor3_Temp_Setpoint),(motorSetpointDefault));
+//sysWriteParINT(ADR(vibration_Limit_Setpoint),(vibrationSetDefault));
 ]]>
-					</sourceCode>
-				</program>
-				<program name="Testing" version="1.0.0">
-					<vars>
-						<localConsts>
-							<const name="Motor_Setpoint" type="INT">
-								<initValue>312</initValue>
-							</const>
-						</localConsts>
-					</vars>
-					<iecDeclaration valid="TRUE">
-						<![CDATA[]]>
-					</iecDeclaration>
-					<sourceCode type="FBD">
-						<FBD>
-							<network order="N:1" width="200" height="12" error="false">
-								<conn id="C:0" error="false">
-									<segment xStart="14" yStart="7" xEnd="19" yEnd="7"/>
-									<startPin>V:3</startPin>
-									<endPin>F:1.Value</endPin>
-								</conn>
-								<conn id="C:1" error="false">
-									<segment xStart="16" yStart="6" xEnd="19" yEnd="6"/>
-									<startPin>V:2</startPin>
-									<endPin>F:1.address</endPin>
-								</conn>
-								<var id="V:2" error="false" type="Input" name="bottomBearingSetpoint" x="16" y="6">
-									<pin>C:1</pin>
-								</var>
-								<var id="V:3" error="false" type="Input" name="Motor_Setpoint" x="14" y="7">
-									<pin>C:0</pin>
-								</var>
-								<fun id="F:1" error="false" width="10" name="sysWriteParINT" x="19" y="6">
-									<inputPin name="address" negated="false">C:1</inputPin>
-									<inputPin name="Value" negated="false">C:0</inputPin>
-									<outputPin name="sysWriteParINT" negated="false"/>
-								</fun>
-							</network>
-						</FBD>
 					</sourceCode>
 				</program>
 				<program name="highfloatDetect" version="1.0.0">
@@ -977,7 +1055,7 @@ sysWriteParINT(ADR(vibration_Limit_Setpoint),(vibrationSetDefault));
 					</iecDeclaration>
 					<sourceCode type="FBD">
 						<FBD>
-							<network order="N:1" width="200" height="14" error="false">
+							<network order="N:1" width="0" height="17" error="false">
 								<conn id="C:0" error="false">
 									<segment xStart="11" yStart="6" xEnd="12" yEnd="6"/>
 									<startPin>V:4</startPin>
@@ -989,36 +1067,48 @@ sysWriteParINT(ADR(vibration_Limit_Setpoint),(vibrationSetDefault));
 									<endPin>O:2.0</endPin>
 								</conn>
 								<conn id="C:2" error="false">
-									<segment xStart="16" yStart="6" xEnd="24" yEnd="6"/>
-									<segment xEnd="24" yEnd="5"/>
-									<startPin>F:3.#O</startPin>
-									<endPin>O:2.1</endPin>
-								</conn>
-								<conn id="C:3" error="false">
 									<segment xStart="29" yStart="4" xEnd="33" yEnd="4"/>
 									<startPin>O:2.2</startPin>
 									<endPin>FB:HighFloatAlarmDelayTimer_0.IN</endPin>
 								</conn>
-								<conn id="C:4" error="false">
+								<conn id="C:3" error="false">
 									<segment xStart="37" yStart="4" xEnd="41" yEnd="4"/>
 									<startPin>FB:HighFloatAlarmDelayTimer_0.Q</startPin>
 									<endPin>V:5</endPin>
 								</conn>
-								<conn id="C:5" error="false">
-									<segment xStart="22" yStart="8" xEnd="24" yEnd="8"/>
+								<conn id="C:4" error="false">
+									<segment xStart="23" yStart="13" xEnd="24" yEnd="13"/>
 									<startPin>V:7</startPin>
 									<endPin>O:9.0</endPin>
 								</conn>
-								<conn id="C:6" error="false">
-									<segment xStart="29" yStart="8" xEnd="29" yEnd="5"/>
+								<conn id="C:5" error="false">
+									<segment xStart="29" yStart="13" xEnd="29" yEnd="5"/>
 									<segment xEnd="33" yEnd="5"/>
 									<startPin>O:9.2</startPin>
 									<endPin>FB:HighFloatAlarmDelayTimer_0.PT</endPin>
 								</conn>
-								<conn id="C:7" error="false">
-									<segment xStart="22" yStart="9" xEnd="24" yEnd="9"/>
+								<conn id="C:6" error="false">
+									<segment xStart="23" yStart="14" xEnd="24" yEnd="14"/>
 									<startPin>V:8</startPin>
 									<endPin>O:9.1</endPin>
+								</conn>
+								<conn id="C:7" error="false">
+									<segment xStart="15" yStart="10" xEnd="16" yEnd="10"/>
+									<segment xEnd="16" yEnd="7"/>
+									<segment xEnd="18" yEnd="7"/>
+									<startPin>V:11</startPin>
+									<endPin>O:12.1</endPin>
+								</conn>
+								<conn id="C:8" error="false">
+									<segment xStart="16" yStart="6" xEnd="18" yEnd="6"/>
+									<startPin>F:3.#O</startPin>
+									<endPin>O:12.0</endPin>
+								</conn>
+								<conn id="C:9" error="false">
+									<segment xStart="22" yStart="6" xEnd="24" yEnd="6"/>
+									<segment xEnd="24" yEnd="5"/>
+									<startPin>O:12.2</startPin>
+									<endPin>O:2.1</endPin>
 								</conn>
 								<var id="V:1" error="false" type="Input" name="highFloat" x="6" y="4">
 									<pin>C:1</pin>
@@ -1027,32 +1117,40 @@ sysWriteParINT(ADR(vibration_Limit_Setpoint),(vibrationSetDefault));
 									<pin>C:0</pin>
 								</var>
 								<var id="V:5" error="false" type="Output" name="setHighFloatAlarm" x="41" y="4">
+									<pin>C:3</pin>
+								</var>
+								<var id="V:7" error="false" type="Input" name="highFloatAlarmDelay" x="23" y="13">
 									<pin>C:4</pin>
 								</var>
-								<var id="V:7" error="false" type="Input" name="highFloatAlarmDelay" x="22" y="8">
-									<pin>C:5</pin>
+								<var id="V:8" error="false" type="Input" name="timerMsToSecConst" x="23" y="14">
+									<pin>C:6</pin>
 								</var>
-								<var id="V:8" error="false" type="Input" name="timerMsToSecConst" x="22" y="9">
+								<var id="V:11" error="false" type="Input" name="resetAlarms" x="15" y="10">
 									<pin>C:7</pin>
 								</var>
 								<op id="O:2" error="false" width="5" name="AND" x="24" y="4">
 									<inputPin name="0" negated="false">C:1</inputPin>
-									<inputPin name="1" negated="false">C:2</inputPin>
-									<outputPin name="2" negated="false">C:3</outputPin>
+									<inputPin name="1" negated="false">C:9</inputPin>
+									<outputPin name="2" negated="false">C:2</outputPin>
 								</op>
-								<op id="O:9" error="false" width="5" name="MUL" x="24" y="8">
-									<inputPin name="0" negated="false">C:5</inputPin>
+								<op id="O:9" error="false" width="5" name="MUL" x="24" y="13">
+									<inputPin name="0" negated="false">C:4</inputPin>
+									<inputPin name="1" negated="false">C:6</inputPin>
+									<outputPin name="2" negated="false">C:5</outputPin>
+								</op>
+								<op id="O:12" error="false" width="4" name="OR" x="18" y="6">
+									<inputPin name="0" negated="false">C:8</inputPin>
 									<inputPin name="1" negated="false">C:7</inputPin>
-									<outputPin name="2" negated="false">C:6</outputPin>
+									<outputPin name="2" negated="false">C:9</outputPin>
 								</op>
 								<fun id="F:3" error="false" width="4" name="NOT" x="12" y="6">
 									<inputPin name="#0" negated="false">C:0</inputPin>
-									<outputPin name="#O" negated="false">C:2</outputPin>
+									<outputPin name="#O" negated="false">C:8</outputPin>
 								</fun>
 								<funBlock id="FB:HighFloatAlarmDelayTimer_0" error="false" width="4" name="TON" x="33" y="4">
-									<inputPin name="IN" negated="false">C:3</inputPin>
-									<inputPin name="PT" negated="false">C:6</inputPin>
-									<outputPin name="Q" negated="false">C:4</outputPin>
+									<inputPin name="IN" negated="false">C:2</inputPin>
+									<inputPin name="PT" negated="false">C:5</inputPin>
+									<outputPin name="Q" negated="false">C:3</outputPin>
 									<outputPin name="ET" negated="false"/>
 								</funBlock>
 							</network>
@@ -1070,91 +1168,343 @@ sysWriteParINT(ADR(vibration_Limit_Setpoint),(vibrationSetDefault));
 					</iecDeclaration>
 					<sourceCode type="FBD">
 						<FBD>
-							<network order="N:1" width="200" height="14" error="false">
+							<network order="N:1" width="0" height="16" error="false">
 								<conn id="C:0" error="false">
 									<segment xStart="10" yStart="6" xEnd="12" yEnd="6"/>
 									<startPin>V:4</startPin>
 									<endPin>F:3.#0</endPin>
 								</conn>
 								<conn id="C:1" error="false">
-									<segment xStart="16" yStart="6" xEnd="21" yEnd="6"/>
-									<segment xEnd="21" yEnd="5"/>
-									<startPin>F:3.#O</startPin>
-									<endPin>O:2.1</endPin>
-								</conn>
-								<conn id="C:2" error="false">
-									<segment xStart="26" yStart="4" xEnd="33" yEnd="4"/>
+									<segment xStart="27" yStart="4" xEnd="33" yEnd="4"/>
 									<startPin>O:2.2</startPin>
 									<endPin>FB:sealFailAlarmDelayTimer_0.IN</endPin>
 								</conn>
-								<conn id="C:3" error="false">
+								<conn id="C:2" error="false">
 									<segment xStart="37" yStart="4" xEnd="41" yEnd="4"/>
 									<startPin>FB:sealFailAlarmDelayTimer_0.Q</startPin>
 									<endPin>V:5</endPin>
 								</conn>
-								<conn id="C:4" error="false">
-									<segment xStart="22" yStart="8" xEnd="24" yEnd="8"/>
+								<conn id="C:3" error="false">
+									<segment xStart="22" yStart="12" xEnd="24" yEnd="12"/>
 									<startPin>V:7</startPin>
 									<endPin>O:9.0</endPin>
 								</conn>
-								<conn id="C:5" error="false">
-									<segment xStart="29" yStart="8" xEnd="29" yEnd="5"/>
+								<conn id="C:4" error="false">
+									<segment xStart="29" yStart="12" xEnd="29" yEnd="5"/>
 									<segment xEnd="33" yEnd="5"/>
 									<startPin>O:9.2</startPin>
 									<endPin>FB:sealFailAlarmDelayTimer_0.PT</endPin>
 								</conn>
-								<conn id="C:6" error="false">
-									<segment xStart="22" yStart="9" xEnd="24" yEnd="9"/>
+								<conn id="C:5" error="false">
+									<segment xStart="22" yStart="13" xEnd="24" yEnd="13"/>
 									<startPin>V:8</startPin>
 									<endPin>O:9.1</endPin>
 								</conn>
-								<conn id="C:7" error="false">
-									<segment xStart="12" yStart="4" xEnd="21" yEnd="4"/>
+								<conn id="C:6" error="false">
+									<segment xStart="12" yStart="4" xEnd="22" yEnd="4"/>
 									<startPin>F:11.#O</startPin>
 									<endPin>O:2.0</endPin>
 								</conn>
-								<conn id="C:8" error="false">
+								<conn id="C:7" error="false">
 									<segment xStart="6" yStart="4" xEnd="8" yEnd="4"/>
 									<startPin>V:1</startPin>
 									<endPin>F:11.#0</endPin>
 								</conn>
+								<conn id="C:8" error="false">
+									<segment xStart="17" yStart="8" xEnd="17" yEnd="7"/>
+									<startPin>V:13</startPin>
+									<endPin>O:14.1</endPin>
+								</conn>
+								<conn id="C:9" error="false">
+									<segment xStart="21" yStart="6" xEnd="22" yEnd="6"/>
+									<segment xEnd="22" yEnd="5"/>
+									<startPin>O:14.2</startPin>
+									<endPin>O:2.1</endPin>
+								</conn>
+								<conn id="C:10" error="false">
+									<segment xStart="16" yStart="6" xEnd="17" yEnd="6"/>
+									<startPin>F:3.#O</startPin>
+									<endPin>O:14.0</endPin>
+								</conn>
 								<var id="V:1" error="false" type="Input" name="sealFail" x="6" y="4">
-									<pin>C:8</pin>
+									<pin>C:7</pin>
 								</var>
 								<var id="V:4" error="false" type="Input" name="sealFailAlarmBypassed" x="10" y="6">
 									<pin>C:0</pin>
 								</var>
 								<var id="V:5" error="false" type="Output" name="setSealFailAlarm" x="41" y="4">
+									<pin>C:2</pin>
+								</var>
+								<var id="V:7" error="false" type="Input" name="sealFailAlarmDelay" x="22" y="12">
 									<pin>C:3</pin>
 								</var>
-								<var id="V:7" error="false" type="Input" name="sealFailAlarmDelay" x="22" y="8">
-									<pin>C:4</pin>
+								<var id="V:8" error="false" type="Input" name="timerMsToSecConst" x="22" y="13">
+									<pin>C:5</pin>
 								</var>
-								<var id="V:8" error="false" type="Input" name="timerMsToSecConst" x="22" y="9">
-									<pin>C:6</pin>
+								<var id="V:13" error="false" type="Input" name="resetAlarms" x="17" y="8">
+									<pin>C:8</pin>
 								</var>
-								<op id="O:2" error="false" width="5" name="AND" x="21" y="4">
-									<inputPin name="0" negated="false">C:7</inputPin>
-									<inputPin name="1" negated="false">C:1</inputPin>
-									<outputPin name="2" negated="false">C:2</outputPin>
+								<op id="O:2" error="false" width="5" name="AND" x="22" y="4">
+									<inputPin name="0" negated="false">C:6</inputPin>
+									<inputPin name="1" negated="false">C:9</inputPin>
+									<outputPin name="2" negated="false">C:1</outputPin>
 								</op>
-								<op id="O:9" error="false" width="5" name="MUL" x="24" y="8">
-									<inputPin name="0" negated="false">C:4</inputPin>
-									<inputPin name="1" negated="false">C:6</inputPin>
-									<outputPin name="2" negated="false">C:5</outputPin>
+								<op id="O:9" error="false" width="5" name="MUL" x="24" y="12">
+									<inputPin name="0" negated="false">C:3</inputPin>
+									<inputPin name="1" negated="false">C:5</inputPin>
+									<outputPin name="2" negated="false">C:4</outputPin>
+								</op>
+								<op id="O:14" error="false" width="4" name="OR" x="17" y="6">
+									<inputPin name="0" negated="false">C:10</inputPin>
+									<inputPin name="1" negated="false">C:8</inputPin>
+									<outputPin name="2" negated="false">C:9</outputPin>
 								</op>
 								<fun id="F:3" error="false" width="4" name="NOT" x="12" y="6">
 									<inputPin name="#0" negated="false">C:0</inputPin>
-									<outputPin name="#O" negated="false">C:1</outputPin>
+									<outputPin name="#O" negated="false">C:10</outputPin>
 								</fun>
 								<fun id="F:11" error="false" width="4" name="NOT" x="8" y="4">
-									<inputPin name="#0" negated="false">C:8</inputPin>
-									<outputPin name="#O" negated="false">C:7</outputPin>
+									<inputPin name="#0" negated="false">C:7</inputPin>
+									<outputPin name="#O" negated="false">C:6</outputPin>
 								</fun>
 								<funBlock id="FB:sealFailAlarmDelayTimer_0" error="false" width="4" name="TON" x="33" y="4">
-									<inputPin name="IN" negated="false">C:2</inputPin>
-									<inputPin name="PT" negated="false">C:5</inputPin>
-									<outputPin name="Q" negated="false">C:3</outputPin>
+									<inputPin name="IN" negated="false">C:1</inputPin>
+									<inputPin name="PT" negated="false">C:4</inputPin>
+									<outputPin name="Q" negated="false">C:2</outputPin>
+									<outputPin name="ET" negated="false"/>
+								</funBlock>
+							</network>
+						</FBD>
+					</sourceCode>
+				</program>
+				<program name="System_Ok" version="1.0.0">
+					<vars/>
+					<iecDeclaration valid="TRUE">
+						<![CDATA[]]>
+					</iecDeclaration>
+					<sourceCode type="LD2">
+						<LD2 version="1">
+							<network label="" id="1" nextID="23" comment="">
+								<assignment fromTmpVar="">
+									<input>
+										<and id="13">
+											<contact name="setPtcWindingTempAlarm" type="Closed" id="0"/>
+											<contact name="setPt100WindingTempAlarm" type="Closed" id="22"/>
+											<contact name="setSealFailAlarm" type="Closed" id="17"/>
+											<contact name="setHighFloatAlarm" type="Closed" id="18"/>
+											<contact name="setHighTopBearingAlarm" type="Closed" id="19"/>
+											<contact name="setHighBottomBearingAlarm" type="Closed" id="21"/>
+											<contact name="setVibrationAlarm" type="Closed" id="20"/>
+										</and>
+									</input>
+									<outputs>
+										<coil name="system_ok" type="Normal" id="1"/>
+									</outputs>
+								</assignment>
+							</network>
+						</LD2>
+					</sourceCode>
+				</program>
+				<program name="ptcWindingTempDetect" version="1.0.0">
+					<vars>
+						<localVars>
+							<var name="highPtcWindingTempTimer" type="TON"/>
+						</localVars>
+						<localConsts>
+							<const name="disconnectVal" type="INT">
+								<initValue>-32768</initValue>
+							</const>
+							<const name="windingTempCutoff" type="INT">
+								<initValue>402</initValue>
+							</const>
+						</localConsts>
+					</vars>
+					<iecDeclaration valid="TRUE">
+						<![CDATA[PROGRAM ptcWindingTempDetect
+
+VAR
+	highPtcWindingTempTimer : TON;
+END_VAR
+
+VAR CONSTANT
+	disconnectVal : INT := -32768;
+	windingTempCutoff : INT := 402;
+END_VAR
+
+]]>
+					</iecDeclaration>
+					<sourceCode type="FBD">
+						<FBD>
+							<network order="N:1" width="0" height="26" error="false">
+								<conn id="C:0" error="false">
+									<segment xStart="48" yStart="4" xEnd="49" yEnd="4"/>
+									<startPin>FB:highPtcWindingTempTimer.Q</startPin>
+									<endPin>V:3</endPin>
+								</conn>
+								<conn id="C:1" error="false">
+									<segment xStart="13" yStart="8" xEnd="16" yEnd="8"/>
+									<startPin>V:4</startPin>
+									<endPin>O:10.0</endPin>
+								</conn>
+								<conn id="C:2" error="false">
+									<segment xStart="14" yStart="9" xEnd="16" yEnd="9"/>
+									<startPin>V:5</startPin>
+									<endPin>O:10.1</endPin>
+								</conn>
+								<conn id="C:3" error="false">
+									<segment xStart="20" yStart="8" xEnd="26" yEnd="8"/>
+									<segment xEnd="26" yEnd="5"/>
+									<segment xEnd="28" yEnd="5"/>
+									<startPin>O:10.2</startPin>
+									<endPin>O:9.1</endPin>
+								</conn>
+								<conn id="C:4" error="false">
+									<segment xStart="25" yStart="17" xEnd="30" yEnd="17"/>
+									<startPin>V:2</startPin>
+									<endPin>O:11.0</endPin>
+								</conn>
+								<conn id="C:5" error="false">
+									<segment xStart="25" yStart="18" xEnd="30" yEnd="18"/>
+									<startPin>V:6</startPin>
+									<endPin>O:11.1</endPin>
+								</conn>
+								<conn id="C:6" error="false">
+									<segment xStart="35" yStart="17" xEnd="44" yEnd="17"/>
+									<segment xEnd="44" yEnd="5"/>
+									<startPin>O:11.2</startPin>
+									<endPin>FB:highPtcWindingTempTimer.PT</endPin>
+								</conn>
+								<conn id="C:7" error="false">
+									<segment xStart="17" yStart="12" xEnd="18" yEnd="12"/>
+									<startPin>V:7</startPin>
+									<endPin>F:1.#0</endPin>
+								</conn>
+								<conn id="C:8" error="false">
+									<segment xStart="41" yStart="4" xEnd="44" yEnd="4"/>
+									<startPin>O:12.2</startPin>
+									<endPin>FB:highPtcWindingTempTimer.IN</endPin>
+								</conn>
+								<conn id="C:9" error="false">
+									<segment xStart="12" yStart="13" xEnd="24" yEnd="13"/>
+									<startPin>V:8</startPin>
+									<endPin>O:13.1</endPin>
+								</conn>
+								<conn id="C:10" error="false">
+									<segment xStart="22" yStart="12" xEnd="24" yEnd="12"/>
+									<startPin>F:1.#O</startPin>
+									<endPin>O:13.0</endPin>
+								</conn>
+								<conn id="C:11" error="false">
+									<segment xStart="13" yStart="4" xEnd="16" yEnd="4"/>
+									<startPin>V:14</startPin>
+									<endPin>O:16.0</endPin>
+								</conn>
+								<conn id="C:12" error="false">
+									<segment xStart="13" yStart="5" xEnd="16" yEnd="5"/>
+									<startPin>V:15</startPin>
+									<endPin>O:16.1</endPin>
+								</conn>
+								<conn id="C:13" error="false">
+									<segment xStart="20" yStart="4" xEnd="28" yEnd="4"/>
+									<startPin>O:16.2</startPin>
+									<endPin>O:9.0</endPin>
+								</conn>
+								<conn id="C:14" error="false">
+									<segment xStart="32" yStart="4" xEnd="36" yEnd="4"/>
+									<startPin>O:9.2</startPin>
+									<endPin>O:12.0</endPin>
+								</conn>
+								<conn id="C:15" error="false">
+									<segment xStart="15" yStart="15" xEnd="29" yEnd="15"/>
+									<segment xEnd="29" yEnd="13"/>
+									<segment xEnd="30" yEnd="13"/>
+									<startPin>V:18</startPin>
+									<endPin>O:17.1</endPin>
+								</conn>
+								<conn id="C:16" error="false">
+									<segment xStart="28" yStart="12" xEnd="30" yEnd="12"/>
+									<startPin>O:13.2</startPin>
+									<endPin>O:17.0</endPin>
+								</conn>
+								<conn id="C:17" error="false">
+									<segment xStart="35" yStart="12" xEnd="35" yEnd="5"/>
+									<segment xEnd="36" yEnd="5"/>
+									<startPin>O:17.2</startPin>
+									<endPin>O:12.1</endPin>
+								</conn>
+								<var id="V:2" error="false" type="Input" name="pumpRtdAlarmDelay" x="25" y="17">
+									<pin>C:4</pin>
+								</var>
+								<var id="V:3" error="false" type="Output" name="setPtcWindingTempAlarm" x="49" y="4">
+									<pin>C:0</pin>
+								</var>
+								<var id="V:4" error="false" type="Input" name="windingTemp" x="13" y="8">
+									<pin>C:1</pin>
+								</var>
+								<var id="V:5" error="false" type="Input" name="windingTempCutoff" x="14" y="9">
+									<pin>C:2</pin>
+								</var>
+								<var id="V:6" error="false" type="Input" name="timerMsToSecConst" x="25" y="18">
+									<pin>C:5</pin>
+								</var>
+								<var id="V:7" error="false" type="Input" name="windingTempAlarmBypassed" x="17" y="12">
+									<pin>C:7</pin>
+								</var>
+								<var id="V:8" error="false" type="Input" name="resetAlarms" x="12" y="13">
+									<pin>C:9</pin>
+								</var>
+								<var id="V:14" error="false" type="Input" name="windingTemp" x="13" y="4">
+									<pin>C:11</pin>
+								</var>
+								<var id="V:15" error="false" type="Input" name="disconnectVal" x="13" y="5">
+									<pin>C:12</pin>
+								</var>
+								<var id="V:18" error="false" type="Input" name="ptcWindingTempActive" x="15" y="15">
+									<pin>C:15</pin>
+								</var>
+								<op id="O:9" error="false" width="4" name="OR" x="28" y="4">
+									<inputPin name="0" negated="false">C:13</inputPin>
+									<inputPin name="1" negated="false">C:3</inputPin>
+									<outputPin name="2" negated="false">C:14</outputPin>
+								</op>
+								<op id="O:10" error="false" width="4" name="GE" x="16" y="8">
+									<inputPin name="0" negated="false">C:1</inputPin>
+									<inputPin name="1" negated="false">C:2</inputPin>
+									<outputPin name="2" negated="false">C:3</outputPin>
+								</op>
+								<op id="O:11" error="false" width="5" name="MUL" x="30" y="17">
+									<inputPin name="0" negated="false">C:4</inputPin>
+									<inputPin name="1" negated="false">C:5</inputPin>
+									<outputPin name="2" negated="false">C:6</outputPin>
+								</op>
+								<op id="O:12" error="false" width="5" name="AND" x="36" y="4">
+									<inputPin name="0" negated="false">C:14</inputPin>
+									<inputPin name="1" negated="false">C:17</inputPin>
+									<outputPin name="2" negated="false">C:8</outputPin>
+								</op>
+								<op id="O:13" error="false" width="4" name="OR" x="24" y="12">
+									<inputPin name="0" negated="false">C:10</inputPin>
+									<inputPin name="1" negated="false">C:9</inputPin>
+									<outputPin name="2" negated="false">C:16</outputPin>
+								</op>
+								<op id="O:16" error="false" width="4" name="EQ" x="16" y="4">
+									<inputPin name="0" negated="false">C:11</inputPin>
+									<inputPin name="1" negated="false">C:12</inputPin>
+									<outputPin name="2" negated="false">C:13</outputPin>
+								</op>
+								<op id="O:17" error="false" width="5" name="AND" x="30" y="12">
+									<inputPin name="0" negated="false">C:16</inputPin>
+									<inputPin name="1" negated="false">C:15</inputPin>
+									<outputPin name="2" negated="false">C:17</outputPin>
+								</op>
+								<fun id="F:1" error="false" width="4" name="NOT" x="18" y="12">
+									<inputPin name="#0" negated="false">C:7</inputPin>
+									<outputPin name="#O" negated="false">C:10</outputPin>
+								</fun>
+								<funBlock id="FB:highPtcWindingTempTimer" error="false" width="4" name="TON" x="44" y="4">
+									<inputPin name="IN" negated="false">C:8</inputPin>
+									<inputPin name="PT" negated="false">C:6</inputPin>
+									<outputPin name="Q" negated="false">C:0</outputPin>
 									<outputPin name="ET" negated="false"/>
 								</funBlock>
 							</network>
@@ -39172,6 +39522,30 @@ END_TYPE
 	motor3_Temp_Setpoint AT %MW101.3 : INT;
 		{G:"Parameters"}
 	vibration_Limit_Setpoint AT %MW101.4 : INT;
+		{G:"Parameters"}
+	topBearingSetpoint AT %MW101.5 : INT;
+		{G:"Parameters"}
+	pumpRtdAlarmDelay AT %MW101.6 : INT;
+		{G:"Parameters"}
+	vibrationAlarmDelay AT %MW101.7 : INT;
+		{G:"Parameters"}
+	highFloatAlarmDelay AT %MW101.8 : INT;
+		{G:"Parameters"}
+	sealFailAlarmDelay AT %MW101.9 : INT;
+		{G:"Parameters"}
+	windingTempAlarmBypassed AT %MW101.10 : INT;
+		{G:"Parameters"}
+	sealFailAlarmBypassed AT %MW101.11 : INT;
+		{G:"Parameters"}
+	highFloatAlarmBypassed AT %MW101.12 : INT;
+		{G:"Parameters"}
+	vibrationAlarmBypassed AT %MW101.13 : INT;
+		{G:"Parameters"}
+	bottomBearingAlarmBypassed AT %MW101.14 : INT;
+		{G:"Parameters"}
+	topBearingAlarmBypassed AT %MW101.15 : INT;
+		{G:"Parameters"}
+	ptcWindingTempActive AT %MW101.16 : INT;
 		{G:"Variables"}
 	windingTempAlarm AT %MW110.0 : BOOL;
 		{G:"Variables"}
@@ -39181,29 +39555,13 @@ END_TYPE
 		{G:"Variables"}
 	vibrationAlarm AT %MW110.3 : BOOL;
 		{G:"Variables"}
-	highRtdAlarm AT %MW110.4 : BOOL;
+	highBottomBearingAlarm AT %MW110.4 : BOOL;
 		{G:"Variables"}
 	resetAlarms AT %MW110.5 : BOOL;
 		{G:"Variables"}
 	silenceAlarms AT %MW110.6 : BOOL;
 		{G:"Variables"}
-	pumpRtdAlarmDelay AT %MW110.7 : INT;
-		{G:"Variables"}
-	vibrationAlarmDelay AT %MW110.8 : INT;
-		{G:"Variables"}
-	windingTempAlarmBypassed AT %MW110.9 : BOOL;
-		{G:"Variables"}
-	sealFailAlarmBypassed AT %MW110.10 : BOOL;
-		{G:"Variables"}
-	highFloatAlarmBypassed AT %MW110.11 : BOOL;
-		{G:"Variables"}
-	vibrationAlarmBypassed AT %MW110.12 : BOOL;
-		{G:"Variables"}
-	highRtdAlarmBypassed AT %MW110.13 : BOOL;
-		{G:"Variables"}
-	highFloatAlarmDelay AT %MW110.14 : INT;
-		{G:"Variables"}
-	sealFailAlarmDelay AT %MW110.15 : INT;
+	highTopBearingAlarm AT %MW110.7 : BOOL;
 		{G:"Mappings"}
 	motor1_Temp AT %IW1.0 : INT;  {DE:"AIL1 analogue input"}
 		{G:"Mappings"}
@@ -39216,6 +39574,8 @@ END_TYPE
 	windingTemp AT %IW1.4 : INT;  {DE:"AIL5 analogue input"}
 		{G:"Mappings"}
 	vibration AT %IW1.6 : INT;  {DE:"AIL7 analogue input"}
+		{G:"Mappings"}
+	topBearingTemp AT %IW1.7 : INT;  {DE:"AIL8 analogue input"}
 		{G:"Mappings"}
 	sealFail AT %IX0.0 : BOOL;  {DE:"DIL1 digital input"}
 		{G:"Mappings"}
@@ -39231,8 +39591,8 @@ END_TYPE
 				<![CDATA[(* Automatically generated, do not edit! *)
 
 VAR_GLOBAL CONSTANT
-$$ParDB : ARRAY[ 0..755 ] OF USINT; { HIDDEN:ON } { INIT:"Oklahoma_HMI.PLK+0" }
-$$ParDBLength  : DWORD := 21; { HIDDEN:ON }
+$$ParDB : ARRAY[ 0..899 ] OF USINT; { HIDDEN:ON } { INIT:"Oklahoma_HMI.PLK+0" }
+$$ParDBLength  : DWORD := 25; { HIDDEN:ON }
 END_VAR
 
 PROGRAM InitParDB WITH Serv;
@@ -39245,7 +39605,7 @@ PROGRAM InitParDB
 		dummyCrc32: UDINT;
 	END_VAR
 
-	dummyCrc32 := 3735048231;
+	dummyCrc32 := 300552370;
 
 	warningsKiller := sysDBase_SetExtTable( ADR( $$ParDB ), $$ParDBLength );
 
@@ -39273,25 +39633,25 @@ END_PROGRAM
 			</src>
 		</aux>
 		<workspace>
-			<root name="Oklahoma_HMI" nextID="256">
+			<root name="Oklahoma_HMI" nextID="355">
 				<GlobalVars name="Global vars" id="11"/>
 				<GlobalVars name="Ungrouped_vars" id="14"/>
 				<folder name="Programs" id="16">
 					<Pou name="Reset_Alarms" id="43"/>
 					<Pou name="Silence_Alarms" id="44"/>
-					<Pou name="Audible_Alarm_Ctrl" id="45"/>
 					<folder name="Alarm_Calculations" id="57">
-						<Pou name="HighRtd" id="51"/>
-						<Pou name="VibrationAlarmCalc" id="66"/>
+						<Pou name="pt100WindingTempDetect" id="51"/>
+						<Pou name="vibrationDetect" id="66"/>
 						<Pou name="bearingTempDetect" id="101"/>
 						<Pou name="setTimedAlarms" id="131"/>
 						<Pou name="highfloatDetect" id="228"/>
 						<Pou name="sealFailDetect" id="229"/>
+						<Pou name="ptcWindingTempDetect" id="341"/>
 					</folder>
 					<Pou name="pumpRunConditions" id="74"/>
 					<Pou name="Pump_Enable" id="93"/>
 					<Pou name="setDefaults" id="139"/>
-					<Pou name="Testing" id="185"/>
+					<Pou name="System_Ok" id="311"/>
 				</folder>
 			</root>
 		</workspace>
@@ -39462,6 +39822,330 @@ END_PROGRAM
 								<visibility>0</visibility>
 								<clientType>0</clientType>
 							</param>
+							<param>
+								<ipa>5</ipa>
+								<address>16389</address>
+								<name>topBearingSetpoint</name>
+								<typepar>0</typepar>
+								<typetarg>INT</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW101.5</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+							</param>
+							<param>
+								<ipa>6</ipa>
+								<address>16390</address>
+								<name>pumpRtdAlarmDelay</name>
+								<typepar>0</typepar>
+								<typetarg>INT</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW101.6</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+							</param>
+							<param>
+								<ipa>7</ipa>
+								<address>16391</address>
+								<name>vibrationAlarmDelay</name>
+								<typepar>0</typepar>
+								<typetarg>INT</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW101.7</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+							</param>
+							<param>
+								<ipa>8</ipa>
+								<address>16392</address>
+								<name>highFloatAlarmDelay</name>
+								<typepar>0</typepar>
+								<typetarg>INT</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW101.8</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+							</param>
+							<param>
+								<ipa>9</ipa>
+								<address>16393</address>
+								<name>sealFailAlarmDelay</name>
+								<typepar>0</typepar>
+								<typetarg>INT</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW101.9</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+							</param>
+							<param>
+								<ipa>10</ipa>
+								<address>16394</address>
+								<name>windingTempAlarmBypassed</name>
+								<typepar>0</typepar>
+								<typetarg>INT</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW101.10</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+							</param>
+							<param>
+								<ipa>11</ipa>
+								<address>16395</address>
+								<name>sealFailAlarmBypassed</name>
+								<typepar>0</typepar>
+								<typetarg>INT</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW101.11</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+							</param>
+							<param>
+								<ipa>12</ipa>
+								<address>16396</address>
+								<name>highFloatAlarmBypassed</name>
+								<typepar>0</typepar>
+								<typetarg>INT</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW101.12</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+							</param>
+							<param>
+								<ipa>13</ipa>
+								<address>16397</address>
+								<name>vibrationAlarmBypassed</name>
+								<typepar>0</typepar>
+								<typetarg>INT</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW101.13</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+							</param>
+							<param>
+								<ipa>14</ipa>
+								<address>16398</address>
+								<name>bottomBearingAlarmBypassed</name>
+								<typepar>0</typepar>
+								<typetarg>INT</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW101.14</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+							</param>
+							<param>
+								<ipa>15</ipa>
+								<address>16399</address>
+								<name>topBearingAlarmBypassed</name>
+								<typepar>0</typepar>
+								<typetarg>INT</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW101.15</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+							</param>
+							<param>
+								<ipa>16</ipa>
+								<address>16400</address>
+								<name>ptcWindingTempActive</name>
+								<typepar>0</typepar>
+								<typetarg>INT</typetarg>
+								<value>0</value>
+								<min/>
+								<max/>
+								<ipamin/>
+								<ipamax/>
+								<scale>1</scale>
+								<offs>0</offs>
+								<um/>
+								<description/>
+								<note/>
+								<form/>
+								<accesslevel>3</accesslevel>
+								<readonly>0</readonly>
+								<shortname/>
+								<size>31</size>
+								<dataBlock>MW101.16</dataBlock>
+								<label/>
+								<translation/>
+								<visibility>0</visibility>
+								<clientType>0</clientType>
+							</param>
 						</params>
 						<paramsRO>
 							<param>
@@ -39575,7 +40259,7 @@ END_PROGRAM
 							<param>
 								<ipa>5004</ipa>
 								<address>8964</address>
-								<name>highRtdAlarm</name>
+								<name>highBottomBearingAlarm</name>
 								<typepar>5</typepar>
 								<typetarg>BOOL</typetarg>
 								<value/>
@@ -39654,11 +40338,11 @@ END_PROGRAM
 								<clientType>0</clientType>
 							</param>
 							<param>
-								<ipa>5011</ipa>
-								<address>8971</address>
-								<name>pumpRtdAlarmDelay</name>
-								<typepar>0</typepar>
-								<typetarg>INT</typetarg>
+								<ipa>5007</ipa>
+								<address>8967</address>
+								<name>highTopBearingAlarm</name>
+								<typepar>5</typepar>
+								<typetarg>BOOL</typetarg>
 								<value/>
 								<min/>
 								<max/>
@@ -39671,226 +40355,10 @@ END_PROGRAM
 								<note/>
 								<form/>
 								<accesslevel>3</accesslevel>
-								<readonly>0</readonly>
+								<readonly>1</readonly>
 								<shortname/>
 								<size>31</size>
 								<dataBlock>MW110.7</dataBlock>
-								<label/>
-								<translation/>
-								<visibility>0</visibility>
-								<clientType>0</clientType>
-							</param>
-							<param>
-								<ipa>5012</ipa>
-								<address>8972</address>
-								<name>vibrationAlarmDelay</name>
-								<typepar>0</typepar>
-								<typetarg>INT</typetarg>
-								<value/>
-								<min/>
-								<max/>
-								<ipamin/>
-								<ipamax/>
-								<scale>1</scale>
-								<offs>0</offs>
-								<um/>
-								<description/>
-								<note/>
-								<form/>
-								<accesslevel>3</accesslevel>
-								<readonly>0</readonly>
-								<shortname/>
-								<size>31</size>
-								<dataBlock>MW110.8</dataBlock>
-								<label/>
-								<translation/>
-								<visibility>0</visibility>
-								<clientType>0</clientType>
-							</param>
-							<param>
-								<ipa>5007</ipa>
-								<address>8967</address>
-								<name>windingTempAlarmBypassed</name>
-								<typepar>5</typepar>
-								<typetarg>BOOL</typetarg>
-								<value/>
-								<min/>
-								<max/>
-								<ipamin/>
-								<ipamax/>
-								<scale>1</scale>
-								<offs>0</offs>
-								<um/>
-								<description/>
-								<note/>
-								<form/>
-								<accesslevel>3</accesslevel>
-								<readonly>0</readonly>
-								<shortname/>
-								<size>31</size>
-								<dataBlock>MW110.9</dataBlock>
-								<label/>
-								<translation/>
-								<visibility>0</visibility>
-								<clientType>0</clientType>
-							</param>
-							<param>
-								<ipa>5008</ipa>
-								<address>8968</address>
-								<name>sealFailAlarmBypassed</name>
-								<typepar>5</typepar>
-								<typetarg>BOOL</typetarg>
-								<value/>
-								<min/>
-								<max/>
-								<ipamin/>
-								<ipamax/>
-								<scale>1</scale>
-								<offs>0</offs>
-								<um/>
-								<description/>
-								<note/>
-								<form/>
-								<accesslevel>3</accesslevel>
-								<readonly>0</readonly>
-								<shortname/>
-								<size>31</size>
-								<dataBlock>MW110.10</dataBlock>
-								<label/>
-								<translation/>
-								<visibility>0</visibility>
-								<clientType>0</clientType>
-							</param>
-							<param>
-								<ipa>5009</ipa>
-								<address>8969</address>
-								<name>highFloatAlarmBypassed</name>
-								<typepar>5</typepar>
-								<typetarg>BOOL</typetarg>
-								<value/>
-								<min/>
-								<max/>
-								<ipamin/>
-								<ipamax/>
-								<scale>1</scale>
-								<offs>0</offs>
-								<um/>
-								<description/>
-								<note/>
-								<form/>
-								<accesslevel>3</accesslevel>
-								<readonly>0</readonly>
-								<shortname/>
-								<size>31</size>
-								<dataBlock>MW110.11</dataBlock>
-								<label/>
-								<translation/>
-								<visibility>0</visibility>
-								<clientType>0</clientType>
-							</param>
-							<param>
-								<ipa>5010</ipa>
-								<address>8970</address>
-								<name>vibrationAlarmBypassed</name>
-								<typepar>5</typepar>
-								<typetarg>BOOL</typetarg>
-								<value/>
-								<min/>
-								<max/>
-								<ipamin/>
-								<ipamax/>
-								<scale>1</scale>
-								<offs>0</offs>
-								<um/>
-								<description/>
-								<note/>
-								<form/>
-								<accesslevel>3</accesslevel>
-								<readonly>0</readonly>
-								<shortname/>
-								<size>31</size>
-								<dataBlock>MW110.12</dataBlock>
-								<label/>
-								<translation/>
-								<visibility>0</visibility>
-								<clientType>0</clientType>
-							</param>
-							<param>
-								<ipa>5013</ipa>
-								<address>8973</address>
-								<name>highRtdAlarmBypassed</name>
-								<typepar>5</typepar>
-								<typetarg>BOOL</typetarg>
-								<value/>
-								<min/>
-								<max/>
-								<ipamin/>
-								<ipamax/>
-								<scale>1</scale>
-								<offs>0</offs>
-								<um/>
-								<description/>
-								<note/>
-								<form/>
-								<accesslevel>3</accesslevel>
-								<readonly>0</readonly>
-								<shortname/>
-								<size>31</size>
-								<dataBlock>MW110.13</dataBlock>
-								<label/>
-								<translation/>
-								<visibility>0</visibility>
-								<clientType>0</clientType>
-							</param>
-							<param>
-								<ipa>5014</ipa>
-								<address>8974</address>
-								<name>highFloatAlarmDelay</name>
-								<typepar>0</typepar>
-								<typetarg>INT</typetarg>
-								<value/>
-								<min/>
-								<max/>
-								<ipamin/>
-								<ipamax/>
-								<scale>1</scale>
-								<offs>0</offs>
-								<um/>
-								<description/>
-								<note/>
-								<form/>
-								<accesslevel>3</accesslevel>
-								<readonly>0</readonly>
-								<shortname/>
-								<size>31</size>
-								<dataBlock>MW110.14</dataBlock>
-								<label/>
-								<translation/>
-								<visibility>0</visibility>
-								<clientType>0</clientType>
-							</param>
-							<param>
-								<ipa>5015</ipa>
-								<address>8975</address>
-								<name>sealFailAlarmDelay</name>
-								<typepar>0</typepar>
-								<typetarg>INT</typetarg>
-								<value/>
-								<min/>
-								<max/>
-								<ipamin/>
-								<ipamax/>
-								<scale>1</scale>
-								<offs>0</offs>
-								<um/>
-								<description/>
-								<note/>
-								<form/>
-								<accesslevel>3</accesslevel>
-								<readonly>0</readonly>
-								<shortname/>
-								<size>31</size>
-								<dataBlock>MW110.15</dataBlock>
 								<label/>
 								<translation/>
 								<visibility>0</visibility>
@@ -39946,7 +40414,7 @@ END_PROGRAM
 								<ioMapping inout="in" idx="7">
 									<name>AIL8</name>
 									<description>AIL8 analogue input</description>
-									<variable/>
+									<variable>topBearingTemp</variable>
 									<type>INT</type>
 								</ioMapping>
 								<ioMapping inout="in" idx="8">
@@ -40220,7 +40688,7 @@ END_PROGRAM
 							</biosParam>
 							<biosParam>
 								<ipa>10047</ipa>
-								<defval>16</defval>
+								<defval>11</defval>
 							</biosParam>
 							<biosParam>
 								<ipa>10004</ipa>
@@ -40261,6 +40729,34 @@ END_PROGRAM
 							<biosParam>
 								<ipa>10355</ipa>
 								<defval>3</defval>
+							</biosParam>
+							<biosParam>
+								<ipa>10397</ipa>
+								<defval>608</defval>
+							</biosParam>
+							<biosParam>
+								<ipa>10341</ipa>
+								<defval>608</defval>
+							</biosParam>
+							<biosParam>
+								<ipa>10343</ipa>
+								<defval>608</defval>
+							</biosParam>
+							<biosParam>
+								<ipa>10345</ipa>
+								<defval>608</defval>
+							</biosParam>
+							<biosParam>
+								<ipa>10361</ipa>
+								<defval>608</defval>
+							</biosParam>
+							<biosParam>
+								<ipa>10363</ipa>
+								<defval>608</defval>
+							</biosParam>
+							<biosParam>
+								<ipa>10003</ipa>
+								<defval>1</defval>
 							</biosParam>
 						</biosParams>
 						<executionTime custom="0">20</executionTime>
