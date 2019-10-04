@@ -17,5 +17,7 @@ do
   echo "$service is up"
 done
 
->&2 echo "All required services are up - executing command $cmd"
-exec "$cmd"
+>&2 echo "All required services are up - executing command nginx -g 'daemon off;' :)"
+# exec $cmd
+# Hardcoded nginx -g 'daemon off;' to avoid error nginx: invalid option: "off;'"
+exec nginx -g 'daemon off;'

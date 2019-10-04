@@ -1,4 +1,4 @@
-FROM nginx
+FROM nginx:1.15
 
 RUN apt-get update && apt-get install -y curl
 
@@ -14,6 +14,7 @@ COPY wait-for-routes.sh .
 
 RUN chmod +x ./wait-for-routes.sh 
 
-# ENTRYPOINT [ "/bin/bash", "./wait-for-routes.sh", "nginx -g daemon off;" ]
-# CMD [ "nginx", "-g", "daemon off;" ]
-CMD ["/bin/bash", "./wait-for-routes.sh", "nginx"]
+#ENTRYPOINT [ "/bin/bash", "./wait-for-routes.sh", "nginx -g daemon off;" ]
+# Default Command -> CMD [ "nginx", "-g", "daemon off;" ]
+# Using ./wait-for-routes.sh to make sure all other services are up before starting nginx
+CMD ["/bin/bash", "./wait-for-routes.sh"]
