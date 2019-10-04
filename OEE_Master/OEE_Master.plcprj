@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <plcProject caseSensitive="false" useCustomWorkspace="true" debugMode="false" extcheck="true" SFCControl="false" strictPointerCheck="false" copyWarningThreshold="200" version="2.2" useLD2="true" useFBMethods="false">
 	<image>OEE_Master.imgx</image>
-	<commSettings>Modbus:1,1000#COM:1,38400,E,8,1</commSettings>
+	<commSettings>Modbus:1,1000,M#COM:4,19200,N,8,1,H</commSettings>
 	<sources>
 		<main sourceFile="FreeAdvance.plc" sourceProject="">
 			<resources/>
@@ -33,7 +33,7 @@ cnt := cnt + 1;
 			<enums/>
 			<subranges/>
 		</main>
-		<target id="M172P_596p4" name="msk596p4.tgt" fullXml="false">
+		<target id="M172P_596p4" name="OEE_Master.tgt" fullXml="false">
 			<![CDATA[(************************************************************************)
 (*                                                                      *)
 (*	Description: Definition of target variables and functions       *)
@@ -1554,7 +1554,7 @@ END_FUNCTION
 
 ]]>
 		</target>
-		<targetXML name="freeadvance.tgtx" fullXml="true">
+		<targetXML name="OEE_Master.tgtx" fullXml="true">
 			<target>
 				<resources>
 					<resource name="EWAD" processor="ARMv7M">
@@ -38024,13 +38024,14 @@ END_TYPE
 		</libraries>
 		<aux/>
 		<workspace>
-			<root name="FreeAdvance" nextID="14">
+			<root name="OEE_Master" nextID="16">
 				<GlobalVars name="Global vars" id="11"/>
 				<Pou name="main" id="2"/>
+				<GlobalVars name="Ungrouped_vars" id="14"/>
 			</root>
 		</workspace>
 	</sources>
-	<codegen crossReference="false" crossReferenceOptions="0x3000001D" listing="true" hideSourceCodeInListing="true" saveEXPFile="true" saveTargetFiles="false" warningEnable="true" symMap="true" checkIndexType="false" waitExtension="false" allocateUnusedVariables="false" checkArrayBounds="false" checkDivisionByZero="false" checkPointers="false" checkReferences="false" checkInterfaces="false" customTargetBINFileName="FreeAdvance.bin" customTargetTSCFileName="FreeAdvance_source.bin" customTargetTDSFileName="FreeAdvance_debug.bin" generateCustomFilesName="false">
+	<codegen crossReference="false" crossReferenceOptions="0x3000001D" listing="true" hideSourceCodeInListing="true" saveEXPFile="true" saveTargetFiles="false" warningEnable="true" symMap="true" checkIndexType="false" waitExtension="false" allocateUnusedVariables="false" checkArrayBounds="false" checkDivisionByZero="false" checkPointers="false" checkReferences="false" checkInterfaces="false" customTargetBINFileName="OEE_Master.bin" customTargetTSCFileName="OEE_Master_source.bin" customTargetTDSFileName="OEE_Master_debug.bin" generateCustomFilesName="false">
 		<disabledWarnings/>
 		<applicationDataBlocks/>
 	</codegen>
