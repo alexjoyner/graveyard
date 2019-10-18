@@ -1,18 +1,19 @@
 CREATE TABLE "public"."item_component" (
-    "item_sku" character(7),
-    "component_sku" character(7),
-    FOREIGN KEY ("item_sku") REFERENCES "public"."item"("sku"),
-    FOREIGN KEY ("component_sku") REFERENCES "public"."item"("sku"),
-    CONSTRAINT item_components_pkey PRIMARY KEY (item_sku, component_sku)
+    "item_id" integer,
+    "component_id" integer,
+    "quantity" integer NOT NULL,
+    FOREIGN KEY ("item_id") REFERENCES "public"."item"("id"),
+    FOREIGN KEY ("component_id") REFERENCES "public"."item"("id"),
+    CONSTRAINT item_components_pkey PRIMARY KEY (item_id, component_id),
+    CHECK (quantity > 0)
 );
 
-DROP FUNCTION check_item_no_match_component CASCADE;
 
 CREATE FUNCTION check_item_no_match_component()
   RETURNS trigger AS $$
   BEGIN
-    IF NEW.item_sku = NEW.component_sku THEN
-      RAISE EXCEPTION 'Item Sku CAN NOT EQUAL Component Sku';
+    IF NEW.item_id = NEW.component_id THEN
+      RAISE EXCEPTION 'Item id CAN NOT EQUAL Component id';
     END IF;
     RETURN NEW;
  END;
@@ -29,18 +30,18 @@ CREATE FUNCTION check_no_circular_components_on_insert()
     DECLARE
         results varchar(7);
     BEGIN
-        WITH RECURSIVE p(sku) AS (
-            SELECT item_sku
+        WITH RECURSIVE p(id) AS (
+            SELECT item_id
                 FROM item_component
-                WHERE component_sku=NEW.item_sku
+                WHERE component_id=NEW.item_id
             UNION
-            SELECT item_sku
+            SELECT item_id
                 FROM p, item_component d
-                WHERE p.sku = d.component_sku
+                WHERE p.id = d.component_id
             )
         SELECT * INTO results
         FROM p
-        WHERE sku=NEW.component_sku;
+        WHERE id=NEW.component_id;
         
         IF FOUND THEN
             RAISE EXCEPTION 'Circular dependencies are not allowed.';
@@ -48,6 +49,7 @@ CREATE FUNCTION check_no_circular_components_on_insert()
         RETURN NEW;
     END;
 $$ LANGUAGE plpgsql;
+
 CREATE TRIGGER new_item_component_dependancy_check
     BEFORE INSERT ON item_component
     FOR EACH ROW
@@ -58,20 +60,20 @@ CREATE FUNCTION check_no_circular_components_on_update()
     DECLARE
         results varchar(7);
     BEGIN
-        WITH RECURSIVE p(sku) AS (
-            SELECT item_sku
+        WITH RECURSIVE p(id) AS (
+            SELECT item_id
                 FROM item_component
-                WHERE component_sku=NEW.item_sku
-                    AND NOT (component_sku = OLD.component_sku AND item_sku = OLD.item_sku) -- hide old row
+                WHERE component_id=NEW.item_id
+                    AND NOT (component_id = OLD.component_id AND item_id = OLD.item_id) -- hide old row
             UNION
-            SELECT item_sku
+            SELECT item_id
                 FROM p, item_component d
-                WHERE p.sku = d.component_sku
-                    AND NOT (component_sku = OLD.component_sku AND item_sku = OLD.item_sku) -- hide old row
+                WHERE p.id = d.component_id
+                    AND NOT (component_id = OLD.component_id AND item_id = OLD.item_id) -- hide old row
             )
         SELECT * INTO results
         FROM p
-        WHERE sku=NEW.component_sku;
+        WHERE id=NEW.component_id;
         
         IF FOUND THEN
             RAISE EXCEPTION 'Circular dependencies are not allowed.';
@@ -79,6 +81,7 @@ CREATE FUNCTION check_no_circular_components_on_update()
         RETURN NEW;
     END;
 $$ LANGUAGE plpgsql;
+
 CREATE TRIGGER update_item_component_dependancy_check
     BEFORE UPDATE ON item_component
     FOR EACH ROW
