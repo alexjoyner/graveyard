@@ -4,8 +4,8 @@ import { Block } from 'ro-component-library/Block';
 import { GoThreeBars } from 'react-icons/go';
 import { Button } from 'ro-component-library/Button';
 import { useWindowSize } from '../../../shared/effects/useWindowSize';
-import { FeaturesContext } from '../../../shared/AppBuilder/featuresContext';
-import { StoreContext } from '../../../shared/AppBuilder/storeContext';
+import { FeaturesContext } from '../../../utils/AppBuilder/featuresContext';
+import { StoreContext } from '../../../utils/AppBuilder/storeContext';
 
 const ToggleBtn = () => (
 	<Button
@@ -24,14 +24,10 @@ const logoStyles = {
 };
 export const Header = () => {
 	const { width } = useWindowSize();
-	const { Accounts, Feedback, Tutorial, Features } = useContext(
-		FeaturesContext
-	);
+	const { Accounts, Features } = useContext(FeaturesContext);
 	const [state] = useContext(StoreContext);
 	const { FeaturesButton } = Features;
 	const { AuthButton } = Accounts;
-	const { FeedbackButton } = Feedback;
-	const { TutorialButton } = Tutorial;
 	const { username } = state.Accounts.user;
 	return (
 		<>
@@ -45,8 +41,6 @@ export const Header = () => {
 					}}
 				>
 					<FeaturesButton />
-					<TutorialButton />
-					<FeedbackButton />
 					<AuthButton />
 				</Block>
 			</RoHeader>

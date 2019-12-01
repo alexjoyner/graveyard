@@ -1,7 +1,7 @@
 import { AccountsFeatureInterface } from './types/accounts';
 import { DashBoard } from '../../pages/DashBoard/DashBoard';
 import { AuthButton } from './public/AuthButton';
-import { AppFeature } from '../../shared/AppBuilder/AppFeature';
+import { AppFeature } from '../../utils/AppBuilder/AppFeature';
 import { reducer } from './ducks/accounts.duck';
 
 export class AccountsFeature extends AppFeature {

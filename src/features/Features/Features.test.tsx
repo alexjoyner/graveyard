@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { FeaturesFeature } from './Features';
-import { render, TestApp, wait } from '../../shared/AppBuilder/test-utils';
-import { FeaturesContext } from '../../shared/AppBuilder/featuresContext';
+import { render, TestApp, wait } from '../../utils/AppBuilder/test-utils';
+import { FeaturesContext } from '../../utils/AppBuilder/featuresContext';
 import { RenderResult, fireEvent } from 'react-testing-library';
-import { StoreContext } from '../../shared/AppBuilder/storeContext';
+import { StoreContext } from '../../utils/AppBuilder/storeContext';
 import { INITIAL_STATE } from './ducks/features.duck';
 import { async } from 'q';
 

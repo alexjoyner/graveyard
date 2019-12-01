@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { HeaderSideBarPageBody } from 'ro-component-library';
-import { StoreContext } from '../../../shared/AppBuilder/storeContext';
+import { StoreContext } from '../../../utils/AppBuilder/storeContext';
 
 const Body = () => {
 	const [state] = useContext(StoreContext);

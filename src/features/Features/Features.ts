@@ -1,22 +1,22 @@
 import { FeaturesButton } from './public/FeaturesButton';
-import { App } from '../../shared/AppBuilder/App';
-import { DashFeatures } from '../../pages/DashBoard/types/DashBoard';
+import { App } from '../../utils/AppBuilder/App';
+import { AppFeatures } from '../../app/types/App';
 import { FC } from 'react';
-import { AppFeature } from '../../shared/AppBuilder/AppFeature';
+import { AppFeature } from '../../utils/AppBuilder/AppFeature';
 import { reducer } from './ducks/features.duck';
 export interface FeaturesFeatureInterface {
-  FeaturesButton: FC
+	FeaturesButton: FC;
 }
 
-export class FeaturesFeature extends AppFeature<DashFeatures> {
-  constructor(decoratedApp: App<DashFeatures>) {
-    super(decoratedApp);
-    const ExposedFeatures: FeaturesFeatureInterface = {
-      FeaturesButton: FeaturesButton
-    }
-    this.setFeatureSettings('Features', ExposedFeatures);
-    this.setReducerSettings({
-      Features: reducer
-    })
-  }
+export class FeaturesFeature extends AppFeature<AppFeatures> {
+	constructor(decoratedApp: App<AppFeatures>) {
+		super(decoratedApp);
+		const ExposedFeatures: FeaturesFeatureInterface = {
+			FeaturesButton: FeaturesButton
+		};
+		this.setFeatureSettings('Features', ExposedFeatures);
+		this.setReducerSettings({
+			Features: reducer
+		});
+	}
 }

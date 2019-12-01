@@ -2,11 +2,11 @@ import React, { useContext } from 'react';
 import mockAxios from 'axios';
 import { PLACEMENT } from 'baseui/toast';
 import { Toast } from 'ro-component-library/Toast';
-import { render, wait, fireEvent, TestApp, RenderResult } from '../../shared/AppBuilder/test-utils';
-import { FeaturesContext } from '../../shared/AppBuilder/featuresContext';
+import { render, wait, fireEvent, TestApp, RenderResult } from '../../utils/AppBuilder/test-utils';
+import { FeaturesContext } from '../../utils/AppBuilder/featuresContext';
 import { AccountsFeature } from '.';
-import { StoreContext } from '../../shared/AppBuilder/storeContext';
-import { withToast } from '../../shared/testUtils/withToast';
+import { StoreContext } from '../../utils/AppBuilder/storeContext';
+import { withToast } from '../../utils/testUtils/withToast';
 
 const AccountsImplement = withToast(() => {
   const features = useContext(FeaturesContext);
