@@ -1,0 +1,134 @@
+secrets:
+  jwt-secret:
+    external: true
+  pg-db:
+    external: true
+  pg-host:
+    external: true
+  pg-pass:
+    external: true
+  pg-user:
+    external: true
+  ssl_dhparam:
+    external: true
+  twilio-auth-token:
+    external: true
+  twilio-phone-num:
+    external: true
+  twilio-sid:
+    external: true
+services:
+  accounts:
+    deploy:
+      restart_policy:
+        condition: on-failure
+    environment:
+      JWT_SECRET_FILE: /run/secrets/jwt-secret
+      PG_DB_FILE: /run/secrets/pg-db
+      PG_HOST_FILE: /run/secrets/pg-host
+      PG_PASS_FILE: /run/secrets/pg-pass
+      PG_USER_FILE: /run/secrets/pg-user
+    image: rosco9awj/oee-master-accounts:v0.8.0
+    secrets:
+    - source: jwt-secret
+    - source: pg-db
+    - source: pg-host
+    - source: pg-pass
+    - source: pg-user
+  alerts:
+    deploy:
+      restart_policy:
+        condition: on-failure
+    environment:
+      PG_DB_FILE: /run/secrets/pg-db
+      PG_HOST_FILE: /run/secrets/pg-host
+      PG_PASS_FILE: /run/secrets/pg-pass
+      PG_USER_FILE: /run/secrets/pg-user
+      TWILIO_AUTH_TOKEN: /run/secrets/twilio-auth-token
+      TWILIO_PHONE_NUM: /run/secrets/twilio-phone-num
+      TWILIO_SID: /run/secrets/twilio-sid
+    image: rosco9awj/oee-master-alerts:v0.8.0
+    secrets:
+    - source: pg-db
+    - source: pg-host
+    - source: pg-pass
+    - source: pg-user
+    - source: twilio-auth-token
+    - source: twilio-phone-num
+    - source: twilio-sid
+  health:
+    deploy:
+      restart_policy:
+        condition: on-failure
+    environment:
+      PG_DB_FILE: /run/secrets/pg-db
+      PG_HOST_FILE: /run/secrets/pg-host
+      PG_PASS_FILE: /run/secrets/pg-pass
+      PG_USER_FILE: /run/secrets/pg-user
+      TWILIO_AUTH_TOKEN: /run/secrets/twilio-auth-token
+      TWILIO_PHONE_NUM: /run/secrets/twilio-phone-num
+      TWILIO_SID: /run/secrets/twilio-sid
+    image: rosco9awj/oee-master-health:v0.8.0
+    secrets:
+    - source: pg-db
+    - source: pg-host
+    - source: pg-pass
+    - source: pg-user
+    - source: twilio-auth-token
+    - source: twilio-phone-num
+    - source: twilio-sid
+  graphs:
+    deploy:
+      restart_policy:
+        condition: on-failure
+    environment:
+      PG_DB_FILE: /run/secrets/pg-db
+      PG_HOST_FILE: /run/secrets/pg-host
+      PG_PASS_FILE: /run/secrets/pg-pass
+      PG_USER_FILE: /run/secrets/pg-user
+    image: rosco9awj/oee-master-graphs:v0.8.0
+    secrets:
+    - source: pg-db
+    - source: pg-host
+    - source: pg-pass
+    - source: pg-user
+  point-logs:
+    deploy:
+      restart_policy:
+        condition: on-failure
+    environment:
+      PG_DB_FILE: /run/secrets/pg-db
+      PG_HOST_FILE: /run/secrets/pg-host
+      PG_PASS_FILE: /run/secrets/pg-pass
+      PG_USER_FILE: /run/secrets/pg-user
+    image: rosco9awj/oee-master-point-logs:v0.8.0
+    secrets:
+    - source: pg-db
+    - source: pg-host
+    - source: pg-pass
+    - source: pg-user
+  main:
+    depends_on:
+    - graphs
+    - point-logs
+    - live-data
+    deploy:
+      restart_policy:
+        condition: on-failure
+    image: rosco9awj/oee-master-nginx:v0.8.0
+    ports:
+    - 80:80/tcp
+    - 443:443/tcp
+    secrets:
+    - source: ssl_dhparam
+    volumes:
+    - /etc/letsencrypt:/etc/letsencrypt:rw
+  live-data:
+    deploy:
+      restart_policy:
+        condition: on-failure
+    image: rosco9awj/oee-master-live-data:v0.8.0
+    ports:
+    - 32000:80/tcp
+version: '3.1'
+
