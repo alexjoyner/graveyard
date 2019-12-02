@@ -19,11 +19,8 @@ const DefaultFeatures: AppFeatures = {
 	Header: Header,
 	Body: Body,
 	SideBar: SideBar,
-	Accounts: {
-		AuthButton: NullComp
-	},
-	Features: {
-		FeaturesButton: NullComp
+	Demo: {
+		DemoHeader: NullComp
 	}
 };
 export const DefaultState: Object = {

@@ -39,7 +39,15 @@ This project structure was designed with the intention of handling large project
   3. yarn install / yarn start in the component library.
 
 
-## Adding a new feature
-  1. Create the following folder structure in the src/feature/FEATURE_NAME folder
-     1. index.ts
-     2. FEATURE_NAME.ts
+## Adding a new feature, (Quick Method)
+  - This method requires the blueprint VS-Code Extension
+  1. Right click on src/features
+  2. Left Click "new file from template"
+  3. Select new-feature
+  4. Name Feature (blueprint should correct all casing)
+  5. Use TDD to Add components & state
+     1. Components not exposed go in /private
+     2. Components exposed to app go in /private
+     3. All state effects go in /ducks
+     4. All tests for the entire feature should go in FEATURE_NAME.test.tsx
+  6. 

@@ -1,9 +1,8 @@
-import { FeaturesButton } from './public/FeaturesButton';
-import { App } from '../../shared/AppBuilder/App';
-import { DashFeatures } from '../../pages/DashBoard/types/DashBoard';
+import { App } from '../../utils/AppBuilder/App';
+import { AppFeature } from '../../utils/AppBuilder/AppFeature';
+import { AppFeatures } from '../../app/types/App';
 import { FC } from 'react';
-import { AppFeature } from '../../shared/AppBuilder/AppFeature';
-import { reducer } from './ducks/features.duck';
+import { reducer } from './ducks/{{camelCase name}}.duck';
 export interface {{pascalCase name}}FeatureInterface {
   /*
       Replace this with all the TypeScript interface of all the PUBLIC
@@ -12,8 +11,8 @@ export interface {{pascalCase name}}FeatureInterface {
   */
 }
 
-export class {{pascalCase name}}Feature extends AppFeature<DashFeatures> {
-  constructor(decoratedApp: App<DashFeatures>) {
+export class {{pascalCase name}}Feature extends AppFeature<AppFeatures> {
+  constructor(decoratedApp: App<AppFeatures>) {
     super(decoratedApp);
     const ExposedFeatures: {{pascalCase name}}FeatureInterface = {
       /*
@@ -24,7 +23,7 @@ export class {{pascalCase name}}Feature extends AppFeature<DashFeatures> {
     }
     this.setFeatureSettings('{{pascalCase name}}', ExposedFeatures);
     this.setReducerSettings({
-      Features: reducer
+      {{pascalCase name}}: reducer
     })
   }
 }

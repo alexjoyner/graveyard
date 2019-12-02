@@ -11,23 +11,20 @@ const engine = new Styletron();
 
 export const StyletronSetup = ({ children }: { children: ReactNode }) => (
 	<StyletronProvider value={engine}>
-		<ThemeProvider theme={customTheme}>
-			{children}
-		</ThemeProvider>
+		<ThemeProvider theme={customTheme}>{children}</ThemeProvider>
 	</StyletronProvider>
 );
-
 
 export interface App<F = GenericFeatures> {
 	getFeatures(): F;
 	getReducers(): ReducersMapObject<any, AnyAction>;
-	addFeatures<App>(Featurea: { new(...args: any[]): App }[]): App;
+	addFeatures<App>(Features: { new (...args: any[]): App }[]): App;
 	Run({
 		reducers,
-		features,
+		features
 	}: {
-		reducers?: ReducersMapObject<any, AnyAction>,
-		features?: F
+		reducers?: ReducersMapObject<any, AnyAction>;
+		features?: F;
 	}): ReactNode;
 }
 
@@ -54,25 +51,25 @@ export class BasicApp<F = GenericFeatures> implements App<F> {
 	getReducers(): ReducersMapObject<any, AnyAction> {
 		return this.reducers;
 	}
-	addFeatures<App>(Features: { new(...args: any[]): App }[]): App {
+	addFeatures<App>(Features: { new (...args: any[]): App }[]): App {
 		let newApp = new Features[0](this);
 		Features.map((Feature, indx) => {
 			if (indx > 0) {
 				newApp = new Feature(newApp);
 			}
-		})
+		});
 		return newApp;
 	}
 	private Build({
 		reducers,
 		features,
 		rootContent,
-		defaultState,
+		defaultState
 	}: {
-		reducers: ReducersMapObject<any, AnyAction>,
-		features: F,
-		rootContent: ReactNode,
-		defaultState: Object
+		reducers: ReducersMapObject<any, AnyAction>;
+		features: F;
+		rootContent: ReactNode;
+		defaultState: Object;
 	}) {
 		const rootReducer = combineReducers(reducers);
 		const initialState = rootReducer({}, { type: '__INIT__' });
@@ -80,7 +77,7 @@ export class BasicApp<F = GenericFeatures> implements App<F> {
 		const finalState = { ...defaultState, ...state };
 		return (
 			<StyletronSetup>
-				<StoreContext.Provider value={[finalState, dispatch]} >
+				<StoreContext.Provider value={[finalState, dispatch]}>
 					<FeaturesContext.Provider value={features}>
 						{rootContent}
 					</FeaturesContext.Provider>
@@ -94,15 +91,18 @@ export class BasicApp<F = GenericFeatures> implements App<F> {
 		rootContent,
 		defaultState
 	}: {
-		reducers?: ReducersMapObject<any, AnyAction>,
-		features?: F
-		rootContent?: ReactNode
-		defaultState?: Object
+		reducers?: ReducersMapObject<any, AnyAction>;
+		features?: F;
+		rootContent?: ReactNode;
+		defaultState?: Object;
 	}) {
-		return <this.Build
-			reducers={reducers || this.getReducers()}
-			features={features || this.getFeatures()}
-			rootContent={rootContent || this.rootContent}
-			defaultState={defaultState || this.defaultState} />
+		return (
+			<this.Build
+				reducers={reducers || this.getReducers()}
+				features={features || this.getFeatures()}
+				rootContent={rootContent || this.rootContent}
+				defaultState={defaultState || this.defaultState}
+			/>
+		);
 	}
 }

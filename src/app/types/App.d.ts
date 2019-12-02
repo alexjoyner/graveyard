@@ -3,6 +3,7 @@ import { ReactNode, FC } from 'react';
 import { AccountsFeatureInterface } from '../../features/Accounts/types/accounts';
 import { Reducer } from 'redux';
 import { ReducersObject } from '../../utils/AppBuilder/types';
+import { DemoFeatureInterface } from '../../features/Demo/Demo';
 
 // DashBoard App Specific
 // Type Declarations
@@ -15,8 +16,7 @@ export interface AppFeatures {
 	Header: HeaderFeatureInterface;
 	SideBar: SideBarFeatureInterface;
 	Body: BodyFeatureInterface;
-	Accounts: AccountsFeatureInterface;
-	Features: FeaturesFeatureInterface;
+	Demo: DemoFeatureInterface;
 }
 
 export interface AppReducers extends ReducersObject {}

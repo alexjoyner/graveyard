@@ -24,10 +24,9 @@ const logoStyles = {
 };
 export const Header = () => {
 	const { width } = useWindowSize();
-	const { Accounts, Features } = useContext(FeaturesContext);
+	const { Demo } = useContext(FeaturesContext);
 	const [state] = useContext(StoreContext);
-	const { FeaturesButton } = Features;
-	const { AuthButton } = Accounts;
+	const { DemoHeader } = Demo;
 	const { username } = state.Accounts.user;
 	return (
 		<>
@@ -40,8 +39,7 @@ export const Header = () => {
 						right: '10px'
 					}}
 				>
-					<FeaturesButton />
-					<AuthButton />
+					<DemoHeader />
 				</Block>
 			</RoHeader>
 		</>
