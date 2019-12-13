@@ -5,5 +5,12 @@
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "license": "PRIVATE",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "cron": "^1.7.2",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0",
+    "redis": "^2.8.0"
+  }
 }
