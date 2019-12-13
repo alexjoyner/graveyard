@@ -1,10 +1,17 @@
 {
-	"files.exclude": {
-		"**/.hg": false,
-		"**/.svn": false,
-		"**/CVS": false
-	},
-	"editor.formatOnSave": true,
-	"eslint.autoFixOnSave": true,
-	"blueprint.templatesPath": ["./local-blueprints", "../global-blueprints"]
+  "files.exclude": {
+    "**/.hg": false,
+    "**/.svn": false,
+    "**/CVS": false,
+    ".vscode": true,
+    ".storybook": true,
+    "node_modules": true,
+    "server/node_modules": true
+  },
+  "editor.formatOnSave": true,
+  "eslint.autoFixOnSave": true,
+  "blueprint.templatesPath": [
+    "./local-blueprints",
+    "../global-blueprints"
+  ]
 }
