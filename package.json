@@ -27,6 +27,7 @@
 	},
 	"dependencies": {
 		"@material-ui/core": "^4.7.1",
+		"@material-ui/icons": "^4.5.1",
 		"axios": "^0.18.0",
 		"baseui": "^6.13.0",
 		"digest-auth-request": "^0.7.0",
