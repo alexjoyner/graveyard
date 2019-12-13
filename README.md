@@ -51,3 +51,12 @@ This project structure was designed with the intention of handling large project
      3. All state effects go in /ducks
      4. All tests for the entire feature should go in FEATURE_NAME.test.tsx
   6. 
+
+# How is this app structured?
+  - This is a pretty simple app with only one feature, the jobs feature.
+  - It has components to display a list of jobs pulled from the jobs api
+    - Public Components Exposed from the Jobs Feature:
+      - JobDetailsModal: Prestructured modal that conditionally shows the details of a job
+      - JobData: HOC that returns back a list of jobs to be displayed
+      - JobsPost: Displays a card view summary of a job suitable for putting into a list
+    - Private Components: NONE
