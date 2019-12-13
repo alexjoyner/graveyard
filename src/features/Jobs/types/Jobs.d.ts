@@ -3,5 +3,8 @@ export interface Job {
   title: string,
   company: string,
   location: string,
-  created_at: string
+  created_at: string,
+  company_logo: string,
+  description: string,
+  url: string,
 }

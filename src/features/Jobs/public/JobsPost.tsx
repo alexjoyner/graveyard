@@ -10,13 +10,13 @@ const JobContainerStyle = {
   'margin': '10px auto',
   'width': '80%',
   'display': 'flex',
-  'justify-content': 'space-between',
+  'justifyContent': 'space-between',
   'padding': '20px 10px',
-  'align-items': 'center'
+  'alignItems': 'center'
 }
 
-const JobPost: FC<JobPostProps> = ({ job }) => (
-  <Paper style={JobContainerStyle}>
+const JobPost: FC<JobPostProps> = ({ job, ...props }) => (
+  <Paper style={JobContainerStyle} {...props}>
     <div>
       <Typography variant="h6">{job.title}</Typography>
       <Typography variant="h5">{job.company}</Typography>

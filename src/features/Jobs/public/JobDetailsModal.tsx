@@ -25,11 +25,13 @@ const JobDetailsModal: FC<JobDetailsModalProps> = ({ children }) => {
     company: '',
     id: '',
     location: '',
-    created_at: ''
+    created_at: '',
+    company_logo: '',
+    description: '',
+    url: ''
   });
 
   const handleClickOpen = (Job: Job) => {
-    console.log('Opening!');
     setJob(Job);
     setOpen(true);
   };
@@ -49,22 +51,28 @@ const JobDetailsModal: FC<JobDetailsModalProps> = ({ children }) => {
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle id="alert-dialog-slide-title">{"Use Google's location service?"}</DialogTitle>
+        <DialogTitle id="alert-dialog-slide-title">
+          {currentJob.title}
+          {currentJob.company}
+          <img style={{
+            height: '30px',
+            float: 'right'
+          }} src={currentJob.company_logo} />
+        </DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            {currentJob.company}
-          </DialogContentText>
-          <DialogContentText id="alert-dialog-slide-description">
-            {currentJob.title}
-          </DialogContentText>
-          <DialogContentText id="alert-dialog-slide-description">
-            {currentJob.location}
-          </DialogContentText>
+          <DialogContentText
+            id="alert-dialog-slide-description"
+            dangerouslySetInnerHTML={{ __html: currentJob.description }} />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             Close
           </Button>
+          <a href={currentJob.url}>
+            <Button color="primary">
+              Apply
+            </Button>
+          </a>
         </DialogActions>
       </Dialog>
     </div>

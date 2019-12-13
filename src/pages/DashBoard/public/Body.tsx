@@ -33,11 +33,7 @@ const Body = () => {
 							{(openDetails: (newJob: Job) => void) => (
 								<>
 									{Jobs.slice(activeStep * 50, activeStep * 50 + 50).map((Job, i) => (
-										<div key={Job.id}>
-											<div onClick={() => openDetails(Job)}>
-												<JobPost job={Job} />
-											</div>
-										</div>
+										<JobPost key={i} job={Job} onClick={() => openDetails(Job)} />
 									))}
 								</>
 							)}
