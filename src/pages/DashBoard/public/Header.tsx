@@ -6,6 +6,7 @@ import { Button } from 'ro-component-library/Button';
 import { useWindowSize } from '../../../shared/effects/useWindowSize';
 import { FeaturesContext } from '../../../utils/AppBuilder/featuresContext';
 import { StoreContext } from '../../../utils/AppBuilder/storeContext';
+import { Typography } from '@material-ui/core';
 
 const ToggleBtn = () => (
 	<Button
@@ -28,18 +29,19 @@ export const Header = () => {
 	const [state] = useContext(StoreContext);
 	const { DemoHeader } = Demo;
 	const { username } = state.Accounts.user;
+	const { contents } = state.Body;
 	return (
 		<>
 			<RoHeader color='dark'>
-				{width > 800 ? null : <ToggleBtn />}
-				<h1 style={logoStyles}>{username}</h1>
 				<Block
 					style={{
 						position: 'absolute',
-						right: '10px'
+						left: '10px'
 					}}
 				>
-					<DemoHeader />
+					<Typography variant="h5" component="h1">
+						{contents}
+					</Typography>
 				</Block>
 			</RoHeader>
 		</>

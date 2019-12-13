@@ -21,11 +21,15 @@ const DefaultFeatures: AppFeatures = {
 	SideBar: SideBar,
 	Demo: {
 		DemoHeader: NullComp
+	},
+	Jobs: {
+		JobsData: NullComp,
+		JobPost: NullComp
 	}
 };
 export const DefaultState: Object = {
 	Body: {
-		contents: 'Welcome to Job Filter'
+		contents: 'Entry Level Software Jobs'
 	},
 	Accounts: {
 		user: {
