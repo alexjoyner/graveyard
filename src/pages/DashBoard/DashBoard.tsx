@@ -24,7 +24,8 @@ const DefaultFeatures: AppFeatures = {
 	},
 	Jobs: {
 		JobsData: NullComp,
-		JobPost: NullComp
+		JobPost: NullComp,
+		JobDetailsModal: NullComp
 	}
 };
 export const DefaultState: Object = {

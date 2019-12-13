@@ -12,7 +12,7 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 const Body = () => {
 	const [activeStep, setActiveStep] = useState(0);
 	const [state] = useContext(StoreContext);
-	const { Jobs: { JobsData, JobPost } } = useContext(FeaturesContext);
+	const { Jobs: { JobsData, JobPost, JobDetailsModal } } = useContext(FeaturesContext);
 	const {
 		Body: { contents }
 	} = state;
@@ -29,11 +29,19 @@ const Body = () => {
 			<JobsData>
 				{(Jobs: Job[]) => (
 					<>
-						{Jobs.slice(activeStep * 50, activeStep * 50 + 50).map((Job, i) => (
-							<div key={Job.id}>
-								<JobPost job={Job} />
-							</div>
-						))}
+						<JobDetailsModal>
+							{(openDetails: (newJob: Job) => void) => (
+								<>
+									{Jobs.slice(activeStep * 50, activeStep * 50 + 50).map((Job, i) => (
+										<div key={Job.id}>
+											<div onClick={() => openDetails(Job)}>
+												<JobPost job={Job} />
+											</div>
+										</div>
+									))}
+								</>
+							)}
+						</JobDetailsModal>
 						<div>
 							Page {activeStep} of {Math.ceil(Jobs.length / 50)}
 						</div>
