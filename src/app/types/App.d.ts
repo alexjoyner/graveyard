@@ -1,3 +1,4 @@
+import { JobsFeatureInterface } from './../../features/Jobs/Jobs';
 import { ReactNode, FC } from 'react';
 import { Reducer } from 'redux';
 import { ReducersObject } from '../../utils/AppBuilder/types';
@@ -15,6 +16,7 @@ export interface AppFeatures {
 	SideBar: SideBarFeatureInterface;
 	Body: BodyFeatureInterface;
 	Demo: DemoFeatureInterface;
+	Jobs: JobsFeatureInterface;
 }
 
-export interface AppReducers extends ReducersObject {}
+export interface AppReducers extends ReducersObject { }
