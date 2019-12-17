@@ -31,5 +31,5 @@ describe('Demo feature', () => {
 		utils = render(<>{Root}</>);
 	});
 
-	it('Should render Welcome to PROJECT_NAME', () => {});
+	it('Should render Welcome to My Personal Website', () => {});
 });

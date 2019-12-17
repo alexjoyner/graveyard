@@ -3,6 +3,6 @@ describe('Accounts Feature', () => {
 		cy.visit('http://localhost:3000');
 	});
 	it('Has defaults', () => {
-		cy.contains('PROJECT_NAME');
+		cy.contains('My Personal Website');
 	});
 });

@@ -6,14 +6,14 @@ This project uses the mono-repo structure, which means all the code for this pro
 
 **Below are general instructions for setting up a new project. This will be the same for all size projects Feel free to remove when done.**
   1. Find & Replace all the following constants with your names
-     1. REPO_NAME <Name that is used for your repository ex: my-project>
-     2. PROJECT_NAME <Website friendly version of your name ex: Google, Facebook, CodeShop >
-     8. PROJECT_DESCRIPTION <Short description of what your project does>
-     3. LICENSE_TYPE
-     4. AUTHOR_NAME
-     5. AUTHOR_EMAIL
-     6. REPOSITORY_URL
-     7. HOMEPAGE_URL
+     1. ro-personal-website <Name that is used for your repository ex: my-project>
+     2. My Personal Website <Website friendly version of your name ex: Google, Facebook, CodeShop >
+     8. The ongoing contruction of my personal website <Short description of what your project does>
+     3. MIT
+     4. Alex Joyner
+     5. rosco9awj@gmail.com
+     6. https://github.com/alexjoyner/personal-website.git
+     7. http://www.ajoyner.com
      8. PRODUCTION_APP_API_ADDRESS
   2. Update Keywords in Package.json
   3. Update CHANGELOG for v0.1.0

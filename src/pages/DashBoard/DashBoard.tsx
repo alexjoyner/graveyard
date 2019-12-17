@@ -25,7 +25,7 @@ const DefaultFeatures: AppFeatures = {
 };
 export const DefaultState: Object = {
 	Body: {
-		contents: 'Welcome to PROJECT_NAME'
+		contents: 'Welcome to My Personal Website'
 	},
 	Accounts: {
 		user: {
