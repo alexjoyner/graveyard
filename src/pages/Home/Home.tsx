@@ -3,8 +3,6 @@ import { PLACEMENT } from 'baseui/toast';
 import { Toast } from 'ro-component-library/Toast';
 import { BasicApp } from '../../utils/AppBuilder/App';
 import { AppFeatures } from '../../app/types/App';
-import { Header } from './public/Header';
-import { SideBar } from './public/SideBar';
 import { Body } from './public/Body';
 import { NullComp } from '../../shared/components/NullComp';
 const toastOverrides = {
@@ -16,13 +14,12 @@ const toastOverrides = {
 };
 
 const DefaultFeatures: AppFeatures = {
-	Header: Header,
 	Body: Body,
-	SideBar: SideBar,
 	Demo: {
 		DemoHeader: NullComp
 	}
 };
+
 export const DefaultState: Object = {
 	Body: {
 		contents: 'Welcome to My Personal Website'
@@ -35,28 +32,25 @@ export const DefaultState: Object = {
 	}
 };
 
-const DashBoardRoot = () => {
+const HomePageRoot = () => {
 	return (
 		<>
-			<SideBar>
-				<Header />
-				<Body />
-			</SideBar>
+			<Body />
 			<Toast placement={PLACEMENT.bottomLeft} overrides={toastOverrides} />
 		</>
 	);
 };
 
-//  Base DashBoard
-class DashBoard extends BasicApp<AppFeatures> {
+//  Base HomePage
+class HomePage extends BasicApp<AppFeatures> {
 	constructor() {
-		super(DefaultFeatures, {}, <DashBoardRoot />, DefaultState);
+		super(DefaultFeatures, {}, <HomePageRoot />, DefaultState);
 	}
 }
 
-export { DashBoard };
+export { HomePage };
 
 //  Implementation
-//   let MyDash = new DashBoard()
+//   let MyDash = new HomePage()
 //   <MyDash.Run />
 //   - Note: Make sure to make FeaturesContext available

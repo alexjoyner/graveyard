@@ -1,7 +1,7 @@
 import React from 'react';
-import { DashBoard } from '../pages/DashBoard';
+import { HomePage } from '../pages/Home';
 import { DemoFeature } from '../features/Demo';
-let BaseDash = new DashBoard();
+let BaseDash = new HomePage();
 const Features = [];
 const rawStoredFeatures = localStorage.getItem('Features');
 const rawFeatures = rawStoredFeatures

@@ -11,8 +11,6 @@ export type SideBarFeatureInterface = FC<any>;
 export type BodyFeatureInterface = FC<any>;
 
 export interface AppFeatures {
-	Header: HeaderFeatureInterface;
-	SideBar: SideBarFeatureInterface;
 	Body: BodyFeatureInterface;
 	Demo: DemoFeatureInterface;
 }
