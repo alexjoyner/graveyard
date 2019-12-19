@@ -10,11 +10,11 @@ bluebird.promisifyAll(redis.Multi.prototype);
 const baseQuery = 'https://jobs.github.com/positions.json';
 
 module.exports = async function fetchGithub() {
-  let onPage = 0;
+  let onPage = 1;
   let resultCount = 1;
   const allResults = [];
   while (resultCount > 0) {
-    const res = await fetch(`${baseQuery}?page=${onPage}`);
+    const res = await fetch(`${baseQuery}?page=${onPage}&location=raleigh`);
     const jobs = await res.json();
     allResults.push(...jobs);
     resultCount = jobs.length;
