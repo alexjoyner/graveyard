@@ -1,11 +1,8 @@
 {
   "files.exclude": {
-    ".vscode": true,
-    "**/__snapshots__": true,
-    "**/.eslintrc.json": true,
-    "**/*.bak": true,
-    "**/*.lock": true,
-    "**/*.pyc": true
+    "**/.hg": false,
+    "**/.svn": false,
+    "**/CVS": false
   },
   "editor.formatOnSave": true,
   "eslint.autoFixOnSave": true
