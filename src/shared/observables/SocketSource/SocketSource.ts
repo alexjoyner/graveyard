@@ -9,9 +9,13 @@ interface RoomsObject {
 class SocketSource implements SocketObserverable {
   private rooms: RoomsObject = {};
   private socket: SocketIOClient.Emitter;
+  private detailsListener: (details: { status: string }) => void;
 
-  constructor(serverAddress: string) {
-    this.socket = io(serverAddress);
+  constructor(detailsListener: (details: { status: string }) => void) {
+    console.log('Starting server in: ', <string>process.env.REACT_APP_SERVER_ADDRESS);
+    this.socket = io(<string>process.env.REACT_APP_SERVER_ADDRESS);
+    this.detailsListener = detailsListener;
+    this.startConnectedListener();
     this.startNewLogListener();
     this.startDisconnectListener();
     this.startReconnectListener();
@@ -28,6 +32,14 @@ class SocketSource implements SocketObserverable {
   private getLastLog(pointID: PointID) {
     this.socket.emit('get-last-logs', [pointID]);
   }
+  private startConnectedListener() {
+    this.socket.on('connect', () => {
+      console.log('Connected To Server');
+      this.detailsListener({
+        status: 'CONNECTED'
+      })
+    })
+  }
   private startNewLogListener() {
     this.socket.on('add log', /* istanbul ignore next */(log: Log) => {
       this.notifyObservers(log.pointID, log);
@@ -38,6 +50,10 @@ class SocketSource implements SocketObserverable {
       toaster().negative('Disconnected From Server!', {
         autoHideDuration: 0,
       })
+      console.log('Connected To Server');
+      // this.detailsListener({
+      //   status: 'DISCONNECTED'
+      // })
     });
   }
   private startReconnectListener() {
@@ -45,6 +61,9 @@ class SocketSource implements SocketObserverable {
       toaster().clear();
       toaster().positive('Socket Reconnected!', {
         autoHideDuration: 8000,
+      })
+      this.detailsListener({
+        status: 'CONNECTED'
       })
       Object.keys(this.rooms).map(pointID => {
         this.addRoom(pointID);

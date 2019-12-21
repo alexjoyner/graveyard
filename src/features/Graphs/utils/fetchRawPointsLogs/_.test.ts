@@ -17,8 +17,8 @@
 //   it('should return correct value', () => {
 //     const testResult = fetchDataForPoints(requests, {});
 //     expect(testResult).toEqual([
-//       new Request(`${env.serverAddr}/history/all/1`),
-//       new Request(`${env.serverAddr}/history/all/2`),
+//       new Request(`${process.env.REACT_APP_SERVER_ADDRESS}/history/all/1`),
+//       new Request(`${process.env.REACT_APP_SERVER_ADDRESS}/history/all/2`),
 //     ]);
 //   });
 //   it('should return historical requests with start&end options', () => {
@@ -31,8 +31,8 @@
 //       },
 //     });
 //     expect(testResult).toEqual([
-//       new Request(`${env.serverAddr}/history/1/from/TEST_START/TEST_END`),
-//       new Request(`${env.serverAddr}/history/2/from/TEST_START/TEST_END`),
+//       new Request(`${process.env.REACT_APP_SERVER_ADDRESS}/history/1/from/TEST_START/TEST_END`),
+//       new Request(`${process.env.REACT_APP_SERVER_ADDRESS}/history/2/from/TEST_START/TEST_END`),
 //     ]);
 //   });
 // });

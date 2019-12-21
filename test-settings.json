@@ -1,0 +1,25 @@
+{
+  "units": "F",
+  "max": 160,
+  "min": 0,
+  "ranges": [
+    {
+      "lowerValue": 0,
+      "upperValue": 110,
+      "color": "success",
+      "alertLevel": "success"
+    },
+    {
+      "lowerValue": 110,
+      "upperValue": 130,
+      "color": "warning",
+      "alertLevel": "warning"
+    },
+    {
+      "lowerValue": 130,
+      "upperValue": 160,
+      "color": "danger",
+      "alertLevel": "danger"
+    }
+  ]
+}

@@ -1,7 +1,6 @@
 import { Credentials } from '../types/accounts';
 import axios from 'axios';
 import { toaster } from 'ro-component-library/Toast';
-import { env } from '../../../.env';
 import { Dispatch, Reducer, Action } from 'redux';
 
 export const SIGN_IN = 'SIGN_IN';
@@ -54,7 +53,7 @@ export const trySignIn = (credentials: Credentials) => {
 	return async (dispatch: Dispatch) => {
 		try {
 			const response = await axios.post(
-				`${env.serverAddr}/me/signIn`,
+				`${process.env.REACT_APP_SERVER_ADDRESS}/me/signIn`,
 				credentials
 			);
 			const { user, token } = response.data;

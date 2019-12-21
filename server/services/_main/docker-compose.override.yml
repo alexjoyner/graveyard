@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.2'
 
 services:
   main:
@@ -7,78 +7,94 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ../nginx/nginx.dev.conf:/etc/nginx/nginx.conf
-      - ./dev-keys/ssl:/etc/ssl
-  health-service:
+      - ../nginx/nginx.local.conf:/etc/nginx/nginx.conf
+  health:
     build:
-      context: ../health-service
+      context: ../health
       args:
         - NODE_ENV=development
     command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
     volumes:
-      - ../health-service:/opt/app
-      - health-service-node_modules:/opt/app/node_modules
-    environment:
-      - NODE_ENV=development
-    depends_on:
-      - postgres
-  log-handler:
-    build:
-      context: ../log-handler
-      args:
-        - NODE_ENV=development
-    command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
-    volumes:
-      - ../log-handler:/opt/app
-      - log-handler-node_modules:/opt/app/node_modules
-    environment:
-      - NODE_ENV=development
-    depends_on:
-      - postgres
-  historical-service:
-    build:
-      context: ../historical-service
-      args:
-        - NODE_ENV=development
-    command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
-    volumes:
-      - ../historical-service:/opt/app
-      - historical-service-node_modules:/opt/app/node_modules
-    environment:
-      - NODE_ENV=development
-    depends_on:
-      - postgres
-  accounts-service:
-    build:
-      context: ../accounts-service
-      args:
-        - NODE_ENV=development
-    command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
-    volumes:
-      - ../accounts-service:/opt/app
+      - ../health:/opt/app
+      - health-node_modules:/opt/app/node_modules
     environment:
       - NODE_ENV=development
     depends_on:
       - postgres
     restart: always
-  socket-service:
+  point-logs:
     build:
-      context: ../socket-service
+      context: ../point-logs
       args:
         - NODE_ENV=development
     command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
     volumes:
-      - ../socket-service:/opt/app
+      - ../point-logs:/opt/app
+      - point-logs-node_modules:/opt/app/node_modules
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - postgres
+  graphs:
+    build:
+      context: ../graphs
+      args:
+        - NODE_ENV=development
+    command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
+    volumes:
+      - ../graphs:/opt/app
+      - graphs-node_modules:/opt/app/node_modules
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - postgres
+  accounts:
+    build:
+      context: ../accounts
+      args:
+        - NODE_ENV=development
+    command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
+    volumes:
+      - ../accounts:/opt/app
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - postgres
+    restart: always
+  live-data:
+    build:
+      context: ../live-data
+      args:
+        - NODE_ENV=development
+    command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
+    volumes:
+      - ../live-data:/opt/app
       - socket-data-node_modules:/opt/app/node_modules
-  alerts-service:
+  alerts:
     build:
-      context: ../alerts-service
+      context: ../alerts
       args:
         - NODE_ENV=development
     command: ../node_modules/.bin/nodemon --inspect=0.0.0.0:9229 -L
     volumes:
-      - ../alerts-service:/opt/app
+      - ../alerts:/opt/app
       - alerts-node_modules:/opt/app/node_modules
+    secrets:
+      - pg-user
+      - pg-pass
+      - pg-db
+      - pg-host
+      - twilio-sid
+      - twilio-auth-token
+      - twilio-phone-num
+    environment:
+      - PG_USER_FILE=/run/secrets/pg-user
+      - PG_HOST_FILE=/run/secrets/pg-host
+      - PG_DB_FILE=/run/secrets/pg-db
+      - PG_PASS_FILE=/run/secrets/pg-pass
+      - TWILIO_SID=/run/secrets/twilio-sid
+      - TWILIO_AUTH_TOKEN=/run/secrets/twilio-auth-token
+      - TWILIO_PHONE_NUM=/run/secrets/twilio-phone-num
   postgres:
     image: postgres
     restart: always
@@ -89,9 +105,9 @@ services:
 volumes:
   socket-data-node_modules:
   alerts-node_modules:
-  log-handler-node_modules:
-  health-service-node_modules:
-  historical-service-node_modules:
+  point-logs-node_modules:
+  health-node_modules:
+  graphs-node_modules:
 secrets:
   pg-user:
     file: dev-keys/pg-user.txt
@@ -109,5 +125,3 @@ secrets:
     file: ../../../../../../Desktop/twilio/auth_token.txt
   twilio-phone-num:
     file: ../../../../../../Desktop/twilio/phone_num.txt
-  ssl_dhparam:
-    file: dev-keys/ssl/dhparam.pem
