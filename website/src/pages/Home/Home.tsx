@@ -20,6 +20,9 @@ const DefaultFeatures: AppFeatures = {
 	},
 	Timeline: {
 		Post: NullComp
+	},
+	Brand: {
+		MinimalBackground: NullComp
 	}
 };
 

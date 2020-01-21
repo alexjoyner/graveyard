@@ -10,10 +10,12 @@ const Body = () => {
 		Body: { contents }
 	} = state;
 	const {
-		Timeline: { Post }
+		Timeline: { Post },
+		Brand: { MinimalBackground }
 	} = features;
 	return (
 		<HeaderSideBarPageBody>
+			<MinimalBackground></MinimalBackground>
 			<h1>{contents}</h1>
 			<Post />
 		</HeaderSideBarPageBody>
