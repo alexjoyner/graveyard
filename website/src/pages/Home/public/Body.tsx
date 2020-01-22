@@ -14,11 +14,10 @@ const Body = () => {
 		Brand: { MinimalBackground }
 	} = features;
 	return (
-		<HeaderSideBarPageBody>
-			<MinimalBackground></MinimalBackground>
+		<MinimalBackground>
 			<h1>{contents}</h1>
 			<Post />
-		</HeaderSideBarPageBody>
+		</MinimalBackground>
 	);
 };
 

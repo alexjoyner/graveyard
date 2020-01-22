@@ -6,11 +6,16 @@ export type MinimalBackgroundProps = {
 };
 
 const Background = styled('div', () => ({
+	minHeight: '100%',
+	minWidth: '1024px',
 	width: '100%',
-	height: '100vh',
-	background: 'url("https://nosidebar.com/images/benefits-of-minimalism.jpg")',
-	backgroundRepeat: 'no-repeat',
-	backgroundSize: 'contain'
+	height: 'auto',
+	position: 'fixed',
+	top: '0',
+	left: '0',
+	background:
+		'url("https://nosidebar.com/images/benefits-of-minimalism.jpg") no-repeat center center fixed',
+	backgroundSize: 'cover'
 }));
 
 const MinimalBackground: FC<MinimalBackgroundProps> = ({ children }) => {

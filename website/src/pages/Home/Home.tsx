@@ -5,6 +5,13 @@ import { BasicApp } from '../../utils/AppBuilder/App';
 import { AppFeatures } from '../../app/types/App';
 import { Body } from './public/Body';
 import { NullComp } from '../../shared/components/NullComp';
+import { styled } from 'ro-component-library/utils/styled';
+
+const Base = styled('div', () => ({
+	height: '100vh',
+	width: '100vw'
+}));
+
 const toastOverrides = {
 	Root: {
 		style: {
@@ -40,10 +47,10 @@ export const DefaultState: Object = {
 
 const HomePageRoot = () => {
 	return (
-		<>
+		<Base>
 			<Body />
 			<Toast placement={PLACEMENT.bottomLeft} overrides={toastOverrides} />
-		</>
+		</Base>
 	);
 };
 
