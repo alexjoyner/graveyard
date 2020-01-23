@@ -2,7 +2,6 @@ import { BrandFeatureInterface } from './../../features/Brand/Brand';
 import { ReactNode, FC } from 'react';
 import { Reducer } from 'redux';
 import { ReducersObject } from '../../utils/AppBuilder/types';
-import { DemoFeatureInterface } from '../../features/Demo/Demo';
 import { TimelineFeatureInterface } from '../../features/Timeline/Timeline';
 
 // DashBoard App Specific
@@ -14,7 +13,6 @@ export type BodyFeatureInterface = FC<any>;
 
 export interface AppFeatures {
 	Body: BodyFeatureInterface;
-	Demo: DemoFeatureInterface;
 	Timeline: TimelineFeatureInterface;
 	Brand: BrandFeatureInterface;
 }

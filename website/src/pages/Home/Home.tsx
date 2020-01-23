@@ -22,9 +22,6 @@ const toastOverrides = {
 
 const DefaultFeatures: AppFeatures = {
 	Body: Body,
-	Demo: {
-		DemoHeader: NullComp
-	},
 	Timeline: {
 		Post: NullComp
 	},
