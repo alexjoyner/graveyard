@@ -5,7 +5,6 @@
 	"main": "build/electron.js",
 	"repository": "https://github.com/alexjoyner/oee-master.git",
 	"author": "Alex Joyner <alex@voicir.com>",
-	"license": "PRIVATE",
 	"private": true,
 	"homepage": "http://alexjoyner.github.io/",
 	"scripts": {
