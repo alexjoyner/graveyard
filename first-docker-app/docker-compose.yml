@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  web:
+    build: ./www
+    image: docker-webpack-test/web
+    volumes:
+      - ./www:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - NODE_ENV=dev
+    ports:
+      - 5001:8000
