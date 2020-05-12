@@ -1,0 +1,35 @@
+<div>
+    <div map-lazy-load="https://maps.google.com/maps/api/js">
+        <ng-map id="locMap" zoom="14" center="current-location" style="height:100%" disable-default-u-i="true">
+            <directions id="locDirect" draggable="true" panel="directions-panel" travel-mode="DRIVING" origin="current-location" destination="{{dropOff.formatted_address}}">
+            </directions>
+        </ng-map>
+        <!-- <ng-map center="35.904247, -77.960209" zoom="15" style="height:90%" on-click="logLatLng()" >
+        <directions 
+          draggable="true"
+          panel="directions-panel"
+          travel-mode="{{travelMode}}"
+          waypoints="{{wayPoints}}"
+          origin="{{origin}}"
+          destination="{{destination}}">
+        </directions>
+      </ng-map>  -->
+    </div>
+    <div class="padding">
+    	<div class="list list-inset form-rb" style="background-color: #444">
+    	    <label class="item item-input">
+    	        <i class="icon ion-search placeholder-icon"></i>
+    	        <ion-google-place class="text-color-contrast" placeholder="Enter Pickup Address" ng-model="pickUp" current-location="true" ng-change="reRender()"/>
+    	    </label>
+    	</div>
+    	<div class="list list-inset form-rb" style="background-color: #444">
+    	    <label class="item item-input">
+    	        <i class="icon ion-search placeholder-icon"></i>
+    	        <ion-google-place class="text-color-contrast" placeholder="Enter Drop Off Address" ng-model="dropOff"/>
+    	    </label>
+    	</div>
+    	<button class="button button-transparent button-block" ng-click="setLocation()">
+    	    Start New Haul
+    	</button>
+    </div>
+</div>

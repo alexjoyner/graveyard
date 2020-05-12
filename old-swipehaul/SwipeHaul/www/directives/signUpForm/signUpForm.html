@@ -1,0 +1,75 @@
+<form>
+    <br>
+    <!-- Social Login -->
+    <div class="social-login">
+        <div class="row">
+            <div class="col">
+                <a href="" class="button google button-borderless button-block no-margin"><i class="ion-social-google"></i></a>
+            </div>
+            <div class="col">
+                <a href="" class="button facebook button-borderless button-block no-margin"><i class="ion-social-facebook"></i></a>
+            </div>
+        </div>
+        <h6 class="divider dark">OR</h6>
+    </div>
+    <!-- End Social Login -->
+    <!-- Login Form - note the modifier 'is-transparent' is for the form to be see through -->
+    <div class="list list-inset signup-form login-form is-transparent">
+        <div class="row">
+            <label for="name" class="item item-input item-stacked-label">
+                <span class="input-label">First Name</span>
+                <input type="text" name="first" tabindex="1" placeholder="John" ng-model="creds.firstName" required>
+            </label>
+            <div class="col col-10"></div>
+            <label for="lastName" class="item item-input item-stacked-label">
+                <span class="input-label">Last Name</span>
+                <input type="text" name="second" tabindex="2" placeholder="Doe" ng-model="creds.lastName" required>
+            </label>
+        </div>
+        <div class="list">
+            <label for="email" class="item item-input item-stacked-label">
+                <span class="input-label">Email</span>
+                <input type="email" name="third" tabindex="3" placeholder="johnDoe@example.com" ng-model="creds.username" required>
+            </label>
+            <label for="number" class="item item-input item-stacked-label">
+                <span class="input-label">Mobile</span>
+                <input type="tel" name="fourth" tabindex="4" placeholder="+1 (555) 555-5555" ng-model="creds.mobileNum" required>
+            </label>
+            <label for="password" class="item item-input item-stacked-label">
+                <span class="input-label">Password</span>
+                <input type="password" name="fifth" tabindex="5" ng-model="creds.password" required>
+            </label>
+        </div>
+    </div>
+    <!-- <div>
+        <br>
+        <div class="row">
+            <label for="name" class="item item-input item-stacked-label">
+                <span class="input-label">First Name</span>
+                <input type="text" name="first" tabindex="1" placeholder="John" ng-model="creds.firstName" required>
+            </label>
+            <div class="col col-10"></div>
+            <label for="lastName" class="item item-input item-stacked-label">
+                <span class="input-label">Last Name</span>
+                <input type="text" name="second" tabindex="2" placeholder="Doe" ng-model="creds.lastName" required>
+            </label>
+        </div>
+        <div class="list">
+            <label for="email" class="item item-input item-stacked-label">
+                <span class="input-label">Email</span>
+                <input type="email" name="third" tabindex="3" placeholder="johnDoe@example.com" ng-model="creds.username" required>
+            </label>
+            <label for="number" class="item item-input item-stacked-label">
+                <span class="input-label">Mobile</span>
+                <input type="tel" name="fourth" tabindex="4" placeholder="+1 (555) 555-5555" ng-model="creds.mobileNum" required>
+            </label>
+            <label for="password" class="item item-input item-stacked-label">
+                <span class="input-label">Password</span>
+                <input type="password" name="fifth" tabindex="5" ng-model="creds.password" required>
+            </label>
+        </div>
+        <button class="button button-block button-default" ng-click="signUp()">
+            Sign Up
+        </button>
+    </div> -->
+</form>

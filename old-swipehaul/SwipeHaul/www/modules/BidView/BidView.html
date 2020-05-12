@@ -1,0 +1,21 @@
+<ion-view>
+	<ion-header-bar class="appBlue no-border bar bar-header disable-user-behavior">
+        <button class="button button-icon icon ion-navicon font-subtleGrey"></button>
+        <h1 class="title font-subtleGrey title-left" style="left: 57px;">Offers</h1>
+    </ion-header-bar>
+    <ion-header-bar class="bar-subheader appBlue no-border bar bar-header disable-user-behavior">
+        <h4 class="title font-subtleGrey ng-binding title-left">Status: Accepting Offers</h4>
+    </ion-header-bar>
+	<ion-content id="Login" scroll="true" class="padding rubyonic-pane login-screen">
+		<bid-view api="BidViewControl"></bid-view>
+    </ion-content>
+    <ion-footer-bar class="no-border appBlue bar bar-footer">
+        <button class="button button-outline button-assertive rounded" ng-click="BidViewControl.cancel()">
+            <b class="font-subtleGrey">Cancel Haul</b>
+        </button>
+        <h1 class="title"></h1>
+        <button id="BidAccept" class="button button-large rounded" ng-click="BidViewControl.acceptOffer()">
+            <b>Accept</b>
+        </button>
+    </ion-footer-bar>
+</ion-view>

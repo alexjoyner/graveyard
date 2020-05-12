@@ -1,0 +1,28 @@
+.button.button-borderless {
+    border: none;
+    border-width: 0;
+}
+
+.button.button-transparent {
+    @include button-style($white, none, $silver, $white, $white, 0.1)
+}
+
+.facebook {
+    background-color: $facebookColor !important;
+    i {
+        color: $subtleGrey;
+    }
+}
+
+.google {
+    background-color: $googleColor !important;
+    i {
+        color: $subtleGrey;
+    }
+}
+
+#BidAccept {
+    width: 8em;
+    background-color: #FBC02D;
+    color: #495EBB;
+}

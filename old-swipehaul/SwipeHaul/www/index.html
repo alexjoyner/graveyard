@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src http://fonts.googleapis.com &apos;self&apos; &apos;unsafe-inline&apos;; script-src &apos;self&apos; &apos;unsafe-inline&apos; &apos;unsafe-eval&apos; http://maps.googleapis.com/ http://localhost:* http://localhost:*  https://swipehaul-server-init.herokuapp.com ">
+    <title></title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="lib/ion-google-place/ion-google-place.css">
+    <link rel="stylesheet" href="css/firstBuild.css">
+    <!-- <link href="lib/ionic-material/dist/ionic.material.min.css" rel="stylesheet"> -->
+    <link href="css/ionic.app.css" rel="stylesheet">
+    <link rel="stylesheet" href="lib/ionic/css/ionic.css">
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="cordova.js"></script>
+</head>
+
+<body ng-app="SwipeHaul">
+    <ion-nav-view></ion-nav-view>
+    <!-- Package Files -->
+    <script src="lib/ion-google-place/ion-google-place.js"></script>
+    <script src="http://localhost:9000/socket.io/socket.io.js"></script>
+    <!-- <script src="lib/ionic-material/dist/ionic.material.min.js"></script> -->
+    <!-- Google Api -->
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCjIMFwH4B3kpiIDhCT0UYeXsRRSBsqRDQ"></script>
+    <script src="lib/ngmap/build/scripts/ng-map.min.js"></script>
+    <!-- Include start/config js here -->
+    <script src="config/app.js"></script>
+    <script src="config/config.js"></script>
+    <script src="config/routes.js"></script>
+    <!-- Include factories here -->
+    <script src="factories/QuickAlert.js"></script>
+    <script src="factories/PostDataFac.js"></script>
+    <script src="factories/SocketIo.js"></script>
+    <script src="factories/CameraFac.js"></script>
+    <!-- Include services here -->
+    <script src="services/AuthService.js"></script>
+    <script src="services/PostService.js"></script>
+    <script src="services/BidService.js"></script>
+    <script src="services/ImagesService.js"></script>
+    <!-- Include modal controllers here -->
+    <!-- Include directives here -->
+    <script src="directives/loginForm/loginForm.js"></script>
+    <script src="directives/signUpForm/signUpForm.js"></script>
+    <script src="directives/pickUp/pickUp.js"></script>
+    <script src="directives/dropOff/dropOff.js"></script>
+    <script src="directives/whatList/whatList.js"></script>
+    <script src="directives/review/review.js"></script>
+    <script src="directives/expectations/expectations.js"></script>
+    <script src="directives/bidView/bidView.js"></script>
+    <script src="directives/jobProgress/jobProgress.js"></script>
+    <script src="directives/payInfo/payInfo.js"></script>
+    <script src="directives/finalizePayment/finalizePayment.js"></script>
+    <!-- Include module controllers here -->
+    <script src="modules/Start/StartCtrl.js"></script>
+    <script src="modules/Login/LoginCtrl.js"></script>
+    <script src="modules/SignUp/SignUpCtrl.js"></script>
+    <script src="modules/PickUp/PickUpCtrl.js"></script>
+    <script src="modules/DropOff/DropOffCtrl.js"></script>
+    <script src="modules/What/WhatCtrl.js"></script>
+    <script src="modules/Review/ReviewCtrl.js"></script>
+    <script src="modules/Expectations/ExpectationsCtrl.js"></script>
+    <script src="modules/BidView/BidViewCtrl.js"></script>
+    <script src="modules/PayInfo/PayInfoCtrl.js"></script>
+    <script src="modules/JobProgress/JobProgressCtrl.js"></script>
+    <script src="modules/Menu/Profile/ProfileCtrl.js"></script>
+    <script src="modules/Menu/Payment/PaymentCtrl.js"></script>
+    <script src="modules/Menu/Coupon/CouponCtrl.js"></script>
+    <script src="modules/Menu/Earn$/Earn$Ctrl.js"></script>
+    <script src="modules/Menu/Help/HelpCtrl.js"></script>
+    <script src="modules/Menu/About/AboutCtrl.js"></script>
+    <script src="modules/Menu/Haulers/HaulersCtrl.js"></script>
+    <script src="modules/FinalizePayment/FinalizePaymentCtrl.js"></script>
+</body>
+
+</html>

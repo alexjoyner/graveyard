@@ -1,0 +1,10 @@
+<div>
+	<h1 class="text-center" ng-if="api.jobs.length === 0">No jobs currently in your area</h1>
+    <div class="list" ng-if="api.jobs.length > 0">
+    	<a class="item item-thumbnail-left item-icon-right padding-right" href="#" ng-repeat="job in api.jobs" ng-click="openDetails($index)">
+            <img src="img/demo/tinder-full-pic-3.jpg" style="width: auto; height: auto; min-width:50px;" alt="">
+            <h2>{{job.what.length}} items</h2>
+            <h1>{{job.bids.length || 0}} Bids</h1>
+        </a>
+    </div>
+</div>

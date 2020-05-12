@@ -1,0 +1,23 @@
+<div>
+    <div class="card feed-item">
+        <div class="item item-divider">
+            Where
+        </div>
+        <div class="item item-text-wrap" ui-sref="PickUp">
+            Pick-Up: {{job.where.pickup.formatted_address}}
+        </div>
+        <div class="item item-text-wrap" ui-sref="DropOff">
+            Drop-Off: {{job.where.dropOff.formatted_address}}
+        </div>
+    </div>
+    <div class="card">
+        <div class="item item-divider">
+            Items
+        </div>
+        <a class="item item-thumbnail-left" href="#" ng-repeat="item in job.what" ng-click="viewImage($index)">
+            <img ng-src="{{root}}/images/{{item.src}}" style="width: auto; height: auto; min-width:50px;" alt="" >
+            <h2>{{item.desc}}</h2>
+            <h1>{{item.quantity}}X</h1>
+        </a>
+    </div>
+</div>

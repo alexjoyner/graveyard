@@ -1,0 +1,17 @@
+<ion-view  class="rubyonic-pane feed-screen">
+	<ion-header-bar align-title="center" class="bar-ruby-header bar-transparent">
+	  <div class="buttons">
+	    <button class="button button-icon icon ion-ios-arrow-thin-left font-subtleGrey" ng-click="goBack()"></button>
+	  </div>
+	  <h1 class="title font-subtleGrey">JobFeed</h1>
+	</ion-header-bar>
+	<ion-content id="Review" scroll="true" class="padding">
+		<job-feed api="JobFeedControl" open-modal="modal.show()"></job-feed>
+    </ion-content>
+    <ion-footer-bar align-title="center" class="appBlue">
+	  <h1 class="title"></h1>
+	  <div class="buttons">
+	    <!-- <button class="button button-clear">Continue <i class="icon ion-ios-arrow-thin-right" ui-sref="nowhere"></i></button> -->
+	  </div>
+	</ion-footer-bar>
+</ion-view>

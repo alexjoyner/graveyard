@@ -1,0 +1,24 @@
+<div>
+    <div class="card feed-item">
+        <div class="item item-divider">
+            Where
+        </div>
+        <div class="item item-text-wrap" ui-sref="PickUp">
+            Pick-Up: {{postInfo.pickup.formatted_address}}
+        </div>
+        <div class="item item-text-wrap" ui-sref="DropOff">
+            Drop-Off: {{postInfo.dropoff.formatted_address}}
+        </div>
+    </div>
+    <div class="card">
+        <div class="item item-divider">
+            Items
+        </div>
+        <a class="item item-thumbnail-left item-icon-right" href="#"  ng-repeat="photo in postInfo.imageData">
+            <img ng-src="{{photo.src}}" style="width: auto; height: auto; min-width:50px;" alt="">
+            <h2>{{photo.desc}}</h2>
+            <h1>{{photo.quantity}}X</h1>
+            <i style="font-size: 100px" class="icon ion-ios-close-empty assertive" ng-click="removeItem($index)"></i>
+        </a>
+    </div>
+</div> 

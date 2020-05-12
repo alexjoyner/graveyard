@@ -1,0 +1,37 @@
+<div>
+    <h1 class="text-center" ng-if="api.bids.length === 0">There are currently no offers availible</h1>
+    <!-- <div class="list">
+        <a class="item item-thumbnail-left item-icon-right padding-right" href="#" ng-repeat="bid in api.bids" ng-click="api.acceptOffer($index)">
+            <img src="img/demo/profile-image-6.jpg" style="width: auto; height: auto; min-width:50px;" alt="">
+            <h2><span style="font-size: 25px">{{bid.partnerFirst}}</span> - ETA:{{bid.eta}}</h2>
+            <h1>{{bid.amount | currency}}</h1>
+        </a>
+    </div> -->
+    <ion-list>
+        <ion-radio ng-repeat="bid in api.bids track by $index" class="item item-radio item-avatar" style="" name="group" ng-model="api.selection" ng-value="$index" class="ng-valid ng-dirty ng-valid-parse ng-touched" ng-click="log()">
+            <img src="img/demo/profile-image-6.jpg" style=" z-index: 5" alt="">
+            <h2 class="ng-binding">{{bid.partnerFirst}} : {{bid.amount | currency}}</h2>
+            <p class="ng-binding">ETA: {{bid.eta}}</p>
+        </ion-radio>
+    </ion-list>
+    <div class="list">
+        <!-- ngRepeat: bid in api.bids track by $index -->
+        <label>
+        </label>
+        <!-- end ngRepeat: bid in api.bids track by $index -->
+    </div>
+    <!-- <ion-view hide-nav-bar="true" id="WhatHaul" class="pane" nav-view="active" style="-webkit-transition: 0ms; transition: 0ms; -webkit-transform: translate3d(0%, 0px, 0px);">
+    
+    <ion-content id="WhatHaulDir" class="colr-subtleGrey scroll-content ionic-scroll  has-subheader has-footer" scroll="true">
+        <div class="scroll" style="-webkit-transform: translate3d(0px, 0px, 0px) scale(1);">
+            <div id="HaulBidsDir" api="haulBidControl">
+                
+            </div>
+        </div>
+        <div class="scroll-bar scroll-bar-v">
+            <div class="scroll-bar-indicator scroll-bar-fade-out" style="-webkit-transform: translate3d(0px, 0px, 0px) scaleY(1); height: 0px;"></div>
+        </div>
+    </ion-content>
+    
+</ion-view> -->
+</div>

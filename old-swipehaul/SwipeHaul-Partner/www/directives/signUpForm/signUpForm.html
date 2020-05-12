@@ -1,0 +1,25 @@
+<form>
+    <div class="list list-inset">
+        <label class="item item-input">
+            <input type="text" placeholder="First Name" ng-model="creds.firstName">
+        </label>
+        <label class="item item-input">
+            <input type="text" placeholder="Last Name" ng-model="creds.lastName">
+        </label>
+        <label class="item item-input">
+            <input type="email" placeholder="Email" ng-model="creds.username">
+        </label>
+        <label class="item item-input">
+            <input type="text" placeholder="Mobile" ng-model="creds.mobileNum">
+        </label>
+        <label class="item item-input">
+            <input type="password" placeholder="Password" ng-model="creds.password">
+        </label>
+        <label class="item item-input">
+            <input type="password" placeholder="Password Again" ng-model="creds.rePass">
+        </label>
+    </div>
+    <button type="submit" class="button button-block button-primary" ng-click="signUp()">
+        Signup
+    </button>
+</form>

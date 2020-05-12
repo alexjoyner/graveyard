@@ -1,0 +1,797 @@
+.lightBlueButton {
+    background-color: #EEEEEE;
+    color: #309AEF;
+    border: none;
+    border: 0.1em solid #D1D1D1;
+}
+
+.no-border {
+    border: 0px !important;
+    border-top-color: transparent !important;
+    background-image: none;
+    border-top: none;
+}
+
+
+/*.vertical-aligned {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+input {
+    text-overflow: ellipsis;
+}
+
+.range {
+    width: 100%;
+}
+
+.orBar {
+    padding: 0;
+    color: #333;
+    text-align: center;
+    margin-top: 2em;
+}
+
+.orBar:after {
+    content: "OR";
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1em;
+    padding: 0 0.25em;
+    background: #E2E2E2;
+}
+
+
+.button-appBlue {
+    background-color: #495EBB;
+    color: #E2E2E2;
+}
+
+.bar-appBlue {
+    background-color: #495EBB;
+}
+
+.backgrnd-subtleGrey {
+    background-color: #E2E2E2;
+}
+
+.backgrnd-darkGrey {
+    background-color: #C6C6C6;
+}
+
+.colr-appBlue {
+    color: #495EBB;
+}
+
+.colr-subtleGrey {
+    color: #E2E2E2;
+}
+
+.colr-appOrange {
+    color: #FBC02D;
+}
+
+input[type="email"],
+.comFormInput {
+    background-color: #E2E2E2;
+}
+
+input[type="password"],
+.comFormInput {
+    background-color: #E2E2E2;
+}
+
+input[type="text"],
+.comFormInput {
+    background-color: #E2E2E2;
+}
+
+input[type="tel"],
+.comFormInput {
+    background-color: #E2E2E2;
+}
+
+td-cards {
+    display: block;
+}
+
+td-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -125px;
+    margin-left: -125px;
+    width: 250px;
+    height: 250px;
+    border: 1px solid #999;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+}
+
+td-card .image {
+    position: relative;
+    height: 250px;
+    background-color: #444;
+}
+
+td-card .image .numRooms {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+td-card .image .neutral {
+    font-size: 8em;
+    color: #E2E2E2;
+}
+
+td-card .image .roomName {
+    font-size: 3.5em;
+    color: #E2E2E2;
+}
+
+td-card img {
+    max-width: 100%;
+    border-radius: 6px;
+}
+
+td-card .imgCover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 248px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+}
+
+td-card.card-0 {
+  -webkit-transform: translate3d(0, 0px, 0);
+  transform: translate3d(0, 0px, 0);
+  top: 0px;
+  z-index: 10;
+}
+td-card.card-1 {
+  -webkit-transform: translate3d(0, 4px, 0);
+  transform: translate3d(0, 4px, 0);
+  z-index: 9;
+}
+td-card.card-2 {
+  -webkit-transform: translate3d(0, 8px, 0);
+  transform: translate3d(0, 8px, 0);
+  z-index: 8;
+}
+
+
+.yes-text {
+    color: #6ffa6f;
+    opacity: 0;
+}
+
+.no-text {
+    color: #ff7373;
+    opacity: 0;
+}
+
+.noYes-rooms {
+    font-size: 8em;
+    z-index: 50;
+}
+
+.yes-text-genPos {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+}
+
+.no-text-genPos {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 30px;
+}
+
+.fade {
+    -webkit-transition: 0.2s opacity linear;
+    transition: 0.2s opacity linear;
+    opacity: 0;
+}
+
+#AuthMain {
+    background-color: #495EBB;
+}
+
+#AuthMain #LoginButtons {
+    margin-top: 10%;
+    padding: 1em;
+}
+
+#AuthMain #LoginButtons #SigninButton {
+    right: 0.1em;
+}
+
+#AuthMain #LoginButtons #RegisterButton {
+    left: 0.1em;
+}
+
+#emblem {
+    margin-top: 24em;
+}
+
+#Q_HomeOrOffice {
+    background-color: transparent;
+}
+
+#Q_HomeOrOffice #yesButton {
+    position: absolute;
+    top: 22em;
+    left: 5em;
+    border-radius: 1.6em;
+    height: 3.2em;
+    width: 3.2em;
+    text-align: center;
+    line-height: 3.2em;
+}
+
+#Q_HomeOrOffice #yesButton i {
+    display: block;
+}
+
+#Q_HomeOrOffice #noButton {
+    position: absolute;
+    top: 22em;
+    left: 10em;
+    border-radius: 1.6em;
+    height: 3.2em;
+    width: 3.2em;
+    text-align: center;
+    line-height: 3.2em;
+}
+
+#Q_HomeOrOffice #noButton i {
+    display: block;
+}
+
+#Q_Rooms {
+    background-color: #495EBB;
+}
+
+#Q_Rooms #qContainer {
+    top: 17em;
+}
+
+#Q_Rooms #yesButton {
+    position: absolute;
+    top: 17em;
+    left: 5em;
+    border-radius: 1.6em;
+    height: 3.2em;
+    width: 3.2em;
+    text-align: center;
+    line-height: 3.2em;
+}
+
+#Q_Rooms #yesButton i {
+    display: block;
+}
+
+#Q_Rooms #noButton {
+    position: absolute;
+    top: 17em;
+    left: 10em;
+    border-radius: 1.6em;
+    height: 3.2em;
+    width: 3.2em;
+    text-align: center;
+    line-height: 3.2em;
+}
+
+#Q_Rooms #noButton i {
+    display: block;
+}
+
+#Q_Items {
+    background-color: #495EBB;
+}
+
+#Q_Items .add-alert {
+    position: absolute;
+    top: 2%;
+    left: 15%;
+    color: white;
+}
+
+#Q_Items .add-alert:hover {
+    color: black;
+}
+
+#Q_Items .header {
+    position: absolute;
+    top: 15%;
+    width: 100%;
+    text-align: center;
+}
+
+#Q_Items .header h1 {
+    color: white;
+}
+
+#Q_Items .header h3 {
+    color: white;
+}
+
+#WhereMove input[type="date"]:before {
+    content: attr(placeholder) !important;
+    color: #aaa;
+    margin-right: 0.5em;
+}
+
+#WhereMove input[type="date"]:focus:before,
+#WhereMove input[type="date"]:valid:before {
+    content: "";
+}
+
+#WhereMove ion-content label {
+    width: 100%;
+    background-color: #495EBB;
+    border: none;
+}
+
+#WhereMove ion-content label i {
+    color: #E2E2E2;
+}
+
+#WhereMove ion-content label input {
+    background-color: #495EBB;
+    font-size: 1em;
+    color: #E2E2E2;
+    padding-right: 0;
+}
+
+#WhereMove ion-footer-bar #WhereNext {
+    height: 2.2em;
+    width: 6em;
+    font-size: 1.8em;
+}
+
+#Obstacles ion-content {
+    background-color: #E2E2E2;
+}
+
+#Obstacles ion-footer-bar {
+    background-color: #495EBB;
+}
+
+#Obstacles ion-footer-bar #WhereNext {
+    width: 8em;
+    background-color: #FBC02D;
+    color: #495EBB;
+}
+
+#WhatMove ion-content label {
+    width: 80%;
+    background-color: #495EBB;
+    border: none;
+}
+
+#WhatMove ion-content label i {
+    color: #FBC02D;
+    font-size: 1.8em;
+}
+
+#WhatMove ion-content label .item-content {
+    background-color: #495EBB;
+    font-size: 1.5em;
+    left: 1em;
+    color: #E2E2E2;
+}
+
+#WhatMove ion-content label input {
+    background-color: #495EBB;
+    font-size: 1em;
+    color: #E2E2E2;
+}
+
+#WhatMove ion-footer-bar {
+    height: 8em;
+    background-color: #495EBB;
+}
+
+#WhatMove ion-footer-bar #WhereNext {
+    height: 2em;
+    width: 6em;
+    font-size: 1.8em;
+    background-color: #FBC02D;
+    bottom: 0px;
+    color: #495EBB;
+}
+
+#WhatHaul ion-content {
+    background-color: #E2E2E2;
+}
+
+#WhatHaul ion-footer-bar {
+    background-color: #495EBB;
+}
+
+#WhatHaul ion-footer-bar #WhereNext {
+    width: 8em;
+    background-color: #FBC02D;
+    color: #495EBB;
+}
+
+#ImageInventory button {
+    z-index: 100;
+    border-radius: 1.8em;
+    height: 3.6em;
+    width: 3.6em;
+    text-align: center;
+    line-height: 3.6em;
+}
+
+#ImageInventory button i {
+    display: block;
+}
+
+#ImageInventory .next {
+    color: #444;
+    position: absolute;
+    background-color: rgba(239, 241, 245, 0.3);
+    top: 50%;
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 0;
+}
+
+#ImageInventory .previous {
+    color: #444;
+    position: absolute;
+    background-color: rgba(239, 241, 245, 0.3);
+    top: 50%;
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+#ImageInventory .noMedia {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#ImageInventory .noMediaIcon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    color: #444;
+    font-size: 6em;
+}
+
+#ImageInventory .media {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+}
+
+#ImageInventory .media .postMedia {
+    position: relative;
+    max-height: 100vh;
+    max-width: 100%;
+    width: 100%;
+    top: 43%;
+    left: 50%;
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#ImageInventory .removePhoto {
+    background-color: #ef473a;
+    border: 1px solid #444;
+    position: absolute;
+    top: 75%;
+    -moz-transform: translateX(375%);
+    -ms-transform: translateX(375%);
+    -webkit-transform: translateX(375%);
+    transform: translateX(375%);
+}
+
+#ImageInventory .removePhoto i {
+    color: #E2E2E2;
+}
+
+.addPhoto {
+    z-index: 100;
+    border-radius: 1.8em;
+    height: 3.6em;
+    width: 3.6em;
+    text-align: center;
+    line-height: 3.6em;
+    background-color: #495EBB;
+    border: 1px solid #444;
+    position: absolute;
+    top: 75%;
+    right: 0;
+    -moz-transform: translateX(-375%);
+    -ms-transform: translateX(-375%);
+    -webkit-transform: translateX(-375%);
+    transform: translateX(-375%);
+}
+
+.addPhoto i {
+    display: block;
+}
+
+.addPhoto i {
+    color: #E2E2E2;
+}
+
+#Review ion-header-bar {
+    border-bottom: 3px solid #FBC02D;
+}
+
+#Review ion-content {
+    background-color: #E2E2E2;
+}
+
+#Review .item {
+    background-color: #E2E2E2;
+}
+
+#Review ion-footer-bar {
+    border-top: 3px solid #FBC02D;
+}
+
+#Review ion-footer-bar #reviewNextButton {
+    color: white;
+}
+
+#Finalize ion-header-bar {
+    border-bottom: 3px solid #FBC02D;
+}
+
+#Finalize ion-content {
+    background-color: #E2E2E2;
+}
+
+#Finalize ion-content textarea {
+    background-color: #E2E2E2;
+}
+
+#Finalize .item {
+    background-color: #E2E2E2;
+}
+
+#Finalize ion-footer-bar {
+    border-top: 3px solid #FBC02D;
+}
+
+#Finalize ion-footer-bar button {
+    color: white;
+}
+
+#SignInModal #SignInHeader {
+    background-color: #495EBB;
+    height: 4em;
+}
+
+#SignInModal #SignInHeader button {
+    color: white;
+}
+
+#SignInModal #SignInHeader .title {
+    color: white;
+    font-size: 1.3em;
+    line-height: 3.2em;
+}
+
+#SignInModal #SignInModalContent {
+    background-color: #E2E2E2;
+}
+
+#SignInModal #SignInModalContent .facebookButton {
+    background-color: #3C5A96;
+}
+
+#SignInModal #SignInModalContent .googleButton {
+    background-color: #D1493B;
+    width: 10em;
+}
+
+#SignInModal #SignInModalContent button {
+    line-height: 100%;
+}
+
+#SignInModal #SignInModalContent i {
+    font-size: 2em;
+    color: white;
+}
+
+#SignInModal #SignInModalContent .item-stacked-label {
+    border: none;
+    border-bottom: 1px solid grey;
+}
+
+#SignInModal #SignInModalContent #SignInFormSubmitButton {
+    margin-top: 2em;
+    height: 3.5em;
+}
+
+#SignInModal #SignInModalContent #forgotPassLink {
+    color: #309AEF;
+}
+
+#RegisterModal #RegisterHeader {
+    background-color: #495EBB;
+    height: 4em;
+}
+
+#RegisterModal #RegisterHeader button {
+    color: white;
+}
+
+#RegisterModal #RegisterHeader .title {
+    color: white;
+    font-size: 1.3em;
+    line-height: 3.2em;
+}
+
+#RegisterModal #RegisterModalContent {
+    background-color: #E2E2E2;
+}
+
+#RegisterModal #RegisterModalContent .facebookButton {
+    background-color: #3C5A96;
+}
+
+#RegisterModal #RegisterModalContent .googleButton {
+    background-color: #D1493B;
+    width: 10em;
+}
+
+#RegisterModal #RegisterModalContent button {
+    line-height: 100%;
+}
+
+#RegisterModal #RegisterModalContent i {
+    font-size: 2em;
+    color: white;
+}
+
+#RegisterModal #RegisterModalContent .item-stacked-label {
+    border: none;
+    border-bottom: 1px solid grey;
+}
+
+#RegisterModal #RegisterModalContent #RegisterFormSubmitButton {
+    margin-top: 2em;
+    height: 3.5em;
+}
+
+#showPassButton {
+    position: absolute;
+    z-index: 10;
+    top: 33.5em;
+    left: 85%;
+}
+
+#registerSubmit {
+    display: none;
+}
+
+#NextBar {
+    background-color: #495EBB;
+    height: 4em;
+}
+
+#NextBar button {
+    width: 8em;
+}
+
+#PaymentHeader {
+    background-color: #495EBB;
+    height: 4em;
+}
+
+#PaymentHeader button {
+    color: white;
+}
+
+#PaymentHeader .title {
+    color: white;
+    font-size: 1.3em;
+    line-height: 3.2em;
+}
+
+#PaymentContent {
+    background-color: #E2E2E2;
+}
+
+#PaymentContent .input-label {
+    width: 3.5em;
+}
+
+#PaymentContent .fa-credit-card {
+    font-size: 1.5em;
+}
+
+#PaymentContent .item {
+    background-color: #E2E2E2;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid black;
+}
+
+#PaymentContent .item input {
+    font-size: 1.2em;
+}
+
+#termsLink {
+    color: #309AEF;
+}
+
+#cameraButton {
+    border-radius: 2.2em;
+    height: 4.4em;
+    width: 4.4em;
+    text-align: center;
+    line-height: 4.4em;
+    background-color: #495EBB;
+}
+
+#cameraButton i {
+    display: block;
+}
+
+#cameraButton i {
+    color: #E2E2E2;
+    font-size: 2em;
+}
+
+#Dash ion-header-bar {
+    border-bottom: 2px solid #495EBB;
+}
+
+#Dash ion-content {
+    background-color: #495EBB;
+}
+
+#Dash .dashSlide {
+    height: 100%;
+    width: 100%;
+}
+
+#Dash-Main ion-side-menu ion-content {
+    background-color: #E2E2E2;
+}
+
+#Dash-Main ion-list ion-item .item-content {
+    background-color: #E2E2E2;
+}
+
+#Rooms ion-header-bar {
+    border-bottom: 2px solid #495EBB;
+}*/
