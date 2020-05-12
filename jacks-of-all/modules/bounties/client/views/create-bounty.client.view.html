@@ -1,0 +1,299 @@
+<section data-ng-controller="BountiesController">
+    <div class="page-header">
+        <h1>WANTED</h1>
+    </div>
+    <div class="col-md-12">
+        <form class="form-horizontal" data-ng-submit="create()" validate>
+            <fieldset>
+                <div class="row">
+                    <div data-ng-show="error" class="text-center text-danger">
+                        <div class="alert alert-danger" role="alert">
+                            <strong data-ng-bind="error"></strong>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 text-center .hidden-xs .hidden-sm">
+                        <img data-ng-src="{{userImage}}" class="userBountyPhoto .hidden-xs .hidden-sm">
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <div class="controls">
+                                <input type="text" data-ng-model="title" placeholder="Job Title" id="bountyTitle" class="form-control" ng-click="calculateStuff()">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="controls">
+                                <div class="controls">
+                                    <select class="form-control" ng-model="hours"
+                                        ng-options="numHours.value for numHours in numHours" ng-click="calculateStuff()">
+                                        <option value=""> --- Number Of Hours (Max 5) --- </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="controls">
+                                <select class="form-control" ng-model="typeOfJob" id="type"
+                                    ng-options="workerJob.label for workerJob in typeJob" ng-click="calculateStuff()">
+                                    <option value=""> --- Type Of Job --- </option>
+                                </select>
+                            </div>
+                        </div> 
+                        <!-- <div class="form-group">
+                            <label class="control-label" for="bountyPrice">Bounty Price</label>
+                            <div class="controls">
+                                <input type="text" data-ng-model="bountyPrice" id="bountyPrice" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 text-center">
+                            <button type="button" class="btn btn-info text-center" ng-click="goFindPrice()">
+                                Find A Price
+                            </button>
+                        </div>  -->                 
+                    </div>
+                </div>
+                <hr/>
+                <!-- <div class="row">
+                    <div class="col-sm-6 col-sm-6">
+                        <h2>I need a... Skip this</h2>
+                        <div class="form-group">
+                            <div class="controls">
+                                <select class="form-control" ng-model="workerType"
+                                    ng-options="worker.label for worker in typeOfWorker" ng-click="calculateStuff()">
+                                    <option value=""> --- Type Of Worker --- </option>
+                                </select>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="col-sm-6 col-sm-6">
+                        <h2>I need this many: </h2>
+                        <div class="form-group">
+                            <div class="controls">
+                                <select class="form-control" ng-model="workerNumber"
+                                    ng-options="num.value for num in numWorkers" ng-click="calculateStuff()">
+                                    <option value=""> --- Number Of Worker --- </option>
+                                </select>
+                            </div>
+                        </div> 
+                    </div>
+                </div> -->
+                <div class="row">
+                    <div class="col-12">
+                        <textarea class="form-control" rows="3" placeholder="Brief Description" data-ng-model="description" id="description" ng-click="calculateStuff()"></textarea>
+                    </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <form class="form-inline">
+                          <div class="form-group">
+                            <div class="input-group">
+                              <div class="input-group-addon">$</div>
+                              <input type="text" class="form-control" data-ng-model="total" id="bountyTotal" placeholder="Set your total (in dollars)" ng-click="calculateStuff()">
+                              <div class="input-group-addon">.00</div>
+                            </div>
+                          </div>
+                        </form> 
+                    </div>
+                    <div class="col-sm-6">
+                        <button type="button" ng-click="setClientTotal()" class="btn btn-primary btn-md btn-block">Estimated Total <br> ${{competitiveTotal}}.00</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-default">
+                </div>
+                <div data-ng-show="error" class="text-danger">
+                    <strong data-ng-bind="error"></strong>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</section>
+
+<!-- <section data-ng-controller="BountiesController">
+    <div class="page-header">
+        <h1>New Bounty</h1>
+    </div>
+    <div class="col-md-12">
+        <form class="form-horizontal" data-ng-submit="create()" validate>
+            <fieldset>
+                <div class="row">
+                    <div data-ng-show="error" class="text-center text-danger">
+                        <div class="alert alert-danger" role="alert">
+                            <strong data-ng-bind="error"></strong>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 text-center">
+                        <i class="glyphicon glyphicon-user bounty-profile" 
+                           ng-class="{'text-primary': bounty.referred, 'text-danger': !referred}"></i>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label" for="firstName">First Name</label>
+                            <div class="controls">
+                                <input type="text" data-ng-model="firstName" id="firstName" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="surname">Surname</label>
+                            <div class="controls">
+                                <input type="text" data-ng-model="surname" id="surname" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="suburb">Suburb</label>
+                            <div class="controls">
+                                <input type="text" data-ng-model="suburb" id="suburb" class="form-control">
+                            </div>
+                        </div> 
+                        <div class="form-group">
+                            <label class="control-label" for="country">Country</label>
+                            <div class="controls">
+                                <input type="text" data-ng-model="country" id="country" class="form-control">
+                            </div>
+                        </div>                       
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-sm-push-6">
+                        <div class="form-group">
+                            <label class="control-label" for="phone">Phone</label>
+                            <div class="controls">
+                                <input type="text" data-ng-model="phone" id="phone" class="form-control">
+                            </div>
+                        </div> 
+                        <div class="form-group">
+                            <label class="control-label" for="email">Email</label>
+                            <div class="controls">
+                                <input type="text" data-ng-model="email" id="email" class="form-control">
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="col-sm-6 col-sm-pull-6">
+                        <div class="form-group">
+                            <label class="control-label" for="referred">Referred</label>
+                            <div class="controls">
+                                <input type="checkbox" data-ng-model="referred" id="referred" class="form-control checkbox-style">
+                            </div>
+                        </div> 
+                        <div class="form-group">
+                            <label class="control-label" for="channel">Channel</label>
+                            <div class="controls">
+                                <input type="text" data-ng-model="channel" id="channel" class="form-control">
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label" for="industry">Industry</label>
+                            <div class="controls">
+                                <input type="text" data-ng-model="industry" id="industry" class="form-control">
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-default">
+                </div>
+				<div data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+            </fieldset>
+        </form>
+    </div>
+</section> -->
+
+<!-- <section data-ng-controller="BountiesCreateController as bountyCreateCtrl">
+    
+    <div class="modal-header">
+        <h3 class="modal-title">New Bounty</h3>
+    </div>
+    <div class="modal-body">
+        <form name="createBountyForm">
+            <fieldset>
+                <div class="row">
+                    <div data-ng-show="error" class="text-center text-danger">
+                        <div class="alert alert-danger" role="alert">
+                            <strong data-ng-bind="error"></strong>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 text-center">
+                        <i class="glyphicon glyphicon-user bounty-profile" 
+                           ng-class="{'text-primary': referred, 'text-danger': !referred}"></i>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label" for="firstName">First Name</label>
+                            <div class="controls">
+                                <input type="text" data-ng-model="firstName" id="firstName" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="surname">Surname</label>
+                            <div class="controls">
+                                <input type="text" data-ng-model="surname" id="surname" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="suburb">Suburb</label>
+                            <div class="controls">
+                                <input type="text" data-ng-model="suburb" id="suburb" class="form-control">
+                            </div>
+                        </div> 
+                        <div class="form-group">
+                            <label class="control-label" for="country">Country</label>
+                            <div class="controls">
+                                <input type="text" data-ng-model="country" id="country" class="form-control">
+                            </div>
+                        </div>                       
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-sm-push-6">
+                        <div class="form-group">
+                            <label class="control-label" for="phone">Phone</label>
+                            <div class="controls">
+                                <input type="text" data-ng-model="phone" id="phone" class="form-control">
+                            </div>
+                        </div> 
+                        <div class="form-group">
+                            <label class="control-label" for="email">Email</label>
+                            <div class="controls">
+                                <input type="text" data-ng-model="email" id="email" class="form-control">
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="col-sm-6 col-sm-pull-6">
+                        <div class="form-group">
+                            <label class="control-label" for="referred">Referred</label>
+                            <div class="controls">
+                                <input type="checkbox" data-ng-model="referred" id="referred" class="form-control checkbox-style">
+                            </div>
+                        </div> 
+                        <div class="form-group">
+                            <label class="control-label" for="channel">Channel</label>
+                            <div class="controls">
+                                <input type="text" data-ng-model="channel" id="channel" class="form-control">
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label" for="industry">Industry</label>
+                            <div class="controls">
+                                <input type="text" data-ng-model="industry" id="industry" class="form-control">
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success btn-lg" ng-click="create(); ok(createBountyForm.$valid)" ng-disabled="createBountyForm.$invalid">Save & Close</button>
+        <button class="btn btn-warning btn-lg" ng-click="cancel()">Close</button>
+    </div>
+</section> -->

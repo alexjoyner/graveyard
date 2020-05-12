@@ -1,0 +1,35 @@
+.bounty-profile{
+    font-size: 250px;
+}
+.bounty-list{
+    text-align: center;
+    font-size: 140px;   
+}
+.extra-space{
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+input[type="radio"], input[type="checkbox"]{
+ margin: 0 0 0 !important;   
+}
+.halfPage{
+	width: 50%;
+}
+.userBountyPhoto{
+	min-height: 200px;
+	max-height: 200px;
+}
+.userBountyPhotoSmall{
+	text-align: center;
+	min-height: 100%;
+	max-height: 100%;
+}
+.cust-list{
+    text-align: center;
+    font-size: 140px;   
+}
+.currentlySelected{
+	border-radius: .4em;
+	background-color: #272822;
+	color: #F8F8F2;
+}

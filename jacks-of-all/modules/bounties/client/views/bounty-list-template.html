@@ -1,0 +1,36 @@
+<div class="list-group">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 extra-space" data-ng-repeat="bounty in bounties | filter:searchText | isClient">
+        <a data-ui-sref="bounties.edit({bountyId: bounty._id})" class="list-group-item">
+            <div class="row">
+                <div class="col-sm-8 col-xs-8 cust-list">
+                    <img data-ng-src="{{userImage}}" class="userBountyPhotoSmall img-rounded img-responsive">
+                </div>
+                <div class="col-sm-4 col-xs-4">
+                    <div class="row">
+                        <h4>Wanted:</h4>
+                    </div>
+                    <div class="row">
+                        <h5>1 {{bounty.workerType}}</h5>
+                        <hr>
+                        <h5>{{bounty.typeOfJob.label}}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h3>{{bounty.title}}</h3>
+                    <h4>${{bounty.total}}</h4>
+                </div>
+            </div>
+        </a>
+        <div class="row">
+            <div class="col-xs-12">
+                <small class="text-center">
+                    <button class="btn btn-danger btn-block" ng-click="remove(bounty)">
+                        Remove Bounty
+                    </button>
+                </small>
+            </div>
+        </div>
+    </div>
+</div>
