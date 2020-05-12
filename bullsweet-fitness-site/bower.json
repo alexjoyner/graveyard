@@ -1,0 +1,24 @@
+{
+  "name": "bullsweet-fitness",
+  "description": "the official website for the bullsweet fitness brand",
+  "main": "",
+  "authors": [
+    "rosco9awj"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "^4.6.3",
+    "flexboxgrid": "^6.3.2",
+    "bourbon": "^4.3.4",
+    "neat": "^2.0.0"
+  }
+}

@@ -1,0 +1,9 @@
+******************  BEFORE DEPLOYING THIS PROJECT *******************
+---------------------------------------------------------------------
+
+	1) Switch eb env to your-project-name-dev
+	2) Make sure the welcome page displays the correct version
+	4) Change the version in package.json
+
+
+	CONGRATS ON MAKING IT THIS FAR!!!!!!!!!

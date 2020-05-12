@@ -1,0 +1,25 @@
+@import "../../lib/bourbon/app/assets/stylesheets/bourbon"
+@import "../../lib/neat/core/neat.scss"
+
+#NavBar
+	position: fixed
+	top: 0
+	z-index: 100
+	width: 100%
+	list-style-type: none
+	margin: 0
+	padding: 0
+	overflow: hidden
+	background-color: rgba(0,0,0,0.7)
+	.nav-item
+		&:hover
+			background-color: #4CAF50
+		float: left
+		display: block
+		color: white
+		text-align: center
+		padding: 14px 16px
+		text-decoration: none
+@media screen and (max-width: 600px)
+  #NavBar .nav-item
+    display: none
