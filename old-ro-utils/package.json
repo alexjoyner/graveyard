@@ -1,0 +1,67 @@
+{
+  "name": "ro-utils",
+  "version": "1.0.1",
+  "description": "A library set of quick utilities",
+  "main": "dist/index.js",
+  "scripts": {
+    "deploy": "npm run build && npm publish",
+    "start": "node dist/index.js",
+    "build": "babel src --out-dir dist",
+    "link": "npm run build && npm link",
+    "watch": "nodemon index.babel.js",
+    "test": "mocha $(find ./src -path '*spec*') --reporter spec --compilers js:babel-core/register",
+    "test:watch": "PORT=2080 npm run test -- --watch",
+    "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec $(find ./src -path '*spec*')  --compilers js:babel-core/register",
+    "cover:with_open": "npm run cover && open ./coverage/lcov-report/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://alexjoyner@github.com/alexjoyner/ro-utils.git"
+  },
+  "keywords": [
+    "utilities"
+  ],
+  "author": "Alex Joyner <alex@voicir.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexjoyner/ro-utils/issues"
+  },
+  "homepage": "https://github.com/alexjoyner/ro-utils#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "morgan": "^1.8.1",
+    "node-cache": "^4.1.1"
+  },
+  "devDependencies": {
+    "axios": "^0.16.1",
+    "babel-cli": "^6.14.0",
+    "babel-core": "^6.2.1",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.1.18",
+    "babel-preset-stage-1": "^6.1.18",
+    "babel-preset-stage-2": "^6.13.0",
+    "bourbon": "^4.2.7",
+    "codelyzer": "~0.0.21",
+    "coveralls": "^2.13.1",
+    "ignore-styles": "^5.0.1",
+    "istanbul": "^1.1.0-alpha.1",
+    "mocha": "^2.4.5",
+    "neat": "^1.2.2",
+    "nock": "^8.0.0",
+    "node-sass": "^3.8.0",
+    "parse5": "^1.5.1",
+    "redux-thunk": "^2.1.0",
+    "rewire": "^2.5.2",
+    "ro-dev-utils": "^1.0.0-Alpha.1",
+    "sinon": "^1.17.5",
+    "supertest": "^3.0.0"
+  },
+  "peerDependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.4",
+    "redux": "^3.6.0"
+  }
+}
