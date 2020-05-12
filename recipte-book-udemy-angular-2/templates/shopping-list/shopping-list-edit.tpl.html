@@ -1,0 +1,9 @@
+<h1>{{ingredient === null ? 'Add' : 'Edit' }} Item </h1>
+<form id="shopping-list-add" (ngSubmit)="onSubmit(f.value)" #f="ngForm">
+	<label for="item-name">Name</label>
+	<input type="text" id="item-name required" [ngModel]="ingredient?.name" required="" ngControl="name">
+	<label for="item-amount">amount</label>
+	<input type="text" id="item-amount required" required [ngModel]="ingredient?.amount" ngControl="amount">
+	<button class="btn" type="submit">{{ingredient === null ? 'Add' : 'Edit' }} Item</button>
+	<button class="btn danger" type="submit" *ngIf="ingredient !== null" (click)="onDelete()">Delete Item</button>
+</form>
