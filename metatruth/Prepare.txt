@@ -1,0 +1,10 @@
+******************  BEFORE DEPLOYING THIS PROJECT TO HEROKU *******************
+-------------------------------------------------------------------------------
+
+	1) Switch eb env to metatruth-env
+	2) Make sure the welcome page displays the correct version
+	3) Make sure the packages are transferred over correctly
+	4) Change the version in package.json
+
+
+	CONGRATS ON MAKING IT THIS FAR!!!!!!!!!

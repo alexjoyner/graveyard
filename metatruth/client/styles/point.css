@@ -1,0 +1,43 @@
+.ro-point {
+  padding: 15px;
+  border-radius: 4px;
+}
+.ro-point .ro-contents {
+  min-height: 50px;
+}
+
+.ro-main-point {
+  background-color: #EEEEEE;
+}
+
+.meta {
+  background-color: #5cb85c;
+}
+
+.credible {
+  background-color: #5cb85c;
+}
+
+.web {
+  background-color: #f0ad4e;
+}
+
+.opinion {
+  background-color: #f0ad4e;
+}
+
+.media {
+  background-color: #d9534f;
+}
+
+.other {
+  background-color: #337ab7;
+}
+
+.proof {
+  background-color: #5cb85c;
+}
+
+.disproof {
+  background-color: #d9534f;
+}

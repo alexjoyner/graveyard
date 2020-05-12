@@ -1,0 +1,47 @@
+<div>
+    <!-- Main Header -->
+    <h2 class="text-center">
+        MetaTruth v1.0 Alpha.6.2
+    </h2>
+    <h4 class="text-center">
+        An app to help answer the most controversial questions
+    </h4>
+    <!-- Tab Bar: Tab to issue list type -->
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active">
+            <a href="#/Home/All">
+                All
+            </a>
+        </li>
+    </ul>
+    <!-- Create and Search Buttons -->
+    <br>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="input-group">
+                <div class="input-group-addon">Search</div>
+                <input type="text" class="form-control" id="exampleInputAmount" [(ngModel)]="searchText"  placeholder="Issues">
+            </div>
+        </div>
+        <div class="col-md-2 text-center">
+            <button class="btn btn-md btn-success" (click)="startQuestion = !startQuestion" [disabled]="searchText === ''">
+                Start New Issue
+            </button>
+        </div>
+    </div>
+    <br>
+    <!-- List out the isses of selected type -->
+    <ro-home-issue-list 
+        [searchText]="searchText"
+        [startQuestion]="startQuestion"
+        (cancel)="searchText = ''; startQuestion = !startQuestion;"></ro-home-issue-list>
+    <div *ngIf="searchText !== '';">
+        <hr>
+        <h1 class="text-center">
+            Couldn't find an issue?
+            <button class="btn btn-lg btn-success" (click)="startQuestion = !startQuestion">
+                ADD IT!!!
+            </button>
+        </h1>
+    </div>
+</div>

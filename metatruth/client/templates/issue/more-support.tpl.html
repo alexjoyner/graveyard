@@ -1,0 +1,74 @@
+<div class="row" style="margin-top: 10px; margin-bottom: 10px; " >
+    <div class="col-xs-3" (click)="gotoTop()">
+        <!-- <div style="background-color: #DDDDDD; height: 50px; border-radius: 5px 0 0 5px;">
+            <h4 class="text-center" style="margin-top: 0; ">
+                <br/>
+                Go to top
+            </h4>
+        </div> -->
+    </div>
+    <div class="col-xs-9">
+        <div *ngFor="#support of supports; #i = index" >
+            <div [ngStyle]="{'background-color': (support.point_type === 'proof')? '#DFF0D8' : '#FCC4C4'}" style="padding: 15px; border-radius: 4px">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h4>
+                            <b>
+                                {{support.point_type | uppercase}}:
+                            </b>
+                            {{support.title}}
+                        </h4>
+                        <p>{{support.detail}}</p>
+                        <div class="row">
+                            <div class="col-xs-8" *ngIf="support.source !== null">
+                                <u>
+                                    <h4>
+                                        Source
+                                    </h4>
+                                </u>
+                                <ul>
+                                    <li>
+                                        <a [href]="support.source">
+                                            <h4 style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
+                                                {{support.source}}
+                                            </h4>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-xs-4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ro-action-bar">
+                    <ro-vote-cell
+                        class="ro-action-bar-item"
+                        [sourceType]="'support'"
+                        [sourceId]="support._id"
+                        [score]="support.ups - support.downs"
+                        (upVoted)="support.ups=support.ups+1"
+                        (downVoted)="support.downs=support.downs+1">
+                    </ro-vote-cell>
+                    <div class="ro-inline-items">
+                        <h4 class="ro-action-bar-item">
+                            <span class="label"[ngClass]="support.source_type">
+                                {{support.source_type | uppercase}}
+                            </span>
+                        </h4>
+                        <h4 class="ro-action-bar-item">
+                            <span class="label" [ngClass]="support.point_type">
+                                {{support.point_type | uppercase}}
+                            </span>
+                        </h4>
+                        <button type="button" class="ro-action-bar-item btn btn-xs btn-danger" (click)="removeSupport(support._id, i)" *ngIf="isOwner(support.owner_user_id)">
+                            <i class="fa fa-close">
+                            </i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+        </div>
+    </div>
+</div>
