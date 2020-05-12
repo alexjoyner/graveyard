@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en-US" ng-app="MetaTruthDemo">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src &apos;self&apos; &apos;unsafe-inline&apos;; script-src &apos;self&apos; &apos;unsafe-inline&apos; &apos;unsafe-eval&apos; http://maps.googleapis.com/ http://192.168.0.8:* http://127.0.0.1:8080 http://localhost:9000  *.swipehaul-server-init.herokuapp.com">
+    <title>MetaTruth demo</title>
+    <link rel="stylesheet" href="public/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <script src="public/lib/jquery/dist/jquery.min.js"></script>
+    <script src="public/lib/angular/angular.min.js"></script>
+    <script src="public/lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="public/lib/angular-bootstrap/ui-bootstrap.min.js"></script>
+</head>
+<body>
+    <custom-nav-bar></custom-nav-bar>
+    <div ui-view  class="container" style="padding: 0 10em 0 10em"></div>
+</body>
+<!-- Core -->
+<script src="config/app.js"></script>
+<script src="config/routes.js"></script>
+<script src="config/config.js"></script>
+<!-- factories -->
+<!-- services -->
+<script src="services/issuesService.js"></script>
+<script src="services/pointsService.js"></script>
+<script src="services/supportsService.js"></script>
+<script src="services/votesService.js"></script>
+<!-- Module Controllers -->
+<script src="modules/Home/HomeCtrl.js"></script>
+<script src="modules/Issue/IssueCtrl.js"></script>
+<script src="modules/Issue/Points/PointsCtrl.js"></script>
+<!-- Directives -->
+<script src="directives/templates/newPointForm/newPointForm.js"></script>
+<script src="directives/templates/supportPoint/supportPoint.js"></script>
+<script src="directives/templates/mainPoint/mainPoint.js"></script>
+<script src="directives/templates/homeIssue/homeIssue.js"></script>
+<script src="directives/templates/customNavBar/customNavBar.js"></script>
+<script src="directives/templates/newIssueForm/newIssueForm.js"></script>
+</html>

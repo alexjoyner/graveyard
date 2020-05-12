@@ -1,0 +1,33 @@
+<div class="supporting-evidence" style="height: 200px;">
+    <div class="row">
+        <div class="col-xs-2">
+            <h3 class="row  text-center" ng-click="votePoint('ups')">
+                <i class="glyphicon glyphicon-chevron-up">
+                </i>
+            </h3>
+            <h3 class="row text-center">
+                {{info.ups - info.downs}}
+            </h3>
+            <h3 class="row  text-center" ng-click="votePoint('downs')">
+                <i class="glyphicon glyphicon-chevron-down">
+                </i>
+            </h3>
+        </div>
+        <div class="col-xs-10">
+            <h3>
+                {{info.problem}}
+            </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2"></div>
+        <div class="col xs-10">
+            <button
+                class="btn btn-sm btn-danger"
+                ng-click="api.deletePoint(info._id)">
+                <i class="fa fa-close">
+                </i>
+            </button>
+        </div>
+    </div>
+</div>

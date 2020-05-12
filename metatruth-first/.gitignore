@@ -1,0 +1,8 @@
+*.DS.Store
+
+# All bower lib folders
+public/lib
+
+# Server Node Modules
+server/node_modules
+node_modules

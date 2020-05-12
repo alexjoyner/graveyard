@@ -1,0 +1,128 @@
+<style>
+    .no-show {
+    display: none;
+    }
+    .show {
+    display: initial;
+    }
+</style>
+<!--
+    Tab Bar: Tab to Pros/Cons
+-->
+<ul class="nav nav-tabs">
+    <li role="presentation" ng-class="{'active': pointsType === 'pros'}">
+        <a ng-href="#/Issue/{{issueData._id}}/Pros">
+            Pros
+        </a>
+    </li>
+    <li role="presentation" ng-class="{'active': pointsType === 'cons'}">
+        <a ng-href="#/Issue/{{issueData._id}}/Cons">
+            Cons
+        </a>
+    </li>
+</ul>
+<!--
+    Create and Search Buttons
+-->
+<br/>
+<div class="row">
+    <div class="col-xs-2">
+        <button class="btn btn-md" ng-class="{'btn-success': pointsType === 'pros', 'btn-danger': pointsType === 'cons'}" ng-click="addPoint = !addPoint">
+            Add a new <span ng-if="pointsType === 'pros'">pro</span><span ng-if="pointsType === 'cons'">con</span>
+        </button>
+    </div>
+    <div class="col-xs-8">
+        <div class="input-group">
+            <div class="input-group-addon">
+                Search
+            </div>
+            <input type="text" class="form-control" id="exampleInputAmount" ng-model="searchText"/>
+        </div>
+    </div>
+</div>
+<!--
+    Add new main point
+-->
+<new-point-form
+    ng-show="addPoint"
+    api="pointsCtrlApi"
+    form-type="main"
+    point-type="{{pointsType}}">
+</new-point-form>
+<!--
+    Display Issues
+-->
+<br/>
+<div ng-repeat="point in points | filter: searchText" style="position: relative;">
+    <div ng-attr-id="{{'point'+$index}}" class="row" style="position: relative; padding-right: 4em;">
+        <!-- Main Problem Block -->
+        <div class="col-xs-6 main-point-block">
+            <main-point api="pointsCtrlApi" info="point" point-type="{{pointsType}}">
+            </main-point>
+        </div>
+        <div class="col-xs-6" style="padding-left: 4em;">
+            <!-- 
+            To show if no support data has been searched for
+             -->
+             <div ng-if="!point.support">
+                <br>
+                <button type="button" class="btn btn-lg btn-default" ng-click="pointsCtrlApi.getSupport(point._id, $index)">
+                    Get Support
+                </button>
+            </div>
+             <!-- 
+            To show if support data has been retreived but no data was received
+              -->
+            <div ng-if="point.support.length === 0">
+                <br>
+                <h3 class="text-center">No Support</h3>
+                <br>
+                <button type="button" class="btn btn-xs btn-info" ng-click="pointsCtrlApi.toggleSupportForm($index)">
+                    Add Evidence
+                </button>
+            </div>
+            <!-- Top Answer -->
+            <support-point
+                api="pointsCtrlApi"
+                support="point.support[0]"
+                ng-if="point.support.length > 0"
+                index="0"
+                parent-index="{{$index}}"
+                point-type="{{pointsType}}"
+                point-id="{{point._id}}">
+            </support-point>
+        </div>
+    </div>
+    <div ng-attr-id="{{'point'+$index}}" class="row" style="padding-right: 4em;">
+        <!-- Spacer -->
+        <div class="col-xs-2">
+        </div>
+        <!-- Main Supporting Evidence of Block -->
+        <div class="col-xs-10" style="padding-left: 4em;">
+            <!-- Add Support form -->
+            <new-point-form
+                ng-attr-id="{{'supportForm'+$index}}"
+                class="no-show"
+                api="pointsCtrlApi"
+                index="{{$index}}"
+                form-type="support"
+                point-type="{{pointsType}}"
+                point-id="{{point._id}}">
+            </new-point-form>
+            <!-- Show More Support -->
+            <div ng-attr-id="{{'moreSupport'+ $index}}" class="no-show">
+                <support-point
+                    ng-repeat="support in point.support"
+                    support="support"
+                    api="pointsCtrlApi"
+                    ng-show="!$first"
+                    index = "{{$index}}"
+                    parent-index="{{$parent.$index}}"
+                    point-type="{{pointsType}}"
+                    point-id="{{point._id}}">
+                </support-point>
+            </div>
+        </div>
+    </div>
+    <hr/>
+</div>
