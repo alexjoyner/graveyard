@@ -1,0 +1,13 @@
+{
+  "name": "ees-datalogger-db",
+  "version": "0.2.0",
+  "description": "Datalogger for OEE Master",
+  "main": "null",
+  "repository": "https://github.com/alexjoyner/ees-datalogger-db.git",
+  "author": "alex@voicir.com",
+  "license": "PRIVATE",
+  "private": true,
+  "scripts": {
+    "postversion": "git push --tags && echo \"Successfully released version $npm_package_version!\""
+  }
+}
