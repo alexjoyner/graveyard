@@ -1,0 +1,10 @@
+{
+  "name": "oee-master-m172",
+  "version": "0.1.0",
+  "description": "Main Program for OEE Master installed on M172",
+  "main": "none",
+  "repository": "https://github.com/alexjoyner/oee-master-m172.git",
+  "author": "alex@voicir.com",
+  "license": "PRIVATE",
+  "private": true
+}
