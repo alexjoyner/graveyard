@@ -1,0 +1,16 @@
+{
+  "name": "mock-connect",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "nodemon main.js",
+    "prod": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "modbus-serial": "^7.0.1",
+    "socket.io-client": "^2.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
