@@ -1,0 +1,23 @@
+.hero-image {
+	width: 100%;
+	height: 400px;
+	background: linear-gradient(35deg, #323333, #ffffff);
+	position: relative;
+}
+.profile {
+	height: 250px;
+	width: 250px;
+	border-radius: 50%;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 100px;
+}
+
+#scrollDown {
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: rgb(255, 255, 255);
+}
