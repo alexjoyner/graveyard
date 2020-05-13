@@ -1,0 +1,75 @@
+@import '../../../sass/1-base/variables'
+@import '../../../sass/2-modules/common-classes/mt-action-bar/mt-action-bar'
+@import "../../../sass/1-base/buttons"
+$mt-post-border-radius: 3px
+$mt-post-border: 1px solid $mt-brand-color-default
+@import "./_support-labels.sass"
+.mt-post
+	background-color: #fff
+	position: relative
+	border: $mt-post-border
+	border-radius: $mt-post-border-radius
+	//animation-duration: 0.3s
+	//animation-name: popIn
+	width: 100%
+	padding: 0
+	margin: 5px 0
+	overflow: hidden
+	.source-link
+		text-overflow: ellipsis
+		overflow: hidden
+		white-space: nowrap
+	.tag
+		&:empty
+			display: inline-block !important
+	.mt-post-header
+		padding: 20px
+		display: block
+	.mt-post-footer
+		position: relative
+		display: block
+		width: 100%
+		border-radius: 0 0 $mt-post-border-radius $mt-post-border-radius
+		border-top: 1px solid $base-border-color
+	.mt-post-body
+		.vote-status-block
+			color: $base-border-color
+			.vote-status
+				font-weight: 500
+		.data-base
+			border-left: 1px solid black
+			h3
+				font-weight: 500
+		.results-percent
+			font:
+				size: 6em
+	h2
+		font:
+			size: 1.5em
+			weight: 400
+	h3
+		font:
+			size: 1.2em
+			weight: 300
+	.owner-controls
+		position: absolute
+		top: 0
+		right: 0
+		li
+			list-style: none
+// Styling for different point types (Issues default to basic bg color)
+.point-type-null
+	background-color: #fff
+	.mt-post-title
+		&:before
+			content: 'Issue: '
+.point-type-1, .point-type-3
+	//background-color: lighten($mt-brand-color-success, 30%)
+	.mt-post-title
+		&:before
+			content: 'Yes, because: '
+.point-type-2, .point-type-4
+	//background-color: lighten($mt-brand-color-danger, 30%)
+	.mt-post-title
+		&:before
+			content: 'No, because: '

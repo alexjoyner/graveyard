@@ -1,0 +1,21 @@
+{
+  "name": "voicir",
+  "description": "An app to give everyone a voice",
+  "main": "",
+  "authors": [
+    "rosco9awj"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "^4.6.3"
+  }
+}
