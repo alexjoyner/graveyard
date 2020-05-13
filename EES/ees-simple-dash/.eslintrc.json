@@ -1,0 +1,19 @@
+{
+    "extends": ["airbnb", "plugin:jest/recommended"],
+    "env": {
+      "browser": true
+    },
+    "plugins": [
+      "jest"
+    ],
+    "rules": {
+        "import/prefer-default-export": false,
+        "react/jsx-filename-extension": false,
+        "react/prop-types": [2, { "ignore": "children"}],
+        "linebreak-style": 0,
+        "import/no-named-as-default": 0,
+        "no-use-before-define": 0,
+        "no-unused-expressions": ["error", {"allowTaggedTemplates": true}],
+        "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+    }
+}

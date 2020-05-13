@@ -1,0 +1,13 @@
+{
+    "files.exclude": {
+      "**/.DS_Store": true,
+      "**/.git": true,
+      "**/.gitignore": true,
+      "**/.hg": true,
+      "**/.svn": true,
+      "**/.vscode": true,
+      "**/build": true,
+      "**/CVS": true,
+      "**/public": true
+    }
+  }
