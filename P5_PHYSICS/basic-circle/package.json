@@ -1,0 +1,32 @@
+{
+  "name": "ts-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "nodemon server.js",
+    "dev": "webpack-dev-server --hot --content-base ./build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alex Joyner <alex@voicir.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-loader": "^7.1.1",
+    "chai": "^4.1.0",
+    "css-loader": "^0.28.4",
+    "ignore-styles": "^5.0.1",
+    "mocha": "^3.4.2",
+    "webpack": "^3.4.1",
+    "webpack-dev-server": "^2.6.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "morgan": "^1.8.2",
+    "node-sass": "^4.5.3",
+    "p5": "^0.5.12"
+  }
+}

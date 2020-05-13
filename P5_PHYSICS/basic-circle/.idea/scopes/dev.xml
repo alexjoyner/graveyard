@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="dev" pattern="file[ts-starter]:client//*||file[ts-starter]:server//*||file:server.ts||file:test-setup.ts" />
+</component>
