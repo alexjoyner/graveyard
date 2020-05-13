@@ -1,0 +1,3 @@
+[submodule "HMI"]
+	path = HMI
+	url = https://github.com/EvansElectric/OK_KSB_Panel_HMI

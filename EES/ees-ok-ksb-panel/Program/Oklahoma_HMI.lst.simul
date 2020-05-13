@@ -1,0 +1,1874 @@
+***********************************************************************
+*
+*	CODE GENERATION LISTING FOR: Oklahoma_HMI
+*	COMPILER VERSION: 2.2.0
+*
+***********************************************************************
+
+***********************************************************************
+UNUSED FUNCTIONS:
+
+	BITTOWORD
+	BITTOBYTE
+	BYTETOWORD
+	F_MATRIXREADBYTE
+***********************************************************************
+
+***********************************************************************
+UNUSED FUNCTION BLOCKS:
+
+	PULSE
+	FF_D
+	BYTETOBIT
+	WORDTOBIT
+	WORDTOBYTE
+	CTD
+	CTD_DINT
+	CTD_UDINT
+	CTU
+	CTU_DINT
+	CTU_UDINT
+	CTUD
+	CTUD_DINT
+	CTUD_UDINT
+	TOF
+	TP
+	SR
+	RS
+	F_TRIG
+	YEARLYEVENT
+	WEEKSCHEDULE
+	THREEPOINTACTUATOR
+	STEPCONTROLLERANALOG
+	PIDAUTOTUNING
+	PIDADVANCED
+	OPERATINGHOURS
+	DAYLIGHTSAVING
+	FB_SETMASKINGPATTERN
+	FB_SETFORMATINFOPATTERN
+	FB_SETFINDERPATTERN
+	FB_SETBITSTREAM
+	FB_SETALIGNMENTPATTERN
+	FB_MATRIXWRITEBYTE
+	FB_GETRSCODEWORD
+	QRCODEGENERATOR
+	ECFANMGMT
+	PSYCHROMETRIC
+	AHUTEMPCNTRLSTRATEGY
+	AHUPLANTMODESTRATEGY
+	REDUNDANTPUMPCNTRL
+	COPCALCULATION
+	THERMALPOWERCALCULATION
+	PULSE2COUNTER
+	COUNTER2ENERGY
+	FLOATINGHIGHPRESCNTRL
+	COMPMGMTVS
+	THERMALPOWER_ENTHALPY
+	DOUBLEINTERPO_5X8
+	FLUID_DENSITY
+	FLUID_ENTHALPY
+	TEMP2PRESS
+	PRESS2TEMP
+	FANMGMT
+	COMPMGMT
+	COMPCNTRL_SLIDER
+	COMPCNTRL_VS
+	COMPCNTRL_ONOFF
+	COMPAPPLIMIT
+	COMPALARMMGMT
+	ATV71MODBUSCOM
+	ATV61MODBUSCOM
+	ATV32MODBUSCOM
+	ATV31MODBUSCOM
+	ATV312MODBUSCOM
+	ATV21MODBUSCOM
+	ATV212MODBUSCOM
+	ATV12MODBUSCOM
+	AUXPUMPCTRL
+	CAVTPROT
+	COMPSP
+	COMPSPFLOW
+	DEVSWCPUMPCTRL
+	FSPUMPCTRL
+	OPINTAUXPUMP
+	OPINTPUMP
+	OPPRTY
+	PID_PARA_CHECK
+	PIPEFILL
+	PUMPAVAI
+	PUMPFBCKMAPP
+	PUMPPID
+	PUMPPIDSTAG
+	VSDAVAI
+	VSDCTRL
+	VSDNU
+	VSPUMPCTRL
+***********************************************************************
+
+**************************************************
+	List function block: R_TRIG
+**************************************************
+
+FUNCTION_BLOCK R_TRIG
+
+	{ DE:"Rising edge detector" }
+
+        VAR_INPUT
+CLK : BOOL;	{ DE:"Clock" }
+	END_VAR
+
+        VAR_OUTPUT
+Q : BOOL;	{ DE:"Out" }
+	END_VAR
+
+        VAR
+M : BOOL := TRUE;
+	END_VAR
+
+END_FUNCTION_BLOCK
+
+04C31F20  55                            push ebp
+04C31F21  8B EB                         mov ebp, ebx
+
+#0		{SRC:R_TRIG}
+#1
+#2
+(*) UNDEF
+04C31F23  33 C0                         xor eax, eax
+04C31F25  8A 45 01                      mov al, 1[ebp]
+
+#3
+(*) BOOL
+04C31F28  33 C9                         xor ecx, ecx
+04C31F2A  8A 4D 00                      mov cl, [ebp]
+04C31F2D  84 C9                         test cl, cl
+04C31F2F  0F 94 C1                      sete cl
+04C31F32  23 C1                         and eax, ecx
+
+#4
+(*) BOOL
+04C31F34  84 C0                         test al, al
+04C31F36  0F 95 45 02                   setne 2[ebp]
+
+#5
+#6
+(*) UNDEF
+04C31F3A  33 C0                         xor eax, eax
+04C31F3C  8A 45 01                      mov al, 1[ebp]
+
+#7
+(*) BOOL
+04C31F3F  84 C0                         test al, al
+04C31F41  0F 95 45 00                   setne [ebp]
+
+04C31F45  5D                            pop ebp
+
+04C31F46  C3                            ret
+
+
+Frame allocation:
+
+	0000 bit  0: VAR M
+	0001 bit  0: VAR CLK
+	0002 bit  0: VAR Q
+
+END_FUNCTION_BLOCK
+**************************************************
+	List function block: TON
+**************************************************
+
+FUNCTION_BLOCK TON
+
+	{ DE:"On-delay timer" }
+
+        VAR_INPUT
+IN : BOOL;	{ DE:"Timer input source" }
+PT : UDINT;	{ DE:"Preset time value [ms]" }
+	END_VAR
+
+        VAR_OUTPUT
+Q : BOOL;	{ DE:"Timer output" }
+ET : UDINT;	{ DE:"Timer current value [ms]" }
+	END_VAR
+
+        VAR_EXTERNAL
+	{G:"System_Timers"}
+SYSTIMER AT %MD0.0 : UDINT;	{ DE:"System timer [ms]" }
+	END_VAR
+
+        VAR
+TIMSTART : UDINT;	{ DE:"Time value at start of counting" }
+	END_VAR
+
+END_FUNCTION_BLOCK
+
+04C31F47  55                            push ebp
+04C31F48  8B EB                         mov ebp, ebx
+
+#0		{SRC:TON}
+#1
+#2
+#3
+#4
+(*) UNDEF
+04C31F4A  33 C0                         xor eax, eax
+04C31F4C  8A 45 04                      mov al, 4[ebp]
+
+#5
+(-) BOOL
+04C31F4F  84 C0                         test al, al
+04C31F51  90 74 61 90 90 90             je 04C31FB5H
+
+#6
+#7
+#8
+(*) UNDEF
+04C31F57  33 C0                         xor eax, eax
+04C31F59  8A 45 09                      mov al, 9[ebp]
+
+#9
+(-) BOOL
+04C31F5C  84 C0                         test al, al
+04C31F5E  90 75 4F 90 90 90             jne 04C31FB0H
+
+#10
+#11
+#12
+(*) UNDEF
+04C31F64  8B 45 00                      mov eax, [ebp]
+
+#13
+(*) UDINT
+04C31F67  3D 00 00 00 00                cmp eax, 0
+04C31F6C  0F 94 C0                      sete al
+04C31F6F  25 FF 00 00 00                and eax, 0FFh
+
+#14
+(-) BOOL
+04C31F74  84 C0                         test al, al
+04C31F76  90 74 0C 90 90 90             je 04C31F85H
+
+#15
+#16
+#17
+(*) UNDEF
+04C31F7C  8B 05 CC CC CC CC             mov eax, [CCCCCCCCH] ; %M0+0
+
+#18
+(*) UDINT
+04C31F82  89 45 00                      mov [ebp], eax
+
+#19
+#20
+#21
+#22
+#23
+(*) UNDEF
+04C31F85  8B 05 CC CC CC CC             mov eax, [CCCCCCCCH] ; %M0+0
+
+#24
+(*) UDINT
+04C31F8B  2B 45 00                      sub eax, [ebp]
+
+#25
+(*) UDINT
+04C31F8E  89 45 0A                      mov 10[ebp], eax
+
+#26
+(*) UDINT
+04C31F91  3B 45 05                      cmp eax, [ebp+5]
+04C31F94  0F 93 C0                      setae al
+04C31F97  25 FF 00 00 00                and eax, 0FFh
+
+#27
+(*) BOOL
+04C31F9C  84 C0                         test al, al
+04C31F9E  0F 95 45 09                   setne 9[ebp]
+
+#28
+(-) BOOL
+04C31FA2  84 C0                         test al, al
+04C31FA4  90 74 09 90 90 90             je 04C31FB0H
+
+#29
+#30
+#31
+(*) UNDEF
+04C31FAA  8B 45 05                      mov eax, 5[ebp]
+
+#32
+(*) UDINT
+04C31FAD  89 45 0A                      mov 10[ebp], eax
+
+#33
+#34
+#35
+#36
+#37
+(-) UDINT
+04C31FB0  EB 19 90 90 90                jmp 04C31FCBH
+
+#38
+#39
+#40
+#41
+(*) UNDEF
+04C31FB5  B8 00 00 00 00                mov eax, 0
+
+#42
+(*) USINT
+04C31FBA  89 45 0A                      mov 10[ebp], eax
+
+#43
+(*) UDINT
+04C31FBD  89 45 00                      mov [ebp], eax
+
+#44
+(*) UNDEF
+04C31FC0  B8 00 00 00 00                mov eax, 0
+
+#45
+(*) BOOL
+04C31FC5  84 C0                         test al, al
+04C31FC7  0F 95 45 09                   setne 9[ebp]
+
+04C31FCB  5D                            pop ebp
+
+04C31FCC  C3                            ret
+
+
+Frame allocation:
+
+	0000       : VAR TIMSTART
+	0004 bit  0: VAR IN
+	0005       : VAR PT
+	0009 bit  0: VAR Q
+	000A       : VAR ET
+
+END_FUNCTION_BLOCK
+**************************************************
+	List program: INITPARDB
+**************************************************
+
+PROGRAM INITPARDB
+
+        VAR
+WARNINGSKILLER : USINT;
+DUMMYCRC32 : UDINT;
+	END_VAR
+
+END_PROGRAM
+
+04C31FD0  55                            push ebp
+04C31FD1  8B EC                         mov ebp, esp
+04C31FD3  60                            pushad
+
+#0		{SRC:INITPARDB}
+#1
+#2
+#3
+#4		{L:3}
+(*) UDINT
+04C31FD4  B8 27 50 A0 DE                mov eax, 3735048231
+04C31FD9  89 05 CC CC CC CC             mov [CCCCCCCCH], eax ; $$DATA$$+12
+
+#5
+#6
+#7		{L:5}
+(*) UDINT
+04C31FDF  B8 CC CC CC CC                mov eax, CCCCCCCCH ; $$CODE$$+4862
+
+#8		{L:5}
+(*) @UDINT
+04C31FE4  89 05 CC CC CC CC             mov [CCCCCCCCH], eax ; $$DATA$$+160
+
+#9		{L:5}
+(*) UNDEF
+04C31FEA  8B 05 CC CC CC CC             mov eax, [CCCCCCCCH] ; $$DATA$$+160
+
+#10		{L:5}
+(-) @UDINT
+04C31FF0  68 15 00 00 00                push 21
+04C31FF5  50                            push eax
+04C31FF6  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; SYSDBASE_SETEXTTABLE
+04C31FFB  FF D1                         call ecx
+04C31FFD  81 C4 08 00 00 00             add esp, 8
+
+#11		{L:5}
+(*) USINT
+04C32003  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+20
+
+04C32009  61                            popad
+04C3200A  5D                            pop ebp
+
+04C3200B  C3                            ret
+
+END_PROGRAM
+
+
+**************************************************
+	Target variable image generation
+**************************************************
+
+
+*** INPUT:
+04C3200C  C3                            ret
+
+
+*** OUTPUT:
+04C3200D  C3                            ret
+
+
+
+**************************************************
+	Task SERV init code
+**************************************************
+
+04C3200E  55                            push ebp
+04C3200F  8B EC                         mov ebp, esp
+
+04C32011  8B E5                         mov esp, ebp
+04C32013  5D                            pop ebp
+
+04C32014  C3                            ret
+
+**************************************************
+	List program: RESET_ALARMS
+**************************************************
+
+PROGRAM RESET_ALARMS
+
+END_PROGRAM
+
+04C32020  55                            push ebp
+04C32021  8B EC                         mov ebp, esp
+04C32023  60                            pushad
+
+#0		{SRC:RESET_ALARMS}
+#1
+#2
+#3
+#4
+#5		{L:1}
+(*) UNDEF
+04C32024  33 C0                         xor eax, eax
+04C32026  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; %M110+10
+
+#6		{L:1}
+(-) BOOL
+04C3202C  84 C0                         test al, al
+04C3202E  90 74 57 90 90 90             je 04C32088H
+
+#7
+#8
+#9
+#10
+#11		{L:2}
+(*) BOOL
+04C32034  B8 00 00 00 00                mov eax, 0
+04C32039  84 C0                         test al, al
+04C3203B  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; %M110+0
+
+#12
+#13
+#14		{L:3}
+(*) BOOL
+04C32042  B8 00 00 00 00                mov eax, 0
+04C32047  84 C0                         test al, al
+04C32049  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; %M110+2
+
+#15
+#16
+#17		{L:4}
+(*) BOOL
+04C32050  B8 00 00 00 00                mov eax, 0
+04C32055  84 C0                         test al, al
+04C32057  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; %M110+4
+
+#18
+#19
+#20		{L:5}
+(*) BOOL
+04C3205E  B8 00 00 00 00                mov eax, 0
+04C32063  84 C0                         test al, al
+04C32065  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; %M110+6
+
+#21
+#22
+#23		{L:6}
+(*) BOOL
+04C3206C  B8 00 00 00 00                mov eax, 0
+04C32071  84 C0                         test al, al
+04C32073  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; %M110+8
+
+#24
+#25
+#26		{L:7}
+(*) BOOL
+04C3207A  B8 00 00 00 00                mov eax, 0
+04C3207F  84 C0                         test al, al
+04C32081  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; %Q1+0
+
+END_PROGRAM
+**************************************************
+	List program: SILENCE_ALARMS
+**************************************************
+
+PROGRAM SILENCE_ALARMS
+
+END_PROGRAM
+
+#0		{SRC:SILENCE_ALARMS}
+#1
+#2
+#3
+#4
+#5		{L:1}
+(*) UNDEF
+04C32088  33 C0                         xor eax, eax
+04C3208A  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; %M110+12
+
+#6		{L:1}
+(-) BOOL
+04C32090  84 C0                         test al, al
+04C32092  90 74 11 90 90 90             je 04C320A6H
+
+#7
+#8
+#9
+#10
+#11		{L:2}
+(*) BOOL
+04C32098  B8 00 00 00 00                mov eax, 0
+04C3209D  84 C0                         test al, al
+04C3209F  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; %Q1+0
+
+END_PROGRAM
+**************************************************
+	List program: AUDIBLE_ALARM_CTRL
+**************************************************
+
+PROGRAM AUDIBLE_ALARM_CTRL
+
+        VAR
+ONESHOT : R_TRIG;
+	END_VAR
+
+END_PROGRAM
+
+#0		{SRC:AUDIBLE_ALARM_CTRL}
+#1
+#2
+#3
+#4		{L:3}
+(*) UDINT
+04C320A6  33 C0                         xor eax, eax
+04C320A8  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+21
+04C320AE  84 C0                         test al, al
+04C320B0  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+23
+
+#5		{L:3}
+(*) BOOL
+04C320B7  50                            push eax
+04C320B8  BB CC CC CC CC                mov ebx, CCCCCCCCH ; $$DATA$$+22
+04C320BD  E8 5E FE FF FF                call 04C31F20H
+04C320C2  58                            pop eax
+
+#6
+#7
+#8
+#9		{L:4}
+(*) UNDEF
+04C320C3  33 C0                         xor eax, eax
+04C320C5  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+24
+
+#10		{L:4}
+(-) BOOL
+04C320CB  84 C0                         test al, al
+04C320CD  90 74 11 90 90 90             je 04C320E1H
+
+#11
+#12
+#13
+#14
+#15		{L:5}
+(*) BOOL
+04C320D3  B8 01 00 00 00                mov eax, 1
+04C320D8  84 C0                         test al, al
+04C320DA  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; %Q1+0
+
+END_PROGRAM
+**************************************************
+	List program: HIGHRTD
+**************************************************
+
+PROGRAM HIGHRTD
+
+        VAR
+HIGHRTDTIMER : TON;
+HIGHRTDTIMERVAL : UDINT;
+SENSORSDISCONNECT : BOOL;
+	END_VAR
+
+        VAR CONSTANT
+DISCONNECTVAL : INT := -32768;
+WINDINGTEMPCUTOFF : INT := 402;
+	END_VAR
+
+END_PROGRAM
+
+#0		{SRC:HIGHRTD}
+#1
+#2
+#3
+#4
+#5
+#6		{R:"1$O:16"}
+(*) UNDEF
+04C320E1  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; $$DATA$$+26
+
+#7		{R:"1$O:16"}
+(*) INT
+04C320E8  0F BF 0D CC CC CC CC          movsx ecx, word ptr [CCCCCCCCH] ; %M101+2
+04C320EF  3B C1                         cmp eax, ecx
+04C320F1  0F 9D C0                      setge al
+04C320F4  25 FF 00 00 00                and eax, 0FFh
+
+#8
+#9		{R:"1$O:16"}
+(*) BOOL
+04C320F9  84 C0                         test al, al
+04C320FB  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+164
+
+#10		{R:"1$O:15"}
+(*) UNDEF
+04C32102  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; $$DATA$$+28
+
+#11		{R:"1$O:15"}
+(*) INT
+04C32109  0F BF 0D CC CC CC CC          movsx ecx, word ptr [CCCCCCCCH] ; %M101+4
+04C32110  3B C1                         cmp eax, ecx
+04C32112  0F 9D C0                      setge al
+04C32115  25 FF 00 00 00                and eax, 0FFh
+
+#12
+#13		{R:"1$O:15"}
+(*) BOOL
+04C3211A  84 C0                         test al, al
+04C3211C  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+165
+
+#14		{R:"1$O:12"}
+(*) UNDEF
+04C32123  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; $$DATA$$+32
+
+#15		{R:"1$O:12"}
+(*) INT
+04C3212A  0F BF 0D CC CC CC CC          movsx ecx, word ptr [CCCCCCCCH] ; %M101+6
+04C32131  3B C1                         cmp eax, ecx
+04C32133  0F 9D C0                      setge al
+04C32136  25 FF 00 00 00                and eax, 0FFh
+
+#16
+#17		{R:"1$O:12"}
+(*) BOOL
+04C3213B  84 C0                         test al, al
+04C3213D  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+166
+
+#18		{R:"1$O:18"}
+(*) UNDEF
+04C32144  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; $$DATA$$+34
+
+#19		{R:"1$O:18"}
+(*) INT
+04C3214B  3D 92 01 00 00                cmp eax, 402
+04C32150  0F 9D C0                      setge al
+04C32153  25 FF 00 00 00                and eax, 0FFh
+
+#20
+#21
+#22		{R:"1$O:18"}
+(*) BOOL
+04C32158  84 C0                         test al, al
+04C3215A  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+167
+
+#23		{R:"1$F:23"}
+(*) UNDEF
+04C32161  33 C0                         xor eax, eax
+04C32163  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; %M110+18
+
+#24		{R:"1$F:23"}
+(*) BOOL
+04C32169  84 C0                         test al, al
+04C3216B  0F 94 C0                      sete al
+
+#25
+#26		{R:"1$F:23"}
+(*) BOOL
+04C3216E  84 C0                         test al, al
+04C32170  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+168
+
+#27		{R:"1$O:20"}
+(*) UNDEF
+04C32177  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; %M110+14
+
+#28		{R:"1$O:20"}
+(*) INT
+04C3217E  B9 0A 00 00 00                mov ecx, 10
+04C32183  F7 E9                         imul ecx
+
+#29		{R:"1$O:20"}
+(*) INT
+04C32185  89 05 CC CC CC CC             mov [CCCCCCCCH], eax ; $$DATA$$+43
+
+#30
+#31		{R:"1$O:13"}
+(*) UNDEF
+04C3218B  33 C0                         xor eax, eax
+04C3218D  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+164
+
+#32		{R:"1$O:13"}
+(*) BOOL
+04C32193  33 C9                         xor ecx, ecx
+04C32195  8A 0D CC CC CC CC             mov cl, [CCCCCCCCH] ; $$DATA$$+165
+04C3219B  0B C1                         or eax, ecx
+
+#33
+#34		{R:"1$O:14"}
+(*) BOOL
+04C3219D  33 C9                         xor ecx, ecx
+04C3219F  8A 0D CC CC CC CC             mov cl, [CCCCCCCCH] ; $$DATA$$+166
+04C321A5  0B C1                         or eax, ecx
+
+#35
+#36		{R:"1$O:17"}
+(*) BOOL
+04C321A7  33 C9                         xor ecx, ecx
+04C321A9  8A 0D CC CC CC CC             mov cl, [CCCCCCCCH] ; $$DATA$$+167
+04C321AF  0B C1                         or eax, ecx
+
+#37
+#38		{R:"1$O:19"}
+(*) BOOL
+04C321B1  33 C9                         xor ecx, ecx
+04C321B3  8A 0D CC CC CC CC             mov cl, [CCCCCCCCH] ; $$DATA$$+37
+04C321B9  0B C1                         or eax, ecx
+
+#39
+#40		{R:"1$O:25"}
+(*) BOOL
+04C321BB  33 C9                         xor ecx, ecx
+04C321BD  8A 0D CC CC CC CC             mov cl, [CCCCCCCCH] ; $$DATA$$+168
+04C321C3  23 C1                         and eax, ecx
+
+#41		{R:"1$O:25"}
+(*) BOOL
+04C321C5  84 C0                         test al, al
+04C321C7  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+42
+
+#42
+#43
+#44		{R:"1$FB:HIGHRTDTIMER"}
+(*) BOOL
+04C321CE  50                            push eax
+04C321CF  BB CC CC CC CC                mov ebx, CCCCCCCCH ; $$DATA$$+38
+04C321D4  E8 6E FD FF FF                call 04C31F47H
+04C321D9  58                            pop eax
+
+#45		{R:"1$FB:HIGHRTDTIMER"}
+(*) BOOL
+04C321DA  33 C0                         xor eax, eax
+04C321DC  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+47
+04C321E2  84 C0                         test al, al
+04C321E4  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+52
+
+#46
+#47
+#48
+#49
+#50
+#51
+#52		{R:"2$O:9"}
+(*) UNDEF
+04C321EB  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; $$DATA$$+26
+
+#53		{R:"2$O:9"}
+(*) INT
+04C321F2  3D 00 80 FF FF                cmp eax, -32768
+04C321F7  0F 94 C0                      sete al
+04C321FA  25 FF 00 00 00                and eax, 0FFh
+
+#54
+#55		{R:"2$O:9"}
+(*) BOOL
+04C321FF  84 C0                         test al, al
+04C32201  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+169
+
+#56		{R:"2$O:10"}
+(*) UNDEF
+04C32208  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; $$DATA$$+28
+
+#57		{R:"2$O:10"}
+(*) INT
+04C3220F  3D 00 80 FF FF                cmp eax, -32768
+04C32214  0F 94 C0                      sete al
+04C32217  25 FF 00 00 00                and eax, 0FFh
+
+#58
+#59		{R:"2$O:10"}
+(*) BOOL
+04C3221C  84 C0                         test al, al
+04C3221E  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+170
+
+#60		{R:"2$O:11"}
+(*) UNDEF
+04C32225  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; $$DATA$$+32
+
+#61		{R:"2$O:11"}
+(*) INT
+04C3222C  3D 00 80 FF FF                cmp eax, -32768
+04C32231  0F 94 C0                      sete al
+04C32234  25 FF 00 00 00                and eax, 0FFh
+
+#62
+#63		{R:"2$O:11"}
+(*) BOOL
+04C32239  84 C0                         test al, al
+04C3223B  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+171
+
+#64		{R:"2$O:14"}
+(*) UNDEF
+04C32242  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; $$DATA$$+34
+
+#65		{R:"2$O:14"}
+(*) INT
+04C32249  3D 00 80 FF FF                cmp eax, -32768
+04C3224E  0F 94 C0                      sete al
+04C32251  25 FF 00 00 00                and eax, 0FFh
+
+#66
+#67		{R:"2$O:14"}
+(*) BOOL
+04C32256  84 C0                         test al, al
+04C32258  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+172
+
+#68		{R:"2$O:8"}
+(*) UNDEF
+04C3225F  33 C0                         xor eax, eax
+04C32261  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+169
+
+#69		{R:"2$O:8"}
+(*) BOOL
+04C32267  33 C9                         xor ecx, ecx
+04C32269  8A 0D CC CC CC CC             mov cl, [CCCCCCCCH] ; $$DATA$$+170
+04C3226F  0B C1                         or eax, ecx
+
+#70
+#71		{R:"2$O:12"}
+(*) BOOL
+04C32271  33 C9                         xor ecx, ecx
+04C32273  8A 0D CC CC CC CC             mov cl, [CCCCCCCCH] ; $$DATA$$+171
+04C32279  0B C1                         or eax, ecx
+
+#72
+#73		{R:"2$O:13"}
+(*) BOOL
+04C3227B  33 C9                         xor ecx, ecx
+04C3227D  8A 0D CC CC CC CC             mov cl, [CCCCCCCCH] ; $$DATA$$+172
+04C32283  0B C1                         or eax, ecx
+
+#74		{R:"2$O:13"}
+(*) BOOL
+04C32285  84 C0                         test al, al
+04C32287  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+37
+
+END_PROGRAM
+**************************************************
+	List program: VIBRATIONALARMCALC
+**************************************************
+
+PROGRAM VIBRATIONALARMCALC
+
+        VAR
+VIBRATIONALARM_0 : TON;
+	END_VAR
+
+        VAR CONSTANT
+DISCONNECT : INT := -32768;
+	END_VAR
+
+END_PROGRAM
+
+#0		{SRC:VIBRATIONALARMCALC}
+#1
+#2
+#3
+#4
+#5
+#6		{R:"1$O:7"}
+(*) UNDEF
+04C3228E  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; $$DATA$$+58
+
+#7		{R:"1$O:7"}
+(*) INT
+04C32295  0F BF 0D CC CC CC CC          movsx ecx, word ptr [CCCCCCCCH] ; %M101+8
+04C3229C  3B C1                         cmp eax, ecx
+04C3229E  0F 9D C0                      setge al
+04C322A1  25 FF 00 00 00                and eax, 0FFh
+
+#8
+#9		{R:"1$O:7"}
+(*) BOOL
+04C322A6  84 C0                         test al, al
+04C322A8  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+173
+
+#10		{R:"1$O:8"}
+(*) UNDEF
+04C322AF  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; $$DATA$$+58
+
+#11		{R:"1$O:8"}
+(*) INT
+04C322B6  3D 00 80 FF FF                cmp eax, -32768
+04C322BB  0F 94 C0                      sete al
+04C322BE  25 FF 00 00 00                and eax, 0FFh
+
+#12
+#13
+#14		{R:"1$O:8"}
+(*) BOOL
+04C322C3  84 C0                         test al, al
+04C322C5  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+174
+
+#15		{R:"1$F:13"}
+(*) UNDEF
+04C322CC  33 C0                         xor eax, eax
+04C322CE  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; %M110+24
+
+#16		{R:"1$F:13"}
+(*) BOOL
+04C322D4  84 C0                         test al, al
+04C322D6  0F 94 C0                      sete al
+
+#17
+#18		{R:"1$F:13"}
+(*) BOOL
+04C322D9  84 C0                         test al, al
+04C322DB  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+175
+
+#19		{R:"1$O:11"}
+(*) UNDEF
+04C322E2  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; %M110+16
+
+#20		{R:"1$O:11"}
+(*) INT
+04C322E9  B9 0A 00 00 00                mov ecx, 10
+04C322EE  F7 E9                         imul ecx
+
+#21		{R:"1$O:11"}
+(*) INT
+04C322F0  89 05 CC CC CC CC             mov [CCCCCCCCH], eax ; $$DATA$$+67
+
+#22
+#23		{R:"1$O:9"}
+(*) UNDEF
+04C322F6  33 C0                         xor eax, eax
+04C322F8  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+173
+
+#24		{R:"1$O:9"}
+(*) BOOL
+04C322FE  33 C9                         xor ecx, ecx
+04C32300  8A 0D CC CC CC CC             mov cl, [CCCCCCCCH] ; $$DATA$$+174
+04C32306  0B C1                         or eax, ecx
+
+#25
+#26		{R:"1$O:15"}
+(*) BOOL
+04C32308  33 C9                         xor ecx, ecx
+04C3230A  8A 0D CC CC CC CC             mov cl, [CCCCCCCCH] ; $$DATA$$+175
+04C32310  23 C1                         and eax, ecx
+
+#27		{R:"1$O:15"}
+(*) BOOL
+04C32312  84 C0                         test al, al
+04C32314  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+66
+
+#28
+#29
+#30		{R:"1$FB:VIBRATIONALARM_0"}
+(*) BOOL
+04C3231B  50                            push eax
+04C3231C  BB CC CC CC CC                mov ebx, CCCCCCCCH ; $$DATA$$+62
+04C32321  E8 21 FC FF FF                call 04C31F47H
+04C32326  58                            pop eax
+
+#31		{R:"1$FB:VIBRATIONALARM_0"}
+(*) BOOL
+04C32327  33 C0                         xor eax, eax
+04C32329  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+71
+04C3232F  84 C0                         test al, al
+04C32331  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+61
+
+END_PROGRAM
+**************************************************
+	List program: PUMPRUNCONDITIONS
+**************************************************
+
+PROGRAM PUMPRUNCONDITIONS
+
+END_PROGRAM
+
+#0		{SRC:PUMPRUNCONDITIONS}
+#1
+#2
+#3
+#4		{R:1$0}
+(*) UNDEF
+04C32338  33 C0                         xor eax, eax
+04C3233A  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; %M110+0
+
+#5		{R:1$5}
+(*) BOOL
+04C32340  33 C9                         xor ecx, ecx
+04C32342  8A 0D CC CC CC CC             mov cl, [CCCCCCCCH] ; %M110+2
+04C32348  0B C1                         or eax, ecx
+
+#6		{R:1$7}
+(*) BOOL
+04C3234A  33 C9                         xor ecx, ecx
+04C3234C  8A 0D CC CC CC CC             mov cl, [CCCCCCCCH] ; %M110+4
+04C32352  0B C1                         or eax, ecx
+
+#7		{R:1$8}
+(*) BOOL
+04C32354  33 C9                         xor ecx, ecx
+04C32356  8A 0D CC CC CC CC             mov cl, [CCCCCCCCH] ; %M110+8
+04C3235C  0B C1                         or eax, ecx
+
+#8		{R:1$9}
+(*) BOOL
+04C3235E  33 C9                         xor ecx, ecx
+04C32360  8A 0D CC CC CC CC             mov cl, [CCCCCCCCH] ; %M110+6
+04C32366  0B C1                         or eax, ecx
+
+#9		{R:1$1}
+(*) BOOL
+04C32368  84 C0                         test al, al
+04C3236A  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+21
+
+END_PROGRAM
+**************************************************
+	List program: PUMP_ENABLE
+**************************************************
+
+PROGRAM PUMP_ENABLE
+
+END_PROGRAM
+
+#0		{SRC:PUMP_ENABLE}
+#1
+#2
+#3
+#4		{R:1$0}
+(*) UNDEF
+04C32371  33 C0                         xor eax, eax
+04C32373  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+21
+04C32379  84 C0                         test al, al
+04C3237B  0F 94 C0                      sete al
+
+#5		{R:1$1}
+(*) BOOL
+04C3237E  84 C0                         test al, al
+04C32380  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; %Q1+1
+
+END_PROGRAM
+**************************************************
+	List program: BEARINGTEMPDETECT
+**************************************************
+
+PROGRAM BEARINGTEMPDETECT
+
+        VAR
+HIGHRTDTIMER_0 : TON;
+	END_VAR
+
+        VAR CONSTANT
+WINDINGTEMPCUTOFF : INT := 402;
+DISCONNECTVAL : INT := -32768;
+	END_VAR
+
+END_PROGRAM
+
+#0		{SRC:BEARINGTEMPDETECT}
+#1
+#2
+#3
+#4
+#5
+#6		{R:"1$O:8"}
+(*) UNDEF
+04C32387  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; $$DATA$$+78
+
+#7		{R:"1$O:8"}
+(*) INT
+04C3238E  0F BF 0D CC CC CC CC          movsx ecx, word ptr [CCCCCCCCH] ; %M101+0
+04C32395  3B C1                         cmp eax, ecx
+04C32397  0F 9D C0                      setge al
+04C3239A  25 FF 00 00 00                and eax, 0FFh
+
+#8
+#9		{R:"1$O:8"}
+(*) BOOL
+04C3239F  84 C0                         test al, al
+04C323A1  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+176
+
+#10		{R:"1$O:9"}
+(*) UNDEF
+04C323A8  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; $$DATA$$+78
+
+#11		{R:"1$O:9"}
+(*) INT
+04C323AF  3D 00 80 FF FF                cmp eax, -32768
+04C323B4  0F 94 C0                      sete al
+04C323B7  25 FF 00 00 00                and eax, 0FFh
+
+#12
+#13
+#14		{R:"1$O:9"}
+(*) BOOL
+04C323BC  84 C0                         test al, al
+04C323BE  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+177
+
+#15		{R:"1$F:13"}
+(*) UNDEF
+04C323C5  33 C0                         xor eax, eax
+04C323C7  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; %M110+26
+
+#16		{R:"1$F:13"}
+(*) BOOL
+04C323CD  84 C0                         test al, al
+04C323CF  0F 94 C0                      sete al
+
+#17
+#18		{R:"1$F:13"}
+(*) BOOL
+04C323D2  84 C0                         test al, al
+04C323D4  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+178
+
+#19		{R:"1$O:11"}
+(*) UNDEF
+04C323DB  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; %M110+14
+
+#20		{R:"1$O:11"}
+(*) INT
+04C323E2  B9 0A 00 00 00                mov ecx, 10
+04C323E7  F7 E9                         imul ecx
+
+#21		{R:"1$O:11"}
+(*) INT
+04C323E9  89 05 CC CC CC CC             mov [CCCCCCCCH], eax ; $$DATA$$+87
+
+#22
+#23		{R:"1$O:10"}
+(*) UNDEF
+04C323EF  33 C0                         xor eax, eax
+04C323F1  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+176
+
+#24		{R:"1$O:10"}
+(*) BOOL
+04C323F7  33 C9                         xor ecx, ecx
+04C323F9  8A 0D CC CC CC CC             mov cl, [CCCCCCCCH] ; $$DATA$$+177
+04C323FF  0B C1                         or eax, ecx
+
+#25
+#26		{R:"1$O:12"}
+(*) BOOL
+04C32401  33 C9                         xor ecx, ecx
+04C32403  8A 0D CC CC CC CC             mov cl, [CCCCCCCCH] ; $$DATA$$+178
+04C32409  23 C1                         and eax, ecx
+
+#27		{R:"1$O:12"}
+(*) BOOL
+04C3240B  84 C0                         test al, al
+04C3240D  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+86
+
+#28
+#29
+#30		{R:"1$FB:HIGHRTDTIMER_0"}
+(*) BOOL
+04C32414  50                            push eax
+04C32415  BB CC CC CC CC                mov ebx, CCCCCCCCH ; $$DATA$$+82
+04C3241A  E8 28 FB FF FF                call 04C31F47H
+04C3241F  58                            pop eax
+
+#31		{R:"1$FB:HIGHRTDTIMER_0"}
+(*) BOOL
+04C32420  33 C0                         xor eax, eax
+04C32422  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+91
+04C32428  84 C0                         test al, al
+04C3242A  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+96
+
+END_PROGRAM
+**************************************************
+	List program: SETTIMEDALARMS
+**************************************************
+
+PROGRAM SETTIMEDALARMS
+
+END_PROGRAM
+
+#0		{SRC:SETTIMEDALARMS}
+#1
+#2
+#3
+#4
+#5		{L:1}
+(*) UNDEF
+04C32431  33 C0                         xor eax, eax
+04C32433  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+52
+
+#6		{L:1}
+(-) BOOL
+04C32439  84 C0                         test al, al
+04C3243B  90 74 11 90 90 90             je 04C3244FH
+
+#7
+#8
+#9
+#10
+#11		{L:2}
+(*) BOOL
+04C32441  B8 01 00 00 00                mov eax, 1
+04C32446  84 C0                         test al, al
+04C32448  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; %M110+0
+
+#12
+#13
+#14
+#15
+#16
+#17
+#18		{L:5}
+(*) UNDEF
+04C3244F  33 C0                         xor eax, eax
+04C32451  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+61
+
+#19		{L:5}
+(-) BOOL
+04C32457  84 C0                         test al, al
+04C32459  90 74 11 90 90 90             je 04C3246DH
+
+#20
+#21
+#22
+#23
+#24		{L:6}
+(*) BOOL
+04C3245F  B8 01 00 00 00                mov eax, 1
+04C32464  84 C0                         test al, al
+04C32466  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; %M110+6
+
+#25
+#26
+#27
+#28
+#29
+#30
+#31		{L:9}
+(*) UNDEF
+04C3246D  33 C0                         xor eax, eax
+04C3246F  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+96
+
+#32		{L:9}
+(-) BOOL
+04C32475  84 C0                         test al, al
+04C32477  90 74 11 90 90 90             je 04C3248BH
+
+#33
+#34
+#35
+#36
+#37		{L:10}
+(*) BOOL
+04C3247D  B8 01 00 00 00                mov eax, 1
+04C32482  84 C0                         test al, al
+04C32484  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; %M110+8
+
+#38
+#39
+#40
+#41
+#42
+#43
+#44		{L:13}
+(*) UNDEF
+04C3248B  33 C0                         xor eax, eax
+04C3248D  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+123
+
+#45		{L:13}
+(-) BOOL
+04C32493  84 C0                         test al, al
+04C32495  90 74 11 90 90 90             je 04C324A9H
+
+#46
+#47
+#48
+#49
+#50		{L:14}
+(*) BOOL
+04C3249B  B8 01 00 00 00                mov eax, 1
+04C324A0  84 C0                         test al, al
+04C324A2  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; %M110+4
+
+#51
+#52
+#53
+#54
+#55
+#56
+#57		{L:17}
+(*) UNDEF
+04C324A9  33 C0                         xor eax, eax
+04C324AB  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+124
+
+#58		{L:17}
+(-) BOOL
+04C324B1  84 C0                         test al, al
+04C324B3  90 74 11 90 90 90             je 04C324C7H
+
+#59
+#60
+#61
+#62
+#63		{L:18}
+(*) BOOL
+04C324B9  B8 01 00 00 00                mov eax, 1
+04C324BE  84 C0                         test al, al
+04C324C0  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; %M110+2
+
+END_PROGRAM
+**************************************************
+	List program: HIGHFLOATDETECT
+**************************************************
+
+PROGRAM HIGHFLOATDETECT
+
+        VAR
+HIGHFLOATALARMDELAYTIMER_0 : TON;
+	END_VAR
+
+END_PROGRAM
+
+#0		{SRC:HIGHFLOATDETECT}
+#1
+#2
+#3
+#4
+#5
+#6
+#7		{R:"1$F:3"}
+(*) UNDEF
+04C324C7  33 C0                         xor eax, eax
+04C324C9  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; %M110+22
+
+#8		{R:"1$F:3"}
+(*) BOOL
+04C324CF  84 C0                         test al, al
+04C324D1  0F 94 C0                      sete al
+
+#9
+#10		{R:"1$F:3"}
+(*) BOOL
+04C324D4  84 C0                         test al, al
+04C324D6  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+179
+
+#11		{R:"1$O:9"}
+(*) UNDEF
+04C324DD  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; %M110+28
+
+#12		{R:"1$O:9"}
+(*) INT
+04C324E4  B9 0A 00 00 00                mov ecx, 10
+04C324E9  F7 E9                         imul ecx
+
+#13		{R:"1$O:9"}
+(*) INT
+04C324EB  89 05 CC CC CC CC             mov [CCCCCCCCH], eax ; $$DATA$$+131
+
+#14
+#15		{R:"1$O:2"}
+(*) UNDEF
+04C324F1  33 C0                         xor eax, eax
+04C324F3  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+76
+
+#16		{R:"1$O:2"}
+(*) BOOL
+04C324F9  33 C9                         xor ecx, ecx
+04C324FB  8A 0D CC CC CC CC             mov cl, [CCCCCCCCH] ; $$DATA$$+179
+04C32501  23 C1                         and eax, ecx
+
+#17		{R:"1$O:2"}
+(*) BOOL
+04C32503  84 C0                         test al, al
+04C32505  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+130
+
+#18
+#19
+#20		{R:"1$FB:HIGHFLOATALARMDELAYTIMER_0"}
+(*) BOOL
+04C3250C  50                            push eax
+04C3250D  BB CC CC CC CC                mov ebx, CCCCCCCCH ; $$DATA$$+126
+04C32512  E8 30 FA FF FF                call 04C31F47H
+04C32517  58                            pop eax
+
+#21		{R:"1$FB:HIGHFLOATALARMDELAYTIMER_0"}
+(*) BOOL
+04C32518  33 C0                         xor eax, eax
+04C3251A  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+135
+04C32520  84 C0                         test al, al
+04C32522  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+123
+
+END_PROGRAM
+**************************************************
+	List program: SEALFAILDETECT
+**************************************************
+
+PROGRAM SEALFAILDETECT
+
+        VAR
+SEALFAILALARMDELAYTIMER_0 : TON;
+	END_VAR
+
+END_PROGRAM
+
+#0		{SRC:SEALFAILDETECT}
+#1
+#2
+#3
+#4
+#5
+#6
+#7		{R:"1$F:3"}
+(*) UNDEF
+04C32529  33 C0                         xor eax, eax
+04C3252B  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; %M110+20
+
+#8		{R:"1$F:3"}
+(*) BOOL
+04C32531  84 C0                         test al, al
+04C32533  0F 94 C0                      sete al
+
+#9
+#10		{R:"1$F:3"}
+(*) BOOL
+04C32536  84 C0                         test al, al
+04C32538  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+180
+
+#11		{R:"1$O:9"}
+(*) UNDEF
+04C3253F  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; %M110+30
+
+#12		{R:"1$O:9"}
+(*) INT
+04C32546  B9 0A 00 00 00                mov ecx, 10
+04C3254B  F7 E9                         imul ecx
+
+#13		{R:"1$O:9"}
+(*) INT
+04C3254D  89 05 CC CC CC CC             mov [CCCCCCCCH], eax ; $$DATA$$+147
+
+#14
+#15		{R:"1$O:2"}
+(*) UNDEF
+04C32553  33 C0                         xor eax, eax
+04C32555  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+77
+
+#16		{R:"1$O:2"}
+(*) BOOL
+04C3255B  33 C9                         xor ecx, ecx
+04C3255D  8A 0D CC CC CC CC             mov cl, [CCCCCCCCH] ; $$DATA$$+180
+04C32563  23 C1                         and eax, ecx
+
+#17		{R:"1$O:2"}
+(*) BOOL
+04C32565  84 C0                         test al, al
+04C32567  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+146
+
+#18
+#19
+#20		{R:"1$FB:SEALFAILALARMDELAYTIMER_0"}
+(*) BOOL
+04C3256E  50                            push eax
+04C3256F  BB CC CC CC CC                mov ebx, CCCCCCCCH ; $$DATA$$+142
+04C32574  E8 CE F9 FF FF                call 04C31F47H
+04C32579  58                            pop eax
+
+#21		{R:"1$FB:SEALFAILALARMDELAYTIMER_0"}
+(*) BOOL
+04C3257A  33 C0                         xor eax, eax
+04C3257C  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+151
+04C32582  84 C0                         test al, al
+04C32584  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; $$DATA$$+124
+
+04C3258B  61                            popad
+04C3258C  5D                            pop ebp
+
+04C3258D  C3                            ret
+
+END_PROGRAM
+
+
+**************************************************
+	Target variable image generation
+**************************************************
+
+
+*** INPUT:
+04C3258E  66 8B 0D CC CC CC CC          mov cx, [CCCCCCCCH] ; %I1+0
+04C32595  66 89 0D CC CC CC CC          mov [CCCCCCCCH], cx ; $$DATA$$+26
+
+04C3259C  66 8B 0D CC CC CC CC          mov cx, [CCCCCCCCH] ; %I1+2
+04C325A3  66 89 0D CC CC CC CC          mov [CCCCCCCCH], cx ; $$DATA$$+28
+
+04C325AA  66 8B 0D CC CC CC CC          mov cx, [CCCCCCCCH] ; %I1+4
+04C325B1  66 89 0D CC CC CC CC          mov [CCCCCCCCH], cx ; $$DATA$$+32
+
+04C325B8  66 8B 0D CC CC CC CC          mov cx, [CCCCCCCCH] ; %I1+8
+04C325BF  66 89 0D CC CC CC CC          mov [CCCCCCCCH], cx ; $$DATA$$+34
+
+04C325C6  66 8B 0D CC CC CC CC          mov cx, [CCCCCCCCH] ; %I1+12
+04C325CD  66 89 0D CC CC CC CC          mov [CCCCCCCCH], cx ; $$DATA$$+58
+
+04C325D4  66 8B 0D CC CC CC CC          mov cx, [CCCCCCCCH] ; %I1+6
+04C325DB  66 89 0D CC CC CC CC          mov [CCCCCCCCH], cx ; $$DATA$$+78
+
+04C325E2  8A 0D CC CC CC CC             mov cl, [CCCCCCCCH] ; %I0+1
+04C325E8  88 0D CC CC CC CC             mov [CCCCCCCCH], cl ; $$DATA$$+76
+
+04C325EE  8A 0D CC CC CC CC             mov cl, [CCCCCCCCH] ; %I0+0
+04C325F4  88 0D CC CC CC CC             mov [CCCCCCCCH], cl ; $$DATA$$+77
+
+04C325FA  C3                            ret
+
+
+*** OUTPUT:
+04C325FB  C3                            ret
+
+
+
+**************************************************
+	Task BACKGROUND init code
+**************************************************
+
+04C325FC  55                            push ebp
+04C325FD  8B EC                         mov ebp, esp
+
+04C325FF  C6 05 CC CC CC CC 01          mov byte ptr [CCCCCCCCH], 01H ; $$DATA$$+22
+
+04C32606  8B E5                         mov esp, ebp
+04C32608  5D                            pop ebp
+
+04C32609  C3                            ret
+
+**************************************************
+	List program: SETDEFAULTS
+**************************************************
+
+PROGRAM SETDEFAULTS
+
+        VAR CONSTANT
+VIBRATIONSETDEFAULT : INT := 550;
+MOTORSETPOINTDEFAULT : INT := 311;	{ DE:"should be 312" }
+BOTTOMBEARINGSETPOINTDEFAULT : INT := 311;
+	END_VAR
+
+END_PROGRAM
+
+04C32620  55                            push ebp
+04C32621  8B EC                         mov ebp, esp
+04C32623  60                            pushad
+
+#0		{SRC:SETDEFAULTS}
+#1
+#2
+#3
+#4		{L:1}
+(*) UDINT
+04C32624  B8 3C 00 00 00                mov eax, 60
+04C32629  66 89 05 CC CC CC CC          mov [CCCCCCCCH], ax ; %M110+16
+
+#5
+#6
+#7		{L:2}
+(*) INT
+04C32630  B8 3C 00 00 00                mov eax, 60
+04C32635  66 89 05 CC CC CC CC          mov [CCCCCCCCH], ax ; %M110+14
+
+#8
+#9
+#10		{L:3}
+(*) INT
+04C3263C  B8 2D 00 00 00                mov eax, 45
+04C32641  66 89 05 CC CC CC CC          mov [CCCCCCCCH], ax ; %M110+30
+
+#11
+#12
+#13		{L:4}
+(*) INT
+04C32648  B8 2D 00 00 00                mov eax, 45
+04C3264D  66 89 05 CC CC CC CC          mov [CCCCCCCCH], ax ; %M110+28
+
+#14
+#15
+#16		{L:5}
+(*) INT
+04C32654  B8 CC CC CC CC                mov eax, CCCCCCCCH ; %M101+0
+
+#17		{L:5}
+(*) @INT
+04C32659  89 05 CC CC CC CC             mov [CCCCCCCCH], eax ; $$DATA$$+184
+
+#18		{L:5}
+(*) UNDEF
+04C3265F  8B 05 CC CC CC CC             mov eax, [CCCCCCCCH] ; $$DATA$$+184
+
+#19		{L:5}
+(-) @INT
+04C32665  68 37 01 00 00                push 311
+04C3266A  50                            push eax
+04C3266B  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; SYSWRITEPARINT
+04C32670  FF D1                         call ecx
+04C32672  81 C4 08 00 00 00             add esp, 8
+
+#20
+#21
+#22		{L:6}
+(*) BOOL
+04C32678  B8 CC CC CC CC                mov eax, CCCCCCCCH ; %M101+2
+
+#23		{L:6}
+(*) @BOOL
+04C3267D  89 05 CC CC CC CC             mov [CCCCCCCCH], eax ; $$DATA$$+184
+
+#24		{L:6}
+(*) UNDEF
+04C32683  8B 05 CC CC CC CC             mov eax, [CCCCCCCCH] ; $$DATA$$+184
+
+#25		{L:6}
+(-) @BOOL
+04C32689  68 37 01 00 00                push 311
+04C3268E  50                            push eax
+04C3268F  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; SYSWRITEPARINT
+04C32694  FF D1                         call ecx
+04C32696  81 C4 08 00 00 00             add esp, 8
+
+#26
+#27
+#28		{L:7}
+(*) BOOL
+04C3269C  B8 CC CC CC CC                mov eax, CCCCCCCCH ; %M101+4
+
+#29		{L:7}
+(*) @BOOL
+04C326A1  89 05 CC CC CC CC             mov [CCCCCCCCH], eax ; $$DATA$$+184
+
+#30		{L:7}
+(*) UNDEF
+04C326A7  8B 05 CC CC CC CC             mov eax, [CCCCCCCCH] ; $$DATA$$+184
+
+#31		{L:7}
+(-) @BOOL
+04C326AD  68 37 01 00 00                push 311
+04C326B2  50                            push eax
+04C326B3  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; SYSWRITEPARINT
+04C326B8  FF D1                         call ecx
+04C326BA  81 C4 08 00 00 00             add esp, 8
+
+#32
+#33
+#34		{L:8}
+(*) BOOL
+04C326C0  B8 CC CC CC CC                mov eax, CCCCCCCCH ; %M101+6
+
+#35		{L:8}
+(*) @BOOL
+04C326C5  89 05 CC CC CC CC             mov [CCCCCCCCH], eax ; $$DATA$$+184
+
+#36		{L:8}
+(*) UNDEF
+04C326CB  8B 05 CC CC CC CC             mov eax, [CCCCCCCCH] ; $$DATA$$+184
+
+#37		{L:8}
+(-) @BOOL
+04C326D1  68 37 01 00 00                push 311
+04C326D6  50                            push eax
+04C326D7  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; SYSWRITEPARINT
+04C326DC  FF D1                         call ecx
+04C326DE  81 C4 08 00 00 00             add esp, 8
+
+#38
+#39
+#40		{L:9}
+(*) BOOL
+04C326E4  B8 CC CC CC CC                mov eax, CCCCCCCCH ; %M101+8
+
+#41		{L:9}
+(*) @BOOL
+04C326E9  89 05 CC CC CC CC             mov [CCCCCCCCH], eax ; $$DATA$$+184
+
+#42		{L:9}
+(*) UNDEF
+04C326EF  8B 05 CC CC CC CC             mov eax, [CCCCCCCCH] ; $$DATA$$+184
+
+#43		{L:9}
+(-) @BOOL
+04C326F5  68 26 02 00 00                push 550
+04C326FA  50                            push eax
+04C326FB  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; SYSWRITEPARINT
+04C32700  FF D1                         call ecx
+04C32702  81 C4 08 00 00 00             add esp, 8
+
+END_PROGRAM
+**************************************************
+	List program: TESTING
+**************************************************
+
+PROGRAM TESTING
+
+        VAR CONSTANT
+MOTOR_SETPOINT : INT := 312;
+	END_VAR
+
+END_PROGRAM
+
+#0		{SRC:TESTING}
+#1
+#2
+#3
+#4
+#5
+#6
+#7		{R:"1$F:1"}
+(*) UNDEF
+04C32708  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; %M101+0
+
+#8		{R:"1$F:1"}
+(-) INT
+04C3270F  68 38 01 00 00                push 312
+04C32714  50                            push eax
+04C32715  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; SYSWRITEPARINT
+04C3271A  FF D1                         call ecx
+04C3271C  81 C4 08 00 00 00             add esp, 8
+
+04C32722  61                            popad
+04C32723  5D                            pop ebp
+
+04C32724  C3                            ret
+
+END_PROGRAM
+
+
+**************************************************
+	Target variable image generation
+**************************************************
+
+
+*** INPUT:
+04C32725  C3                            ret
+
+
+*** OUTPUT:
+04C32726  C3                            ret
+
+
+
+**************************************************
+	Task INIT init code
+**************************************************
+
+04C32727  55                            push ebp
+04C32728  8B EC                         mov ebp, esp
+
+04C3272A  8B E5                         mov esp, ebp
+04C3272C  5D                            pop ebp
+
+04C3272D  C3                            ret
+
+
+**************************************************
+VIRTUAL TABLES:
+
+--------------------------------------------------------
+VIRTUAL TABLES INDEXES
+--------------------------------------------------------
+
+
+**************************************************
+	Global init code
+**************************************************
+
+04C32740  55                            push ebp
+04C32741  8B EC                         mov ebp, esp
+
+04C32743  8B E5                         mov esp, ebp
+04C32745  5D                            pop ebp
+
+04C32746  C3                            ret
+
+
+
+**************************************************
+	Global RETAIN init code
+**************************************************
+
+04C32747  55                            push ebp
+04C32748  8B EC                         mov ebp, esp
+
+04C3274A  8B E5                         mov esp, ebp
+04C3274C  5D                            pop ebp
+
+04C3274D  C3                            ret
+
+
+
+**************************************************
+	Task $$VirtualTables init code
+**************************************************
+
+04C3274E  55                            push ebp
+04C3274F  8B EC                         mov ebp, esp
+
+04C32751  8B E5                         mov esp, ebp
+04C32753  5D                            pop ebp
+
+04C32754  C3                            ret
+
+
+
+********************************************
+MEMORY MAP
+********************************************
+
+Code area type:			main code
+Start code area:		 4C30020h
+End code area:			 4C32760h
+Code size:			    2740h
+
+Start local data area:		 4A90020h
+End local data area:		 4A900DCh
+Local data size:		      BCh
+
+Start retentive data area:	       0h
+End retentive data area:	       0h
+Retentive data size:		       0h
+
+Start bit data area:		       0h
+End bit data area:		       0h
+Bit data size:			       0h
+
+
+
+********************************************
+CODE ID:                                E4AF93E3
+DEBUG MEMO ID:                          0000B332
+FULL MEMO ID:                           00008BC1
+RELOCATION ADDR:                        04C30020
+********************************************
