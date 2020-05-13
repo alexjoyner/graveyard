@@ -1,0 +1,15 @@
+version: '3'
+services:
+  hello-name:
+    image: rosco9awj/example-hello-name
+    build:
+      ./hello-name
+    ports:
+      - "3010:80"
+  web-api:
+    build:
+      ./api
+    ports:
+      - "3002:80"
+    depends_on:
+      - hello-name
