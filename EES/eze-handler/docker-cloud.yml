@@ -1,0 +1,8 @@
+# Example of the docker stack file used to
+# deploy just this service through docker cloud
+eze-handler:
+  autoredeploy: true
+  image: 'rosco9awj/eze-handler:latest'
+  ports:
+    - '80:80'
+  restart: always

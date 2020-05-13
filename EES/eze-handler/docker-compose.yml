@@ -1,0 +1,12 @@
+version: '2'
+services:
+  eze-handler:
+    build:
+      context: .
+      args:
+        - NODE_ENV=development
+    ports:
+      - "8080:80"
+    command: nodemon index.js -L
+    volumes:
+      - ./index.js:/usr/src/app/index.js
