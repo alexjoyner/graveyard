@@ -1,0 +1,39 @@
+{
+  "extends": [
+    "airbnb",
+    "plugin:cypress/recommended"
+  ],
+  "env": {
+    "browser": true,
+    "cypress/globals": true
+  },
+  "plugins": [
+    "cypress"
+  ],
+  "rules": {
+    "import/prefer-default-export": 0,
+    "react/jsx-filename-extension": 0,
+    "react/prop-types": [
+      2,
+      {
+        "ignore": "children"
+      }
+    ],
+    "linebreak-style": 0,
+    "import/no-named-as-default": 0,
+    "no-use-before-define": 0,
+    "no-unused-expressions": [
+      "error",
+      {
+        "allowTaggedTemplates": 1
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": 1
+      }
+    ],
+    "spaced-comment": 0
+  }
+}
