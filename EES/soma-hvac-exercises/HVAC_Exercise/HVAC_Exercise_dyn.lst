@@ -1,0 +1,134 @@
+***********************************************************************
+*
+*	DYNAMIC LINK AND INDIRECT ALLOCATION LISTING FOR: HVAC_Exercise
+*
+***********************************************************************
+
+
+***************************************************
+	 FIRST CODE AREA
+***************************************************
+
+***************************************************
+	 DATABLOCK PATCHES
+***************************************************
+*
+* List of data blocks that will be checked run-time for consistency with
+* their definition available at compile-time
+*
+*
+* List of all references to data allocated on data blocks
+* along with the whole information required by the run-time linker
+*
+
+***************************************************
+	 FUNCTION PATCHES
+***************************************************
+
+***************************************************
+	MEMORY AREA ACCESS PATCH
+***************************************************
+*
+* List of all references to data allocated in memory areas
+* along with the whole information required by the run-time linker
+*
+*
+*	2 REFERENCE(S) TO 16-BIT VAR AT BYTE #8 OF DATA AREA
+0000	44 02 02 00 08 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000A07
+0008	07 0A 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000A13
+000C	13 0A 00 00 
+
+*
+*	1 REFERENCE(S) TO 16-BIT VAR AT BYTE #10 OF DATA AREA
+0010	44 02 01 00 0A 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000A1A
+0018	1A 0A 00 00 
+
+*
+*	1 REFERENCE(S) TO 0-BIT VAR AT BYTE #12 OF DATA AREA
+001C	44 00 01 00 0C 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000A43
+0024	43 0A 00 00 
+
+*
+*	1 REFERENCE(S) TO 16-BIT VAR AT BYTE #12 OF DATA AREA
+0028	44 02 01 00 0C 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000A21
+0030	21 0A 00 00 
+
+*
+*	1 REFERENCE(S) TO 16-BIT VAR AT BYTE #14 OF DATA AREA
+0034	44 02 01 00 0E 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000A2F
+003C	2F 0A 00 00 
+
+*
+*	1 REFERENCE(S) TO 16-BIT VAR AT BYTE #16 OF DATA AREA
+0040	44 02 01 00 10 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000A3D
+0048	3D 0A 00 00 
+
+*
+*	1 REFERENCE(S) TO 8-BIT VAR AT BYTE #18 OF DATA AREA
+004C	44 01 01 00 12 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000A51
+0054	51 0A 00 00 
+
+*
+*	1 REFERENCE(S) TO 8-BIT VAR AT BYTE #19 OF DATA AREA
+0058	44 01 01 00 13 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000A62
+0060	62 0A 00 00 
+
+*
+*	1 REFERENCE(S) TO 16-BIT VAR AT BYTE #20 OF DATA AREA
+0064	44 02 01 00 14 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000A28
+006C	28 0A 00 00 
+
+*
+*	1 REFERENCE(S) TO 16-BIT VAR AT BYTE #22 OF DATA AREA
+0070	44 02 01 00 16 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000A36
+0078	36 0A 00 00 
+
+*
+*	1 REFERENCE(S) TO 8-BIT VAR AT BYTE #24 OF DATA AREA
+007C	44 01 01 00 18 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000A5A
+0084	5A 0A 00 00 
+
+*
+*	1 REFERENCE(S) TO 8-BIT VAR AT BYTE #25 OF DATA AREA
+0088	44 01 01 00 19 00 00 00 
+
+*		Instruction type: 0x00
+*		Code offset: 0x000A6B
+0090	6B 0A 00 00 
+

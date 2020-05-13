@@ -1,0 +1,21 @@
+﻿	(******************************)
+	(*                            *)
+	(*     EXPORTED VARIABLES     *)
+	(*                            *)
+	(******************************)
+
+        VAR_GLOBAL
+	{G:"Parameters"}
+Setpoint AT %MW101.0 : INT;
+Differentiation AT %MW101.1 : INT;
+	{G:"Variables"}
+Ambient_Temp AT %MW110.0 : INT;
+	{G:"Mappings"}
+NTC_Probe AT %IW1.0 : INT;	{ DE:"AIL1 analogue input" }
+Output_Cooling AT %QX1.0 : BOOL;	{ DE:"DOL1 digital output" }
+Alarm AT %QX1.1 : BOOL;	{ DE:"DOL2 digital output" }
+NTC_Probe_Exp AT %IW11.0 : INT;	{ DE:"AIE1 analogue input" }
+Output_Cooling_Exp AT %QX11.0 : BOOL;	{ DE:"DOE1 digital output" }
+Alarm_Exp AT %QX11.1 : BOOL;	{ DE:"DOE2 digital output" }
+	END_VAR
+

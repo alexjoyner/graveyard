@@ -1,0 +1,606 @@
+***********************************************************************
+*
+*	CODE GENERATION LISTING FOR: HVAC_Attempt_2
+*	COMPILER VERSION: 2.2.0
+*
+***********************************************************************
+
+***********************************************************************
+UNUSED FUNCTIONS:
+
+	BITTOWORD
+	BITTOBYTE
+	BYTETOWORD
+	F_MATRIXREADBYTE
+	DEAD_BAND
+	SGN
+***********************************************************************
+
+***********************************************************************
+UNUSED FUNCTION BLOCKS:
+
+	PULSE
+	FF_D
+	BYTETOBIT
+	WORDTOBIT
+	WORDTOBYTE
+	CTD
+	CTD_DINT
+	CTD_UDINT
+	CTU
+	CTU_DINT
+	CTU_UDINT
+	CTUD
+	CTUD_DINT
+	CTUD_UDINT
+	TOF
+	TON
+	TP
+	SR
+	RS
+	R_TRIG
+	F_TRIG
+	YEARLYEVENT
+	WEEKSCHEDULE
+	THREEPOINTACTUATOR
+	STEPCONTROLLERANALOG
+	PIDAUTOTUNING
+	PIDADVANCED
+	OPERATINGHOURS
+	DAYLIGHTSAVING
+	FB_SETMASKINGPATTERN
+	FB_SETFORMATINFOPATTERN
+	FB_SETFINDERPATTERN
+	FB_SETBITSTREAM
+	FB_SETALIGNMENTPATTERN
+	FB_MATRIXWRITEBYTE
+	FB_GETRSCODEWORD
+	QRCODEGENERATOR
+	ECFANMGMT
+	PSYCHROMETRIC
+	AHUTEMPCNTRLSTRATEGY
+	AHUPLANTMODESTRATEGY
+	REDUNDANTPUMPCNTRL
+	COPCALCULATION
+	THERMALPOWERCALCULATION
+	PULSE2COUNTER
+	COUNTER2ENERGY
+	FLOATINGHIGHPRESCNTRL
+	COMPMGMTVS
+	THERMALPOWER_ENTHALPY
+	DOUBLEINTERPO_5X8
+	FLUID_DENSITY
+	FLUID_ENTHALPY
+	TEMP2PRESS
+	PRESS2TEMP
+	FANMGMT
+	COMPMGMT
+	COMPCNTRL_SLIDER
+	COMPCNTRL_VS
+	COMPCNTRL_ONOFF
+	COMPAPPLIMIT
+	COMPALARMMGMT
+	ATV71MODBUSCOM
+	ATV61MODBUSCOM
+	ATV32MODBUSCOM
+	ATV31MODBUSCOM
+	ATV312MODBUSCOM
+	ATV21MODBUSCOM
+	ATV212MODBUSCOM
+	ATV12MODBUSCOM
+	AUXPUMPCTRL
+	CAVTPROT
+	COMPSP
+	COMPSPFLOW
+	DEVSWCPUMPCTRL
+	FSPUMPCTRL
+	OPINTAUXPUMP
+	OPINTPUMP
+	OPPRTY
+	PID_PARA_CHECK
+	PIPEFILL
+	PUMPAVAI
+	PUMPFBCKMAPP
+	PUMPPID
+	PUMPPIDSTAG
+	VSDAVAI
+	VSDCTRL
+	VSDNU
+	VSPUMPCTRL
+	FT_INT
+	FT_PID
+	FT_DERIV
+***********************************************************************
+
+**************************************************
+	List function block: HYSTERESIS
+**************************************************
+
+FUNCTION_BLOCK HYSTERESIS
+
+        VAR_INPUT
+TEMPERATURE : INT;	{ DE:"Analogue Input 1" }
+SETPOINT : INT;	{ DE:"Set point" }
+DIFFERENTIATION : INT;	{ DE:"Delta" }
+	END_VAR
+
+        VAR_OUTPUT
+ALARM : BOOL;	{ DE:"Probe Alarm" }
+OUTPUT : BOOL;	{ DE:"Actuator" }
+	END_VAR
+
+END_FUNCTION_BLOCK
+
+06661C90  55                            push ebp
+06661C91  8B EB                         mov ebp, ebx
+
+#0		{SRC:HYSTERESIS}
+#1
+#2
+#3
+#4
+#5		{L:2}
+(*) UNDEF
+06661C93  0F BF 45 00                   movsx eax, word ptr [ebp]
+
+#6		{L:2}
+(*) INT
+06661C97  50                            push eax
+06661C98  0F BF 45 02                   movsx eax, word ptr 2[ebp]
+
+#7		{L:2}
+(*) INT
+06661C9C  0F BF 4D 04                   movsx ecx, word ptr 4[ebp]
+06661CA0  03 C1                         add eax, ecx
+
+#8		{L:2}
+(*) INT
+06661CA2  8B C8                         mov ecx, eax
+06661CA4  58                            pop eax
+06661CA5  3B C1                         cmp eax, ecx
+06661CA7  0F 9D C0                      setge al
+06661CAA  25 FF 00 00 00                and eax, 0FFh
+
+#9		{L:2}
+(-) BOOL
+06661CAF  84 C0                         test al, al
+06661CB1  90 74 0E 90 90 90             je 06661CC2H
+
+#10
+#11
+#12
+#13
+#14		{L:3}
+(*) BOOL
+06661CB7  B8 01 00 00 00                mov eax, 1
+06661CBC  84 C0                         test al, al
+06661CBE  0F 95 45 07                   setne 7[ebp]
+
+#15
+#16
+#17
+#18
+#19
+#20
+#21		{L:6}
+(*) UNDEF
+06661CC2  0F BF 45 00                   movsx eax, word ptr [ebp]
+
+#22		{L:6}
+(*) INT
+06661CC6  0F BF 4D 02                   movsx ecx, word ptr 2[ebp]
+06661CCA  3B C1                         cmp eax, ecx
+06661CCC  0F 9C C0                      setl al
+06661CCF  25 FF 00 00 00                and eax, 0FFh
+
+#23		{L:6}
+(-) BOOL
+06661CD4  84 C0                         test al, al
+06661CD6  90 74 0E 90 90 90             je 06661CE7H
+
+#24
+#25
+#26
+#27
+#28		{L:7}
+(*) BOOL
+06661CDC  B8 00 00 00 00                mov eax, 0
+06661CE1  84 C0                         test al, al
+06661CE3  0F 95 45 07                   setne 7[ebp]
+
+#29
+#30
+#31
+#32
+#33
+#34
+#35		{L:11}
+(*) UNDEF
+06661CE7  0F BF 45 00                   movsx eax, word ptr [ebp]
+
+#36		{L:11}
+(*) INT
+06661CEB  3D 00 80 FF FF                cmp eax, -32768
+06661CF0  0F 94 C0                      sete al
+06661CF3  25 FF 00 00 00                and eax, 0FFh
+
+#37		{L:11}
+(-) BOOL
+06661CF8  84 C0                         test al, al
+06661CFA  90 74 13 90 90 90             je 06661D10H
+
+#38
+#39
+#40
+#41
+#42		{L:12}
+(*) BOOL
+06661D00  B8 01 00 00 00                mov eax, 1
+06661D05  84 C0                         test al, al
+06661D07  0F 95 45 06                   setne 6[ebp]
+
+#43
+(-) BOOL
+06661D0B  EB 0E 90 90 90                jmp 06661D1BH
+
+#44
+#45
+#46
+#47
+#48
+#49		{L:13}
+(*) BOOL
+06661D10  B8 00 00 00 00                mov eax, 0
+06661D15  84 C0                         test al, al
+06661D17  0F 95 45 06                   setne 6[ebp]
+
+06661D1B  5D                            pop ebp
+
+06661D1C  C3                            ret
+
+
+Frame allocation:
+
+	0000       : VAR TEMPERATURE
+	0002       : VAR SETPOINT
+	0004       : VAR DIFFERENTIATION
+	0006 bit  0: VAR ALARM
+	0007 bit  0: VAR OUTPUT
+
+END_FUNCTION_BLOCK
+**************************************************
+	List program: INITPARDB
+**************************************************
+
+PROGRAM INITPARDB
+
+        VAR
+WARNINGSKILLER : USINT;
+DUMMYCRC32 : UDINT;
+	END_VAR
+
+END_PROGRAM
+
+06661D20  55                            push ebp
+06661D21  8B EC                         mov ebp, esp
+06661D23  60                            pushad
+
+#0		{SRC:INITPARDB}
+#1
+#2
+#3
+#4		{L:3}
+(*) UDINT
+06661D24  B8 A1 35 D7 58                mov eax, 1490498977
+06661D29  89 05 CC CC CC CC             mov [CCCCCCCCH], eax ; $$DATA$$+12
+
+#5
+#6
+#7		{L:5}
+(*) UDINT
+06661D2F  B8 CC CC CC CC                mov eax, CCCCCCCCH ; $$CODE$$+4862
+
+#8		{L:5}
+(*) @UDINT
+06661D34  89 05 CC CC CC CC             mov [CCCCCCCCH], eax ; $$DATA$$+16
+
+#9		{L:5}
+(*) UNDEF
+06661D3A  8B 05 CC CC CC CC             mov eax, [CCCCCCCCH] ; $$DATA$$+16
+
+#10		{L:5}
+(-) @UDINT
+06661D40  68 03 00 00 00                push 3
+06661D45  50                            push eax
+06661D46  B9 CC CC CC CC                mov ecx, CCCCCCCCH ; SYSDBASE_SETEXTTABLE
+06661D4B  FF D1                         call ecx
+06661D4D  81 C4 08 00 00 00             add esp, 8
+
+#11		{L:5}
+(*) USINT
+06661D53  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+20
+
+06661D59  61                            popad
+06661D5A  5D                            pop ebp
+
+06661D5B  C3                            ret
+
+END_PROGRAM
+
+
+**************************************************
+	Target variable image generation
+**************************************************
+
+
+*** INPUT:
+06661D5C  C3                            ret
+
+
+*** OUTPUT:
+06661D5D  C3                            ret
+
+
+
+**************************************************
+	Task SERV init code
+**************************************************
+
+06661D5E  55                            push ebp
+06661D5F  8B EC                         mov ebp, esp
+
+06661D61  8B E5                         mov esp, ebp
+06661D63  5D                            pop ebp
+
+06661D64  C3                            ret
+
+**************************************************
+	List program: THERMOSTAT
+**************************************************
+
+PROGRAM THERMOSTAT
+
+        VAR
+HYSTERSIS_00 : HYSTERESIS;
+INPUT_TEMP : INT;
+INPUT_SETPOINT : INT;
+INPUT_DIFFERENTIATION : INT;
+OUTPUT_ALARM : BOOL;
+OUTPUT_OUTPUT : BOOL;
+	END_VAR
+
+END_PROGRAM
+
+06661D70  55                            push ebp
+06661D71  8B EC                         mov ebp, esp
+06661D73  60                            pushad
+
+#0		{SRC:THERMOSTAT}
+#1
+#2
+#3
+#4
+#5
+#6
+#7		{R:"1$FB:HYSTERSIS_00"}
+(*) UDINT
+06661D74  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; $$DATA$$+22
+06661D7B  66 89 05 CC CC CC CC          mov [CCCCCCCCH], ax ; $$DATA$$+24
+
+#8		{R:"1$FB:HYSTERSIS_00"}
+(*) INT
+06661D82  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; %M101+0
+06661D89  66 89 05 CC CC CC CC          mov [CCCCCCCCH], ax ; $$DATA$$+26
+
+#9		{R:"1$FB:HYSTERSIS_00"}
+(*) INT
+06661D90  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; %M101+2
+06661D97  66 89 05 CC CC CC CC          mov [CCCCCCCCH], ax ; $$DATA$$+28
+
+#10		{R:"1$FB:HYSTERSIS_00"}
+(*) INT
+06661D9E  50                            push eax
+06661D9F  BB CC CC CC CC                mov ebx, CCCCCCCCH ; $$DATA$$+24
+06661DA4  E8 E7 FE FF FF                call 06661C90H
+06661DA9  58                            pop eax
+
+#11		{R:"1$FB:HYSTERSIS_00"}
+(*) INT
+06661DAA  33 C0                         xor eax, eax
+06661DAC  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+30
+06661DB2  84 C0                         test al, al
+06661DB4  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; %Q1+1
+
+#12		{R:"1$FB:HYSTERSIS_00"}
+(*) BOOL
+06661DBB  33 C0                         xor eax, eax
+06661DBD  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; $$DATA$$+31
+06661DC3  84 C0                         test al, al
+06661DC5  0F 95 05 CC CC CC CC          setne [CCCCCCCCH] ; %Q1+0
+
+#13
+#14
+#15
+#16
+#17
+#18
+#19		{R:"2$O:1"}
+(*) BOOL
+06661DCC  0F BF 05 CC CC CC CC          movsx eax, word ptr [CCCCCCCCH] ; $$DATA$$+22
+06661DD3  66 89 05 CC CC CC CC          mov [CCCCCCCCH], ax ; %M110+0
+
+#20
+#21
+#22
+#23
+#24
+#25
+#26		{R:"3$O:1"}
+(*) INT
+06661DDA  33 C0                         xor eax, eax
+06661DDC  8A 05 CC CC CC CC             mov al, [CCCCCCCCH] ; %Q1+1
+06661DE2  88 05 CC CC CC CC             mov [CCCCCCCCH], al ; $$DATA$$+21
+
+06661DE8  61                            popad
+06661DE9  5D                            pop ebp
+
+06661DEA  C3                            ret
+
+END_PROGRAM
+
+
+**************************************************
+	Target variable image generation
+**************************************************
+
+
+*** INPUT:
+06661DEB  66 8B 0D CC CC CC CC          mov cx, [CCCCCCCCH] ; %I1+0
+06661DF2  66 89 0D CC CC CC CC          mov [CCCCCCCCH], cx ; $$DATA$$+22
+
+06661DF9  C3                            ret
+
+
+*** OUTPUT:
+06661DFA  C3                            ret
+
+
+
+**************************************************
+	Task BACKGROUND init code
+**************************************************
+
+06661DFB  55                            push ebp
+06661DFC  8B EC                         mov ebp, esp
+
+06661DFE  8B E5                         mov esp, ebp
+06661E00  5D                            pop ebp
+
+06661E01  C3                            ret
+
+**************************************************
+	List program: SETEXECUTIONTIME
+**************************************************
+
+PROGRAM SETEXECUTIONTIME
+
+END_PROGRAM
+
+06661E10  55                            push ebp
+06661E11  8B EC                         mov ebp, esp
+06661E13  60                            pushad
+
+06661E14  61                            popad
+06661E15  5D                            pop ebp
+
+06661E16  C3                            ret
+
+END_PROGRAM
+
+
+**************************************************
+	Target variable image generation
+**************************************************
+
+
+*** INPUT:
+06661E17  C3                            ret
+
+
+*** OUTPUT:
+06661E18  C3                            ret
+
+
+
+**************************************************
+	Task INIT init code
+**************************************************
+
+06661E19  55                            push ebp
+06661E1A  8B EC                         mov ebp, esp
+
+06661E1C  8B E5                         mov esp, ebp
+06661E1E  5D                            pop ebp
+
+06661E1F  C3                            ret
+
+
+**************************************************
+VIRTUAL TABLES:
+
+--------------------------------------------------------
+VIRTUAL TABLES INDEXES
+--------------------------------------------------------
+
+
+**************************************************
+	Global init code
+**************************************************
+
+06661E40  55                            push ebp
+06661E41  8B EC                         mov ebp, esp
+
+06661E43  8B E5                         mov esp, ebp
+06661E45  5D                            pop ebp
+
+06661E46  C3                            ret
+
+
+
+**************************************************
+	Global RETAIN init code
+**************************************************
+
+06661E47  55                            push ebp
+06661E48  8B EC                         mov ebp, esp
+
+06661E4A  8B E5                         mov esp, ebp
+06661E4C  5D                            pop ebp
+
+06661E4D  C3                            ret
+
+
+
+**************************************************
+	Task $$VirtualTables init code
+**************************************************
+
+06661E4E  55                            push ebp
+06661E4F  8B EC                         mov ebp, esp
+
+06661E51  8B E5                         mov esp, ebp
+06661E53  5D                            pop ebp
+
+06661E54  C3                            ret
+
+
+
+********************************************
+MEMORY MAP
+********************************************
+
+Code area type:			main code
+Start code area:		 6660020h
+End code area:			 6661E60h
+Code size:			    1E40h
+
+Start local data area:		 2DF0020h
+End local data area:		 2DF0040h
+Local data size:		      20h
+
+Start retentive data area:	       0h
+End retentive data area:	       0h
+Retentive data size:		       0h
+
+Start bit data area:		       0h
+End bit data area:		       0h
+Bit data size:			       0h
+
+
+
+********************************************
+CODE ID:                                D9433271
+DEBUG MEMO ID:                          00008598
+FULL MEMO ID:                           00002BEF
+RELOCATION ADDR:                        06660020
+********************************************

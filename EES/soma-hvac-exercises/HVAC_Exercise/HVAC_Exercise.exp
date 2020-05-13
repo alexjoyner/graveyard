@@ -1,0 +1,13 @@
+﻿	(******************************)
+	(*                            *)
+	(*     EXPORTED VARIABLES     *)
+	(*                            *)
+	(******************************)
+
+	VAR_GLOBAL
+	{G:"Mappings"}
+	Input_Temp AT %IW1.0 : INT; 	{ DE:"AIL1 analogue input" }
+	Output_Alarm AT %QX1.0 : BOOL; 	{ DE:"DOL1 digital output" }
+	Alarm AT %QX1.1 : BOOL; 	{ DE:"DOL2 digital output" }
+	END_VAR
+

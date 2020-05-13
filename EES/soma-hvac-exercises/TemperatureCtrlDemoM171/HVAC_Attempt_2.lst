@@ -1,0 +1,717 @@
+***********************************************************************
+*
+*	CODE GENERATION LISTING FOR: HVAC_Attempt_2
+*	COMPILER VERSION: 2.2.0
+*
+***********************************************************************
+
+***********************************************************************
+UNUSED FUNCTIONS:
+
+	BITTOWORD
+	BITTOBYTE
+	BYTETOWORD
+	F_MATRIXREADBYTE
+	DEAD_BAND
+	SGN
+***********************************************************************
+
+***********************************************************************
+UNUSED FUNCTION BLOCKS:
+
+	PULSE
+	FF_D
+	BYTETOBIT
+	WORDTOBIT
+	WORDTOBYTE
+	CTD
+	CTD_DINT
+	CTD_UDINT
+	CTU
+	CTU_DINT
+	CTU_UDINT
+	CTUD
+	CTUD_DINT
+	CTUD_UDINT
+	TOF
+	TON
+	TP
+	SR
+	RS
+	R_TRIG
+	F_TRIG
+	YEARLYEVENT
+	WEEKSCHEDULE
+	THREEPOINTACTUATOR
+	STEPCONTROLLERANALOG
+	PIDAUTOTUNING
+	PIDADVANCED
+	OPERATINGHOURS
+	DAYLIGHTSAVING
+	FB_SETMASKINGPATTERN
+	FB_SETFORMATINFOPATTERN
+	FB_SETFINDERPATTERN
+	FB_SETBITSTREAM
+	FB_SETALIGNMENTPATTERN
+	FB_MATRIXWRITEBYTE
+	FB_GETRSCODEWORD
+	QRCODEGENERATOR
+	ECFANMGMT
+	PSYCHROMETRIC
+	AHUTEMPCNTRLSTRATEGY
+	AHUPLANTMODESTRATEGY
+	REDUNDANTPUMPCNTRL
+	COPCALCULATION
+	THERMALPOWERCALCULATION
+	PULSE2COUNTER
+	COUNTER2ENERGY
+	FLOATINGHIGHPRESCNTRL
+	COMPMGMTVS
+	THERMALPOWER_ENTHALPY
+	DOUBLEINTERPO_5X8
+	FLUID_DENSITY
+	FLUID_ENTHALPY
+	TEMP2PRESS
+	PRESS2TEMP
+	FANMGMT
+	COMPMGMT
+	COMPCNTRL_SLIDER
+	COMPCNTRL_VS
+	COMPCNTRL_ONOFF
+	COMPAPPLIMIT
+	COMPALARMMGMT
+	ATV71MODBUSCOM
+	ATV61MODBUSCOM
+	ATV32MODBUSCOM
+	ATV31MODBUSCOM
+	ATV312MODBUSCOM
+	ATV21MODBUSCOM
+	ATV212MODBUSCOM
+	ATV12MODBUSCOM
+	AUXPUMPCTRL
+	CAVTPROT
+	COMPSP
+	COMPSPFLOW
+	DEVSWCPUMPCTRL
+	FSPUMPCTRL
+	OPINTAUXPUMP
+	OPINTPUMP
+	OPPRTY
+	PID_PARA_CHECK
+	PIPEFILL
+	PUMPAVAI
+	PUMPFBCKMAPP
+	PUMPPID
+	PUMPPIDSTAG
+	VSDAVAI
+	VSDCTRL
+	VSDNU
+	VSPUMPCTRL
+	FT_INT
+	FT_PID
+	FT_DERIV
+***********************************************************************
+
+**************************************************
+	List function block: HYSTERESIS
+**************************************************
+
+FUNCTION_BLOCK HYSTERESIS
+
+        VAR_INPUT
+TEMPERATURE : INT;	{ DE:"Analogue Input 1" }
+SETPOINT : INT;	{ DE:"Set point" }
+DIFFERENTIATION : INT;	{ DE:"Delta" }
+	END_VAR
+
+        VAR_OUTPUT
+ALARM : BOOL;	{ DE:"Probe Alarm" }
+OUTPUT : BOOL;	{ DE:"Actuator" }
+	END_VAR
+
+END_FUNCTION_BLOCK
+
+A1801CC0  E92D4400		stmdb sp!, { r10, lr }
+A1801CC4  E1A0A009		mov r10, r9
+
+#0		{SRC:HYSTERESIS}
+#1
+#2
+#3
+#4
+#5		{L:2}
+(*) UNDEF
+A1801CC8  E1DA00F0		ldrsh r0, [r10]
+
+#6		{L:2}
+(*) INT
+A1801CCC  E24DD008		sub sp, sp, #8
+A1801CD0  E58D0000		str r0, [sp]
+A1801CD4  E59FB0A8		ldr fp, [pc, #+168] ; 0x2
+A1801CD8  E19A00FB		ldrsh r0, [r10, +fp]
+
+#7		{L:2}
+(*) INT
+A1801CDC  E59FB0A4		ldr fp, [pc, #+164] ; 0x4
+A1801CE0  E19AB0FB		ldrsh fp, [r10, +fp]
+A1801CE4  E080000B		add r0, r0, fp
+
+#8		{L:2}
+(*) INT
+A1801CE8  E1A0B000		mov fp, r0
+A1801CEC  E59D0000		ldr r0, [sp]
+A1801CF0  E28DD008		add sp, sp, #8
+A1801CF4  E150000B		cmp r0, fp
+A1801CF8  B3A00000		ltmov r0, #0
+A1801CFC  A3A00001		gemov r0, #1
+
+#9		{L:2}
+(-) BOOL
+A1801D00  E3500000		cmp r0, #0
+A1801D04  0A000002		beq #0x00000B ; 0xA1801D14
+
+#10
+#11
+#12
+#13
+#14		{L:3}
+(*) BOOL
+A1801D08  E3A00001		mov r0, #1 ; 0x01
+A1801D0C  E59FB07C		ldr fp, [pc, #+124] ; 0x7
+A1801D10  E7CA000B		strb r0, [r10, +fp]
+
+#15
+#16
+#17
+#18
+#19
+#20
+#21		{L:6}
+(*) UNDEF
+A1801D14  E1DA00F0		ldrsh r0, [r10]
+
+#22		{L:6}
+(*) INT
+A1801D18  E59FB064		ldr fp, [pc, #+100] ; 0x2
+A1801D1C  E19AB0FB		ldrsh fp, [r10, +fp]
+A1801D20  E150000B		cmp r0, fp
+A1801D24  A3A00000		gemov r0, #0
+A1801D28  B3A00001		ltmov r0, #1
+
+#23		{L:6}
+(-) BOOL
+A1801D2C  E3500000		cmp r0, #0
+A1801D30  0A000002		beq #0x00000B ; 0xA1801D40
+
+#24
+#25
+#26
+#27
+#28		{L:7}
+(*) BOOL
+A1801D34  E3A00000		mov r0, #0 ; 0x00
+A1801D38  E59FB050		ldr fp, [pc, #+80] ; 0x7
+A1801D3C  E7CA000B		strb r0, [r10, +fp]
+
+#29
+#30
+#31
+#32
+#33
+#34
+#35		{L:11}
+(*) UNDEF
+A1801D40  E1DA00F0		ldrsh r0, [r10]
+
+#36		{L:11}
+(*) INT
+A1801D44  E3E01C7F		mvn r1, #127, 12 ; 0xFFFF8000
+A1801D48  E241B0FF		sub fp, r1, #255, 0
+A1801D4C  E150000B		cmp r0, fp
+A1801D50  13A00000		nemov r0, #0
+A1801D54  03A00001		eqmov r0, #1
+
+#37		{L:11}
+(-) BOOL
+A1801D58  E3500000		cmp r0, #0
+A1801D5C  0A000003		beq #0x00000F ; 0xA1801D70
+
+#38
+#39
+#40
+#41
+#42		{L:12}
+(*) BOOL
+A1801D60  E3A00001		mov r0, #1 ; 0x01
+A1801D64  E59FB020		ldr fp, [pc, #+32] ; 0x6
+A1801D68  E7CA000B		strb r0, [r10, +fp]
+
+#43
+(-) BOOL
+A1801D6C  EA000002		b #0x000008 ; 0xA1801D7C
+
+#44
+#45
+#46
+#47
+#48
+#49		{L:13}
+(*) BOOL
+A1801D70  E3A00000		mov r0, #0 ; 0x00
+A1801D74  E59FB010		ldr fp, [pc, #+16] ; 0x6
+A1801D78  E7CA000B		strb r0, [r10, +fp]
+
+A1801D7C  E8BD4400		ldmia sp!, { r10, lr }
+
+A1801D80  E1A0F00E		mov pc, lr
+
+A1801D84  00000002		; 0x00000002
+A1801D88  00000004		; 0x00000004
+A1801D8C  00000006		; 0x00000006
+A1801D90  00000007		; 0x00000007
+
+
+Frame allocation:
+
+	0000       : VAR TEMPERATURE
+	0002       : VAR SETPOINT
+	0004       : VAR DIFFERENTIATION
+	0006 bit  0: VAR ALARM
+	0007 bit  0: VAR OUTPUT
+
+END_FUNCTION_BLOCK
+**************************************************
+	List program: INITPARDB
+**************************************************
+
+PROGRAM INITPARDB
+
+        VAR
+WARNINGSKILLER : USINT;
+DUMMYCRC32 : UDINT;
+	END_VAR
+
+END_PROGRAM
+
+A1801DA0  E24DD008		sub sp, sp, #8
+A1801DA4  E58DE000		str lr, [sp]
+A1801DA8  E92D0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, fp }
+
+#0		{SRC:INITPARDB}
+#1
+#2
+#3
+#4		{L:3}
+(*) UDINT
+A1801DAC  E59FB04C		ldr fp, [pc, #+76] ; 0xA1801CBC
+A1801DB0  E59B0000		ldr r0, [fp]
+A1801DB4  E59FB048		ldr fp, [pc, #+72] ; 0xA1A0000C
+A1801DB8  E58B0000		str r0, [fp]
+
+#5
+#6
+#7		{L:5}
+(*) UDINT
+A1801DBC  E59F0038		ldr r0, [pc, #+56] ; 0xA1801324
+
+#8		{L:5}
+(*) DWORD
+A1801DC0  E59FB040		ldr fp, [pc, #+64] ; 0xA1A00010
+A1801DC4  E58B0000		str r0, [fp]
+
+#9		{L:5}
+(*) UNDEF
+A1801DC8  E59FB038		ldr fp, [pc, #+56] ; 0xA1A00010
+A1801DCC  E59B0000		ldr r0, [fp]
+
+#10		{L:5}
+(-) @UNDEF
+A1801DD0  E3A01003		mov r1, #3, 0 ; 0x0003
+A1801DD4  E1A00000		mov r0, r0
+A1801DD8  E59F8030		ldr r8, [pc, #+48] ; 0x11BD3
+A1801DDC  E1A0E00F		mov lr, pc
+A1801DE0  E1A0F008		mov pc, r8
+
+#11		{L:5}
+(*) USINT
+A1801DE4  E59FB020		ldr fp, [pc, #+32] ; 0xA1A00014
+A1801DE8  E5CB0000		strb r0, [fp]
+
+A1801DEC  E8BD0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, fp }
+A1801DF0  E59DE000		ldr lr, [sp]
+A1801DF4  E28DD008		add sp, sp, #8
+
+A1801DF8  E1A0F00E		mov pc, lr
+
+A1801DFC  A1801324		; 0xA1801324
+A1801E00  A1801CBC		; 0xA1801CBC
+A1801E04  A1A0000C		; 0xA1A0000C
+A1801E08  A1A00010		; 0xA1A00010
+A1801E0C  A1A00014		; 0xA1A00014
+A1801E10  FFFFFFFF		; 0x00011BD3
+
+END_PROGRAM
+
+
+**************************************************
+	Target variable image generation
+**************************************************
+
+
+*** INPUT:
+A1801E14  E1A0F00E		mov pc, lr
+
+
+*** OUTPUT:
+A1801E18  E1A0F00E		mov pc, lr
+
+
+
+**************************************************
+	Task SERV init code
+**************************************************
+
+A1801E1C  E24DD008		sub sp, sp, #8
+A1801E20  E58DE000		str lr, [sp]
+A1801E24  E92D0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, fp }
+
+A1801E28  E8BD0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, fp }
+A1801E2C  E59DE000		ldr lr, [sp]
+A1801E30  E28DD008		add sp, sp, #8
+
+A1801E34  E1A0F00E		mov pc, lr
+
+**************************************************
+	List program: THERMOSTAT
+**************************************************
+
+PROGRAM THERMOSTAT
+
+        VAR
+HYSTERSIS_00 : HYSTERESIS;
+INPUT_TEMP : INT;
+INPUT_SETPOINT : INT;
+INPUT_DIFFERENTIATION : INT;
+OUTPUT_ALARM : BOOL;
+OUTPUT_OUTPUT : BOOL;
+	END_VAR
+
+END_PROGRAM
+
+A1801E50  E24DD008		sub sp, sp, #8
+A1801E54  E58DE000		str lr, [sp]
+A1801E58  E92D0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, fp }
+
+#0		{SRC:THERMOSTAT}
+#1
+#2
+#3
+#4
+#5
+#6
+#7		{R:"1$FB:HYSTERSIS_00"}
+(*) UDINT
+A1801E5C  E59FB0A8		ldr fp, [pc, #+168] ; 0xA1A00016
+A1801E60  E1DB00F0		ldrsh r0, [fp]
+A1801E64  E59FB0A4		ldr fp, [pc, #+164] ; 0xA1A00018
+A1801E68  E1CB00B0		strh r0, [fp]
+
+#8		{R:"1$FB:HYSTERSIS_00"}
+(*) INT
+A1801E6C  E59FB084		ldr fp, [pc, #+132] ; 0xA0001760
+A1801E70  E1DB00F0		ldrsh r0, [fp]
+A1801E74  E59FB098		ldr fp, [pc, #+152] ; 0xA1A0001A
+A1801E78  E1CB00B0		strh r0, [fp]
+
+#9		{R:"1$FB:HYSTERSIS_00"}
+(*) INT
+A1801E7C  E59FB078		ldr fp, [pc, #+120] ; 0xA0001762
+A1801E80  E1DB00F0		ldrsh r0, [fp]
+A1801E84  E59FB08C		ldr fp, [pc, #+140] ; 0xA1A0001C
+A1801E88  E1CB00B0		strh r0, [fp]
+
+#10		{R:"1$FB:HYSTERSIS_00"}
+(*) INT
+A1801E8C  E92D0201		stmdb sp!, { r0, r9 }
+A1801E90  E59FB078		ldr fp, [pc, #+120] ; 0xA1A00018
+A1801E94  E1A0900B		mov r9, fp
+A1801E98  E59F8064		ldr r8, [pc, #+100] ; 0xA1801CC0
+A1801E9C  E1A0E00F		mov lr, pc
+A1801EA0  E1A0F008		mov pc, r8
+A1801EA4  E8BD0201		ldmia sp!, { r0, r9 }
+
+#11		{R:"1$FB:HYSTERSIS_00"}
+(*) INT
+A1801EA8  E59FB06C		ldr fp, [pc, #+108] ; 0xA1A0001E
+A1801EAC  E5DB0000		ldrb r0, [fp]
+A1801EB0  E59FB070		ldr fp, [pc, #+112] ; 0x100004AD
+A1801EB4  E5CB0000		strb r0, [fp]
+
+#12		{R:"1$FB:HYSTERSIS_00"}
+(*) BOOL
+A1801EB8  E59FB060		ldr fp, [pc, #+96] ; 0xA1A0001F
+A1801EBC  E5DB0000		ldrb r0, [fp]
+A1801EC0  E59FB05C		ldr fp, [pc, #+92] ; 0x100004AC
+A1801EC4  E5CB0000		strb r0, [fp]
+
+#13
+#14
+#15
+#16
+#17
+#18
+#19		{R:"2$O:1"}
+(*) BOOL
+A1801EC8  E59FB03C		ldr fp, [pc, #+60] ; 0xA1A00016
+A1801ECC  E1DB00F0		ldrsh r0, [fp]
+A1801ED0  E59FB028		ldr fp, [pc, #+40] ; 0xA0003E70
+A1801ED4  E1CB00B0		strh r0, [fp]
+
+#20
+#21
+#22
+#23
+#24
+#25
+#26		{R:"3$O:1"}
+(*) INT
+A1801ED8  E59FB048		ldr fp, [pc, #+72] ; 0x100004AD
+A1801EDC  E5DB0000		ldrb r0, [fp]
+A1801EE0  E59FB020		ldr fp, [pc, #+32] ; 0xA1A00015
+A1801EE4  E5CB0000		strb r0, [fp]
+
+A1801EE8  E8BD0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, fp }
+A1801EEC  E59DE000		ldr lr, [sp]
+A1801EF0  E28DD008		add sp, sp, #8
+
+A1801EF4  E1A0F00E		mov pc, lr
+
+A1801EF8  FFFFFFFF		; 0xA0001760
+A1801EFC  FFFFFFFF		; 0xA0001762
+A1801F00  FFFFFFFF		; 0xA0003E70
+A1801F04  A1801CC0		; 0xA1801CC0
+A1801F08  A1A00015		; 0xA1A00015
+A1801F0C  A1A00016		; 0xA1A00016
+A1801F10  A1A00018		; 0xA1A00018
+A1801F14  A1A0001A		; 0xA1A0001A
+A1801F18  A1A0001C		; 0xA1A0001C
+A1801F1C  A1A0001E		; 0xA1A0001E
+A1801F20  A1A0001F		; 0xA1A0001F
+A1801F24  FFFFFFFF		; 0x100004AC
+A1801F28  FFFFFFFF		; 0x100004AD
+
+END_PROGRAM
+
+
+**************************************************
+	Target variable image generation
+**************************************************
+
+
+*** INPUT:
+A1801F2C  E59FB010		ldr fp, [pc, #+16] ; 0x10000442
+A1801F30  E1DB00B0		ldrh r0, [fp]
+A1801F34  E59FB004		ldr fp, [pc, #+4] ; 0xA1A00016
+A1801F38  E1CB00B0		strh r0, [fp]
+
+A1801F3C  E1A0F00E		mov pc, lr
+
+A1801F40  A1A00016		; 0xA1A00016
+A1801F44  FFFFFFFF		; 0x10000442
+
+
+*** OUTPUT:
+A1801F48  E1A0F00E		mov pc, lr
+
+
+
+**************************************************
+	Task BACKGROUND init code
+**************************************************
+
+A1801F4C  E24DD008		sub sp, sp, #8
+A1801F50  E58DE000		str lr, [sp]
+A1801F54  E92D0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, fp }
+
+A1801F58  E8BD0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, fp }
+A1801F5C  E59DE000		ldr lr, [sp]
+A1801F60  E28DD008		add sp, sp, #8
+
+A1801F64  E1A0F00E		mov pc, lr
+
+**************************************************
+	List program: SETEXECUTIONTIME
+**************************************************
+
+PROGRAM SETEXECUTIONTIME
+
+END_PROGRAM
+
+A1801F80  E24DD008		sub sp, sp, #8
+A1801F84  E58DE000		str lr, [sp]
+A1801F88  E92D0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, fp }
+
+END_PROGRAM
+**************************************************
+	List program: PARCHECK
+**************************************************
+
+PROGRAM PARCHECK
+
+END_PROGRAM
+
+#0		{SRC:PARCHECK}
+#1
+#2
+#3
+#4
+#5		{L:2}
+(*) UNDEF
+A1801F8C  E59FB040		ldr fp, [pc, #+64] ; 0x100000CA
+A1801F90  E1DB00B0		ldrh r0, [fp]
+
+#6		{L:2}
+(*) UINT
+A1801F94  E3A0BB3F		mov fp, #63, 11 ; 0xFC00
+A1801F98  E000000B		and r0, r0, fp
+
+#7		{L:2}
+(*) UINT
+A1801F9C  E3A0BB02		mov fp, #2, 11 ; 0x0800
+A1801FA0  E150000B		cmp r0, fp
+A1801FA4  03A00000		eqmov r0, #0
+A1801FA8  13A00001		nemov r0, #1
+
+#8		{L:2}
+(-) BOOL
+A1801FAC  E3500000		cmp r0, #0
+A1801FB0  0A000003		beq #0x00000F ; 0xA1801FC4
+
+#9
+#10
+#11
+#12
+#13
+#14		{L:3}
+(*) UNDEF
+A1801FB4  E3A00001		mov r0, #1 ; 0x01
+
+#15		{L:3}
+(-) BOOL
+A1801FB8  E3500000		cmp r0, #0
+A1801FBC  0A000000		beq #0x000003 ; 0xA1801FC4
+
+#16
+#17
+#18
+(-) BOOL
+A1801FC0  EAFFFFFB		b #0xFFFFFFEC ; 0xA1801FB4
+
+A1801FC4  E8BD0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, fp }
+A1801FC8  E59DE000		ldr lr, [sp]
+A1801FCC  E28DD008		add sp, sp, #8
+
+A1801FD0  E1A0F00E		mov pc, lr
+
+A1801FD4  FFFFFFFF		; 0x100000CA
+
+END_PROGRAM
+
+
+**************************************************
+	Target variable image generation
+**************************************************
+
+
+*** INPUT:
+A1801FD8  E1A0F00E		mov pc, lr
+
+
+*** OUTPUT:
+A1801FDC  E1A0F00E		mov pc, lr
+
+
+
+**************************************************
+	Task INIT init code
+**************************************************
+
+A1801FE0  E24DD008		sub sp, sp, #8
+A1801FE4  E58DE000		str lr, [sp]
+A1801FE8  E92D0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, fp }
+
+A1801FEC  E8BD0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, fp }
+A1801FF0  E59DE000		ldr lr, [sp]
+A1801FF4  E28DD008		add sp, sp, #8
+
+A1801FF8  E1A0F00E		mov pc, lr
+
+
+**************************************************
+VIRTUAL TABLES:
+
+--------------------------------------------------------
+VIRTUAL TABLES INDEXES
+--------------------------------------------------------
+
+
+**************************************************
+	Global init code
+**************************************************
+
+A1802010  E24DD008		sub sp, sp, #8
+A1802014  E58DE000		str lr, [sp]
+A1802018  E92D0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, fp }
+
+A180201C  E8BD0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, fp }
+A1802020  E59DE000		ldr lr, [sp]
+A1802024  E28DD008		add sp, sp, #8
+
+A1802028  E1A0F00E		mov pc, lr
+
+
+
+**************************************************
+	Global RETAIN init code
+**************************************************
+
+A180202C  E24DD008		sub sp, sp, #8
+A1802030  E58DE000		str lr, [sp]
+A1802034  E92D0FF0		stmdb sp!, { r4, r5, r6, r7, r8, r9, r10, fp }
+
+A1802038  E8BD0FF0		ldmia sp!, { r4, r5, r6, r7, r8, r9, r10, fp }
+A180203C  E59DE000		ldr lr, [sp]
+A1802040  E28DD008		add sp, sp, #8
+
+A1802044  E1A0F00E		mov pc, lr
+
+
+
+********************************************
+MEMORY MAP
+********************************************
+
+Code area type:			main code
+Start code area:		A1800000h
+End code area:			A1802050h
+Code size:			    2050h
+
+Start local data area:		A1A00000h
+End local data area:		A1A00020h
+Local data size:		      20h
+
+Start retentive data area:	       0h
+End retentive data area:	       0h
+Retentive data size:		       0h
+
+Start bit data area:		       0h
+End bit data area:		       0h
+Bit data size:			       0h
+
+
+
+********************************************
+CODE ID:                                DC18F8C4
+DEBUG MEMO ID:                          A180B976
+FULL MEMO ID:                           0000FDFA
+********************************************

@@ -1,0 +1,1025 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<parameters><par ipa="10100" name="Par_TAB" descr="Tab (map code)" defval="0" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15716" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15716" commsubindex="0"/>
+		<menu id="01"/>
+	</par>
+	<par ipa="10101" name="Par_POLI" descr="Polycarbonate code" defval="2049" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort" onbeforewrite="EWDevice.OnBeforeWrite_POLI" onchange="EWDevice.OnChange_POLI">
+		<protocol name="Modbus" commaddr="15717" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15717" commsubindex="0"/>
+		<menu id="01"/>
+	</par>
+	<par ipa="10103" name="Par_PARMOD" descr="Parameter modified" defval="0" min="0" max="1" um="flag" typepar="boolean" typetarg="boolean">
+		<protocol name="Modbus" commaddr="15719" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15719" commsubindex="0"/>
+		<menu id="01"/>
+	</par>
+	<par ipa="10000" readonly="true" name="Gain_Ntc_AI1" descr="NTC calibration gain AI1" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15616" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15616" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10001" readonly="true" name="Gain_Ntc_AI2" descr="NTC calibration gain AI2" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15617" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15617" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10002" readonly="true" name="Gain_Ntc_AI3" descr="NTC calibration gain AI3" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15618" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15618" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10003" readonly="true" name="Gain_PT1000_AI3" descr="PT1000 calibration gain AI3" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15619" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15619" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10004" readonly="true" name="Gain_5V_AI3" descr="0-5V calibration gain AI3" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15620" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15620" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10005" readonly="true" name="Gain_10V_AI3" descr="0-10V calibration gain AI3" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15621" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15621" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10006" readonly="true" name="Gain_mA_AI3" descr="4-20mA calibration gain AI3" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15622" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15622" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10007" readonly="true" name="Gain_Ntc_AI4" descr="NTC calibration gain AI4" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15623" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15623" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10008" readonly="true" name="Gain_PT1000_AI4" descr="PT1000 calibration gain AI4" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15624" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15624" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10009" readonly="true" name="Gain_5V_AI4" descr="0-5V calibration gain AI4" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15625" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15625" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10010" readonly="true" name="Gain_10V_AI4" descr="0-10V calibration gain AI4" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15626" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15626" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10011" readonly="true" name="Gain_mA_AI4" descr="4-20mA calibration gain AI4" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15627" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15627" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10012" readonly="true" name="Gain_Ntc_AI5" descr="NTC calibration gain AI5" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15628" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15628" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10013" readonly="true" name="Gain_PT1000_AI5" descr="PT1000 calibration gain AI5" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15629" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15629" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10014" readonly="true" name="Gain_5V_AI5" descr="0-5V calibration gain AI5" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15630" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15630" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10015" readonly="true" name="Gain_10V_AI5" descr="0-10V calibration gain AI5" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15631" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15631" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10016" readonly="true" name="Gain_mA_AI5" descr="4-20mA calibration gain AI5" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15632" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15632" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10017" readonly="true" name="Gain_Ntc_AI6" descr="NTC calibration gain AI6" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15633" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15633" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10018" readonly="true" name="Gain_PT1000_AI6" descr="PT1000 calibration gain AI6" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15634" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15634" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10019" readonly="true" name="Gain_5V_AI6" descr="0-5V calibration gain AI6" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15635" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15635" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10020" readonly="true" name="Gain_10V_AI6" descr="0-10V calibration gain AI6" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15636" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15636" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10021" readonly="true" name="Gain_mA_AI6" descr="4-20mA calibration gain AI6" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15637" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15637" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10034" readonly="true" name="Offs_Ntc_AI1" descr="NTC calibration offset AI1" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15650" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15650" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10035" readonly="true" name="Offs_Ntc_AI2" descr="NTC calibration offset AI2" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15651" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15651" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10036" readonly="true" name="Offs_Ntc_AI3" descr="NTC calibration offset AI3" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15652" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15652" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10037" readonly="true" name="Offs_PT1000_AI3" descr="PT1000 calibration offset AI3" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15653" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15653" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10038" readonly="true" name="Offs_5V_AI3" descr="0-5V calibration offset AI3" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15654" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15654" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10039" readonly="true" name="Offs_10V_AI3" descr="0-10V calibration offset AI3" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15655" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15655" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10040" readonly="true" name="Offs_mA_AI3" descr="4-20mA calibration offset AI3" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15656" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15656" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10041" readonly="true" name="Offs_Ntc_AI4" descr="NTC calibration offset AI4" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15657" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15657" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10042" readonly="true" name="Offs_PT1000_AI4" descr="PT1000 calibration offset AI4" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15658" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15658" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10043" readonly="true" name="Offs_5V_AI4" descr="0-5V calibration offset AI4" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15659" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15659" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10044" readonly="true" name="Offs_10V_AI4" descr="0-10V calibration offset AI4" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15660" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15660" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10045" readonly="true" name="Offs_mA_AI4" descr="4-20mA calibration offset AI4" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15661" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15661" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10046" readonly="true" name="Offs_Ntc_AI5" descr="NTC calibration offset AI5" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15662" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15662" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10047" readonly="true" name="Offs_PT1000_AI5" descr="PT1000 calibration offset AI5" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15663" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15663" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10048" readonly="true" name="Offs_5V_AI5" descr="0-5V calibration offset AI5" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15664" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15664" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10049" readonly="true" name="Offs_10V_AI5" descr="0-10V calibration offset AI5" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15665" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15665" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10050" readonly="true" name="Offs_mA_AI5" descr="4-20mA calibration offset AI5" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15666" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15666" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10051" readonly="true" name="Offs_Ntc_AI6" descr="NTC calibration offset AI6" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15667" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15667" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10052" readonly="true" name="Offs_PT1000_AI6" descr="PT1000 calibration offset AI6" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15668" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15668" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10053" readonly="true" name="Offs_5V_AI6" descr="0-5V calibration offset AI6" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15669" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15669" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10054" readonly="true" name="Offs_10V_AI6" descr="0-10V calibration offset AI6" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15670" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15670" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10055" readonly="true" name="Offs_mA_AI6" descr="4-20mA calibration offset AI6" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15671" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15671" commsubindex="0"/>
+		<menu id="02"/>
+	</par>
+	<par ipa="10068" readonly="true" name="Gain_10V_AO1" descr="0-10V calibration gain AO1" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15684" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15684" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10069" readonly="true" name="Gain_mA_AO1" descr="4-20mA calibration gain AO1" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15685" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15685" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10070" readonly="true" name="Gain_10V_AO2" descr="0-10V calibration gain AO2" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15686" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15686" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10071" readonly="true" name="Gain_mA_AO2" descr="4-20mA calibration gain AO2" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15687" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15687" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10072" readonly="true" name="Gain_10V_AO3" descr="0-10V calibration gain AO3" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15688" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15688" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10073" readonly="true" name="Gain_mA_AO3" descr="4-20mA calibration gain AO3" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15689" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15689" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10074" readonly="true" name="Gain_10V_AO4" descr="0-10V calibration gain AO4" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15690" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15690" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10075" readonly="true" name="Gain_mA_AO4" descr="4-20mA calibration gain AO4" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15691" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15691" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10076" readonly="true" name="Gain_10V_AO5" descr="0-10V calibration gain AO5" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15692" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15692" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10077" readonly="true" name="Gain_mA_AO5" descr="4-20mA calibration gain AO5" defval="32768" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15693" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15693" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10084" readonly="true" name="Offs_10V_AO1" descr="0-10V calibration offset AO1" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15700" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15700" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10085" readonly="true" name="Offs_mA_AO1" descr="4-20mA calibration offset AO1" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15701" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15701" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10086" readonly="true" name="Offs_10V_AO2" descr="0-10V calibration offset AO2" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15702" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15702" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10087" readonly="true" name="Offs_mA_AO2" descr="4-20mA calibration offset AO2" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15703" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15703" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10088" readonly="true" name="Offs_10V_AO3" descr="0-10V calibration offset AO3" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15704" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15704" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10089" readonly="true" name="Offs_mA_AO3" descr="4-20mA calibration offset AO3" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15705" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15705" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10090" readonly="true" name="Offs_10V_AO4" descr="0-10V calibration offset AO4" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15706" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15706" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10091" readonly="true" name="Offs_mA_AO4" descr="4-20mA calibration offset AO4" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15707" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15707" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10092" readonly="true" name="Offs_10V_AO5" descr="0-10V calibration offset AO5" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15708" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15708" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10093" readonly="true" name="Offs_mA_AO5" descr="4-20mA calibration offset AO5" defval="0" min="-32768" max="32767" um="num" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15709" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15709" commsubindex="0"/>
+		<menu id="03"/>
+	</par>
+	<par ipa="10109" name="Temp_UM" descr="Unit of temperature measurement" defval="0" min="0" max="1" um="num" typepar="enum2" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15725" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15725" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10110" name="Cfg_AI1" descr="Type of analogue input AI1" defval="2" min="0" max="2" um="num" typepar="enum11" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15726" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15726" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10111" name="Cfg_AI2" descr="Type of analogue input AI2" defval="2" min="0" max="2" um="num" typepar="enum11" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15727" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15727" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10112" name="Cfg_AI3" descr="Type of analogue input AI3" defval="3" min="0" max="8" um="num" typepar="enum1" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15728" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15728" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10113" name="Cfg_AI4" descr="Type of analogue input AI4" defval="3" min="0" max="8" um="num" typepar="enum1" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15729" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15729" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10114" name="Cfg_AI5" descr="Type of analogue input AI5" defval="3" min="0" max="8" um="num" typepar="enum1" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15730" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15730" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10115" name="Cfg_AI6" descr="Type of analogue input AI6" defval="3" min="0" max="8" um="num" typepar="enum1" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15731" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15731" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10120" name="FullScaleMin_AI3" descr="First value analogue input AI3 scale" defval="0" min="-9999" max="9999" um="digit" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15736" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15736" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10121" name="FullScaleMax_AI3" descr="Last value analogue input AI3 scale" defval="1000" min="-9999" max="9999" um="digit" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15737" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15737" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10122" name="FullScaleMin_AI4" descr="First value analogue input AI4 scale" defval="0" min="-9999" max="9999" um="digit" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15738" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15738" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10123" name="FullScaleMax_AI4" descr="Last value analogue input AI4 scale" defval="1000" min="-9999" max="9999" um="digit" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15739" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15739" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10124" name="FullScaleMin_AI5" descr="First value analogue input AI5 scale" defval="0" min="-9999" max="9999" um="digit" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15740" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15740" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10125" name="FullScaleMax_AI5" descr="Last value analogue input AI5 scale" defval="1000" min="-9999" max="9999" um="digit" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15741" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15741" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10126" name="FullScaleMin_AI6" descr="First value analogue input AI6 scale" defval="0" min="-9999" max="9999" um="digit" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15742" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15742" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10127" name="FullScaleMax_AI6" descr="Last value analogue input AI6 scale" defval="1000" min="-9999" max="9999" um="digit" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15743" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15743" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10132" name="Calibration_AI1" descr="Analogue input AI1 differential" defval="0" min="-180" max="180" um="°C/10,°F/10" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15748" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15748" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10133" name="Calibration_AI2" descr="Analogue input AI2 differential" defval="0" min="-180" max="180" um="°C/10,°F/10" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15749" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15749" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10134" name="Calibration_AI3" descr="Analogue input AI3 differential" defval="0" min="-1000" max="1000" um="digit" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15750" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15750" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10135" name="Calibration_AI4" descr="Analogue input AI4 differential" defval="0" min="-1000" max="1000" um="digit" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15751" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15751" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10136" name="Calibration_AI5" descr="Analogue input AI5 differential" defval="0" min="-1000" max="1000" um="digit" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15752" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15752" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10137" name="Calibration_AI6" descr="Analogue input AI6 differential" defval="0" min="-1000" max="1000" um="digit" typepar="short" typetarg="short">
+		<protocol name="Modbus" commaddr="15753" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15753" commsubindex="0"/>
+		<menu id="04"/>
+	</par>
+	<par ipa="10142" name="Cfg_AO1_AO5" descr="Type of analogue output AO1/AO5" defval="0" min="0" max="2" um="num" typepar="enum3" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15758" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15758" commsubindex="0"/>
+		<menu id="05"/>
+	</par>
+	<par ipa="10143" name="Cfg_AO2" descr="Type of analogue output AO2" defval="0" min="0" max="2" um="num" typepar="enum3" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15759" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15759" commsubindex="0"/>
+		<menu id="05"/>
+	</par>
+	<par ipa="10144" name="Cfg_AO3" descr="Type of analogue output AO3" defval="0" min="0" max="2" um="num" typepar="enum3" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15760" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15760" commsubindex="0"/>
+		<menu id="05"/>
+	</par>
+	<par ipa="10145" name="Cfg_AO4" descr="Type of analogue output AO4" defval="0" min="0" max="2" um="num" typepar="enum3" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15761" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15761" commsubindex="0"/>
+		<menu id="05"/>
+	</par>
+	<par ipa="10146" name="SubCfg_AO5" descr="Subtype of analogue output AO5" defval="0" min="0" max="2" um="num" typepar="enum3" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15762" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15762" commsubindex="0"/>
+		<menu id="05"/>
+	</par>
+	<par ipa="10158" name="Addr_RS485_OB" descr="RS485 On Board address" defval="1" min="0" max="255" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15774" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15774" commsubindex="0"/>
+		<menu id="07"/>
+	</par>
+	<par ipa="10159" name="Proto_RS485_OB" descr="Select RS485 On Board protocol" defval="3" min="2" max="3" um="num" typepar="enum5" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15775" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15775" commsubindex="0"/>
+		<menu id="07"/>
+	</par>
+	<par ipa="10160" name="DataBit_RS485_OB" descr="RS485 On Board Data bit number" defval="8" min="8" max="8" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15776" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15776" commsubindex="0"/>
+		<menu id="07"/>
+	</par>
+	<par ipa="10161" name="StopBit_RS485_OB" descr="RS485 On Board stop bit number" defval="1" min="1" max="2" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15777" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15777" commsubindex="0"/>
+		<menu id="07"/>
+	</par>
+	<par ipa="10162" name="Parity_RS485_OB" descr="RS485 On Board parity protocol" defval="2" min="0" max="2" um="num" typepar="enum6" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15778" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15778" commsubindex="0"/>
+		<menu id="07"/>
+	</par>
+	<par ipa="10163" name="Baud_RS485_OB" descr="RS485 On Board baud rate protocol" defval="2" min="0" max="5" um="num" typepar="enum9" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15779" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15779" commsubindex="0"/>
+		<menu id="07"/>
+	</par>
+	<par ipa="10164" name="Addr_CAN_OB" descr="CAN On Board address" defval="1" min="1" max="127" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15780" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15780" commsubindex="0"/>
+		<menu id="08"/>
+	</par>
+	<par ipa="10165" name="Baud_CAN_OB" descr="CAN On Board baud rate protocol" defval="2" min="2" max="6" um="num" typepar="enum8" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15781" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15781" commsubindex="0"/>
+		<menu id="08"/>
+	</par>
+	<par ipa="10166" name="Addr_RS485_PI" descr="RS485 passive Plug-In address" defval="1" min="0" max="255" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15782" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15782" commsubindex="0"/>
+		<menu id="09"/>
+	</par>
+	<par ipa="10167" name="Proto_RS485_PI" descr="Select RS485 passive Plug-In protocol " defval="3" min="2" max="4" um="num" typepar="enum12" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15783" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15783" commsubindex="0"/>
+		<menu id="09"/>
+	</par>
+	<par ipa="10168" name="DataBit_RS485_PI" descr="RS485 passive Plug-In Data bit number" defval="8" min="8" max="8" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15784" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15784" commsubindex="0"/>
+		<menu id="09"/>
+	</par>
+	<par ipa="10169" name="StopBit_RS485_PI" descr="RS485 passive Plug-In stop bit number" defval="1" min="1" max="2" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15785" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15785" commsubindex="0"/>
+		<menu id="09"/>
+	</par>
+	<par ipa="10170" name="Parity_RS485_PI" descr="RS485 passive Plug-In parity protocol" defval="2" min="0" max="2" um="num" typepar="enum6" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15786" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15786" commsubindex="0"/>
+		<menu id="09"/>
+	</par>
+	<par ipa="10171" name="Baud_RS485_PI" descr="RS485 passive Plug-In baud rate protocol" defval="2" min="0" max="5" um="num" typepar="enum9" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15787" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15787" commsubindex="0"/>
+		<menu id="09"/>
+	</par>
+	<par ipa="10172" name="Addr_CAN_PI" descr="CAN passive Plug-In address" defval="1" min="1" max="127" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15788" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15788" commsubindex="0"/>
+		<menu id="10"/>
+	</par>
+	<par ipa="10173" name="Baud_CAN_PI" descr="CAN Passive Plug-In baud rate protocol" defval="2" min="2" max="6" um="num" typepar="enum8" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15789" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15789" commsubindex="0"/>
+		<menu id="10"/>
+	</par>
+	<par ipa="10174" name="Addr_RS232_PI" descr="RS232 passive Plug-In address" defval="1" min="0" max="255" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15790" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15790" commsubindex="0"/>
+		<menu id="11"/>
+	</par>
+	<par ipa="10175" name="Proto_RS232_PI" descr="Select RS232 passive Plug-In protocol " defval="3" min="2" max="3" um="num" typepar="enum10" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15791" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15791" commsubindex="0"/>
+		<menu id="11"/>
+	</par>
+	<par ipa="10176" name="DataBit_RS232_PI" descr="RS232 passive Plug-In Data bit number" defval="8" min="7" max="8" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15792" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15792" commsubindex="0"/>
+		<menu id="11"/>
+	</par>
+	<par ipa="10177" name="StopBit_RS232_PI" descr="RS232 passive Plug-In stop bit number" defval="1" min="1" max="2" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15793" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15793" commsubindex="0"/>
+		<menu id="11"/>
+	</par>
+	<par ipa="10178" name="Parity_RS232_PI" descr="RS232 passive Plug-In parity protocol" defval="2" min="0" max="2" um="num" typepar="enum6" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15794" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15794" commsubindex="0"/>
+		<menu id="11"/>
+	</par>
+	<par ipa="10179" name="Baud_RS232_PI" descr="RS232 passive Plug-In baud rate protocol" defval="2" min="0" max="5" um="num" typepar="enum9" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15795" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15795" commsubindex="0"/>
+		<menu id="11"/>
+	</par>
+	<par ipa="10156" name="Port_TFTP_IP" descr="TFTP Port number, 0 is equal to deafult port 69" defval="0" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15772" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15772" commsubindex="0"/>
+		<menu id="12"/>
+	</par>
+	<par ipa="10180" name="Port_HTTP_PI" descr="HTTP Port number, 0 is equal to default port 80" defval="0" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15796" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15796" commsubindex="0"/>
+		<menu id="12"/>
+	</par>
+	<par ipa="10181" name="Port_ETH_PI" descr="TCP/IP Port number" defval="502" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15797" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15797" commsubindex="0"/>
+		<menu id="12"/>
+	</par>
+	<par ipa="10182" name="Ip_1_ETH_PI" descr="Ethernet passive Plug-In IP address (1 st part)" defval="10" min="0" max="255" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15798" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15798" commsubindex="0"/>
+		<menu id="12"/>
+	</par>
+	<par ipa="10183" name="Ip_2_ETH_PI" descr="Ethernet passive Plug-In IP address (2 nd part)" defval="0" min="0" max="255" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15799" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15799" commsubindex="0"/>
+		<menu id="12"/>
+	</par>
+	<par ipa="10184" name="Ip_3_ETH_PI" descr="Ethernet passive Plug-In IP address (3 rd part)" defval="0" min="0" max="255" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15800" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15800" commsubindex="0"/>
+		<menu id="12"/>
+	</par>
+	<par ipa="10185" name="Ip_4_ETH_PI" descr="Ethernet passive Plug-In IP address (4 th part)" defval="100" min="0" max="255" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15801" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15801" commsubindex="0"/>
+		<menu id="12"/>
+	</par>
+	<par ipa="10186" name="DefGtwy_1_ETH_PI" descr="Default Gateway (1 st part)" defval="10" min="0" max="255" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15802" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15802" commsubindex="0"/>
+		<menu id="12"/>
+	</par>
+	<par ipa="10187" name="DefGtwy_2_ETH_PI" descr="Default Gateway (2 nd part)" defval="0" min="0" max="255" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15803" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15803" commsubindex="0"/>
+		<menu id="12"/>
+	</par>
+	<par ipa="10188" name="DefGtwy_3_ETH_PI" descr="Default Gateway (3 rd part)" defval="0" min="0" max="255" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15804" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15804" commsubindex="0"/>
+		<menu id="12"/>
+	</par>
+	<par ipa="10189" name="DefGtwy_4_ETH_PI" descr="Default Gateway (4 th part)" defval="1" min="0" max="255" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15805" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15805" commsubindex="0"/>
+		<menu id="12"/>
+	</par>
+	<par ipa="10190" name="NetMsk_1_ETH_PI" descr="Net mask (1 st part)" defval="255" min="0" max="255" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15806" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15806" commsubindex="0"/>
+		<menu id="12"/>
+	</par>
+	<par ipa="10191" name="NetMsk_2_ETH_PI" descr="Net mask (2 nd part)" defval="255" min="0" max="255" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15807" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15807" commsubindex="0"/>
+		<menu id="12"/>
+	</par>
+	<par ipa="10192" name="NetMsk_3_ETH_PI" descr="Net mask (3 rd part)" defval="255" min="0" max="255" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15808" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15808" commsubindex="0"/>
+		<menu id="12"/>
+	</par>
+	<par ipa="10193" name="NetMsk_4_ETH_PI" descr="Net mask (4 th part)" defval="0" min="0" max="255" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15809" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15809" commsubindex="0"/>
+		<menu id="12"/>
+	</par>
+	<par ipa="10194" name="PriDNS_1_ETH_PI" descr="Primary DNS server (1 st part)" defval="194" min="0" max="255" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15810" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15810" commsubindex="0"/>
+		<menu id="12"/>
+	</par>
+	<par ipa="10195" name="PriDNS_2_ETH_PI" descr="Primary DNS server (2 nd part)" defval="25" min="0" max="255" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15811" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15811" commsubindex="0"/>
+		<menu id="12"/>
+	</par>
+	<par ipa="10196" name="PriDNS_3_ETH_PI" descr="Primary DNS server (3 rd part)" defval="2" min="0" max="255" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15812" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15812" commsubindex="0"/>
+		<menu id="12"/>
+	</par>
+	<par ipa="10197" name="PriDNS_4_ETH_PI" descr="Primary DNS server (4 th part)" defval="129" min="0" max="255" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15813" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15813" commsubindex="0"/>
+		<menu id="12"/>
+	</par>
+	<par ipa="10198" name="SecDNS_1_ETH_PI" descr="Secondary DNS server (1 st part)" defval="194" min="0" max="255" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15814" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15814" commsubindex="0"/>
+		<menu id="12"/>
+	</par>
+	<par ipa="10199" name="SecDNS_2_ETH_PI" descr="Secondary DNS server (2 nd part)" defval="25" min="0" max="255" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15815" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15815" commsubindex="0"/>
+		<menu id="12"/>
+	</par>
+	<par ipa="10200" name="SecDNS_3_ETH_PI" descr="Secondary DNS server (3 rd part)" defval="2" min="0" max="255" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15816" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15816" commsubindex="0"/>
+		<menu id="12"/>
+	</par>
+	<par ipa="10201" name="SecDNS_4_ETH_PI" descr="Secondary DNS server (4 th part)" defval="130" min="0" max="255" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15817" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15817" commsubindex="0"/>
+		<menu id="12"/>
+	</par>
+	<par ipa="10202" name="EnableDHCP_ETH_PI" descr="Enable DHCP" defval="0" min="0" max="1" um="flag" typepar="boolean" typetarg="boolean">
+		<protocol name="Modbus" commaddr="15818" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15818" commsubindex="0"/>
+		<menu id="12"/>
+	</par>
+	<par ipa="10204" name="Modem_RS232_PI" descr="Modem Enable" defval="0" min="0" max="1" um="flag" typepar="boolean" typetarg="boolean">
+		<protocol name="Modbus" commaddr="15820" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15820" commsubindex="0"/>
+		<menu id="13"/>
+	</par>
+	<par ipa="11308" readonly="false" name="Modem_InitStr1" defval="" descr="Init String (1st part)" typepar="string" typetarg="string" strsize="19">
+		<protocol name="Modbus" commaddr="15821" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15821" commsubindex="0"/>
+		<menu id="13"/>
+	</par>
+	<par ipa="11309" readonly="false" name="Modem_InitStr2" defval="" descr="Init String (2nd part)" typepar="string" typetarg="string" strsize="19">
+		<protocol name="Modbus" commaddr="15831" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15831" commsubindex="0"/>
+		<menu id="13"/>
+	</par>
+	<par ipa="11310" readonly="false" name="Modem_HangupStr" defval="" descr="HangUp String" typepar="string" typetarg="string" strsize="19">
+		<protocol name="Modbus" commaddr="15851" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15851" commsubindex="0"/>
+		<menu id="13"/>
+	</par>
+	<par ipa="10203" name="Hmi_Language" descr="Language" defval="0" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15819" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15819" commsubindex="0"/>
+		<menu id="14"/>
+	</par>
+	<par ipa="10107" name="Par_ContrLCD" descr="LCD contrast" defval="30" min="0" max="64" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15723" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15723" commsubindex="0"/>
+		<menu id="14"/>
+	</par>
+	<par ipa="10108" name="Par_BackLightTime" descr="Backlight time" defval="10" min="0" max="3600" um="sec" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15724" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15724" commsubindex="0"/>
+		<menu id="14"/>
+	</par>
+	<par ipa="11000" readonly="true" name="AIL1" typepar="short" typetarg="short" defval="-32768" scale="1" form="%d" um="°C/10,°F/10,flag" descr="AIL1 analogue input">
+		<protocol name="Modbus" commaddr="8336" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8336" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11001" readonly="true" name="AIL2" typepar="short" typetarg="short" defval="-32768" scale="1" form="%d" um="°C/10,°F/10,flag" descr="AIL2 analogue input">
+		<protocol name="Modbus" commaddr="8337" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8337" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11002" readonly="true" name="AIL3" typepar="short" typetarg="short" defval="-32768" um="digit" scale="1" form="%d" descr="AIL3 analogue input">
+		<protocol name="Modbus" commaddr="8338" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8338" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11003" readonly="true" name="AIL4" typepar="short" typetarg="short" defval="-32768" um="digit" scale="1" form="%d" descr="AIL4 analogue input">
+		<protocol name="Modbus" commaddr="8339" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8339" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11004" readonly="true" name="AIL5" typepar="short" typetarg="short" defval="-32768" um="digit" scale="1" form="%d" descr="AIL5 analogue input">
+		<protocol name="Modbus" commaddr="8340" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8340" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11005" readonly="true" name="AIL6" typepar="short" typetarg="short" defval="-32768" um="digit" scale="1" form="%d" descr="AIL6 analogue input">
+		<protocol name="Modbus" commaddr="8341" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8341" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11006" readonly="true" name="DIL1" typepar="boolean" typetarg="boolean" defval="0" min="0" max="1" um="flag" descr="DIL1 digital input">
+		<protocol name="Modbus" commaddr="8192" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8192" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11007" readonly="true" name="DIL2" typepar="boolean" typetarg="boolean" defval="0" min="0" max="1" um="flag" descr="DIL2 digital input">
+		<protocol name="Modbus" commaddr="8193" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8193" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11008" readonly="true" name="DIL3" typepar="boolean" typetarg="boolean" defval="0" min="0" max="1" um="flag" descr="DIL3 digital input">
+		<protocol name="Modbus" commaddr="8194" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8194" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11009" readonly="true" name="DIL4" typepar="boolean" typetarg="boolean" defval="0" min="0" max="1" um="flag" descr="DIL4 digital input">
+		<protocol name="Modbus" commaddr="8195" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8195" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11010" readonly="true" name="DIL5" typepar="boolean" typetarg="boolean" defval="0" min="0" max="1" um="flag" descr="DIL5 digital input">
+		<protocol name="Modbus" commaddr="8196" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8196" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11011" readonly="true" name="DIL6" typepar="boolean" typetarg="boolean" defval="0" min="0" max="1" um="flag" descr="DIL6 digital input">
+		<protocol name="Modbus" commaddr="8197" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8197" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11012" readonly="true" name="DIL7" typepar="boolean" typetarg="boolean" defval="0" min="0" max="1" um="flag" descr="DIL6 digital input">
+		<protocol name="Modbus" commaddr="8198" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8198" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11013" readonly="true" name="DIL8" typepar="boolean" typetarg="boolean" defval="0" min="0" max="1" um="flag" descr="DIL6 digital input">
+		<protocol name="Modbus" commaddr="8199" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8199" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11014" readonly="false" name="DOL1" typepar="boolean" typetarg="boolean" defval="0" min="0" max="1" um="flag" descr="DOL1 digital output">
+		<protocol name="Modbus" commaddr="8528" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8528" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11015" readonly="false" name="DOL2" typepar="boolean" typetarg="boolean" defval="0" min="0" max="1" um="flag" descr="DOL2 digital output">
+		<protocol name="Modbus" commaddr="8529" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8529" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11016" readonly="false" name="DOL3" typepar="boolean" typetarg="boolean" defval="0" min="0" max="1" um="flag" descr="DOL3 digital output">
+		<protocol name="Modbus" commaddr="8530" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8530" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11017" readonly="false" name="DOL4" typepar="boolean" typetarg="boolean" defval="0" min="0" max="1" um="flag" descr="DOL4 digital output">
+		<protocol name="Modbus" commaddr="8531" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8531" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11018" readonly="false" name="DOL5" typepar="boolean" typetarg="boolean" defval="0" min="0" max="1" um="flag" descr="DOL5 digital output">
+		<protocol name="Modbus" commaddr="8532" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8532" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11019" readonly="false" name="DOL6" typepar="boolean" typetarg="boolean" defval="0" min="0" max="1" um="flag" descr="DOL6 digital output">
+		<protocol name="Modbus" commaddr="8533" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8533" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11020" readonly="false" name="DOL7" typepar="boolean" typetarg="boolean" defval="0" min="0" max="1" um="flag" descr="DOL7 digital output">
+		<protocol name="Modbus" commaddr="8534" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8534" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11021" readonly="false" name="AOL1" typepar="float" typetarg="unsignedShort" defval="0" min="0" max="100" um="%" scale="10" form="%.1d" descr="AOL1 analogue output">
+		<protocol name="Modbus" commaddr="8448" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8448" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11022" readonly="false" name="AOL2" typepar="float" typetarg="unsignedShort" defval="0" min="0" max="100" um="%" scale="10" form="%.1d" descr="AOL2 analogue output">
+		<protocol name="Modbus" commaddr="8449" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8449" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11023" readonly="false" name="AOL3" typepar="float" typetarg="unsignedShort" defval="0" min="0" max="100" um="%" scale="10" form="%.1d" descr="AOL3 analogue output">
+		<protocol name="Modbus" commaddr="8450" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8450" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11024" readonly="false" name="AOL4" typepar="float" typetarg="unsignedShort" defval="0" min="0" max="100" um="%" scale="10" form="%.1d" descr="AOL4 analogue output">
+		<protocol name="Modbus" commaddr="8451" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8451" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11025" readonly="false" name="AOL5" typepar="float" typetarg="unsignedShort" defval="0" min="0" max="100" um="%" scale="10" form="%.1d" descr="AOL5 analogue output">
+		<protocol name="Modbus" commaddr="8452" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8452" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11026" readonly="true" name="FDI_counter" typepar="unsignedInt" typetarg="unsignedInt" defval="0" um="num" scale="1" form="%1d" descr="FDI input counter">
+		<protocol name="Modbus" commaddr="8752" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8752" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11027" readonly="true" name="FDI_frequency" typepar="float" typetarg="unsignedInt" defval="0" um="Hz" scale="10" form="%.1d" descr="FDI input frequency">
+		<protocol name="Modbus" commaddr="8754" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8754" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11028" readonly="true" name="FDI_value" typepar="boolean" typetarg="boolean" defval="0" min="0" max="1" um="flag" descr="FDI digital input">
+		<protocol name="Modbus" commaddr="8760" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8760" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11029" readonly="false" name="FDI_reset_counter" typepar="boolean" typetarg="boolean" defval="0" min="0" max="1" um="flag" descr="FDI reset input counter value">
+		<protocol name="Modbus" commaddr="8761" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8761" commsubindex="0"/>
+		<menu id="16"/>
+	</par>
+	<par ipa="11100" readonly="true" name="SW1" typepar="boolean" typetarg="boolean" defval="0" min="0" max="1" um="flag" descr="Dip Switch 1">
+		<protocol name="Modbus" commaddr="8320" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8320" commsubindex="0"/>
+		<menu id="17"/>
+	</par>
+	<par ipa="11101" readonly="true" name="SW2" typepar="boolean" typetarg="boolean" defval="0" min="0" max="1" um="flag" descr="Dip Switch 2">
+		<protocol name="Modbus" commaddr="8321" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8321" commsubindex="0"/>
+		<menu id="17"/>
+	</par>
+	<par ipa="11102" readonly="true" name="SW3" typepar="boolean" typetarg="boolean" defval="0" min="0" max="1" um="flag" descr="Dip Switch 3">
+		<protocol name="Modbus" commaddr="8322" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8322" commsubindex="0"/>
+		<menu id="17"/>
+	</par>
+	<par ipa="11103" readonly="true" name="SW4" typepar="boolean" typetarg="boolean" defval="0" min="0" max="1" um="flag" descr="Dip Switch 4">
+		<protocol name="Modbus" commaddr="8323" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8323" commsubindex="0"/>
+		<menu id="17"/>
+	</par>
+	<par ipa="11200" readonly="false" name="LED1" typepar="enum13" typetarg="unsignedChar" defval="0" min="0" max="2" um="num" scale="1" form="%d" descr="Led green">
+		<protocol name="Modbus" commaddr="8640" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8640" commsubindex="0"/>
+		<menu id="18"/>
+	</par>
+	<par ipa="11201" readonly="false" name="LED2" typepar="enum13" typetarg="unsignedChar" defval="0" min="0" max="2" um="num" scale="1" form="%d" descr="Led red">
+		<protocol name="Modbus" commaddr="8641" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8641" commsubindex="0"/>
+		<menu id="18"/>
+	</par>
+	<par ipa="11202" readonly="false" name="LED3" typepar="enum13" typetarg="unsignedChar" defval="0" min="0" max="2" um="num" scale="1" form="%d" descr="Led yellow">
+		<protocol name="Modbus" commaddr="8642" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8642" commsubindex="0"/>
+		<menu id="18"/>
+	</par>
+	<par ipa="11203" readonly="false" name="BACKLIGHT" typepar="enum14" typetarg="unsignedChar" defval="0" min="0" max="4" um="num" scale="1" form="%d" descr="Display backlight">
+		<protocol name="Modbus" commaddr="8720" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8720" commsubindex="0"/>
+		<menu id="18"/>
+	</par>
+	<par ipa="11300" readonly="true" name="sysClock_seconds" descr="Second value" defval="0" min="0" max="59" um="sec" typepar="unsignedChar" typetarg="unsignedChar">
+		<protocol name="Modbus" commaddr="8736" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8736" commsubindex="0"/>
+		<menu id="19"/>
+	</par>
+	<par ipa="11301" readonly="true" name="sysClock_minutes" descr="Minute value" defval="0" min="0" max="59" um="min" typepar="unsignedChar" typetarg="unsignedChar">
+		<protocol name="Modbus" commaddr="8737" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8737" commsubindex="0"/>
+		<menu id="19"/>
+	</par>
+	<par ipa="11302" readonly="true" name="sysClock_hours" descr="Hour value" defval="0" min="0" max="23" um="hours" typepar="unsignedChar" typetarg="unsignedChar">
+		<protocol name="Modbus" commaddr="8738" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8738" commsubindex="0"/>
+		<menu id="19"/>
+	</par>
+	<par ipa="11303" readonly="true" name="sysClock_dayweek" descr="Day of week value" defval="0" min="0" max="6" um="num" typepar="unsignedChar" typetarg="unsignedChar">
+		<protocol name="Modbus" commaddr="8739" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8739" commsubindex="0"/>
+		<menu id="19"/>
+	</par>
+	<par ipa="11304" readonly="true" name="sysClock_daymonth" descr="Day of the month value" defval="1" min="1" max="31" um="num" typepar="unsignedChar" typetarg="unsignedChar">
+		<protocol name="Modbus" commaddr="8740" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8740" commsubindex="0"/>
+		<menu id="19"/>
+	</par>
+	<par ipa="11305" readonly="true" name="sysClock_month" descr="Month value" defval="1" min="1" max="12" um="num" typepar="unsignedChar" typetarg="unsignedChar">
+		<protocol name="Modbus" commaddr="8741" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8741" commsubindex="0"/>
+		<menu id="19"/>
+	</par>
+	<par ipa="11306" readonly="true" name="sysClock_year" descr="Year value" defval="0" min="10" max="99" um="num" typepar="unsignedChar" typetarg="unsignedChar">
+		<protocol name="Modbus" commaddr="8742" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8742" commsubindex="0"/>
+		<menu id="19"/>
+	</par>
+	<par ipa="11307" readonly="true" name="sysClock_Error" descr="RTC not inizialized" defval="0" min="0" max="1" um="flag" typepar="boolean" typetarg="boolean">
+		<protocol name="Modbus" commaddr="8743" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8743" commsubindex="0"/>
+		<menu id="19"/>
+	</par>
+	<par ipa="40000" readonly="false" name="sysClockSet_seconds" descr="Second value (write)" defval="0" min="0" max="59" um="sec" typepar="unsignedChar" typetarg="unsignedChar">
+		<protocol name="Modbus" commaddr="8744" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8744" commsubindex="0"/>
+		<menu id="19"/>
+	</par>
+	<par ipa="40001" readonly="false" name="sysClockSet_minutes" descr="Minute value (write)" defval="0" min="0" max="59" um="min" typepar="unsignedChar" typetarg="unsignedChar">
+		<protocol name="Modbus" commaddr="8745" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8745" commsubindex="0"/>
+		<menu id="19"/>
+	</par>
+	<par ipa="40002" readonly="false" name="sysClockSet_hours" descr="Hour value (write)" defval="0" min="0" max="23" um="hours" typepar="unsignedChar" typetarg="unsignedChar">
+		<protocol name="Modbus" commaddr="8746" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8746" commsubindex="0"/>
+		<menu id="19"/>
+	</par>
+	<par ipa="40003" readonly="false" name="sysClockSet_dayweek" descr="Day of week value (write)" defval="0" min="0" max="6" um="num" typepar="unsignedChar" typetarg="unsignedChar">
+		<protocol name="Modbus" commaddr="8747" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8747" commsubindex="0"/>
+		<menu id="19"/>
+	</par>
+	<par ipa="40004" readonly="false" name="sysClockSet_daymonth" descr="Day of the month value (write)" defval="1" min="1" max="31" um="num" typepar="unsignedChar" typetarg="unsignedChar">
+		<protocol name="Modbus" commaddr="8748" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8748" commsubindex="0"/>
+		<menu id="19"/>
+	</par>
+	<par ipa="40005" readonly="false" name="sysClockSet_month" descr="Month value (write)" defval="1" min="1" max="12" um="num" typepar="unsignedChar" typetarg="unsignedChar">
+		<protocol name="Modbus" commaddr="8749" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8749" commsubindex="0"/>
+		<menu id="19"/>
+	</par>
+	<par ipa="40006" readonly="false" name="sysClockSet_year" descr="Year value (write)" defval="0" min="10" max="99" um="num" typepar="unsignedChar" typetarg="unsignedChar">
+		<protocol name="Modbus" commaddr="8750" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8750" commsubindex="0"/>
+		<menu id="19"/>
+	</par>
+	<par ipa="40007" readonly="false" name="sysClockSet_Upload" descr="RTC upload" defval="0" min="0" max="1" um="flag" typepar="boolean" typetarg="boolean">
+		<protocol name="Modbus" commaddr="8751" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8751" commsubindex="0"/>
+		<menu id="19"/>
+	</par>
+	<par ipa="10403" hidden="true" excludeRWAll="true" readonly="false" name="USB-Host command" typepar="enum24" typetarg="unsignedInt" defval="0" min="0" max="21" um="num" scale="1" form="%d" descr="0=idle, other see manual">
+		<protocol name="Modbus" commaddr="8756" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8756" commsubindex="0"/>
+	</par>
+	<par ipa="10404" excludeRWAll="true" hidden="true" readonly="true" name="USB-Host status" typepar="enum21" typetarg="unsignedInt" defval="0" min="0" max="255" um="num" scale="1" form="%d" descr="Result of USB-Host command: 0=completed, 1=processing, 255=failed, others see manual">
+		<protocol name="Modbus" commaddr="8758" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="8758" commsubindex="0"/>
+	</par>
+	<par ipa="11400" name="PASSWORD" descr="Numeric Password for Application protection. Write-only parameter, One Time Programmable!!!" defval="4294967295" min="0" max="4294967295" um="num" typepar="unsignedInt" typetarg="unsignedInt" writeonly="true">
+		<protocol name="Modbus" commaddr="24320" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="24320" commsubindex="0"/>
+		<menu id="20"/>
+	</par>
+	<par ipa="11311" name="Load_BACnet_E2_Defaults" descr="Load default values for BACnet parameters in EEPROM at next boot" defval="1" min="0" max="1" typepar="boolean" typetarg="boolean" um="flag">
+		<protocol name="Modbus" commaddr="15766" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15766" commsubindex="0"/>
+		<menu id="90"/>
+	</par>
+	<par ipa="10152" name="Port_BACnet_IP" descr="BACnet/IP Port number, 0=default port 47808, 65535=bacnet stack running only on PLC side" defval="0" min="0" max="65535" um="num" typepar="unsignedShort" typetarg="unsignedShort">
+		<protocol name="Modbus" commaddr="15768" commsubindex="0"/>
+		<protocol name="CanOpen" commaddr="15768" commsubindex="0"/>
+		<menu id="90"/>
+	</par>
+</parameters>

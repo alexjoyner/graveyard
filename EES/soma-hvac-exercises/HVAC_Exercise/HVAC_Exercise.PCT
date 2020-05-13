@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- #DEFINE PREFIX HVAC_Exercise -->
+<devicetemplate>
+	<deviceinfo caption="HVAC_Exercise" name="HVAC_Exercise" version="0.0" icon="img\application.ico" deviceid="HVAC_Exercise" devicetype="application" PLCApplicationID="HVAC_Exerc">
+		<description>HVAC_Exercise Application</description>
+		<protocols><protocol>M172P_596p2_appl</protocol></protocols>
+	</deviceinfo>
+	<deviceconfig>
+		<hmi>
+			<tree name="tree1">
+				<node name="PREFIX" caption="HVAC_Exercise" icon="%CATALOG%\Applications\img\application.ico" menu="menuRemovePLC" datalink="PREFIX" captionedit="false"/>
+			</tree>
+		</hmi>
+		<templatedata>
+			<PREFIX/>
+		</templatedata>
+		<extensions>
+			<eventhandler event="OnLoadTemplate">configurator.OnLoadDeviceTemplate</eventhandler>
+		</extensions>
+		<datadef version="1.0">
+			<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+				<xs:element name="PREFIX">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="insertableDevice">
+								<xs:sequence>
+								</xs:sequence>
+								<xs:attribute name="oncreatenode" type="xs:string" fixed="configurator.OnCreateDeviceChild"/>
+								<xs:attribute name="onloadnode" type="xs:string" fixed="configurator.OnLoadDeviceChild"/>
+								<xs:attribute name="ondeletenode" type="xs:string" fixed="configurator.OnDeleteDeviceChild"/>
+								<xs:attribute name="PLCProject" type="xs:string" fixed="HVAC_Exercise.RSM"/>
+								<xs:attribute name="noAutoGenCaption" type="xs:boolean" fixed="true"/>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+			</xs:schema>
+		</datadef>
+		<parameters/>
+		<enums/>
+		<redefPars/>
+		<fieldVars/>
+	</deviceconfig>
+</devicetemplate>

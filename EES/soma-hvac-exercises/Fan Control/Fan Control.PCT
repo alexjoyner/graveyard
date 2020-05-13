@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- #DEFINE PREFIX FanControl -->
+<devicetemplate>
+	<deviceinfo caption="Fan Control" name="Fan Control" version="0.0" icon="img\application.ico" deviceid="FanControl" devicetype="application" PLCApplicationID="Fan Contro">
+		<description>Fan Control Application</description>
+		<protocols><protocol>M171PerfDisplay_423p20_appl</protocol></protocols>
+	</deviceinfo>
+	<deviceconfig>
+		<hmi>
+			<tree name="tree1">
+				<node name="PREFIX" caption="Fan Control" icon="%CATALOG%\Applications\img\application.ico" menu="menuRemovePLC" datalink="PREFIX" captionedit="false"/>
+			</tree>
+		</hmi>
+		<templatedata>
+			<PREFIX/>
+		</templatedata>
+		<extensions>
+			<eventhandler event="OnLoadTemplate">configurator.OnLoadDeviceTemplate</eventhandler>
+		</extensions>
+		<datadef version="1.0">
+			<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+				<xs:element name="PREFIX">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="insertableDevice">
+								<xs:sequence>
+								</xs:sequence>
+								<xs:attribute name="oncreatenode" type="xs:string" fixed="configurator.OnCreateDeviceChild"/>
+								<xs:attribute name="onloadnode" type="xs:string" fixed="configurator.OnLoadDeviceChild"/>
+								<xs:attribute name="ondeletenode" type="xs:string" fixed="configurator.OnDeleteDeviceChild"/>
+								<xs:attribute name="PLCProject" type="xs:string" fixed="Fan Control.RSM"/>
+								<xs:attribute name="noAutoGenCaption" type="xs:boolean" fixed="true"/>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+			</xs:schema>
+		</datadef>
+		<parameters/>
+		<enums/>
+		<redefPars><redefPar ipa="10112" defval="4"/><redefPar ipa="10120" defval="0"/><redefPar ipa="10121" defval="1000"/><redefPar ipa="10142" defval="2"/><redefPar ipa="10110" defval="2"/></redefPars>
+		<fieldVars/>
+	</deviceconfig>
+</devicetemplate>
