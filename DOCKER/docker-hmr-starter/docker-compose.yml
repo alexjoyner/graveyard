@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  ui-service:
+    image: docker-hmr
+    command: npm start
+    volumes:
+      - ./ui-service:/home/node/app
+    ports:
+      - 8080:3000
+      - 3001:3001
