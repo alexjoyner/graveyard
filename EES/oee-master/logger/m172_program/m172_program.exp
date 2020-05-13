@@ -1,0 +1,64 @@
+﻿	(******************************)
+	(*                            *)
+	(*     EXPORTED VARIABLES     *)
+	(*                            *)
+	(******************************)
+
+        VAR_GLOBAL
+	{G:"Variables"}
+AIL1_LOGGED AT %MW110.0 : INT;
+AIL2_LOGGED AT %MW110.1 : INT;
+AIL3_LOGGED AT %MW110.2 : INT;
+AIL4_LOGGED AT %MW110.3 : INT;
+AIL5_LOGGED AT %MW110.4 : INT;
+AIL6_LOGGED AT %MW110.5 : INT;
+AIL7_LOGGED AT %MW110.6 : INT;
+AIL8_LOGGED AT %MW110.7 : INT;
+AIL9_LOGGED AT %MW110.8 : INT;
+AIL10_LOGGED AT %MW110.9 : INT;
+AIL11_LOGGED AT %MW110.10 : INT;
+AIL12_LOGGED AT %MW110.11 : INT;
+DI1_LOGGED AT %MW110.12 : INT;
+DI2_LOGGED AT %MW110.13 : INT;
+DI3_LOGGED AT %MW110.14 : INT;
+DI4_LOGGED AT %MW110.15 : INT;
+DI5_LOGGED AT %MW110.16 : INT;
+DI6_LOGGED AT %MW110.17 : INT;
+DI7_LOGGED AT %MW110.18 : INT;
+DI8_LOGGED AT %MW110.19 : INT;
+DI9_LOGGED AT %MW110.20 : INT;
+DI10_LOGGED AT %MW110.21 : INT;
+DI11_LOGGED AT %MW110.22 : INT;
+DI12_LOGGED AT %MW110.23 : INT;
+CUST1_LOGGED AT %MW110.24 : INT;
+CUST2_LOGGED AT %MW110.25 : INT;
+CUST3_LOGGED AT %MW110.26 : INT;
+CUST4_LOGGED AT %MW110.27 : INT;
+CUST5_LOGGED AT %MW110.28 : INT;
+	{G:"Mappings"}
+AI1 AT %IW1.0 : INT;	{ DE:"AIL1 analogue input" }
+AI2 AT %IW1.1 : INT;	{ DE:"AIL2 analogue input" }
+AI3 AT %IW1.2 : INT;	{ DE:"AIL3 analogue input" }
+AI4 AT %IW1.3 : INT;	{ DE:"AIL4 analogue input" }
+AI5 AT %IW1.4 : INT;	{ DE:"AIL5 analogue input" }
+AI6 AT %IW1.5 : INT;	{ DE:"AIL6 analogue input" }
+AI7 AT %IW1.6 : INT;	{ DE:"AIL7 analogue input" }
+AI8 AT %IW1.7 : INT;	{ DE:"AIL8 analogue input" }
+AI9 AT %IW1.8 : INT;	{ DE:"AI9 analogue input" }
+AI10 AT %IW1.9 : INT;	{ DE:"AIL10 analogue input" }
+AI11 AT %IW1.10 : INT;	{ DE:"AIL11 analogue input" }
+AI12 AT %IW1.11 : INT;	{ DE:"AIL12 analogue input" }
+DI1 AT %IX0.0 : BOOL;	{ DE:"DIL1 digital input" }
+DI2 AT %IX0.1 : BOOL;	{ DE:"DIL2 digital input" }
+DI3 AT %IX0.2 : BOOL;	{ DE:"DIL3 digital input" }
+DI4 AT %IX0.3 : BOOL;	{ DE:"DIL4 digital input" }
+DI5 AT %IX0.4 : BOOL;	{ DE:"DIL5 digital input" }
+DI6 AT %IX0.5 : BOOL;	{ DE:"DIL6 digital input" }
+DI7 AT %IX0.6 : BOOL;	{ DE:"DIL7 digital input" }
+DI8 AT %IX0.7 : BOOL;	{ DE:"DIL8 digital input" }
+DI9 AT %IX0.8 : BOOL;	{ DE:"DIL9 digital input" }
+DI10 AT %IX0.9 : BOOL;	{ DE:"DIL10 digital input" }
+DI11 AT %IX0.10 : BOOL;	{ DE:"DIL11 digital input" }
+DI12 AT %IX0.11 : BOOL;	{ DE:"DIL12 digital input" }
+	END_VAR
+

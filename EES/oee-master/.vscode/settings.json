@@ -1,0 +1,9 @@
+{
+  "files.exclude": {
+    "**/.hg": false,
+    "**/.svn": false,
+    "**/CVS": false
+  },
+  "editor.formatOnSave": true,
+  "eslint.autoFixOnSave": true
+}

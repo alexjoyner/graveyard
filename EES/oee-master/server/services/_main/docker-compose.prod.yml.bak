@@ -1,0 +1,61 @@
+version: '3.1'
+services:
+  main:
+    image: rosco9awj/oee-master-nginx:v0.7.3
+    deploy:
+      restart_policy:
+        condition: on-failure
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+    ports:
+      - "80:80"
+      - "443:443"
+  health:
+    image: rosco9awj/oee-master-health:v0.7.3
+    deploy:
+      restart_policy:
+        condition: on-failure
+  point-logs:
+    image: rosco9awj/oee-master-point-logs:v0.7.3
+    deploy:
+      restart_policy:
+        condition: on-failure
+  graphs:
+    image: rosco9awj/oee-master-graphs:v0.7.3
+    deploy:
+      restart_policy:
+        condition: on-failure
+  accounts:
+    image: rosco9awj/oee-master-accounts:v0.7.3
+    deploy:
+      restart_policy:
+        condition: on-failure
+  live-data:
+    image: rosco9awj/oee-master-live-data:v0.7.3
+    deploy:
+      restart_policy:
+        condition: on-failure
+  alerts:
+    image: rosco9awj/oee-master-alerts:v0.7.3
+    deploy:
+      restart_policy:
+        condition: on-failure
+secrets:
+  pg-user:
+    external: true
+  pg-pass:
+    external: true
+  pg-host:
+    external: true
+  pg-db:
+    external: true
+  jwt-secret:
+    external: true
+  ssl_dhparam:
+    external: true
+  twilio-sid:
+    external: true
+  twilio-auth-token:
+    external: true
+  twilio-phone-num:
+    external: true
