@@ -22,7 +22,7 @@
   "license": "UNLICENSED",
   "homepage": "https://bitbucket.org/rosco9awj/heroku-metatruth-production#readme",
   "dependencies": {
-    "bcrypt": "^0.8.5",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.13.3",
     "braintree": "^1.29.0",
     "express": "^4.13.3",
